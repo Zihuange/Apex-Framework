@@ -24,7 +24,8 @@ _validUniforms_1 = [
 	'U_B_CombatUniform_mcam','U_B_CombatUniform_mcam_tshirt','U_B_CombatUniform_mcam_vest','U_B_CombatUniform_mcam_worn',
 	'U_B_CombatUniform_sgg','U_B_CombatUniform_sgg_tshirt','U_B_CombatUniform_sgg_vest',
 	'U_B_CombatUniform_wdl','U_B_CombatUniform_wdl_tshirt','U_B_CombatUniform_wdl_vest',
-	'U_B_CTRG_1','U_B_CTRG_2','U_B_CTRG_3','U_B_T_Soldier_SL_F','U_B_T_Soldier_F'
+	'U_B_CTRG_1','U_B_CTRG_2','U_B_CTRG_3','U_B_T_Soldier_SL_F','U_B_T_Soldier_F',
+	'U_B_CombatUniform_vest_mcam_wdl_f','U_B_CombatUniform_mcam_wdl_f'
 ];
 _validUniform_2 = [
 	'U_C_WorkerCoveralls','U_B_HeliPilotCoveralls'	/*/ coveralls/*/
@@ -38,11 +39,17 @@ _validUniform_4 = [
 _validUniform_5 = [
 	'U_I_CombatUniform','U_I_CombatUniform_shortsleeve'
 ];
+_validUniform_6 = [
+	'U_B_CTRG_Soldier_F','U_B_CTRG_Soldier_3_F'
+];
 private _return = [];
 _return = [
 	[0,'<Empty>','','',[''],''],
-	[0,'BDU','A3\characters_f\BLUFOR\Data\clothing_wdl_co.paa','NATO uniform skin',_validUniforms_1,'Bohemia Interactive','media\images\uskins\bdu\bdu.paa'],
-	[0,'Sage','A3\characters_f\BLUFOR\Data\clothing_sage_co.paa','NATO uniform skin',_validUniforms_1,'Bohemia Interactive'],
+	[0,'BDU','A3\characters_f\BLUFOR\Data\clothing_wdl_co.paa','北约作战服',_validUniforms_1,'Bohemia Interactive','media\images\uskins\bdu\bdu.paa'],
+	[0,'Sage','A3\characters_f\BLUFOR\Data\clothing_sage_co.paa','北约作战服',_validUniforms_1,'Bohemia Interactive'],
+	[0,'MTP-I','\a3\characters_f\BLUFOR\Data\clothing1_co.paa','MTP隐形作战服',_validUniform_6,'Bohemia Interactive'],
+	[0,'BDU-I','A3\characters_f\BLUFOR\Data\clothing_wdl_co.paa','BDU隐形作战服',_validUniform_6,'Bohemia Interactive'],
+	[0,'MARPAT-I','media\images\uskins\marpat\marpat.paa','MARPAT隐形作战服',_validUniform_6,'Aleksy (cportsmouth98@gmail.com)','media\images\uskins\marpat\marpatch.paa'],
 	[0,'Bandit','A3\characters_f\common\data\coveralls_bandit_co.paa','Helipilot/Worker coveralls skin',_validUniform_2,'Bohemia Interactive'],
 	[0,'Black','A3\characters_f\common\data\coveralls_black_co.paa','Helipilot/Worker coveralls skin',_validUniform_2,'Bohemia Interactive'],
 	[0,'Grey','A3\characters_f\common\data\coveralls_grey_co.paa','Helipilot/Worker coveralls skin',_validUniform_2,'Bohemia Interactive'],
@@ -55,22 +62,24 @@ _return = [
 	[0,'Bandit (Orange)','A3\Characters_F\Civil\Data\c_cloth1_v3_co.paa','Guerilla garment skin',_validUniform_3,'Bohemia Interactive'],
 	[0,'Bandit (Yellow)','A3\Characters_F\Civil\Data\c_cloth1_v2_co.paa','Guerilla garment skin',_validUniform_3,'Bohemia Interactive'],
 	[0,'Bandit (Blue)','A3\Characters_F\Civil\Data\c_cloth1_co.paa','Guerilla garment skin',_validUniform_3,'Bohemia Interactive'],
+	[0,'MARPAT','media\images\uskins\marpat\marpat.paa','北约作战服',_validUniforms_1,'Aleksy (cportsmouth98@gmail.com)','media\images\uskins\marpat\marpatch.paa'],
+	[0,'SOG','media\images\uskins\tiger\tigerstripe31.paa','北约作战服',_validUniforms_1,'Archimedes','media\images\uskins\tiger\tspatch.paa'],																																									
 	[0,'Raven','A3\characters_f\OPFOR\Data\clothing_rus_co.paa','CSAT uniform skin',_validUniform_4,'Bohemia Interactive']
 ];
 // Storage
 /*/
 _return = [
 	[0,'<Empty>','','',[''],''],
-	[0,'MARPAT','media\images\uskins\marpat\marpat.paa','NATO uniform skin',_validUniforms_1,'Aleksy (cportsmouth98@gmail.com)','media\images\uskins\marpat\marpatch.paa'],
-	[0,'BDU','A3\characters_f\BLUFOR\Data\clothing_wdl_co.paa','NATO uniform skin',_validUniforms_1,'Bohemia Interactive','media\images\uskins\bdu\bdu.paa'],
-	[0,'SOG','media\images\uskins\tiger\tigerstripe31.paa','NATO uniform skin',_validUniforms_1,'Archimedes','media\images\uskins\tiger\tspatch.paa'],
-	[0,'Dirty','media\images\uskins\dirty\abua.paa','NATO uniform skin',_validUniforms_1,'SgtMaj (N/A)','media\images\uskins\dirty\abupatch.paa'],
-	[0,'Dark','media\images\uskins\dark\up6.paa','NATO uniform skin',_validUniforms_1,'Skully (N/A)',''],
+	[0,'MARPAT','media\images\uskins\marpat\marpat.paa','北约作战服',_validUniforms_1,'Aleksy (cportsmouth98@gmail.com)','media\images\uskins\marpat\marpatch.paa'],
+	[0,'BDU','A3\characters_f\BLUFOR\Data\clothing_wdl_co.paa','北约作战服',_validUniforms_1,'Bohemia Interactive','media\images\uskins\bdu\bdu.paa'],
+	[0,'SOG','media\images\uskins\tiger\tigerstripe31.paa','北约作战服',_validUniforms_1,'Archimedes','media\images\uskins\tiger\tspatch.paa'],
+	[0,'Dirty','media\images\uskins\dirty\abua.paa','北约作战服',_validUniforms_1,'SgtMaj (N/A)','media\images\uskins\dirty\abupatch.paa'],
+	[0,'Dark','media\images\uskins\dark\up6.paa','北约作战服',_validUniforms_1,'Skully (N/A)',''],
 	[0,'Alfa','media\images\uskins\alfa\AAF_Alfa.paa','AAF uniform skin',_validUniform_5,'Lantern','media\images\uskins\alfa\AAF_Alfa.paa'],
 	[0,'Alfa Wood','media\images\uskins\alfa_woodland\AAF_AlfaWoodland.paa','AAF uniform skin',_validUniform_5,'Lantern','media\images\uskins\alfa\AAF_AlfaWoodland.paa'],
 	[0,'Kenyan','media\images\uskins\kenyan\AAF_Kenyan.paa','AAF uniform skin',_validUniform_5,'Lantern','media\images\uskins\kenyan\AAF_Kenyan.paa'],
 	[0,'SFG','media\images\uskins\sfg\AAF_SFG.paa','AAF uniform skin',_validUniform_5,'Lantern','media\images\uskins\sfg\AAF_SFG.paa'],
-	[0,'Sage','A3\characters_f\BLUFOR\Data\clothing_sage_co.paa','NATO uniform skin',_validUniforms_1,'Bohemia Interactive'],
+	[0,'Sage','A3\characters_f\BLUFOR\Data\clothing_sage_co.paa','北约作战服',_validUniforms_1,'Bohemia Interactive'],
 	[0,'Bandit','A3\characters_f\common\data\coveralls_bandit_co.paa','Helipilot/Worker coveralls skin',_validUniform_2,'Bohemia Interactive'],
 	[0,'Black','A3\characters_f\common\data\coveralls_black_co.paa','Helipilot/Worker coveralls skin',_validUniform_2,'Bohemia Interactive'],
 	[0,'Grey','A3\characters_f\common\data\coveralls_grey_co.paa','Helipilot/Worker coveralls skin',_validUniform_2,'Bohemia Interactive'],

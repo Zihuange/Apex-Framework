@@ -24,9 +24,9 @@ private [
 	'_c4Messages','_researchTable','_dummyTypes','_dummyType','_objectTypes','_objectType'
 ];
 _c4Messages = [
-	"Chopper data secured. The charge has been set! 15 seconds until detonation.",
-	"Heli data secured. The explosives have been set! 15 seconds until detonation.",
-	"Chopper intel secured. The charge is planted! 15 seconds until detonation."
+	"直升机数据已获取， 自毁程序已启动！ 引爆倒计时15秒，立刻撤离！",
+	"直升机数据已获取。 自毁程序已启动! 爆炸倒计时15秒，立刻撤离！",
+	"直升机技术数据已获取。 自毁程序已启动！ 爆炸倒计时15秒，立刻撤离！"
 ];
 _c4Message = selectRandom _c4Messages;
 _chopperTypes = ["O_Heli_Attack_02_dynamicLoadout_black_F","O_Heli_Light_02_unarmed_F","B_Heli_Attack_01_dynamicLoadout_F","C_Heli_Light_01_civil_F","O_Heli_Transport_04_box_F"];
@@ -123,15 +123,15 @@ _fuzzyPos = [((_flatPos select 0) - 300) + (random 600),((_flatPos select 1) - 3
 	_x setMarkerPos _fuzzyPos;
 	_x setMarkerAlpha 1;
 } count ['QS_marker_sideMarker','QS_marker_sideCircle'];
-'QS_marker_sideMarker' setMarkerText (format ['%1Secure Chopper',(toString [32,32,32])]);
+'QS_marker_sideMarker' setMarkerText (format ['%1获取敌军直升机数据',(toString [32,32,32])]);
 
 [
 	'QS_IA_TASK_SM_0',
 	TRUE,
 	[
-		'Secure the enemy helicopter! CSAT is experimenting with new radar-defeating technology. Get over there and steal the schematics. It will be located in a nearby building! Once secured, the helicopter will self-destruct, so be sure to clear the area. This objective is not accurately marked.',
-		'Secure Chopper',
-		'Secure Chopper'
+		'获取敌方直升机数据！ CSAT正在测试一项新型雷达干扰技术，前往任务区的某栋建筑物内偷取设计图。一旦偷取成功直升机将会自毁，这个目标没有准确标记。 ',
+		'获取敌方直升机数据',
+		'获取敌方直升机数据'
 	],
 	(markerPos 'QS_marker_sideMarker'),
 	'CREATED',
@@ -144,7 +144,7 @@ _fuzzyPos = [((_flatPos select 0) - 300) + (random 600),((_flatPos select 1) - 3
 
 _briefing = parseText "<t align='center'><t size='2.2'>New Side Mission</t><br/><t size='1.5' color='#00B2EE'>Secure Enemy Chopper</t><br/>____________________<br/>OPFOR forces have been provided with a new prototype attack chopper and they're keeping it in a hangar somewhere on the island.<br/><br/>We've marked the suspected location on your map; head to the hangar, get the data and destroy the helicopter.</t>";
 //['hint',_briefing] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
-['NewSideMission',['Secure Enemy Chopper']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+['NewSideMission',['获取敌军直升机数据']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 
 missionNamespace setVariable ['QS_sideMissionUp',TRUE,TRUE];
 missionNamespace setVariable ['QS_smSuccess',FALSE,TRUE];
@@ -156,7 +156,7 @@ for '_x' from 0 to 1 step 0 do {
 		
 		/*/-------------------- DE-BRIEFING/*/
 
-		['sideChat',[WEST,'HQ'],'Prototype intel lost, mission FAILED!'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['sideChat',[WEST,'HQ'],'原型数据丢失，任务失败！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		[0,_flatPos] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
 		{
 			_x setMarkerPos [-5000,-5000,0];

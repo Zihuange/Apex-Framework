@@ -51,7 +51,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'TASK ASSIGNED'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_taskAssigned')
 		];	
 	};
 	if (_case isEqualTo 'TaskCanceled') then {
@@ -69,7 +69,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'TASK CANCELED'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_taskCanceled')
 		];	
 	};
 	if (_case isEqualTo 'TaskCreated') then {
@@ -87,7 +87,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'TASK CREATED'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_taskCreated')
 		];	
 	};	
 	if (_case isEqualTo 'TaskFailed') then {
@@ -105,7 +105,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'TASK FAILED'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_taskFailed')
 		];	
 	};
 	if (_case isEqualTo 'TaskSucceeded') then {
@@ -123,7 +123,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'TASK COMPLETED'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_taskCompleted')
 		];	
 	};
 	if (_case isEqualTo 'TaskUpdated') then {
@@ -141,7 +141,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'TASK UPDATED'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_taskUpdated')
 		];	
 	};
 	if (_case isEqualTo 'NewMain') then {
@@ -149,7 +149,7 @@ if (_case isEqualType '') then {
 			/*/color array/*/ 				[1,0.81,0.06,1],
 			/*/colorIconPicture array/*/	[1,0.81,0.06,1],
 			/*/colorIconText array/*/ 		[(profileNamespace getVariable ['IGUI_TEXT_RGB_R',0]),(profileNamespace getVariable ['IGUI_TEXT_RGB_G',1]),(profileNamespace getVariable ['IGUI_TEXT_RGB_B',1]),(profileNamespace getVariable ['IGUI_TEXT_RGB_A',0.8])],
-			/*/description string/*/ 		'Take %1',
+			/*/description string/*/ 		(localize 'STR_QS_Notif_take'),
 			/*/difficulties array/*/ 		[],
 			/*/duration number/*/ 			5,
 			/*/iconPicture string/*/ 		'media\images\notificons\main_objective.paa',
@@ -159,7 +159,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'NEW MAIN OBJECTIVE'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_newMain')
 		];
 	};
 	if (_case isEqualTo 'CompletedMain') then {
@@ -167,7 +167,7 @@ if (_case isEqualType '') then {
 			/*/color array/*/ 				[1,0.81,0.06,1],
 			/*/colorIconPicture array/*/	[1,0.81,0.06,1],
 			/*/colorIconText array/*/ 		[(profileNamespace getVariable ['IGUI_TEXT_RGB_R',0]),(profileNamespace getVariable ['IGUI_TEXT_RGB_G',1]),(profileNamespace getVariable ['IGUI_TEXT_RGB_B',1]),(profileNamespace getVariable ['IGUI_TEXT_RGB_A',0.8])],
-			/*/description string/*/ 		'Taken %1',
+			/*/description string/*/ 		(localize 'STR_QS_Notif_taken'),
 			/*/difficulties array/*/ 		[],
 			/*/duration number/*/ 			5,
 			/*/iconPicture string/*/ 		'media\images\notificons\main_objective_completed.paa',
@@ -231,7 +231,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'NEW SUB-OBJECTIVE'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_newSub')
 		];
 	};
 	if (_case isEqualTo 'CompletedSub') then {
@@ -249,7 +249,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'SUB-OBJECTIVE COMPLETE'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_completedSub')
 		];
 	};
 	if (_case isEqualTo 'NewSideMission') then {
@@ -267,7 +267,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'NEW SIDE MISSION'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_newSM')
 		];
 	};
 	if (_case isEqualTo 'NewSideMissionFileData') then {
@@ -285,7 +285,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'NEW SIDE MISSION'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_newSM')
 		];
 	};
 	if (_case isEqualTo 'NewSideMissionFileDataComplete') then {
@@ -321,7 +321,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'NEW SIDE MISSION'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_newSM')
 		];
 	};
 	if (_case isEqualTo 'CompletedSideMission') then {
@@ -339,7 +339,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'SIDE MISSION COMPLETE'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_completedSM')
 		];
 	};
 	if (_case isEqualTo 'NewPriorityTarget') then {
@@ -357,7 +357,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'NEW PRIORITY TARGET'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_newPT')
 		];
 	};
 	if (_case isEqualTo 'CompletedPriorityTarget') then {
@@ -375,7 +375,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'PRIORITY TARGET DOWN'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_completedPT')
 		];
 	};
 	if (_case isEqualTo 'EnemyJetDown') then {
@@ -393,7 +393,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'ENEMY CAS DESTROYED'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_enemyJetDown')
 		];
 	};
 	if (_case isEqualTo 'EnemyJet') then {
@@ -411,7 +411,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'ENEMY CAS ALERT'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_enemyJet')
 		];
 	};
 	if (_case isEqualTo 'NewSideMissionJet') then {
@@ -429,7 +429,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'NEW SIDE MISSION'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_newSM')
 		];
 	};
 	if (_case isEqualTo 'Reward') then {
@@ -447,7 +447,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'Side Mission Reward'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_reward')
 		];
 	};
 	if (_case isEqualTo 'Reward2') then {
@@ -465,7 +465,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'Side Mission Reward'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_reward')
 		];
 	};
 	if (_case isEqualTo 'ScoreBonus') then {
@@ -483,7 +483,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'SCORE BONUS'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_scoreBonus')
 		];
 	};
 	if (_case isEqualTo 'aoSmallTaskCreated') then {
@@ -501,7 +501,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'AO Side Task'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_aoSMCreated')
 		];	
 	};
 	if (_case isEqualTo 'aoSmallTaskSucceeded') then {
@@ -519,7 +519,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'AO Side Task Completed'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_aoSMSucceeded')
 		];	
 	};
 	if (_case isEqualTo 'aoSmallTaskFailed') then {
@@ -537,7 +537,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'AO Side Task Failed'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_aoSMFailed')
 		];	
 	};
 	if (_case isEqualTo 'hcTaskCreated') then {
@@ -555,7 +555,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'Commander'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_hcTask')
 		];	
 	};
 	if (_case isEqualTo 'hcTaskSucceeded') then {
@@ -573,7 +573,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'Commander'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_hcTask')
 		];	
 	};
 	if (_case isEqualTo 'hcTaskFailed') then {
@@ -591,7 +591,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'Commander'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_hcTask')
 		];	
 	};
 	if (_case isEqualTo 'System') then {
@@ -609,7 +609,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'System'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_sys')
 		];
 	};
 	if (_case isEqualTo 'CUSTOM_GEORGETOWN') then {
@@ -681,7 +681,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'Area of Operations'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_AO')
 		];
 	};
 	if (_case isEqualTo 'SC_UPDATE_GOOD') then {
@@ -699,7 +699,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'Area of Operations'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_AO')
 		];
 	};
 	if (_case isEqualTo 'SC_UPDATE_BAD') then {
@@ -717,7 +717,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'Area of Operations'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_AO')
 		];
 	};
 	if (_case isEqualTo 'SC_EXIT_GOOD') then {
@@ -735,7 +735,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'Area of Operations'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_AO')
 		];
 	};
 	if (_case isEqualTo 'SC_EXIT_BAD') then {
@@ -753,7 +753,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'Area of Operations'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_AO')
 		];
 	};
 	if (_case isEqualTo 'SC_SUB_COMPLETED') then {
@@ -771,7 +771,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'Area of Operations'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_AO')
 		];
 	};
 	if (_case isEqualTo 'CAS_1') then {
@@ -789,7 +789,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'Close Air Support'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_CAS')
 		];
 	};
 	if (_case isEqualTo 'FOB_INIT') then {
@@ -807,7 +807,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'Forward Operating Base'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_FOB')
 		];
 	};
 	if (_case isEqualTo 'FOB_UPDATE') then {
@@ -825,7 +825,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'Forward Operating Base'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_FOB')
 		];
 	};
 	if (_case isEqualTo 'SM_UPDATE') then {
@@ -843,7 +843,7 @@ if (_case isEqualType '') then {
 			/*/sound string/*/ 				'QS_audio_notification_2',
 			/*/soundClose string/*/ 		'QS_audio_notification_2Close',
 			/*/soundRadio string/*/ 		'',
-			/*/title string/*/ 				'Side Mission Update'
+			/*/title string/*/ 				(localize 'STR_QS_Notif_SMUpdate')
 		];
 	};
 	if (_case isEqualTo 'SM_IDAP_UPDATE') then {

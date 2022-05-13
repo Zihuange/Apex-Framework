@@ -13,5 +13,5 @@ Description:
 	Weapon Safety interaction
 _____________________________________________________________*/
 
-50 cutText ['Weapons safe on base','PLAIN',0.2];
+50 cutText ['基地内禁止使用武器！','PLAIN',0.2];
 TRUE;

@@ -218,14 +218,14 @@ _fuzzyPos = [((_spawnPosition select 0) - 500) + (random 1000),((_spawnPosition 
 	_x setMarkerPosLocal _fuzzyPos;
 	_x setMarkerAlpha 1;
 } count ['QS_marker_sideMarker','QS_marker_sideCircle'];
-'QS_marker_sideMarker' setMarkerText (format ['%1Side Mission: Enemy Regenerator',(toString [32,32,32])]);
+'QS_marker_sideMarker' setMarkerText (format ['%1敌军医疗设备',(toString [32,32,32])]);
 _task = [
 	'QS_IA_TASK_SM_0',
 	TRUE,
 	[
-		'The enemy has deployed a high frequency ionic device which activates wound-healing technology in CSAT uniforms. While the device is active, the enemy may be harder to kill.<br/><br/>Send a team to destroy it!',
-		'Regenerator',
-		'Regenerator'
+		'敌方部署了一种高频离子装置，这种装置将激活CSAT军服内的伤口治愈科技。 当这个装置处于运作状态时，敌军的生命力会的到提高。<br/><br/>需要立即派遣小队前往,销毁该仪器!',
+		'敌军医疗设备',
+		'敌军医疗设备'
 	],
 	(markerPos 'QS_marker_sideMarker'),
 	'CREATED',
@@ -235,7 +235,7 @@ _task = [
 	'destroy',
 	TRUE
 ] call (missionNamespace getVariable 'BIS_fnc_setTask');
-['NewSideMission',['Enemy Regenerator']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+['NewSideMission',['敌军医疗设备']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 private _time = diag_tickTime;
 private _respawnDelay = 30;
 private _respawnCheckDelay = _time + _respawnDelay;

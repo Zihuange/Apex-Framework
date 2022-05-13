@@ -17,50 +17,50 @@ _type = _this select 3;
 if (_type isEqualTo 1) exitWith {
 	private ['_text','_respawnEnabled','_respawnTickets','_vehicleRespawnEnabled','_vehicleRepairService','_vehicleAmmoService','_radarServices','_vehicleFuelService','_personalRespawn'];
 	_text = format [
-		'<t align="left" size="2">FOB %1<t/><br/><t align="left" size="1.5">Status</t><br/><t align="left" size="1">__________</t><br/>',
+		'<t align="left" size="2">FOB %1<t/><br/><t align="left" size="1.5">状态</t><br/><t align="left" size="1">__________</t><br/>',
 		(missionNamespace getVariable 'QS_module_fob_displayName')
 	];
 	if ((missionNamespace getVariable 'QS_module_fob_side') isEqualTo (player getVariable ['QS_unit_side',WEST])) then {
-		_radarServices = '<t size="1" align="left">Radar Services</t><t color="#008000" size="1" align="right">Online</t><br/>';
+		_radarServices = '<t size="1" align="left">雷达设备</t><t color="#008000" size="1" align="right">上线</t><br/>';
 	} else {
-		_radarServices = '<t size="1" align="left">Radar Services</t><t color="#ff0000" size="1" align="right">Offline</t><br/>';
+		_radarServices = '<t size="1" align="left">雷达设备</t><t color="#ff0000" size="1" align="right">离线</t><br/>';
 	};
 	_text = _text + _radarServices;
 	if (missionNamespace getVariable 'QS_module_fob_respawnEnabled') then {
-		_respawnEnabled = '<t size="1" align="left">Respawn</t><t color="#008000" size="1" align="right">Online</t><br/>';
+		_respawnEnabled = '<t size="1" align="left">重生功能</t><t color="#008000" size="1" align="right">上线</t><br/>';
 	} else {
-		_respawnEnabled = '<t size="1" align="left">Respawn</t><t color="#ff0000" size="1" align="right">Offline</t><br/>';
+		_respawnEnabled = '<t size="1" align="left">重生功能</t><t color="#ff0000" size="1" align="right">离线</t><br/>';
 	};
 	_text = _text + _respawnEnabled;
-	_text = _text + (format ['<t size="1" align="left">Respawn Tickets</t><t size="1" align="right">%1</t><br/>',(missionNamespace getVariable 'QS_module_fob_respawnTickets')]);
+	_text = _text + (format ['<t size="1" align="left">重生票数</t><t size="1" align="right">%1</t><br/>',(missionNamespace getVariable 'QS_module_fob_respawnTickets')]);
 	if (missionNamespace getVariable 'QS_module_fob_vehicleRespawnEnabled') then {
-		_vehicleRespawnEnabled = '<t size="1" align="left">Vehicle Services - Respawn</t><t color="#008000" size="1" align="right">Online</t><br/>';
+		_vehicleRespawnEnabled = '<t size="1" align="left">载具功能 - 重生</t><t color="#008000" size="1" align="right">上线</t><br/>';
 	} else {
-		_vehicleRespawnEnabled = '<t size="1" align="left">Vehicle Services - Respawn</t><t color="#ff0000" size="1" align="right">Offline</t><br/>';
+		_vehicleRespawnEnabled = '<t size="1" align="left">载具功能 - 重生</t><t color="#ff0000" size="1" align="right">离线</t><br/>';
 	};
 	_text = _text + _vehicleRespawnEnabled;
 	if (missionNamespace getVariable 'QS_module_fob_services_repair') then {
-		_vehicleRepairService = '<t size="1" align="left">Vehicle Services - Repair</t><t color="#008000" size="1" align="right">Online</t><br/>';
+		_vehicleRepairService = '<t size="1" align="left">载具功能 - 维修</t><t color="#008000" size="1" align="right">上线</t><br/>';
 	} else {
-		_vehicleRepairService = '<t size="1" align="left">Vehicle Services - Repair</t><t color="#ff0000" size="1" align="right">Offline</t><br/>';
+		_vehicleRepairService = '<t size="1" align="left">载具功能 - 维修</t><t color="#ff0000" size="1" align="right">离线</t><br/>';
 	};
 	_text = _text + _vehicleRepairService;
 	if (missionNamespace getVariable 'QS_module_fob_services_ammo') then {
-		_vehicleAmmoService = '<t size="1" align="left">Vehicle Services - Ammo</t><t color="#008000" size="1" align="right">Online</t><br/>';
+		_vehicleAmmoService = '<t size="1" align="left">载具功能 - 弹药补给</t><t color="#008000" size="1" align="right">上线</t><br/>';
 	} else {
-		_vehicleAmmoService = '<t size="1" align="left">Vehicle Services - Ammo</t><t color="#ff0000" size="1" align="right">Offline</t><br/>';
+		_vehicleAmmoService = '<t size="1" align="left">载具功能 - 弹药补给</t><t color="#ff0000" size="1" align="right">离线</t><br/>';
 	};
 	_text = _text + _vehicleAmmoService;
 	if (missionNamespace getVariable 'QS_module_fob_services_fuel') then {
-		_vehicleFuelService = '<t size="1" align="left">Vehicle Services - Fuel</t><t color="#008000" size="1" align="right">Online</t><br/>';
+		_vehicleFuelService = '<t size="1" align="left">载具功能 - 燃料补给</t><t color="#008000" size="1" align="right">上线</t><br/>';
 	} else {
-		_vehicleFuelService = '<t size="1" align="left">Vehicle Services - Fuel</t><t color="#ff0000" size="1" align="right">Offline</t><br/>';
+		_vehicleFuelService = '<t size="1" align="left">载具功能 - 燃料补给</t><t color="#ff0000" size="1" align="right">离线</t><br/>';
 	};
 	_text = _text + _vehicleFuelService;
 	if (player getVariable ['QS_module_fob_client_respawnEnabled',TRUE]) then {
-		_personalRespawn = '<br/><t size="1" align="left">Personal FOB Respawn Beacon</t><t color="#008000" size="1" align="right">Online</t><br/>';
+		_personalRespawn = '<br/><t size="1" align="left">个人 FOB 重生选项</t><t color="#008000" size="1" align="right">上线</t><br/>';
 	} else {
-		_personalRespawn = '<br/><t size="1" align="left">Personal FOB Respawn Beacon</t><t color="#ff0000" size="1" align="right">Offline</t><br/>';
+		_personalRespawn = '<br/><t size="1" align="left">个人 FOB 重生选项</t><t color="#ff0000" size="1" align="right">离线</t><br/>';
 	};
 	_text = _text + _personalRespawn;
 	playSound ['AddItemOK',FALSE];
@@ -73,12 +73,12 @@ if (_type isEqualTo 2) exitWith {
 		playSound ['AddItemOK',FALSE];
 		[50,[(player getVariable ['QS_unit_side',WEST]),profileName]] remoteExec ['QS_fnc_remoteExec',2,FALSE];
 	} else {
-		50 cutText ['Enemies are within 100m of you, FOB activation failed!','PLAIN DOWN',1];
+		50 cutText ['敌军在100米范围内，FOB 激活失败！','PLAIN DOWN',1];
 	};
 };
 if (_type isEqualTo 3) exitWith {
 	if ((player getUnitTrait 'uavhacker') || (player getUnitTrait 'QS_trait_pilot') || (player getUnitTrait 'QS_trait_fighterPilot')) then {
-		50 cutText ['Pilots cannot respawn at the FOB!','PLAIN'];
+		50 cutText ['飞行员无法在 FOB 复活！','PLAIN'];
 	} else {
 		50 cutText ['Personal Respawn Beacon activated','PLAIN'];
 		playSound ['AddItemOK',FALSE];
@@ -86,5 +86,5 @@ if (_type isEqualTo 3) exitWith {
 	};
 };
 if (_type isEqualTo 4) exitWith {
-	50 cutText ['Soon','PLAIN'];
+	50 cutText ['稍等','PLAIN'];
 };

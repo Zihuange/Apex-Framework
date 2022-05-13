@@ -16,13 +16,13 @@ _____________________________________________________________/*/
 params ['_actionTarget','_actionCaller','_actionID','_actionArguments'];
 _actionArguments params ['_vehicle','_newPhase','_animationSources'];
 if ((!(player getUnitTrait 'engineer')) && (!(player getUnitTrait 'QS_trait_crewman'))) exitWith {
-	50 cutText ['Only engineers and crewmen can mount or remove slat armor','PLAIN DOWN',0.5];
+	50 cutText ['只有工兵可以安装或卸下格栅装甲','PLAIN DOWN',0.5];
 };
 if (isEngineOn _vehicle) exitWith {
-	50 cutText ['Engine must be off','PLAIN DOWN',0.5];
+	50 cutText ['必须关闭引擎','PLAIN DOWN',0.5];
 };
 if (!((damage _vehicle) isEqualTo 0)) exitWith {
-	50 cutText ['Vehicle must be undamaged to modify slat armor','PLAIN DOWN',0.5];
+	50 cutText ['载具只有在未受损情况下才能安装格栅装甲','PLAIN DOWN',0.5];
 };
 private _exitCamo = FALSE;
 _camonetArmor_anims = ['showcamonethull','showcamonetcannon','showcamonetcannon1','showcamonetturret','showcamonetplates1','showcamonetplates2'];
@@ -56,7 +56,7 @@ if (!(_camonetArmor_vAnims isEqualTo [])) then {
 	};
 };
 if (_exitCamo) exitWith {
-	50 cutText ['Remove camo net to mount slat armor','PLAIN DOWN',0.5];
+	50 cutText ['先取下伪装网才能安装格栅装甲','PLAIN DOWN',0.5];
 };
 _onCancelled = {
 	params ['_v','_position'];
@@ -109,7 +109,7 @@ _onCompleted = {
 		};
 	};
 	if (_exitCamo) exitWith {
-		50 cutText ['Remove camo net to mount slat armor','PLAIN DOWN',0.5];
+		50 cutText ['先取下伪装网才能安装格栅装甲','PLAIN DOWN',0.5];
 	};
 	{
 		_vehicle animateSource [_x,_newPhase,TRUE];
@@ -140,7 +140,7 @@ _onCompleted = {
 				['enableVehicleCargo',_vehicle,FALSE] remoteExec ['QS_fnc_remoteExecCmd',_vehicle,FALSE];
 			};
 		};
-		50 cutText ['Slat armor mounted','PLAIN DOWN',0.333];
+		50 cutText ['已安装格栅装甲','PLAIN DOWN',0.333];
 	} else {
 		if (!((_vehicle getVariable ['QS_vehicle_massArmor',-1]) isEqualTo -1)) then {
 			if (local _vehicle) then {
@@ -156,16 +156,16 @@ _onCompleted = {
 				};
 			};
 		};
-		50 cutText ['Slat armor removed','PLAIN DOWN',0.333];
+		50 cutText ['已卸下格栅装甲','PLAIN DOWN',0.333];
 	};
 	missionNamespace setVariable ['QS_repairing_vehicle',FALSE,FALSE];
 };
 missionNamespace setVariable ['QS_repairing_vehicle',TRUE,FALSE];
 private _text = '';
 if (_newPhase isEqualTo 1) then {
-	_text = 'Mounting slat armor';
+	_text = '正在安装格栅装甲';
 } else {
-	_text = 'Removing slat armor';
+	_text = '正在卸下格栅装甲';
 };
 private _duration = 5;
 [

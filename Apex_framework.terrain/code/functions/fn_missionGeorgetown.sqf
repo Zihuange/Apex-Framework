@@ -548,7 +548,7 @@ private _civiliansCount = 20;
 //comment 'map markers';
 
 _pdMarker = createMarker ['QS_marker_GTPD',[0,0,0]];
-_pdMarker setMarkerTextLocal (format ['%1Police Department',(toString [32,32,32])]);
+_pdMarker setMarkerTextLocal (format ['%11警察局',(toString [32,32,32])]);
 _pdMarker setMarkerAlphaLocal 0;
 _pdMarker setMarkerPosLocal [5662.63,10650.7,0.00143886];
 _pdMarker setMarkerShapeLocal 'ICON';
@@ -558,7 +558,7 @@ _pdMarker setMarkerTypeLocal 'mil_box';
 _pdMarker setMarkerAlpha 0.5;
 
 _pharmacyMarker = createMarker ['QS_marker_GTMED',[0,0,0]];
-_pharmacyMarker setMarkerTextLocal (format ['%1Pharmacy',(toString [32,32,32])]);
+_pharmacyMarker setMarkerTextLocal (format ['%1药店',(toString [32,32,32])]);
 _pharmacyMarker setMarkerAlphaLocal 0;
 _pharmacyMarker setMarkerPosLocal [5792.94,10421.4,0.00144005];
 _pharmacyMarker setMarkerShapeLocal 'ICON';
@@ -568,7 +568,7 @@ _pharmacyMarker setMarkerTypeLocal 'mil_box';
 _pharmacyMarker setMarkerAlpha 0.5;
 
 _fmMarker = createMarker ['QS_marker_GTfm',[0,0,0]];
-_fmMarker setMarkerTextLocal (format ['%1Fish Market',(toString [32,32,32])]);
+_fmMarker setMarkerTextLocal (format ['%1海鲜市场',(toString [32,32,32])]);
 _fmMarker setMarkerAlphaLocal 0;
 _fmMarker setMarkerPosLocal [5692.92,10303.8,0.00136209];
 _fmMarker setMarkerShapeLocal 'ICON';
@@ -864,17 +864,17 @@ private _hiddenTablets = [];
 	TRUE,
 	[
 		(format ['
-			A CSAT armored vehicle carrying sensitive strategic intel was ambushed by a surprise Syndikat offensive in Georgetown. While the intel it was transporting is classified above our clearance, recovery of it has been designated as a priority mission by CENTCOM.<br/><br/>
+			一辆携带着重要战略情报的CSAT装甲载具在Georgetown被Syndikat伏击，他们被打了个措手不及。 敌军运送的情报对我们来说极为重要，指挥官将其定位最优先任务。<br/><br/>
 		
-			Locate the CSAT armored vehicle in Georgetown, it will have a tracker we can utilize to locate a number of stolen tablets.<br/><br/>
+			找到在Georgetown的CSAT载具，回收上面的信号追踪器，之后在城中寻找被Syndikat窃取散落的情报平板电脑。<br/><br/>
 			
-			The city is heavily occupied by Syndikat forces and reports advise they have significant AA capabilities. It is suggested to approach low from the south and move in on foot. Stay with your squad, and remember your urban warfare training.<br/><br/>
+			Syndikat在城中的势力根深蒂固，而且报告称他们有大量防空武器。 建议从南方低空接近并徒步进入城市，进入城市后保持快速突击节奏，同时一定要避免伤害平民，否则民兵武装会成倍增加！<br/><br/>
 			
-			This objective is not accurately marked.<br/>
+			CSAT载具位置没有被准确标记。<br/>
 			<img size="3" image="%1"/>
 		',(getText (configfile >> 'CfgVehicles' >> 'O_T_Truck_03_repair_ghex_F' >> 'editorPreview'))]),
-		'1 of 2: Locate CSAT Transport',
-		'1 of 2: Locate CSAT Transport'
+		'1 / 2: 寻找CSAT载具',
+		'1 / 2: 寻找CSAT载具'
 	],
 	[5762,10367,0],
 	'CREATED',
@@ -889,7 +889,7 @@ private _hiddenTablets = [];
 //comment 'Intel collection marker location [6315.03,10640.2,0.00127029]';
 private _missionObjectiveMarkers = [];
 _intelStateMarker = createMarker ['QS_marker_GTintelState',[0,0,0]];
-_intelStateMarker setMarkerText (format ['%1Intel secured: 0',(toString [32,32,32])]);
+_intelStateMarker setMarkerText (format ['%1获取了情报: 0',(toString [32,32,32])]);
 _intelStateMarker setMarkerAlpha 0;
 _intelStateMarker setMarkerPos [6315.03,10640.2,0.00127029];
 _intelStateMarker setMarkerShape 'ICON';
@@ -899,7 +899,7 @@ _intelStateMarker setMarkerType 'mil_dot';
 _missionObjectiveMarkers pushBack _intelStateMarker;
 
 _timeMarker = createMarker ['QS_marker_GTtimer',[0,0,0]];
-_timeMarker setMarkerText (format ['%1Time remaining: 00:00',(toString [32,32,32])]);
+_timeMarker setMarkerText (format ['%1剩余时间：00:00',(toString [32,32,32])]);
 _timeMarker setMarkerAlpha 1;
 _timeMarker setMarkerPos [6315.03,10340.2,0.00127029];
 _timeMarker setMarkerShape 'ICON';
@@ -910,9 +910,9 @@ _missionObjectiveMarkers pushBack _timeMarker;
 
 private _timerText = '';
 
-['CUSTOM_GEORGETOWN',['','Priority Mission']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+['CUSTOM_GEORGETOWN',['','最优先任务']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 _teleportMarker = createMarker ['QS_marker_GT_TP',[0,0,0]];
-_teleportMarker setMarkerText (format ['%1Teleporter ([Shift]+[Click here] to teleport)',(toString [32,32,32])]);
+_teleportMarker setMarkerText (format ['%1传送 ([Shift]+[点击此处] 进行传送)',(toString [32,32,32])]);
 _teleportMarker setMarkerAlpha 0;
 _teleportMarker setMarkerShape 'ICON';
 _teleportMarker setMarkerSize [0.5,0.5];
@@ -933,13 +933,13 @@ for '_x' from 0 to 1 step 0 do {
 	_serverTime = serverTime;
 	if (_serverTime > _missionEnd) exitWith {
 		//comment 'Mission failure';
-		['CUSTOM_GEORGETOWN',['','Mission failed!']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
-		['sideChat',[WEST,'HQ'],'We took too long in Georgetown, soldiers. Better luck next time!'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['CUSTOM_GEORGETOWN',['','任务失败！']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['sideChat',[WEST,'HQ'],'我们在Georgetown耽搁了太长时间，下次不能这样了！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 	};
 	if (_missionStatus isEqualTo 'SUCCESS') exitWith {
 		//comment 'Mission success';
-		['CUSTOM_GEORGETOWN',['','Mission success!']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
-		['sideChat',[WEST,'HQ'],'Great work soldiers, get back to base and prepare for your next mission!'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['CUSTOM_GEORGETOWN',['','任务成功']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['sideChat',[WEST,'HQ'],'干得漂亮士兵们！返回基地并准备下次任务。'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 	};
 	
 	if (_timeNow > _updateInfoCheckDelay) then {
@@ -1284,9 +1284,9 @@ for '_x' from 0 to 1 step 0 do {
 							if (isPlayer _instigator) then {
 								private _text = '';
 								if ((random 1) > 0.666) then {
-									_text = format ['Civilian was murdered by %1!',(name _instigator)];
+									_text = format ['平民被 %1 杀害，似乎有更多民兵武装出现了！',(name _instigator)];
 								} else {
-									_text = format ['Civilian killed by %1',(name _instigator)];
+									_text = format ['平民被 %1 杀害，似乎有更多民兵武装出现了！',(name _instigator)];
 								};
 								['systemChat',_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 							};
@@ -1438,14 +1438,14 @@ for '_x' from 0 to 1 step 0 do {
 				TRUE,
 				[
 					(format ['
-						Move through the city and secure %1 pieces of intel.<br/><br/>
+						在城市中穿梭并收集 %1 份情报。<br/><br/>
 						
-						Their locations have been downloaded to your map (marked in yellow).<br/><br/>
+						情报的位置已经同步到你们的地图上(黄色圆点标记)，按照地图寻找目标。<br/><br/>
 						
 						<img size="3" image="%2"/>
 					',_captureThreshold,(getText (configfile >> 'CfgVehicles' >> 'Land_Tablet_02_F' >> 'editorPreview'))]),
-					'2 of 2: Secure Intel',
-					'2 of 2: Secure Intel'
+					'2 / 2: 回收情报',
+					'2 / 2: 回收情报'
 				],
 				[5762,10367,0],
 				'CREATED',
@@ -1465,12 +1465,12 @@ for '_x' from 0 to 1 step 0 do {
 				_x setMarkerAlpha 1;
 			} forEach _intelMarkers;
 			_intelStateMarker setMarkerAlpha 1;
-			['CUSTOM_GEORGETOWN',['',(format ['Secure intel (%1)',_captureThreshold])]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+			['CUSTOM_GEORGETOWN',['',(format ['回收情报 (%1)',_captureThreshold])]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		};
 	} else {
 		_hiddenTablets = _missionTablets select {(isObjectHidden _x)};
 		_countTablets = count _hiddenTablets;
-		_intelStateMarker setMarkerText (format ['%1Intel secured: %2 / %3',(toString [32,32,32]),_countTablets,_captureThreshold]);
+		_intelStateMarker setMarkerText (format ['%1已获取情报: %2 / %3',(toString [32,32,32]),_countTablets,_captureThreshold]);
 		if (_countTablets >= _captureThreshold) then {
 			_missionStatus = 'SUCCESS';
 		};
@@ -1489,9 +1489,9 @@ for '_x' from 0 to 1 step 0 do {
 			} forEach _hiddenTablets;
 		};
 	};
-	_timeMarker setMarkerText (format ['%1Time remaining: %2',(toString [32,32,32]),([((round(_missionEnd - serverTime))/60)+0.01,'HH:MM'] call (missionNamespace getVariable 'BIS_fnc_timeToString'))]);
+	_timeMarker setMarkerText (format ['%1剩余时间：%2',(toString [32,32,32]),([((round(_missionEnd - serverTime))/60)+0.01,'HH:MM'] call (missionNamespace getVariable 'BIS_fnc_timeToString'))]);
 	if ((count allPlayers) > 45) exitWith {
-		['CUSTOM_GEORGETOWN',['','Mission Cancelled (max player threshold)']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['CUSTOM_GEORGETOWN',['','任务取消']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 	};
 	uiSleep 3;
 };

@@ -44,7 +44,7 @@ _onCompleted = {
 	_entity setVariable ['QS_entity_examined',TRUE,TRUE];
 	_result = _entity getVariable ['QS_entity_examine_intel',-1];
 	[_entity,_result] call (missionNamespace getVariable 'QS_fnc_clientExamineResult');
-	50 cutText ['Examined','PLAIN DOWN',0.3];
+	50 cutText ['已检查','PLAIN DOWN',0.3];
 };
 _onFailed = {
 	player setVariable ['QS_client_examining',FALSE,FALSE];

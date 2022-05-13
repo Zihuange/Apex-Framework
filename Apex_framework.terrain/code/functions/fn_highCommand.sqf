@@ -25,7 +25,7 @@ private _commanderCanUseWeapons = FALSE;
 _maxDistFromBase = 500;
 _basePos = markerPos 'QS_marker_base_marker';
 if (!(_commanderCanLeaveBase)) then {
-	50 cutText ['Commander is not able to leave the base area','PLAIN',3];
+	50 cutText ['指挥官禁止离开基地区域','PLAIN',3];
 };
 disableRemoteSensors FALSE;
 1 enableChannel [TRUE,TRUE];

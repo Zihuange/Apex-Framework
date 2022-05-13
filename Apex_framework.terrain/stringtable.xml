@@ -1,34 +1,638 @@
-<!
-File: stringtable.xml
-Author:
-	
-	Quiksilver
-
-Last Modified:
-
-	3/01/2018 A3 1.80 by Quiksilver
-	
-Description:
-
-	https://community.bistudio.com/wiki/Stringtable.xml
-_____________________________________________________________>
-
 <?xml version="1.0" encoding="utf-8"?>
-<Project name="Apex Framework">
-	<Key ID="STR_QS_Interact_Drag">
-		<Original>Drag</Original>
-		<German>Ziehen</German>
-		<French>Drag</French>
-		<Chinese>拖累</Chinese>
-		<Czech>Drag</Czech>
-		<Russian>бремя</Russian>
+<Project name="ApexFramework">
+	<Key ID="STR_QS_Arty_firingMsg0">
+		<Original>Thermal scans are picking up those enemy Artillery firing! Heads down!</Original>
+		<Chinesesimp>热成像显示敌军155mm火炮正在开火，快隐蔽！</Chinesesimp>
 	</Key>
-	<Key ID="STR_QS_Interact_Carry">
+	<Key ID="STR_QS_Arty_firingMsg1">
+		<Original>Enemy Artillery rounds incoming! Advise you seek cover immediately.</Original>
+		<Chinesesimp>敌军155mm火炮来袭，快趴下！</Chinesesimp>
+	</Key>
+	<Key ID="STR_QS_Arty_firingMsg2">
+		<Original>OPFOR Artillery rounds incoming! Seek cover immediately!</Original>
+		<Chinesesimp>敌方155mm自行火炮正在射击，立刻寻找掩护！</Chinesesimp>
+	</Key>
+	<Key ID="STR_QS_Arty_firingMsg3">
+		<Original>The Artillery team's firing, boys! Down on the ground!</Original>
+		<Chinesesimp>敌军155mm火炮阵地正在开火，散开！</Chinesesimp>
+	</Key>
+	<Key ID="STR_QS_Arty_firingMsg4">
+		<Chinesesimp>快去把该死的火炮阵地干掉，敌军155mm火炮来袭！</Chinesesimp>
+		<Original>Get that damned Artillery team down; they're firing right now! Seek cover!</Original>
+	</Key>
+	<Key ID="STR_QS_Arty_firingMsg5">
+		<Chinesesimp>敌军自行火炮瞄准我们了！快趴下</Chinesesimp>
+		<Original>They're zeroing in! Incoming Artillery fire; heads down!</Original>
+	</Key>
+	<Key ID="STR_QS_Mtr_firingMsg">
+		<Chinesesimp>敌军迫击炮正在开火，散开找掩护！</Chinesesimp>
+		<Original>Enemy mortars are firing!</Original>
+	</Key>
+	<Key ID="STR_QS_Notif_taskAssigned">
+		<Chinesesimp>任务已分配</Chinesesimp>
+		<Original>TASK ASSIGNED</Original>
+	</Key>
+	<Key ID="STR_QS_Notif_taskCanceled">
+		<Chinesesimp>任务已取消</Chinesesimp>
+		<Original>TASK CANCELED</Original>
+	</Key>
+	<Key ID="STR_QS_Notif_taskCreated">
+		<Chinesesimp>任务已创建</Chinesesimp>
+		<Original>TASK CREATED</Original>
+	</Key>
+	<Key ID="STR_QS_Notif_taskFailed">
+		<Chinesesimp>任务失败</Chinesesimp>
+		<Original>TASK FAILED</Original>
+	</Key>
+	<Key ID="STR_QS_Notif_taskCompleted">
+		<Chinesesimp>任务完成</Chinesesimp>
+		<Original>TASK COMPLETED</Original>
+	</Key>
+	<Key ID="STR_QS_Notif_taskUpdated">
+		<Chinesesimp>任务更新</Chinesesimp>
+		<Original>TASK UPDATED</Original>
+	</Key>
+	<Key ID="STR_QS_Notif_take">
+		<Chinesesimp>攻占 %1</Chinesesimp>
+		<Original>Take %1</Original>
+	</Key>
+	<Key ID="STR_QS_Notif_newMain">
+		<Chinesesimp>新的主要任务</Chinesesimp>
+		<Original>NEW MAIN OBJECTIVE</Original>
+	</Key>
+	<Key ID="STR_QS_Notif_taken">
+		<Chinesesimp>已攻占 %1</Chinesesimp>
+		<Original>Taken %1</Original>
+	</Key>
+	<Key ID="STR_QS_Notif_newSub">
+		<Chinesesimp>新的分支目标</Chinesesimp>
+		<Original>NEW SUB-OBJECTIVE</Original>
+	</Key>
+	<Key ID="STR_QS_Notif_completedSub">
+		<Chinesesimp>分支目标已完成</Chinesesimp>
+		<Original>SUB-OBJECTIVE COMPLETE</Original>
+	</Key>
+	<Key ID="STR_QS_Notif_newSM">
+		<Chinesesimp>新支线任务</Chinesesimp>
+		<Original>NEW SIDE MISSION</Original>
+	</Key>
+	<Key ID="STR_QS_Notif_completedSM">
+		<Original>SIDE MISSION COMPLETE</Original>
+		<Chinesesimp>支线任务已完成</Chinesesimp>
+	</Key>
+	<Key ID="STR_QS_Notif_newPT">
+		<Original>NEW PRIORITY TARGET</Original>
+		<Chinesesimp>新的优先目标</Chinesesimp>
+	</Key>
+	<Key ID="STR_QS_Notif_completedPT">
+		<Chinesesimp>优先目标已完成</Chinesesimp>
+		<Original>PRIORITY TARGET DOWN</Original>
+	</Key>
+	<Key ID="STR_QS_Notif_enemyJetDown">
+		<Chinesesimp>敌军固定翼已被击落</Chinesesimp>
+		<Original>ENEMY CAS DESTROYED</Original>
+	</Key>
+	<Key ID="STR_QS_Notif_enemyJet">
+		<Chinesesimp>敌军固定翼警告</Chinesesimp>
+		<Original>ENEMY CAS ALERT</Original>
+	</Key>
+	<Key ID="STR_QS_Notif_reward">
+		<Chinesesimp>支线任务奖励</Chinesesimp>
+		<Original>Side Mission Reward</Original>
+	</Key>
+	<Key ID="STR_QS_Notif_scoreBonus">
+		<Chinesesimp>分数奖励</Chinesesimp>
+		<Original>SCORE BONUS</Original>
+	</Key>
+	<Key ID="STR_QS_Notif_aoSMCreated">
+		<Chinesesimp>主线战区分支目标</Chinesesimp>
+		<Original>AO Side Task</Original>
+	</Key>
+	<Key ID="STR_QS_Notif_aoSMSucceeded">
+		<Chinesesimp>主线战区分支目标已完成</Chinesesimp>
+		<Original>AO Side Task Completed</Original>
+	</Key>
+	<Key ID="STR_QS_Notif_aoSMFailed">
+		<Chinesesimp>主线战区分支目标失败</Chinesesimp>
+		<Original>AO Side Task Failed</Original>
+	</Key>
+	<Key ID="STR_QS_Notif_hcTask">
+		<Chinesesimp>指挥官</Chinesesimp>
+		<Original>Commander</Original>
+	</Key>
+	<Key ID="STR_QS_Notif_sys">
+		<Chinesesimp>系统</Chinesesimp>
+		<Original>System</Original>
+	</Key>
+	<Key ID="STR_QS_Notif_CAS">
+		<Original>Close Air Support</Original>
+		<Chinesesimp>空中支援</Chinesesimp>
+	</Key>
+	<Key ID="STR_QS_Notif_FOB">
+		<Chinesesimp>前线行动基地</Chinesesimp>
+		<Original>Forward Operating Base</Original>
+	</Key>
+	<Key ID="STR_QS_Notif_SMUpdate">
+		<Chinesesimp>支线任务更新</Chinesesimp>
+		<Original>Side Mission Update</Original>
+	</Key>
+	<Key ID="STR_QS_Brief_take">
+		<Chinesesimp>%1进攻 %2</Chinesesimp>
+		<Original>%1Take %2</Original>
+	</Key>
+	<Key ID="STR_QS_Brief_newTarget">
+		<Chinesesimp>&lt;t align='center' size='2.2'&gt;新的目标&lt;/t&gt;&lt;br/&gt;&lt;t size='1.5' align='center' color='#FFCF11'&gt;%1&lt;/t&gt;&lt;br/&gt;____________________&lt;br/&gt;上个任务打的漂亮，指挥部希望你们继续保持！部署到 %1 并消灭所有敌军！&lt;br/&gt;&lt;br/&gt;记得摧毁无线电塔阻止敌军呼叫空中支援！</Chinesesimp>
+		<Original>&lt;t align='center' size='2.2'&gt;New Target&lt;/t&gt;&lt;br/&gt;&lt;t size='1.5' align='center' color='#FFCF11'&gt;%1&lt;/t&gt;&lt;br/&gt;____________________&lt;br/&gt;We did a good job with the last target, lads. I want to see the same again. Get yourselves over to %1 and take 'em all down!&lt;br/&gt;&lt;br/&gt;Remember to take down that radio tower to stop the enemy from calling in CAS.</Original>
+	</Key>
+	<Key ID="STR_QS_Brief_radioTower">
+		<Chinesesimp>摧毁无线电塔</Chinesesimp>
+		<Original>Destroy radio tower</Original>
+	</Key>
+	<Key ID="STR_QS_Brief_taskAo2Desc">
+		<Chinesesimp>找到并占领敌军的指挥部来打击敌军的指挥系统。 通过击杀敌军指挥官来完成这个任务。 指挥官通常位于敌人的指挥部附近。 这个目标不是必要任务,但对我们的作战有所帮助!</Chinesesimp>
+		<Original>Seize the enemy headquarters to degrade enemy coordination. This objective is completed when the enemy commander dies. He is usually located in the immediate vicinity of the HQ. This objective is not a requirement in order to finish the mission, however may be useful.</Original>
+	</Key>
+	<Key ID="STR_QS_Brief_taskAo2Title">
+		<Chinesesimp>敌方指挥部</Chinesesimp>
+		<Original>Enemy HQ</Original>
+	</Key>
+	<Key ID="STR_QS_Brief_taskAo2Marker">
+		<Chinesesimp>找到并占领敌军指挥部</Chinesesimp>
+		<Original>Seize Enemy HQ</Original>
+	</Key>
+	<Key ID="STR_QS_Brief_taskAo1Desc">
+		<Chinesesimp>摧毁无线电塔。 摧毁无线电塔会打击敌军通讯系统并切断他们的空中支援。 我们没有目标的准确位置。 无线电塔在标记区域的某一位置.</Chinesesimp>
+		<Original>Destroy the radio tower. Destroying the radio tower will degrade enemy communications and prevent them from calling in air support. This objective is not accurately marked. The radio tower is somewhere within the surrounding circle.</Original>
+	</Key>
+	<Key ID="STR_QS_Brief_taskAo1Title">
+		<Chinesesimp>摧毁无线电塔</Chinesesimp>
+		<Original>Destroy radiotower</Original>
+	</Key>
+	<Key ID="STR_QS_Brief_taskAo1Marker">
+		<Chinesesimp>摧毁无线电塔</Chinesesimp>
+		<Original>Destroy radiotower</Original>
+	</Key>
+	<Key ID="STR_QS_Brief_taskAo0Desc">
+		<Chinesesimp>清除作战区域内的敌军。 我们需要保证作战区域内的敌军单位少于10个。 可能需要在该区域进行多次搜索才能完成！</Chinesesimp>
+		<Original>Clear the marked area of resistance. Once there are under 10 enemies in this area and no more sub-objectives to do, this task will complete. You may have to conduct a number of patrols around the zone to finish them off.</Original>
+	</Key>
+	<Key ID="STR_QS_Brief_taskAo0Title">
+		<Chinesesimp>攻占 %1</Chinesesimp>
+		<Original>Take %1</Original>
+	</Key>
+	<Key ID="STR_QS_Brief_taskAo0Marker">
+		<Chinesesimp>攻占 %1</Chinesesimp>
+		<Original>Take %1</Original>
+	</Key>
+	<Key ID="STR_QS_Brief_taskComplete">
+		<Chinesesimp>&lt;t align='center' size='2.2'&gt;目标已完成&lt;/t&gt;&lt;br/&gt;&lt;t size='1.5' align='center' color='#FFCF11'&gt;%1&lt;/t&gt;&lt;br/&gt;____________________&lt;br/&gt;&lt;t align='left'&gt;漂亮的战斗 %1, 伙计们！&lt;br/&gt;&lt;br/&gt;敌军已被关押： %2&lt;/t&gt;</Chinesesimp>
+		<Original>&lt;t align='center' size='2.2'&gt;Target Taken&lt;/t&gt;&lt;br/&gt;&lt;t size='1.5' align='center' color='#FFCF11'&gt;%1&lt;/t&gt;&lt;br/&gt;____________________&lt;br/&gt;&lt;t align='left'&gt;Fantastic job taking %1, boys!&lt;br/&gt;&lt;br/&gt;Enemies imprisoned: %2&lt;/t&gt;</Original>
+	</Key>
+	<Key ID="STR_QS_Def_defMsg0">
+		<Chinesesimp>敌军部队来袭！立即寻找掩护，防守指挥部！</Chinesesimp>
+		<Original>OPFOR Forces incoming! Seek cover immediately and defend the objective the HQ!</Original>
+	</Key>
+	<Key ID="STR_QS_Def_defMsg1">
+		<Chinesesimp>敌军组织了大规模反攻！不惜一切代价防守指挥部！</Chinesesimp>
+		<Original>The enemy managed to mount a counterattack! Hold the HQ at all cost!</Original>
+	</Key>
+	<Key ID="STR_QS_Def_defMsg2">
+		<Chinesesimp>做好准备伙计们，敌军要来了！</Chinesesimp>
+		<Original>Dig in at the HQ boys, they are coming!</Original>
+	</Key>
+	<Key ID="STR_QS_Def_defend">
+		<Chinesesimp>防御</Chinesesimp>
+		<Original>Defend</Original>
+	</Key>
+	<Key ID="STR_QS_Def_defendHQ">
+		<Chinesesimp>防御指挥部</Chinesesimp>
+		<Original>Defend HQ</Original>
+	</Key>
+	<Key ID="STR_QS_Def_aoMarker">
+		<Chinesesimp>%1防御 %2 HQ</Chinesesimp>
+		<Original>%1Defend %2 HQ</Original>
+	</Key>
+	<Key ID="STR_QS_Def_taskDesc">
+		<Chinesesimp>坚守指挥部士兵们！</Chinesesimp>
+		<Original>Defend the HQ boys!</Original>
+	</Key>
+	<Key ID="STR_QS_Def_taskTitle">
+		<Chinesesimp>誓死保卫指挥部！</Chinesesimp>
+		<Original>Defend HQ</Original>
+	</Key>
+	<Key ID="STR_QS_Def_taskMarker">
+		<Chinesesimp>防御指挥部！</Chinesesimp>
+		<Original>Defend HQ</Original>
+	</Key>
+	<Key ID="STR_QS_Def_blockMsg">
+		<Chinesesimp>敌军还没有放弃！ 誓死坚守住指挥部！ 士兵们！</Chinesesimp>
+		<Original>The enemy is not giving up! Hold on as long as you can, soldiers!</Original>
+	</Key>
+	<Key ID="STR_QS_Def_almostOver0">
+		<Chinesesimp>敌军进攻即将结束！</Chinesesimp>
+		<Original>The attack is almost over!</Original>
+	</Key>
+	<Key ID="STR_QS_Def_almostOver1">
+		<Chinesesimp>坚持住伙计们！胜利就在眼前了！</Chinesesimp>
+		<Original>Hang on boys, the end is near!</Original>
+	</Key>
+	<Key ID="STR_QS_Def_enemyInHQ">
+		<Chinesesimp>敌军正在占领指挥部</Chinesesimp>
+		<Original>CSAT is taking the HQ!</Original>
+	</Key>
+	<Key ID="STR_QS_Def_successChat">
+		<Chinesesimp>干得漂亮！ 确保LZ安全,等待友军空中单位,返回基地重新补给！</Chinesesimp>
+		<Original>Well done boys! Secure an LZ and get back to base for rearm!</Original>
+	</Key>
+	<Key ID="STR_QS_Def_defendCompleted">
+		<Chinesesimp>指挥部防御成功！</Chinesesimp>
+		<Original>HQ defense completed!</Original>
+	</Key>
+	<Key ID="STR_QS_Def_failedChat">
+		<Chinesesimp>很不幸，士兵们！</Chinesesimp>
+		<Original>Bad luck soldiers!</Original>
+	</Key>
+	<Key ID="STR_QS_Def_defendFailed">
+		<Chinesesimp>指挥部防御失败！</Chinesesimp>
+		<Original>HQ Defense Failed!</Original>
+	</Key>
+	<Key ID="STR_QS_Def_defendCancelled">
+		<Chinesesimp>防御任务取消！</Chinesesimp>
+		<Original>Defense cancelled!</Original>
+	</Key>
+	<Key ID="STR_QS_Enemy_csatCmdKIA">
+		<Chinesesimp>敌军指挥官已被击毙！</Chinesesimp>
+		<Original>CSAT Commander killed!</Original>
+	</Key>
+	<Key ID="STR_QS_Enemy_csatCmdKIAChat">
+		<Chinesesimp>%1 击毙了敌军指挥官！</Chinesesimp>
+		<Original>%1 has killed the CSAT Commander</Original>
+	</Key>
+	<Key ID="STR_QS_Mtr_mtrDestroyed">
+		<Chinesesimp>敌军迫击炮阵地已被摧毁</Chinesesimp>
+		<Original>Enemy mortar destroyed</Original>
+	</Key>
+	<Key ID="STR_QS_Notif_AO">
+		<Chinesesimp>主线战区</Chinesesimp>
+		<Original>Area of Operations</Original>
+	</Key>
+	<Key ID="STR_QS_Mtr_mtrOnline">
+		<Chinesesimp>敌军已部署迫击炮阵地</Chinesesimp>
+		<Original>Enemy mortar online</Original>
+	</Key>
+	<Key ID="STR_QS_Mtr_gunnerKIA">
+		<Chinesesimp>%1 ( %2 ) 干掉了一名敌军迫击炮手！</Chinesesimp>
+		<Original>%1 ( %2 ) killed a Mk.6 Mortar gunner</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_vehDestoryed">
+		<Chinesesimp>敌方载具已被摧毁</Chinesesimp>
+		<Original>Enemy vehicle destroyed</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_destory">
+		<Chinesesimp>摧毁</Chinesesimp>
+		<Original>Destroy</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_destoryVeh">
+		<Chinesesimp>摧毁敌方载具</Chinesesimp>
+		<Original>Destroy enemy vehicle</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_destoryed">
+		<Chinesesimp>目标被 %1 摧毁！</Chinesesimp>
+		<Original>Target destroyed by %1!</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_HVTKIA">
+		<Chinesesimp>任务失败！ 高价值目标被 %1 击杀！</Chinesesimp>
+		<Original>Task failed! HVT killed by %1!</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_taskVehDesc">
+		<Chinesesimp>情报提示敌方目标载具已经出现。 把它找出来!</Chinesesimp>
+		<Original>Intel has located an enemy vehicle. Take it out!</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_HVT">
+		<Chinesesimp>高价值目标逮捕任务</Chinesesimp>
+		<Original>High Value Target</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_arrestHVT">
+		<Chinesesimp>抓捕高价值目标</Chinesesimp>
+		<Original>Arrest HVT</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_taskVehTitle">
+		<Chinesesimp>摧毁敌方载具</Chinesesimp>
+		<Original>Destroy vehicle</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_taskVehMarker">
+		<Chinesesimp>摧毁敌方载具</Chinesesimp>
+		<Original>Destroy vehicle</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_taskHVTDesc">
+		<Chinesesimp>情报确定在该地区有一位军火商向敌军提供资源，找到并逮捕他！</Chinesesimp>
+		<Original>Intel teams have located a High Value Target in the area. Move in and arrest him!</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_taskHVTTitle">
+		<Chinesesimp>抓捕高价值目标</Chinesesimp>
+		<Original>Arrest HVT</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_taskHVTMarker">
+		<Chinesesimp>抓捕高价值目标</Chinesesimp>
+		<Original>Arrest HVT</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_HVTarrested">
+		<Chinesesimp>高价值目标被成功逮捕</Chinesesimp>
+		<Original>HVT arrested</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_bringHVT">
+		<Chinesesimp>将高价值目标带回基地关入监狱。</Chinesesimp>
+		<Original>Bring the HVT back to base and imprison him in Gitmo</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_HVTfailed">
+		<Chinesesimp>高价值目标被击杀，抓捕失败！</Chinesesimp>
+		<Original>HVT killed, arrest failed!</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_taskIDAPtitle">
+		<Chinesesimp>IDAP补给品</Chinesesimp>
+		<Original>IDAP Supplies</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_taskIDAPmarker">
+		<Chinesesimp>IDAP补给品</Chinesesimp>
+		<Original>IDAP Supplies</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_taskIDAPdesc">
+		<Chinesesimp>&lt;br/&gt;- 调查现场&lt;br/&gt;- 回收全部医疗补给&lt;br/&gt;- 救助伤员&lt;br/&gt;- 在计时结束前带到IDAP野战医院&lt;br/&gt;&lt;br/&gt;一辆IDAP卡车没能到达指定地点，过去看看我么能提供什么帮助。&lt;br/&gt;&lt;br/&gt;最好有一辆能装载货物的载具。</Chinesesimp>
+		<Original>&lt;br/&gt;- Investigate scene&lt;br/&gt;- Recover any medical supplies&lt;br/&gt;- Recover any casualties&lt;br/&gt;- Bring to IDAP field hospital before timer runs out.&lt;br/&gt;&lt;br/&gt;An IDAP cargo truck carrying vital medical equipment failed to reach its destination. Get over there and see what you can do.&lt;br/&gt;&lt;br/&gt;It would be helpful to have a vehicle to help carry cargo.</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_IDAPsupplies">
+		<Chinesesimp>IDAP补给品</Chinesesimp>
+		<Original>IDAP Supplies</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_IDAPrecovered">
+		<Chinesesimp>IDAP补给品已回收</Chinesesimp>
+		<Original>IDAP Supplies recovered</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_IDAPcomplete">
+		<Chinesesimp>IDAP医疗撤离已完成</Chinesesimp>
+		<Original>IDAP Medevac complete</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_task">
+		<Chinesesimp>支线任务</Chinesesimp>
+		<Original>Side Task</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_taskUpdate">
+		<Chinesesimp>支线任务更新</Chinesesimp>
+		<Original>Side Task Update</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_taskExpired">
+		<Chinesesimp>任务超时</Chinesesimp>
+		<Original>Task expired</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_logTaskSucceeded">
+		<Chinesesimp>后勤任务完成。</Chinesesimp>
+		<Original>Logistics task succeeded. </Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_aidTaskSucceeded">
+		<Chinesesimp>援助工人任务完成。</Chinesesimp>
+		<Original>Aid worker task succeeded. </Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_taskComplete">
+		<Chinesesimp>支线任务完成</Chinesesimp>
+		<Original>Side Task Complete</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_logTaskFailed">
+		<Chinesesimp>后勤任务失败。</Chinesesimp>
+		<Original>Logistics task failed. </Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_aidTaskFailed">
+		<Chinesesimp>援助工人任务失败。 </Chinesesimp>
+		<Original>Aid worker task failed. </Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_taskIGdesc">
+		<Chinesesimp>我们确认一个高价值目标携带重要情报。&lt;br/&gt;&lt;br/&gt;突入，消灭HVT并获取情报。&lt;br/&gt;&lt;br/&gt;这个任务必须执行的精准又迅速。 如果HVT发现我们接近，他会试图摧毁情报。 此外，情报装置具有生物识别模块，HVT死亡后情报装置会在短时间内自毁。</Chinesesimp>
+		<Original>A high-value target carrying sensitive intel has been located.&lt;br/&gt;&lt;br/&gt;Move in, neutralize him and secure the intel.&lt;br/&gt;&lt;br/&gt;This mission must be executed carefully and with speed. If he detects our presence in the area he will attempt to destroy the intel. Also, the intel device he has operates with biometric authorization. If his heart stops, it will self-destruct after a short time.</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_taskIGsentries">
+		<Chinesesimp>&lt;br/&gt;&lt;br/&gt;卫星情报显示HVT有安保力量保护。</Chinesesimp>
+		<Original>&lt;br/&gt;&lt;br/&gt;Satellite data appears to show he has a security detail with him.</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_taskIGtitle">
+		<Chinesesimp>获取情报</Chinesesimp>
+		<Original>Intel</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_taskIGmarker">
+		<Chinesesimp>获取情报</Chinesesimp>
+		<Original>Intel</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_secureIG">
+		<Chinesesimp>获取情报 (叛乱分子)</Chinesesimp>
+		<Original>Secure Intel (Guerilla)</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_detected">
+		<Chinesesimp>敌军已经发现我们</Chinesesimp>
+		<Original>Enemy has detected our presence</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_taskFailed">
+		<Chinesesimp>支线任务失败</Chinesesimp>
+		<Original>Side Task Failed</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_intelSecured">
+		<Chinesesimp>已获取情报</Chinesesimp>
+		<Original>Intel secured</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_intelLost">
+		<Chinesesimp>情报已丢失</Chinesesimp>
+		<Original>Intel lost</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_taskKillDesc">
+		<Chinesesimp>猎杀敌军狙击手&lt;br/&gt;&lt;br/&gt;IDAP工作人员在 %1 区域工作时，遭到敌方狙击手攻击。 前往现场并消灭敌方狙击手！&lt;br/&gt;&lt;br/&gt;我们只有20分钟执行这项任务。&lt;br/&gt;&lt;br/&gt;敌军狙击手十分隐蔽，我们无法标记具体位置。</Chinesesimp>
+		<Original>Kill sniper.&lt;br/&gt;&lt;br/&gt;IDAP aid workers operating in this part of %1 are being harassed and fired at by a sniper. Move in and neutralize the threat.&lt;br/&gt;&lt;br/&gt;This task will expire in 20 minutes.&lt;br/&gt;&lt;br/&gt;This task is not accurately marked.</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_taskKillTitle">
+		<Chinesesimp>击杀</Chinesesimp>
+		<Original>Kill</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_taskKillMarker">
+		<Chinesesimp>击杀</Chinesesimp>
+		<Original>Kill</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_WoundedKIA">
+		<Chinesesimp>需要撤离的伤员已被杀害。</Chinesesimp>
+		<Original>Wounded soldier has been killed.</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_medevac">
+		<Chinesesimp>医疗救援任务</Chinesesimp>
+		<Original>Medevac</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_medevacWounded">
+		<Chinesesimp>紧急撤离受伤士兵!</Chinesesimp>
+		<Original>Medevac wounded soldier</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_taskMedDesc">
+		<Chinesesimp>一名侦察兵在执行任务中重伤，前线的医疗条件无法满足治疗条件，需要紧急医疗撤离。把伤者带回到基地Q医疗站便可完成任务。 如果伤兵死亡或失血过多（大约60分钟）,任务便会失败。 </Chinesesimp>
+		<Original>A recon soldier has been wounded in the AO and requires urgent medevac. Get him back to the Medevac HQ at base (small white building) to complete the mission. If he dies or bleeds out (about 60 minutes from mission start), the mission is failed. Good luck soldiers!</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_taskMedTitle">
+		<Chinesesimp>医疗救援任务</Chinesesimp>
+		<Original>Medevac</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_taskMedMarker">
+		<Chinesesimp>医疗救援任务</Chinesesimp>
+		<Original>Medevac</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_medevacFailed">
+		<Chinesesimp>医疗撤离失败！, 伤员失血过多阵亡！</Chinesesimp>
+		<Original>Medevac failed, soldier bled out!</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_medevacKIA">
+		<Chinesesimp>医疗撤离失败！伤员已死亡！</Chinesesimp>
+		<Original>Medevac failed, soldier killed!</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_medevacComleted">
+		<Chinesesimp>医疗撤离完成！</Chinesesimp>
+		<Original>Medevac complete!</Original>
+	</Key>
+	<Key ID="STR_QS_aoSM_SAMdestroyed">
+		<Chinesesimp>%1 摧毁了目标！</Chinesesimp>
+		<Original>Target destroyed by %1!</Original>
+	</Key>
+	<Key ID="STR_QS_Arty_outOfAmmo">
+		<Chinesesimp>火炮已经消耗了全部弹药，补给要在这个战区结束之后才能到达！</Chinesesimp>
+		<Original>The artillery has depleted its allowed shells, no more can be fired until the AO is completed!</Original>
+	</Key>
+	<Key ID="STR_QS_Arty_rearmed">
+		<Chinesesimp> %1 重新装填完毕！</Chinesesimp>
+		<Original>The %1 has been re-armed!</Original>
+	</Key>
+	<Key ID="STR_QS_Adjust_banned">
+		<Original>Robocop has banned %1 from the server.</Original>
+	</Key>
+	<Key ID="STR_QS_Adjust_kicked">
+		<Original>Robocop has kicked %1 from the server.</Original>
+	</Key>
+	<Key ID="STR_QS_NameCHK_disallowedKicked">
+		<Original>Robocop kicked %1 for disallowed profile name.</Original>
+	</Key>
+	<Key ID="STR_QS_NameCHK_disallowed">
+		<Original>Auto-kicked for disallowed profile name string ( %1 ).</Original>
+	</Key>
+	<Key ID="STR_QS_NameCHK_reservedKicked">
+		<Original>Robocop kicked %1 for reserved profile name.</Original>
+	</Key>
+	<Key ID="STR_QS_NameCHK_reserved">
+		<Original>Auto-kicked for reserved profile name.</Original>
+	</Key>
+	<Key ID="STR_QS_report_noReport">
+		<Chinesesimp>无事故报告被提交</Chinesesimp>
+		<Original>No incident report has been filed.</Original>
+	</Key>
+	<Key ID="STR_QS_report_reportFiled">
+		<Chinesesimp>此事故报告已提交给在游戏中的管理员， 感谢你的帮助！ 你所在的服务器是：&lt;br/&gt;&lt;br/&gt;%1</Chinesesimp>
+		<Original>An incident report has been filed and in-game staff have been notified. Thank you for your assistance. You are on server:&lt;br/&gt;&lt;br/&gt;%1</Original>
+	</Key>
+	<Key ID="STR_QS_CAS_shotDown">
+		<Original>Our CAS has been shot down!</Original>
+	</Key>
+	<Key ID="STR_QS_CAS_destroyed">
+		<Original>Our CAS has been destroyed!</Original>
+	</Key>
+	<Key ID="STR_QS_Adjust_pardoned">
+		<Original>%1 has been pardoned by %2</Original>
+	</Key>
+	<Key ID="STR_QS_Action_escort">
+		<Chinesesimp>护送</Chinesesimp>
+		<Original>Escort</Original>
+	</Key>
+	<Key ID="STR_QS_Action_load">
+		<Chinesesimp>装载</Chinesesimp>
+		<Original>Load</Original>
+	</Key>
+	<Key ID="STR_QS_Action_Unload">
+		<Chinesesimp>卸载</Chinesesimp>
+		<Original>Unload</Original>
+	</Key>
+	<Key ID="STR_QS_Action_question">
+		<Chinesesimp>询问平民</Chinesesimp>
+		<Original>Question civilian</Original>
+	</Key>
+	<Key ID="STR_QS_Action_darg">
+		<Chinesesimp>拖拽</Chinesesimp>
+		<Original>Drag</Original>
+	</Key>
+	<Key ID="STR_QS_Action_carry">
+		<Chinesesimp>背负</Chinesesimp>
 		<Original>Carry</Original>
-		<German>Tragen</German>
-		<French>Carry</French>
-		<Chinese>进</Chinese>
-		<Czech>Nést</Czech>
-		<Russian>нести</Russian>
+	</Key>
+	<Key ID="STR_QS_Action_follow">
+		<Original>Command Follow</Original>
+		<Chinesesimp>命令-跟随</Chinesesimp>
+	</Key>
+	<Key ID="STR_QS_Action_recruit">
+		<Original>Command Recruit</Original>
+		<Chinesesimp>命令-编组</Chinesesimp>
+	</Key>
+	<Key ID="STR_QS_Action_dismiss">
+		<Original>Command Dismiss</Original>
+		<Chinesesimp>命令-解散</Chinesesimp>
+	</Key>
+	<Key ID="STR_QS_Action_release">
+		<Original>Release</Original>
+		<Chinesesimp>放开</Chinesesimp>
+	</Key>
+	<Key ID="STR_QS_Action_respawnVeh">
+		<Original>Respawn vehicle</Original>
+		<Chinesesimp>重生载具</Chinesesimp>
+	</Key>
+	<Key ID="STR_QS_Action_openCargo">
+		<Original>Open cargo doors</Original>
+		<Chinesesimp>打开舱门</Chinesesimp>
+	</Key>
+	<Key ID="STR_QS_Action_closeCargo">
+		<Original>Close cargo doors</Original>
+		<Chinesesimp>关闭舱门</Chinesesimp>
+	</Key>
+	<Key ID="STR_QS_Action_service">
+		<Chinesesimp>维护载具</Chinesesimp>
+		<Original>Service</Original>
+	</Key>
+	<Key ID="STR_QS_Action_unflip">
+		<Chinesesimp>翻正</Chinesesimp>
+		<Original>Unflip</Original>
+	</Key>
+	<Key ID="STR_QS_Action_revice">
+		<Chinesesimp>治疗</Chinesesimp>
+		<Original>Revive</Original>
+	</Key>
+	<Key ID="STR_QS_Action_stabilise">
+		<Chinesesimp>稳定伤势</Chinesesimp>
+		<Original>Stabilise</Original>
+	</Key>
+	<Key ID="STR_QS_Action_roleSelect">
+		<Chinesesimp>兵种选择菜单</Chinesesimp>
+		<Original>Role Selection</Original>
+	</Key>
+	<Key ID="STR_QS_Action_beaconsOn">
+		<Chinesesimp>信标打开</Chinesesimp>
+		<Original>Beacons On</Original>
+	</Key>
+	<Key ID="STR_QS_Action_beaconsOff">
+		<Chinesesimp>信标关闭</Chinesesimp>
+		<Original>Beacons Off</Original>
+	</Key>
+	<Key ID="STR_QS_Action_tow">
+		<Chinesesimp>拖拽</Chinesesimp>
+		<Original>Tow</Original>
+	</Key>
+	<Key ID="STR_QS_Action_surrender">
+		<Chinesesimp>命令-投降</Chinesesimp>
+		<Original>Command Surrender</Original>
+	</Key>
+	<Key ID="STR_QS_Action_rescue">
+		<Original>Rescue</Original>
+		<Chinesesimp>解救</Chinesesimp>
+	</Key>
+	<Key ID="STR_QS_Action_secure">
+		<Chinesesimp>确认获取</Chinesesimp>
+		<Original>Rescue</Original>
+	</Key>
+	<Key ID="STR_QS_Action_examine">
+		<Chinesesimp>检查</Chinesesimp>
+		<Original>Examine</Original>
 	</Key>
 </Project>

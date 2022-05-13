@@ -34,7 +34,7 @@ if (_type isEqualTo 'GRID_MARKERS') exitWith {
 	_requiredCount = (15 + (round (_playersCount / 2))) min ((count _gridMarkers) - 3);
 	'QS_marker_grid_capState' setMarkerColor 'ColorOPFOR';
 	'QS_marker_grid_capState' setMarkerPos _centroidOffset;
-	'QS_marker_grid_capState' setMarkerText (format ['%1Grids converted: 0 / %2',(toString [32,32,32]),_requiredCount]);
+	'QS_marker_grid_capState' setMarkerText (format ['%1网格占领进度: 0 / %2',(toString [32,32,32]),_requiredCount]);
 	_objectiveCode = {
 		params ['_gridMarkers','_gridMarkersCount','_duration'];
 		private _c = 0;
@@ -44,8 +44,8 @@ if (_type isEqualTo 'GRID_MARKERS') exitWith {
 			_requiredCount = round (_requiredCount / 2);
 		};
 		_currentCount = {((markerColor _x) isEqualTo 'ColorGREEN')} count _gridMarkers;
-		if (!( (markerText 'QS_marker_grid_capState') isEqualTo (format ['   Grids converted: %1 / %2',_currentCount,_requiredCount]))) then {
-			'QS_marker_grid_capState' setMarkerText (format ['%1Grids converted: %2 / %3',(toString [32,32,32]),_currentCount,_requiredCount]);
+		if (!( (markerText 'QS_marker_grid_capState') isEqualTo (format ['   网格占领进度: %1 / %2',_currentCount,_requiredCount]))) then {
+			'QS_marker_grid_capState' setMarkerText (format ['%1网格占领进度: %2 / %3',(toString [32,32,32]),_currentCount,_requiredCount]);
 		};
 		if (_currentCount >= _requiredCount) then {
 			_c = 1;
@@ -53,7 +53,7 @@ if (_type isEqualTo 'GRID_MARKERS') exitWith {
 		_c;
 	};
 	_objectiveOnCompleted = {
-		['GRID_UPDATE',['Area Of Operations','Grid conversion complete!']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['GRID_UPDATE',['主线战区','网格转变完成！']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		'QS_marker_grid_capState' setMarkerColor 'ColorGREEN';
 	};
 	_objectiveOnFailed = {
@@ -172,7 +172,7 @@ if (_type isEqualTo 'SITE_TUNNEL') exitWith {
 	];
 	'QS_marker_grid_rspState' setMarkerColor 'ColorOPFOR';
 	'QS_marker_grid_rspState' setMarkerPos _centroidOffset;
-	'QS_marker_grid_rspState' setMarkerText (format ['%1Tunnels destroyed: 0 / %2',(toString [32,32,32]),(missionNamespace getVariable 'QS_grid_AIRspTotal')]);
+	'QS_marker_grid_rspState' setMarkerText (format ['%1地道摧毁进度: 0 / %2',(toString [32,32,32]),(missionNamespace getVariable 'QS_grid_AIRspTotal')]);
 	if (!(_entities isEqualTo [])) then {
 		_objectiveIsRequired = 1;
 		_objectiveArguments = [
@@ -183,8 +183,8 @@ if (_type isEqualTo 'SITE_TUNNEL') exitWith {
 			params ['_entities','_entitiesTotal'];
 			private _c = 0;
 			_aliveCount = {(alive _x)} count _entities;
-			if (!((toLower (markerText 'QS_marker_grid_rspState')) isEqualTo (toLower (format ['   Tunnels destroyed: %1 / %2',((_entitiesTotal - _aliveCount) max 0),(missionNamespace getVariable 'QS_grid_AIRspTotal')])))) then {
-				'QS_marker_grid_rspState' setMarkerText (format ['%1Tunnels destroyed: %2 / %3',(toString [32,32,32]),(_entitiesTotal - _aliveCount),(missionNamespace getVariable 'QS_grid_AIRspTotal')]);
+			if (!((toLower (markerText 'QS_marker_grid_rspState')) isEqualTo (toLower (format ['   地道摧毁进度: %1 / %2',((_entitiesTotal - _aliveCount) max 0),(missionNamespace getVariable 'QS_grid_AIRspTotal')])))) then {
+				'QS_marker_grid_rspState' setMarkerText (format ['%1地道摧毁进度: %2 / %3',(toString [32,32,32]),(_entitiesTotal - _aliveCount),(missionNamespace getVariable 'QS_grid_AIRspTotal')]);
 			};
 			if (_aliveCount isEqualTo 0) then {
 				_c = 1;
@@ -193,7 +193,7 @@ if (_type isEqualTo 'SITE_TUNNEL') exitWith {
 		};
 		_objectiveOnCompleted = {
 			'QS_marker_grid_rspState' setMarkerColor 'ColorGREEN';
-			['GRID_IG_UPDATE',['Area of Operations','All enemy respawn tunnels destroyed']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+			['GRID_IG_UPDATE',['主线战区','敌军地道已被全部摧毁']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		};
 		_objectiveOnFailed = {};
 		_return = [
@@ -346,10 +346,10 @@ if (_type isEqualTo 'SITE_IG') exitWith {
 				'Killed',
 				{
 					params ['_killed','_killer','_instigator','_usedEffects'];
-					['GRID_UPDATE',['Area Of Operations','Enemy commander killed']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+					['GRID_UPDATE',['主线战区','敌军指挥官已被击毙']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 					if (!isNull _instigator) then {
 						if (isPlayer _instigator) then {
-							_text = format ['%1 (%2) killed the enemy commander',(name _instigator),(groupID (group _instigator))];
+							_text = format ['%1 (%2) 击毙了敌军指挥官！',(name _instigator),(groupID (group _instigator))];
 							_text remoteExec ['systemChat',-2,FALSE];
 						};
 					};
@@ -404,7 +404,7 @@ if (_type isEqualTo 'SITE_IG') exitWith {
 				if ((!alive _igLeader) || {(_igLeader getVariable ['QS_isSurrendered',FALSE])}) then {
 					if (((_spawnPos nearEntities ['CAManBase',_radius]) select {(((side _x) in [EAST,RESISTANCE]) && ((lifeState _x) in ['HEALTHY','INJURED']))}) isEqualTo []) then {
 						if (!(((_spawnPos nearEntities ['CAManBase',_radius]) select {(((side _x) in [WEST]) && ((lifeState _x) in ['HEALTHY','INJURED']))}) isEqualTo [])) then {
-							['GRID_UPDATE',['Area Of Operations','Enemy headquarters secured']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+							['GRID_UPDATE',['主线战区','敌军HQ已被清空']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 							{
 								_x setMarkerPos (missionNamespace getVariable 'QS_grid_IGposition');
 								_x setMarkerColor 'ColorWEST';
@@ -607,7 +607,7 @@ if (_type isEqualTo 'SITE_IDAP') exitWith {
 				{
 					_x setMarkerColor 'ColorOrange';
 					_x setMarkerPos _uncertaintyPos;
-					_x setMarkerText (format ['%1UXO Field',(toString [32,32,32])]);
+					_x setMarkerText (format ['%1未爆弹雷区',(toString [32,32,32])]);
 				} forEach [
 					'QS_marker_grid_IDAPmkr',
 					'QS_marker_grid_IDAPcircle'
@@ -631,7 +631,7 @@ if (_type isEqualTo 'SITE_IDAP') exitWith {
 					['GRID_IDAP_UPDATE',['Area Of Operations','Unexploded Ordnance (UXO) cleared']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 					{
 						_x setMarkerColor 'ColorGreen';
-						_x setMarkerText (format ['%1UXO Field (cleared)',(toString [32,32,32])]);
+						_x setMarkerText (format ['%1未爆弹雷区(已清理)',(toString [32,32,32])]);
 					} forEach [
 						'QS_marker_grid_IDAPmkr',
 						'QS_marker_grid_IDAPcircle'

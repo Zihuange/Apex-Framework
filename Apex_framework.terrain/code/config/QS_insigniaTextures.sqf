@@ -42,6 +42,7 @@ __________________________________________________________________________/*/
 	[1,'pol','media\images\insignia\patch_pol.paa','pol',''],
 	[1,'Russia','media\images\insignia\patch_russia.paa','Russia','Alex'],
 	[1,'USA','media\images\insignia\patch_usa.paa','USA','Alex'],
+	[1,'迷茫先辈','media\images\insignia\yjsp1.paa','野兽先辈','COAT'],
 	[0,'111th','\A3\Ui_f\data\GUI\Cfg\UnitInsignia\111thID_ca.paa','111th Infantry Division','Bohemia Interactive'],
 	[0,'BI','\A3\Ui_f\data\GUI\Cfg\UnitInsignia\bi_ca.paa','Bohemia Interactive','Bohemia Interactive'],
 	[0,'Zeus','\A3\Ui_f\data\GUI\Cfg\UnitInsignia\curator_ca.paa','Curator','Bohemia Interactive'],

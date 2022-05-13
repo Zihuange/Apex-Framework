@@ -93,13 +93,13 @@ if (_type isEqualTo 1) exitWith {
 					};
 					if (!isNull _instigator) then {
 						if (isPlayer _instigator) then {
-							_text = format ['%1 ( %2 ) destroyed a GPS jammer!',(name _instigator),(groupID (group _instigator))];
+							_text = format ['%1 ( %2 ) 摧毁了GPS干扰器！',(name _instigator),(groupID (group _instigator))];
 							[[WEST,'BLU'],_text] remoteExec ['sideChat',-2,FALSE];
 						} else {
-							[[WEST,'BLU'],'GPS jammer destroyed!'] remoteExec ['sideChat',-2,FALSE];
+							[[WEST,'BLU'],'GPS干扰器已被摧毁！'] remoteExec ['sideChat',-2,FALSE];
 						};
 					} else {
-						[[WEST,'BLU'],'GPS jammer destroyed!'] remoteExec ['sideChat',-2,FALSE];
+						[[WEST,'BLU'],'GPS干扰器已被摧毁！'] remoteExec ['sideChat',-2,FALSE];
 					};
 					_gpsJammers = missionNamespace getVariable ['QS_mission_gpsJammers',[]];
 					if (_gpsJammers isNotEqualTo []) then {
@@ -149,9 +149,9 @@ if (_type isEqualTo 1) exitWith {
 				_id,
 				TRUE,
 				[
-					'The enemy has deployed a GPS jammer. Locate and destroy it!',
-					'GPS Jammer',
-					'GPS Jammer'
+					'敌方部署了一个GPS干扰器，找到并摧毁它！',
+					'GPS干扰器',
+					'GPS干扰器'
 				],
 				_effectPosition,
 				'CREATED',

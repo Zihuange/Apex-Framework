@@ -25,9 +25,9 @@ private [
 ];
 
 _c4Messages = [
-	"Supply crate secured. The charge has been set! 15 seconds until detonation.",
-	"Weapons secured. The explosives have been set! 15 seconds until detonation.",
-	"Insurgents supply secured. The charge is planted! 15 seconds until detonation."
+	"敌军武器装备已确认。 炸药已安放！ 15秒后引爆，所有人迅速远离目标！",
+	"敌军武器装备已确认。 炸药已安放！ 15秒后引爆，所有人迅速远离目标！",
+	"敌军武器装备已确认。 炸药已安放！ 15秒后引爆，所有人迅速远离目标！"
 ];
 _c4Message = selectRandom _c4Messages;
 
@@ -114,15 +114,15 @@ _fuzzyPos = [((_flatPos select 0) - 300) + (random 600),((_flatPos select 1) - 3
 	_x setMarkerPos _fuzzyPos;
 	_x setMarkerAlpha 1;
 } count ['QS_marker_sideMarker','QS_marker_sideCircle'];
-'QS_marker_sideMarker' setMarkerText (format ['%1Secure Insurgency Supply',(toString [32,32,32])]);
+'QS_marker_sideMarker' setMarkerText (format ['%1销毁敌军物资',(toString [32,32,32])]);
 
 [
 	'QS_IA_TASK_SM_0',
 	TRUE,
 	[
-		(format ['The enemy has been supplying an insurgency on %1, get over there and secure their weapons cache. This objective is not accurately marked.',worldName]),
-		'Secure Insurgents Cache',
-		'Secure Insurgents Cache'
+		(format ['敌军一直在向 %1 的叛军提供武器装备，我们截获到他们新一批物资到达的情报，即刻前往作战地区。 找到敌军物资，确认物资数量后将其销毁。 目标在区域内的某处。',worldName]),
+		'销毁敌军物资',
+		'销毁敌军物资'
 	],
 	(markerPos 'QS_marker_sideMarker'),
 	'CREATED',
@@ -133,9 +133,9 @@ _fuzzyPos = [((_flatPos select 0) - 300) + (random 600),((_flatPos select 1) - 3
 	TRUE
 ] call (missionNamespace getVariable 'BIS_fnc_setTask');
 
-_briefing = parseText format ["<t align='center'><t size='2.2'>New Side Mission</t><br/><t size='1.5' color='#00B2EE'>Secure Insurgency Supply</t><br/>____________________<br/>OPFOR are training an insurgency on %1.<br/><br/>We've marked the position on your map; head over there, sanitize the area and secure their supply.</t>",worldName];
+_briefing = parseText format ["<t align='center'><t size='2.2'>支线任务</t><br/><t size='1.5' color='#00B2EE'>销毁敌军物资</t><br/>____________________<br/>>敌军一直在向 %1 的叛军提供武器装备，我们截获到他们新一批物资到达的情报，即刻前往作战地区。<br/><br/>找到敌军物资，确认物资数量后将其销毁。</t>",worldName];
 //['hint',_briefing] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
-['NewSideMission',['Secure Insurgency Supply']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+['NewSideMission',['销毁敌军物资']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 
 /*/-------------------- [ CORE LOOPS ] ------------------------ [ CORE LOOPS ]/*/
 
@@ -156,7 +156,7 @@ for '_x' from 0 to 1 step 0 do {
 		/*/-------------------- DE-BRIEFING/*/
 
 		missionNamespace setVariable ['QS_sideMissionUp',FALSE,TRUE];
-		['sideChat',[WEST,'HQ'],'Objective destroyed, mission FAILED!'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['sideChat',[WEST,'HQ'],'目标被提前破坏， 任务失败！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		[0,_flatPos] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
 
 		/*/-------------------- DELETE/*/

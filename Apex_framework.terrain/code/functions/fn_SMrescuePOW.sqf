@@ -461,10 +461,10 @@ _QS_civKilled_EH = {
 			TRUE
 		];
 		if ((random 1) > 0.666) then {
-			_text = format ['A Civilian has been murdered by %1!',_name];
+			_text = format ['%1 杀害了一位平民！',_name];
 			['systemChat',_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		} else {
-			_text = format ['%1 has killed an Unarmed Civilian!',_name];
+			_text = format ['%1 击杀了一名手无寸铁的平民！',_name];
 			['systemChat',_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		};
 	};	
@@ -836,7 +836,7 @@ _QS_sidemission_pow addEventHandler [
 		_killer = _this select 1;
 		if (isPlayer _killer) then {
 			_name = name _killer;
-			['sideChat',[WEST,'HQ'],(format ['The POW has been killed by %1!',_name])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+			['sideChat',[WEST,'HQ'],(format ['我军战俘被 %1 杀死！',_name])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		};
 	}
 ];
@@ -1191,21 +1191,20 @@ _QS_fuzzyPos = [((_QS_buildingPosATL select 0) - 290) + (random 580),((_QS_build
 	_x setMarkerPosLocal _QS_fuzzyPos;
 	_x setMarkerAlpha 1;
 } forEach ['QS_marker_sideMarker','QS_marker_sideCircle'];
-'QS_marker_sideMarker' setMarkerText (format ['%1Rescue P.O.W.',(toString [32,32,32])]);
+'QS_marker_sideMarker' setMarkerText (format ['%1 营救 P.O.W.',(toString [32,32,32])]);
 [
 	'QS_IA_TASK_SM_0',
 	TRUE,
 	[
 		'
-			Soldier, to complete this mission your team must rescue a P.O.W. located somewhere in the marked area.
-			Our agent reports he is being tortured for intel and likely will not be in good shape if you get to him.
-			To rescue the P.O.W. and complete the mission, you must bring him to the Medevac HQ (small white building) at base, OR load him into a Medical Vehicle (Ex. HEMTT Medical) WITH a medic inside as well.
-			If he dies, the mission is failed.
-			To locate the precise position of the P.O.W., the locals may be of help.
-			Interactions with the P.O.W. and civilians will be on your Action Menu.
+			我们的一名被俘士兵现在位于标记区域内的某个地方，
+			情报人员报告说目标正在遭受敌军的严刑拷打，如果你找到目标，目标的状况可能不是很好。
+			拯救P.O.W. 并完成任务，你必须将我军被俘人员带到基地的医疗站，或将目标装入医疗载具（例如HEMTT医疗卡车），并有医护兵进行治疗。
+			如果目标死亡，那么任务失败。
+			为了找到P.O.W.的准确位置，可以通过滚轮菜单询问当地平民。
 		',
-		'Rescue POW',
-		'Rescue POW'
+		'营救 P.O.W',
+		'营救 P.O.W'
 	],
 	(markerPos 'QS_marker_sideMarker'),
 	'CREATED',
@@ -1215,7 +1214,7 @@ _QS_fuzzyPos = [((_QS_buildingPosATL select 0) - 290) + (random 580),((_QS_build
 	'heal',
 	TRUE
 ] call (missionNamespace getVariable 'BIS_fnc_setTask');
-['NewSideMission',['Rescue P.O.W.']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+['NewSideMission',['营救 P.O.W.']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 missionNamespace setVariable ['QS_sideMissionUp',TRUE,TRUE];
 missionNamespace setVariable ['QS_smSuccess',FALSE,TRUE];
 missionNamespace setVariable ['QS_sideMission_POW_active',TRUE,TRUE];
@@ -1248,7 +1247,7 @@ for '_x' from 0 to 1 step 0 do {
 		['QS_IA_TASK_SM_0',FALSE,-1] call (missionNamespace getVariable 'QS_fnc_taskSetTimer');
 		missionNamespace setVariable ['QS_sideMission_POW_active',FALSE,TRUE];
 		missionNamespace setVariable ['QS_sideMissionUp',FALSE,TRUE];
-		['ST_MEDEVAC',['POW Mission Failed','The POW has died!']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['ST_MEDEVAC',['营救战俘任务失败','P.O.W 已死亡！']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		'QS_marker_sideCircle' setMarkerSize [300,300]; 
 		{
 			_x setMarkerPosLocal [-5000,-5000,0];
@@ -1265,7 +1264,7 @@ for '_x' from 0 to 1 step 0 do {
 		sleep 10;
 		_QS_missionAttempts = _QS_priorMissionStatistics_completions + (_QS_priorMissionStatistics_failures + 1);
 		_QS_missionSuccessRate = (_QS_priorMissionStatistics_completions / _QS_missionAttempts) * 100;
-		_text = parseText format ['P.O.W. Rescue Mission Statistics: <br/>Attempts: %2<br/>Successful Completions: %1<br/>Success Rate: %3 percent',_QS_priorMissionStatistics_completions,_QS_missionAttempts,(round _QS_missionSuccessRate)];
+		_text = parseText format ['P.O.W. 救援任务统计: <br/>杀害: %2<br/>成功完成: %1<br/>完成率: 百分之 %3 ',_QS_priorMissionStatistics_completions,_QS_missionAttempts,(round _QS_missionSuccessRate)];
 		['hint',_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		sleep 15;
 		[0,_QS_buildingPosATL] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
@@ -1305,7 +1304,7 @@ for '_x' from 0 to 1 step 0 do {
 	if (_QS_missionComplete) exitWith {
 		['QS_IA_TASK_SM_0',FALSE,-1] call (missionNamespace getVariable 'QS_fnc_taskSetTimer');
 		missionNamespace setVariable ['QS_sideMission_POW_active',FALSE,TRUE];
-		['ST_MEDEVAC',['POW Mission Succeeded','The POW has been rescued!']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['ST_MEDEVAC',['营救任务成功','P.O.W 已经获救！']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		'QS_marker_sideCircle' setMarkerSize [300,300]; 
 		{
 			_x setMarkerPos [-5000,-5000,0];
@@ -1323,7 +1322,7 @@ for '_x' from 0 to 1 step 0 do {
 		_QS_priorMissionStatistics_completions = _QS_priorMissionStatistics_completions + 1;
 		_QS_missionAttempts = (_QS_priorMissionStatistics_completions + 1) + _QS_priorMissionStatistics_failures;
 		_QS_missionSuccessRate = (_QS_priorMissionStatistics_completions / _QS_missionAttempts) * 100;
-		_text = parseText format ['P.O.W. Rescue Mission Statistics: <br/>Attempts: %2<br/>Successful Completions: %1<br/>Success Rate: %3 percent',_QS_priorMissionStatistics_completions,_QS_missionAttempts,(round _QS_missionSuccessRate)];
+		_text = parseText format ['P.O.W. 救援任务统计: <br/>杀害: %2<br/>成功完成: %1<br/>完成率: 百分之 %3 ',_QS_priorMissionStatistics_completions,_QS_missionAttempts,(round _QS_missionSuccessRate)];
 		['hint',_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		//moveOut _QS_POW;	// https://feedback.bistudio.com/T128186
 		[90,_QS_POW,0] remoteExec ['QS_fnc_remoteExec',0,FALSE];
@@ -1362,7 +1361,7 @@ for '_x' from 0 to 1 step 0 do {
 			if (_QS_enemyDetected) exitWith {};
 		} count _QS_enemyArray;
 		if (_QS_enemyDetected) then {
-			['ST_MEDEVAC',['POW Mission Update','The enemy has detected our approach']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+			['ST_MEDEVAC',['支线任务更新','敌军发现我方正在接近！']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 			if (alive _QS_BADGUY) then {	
 				if ((_QS_BADGUY distance _QS_POW) < 8) then {
 					_QS_dirTo = _QS_BADGUY getDir _QS_POW;
@@ -1425,7 +1424,7 @@ for '_x' from 0 to 1 step 0 do {
 				if (!(_QS_powRescued)) then {
 					/*/ Detonate explosives Vest /*/
 					_QS_POW setDamage 1;
-					['systemChat','CSAT has killed the POW!'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+					['systemChat','敌军处决了POW！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 				};
 			};
 		};
@@ -1459,8 +1458,8 @@ for '_x' from 0 to 1 step 0 do {
 			{
 				_x setMarkerAlpha 0;
 			} count ['QS_marker_sideMarker','QS_marker_sideCircle'];
-			['systemChat','POW contacted! Bring him back to base before he bleeds out!'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
-			['ST_MEDEVAC',['POW Mission Update','Bring POW back to base before he bleeds out']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+			['systemChat','P.O.W 已获救! 在战俘失血死亡之前将他带回基地医疗站治疗！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+			['ST_MEDEVAC',['支线任务更新','在伤员流血而亡前将其带回基地医疗站治疗！']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 			if ((count (attachedObjects _QS_POW)) > 0) then {
 				{
 					missionNamespace setVariable [
@@ -1478,7 +1477,7 @@ for '_x' from 0 to 1 step 0 do {
 	
 	if ((missionNamespace getVariable 'QS_sideMission_civsKilled') > 0) then {
 		if (!(_QS_civiliansUnhappy)) then {
-			['ST_MEDEVAC',['POW Mission Update','The civilians are now unhappy!']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+			['ST_MEDEVAC',['支线任务更新','现在周围平民很不满！']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 			_QS_civiliansUnhappy = TRUE;
 			{
 				_QS_civ = _x;
@@ -1574,7 +1573,7 @@ for '_x' from 0 to 1 step 0 do {
 		if (_QS_killTimer_started) then {
 			/*/
 			if (time > _QS_killTimerBroadcast_delay) then {
-				_QS_text = format ['CSAT will kill the P.O.W. in: %1',[((round(_QS_enemyDetected_endTime - time))/60)+0.01,"HH:MM"] call (missionNamespace getVariable 'BIS_fnc_timeToString')];	
+				_QS_text = format ['敌方将在 %1 后处决我军战俘！',[((round(_QS_enemyDetected_endTime - time))/60)+0.01,"HH:MM"] call (missionNamespace getVariable 'BIS_fnc_timeToString')];	
 				['systemChat',_QS_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 				_QS_killTimerBroadcast_delay = time + 25;
 			};
@@ -1609,7 +1608,7 @@ for '_x' from 0 to 1 step 0 do {
 		if (_QS_powBleedout_timer_started) then {
 			/*/
 			if (time > _QS_bleedTimerBroadcast_delay) then {
-				_QS_text = format ['P.O.W. will bleed out in: %1',[((round(_QS_powBleedout_timer - time))/60)+0.01,'HH:MM'] call (missionNamespace getVariable 'BIS_fnc_timeToString')];
+				_QS_text = format ['P.O.W.会在 %1 后失血阵亡！',[((round(_QS_powBleedout_timer - time))/60)+0.01,'HH:MM'] call (missionNamespace getVariable 'BIS_fnc_timeToString')];
 				['systemChat',_QS_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 				_QS_bleedTimerBroadcast_delay = time + 25;
 			};

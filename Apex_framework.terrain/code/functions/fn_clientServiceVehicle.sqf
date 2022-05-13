@@ -16,9 +16,9 @@ __________________________________________________/*/
 private ['_v','_t','_c','_rt','_nearestServiceSite','_fuel'];
 _t = cursorTarget;
 _v = vehicle player;
-if (_t getVariable 'under_service') exitWith {50 cutText ['Vehicle currently being serviced','PLAIN DOWN',0.5];};
-if (_v getVariable 'under_service') exitWith {50 cutText ['Vehicle currently being serviced','PLAIN DOWN',0.5];};
-if (missionNamespace getVariable 'QS_repairing_vehicle') exitWith {50 cutText ['Already servicing a vehicle','PLAIN DOWN',0.5];};
+if (_t getVariable 'under_service') exitWith {50 cutText ['正在维护载具','PLAIN DOWN',0.5];};
+if (_v getVariable 'under_service') exitWith {50 cutText ['正在维护载具','PLAIN DOWN',0.5];};
+if (missionNamespace getVariable 'QS_repairing_vehicle') exitWith {50 cutText ['载具已维护完毕','PLAIN DOWN',0.5];};
 private _isUAV = unitIsUav cameraOn;
 if (_isUAV) then {
 	_v = cameraOn;
@@ -72,27 +72,27 @@ if ((_baseService) || (_isDepot)) then {
 		if (_nearestServiceSite in (missionNamespace getVariable 'QS_veh_landservice_mkrs')) then {
 			if (!(_v isKindOf 'LandVehicle')) then {
 				_isQualified = FALSE;
-				50 cutText ['This service area is for Land Vehicles only, soldier!','PLAIN DOWN',0.5];
+				50 cutText ['此维护区仅适用于地面载具！','PLAIN DOWN',0.5];
 			};
 		};
 		if (_nearestServiceSite in (missionNamespace getVariable 'QS_veh_planeservice_mkrs')) then {
 			if (!(_v isKindOf 'Plane')) then {
 				_isQualified = FALSE;
-				50 cutText ['This service area is for Planes/VTOL only, soldier!','PLAIN DOWN',0.5];
+				50 cutText ['此维护区仅适用于固定翼/VTOL！','PLAIN DOWN',0.5];
 			};
 		};
 		
 		if (_nearestServiceSite in (missionNamespace getVariable 'QS_veh_heliservice_mkrs')) then {
 			if (!(_v isKindOf 'Helicopter')) then {
 				_isQualified = FALSE;
-				50 cutText ['This service area is for Helicopters (not VTOL) only, soldier!','PLAIN DOWN',0.5];
+				50 cutText ['此维护区仅适用于直升机！','PLAIN DOWN',0.5];
 			};
 		};
 	};
 	if (!(local _v)) then {_isQualified = FALSE;};
 	if (!(_isQualified)) exitWith {};
 	if ((player isNotEqualTo (effectiveCommander _v)) && (!(_isUAV))) exitWith {
-		(missionNamespace getVariable 'QS_managed_hints') pushBack [2,FALSE,7.5,-1,'At base, you must be the vehicle commander/driver to commence service!',[],-1];
+		(missionNamespace getVariable 'QS_managed_hints') pushBack [2,FALSE,7.5,-1,'你必须是载具指挥官或驾驶员才能开始维护载具！',[],-1];
 	};
 	_rt = 10 + (60 * (damage _v));
 	if (_v isKindOf 'Plane') then {
@@ -103,7 +103,7 @@ if ((_baseService) || (_isDepot)) then {
 	_sv = TRUE;
 	_onCompleted = {
 		params ['_v'];
-		50 cutText ['Vehicle service finished','PLAIN DOWN',0.5];
+		50 cutText ['载具维护完毕','PLAIN DOWN',0.5];
 		_v setDamage [0,FALSE];
 		if (local _v) then {
 			_v setFuel 1;
@@ -180,8 +180,8 @@ if ((_baseService) || (_isDepot)) then {
 			]) then {
 				if (diag_tickTime > (uiNamespace getVariable ['QS_fighterPilot_lastMsg',(diag_tickTime - 1)])) then {
 					uiNamespace setVariable ['QS_fighterPilot_lastMsg',(diag_tickTime + 300)];
-					[63,[4,['CAS_1',['','Close Air Support online!']]]] remoteExec ['QS_fnc_remoteExec',-2,FALSE];
-					['sideChat',[WEST,'AirBase'],(format ['Close Air Support (%1) is available. Pilot: %2',(getText (configFile >> 'CfgVehicles' >> (typeOf _v) >> 'displayName')),profileName])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+					[63,[4,['CAS_1',['','我方固定翼支援准备升空！']]]] remoteExec ['QS_fnc_remoteExec',-2,FALSE];
+					['sideChat',[WEST,'AirBase'],(format ['我方空中单位 (%1) 已经补给完毕，准备起飞执行CAS任务。 飞行员： %2',(getText (configFile >> 'CfgVehicles' >> (typeOf _v) >> 'displayName')),profileName])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 				};
 			};
 		};
@@ -199,7 +199,7 @@ if ((_baseService) || (_isDepot)) then {
 		if (((vehicle player) isNotEqualTo _v) && (!(unitIsUav cameraOn))) then {_c = TRUE;};
 		if (!alive _v) then {_c = TRUE;};
 		if ((isEngineOn _v) && (!(unitIsUav cameraOn))) then {
-			50 cutText ['Engine must be off to service vehicle','PLAIN DOWN',0.3];
+			50 cutText ['必须关闭发动机才能维护载具','PLAIN DOWN',0.3];
 			_c = TRUE;
 		};
 		if (_c) then {
@@ -208,7 +208,7 @@ if ((_baseService) || (_isDepot)) then {
 		_c;
 	};
 	[
-		'Servicing vehicle ...',
+		'正在维护载具……',
 		_rt,
 		0,
 		[[_v],{FALSE}],							/*/onProgress/*/
@@ -245,34 +245,34 @@ if ((_baseService) || (_isDepot)) then {
 
 if (_fieldService) then {
 	if ((isNull (objectParent player)) && (!alive _t)) exitWith {
-		50 cutText ['Even duct tape cannot save this vehicle, sorry','PLAIN DOWN',0.5];
+		50 cutText ['很抱歉，载具受损过于严重！','PLAIN DOWN',0.5];
 	};
 	if (!(_v isKindOf 'Man')) exitWith {
-		50 cutText ['In the field, service must be done manually. Get out of the vehicle, soldier!','PLAIN DOWN',1];
+		50 cutText ['你必须从载具内出来进行手动维护！','PLAIN DOWN',1];
 	};
 	/*/=========================================== QUALIFY BY VEHICLE TYPE/*/
 	if (_nearestServiceSite in (missionNamespace getVariable 'QS_veh_landservice_mkrs')) then {
 		if (!(_t isKindOf 'LandVehicle')) then {
 			_isQualified = FALSE;
-			50 cutText ['This service area is for Land Vehicles only, soldier!','PLAIN DOWN',1];
+			50 cutText ['此维护区仅适用于地面载具！','PLAIN DOWN',1];
 		};
 	};
 	if (_nearestServiceSite in (missionNamespace getVariable 'QS_veh_planeservice_mkrs')) then {
 		if (!(_t isKindOf 'Plane')) then {
 			_isQualified = FALSE;
-			50 cutText ['This service area is for Planes / VTOL only, soldier!','PLAIN DOWN',1];
+			50 cutText ['此维护区仅适用于固定翼/VTOL！','PLAIN DOWN',1];
 		};
 	};
 	if (_nearestServiceSite in (missionNamespace getVariable 'QS_veh_heliservice_mkrs')) then {
 		if (!(_t isKindOf 'Helicopter')) then {
 			_isQualified = FALSE;
-			50 cutText ['This service area is for Helicopters (not VTOL) only, soldier!','PLAIN DOWN',1];
+			50 cutText ['此维护区仅适用于直升机！','PLAIN DOWN',1];
 		};
 	};
 	if (_nearestServiceSite in (missionNamespace getVariable 'QS_veh_airservice_mkrs')) then {
 		if (!(_t isKindOf 'Air')) then {
 			_isQualified = FALSE;
-			50 cutText ['This service area is for Aircraft only, soldier!','PLAIN DOWN',1];
+			50 cutText ['此维护区仅适用于空中载具！','PLAIN DOWN',1];
 		};
 	};
 	if (_isCarrier) then {
@@ -289,18 +289,18 @@ if (_fieldService) then {
 		_fuel = fuel _t;
 		if (!(_isCarrier)) then {
 			if (!(missionNamespace getVariable 'QS_module_fob_services_ammo')) then {
-				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'REAMMO service is not available here yet.',[],-1];
+				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'弹药补给功能暂时无法使用。',[],-1];
 			};
 			if (!(missionNamespace getVariable 'QS_module_fob_services_repair')) then {
-				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'REPAIR service is not available here yet.',[],-1];
+				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'维修整备功能暂时无法使用。',[],-1];
 			};
 			if (!(missionNamespace getVariable 'QS_module_fob_services_fuel')) then {
-				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'REFUEL service is not available here yet.',[],-1];
+				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'油料补给功能暂时无法使用。',[],-1];
 			};
 		};
 		_onCompleted = {
 			params ['_t','_fuel','_isCarrier'];
-			50 cutText ['Vehicle service finished','PLAIN DOWN',0.5];
+			50 cutText ['载具维护完毕','PLAIN DOWN',0.5];
 			player playActionNow 'stop';
 			if ((missionNamespace getVariable 'QS_module_fob_services_repair') || {(_isCarrier)}) then {
 				_t setDamage [0,FALSE];
@@ -374,7 +374,7 @@ if (_fieldService) then {
 			_c;
 		};
 		[
-			'Servicing vehicle ...',
+			'正在维护载具……',
 			_rt,
 			0,
 			[[],{FALSE}],								/*/onProgress/*/

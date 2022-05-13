@@ -33,5 +33,5 @@ player setVariable [
 [62,[player,(getPlayerUID player),profileName]] remoteExec ['QS_fnc_remoteExec',2,FALSE];
 ['ScoreBonus',['Gold digger','10']] call (missionNamespace getVariable 'QS_fnc_showNotification');
 playSound 'ClickSoft';
-50 cutText ['Gold tooth collected','PLAIN DOWN'];
+50 cutText ['已收集金牙','PLAIN DOWN'];
 TRUE;

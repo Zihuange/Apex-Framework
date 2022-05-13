@@ -23,19 +23,19 @@ if (((animationState player) in [
 	'ainvpknlmstpslaywnondnon_medic','ainvpknlmstpslaywrfldnon_medic','ainvpknlmstpslaywpstdnon_medic','ainvppnemstpslaywnondnon_medic','ainvppnemstpslaywrfldnon_medic',
 	'ainvppnemstpslaywpstdnon_medic'
 ]) && (!((toLower _QS_actionText) in ['cancel']))) exitWith {
-	50 cutText ['Busy','PLAIN DOWN',0.333];
+	50 cutText ['忙碌','PLAIN DOWN',0.333];
 	_QS_c = TRUE;
 	_QS_c;
 };
 if (!((lifeState player) in ['HEALTHY','INJURED'])) exitWith {
-	50 cutText ['Incapacitated','PLAIN DOWN',0.333];
+	50 cutText ['重伤昏迷','PLAIN DOWN',0.333];
 	_QS_c = TRUE;
 	_QS_c;
 };
 if ((!(((attachedObjects player) findIf {((!isNull _x) && (!(_x isKindOf 'Sign_Sphere10cm_F')))}) isEqualTo -1)) && (!((toLower _QS_actionText) in [
-	'release','load','retract cargo ropes','extend cargo ropes','shorten cargo ropes','release cargo','deploy cargo ropes','attach to cargo ropes','drop cargo ropes','pickup cargo ropes'
+	'放开','装载','收回货物绳索','延长货物绳索','缩短货物绳索','放下货物','部署拖拽绳','连接拖拽绳','放下拖拽绳','捡起拖拽绳'
 ])) && (!(_QS_actionName in ['OpenParachute']))) exitWith {
-	50 cutText ['Busy','PLAIN DOWN',0.333];
+	50 cutText ['忙碌','PLAIN DOWN',0.333];
 	_QS_c = TRUE;
 	_QS_c;
 };
@@ -59,7 +59,7 @@ if (_QS_actionName isEqualTo 'User') then {
 							profileNameSteam,
 							(getPlayerUID player),
 							2,
-							(format ['Non-whitelisted scroll action text: "%1"',(_this select 4)]),
+							(format ['非白名单动作文本："%1"',(_this select 4)]),
 							player,
 							productVersion
 						]
@@ -75,7 +75,7 @@ if (_exit) exitWith {TRUE;};
 if (['GetIn',_QS_actionName,FALSE] call (missionNamespace getVariable 'QS_fnc_inString')) then {
 	if (!((attachedObjects player) isEqualTo [])) then {
 		if (!(((attachedObjects player) findIf {((alive _x) && (_x isKindOf 'CAManBase'))}) isEqualTo -1)) then {
-			50 cutText ['Release / Load before getting in','PLAIN DOWN',0.75];
+			50 cutText ['进入之前放下/装载','PLAIN DOWN',0.75];
 			_QS_c = TRUE;
 		};
 	};
@@ -83,21 +83,21 @@ if (['GetIn',_QS_actionName,FALSE] call (missionNamespace getVariable 'QS_fnc_in
 if (_QS_c) exitWith {_QS_c;};
 if (_QS_actionName isEqualTo 'HealSoldier') exitWith {
 	if (!(((attachedObjects player) findIf {((alive _x) && (_x isKindOf 'CAManBase'))}) isEqualTo -1)) then {
-		50 cutText ['Cannot heal at this time','PLAIN DOWN'];
+		50 cutText ['此时无法治疗','PLAIN DOWN'];
 		_QS_c = TRUE;
 	};
 	if ((lifeState _QS_actionTarget) isEqualTo 'INCAPACITATED') then {
 		_QS_c = TRUE;
-		50 cutText [(format ['%1 must be revived. Treatment failed!',(name _QS_actionTarget)]),'PLAIN DOWN'];
+		50 cutText [(format ['%1 必须先恢复意识，治疗失败！',(name _QS_actionTarget)]),'PLAIN DOWN'];
 	};
 	if (!isNil {_QS_actionTarget getVariable 'QS_noHeal'}) then {
 		_QS_c = TRUE;
-		50 cutText ['He cannot be treated','PLAIN DOWN'];
+		50 cutText ['他无法被治疗','PLAIN DOWN'];
 	};
 	if (!(_QS_c)) then {
 		_QS_c = TRUE;
 		if (isPlayer _QS_actionTarget) then {
-			[63,[5,[(format ['Being treated by %1',profileName]),'PLAIN DOWN',0.5]]] remoteExec ['QS_fnc_remoteExec',_QS_actionTarget,FALSE];
+			[63,[5,[(format ['正在被 %1 治疗，不要移动！',profileName]),'PLAIN DOWN',0.5]]] remoteExec ['QS_fnc_remoteExec',_QS_actionTarget,FALSE];
 		};
 		player setVariable ['QS_treat_entryAnim',(animationState player),FALSE];
 		player setVariable ['QS_treat_target',_QS_actionTarget,FALSE];
@@ -150,20 +150,20 @@ if (_QS_actionName isEqualTo 'RepairVehicle') exitWith {
 		{
 			if ((side _x) in ([player] call (missionNamespace getVariable 'QS_fnc_enemySides'))) exitWith {
 				_QS_c = TRUE;
-				50 cutText ['Cannot repair active enemy vehicle','PLAIN',0.5];
+				50 cutText ['无法修理敌军载具','PLAIN',0.5];
 			};
 		} count (crew _QS_actionTarget);
 	};
 	if (!(_QS_c)) then {
 		if (!isNil {_QS_actionTarget getVariable 'QS_RD_noRepair'}) then {
 			_QS_c = TRUE;
-			50 cutText ['Cannot repair this vehicle','PLAIN DOWN'];
+			50 cutText ['无法修理此载具','PLAIN DOWN'];
 		} else {
 			if (!isNull (effectiveCommander _QS_actionTarget)) then {
 				if (isPlayer _QS_actionTarget) then {
 					if (alive _QS_actionTarget) then {
 						if (!(_QS_actionTarget isEqualTo (vehicle player))) then {
-							[63,[5,[(format ['Your vehicle is being repaired by %1',profileName]),'PLAIN DOWN',0.5]]] remoteExec ['QS_fnc_remoteExec',(effectiveCommander _QS_actionTarget),FALSE];
+							[63,[5,[(format [' %1 正在修理你的载具，不要移动！',profileName]),'PLAIN DOWN',0.5]]] remoteExec ['QS_fnc_remoteExec',(effectiveCommander _QS_actionTarget),FALSE];
 						};
 					};
 				};
@@ -178,7 +178,7 @@ if (_QS_actionName isEqualTo 'RepairVehicle') exitWith {
 						['setFuel',_v,(0.03 + (random 0.03))] remoteExec ['QS_fnc_remoteExecCmd',_v,FALSE];
 					};
 					_dn = getText (configFile >> 'CfgVehicles' >> (typeOf (_this select 0)) >> 'displayName');
-					50 cutText [(format ['%1 refueled',_dn]),'PLAIN DOWN',0.75];
+					50 cutText [(format ['%1 已补充燃料',_dn]),'PLAIN DOWN',0.75];
 				};
 			};
 			if ((_this select 0) isKindOf 'Helicopter') then {
@@ -190,14 +190,14 @@ if (_QS_actionName isEqualTo 'RepairVehicle') exitWith {
 };
 if (_QS_actionName isEqualTo 'UseMagazine') exitWith {
 	if ((cameraOn distance (markerPos 'QS_marker_base_marker')) < 300) then {
-		50 cutText ['Explosives disabled near base','PLAIN'];
+		50 cutText ['基地内禁止使用爆炸物和武器','PLAIN'];
 		_QS_c = TRUE;
 	};
 	_QS_c;
 };
 if (_QS_actionName isEqualTo 'UseContainerMagazine') exitWith {
 	if ((cameraOn distance (markerPos 'QS_marker_base_marker')) < 300) then {
-		50 cutText ['Explosives disabled near base','PLAIN'];
+		50 cutText ['基地内禁止使用爆炸物和武器','PLAIN'];
 		_QS_c = TRUE;
 	};
 	_QS_c;	
@@ -210,7 +210,7 @@ if (_QS_actionName isEqualTo 'Eject') exitWith {
 		if (player isEqualTo (driver (vehicle player))) then {
 			_QS_c = TRUE;
 			0 spawn {
-				private _result = ['Eject?','Eject warning','Eject','Cancel',(findDisplay 46),FALSE,FALSE] call (missionNamespace getVariable 'BIS_fnc_guiMessage'); 
+				private _result = ['是否弹射？','弹射警告','弹射','取消',(findDisplay 46),FALSE,FALSE] call (missionNamespace getVariable 'BIS_fnc_guiMessage'); 
 				if (_result) then {
 					player action ['eject',(vehicle player)];
 				};
@@ -220,7 +220,7 @@ if (_QS_actionName isEqualTo 'Eject') exitWith {
 				if (((vectorMagnitude (velocity (vehicle player))) * 3.6) > 25) then {
 					_QS_c = TRUE;
 					0 spawn {
-						private _result = ['Eject?','Eject warning','Eject','Cancel',(findDisplay 46),FALSE,FALSE] call (missionNamespace getVariable 'BIS_fnc_guiMessage'); 
+						private _result = ['是否弹射？','弹射警告','弹射','取消',(findDisplay 46),FALSE,FALSE] call (missionNamespace getVariable 'BIS_fnc_guiMessage'); 
 						if (_result) then {
 							player action ['eject',(vehicle player)];
 						};
@@ -233,13 +233,13 @@ if (_QS_actionName isEqualTo 'Eject') exitWith {
 };
 if (_QS_actionName isEqualTo 'GetInPilot') exitWith {
 	if ((!(player getUnitTrait 'QS_trait_pilot')) && (!(player getUnitTrait 'QS_trait_fighterPilot'))) then {
-		_text = 'Pilot seats are for Pilots only!';
+		_text = '只有飞行员才能驾驶飞行载具！';
 		(missionNamespace getVariable 'QS_managed_hints') pushBack [1,FALSE,8,-1,_text,[],-1];
 		_QS_c = TRUE;
 	};
 	if (!isNil {(_this select 0) getVariable 'QS_RD_vehicle_ICRC'}) then {
 		if ((!((primaryWeapon player) isEqualTo '')) || (!((secondaryWeapon player) isEqualTo '')) || (!((handgunWeapon player) isEqualTo ''))) then {
-			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'No weapons allowed in this vehicle',[],-1];
+			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'此载具禁止使用武器',[],-1];
 			_QS_c = TRUE;
 		};
 	};
@@ -268,7 +268,7 @@ if (_QS_actionName isEqualTo 'GetInPilot') exitWith {
 	]) then {
 		if (!(player getUnitTrait 'QS_trait_fighterPilot')) then {
 			_QS_c = TRUE;
-			_text = 'Only fighter pilots can use this aircraft';
+			_text = '只有固定翼飞行员才能驾驶这架固定翼';
 			50 cutText [_text,'PLAIN',0.5];
 		};
 	};
@@ -302,7 +302,7 @@ if (_QS_actionName isEqualTo 'GetInPilot') exitWith {
 if (_QS_actionName isEqualTo 'GetInCargo') exitWith {
 	if (!isNil {(_this select 0) getVariable 'QS_RD_vehicle_ICRC'}) then {
 		if ((!((primaryWeapon player) isEqualTo '')) || {(!((secondaryWeapon player) isEqualTo ''))} || {(!((handgunWeapon player) isEqualTo ''))}) then {
-			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'No weapons allowed in this vehicle',[],-1];
+			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'此载具禁止使用武器',[],-1];
 			_QS_c = TRUE;
 		};
 	};
@@ -311,7 +311,7 @@ if (_QS_actionName isEqualTo 'GetInCargo') exitWith {
 if (_QS_actionName isEqualTo 'GetInDriver') exitWith {
 	if (!isNil {(_this select 0) getVariable 'QS_RD_vehicle_ICRC'}) then {
 		if ((!((primaryWeapon player) isEqualTo '')) || {(!((secondaryWeapon player) isEqualTo ''))} || {(!((handgunWeapon player) isEqualTo ''))}) then {
-			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'No weapons allowed in this vehicle',[],-1];
+			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'此载具禁止使用武器',[],-1];
 			_QS_c = TRUE;
 		};
 	};
@@ -323,7 +323,7 @@ if (_QS_actionName isEqualTo 'GetInDriver') exitWith {
 if (_QS_actionName isEqualTo 'GetInGunner') exitWith {
 	if (!isNil {(_this select 0) getVariable 'QS_RD_vehicle_ICRC'}) then {
 		if ((!((primaryWeapon player) isEqualTo '')) || {(!((secondaryWeapon player) isEqualTo ''))} || {(!((handgunWeapon player) isEqualTo ''))}) then {
-			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'No weapons allowed in this vehicle',[],-1];
+			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'此载具禁止使用武器',[],-1];
 			_QS_c = TRUE;
 		};
 	};
@@ -345,7 +345,7 @@ if (_QS_actionName isEqualTo 'GetInGunner') exitWith {
 if (_QS_actionName isEqualTo 'GetInCommander') exitWith {
 	if (!isNil {(_this select 0) getVariable 'QS_RD_vehicle_ICRC'}) then {
 		if ((!((primaryWeapon player) isEqualTo '')) || {(!((secondaryWeapon player) isEqualTo ''))} || {(!((handgunWeapon player) isEqualTo ''))}) then {
-			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'No weapons allowed in this vehicle',[],-1];
+			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'此载具禁止使用武器',[],-1];
 			_QS_c = TRUE;
 		};
 	};
@@ -367,7 +367,7 @@ if (_QS_actionName isEqualTo 'GetInCommander') exitWith {
 if (_QS_actionName isEqualTo 'GetInTurret') exitWith {
 	if (!isNil {(_this select 0) getVariable 'QS_RD_vehicle_ICRC'}) then {
 		if ((!((primaryWeapon player) isEqualTo '')) || {(!((secondaryWeapon player) isEqualTo ''))} || {(!((handgunWeapon player) isEqualTo ''))}) then {
-			50 cutText ['No weapons allowed in this vehicle','PLAIN DOWN'];
+			50 cutText ['此载具禁止使用武器','PLAIN DOWN'];
 			_QS_c = TRUE;
 		};
 	};
@@ -399,7 +399,7 @@ if (_QS_actionName isEqualTo 'GetInTurret') exitWith {
 				if (!(_currentMortarGunners isEqualTo [])) then {
 					_currentMortarGunnerName = name (_currentMortarGunners select 0);
 				};
-				50 cutText [(format ['Only a Mk6 Mortar Gunner (%1) can use player-assembled mortars.',_currentMortarGunnerName]),'PLAIN DOWN',0.75];
+				50 cutText [(format ['只有迫击炮手 (%1) 才能使用迫击炮',_currentMortarGunnerName]),'PLAIN DOWN',0.75];
 				_QS_c = TRUE;
 			};
 		};
@@ -430,13 +430,13 @@ if (_QS_actionName isEqualTo 'DropWeapon') exitWith {
 if (_QS_actionName isEqualTo 'Assemble') then {
 	if ((cameraOn isEqualTo (vehicle player)) && ((player distance2D (markerPos 'QS_marker_base_marker')) < 300)) then {
 		_QS_c = TRUE;
-		50 cutText ['Weapon assembly disabled near base','PLAIN'];
+		50 cutText ['基地内禁止组装物品','PLAIN'];
 	};
 	if (!(['Disassemble',_QS_actionText,FALSE] call (missionNamespace getVariable 'QS_fnc_inString'))) then {
 		if (!isNil {player getVariable 'QS_client_assembledWeapons'}) then {
 			private _assembledWeapons = player getVariable 'QS_client_assembledWeapons';
 			if (({(alive _x)} count _assembledWeapons) > 2) then {
-				50 cutText ['Maximum of 3 assembled weapons at a time (including backback drones)','PLAIN DOWN',1];
+				50 cutText ['每次最多组装三个物品(包括无人机)','PLAIN DOWN',1];
 				_QS_c = TRUE;
 			};
 		};
@@ -460,7 +460,7 @@ if (_QS_actionName in ['TouchOffMines','TouchOff']) then {
 						};
 					} forEach _playersNearby;
 					if (_QS_c) then {
-						50 cutText [(format ['%1 players are too close (30m) to one or more of your explosives. Touch-off failed!',_count]),'PLAIN DOWN',1];
+						50 cutText [(format ['%1 友军距离爆炸物过近（30米），无法引爆！',_count]),'PLAIN DOWN',1];
 					};
 				};
 			};
@@ -485,7 +485,7 @@ if (_QS_actionName isEqualTo 'UseMagazine') then {
 				if (_nCargo > 0) then {
 					if (!(((crew _cursorObject) findIf {((alive _x) && (isPlayer _x))}) isEqualTo -1)) then {
 						if ((player targets [TRUE,30,[],0,(getPosATL _cursorObject)]) isEqualTo []) then {
-							50 cutText ['Cannot do that right now.','PLAIN DOWN',0.5];
+							50 cutText ['现在不能这样做','PLAIN DOWN',0.5];
 							_QS_c = TRUE;
 						};
 					};
@@ -504,7 +504,7 @@ if (_QS_actionName isEqualTo 'DisAssemble') then {
 	};
 	if (!isNull (attachedTo _QS_actionTarget)) then {
 		if ((attachedTo _QS_actionTarget) isKindOf 'Man') then {
-			50 cutText ['Cannot do that at this time','PLAIN DOWN',0.5];
+			50 cutText ['现在不能这样做','PLAIN DOWN',0.5];
 			_QS_c = TRUE;
 		};
 	};
@@ -536,7 +536,7 @@ if (_QS_actionName isEqualTo 'AutoHover') then {
 					};
 					_arrayToSend = (crew _v) select {((!(_x isEqualTo player)) && (alive _x) && (isPlayer _x))};
 					if (!(_arrayToSend isEqualTo [])) then {
-						[63,[5,[(format ['Your pilot ( %1 ) has turned on autohover!',profileName]),'PLAIN DOWN',0.3]]] remoteExec ['QS_fnc_remoteExec',_arrayToSend,FALSE];
+						[63,[5,[(format ['飞行员 ( %1 ) 已打开自动悬停功能！',profileName]),'PLAIN DOWN',0.3]]] remoteExec ['QS_fnc_remoteExec',_arrayToSend,FALSE];
 					};
 				};
 			};
@@ -545,7 +545,7 @@ if (_QS_actionName isEqualTo 'AutoHover') then {
 };
 if (_QS_actionName isEqualTo 'UAVTerminalHackConnection') then {
 	if (!local _QS_actionTarget) then {
-		_text = format ['%1 has hacked a(n) %2!',profileName,(getText (configFile >> 'CfgVehicles' >> (typeOf _QS_actionTarget) >> 'displayName'))];
+		_text = format ['%1 通过骇入夺取了一个 %2！',profileName,(getText (configFile >> 'CfgVehicles' >> (typeOf _QS_actionTarget) >> 'displayName'))];
 		['systemChat',_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 	};
 	_QS_actionTarget spawn {
@@ -559,7 +559,7 @@ if (_QS_actionName isEqualTo 'OpenBag') then {
 	if (isNull (objectParent player)) then {
 		if ((((vectorMagnitude (velocity (vehicle player))) * 3.6) > 2) || {(((vectorMagnitude (velocity (vehicle _QS_actionTarget))) * 3.6) > 2)}) then {
 			_QS_c = TRUE;
-			50 cutText ['Cannot do that while moving','PLAIN DOWN',0.75];
+			50 cutText ['移动时不能这么做','PLAIN DOWN',0.75];
 		};
 	};
 };
@@ -577,8 +577,8 @@ if (_QS_actionName isEqualTo 'UserType') then {
 			2 call (missionNamespace getVariable 'QS_fnc_clientInteractDoor');
 		};
 	} else {
-		if (_actionTextLower in ['beacons on','beacons off']) then {
-			if (_actionTextLower isEqualTo 'beacons on') then {
+		if (_actionTextLower in ['信标打开','信标关闭']) then {
+			if (_actionTextLower isEqualTo '信标打开') then {
 				//comment 'Beacons on';
 				[] call (missionNamespace getVariable 'QS_fnc_clientInteractUtilityOffroad');
 			} else {
@@ -590,26 +590,26 @@ if (_QS_actionName isEqualTo 'UserType') then {
 };
 if (_QS_actionName in ['ListRightVehicleDisplay','NextModeRightVehicleDisplay']) then {
 	_QS_c = TRUE;
-	50 cutText ['Please bind these actions to keys. [Esc]>>[Configure]>>[Controls]>>[Keyboard]>>[Common]>>[Panels]. Default [ and ] keys','PLAIN DOWN',2];
+	50 cutText ['请将这些动作绑定按键。 [Esc]>>[配置]>>[控件]>>[按键]>>[一般]>>[面板] 默认 [ 与 ] 键','PLAIN DOWN',2];
 };
 if (_QS_actionName isEqualTo 'UnloadUnconsciousUnits') then {
 	if (isNull (objectParent player)) then {
-		50 cutText ['Unconscious units unloaded','PLAIN DOWN',0.5];
+		50 cutText ['已卸载昏迷的单位','PLAIN DOWN',0.5];
 	} else {
-		50 cutText ['Must be on foot','PLAIN DOWN',0.5];
+		50 cutText ['必须是徒步','PLAIN DOWN',0.5];
 		_QS_c = TRUE;
 	};
 	if (!isNull (isVehicleCargo _QS_actionTarget)) then {
-		50 cutText ['Cannot do that at this time','PLAIN DOWN',0.5];
+		50 cutText ['此时无法这么做','PLAIN DOWN',0.5];
 		_QS_c = TRUE;
 		
 	};
 	if (surfaceIsWater (getPosWorld _QS_actionTarget)) then {
-		50 cutText ['Cannot do that here','PLAIN DOWN',0.5];
+		50 cutText ['这里无法这么做','PLAIN DOWN',0.5];
 		_QS_c = TRUE;
 	};
 	if (!isNull (ropeAttachedTo _QS_actionTarget)) then {
-		50 cutText ['Cannot do that at this time','PLAIN DOWN',0.5];
+		50 cutText ['此时无法这么做','PLAIN DOWN',0.5];
 		_QS_c = TRUE;
 	};
 };
@@ -659,7 +659,7 @@ if (_QS_actionName isEqualTo 'ManualFire') then {
 		_QS_c = TRUE;
 	};
 };
-if (_QS_actionText in ['   ','Weapons safe on base']) then {
+if (_QS_actionText in ['   ','基地内禁止使用武器！']) then {
 	_QS_c = TRUE;
 };
 _QS_c;

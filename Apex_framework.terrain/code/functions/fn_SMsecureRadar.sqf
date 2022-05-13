@@ -29,9 +29,9 @@ missionNamespace setVariable ['QS_sidemission_objectsArray',[],FALSE];
 missionNamespace setVariable ['QS_sideObj',objNull,FALSE];
 _objectsArray = [];
 _c4Messages = [
-	"Radar data secured. The charge has been set! 15 seconds until detonation.",
-	"Radar telemetry secured. The explosives have been set! 15 seconds until detonation.",
-	"Radar intel secured. The charge is planted! 15 seconds until detonation."
+	"敌方雷达技术情报已获取。 炸药已经放置！ 爆炸倒计时15秒，立刻撤离！",
+	"雷达数据已获取。 炸药已经放置！ 爆炸倒计时15秒，立刻撤离！",
+	"敌方雷达技术情报已获取。 炸药已经放置！ 爆炸倒计时15秒，立刻撤离！"
 ];
 _c4Message = selectRandom _c4Messages;
 
@@ -103,15 +103,15 @@ _fuzzyPos = [((_flatPos select 0) - 300) + (random 600),((_flatPos select 1) - 3
 	_x setMarkerPos _fuzzyPos;
 	_x setMarkerAlpha 1;
 } count ['QS_marker_sideMarker','QS_marker_sideCircle'];
-'QS_marker_sideMarker' setMarkerText (format ['%1Secure Radar',(toString [32,32,32])]);
+'QS_marker_sideMarker' setMarkerText (format ['%1夺取敌军雷达数据',(toString [32,32,32])]);
 
 [
 	'QS_IA_TASK_SM_0',
 	TRUE,
 	[
-		'We have located an enemy radar installation. It appears to be under-defended, so this is our chance to learn more about enemy Anti-Air capabilities. Get over there and secure the radar intel. It will be located in a building near the dome. Be careful, once tampered with, the radar will self-destruct. This objective is not accurately marked.',
-		'Secure Radar',
-		'Secure Radar'
+		'我们定位到了敌方雷达的大致位置，该雷达站目前防守不足，这是我们掌握敌方防空技术的一个机会。雷达的数据资料在圆顶雷达站旁的建筑内，前往该处获取数据。注意数据获取后15秒雷达会自毁。目前雷达的具体位置不详。',
+		'获取敌军雷达数据',
+		'获取敌军雷达数据'
 	],
 	(markerPos 'QS_marker_sideMarker'),
 	'CREATED',
@@ -122,9 +122,9 @@ _fuzzyPos = [((_flatPos select 0) - 300) + (random 600),((_flatPos select 1) - 3
 	TRUE
 ] call (missionNamespace getVariable 'BIS_fnc_setTask');
 
-_briefing = parseText "<t align='center'><t size='2.2'>New Side Mission</t><br/><t size='1.5' color='#00B2EE'>Secure Radar</t><br/>____________________<br/>OPFOR have captured a small radar on the island to support their aircraft.<br/><br/>We've marked the position on your map; head over there and secure the site. Take the data and destroy it.</t>";
+_briefing = parseText "<t align='center'><t size='2.2'>支线任务</t><br/><t size='1.5' color='#00B2EE'>Secure Radar</t><br/>____________________<br/>OPFOR have captured a small radar on the island to support their aircraft.<br/><br/>We've marked the position on your map; head over there and secure the site. Take the data and destroy it.</t>";
 //['hint',_briefing] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
-['NewSideMission',['Secure Radar']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+['NewSideMission',['获取敌军雷达数据']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 missionNamespace setVariable ['QS_sideMissionUp',TRUE,TRUE];
 missionNamespace setVariable ['QS_smSuccess',FALSE,TRUE];
 
@@ -134,7 +134,7 @@ for '_x' from 0 to 1 step 0 do {
 		
 		/*/------------------ DE-BRIEFING/*/
 
-		['sideChat',[WEST,'HQ'],'Intel destroyed, mission FAILED!'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['sideChat',[WEST,'HQ'],'数据被提前损毁，任务失败！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		[0,_flatPos] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
 		{
 			_x setMarkerPos [-5000,-5000,0];

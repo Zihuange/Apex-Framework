@@ -270,9 +270,9 @@ if ((missionNamespace getVariable ['QS_missionConfig_carrierEnabled',0]) isEqual
 			params ['_jet','_killer','_instigator','_useEffects'];
 			private _text = '';
 			if (((getPosATL _jet) select 2) > 20) then {
-				_text = 'Our CAS has been shot down!';
+				_text = (localize 'STR_QS_CAS_shotDown');
 			} else {
-				_text = 'Our CAS has been destroyed!';
+				_text = (localize 'STR_QS_CAS_destroyed');
 			};
 			if (!isDedicated) then {
 				[WEST,'AirBase'] sideChat _text;

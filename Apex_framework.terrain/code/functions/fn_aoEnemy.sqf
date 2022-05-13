@@ -885,11 +885,11 @@ _commander addEventHandler [
 			'QS_marker_hqMarker',
 			'QS_marker_hqCircle'
 		];
-		['CompletedSub',['CSAT Commander killed!']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['CompletedSub',[(localize 'STR_QS_Enemy_csatCmdKIA')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		if (!isNull _killer) then {
 			if (isPlayer _killer) then {
 				_name = name _killer;
-				_text = format ['%1 has killed the CSAT Commander',_name];
+				_text = format [(localize 'STR_QS_Enemy_csatCmdKIAChat'),_name];
 				['sideChat',[WEST,'HQ'],_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 			};
 		};

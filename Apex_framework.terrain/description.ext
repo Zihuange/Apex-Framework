@@ -13,7 +13,7 @@ Description:
 	https://community.bistudio.com/wiki/Description.ext
 ____________________________________________/*/
 
-author = "Quiksilver";												/*/ Visible when loading mission/*/
+author = "Quiksilver & 波西米亚旅游协会";												/*/ Visible when loading mission/*/
 onLoadName = "Invade & Annex";										/*/ Visible when loading mission/*/
 onLoadMission = "";
 loadScreen = __EVAL(selectRandom ["media\images\loadScreens\loading_0.jpg","media\images\loadScreens\loading_1.paa","media\images\loadScreens\loading_2.paa","media\images\loadScreens\loading_3.paa","media\images\loadScreens\loading_4.paa","media\images\loadScreens\loading_5.paa","media\images\loadScreens\loading_6.paa","media\images\loadScreens\loading_7.paa","media\images\loadScreens\loading_8.paa","media\images\loadScreens\loading_9.paa"]);
@@ -34,7 +34,7 @@ enableItemsDropping = 0; 								/*/ disabled with 0/*/
 joinUnassigned = 0;										/*/ 0 = players forced into role on join/*/
 showUAVFeed = 1;										/*/ Enables/Disables the UAV Feed./*/
 showGroupIndicator = 0;
-showSquadRadar = 0;
+showSquadRadar = 1;
 forceRotorLibSimulation = 0;							/*/ Advanced Flight Model /*/
 scriptedPlayer = 1;
 corpseManagerMode = 0;
@@ -53,6 +53,7 @@ class CfgVehicleTemplates {};
 arsenalRestrictedItems[] = {};
 overrideFeedback = 1; 									// 0: force default handling, 1+: allow custom handling. Default: not set
 unsafeCVL=1;					// Setting to 0 will disable nighttime AO illumination (ambient fire).  https://community.bistudio.com/wiki/createVehicleLocal
+/*
 class CfgDisabledCommands {
     class CREATEUNIT
     {
@@ -70,7 +71,7 @@ class CfgDisabledCommands {
     };
 	
 	
-	/*/
+	
     class SETMARKERTEXT
     {
         class SYNTAX1
@@ -79,7 +80,7 @@ class CfgDisabledCommands {
             args[] = {{"STRING"},{"STRING"}};
         };
     };
-	/*/
+	
 
 
     class ADDMPEVENTHANDLER
@@ -92,7 +93,7 @@ class CfgDisabledCommands {
     };
 	
 	
-	/*/
+	
     class SETWAYPOINTSTATEMENTS
     {
         class SYNTAX1
@@ -101,7 +102,7 @@ class CfgDisabledCommands {
             args[] = {{"ARRAY"},{"ARRAY"}};
         };
     };
-	/*/
+	
 	
 	
     class PUBLICVARIABLE
@@ -196,12 +197,13 @@ class CfgDisabledCommands {
     };
 
 };
+*/
 class CfgRemoteExec {
 	class Commands {
-		mode = 1;
+		mode = 2;
 	};
 	class Functions {
-		mode = 1;
+		mode = 2;
 		jip = 0;
 		allowedTargets = 0;
 		class BIS_fnc_callScriptedEventHandler {};
@@ -2444,7 +2446,7 @@ class QS_RD_client_dialog_menu_main {
 		class QS_RD_client_dialog_menu_main_text_1: QS_RD_dialog_RscText {
 			moving = 1;
 			idc = 1000;
-			text = "Player Menu";
+			text = "玩家菜单";
 			x = 0.374500 * safezoneW + safezoneX;
 			y = 0.525 * safezoneH + safezoneY;
 			w = 0.0955624 * safezoneW;
@@ -2474,7 +2476,7 @@ class QS_RD_client_dialog_menu_main {
 			shadow = 0;
 			colorText[] = {1,1,1,1};
 			text = "";
-			tooltip = "Score, Rating, Health, Equipment";
+			tooltip = "分数 评分 生命值 负重";
 		};
 		class QS_RD_client_dialog_menu_main_text_2: QS_RD_dialog_RscText {
 			moving = 1;
@@ -2486,7 +2488,7 @@ class QS_RD_client_dialog_menu_main {
 			sizeEx = 0.028;
 			shadow = 0;
 			colorText[] = {1,1,1,1};
-			tooltip = "FPS, Time to server restart (estimated)";
+			tooltip = "帧数  距服务器重启的时间";
 		};
 		
 		class QS_RD_client_dialog_menu_main_button_1: QS_RD_dialog_RscButton {
@@ -2601,7 +2603,7 @@ class QS_RD_client_dialog_menu_viewSettings {
 		class QS_RD_client_dialog_menu_view_text_1: QS_RD_dialog_RscText {
 			moving = 1;
 			idc = 1802;
-			text = "Visibility";
+			text = "视距";
 			x = 0.374500 * safezoneW + safezoneX;
 			y = 0.525 * safezoneH + safezoneY;
 			w = 0.0955624 * safezoneW;
@@ -2642,7 +2644,7 @@ class QS_RD_client_dialog_menu_viewSettings {
 			h = 0.0410023 * safezoneH;
 			shadow = 0;
 			onButtonClick = "['onButtonClick',0] call (missionNamespace getVariable 'QS_fnc_clientViewOptions');";
-			tooltip = "Visibility on foot";
+			tooltip = "徒步时的视距";
 		};
 		class QS_RD_client_dialog_menu_view_picture_2: QS_RD_dialog_RscPictureKeepAspect {
 			moving = 1;
@@ -2657,7 +2659,7 @@ class QS_RD_client_dialog_menu_viewSettings {
 		class QS_RD_client_dialog_menu_view_text_2: QS_RD_dialog_RscText {
 			moving = 1;
 			idc = 1806;
-			text = "Overall";
+			text = "地形";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.655 * safezoneH + safezoneY;
 			w = 0.05 * safezoneW;
@@ -2714,7 +2716,7 @@ class QS_RD_client_dialog_menu_viewSettings {
 			h = 0.0410023 * safezoneH;
 			shadow = 0;
 			onButtonClick = "['onButtonClick',1] call (missionNamespace getVariable 'QS_fnc_clientViewOptions');";
-			tooltip = "Visibility in land vehicle or boat";
+			tooltip = "驾驶地面载具或船只时的视距";
 		};
 		class QS_RD_client_dialog_menu_view_picture_3: QS_RD_dialog_RscPictureKeepAspect {
 			moving = 1;
@@ -2729,7 +2731,7 @@ class QS_RD_client_dialog_menu_viewSettings {
 		class QS_RD_client_dialog_menu_view_text_4: QS_RD_dialog_RscText {
 			moving = 1;
 			idc = 1811;
-			text = "Object";
+			text = "物体单位";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.705 * safezoneH + safezoneY;
 			w = 0.05 * safezoneW;
@@ -2786,7 +2788,7 @@ class QS_RD_client_dialog_menu_viewSettings {
 			h = 0.0410023 * safezoneH;
 			shadow = 0;
 			onButtonClick = "['onButtonClick',2] call (missionNamespace getVariable 'QS_fnc_clientViewOptions');";
-			tooltip = "Visibility in helicopter";
+			tooltip = "驾驶直升机时的视距";
 		};
 		class QS_RD_client_dialog_menu_view_picture_4: QS_RD_dialog_RscPictureKeepAspect {
 			moving = 1;
@@ -2801,7 +2803,7 @@ class QS_RD_client_dialog_menu_viewSettings {
 		class QS_RD_client_dialog_menu_view_text_6: QS_RD_dialog_RscText {
 			moving = 1;
 			idc = 1816;
-			text = "Shadow";
+			text = "阴影";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.755 * safezoneH + safezoneY;
 			w = 0.05 * safezoneW;
@@ -2858,7 +2860,7 @@ class QS_RD_client_dialog_menu_viewSettings {
 			h = 0.0410023 * safezoneH;
 			shadow = 0;
 			onButtonClick = "['onButtonClick',3] call (missionNamespace getVariable 'QS_fnc_clientViewOptions');";
-			tooltip = "Visibility in plane";
+			tooltip = "驾驶固定翼时的视距";
 		};
 		class QS_RD_client_dialog_menu_view_picture_5: QS_RD_dialog_RscPictureKeepAspect {
 			moving = 1;
@@ -2873,7 +2875,7 @@ class QS_RD_client_dialog_menu_viewSettings {
 		class QS_RD_client_dialog_menu_view_text_8: QS_RD_dialog_RscText {
 			moving = 1;
 			idc = 1821;
-			text = "Grass";
+			text = "场景";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.805 * safezoneH + safezoneY;
 			w = 0.05 * safezoneW;
@@ -2888,7 +2890,7 @@ class QS_RD_client_dialog_menu_viewSettings {
 			colorFocused[] = {0,0,0,0};
 			colorShadow[] = {0,0,0,0};
 			colorBorder[] = {0,0,0,0};
-			tooltip = "Terrain resolution. Lower = more detail. Higher = less detail.";
+			tooltip = "场景植被和地形，越低地形显示越准确，越高植被越丰富";
 		};
 		class QS_RD_client_dialog_menu_view_xslider_4 : QS_RD_XSlider {
 			moving = 1;
@@ -2924,7 +2926,7 @@ class QS_RD_client_dialog_menu_viewSettings {
 		class QS_RD_client_dialog_menu_view_button_5: QS_RD_dialog_RscButton {
 			moving = 1;
 			idc = 1824;
-			text = "Back";
+			text = "返回";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.87 * safezoneH + safezoneY;
 			w = 0.13 * safezoneW;
@@ -3030,7 +3032,7 @@ class QS_RD_client_dialog_menu_options {
 		class QS_RD_client_dialog_menu_options_text_1: QS_RD_dialog_RscText {
 			moving = 1;
 			idc = 1802;
-			text = "Options";
+			text = "选项";
 			x = 0.374500 * safezoneW + safezoneX;
 			y = 0.525 * safezoneH + safezoneY;
 			w = 0.0955624 * safezoneW;
@@ -3053,8 +3055,8 @@ class QS_RD_client_dialog_menu_options {
 		class QS_RD_client_dialog_menu_options_text_2: QS_RD_dialog_RscText {
 			moving = 1;
 			idc = 1804;
-			text = "Stamina";
-			tooltip = "ArmA 3 Stamina";
+			text = "体力";
+			tooltip = "ArmA 3 体力系统";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.59 * safezoneH + safezoneY;
 			w = 0.045 * safezoneW;
@@ -3078,13 +3080,13 @@ class QS_RD_client_dialog_menu_options {
 			y = 0.585 * safezoneH + safezoneY;
 			w = 0.02 * safezoneW;
 			h = 0.04 * safezoneH;
-			tooltip = "Click to toggle Stamina";
+			tooltip = "切换体力系统开关";
 			onCheckedChanged = "['StaminaCheckbox',_this select 0,_this select 1] call (missionNamespace getVariable 'QS_fnc_clientMenuOptions');";
 		};
 		class QS_RD_client_dialog_menu_options_text_3: QS_RD_dialog_RscText {
 			moving = 1;
 			idc = 1806;
-			text = "Weapon Sway";
+			text = "武器晃动";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.63 * safezoneH + safezoneY;
 			w = 0.08 * safezoneW;
@@ -3099,7 +3101,7 @@ class QS_RD_client_dialog_menu_options {
 			colorFocused[] = {0,0,0,0};
 			colorShadow[] = {0,0,0,0};
 			colorBorder[] = {0,0,0,0};
-			tooltip = "Aim Coefficient";
+			tooltip = "武器随呼吸产生的晃动";
 		};
 		class QS_RD_client_dialog_menu_options_xslider_1 : QS_RD_XSlider {
 			moving = 1;
@@ -3110,7 +3112,7 @@ class QS_RD_client_dialog_menu_options {
 			y = 0.655 * safezoneH + safezoneY;
 			w = 0.09 * safezoneW;
 			h = 0.0180039 * safezoneH;
-			tooltip = "0.1 - 1.1 (vanilla default 1, server default 0.1)";
+			tooltip = "0.1 - 1.1 （游戏默认1，服务器默认0.1）";
 		};
 		class QS_RD_client_dialog_menu_options_text_4 : QS_RD_dialog_RscText {
 			moving = 1;
@@ -3136,7 +3138,7 @@ class QS_RD_client_dialog_menu_options {
 		class QS_RD_client_dialog_menu_options_text_5: QS_RD_dialog_RscText {
 			moving = 1;
 			idc = 1809;
-			text = "First-Person";
+			text = "第一人称";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.695 * safezoneH + safezoneY;
 			w = 0.08 * safezoneW;
@@ -3151,7 +3153,7 @@ class QS_RD_client_dialog_menu_options {
 			colorFocused[] = {0,0,0,0};
 			colorShadow[] = {0,0,0,0};
 			colorBorder[] = {0,0,0,0};
-			tooltip = "Lock to first-person. Can only change once per 20 minutes or by re-connect.";
+			tooltip = "锁定第一人称视角。 此选项在重进服务器前或20分钟之内无法被关闭";
 		};
 		class QS_RD_client_dialog_menu_options_checkbox_2 : QS_RD_RscCheckbox {
 			moving = 1;
@@ -3160,14 +3162,14 @@ class QS_RD_client_dialog_menu_options {
 			y = 0.69 * safezoneH + safezoneY;
 			w = 0.02 * safezoneW;
 			h = 0.04 * safezoneH;
-			tooltip = "Toggle First-Person Lock";
+			tooltip = "切换第一人称锁定";
 			onCheckedChanged = "['1PVCheckbox',(_this select 0),(_this select 1)] spawn (missionNamespace getVariable 'QS_fnc_clientMenuOptions');";
 		};
 		/*/ ===== BACKUP
 		class QS_RD_client_dialog_menu_options_button_1: QS_RD_dialog_RscButton {
 			moving = 1;
 			idc = 1811;
-			text = "Back";
+			text = "返回";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.87 * safezoneH + safezoneY;
 			w = 0.13 * safezoneW;
@@ -3194,7 +3196,7 @@ class QS_RD_client_dialog_menu_options {
 		class QS_RD_client_dialog_menu_options_text_6: QS_RD_dialog_RscText {
 			moving = 1;
 			idc = 1812;
-			text = "Squad Radar";
+			text = "小队雷达";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.735 * safezoneH + safezoneY;
 			w = 0.08 * safezoneW;
@@ -3217,14 +3219,14 @@ class QS_RD_client_dialog_menu_options {
 			y = 0.73 * safezoneH + safezoneY;
 			w = 0.02 * safezoneW;
 			h = 0.04 * safezoneH;
-			tooltip = "Toggle on/off QuackTac Fireteam HUD";
+			tooltip = "打开或关闭小队雷达";
 			onCheckedChanged = "['QHUDCheckbox',(_this select 0),(_this select 1)] spawn (missionNamespace getVariable 'QS_fnc_clientMenuOptions');";
 		};
 		class QS_RD_client_dialog_menu_options_text_7: QS_RD_dialog_RscText {
 			moving = 1;
 			idc = 1814;
-			text = "Ambient Life";
-			tooltip = "Ambient Life (snakes, fish, rabbits) use some CPU calculations. Disabling will slightly raise FPS.";
+			text = "动物活动";
+			tooltip = "动物活动（兔子、蛇、鱼）会占用CPU运算资源。 禁用可以略微提高帧数";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.78 * safezoneH + safezoneY;
 			w = 0.08 * safezoneW;
@@ -3247,14 +3249,14 @@ class QS_RD_client_dialog_menu_options {
 			y = 0.775 * safezoneH + safezoneY;
 			w = 0.02 * safezoneW;
 			h = 0.04 * safezoneH;
-			tooltip = "Toggle Ambient Life (fish, snakes, rabbits)";
+			tooltip = "切换动物活动（兔子、蛇、鱼）";
 			onCheckedChanged = "['AmbientCheckbox',(_this select 0),(_this select 1)] spawn (missionNamespace getVariable 'QS_fnc_clientMenuOptions');";
 		};
 		class QS_RD_client_dialog_menu_options_text_8: QS_RD_dialog_RscText {
 			moving = 1;
 			idc = 1816;
-			text = "Dynamic Simulation";
-			tooltip = "Experimental (Use at own risk!). Reduces CPU calculations from distant and non-visible entities. Enabling may raise FPS in some situations. Not available for pilots.";
+			text = "动态模拟";
+			tooltip = "实验性的 (风险自负！)  减少远距离和不可见单位的运算。 启用的话可能提高帧数，飞行员禁用此选项";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.825 * safezoneH + safezoneY;
 			w = 0.08 * safezoneW;
@@ -3277,7 +3279,7 @@ class QS_RD_client_dialog_menu_options {
 			y = 0.82 * safezoneH + safezoneY;
 			w = 0.02 * safezoneW;
 			h = 0.04 * safezoneH;
-			tooltip = "Toggle Dynamic Simulation";
+			tooltip = "切换动态模拟";
 			onCheckedChanged = "['DynSimCheckbox',(_this select 0),(_this select 1)] spawn (missionNamespace getVariable 'QS_fnc_clientMenuOptions');";
 		};
 		
@@ -3384,7 +3386,7 @@ class QS_RD_client_dialog_menu_supporters {
 		class QS_RD_client_dialog_menu_supporters_text_1: QS_RD_dialog_RscText {
 			moving = 1;
 			idc = 1802;
-			text = "Area 51";
+			text = "51区";
 			x = 0.374500 * safezoneW + safezoneX;
 			y = 0.525 * safezoneH + safezoneY;
 			w = 0.0955624 * safezoneW;
@@ -3420,7 +3422,7 @@ class QS_RD_client_dialog_menu_supporters {
 		class QS_RD_client_dialog_menu_supporters_button_2: QS_RD_dialog_RscButton {
 			moving = 1;
 			idc = 1805;
-			text = "Insignia";
+			text = "臂章";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.625 * safezoneH + safezoneY;
 			w = 0.13 * safezoneW;
@@ -3429,12 +3431,12 @@ class QS_RD_client_dialog_menu_supporters {
 			shadow = 0;
 			colorText[] = {1,1,1,1};
 			onButtonClick = "['B2',(_this select 0)] call (missionNamespace getVariable 'QS_fnc_clientMenuSupporters');";
-			tooltip = "Shoulder patches";
+			tooltip = "臂章样式";
 		};
 		class QS_RD_client_dialog_menu_supporters_button_3: QS_RD_dialog_RscButton {
 			moving = 1;
 			idc = 1806;
-			text = "Uniform Textures";
+			text = "制服皮肤";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.67 * safezoneH + safezoneY;
 			w = 0.13 * safezoneW;
@@ -3443,12 +3445,12 @@ class QS_RD_client_dialog_menu_supporters {
 			shadow = 0;
 			colorText[] = {1,1,1,1};
 			onButtonClick = "['B3',(_this select 0)] call (missionNamespace getVariable 'QS_fnc_clientMenuSupporters');";
-			tooltip = "Custom uniform textures";
+			tooltip = "自定义制服贴图";
 		};
 		class QS_RD_client_dialog_menu_supporters_button_4: QS_RD_dialog_RscButton {
 			moving = 1;
 			idc = 1807;
-			text = "Vehicle Textures";
+			text = "载具皮肤";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.715 * safezoneH + safezoneY;
 			w = 0.13 * safezoneW;
@@ -3457,7 +3459,7 @@ class QS_RD_client_dialog_menu_supporters {
 			shadow = 0;
 			colorText[] = {1,1,1,1};
 			onButtonClick = "['B4',(_this select 0)] call (missionNamespace getVariable 'QS_fnc_clientMenuSupporters');";
-			tooltip = "Custom vehicle textures";
+			tooltip = "自定义载具贴图";
 		};
 		class QS_RD_client_dialog_menu_supporters_button_5: QS_RD_dialog_RscButton {
 			moving = 1;
@@ -3476,7 +3478,7 @@ class QS_RD_client_dialog_menu_supporters {
 		class QS_RD_client_dialog_menu_supporters_button_6: QS_RD_dialog_RscButton {
 			moving = 1;
 			idc = 1809;
-			text = "Change Log";
+			text = "更新日志";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.805 * safezoneH + safezoneY;
 			w = 0.13 * safezoneW;
@@ -3485,12 +3487,12 @@ class QS_RD_client_dialog_menu_supporters {
 			shadow = 0;
 			colorText[] = {1,1,1,1};
 			onButtonClick = "['B6',(_this select 0)] call (missionNamespace getVariable 'QS_fnc_clientMenuSupporters');";
-			tooltip = "Latest updates";
+			tooltip = "最新更新";
 		};
 		class QS_RD_client_dialog_menu_supporters_button_7: QS_RD_dialog_RscButton {
 			moving = 1;
 			idc = 1810;
-			text = "Back";
+			text = "返回";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.87 * safezoneH + safezoneY;
 			w = 0.13 * safezoneW;
@@ -3543,7 +3545,7 @@ class QS_RD_client_dialog_menu_vtexture {
 		class QS_RD_client_dialog_menu_vtexture_button_1: QS_RD_dialog_RscButton {
 			moving = 1;
 			idc = 1810;
-			text = "Select";
+			text = "选择";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.815 * safezoneH + safezoneY;
 			w = 0.13 * safezoneW;
@@ -3556,7 +3558,7 @@ class QS_RD_client_dialog_menu_vtexture {
 		class QS_RD_client_dialog_menu_vtexture_button_2: QS_RD_dialog_RscButton {
 			moving = 1;
 			idc = 1811;
-			text = "Back";
+			text = "返回";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.87 * safezoneH + safezoneY;
 			w = 0.13 * safezoneW;
@@ -3766,7 +3768,7 @@ class QS_RD_client_dialog_menu_hub {
 		class QS_RD_client_dialog_menu_hub_text_1: QS_RD_dialog_RscText {
 			moving = 1;
 			idc = 1802;
-			text = "Comm-Link";
+			text = "通讯菜单";
 			x = 0.374500 * safezoneW + safezoneX;
 			y = 0.525 * safezoneH + safezoneY;
 			w = 0.0955624 * safezoneW;
@@ -3866,7 +3868,7 @@ class QS_RD_client_dialog_menu_hub {
 		class QS_RD_client_dialog_menu_hub_button_6: QS_RD_RscStructuredText {
 			moving = 1;
 			idc = 1809;
-			text = "Community Donation";
+			text = "社区捐助";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.6225 * safezoneH + safezoneY; //y = 0.63 * safezoneH + safezoneY;
 			w = 0.13 * safezoneW;
@@ -3884,7 +3886,7 @@ class QS_RD_client_dialog_menu_hub {
 		class QS_RD_client_dialog_menu_hub_button_7: QS_RD_dialog_RscButton {
 			moving = 1;
 			idc = 1810;
-			text = "Back";
+			text = "返回";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.87 * safezoneH + safezoneY;
 			w = 0.13 * safezoneW;
@@ -3897,7 +3899,7 @@ class QS_RD_client_dialog_menu_hub {
 		class QS_RD_client_dialog_menu_hub_button_8: QS_RD_RscStructuredText {
 			moving = 1;
 			idc = 1811;
-			text = "Donate to Quiksilver";
+			text = "向Quiksilver捐款";
 			tooltip = "Donate to the Apex Framework designer (Patreon)";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.82 * safezoneH + safezoneY;
@@ -3916,7 +3918,7 @@ class QS_RD_client_dialog_menu_hub {
 		class QS_RD_client_dialog_menu_hub_button_9: QS_RD_RscStructuredText {
 			moving = 1;
 			idc = 1812;
-			text = "Website";
+			text = "网页";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.64375 * safezoneH + safezoneY; //y = 0.63 * safezoneH + safezoneY;
 			w = 0.13 * safezoneW;
@@ -4071,7 +4073,7 @@ class QS_RD_client_dialog_menu_context {
 		class QS_RD_client_dialog_menu_context_button_7: QS_RD_dialog_RscButton {
 			moving = 1;
 			idc = 1810;
-			text = "Close";
+			text = "关闭";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.87 * safezoneH + safezoneY;
 			w = 0.13 * safezoneW;
@@ -4131,7 +4133,7 @@ class QS_RD_client_dialog_menu_entry {
 		};
 		class QS_RD_client_dialog_menu_entry_button_1: QS_RD_dialog_RscButton {
 			idc = 1804;
-			text = "Continue";
+			text = "继续";
 			x = 0.65 * safezoneW + safezoneX;
 			y = 0.855 * safezoneH + safezoneY;
 			w = 0.10 * safezoneW;

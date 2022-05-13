@@ -17,7 +17,7 @@ params ['_type','_usedObjectives','_gridMarkers'];
 if (_type isEqualTo 0) exitWith {
 	//comment 'Debrief';
 	['QS_TASK_GRID_0'] call (missionNamespace getVariable 'BIS_fnc_deleteTask');
-	['GRID_BRIEF',['Area Of Operations','Objectives complete']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+	['GRID_BRIEF',['主线战区','任务完成']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 	{
 		_x setMarkerAlpha 0;
 	} forEach [
@@ -61,12 +61,12 @@ if (_type isEqualTo 1) exitWith {
 		((_centroid select 1) + 300),
 		(_centroid select 2)
 	];	
-	'QS_marker_grid_civState' setMarkerTextLocal (format ['%1No civilian casualties',(toString [32,32,32])]);
-	'QS_marker_grid_civState' setMarkerColorLocal 'ColorCIVILIAN';
-	'QS_marker_grid_civState' setMarkerPosLocal _centroidOffset;
+	'QS_marker_grid_civState' setMarkerText (format ['%1无平民伤亡',(toString [32,32,32])]);
+	'QS_marker_grid_civState' setMarkerColor 'ColorCIVILIAN';
+	'QS_marker_grid_civState' setMarkerPos _centroidOffset;
 	'QS_marker_grid_civState' setMarkerAlpha 0.75;
 	'QS_marker_grid_capState' setMarkerAlpha 0.75;
-	_text = 'Objectives<br/><br/>- (Optional) No civilian casualties.<br/>- (Required) Convert required number of grid squares to green.<br/>- (Required) Destroy enemy respawn tunnel entrances.<br/>';
+	_text = '任务目标列表<br/><br/>- (非强制) 不要造成平民伤亡，伤害平民会导致敌军数量增加<br/>- (必要) 消灭敌人，将指定数量的方格区域从红变绿<br/>- (必要) 摧毁敌军重生地道，否则叛军会持续出现<br/>';
 	{
 		if (_x isEqualTo 'SITE_TUNNEL') then {
 			'QS_marker_grid_rspState' setMarkerAlpha 0.75;
@@ -74,24 +74,24 @@ if (_type isEqualTo 1) exitWith {
 		if (_x isEqualTo 'SITE_IG') then {
 			'QS_marker_grid_IGmkr' setMarkerAlpha 0.75;
 			'QS_marker_grid_IGcircle' setMarkerAlpha 0.75;
-			_text = _text + '- (Optional) Kill or capture the local enemy commander.<br/>';
-			_text = _text + '- (Optional) Capture and hold the enemy HQ.<br/>';
+			_text = _text + '- (非强制) 击杀或俘虏敌军指挥官<br/>';
+			_text = _text + '- (非强制) 占领并守住HQ<br/>';
 		};
 		if (_x isEqualTo 'SITE_IDAP') then {
 			'QS_marker_grid_IDAPloc' setMarkerAlpha 0.75;
 			'QS_marker_grid_IDAPmkr' setMarkerAlpha 0.75;
 			'QS_marker_grid_IDAPcircle' setMarkerAlpha 0.75;
-			_text = _text + '- (Optional) Assist IDAP by clearing an Unexploded Ordnance (UXO) field.<br/>';
+			_text = _text + '- (非强制) 帮助IDAP清理未爆弹地雷区<br/>';
 		};
 	} forEach _usedObjectives;
-	_text = _text + '<br/><br/>Search buildings and structures in the area for intel to locate the enemy respawn tunnel entrances.<br/><br/>Tunnel entrances look like small stone well covers, with a sewer grate inside.';
+	_text = _text + '<br/><br/>搜索战区内的建筑物收集情报，以确认敌军地道口位置。<br/><br/>敌军的地道入口看起来像是井盖，在基地内步兵重生点有实物展示！';
 	[
 		'QS_TASK_GRID_0',
 		TRUE,
 		[
 			_text,
-			'Area of Operations',
-			'Area of Operations'
+			'主线战区',
+			'主线战区'
 		],
 		_centroid,
 		'CREATED',
@@ -101,7 +101,7 @@ if (_type isEqualTo 1) exitWith {
 		'X',
 		TRUE
 	] call (missionNamespace getVariable 'BIS_fnc_setTask');
-	['GRID_BRIEF',['Area Of Operations','Complete all objectives']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+	['GRID_BRIEF',['主线战区','目标已经下发']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 	// yes do it again, the marker network propagation can be ... unstable ...
 	{
 		_x setMarkerAlpha 0.75;

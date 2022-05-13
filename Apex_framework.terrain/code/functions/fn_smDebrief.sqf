@@ -21,9 +21,9 @@ missionNamespace setVariable ['QS_evacPosition_2',_smPos,TRUE];
 ['QS_IA_TASK_SM_0'] call (missionNamespace getVariable 'BIS_fnc_deleteTask');
 if (_type isEqualTo 0) exitWith {
 	['playMusic','EventTrack02_F_Curator'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
-	_failedText = parseText "<t align='center'><t size='2.2'>Side Mission</t><br/><t size='1.5' color='#b60000'>FAILED</t><br/>____________________<br/>
-		You'll have to do better than that next time!<br/><br/><br/>Focus on the main objective for now; we'll relay the bad news to HQ, with some luck we'll have another objective lined up. 
-		We'll get back to you in 15 - 30 minutes.</t>";
+	_failedText = parseText "<t align='center'><t size='2.2'>支线任务</t><br/><t size='1.5' color='#b60000'>失败</t><br/>____________________<br/>
+		你们下次必须做得更好！<br/><br/><br/>现在专注于主要作战区域吧！
+		下次任务会在一段时间后分配。</t>";
 	['hint',_failedText] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 };
 if (_type isEqualTo 1) then {
@@ -42,7 +42,7 @@ if (_type isEqualTo 1) then {
 	};
 	private _isArmedAirEnabled = missionNamespace getVariable ['QS_armedAirEnabled',FALSE];
 	if ((random 1) < 0.25) exitWith {
-		['Reward',['No reward available']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['Reward',['奖励你个锤子']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 	};
 	_rewardVeh = objNull;
 	if ((count (missionNamespace getVariable 'QS_smReward_array')) > 2) then {
@@ -1250,7 +1250,7 @@ if (_type isEqualTo 1) then {
 	_newRewardArray deleteAt (_newRewardArray find _reward);
 	missionNamespace setVariable ['QS_smReward_array',_newRewardArray,FALSE];
 	_pic = getText (configfile >> 'CfgVehicles' >> _rewardType >> 'editorPreview');
-	_completeText = parseText format ["<t align='center'><t size='2.2'>Side Mission</t><br/><t size='1.5' color='#08b000'>COMPLETE</t><br/>____________________<br/>Fantastic job, lads! The OPFOR stationed on the island won't last long if you keep that up!<br/><br/>We've given you %1 to help with the fight.<br/> <img size='5' image='%2'/> <br/><br/>You'll find it at base.</t>",_rewardText,_pic];
+	_completeText = parseText format ["<t align='center'><t size='2.2'>支线任务</t><br/><t size='1.5' color='#08b000'>成功</t><br/>____________________<br/>Fantastic job, lads! The OPFOR stationed on the island won't last long if you keep that up!<br/><br/>We've given you %1 to help with the fight.<br/> <img size='5' image='%2'/> <br/><br/>You'll find it at base.</t>",_rewardText,_pic];
 	//['hintSilent',_completeText] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
-	['Reward',[format ['Your team received %1!',_rewardText]]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+	['Reward',[format ['团队奖励：%1！',_rewardText]]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 };

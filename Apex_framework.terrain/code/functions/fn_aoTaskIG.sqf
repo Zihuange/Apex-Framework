@@ -307,17 +307,17 @@ private _taskSucceeded = FALSE;
 private _incapacitated = FALSE;
 private _mine = objNull;
 _taskID = 'QS_GRID_TASK_IG_1';
-private _description = 'A high-value target carrying sensitive intel has been located.<br/><br/>Move in, neutralize him and secure the intel.<br/><br/>This mission must be executed carefully and with speed. If he detects our presence in the area he will attempt to destroy the intel. Also, the intel device he has operates with biometric authorization. If his heart stops, it will self-destruct after a short time.';
+private _description = (localize 'STR_QS_aoSM_taskIGdesc');
 if (_sentriesEnabled) then {
-	_description = _description + '<br/><br/>Satellite data appears to show he has a security detail with him.';
+	_description = _description + (localize 'STR_QS_aoSM_taskIGsentries');
 };
 [
 	_taskID,
 	TRUE,
 	[
 		_description,
-		'Intel',
-		'Intel'
+		(localize 'STR_QS_aoSM_taskIGtitle'),
+		(localize 'STR_QS_aoSM_taskIGmarker')
 	],
 	_nearBuildingPosition,
 	'CREATED',
@@ -327,7 +327,7 @@ if (_sentriesEnabled) then {
 	'kill',
 	TRUE
 ] call (missionNamespace getVariable 'BIS_fnc_setTask');
-['GRID_IG_UPDATE',['Side Task','Secure Intel (Guerilla)']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+['GRID_IG_UPDATE',[(localize 'STR_QS_aoSM_task'),(localize 'STR_QS_aoSM_secureIG')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 [_taskID,['kill','','']] call (missionNamespace getVariable 'QS_fnc_taskSetCustomData');
 for '_x' from 0 to 1 step 0 do {
 	_serverTime = serverTime;
@@ -336,7 +336,7 @@ for '_x' from 0 to 1 step 0 do {
 			_taskSucceeded = TRUE;
 		} else {
 			if ((!((_objUnit targets [TRUE,_targetsRadius]) isEqualTo [])) || (!(((units _sentryGrp) findIf {((alive _x) && (!((_x targets [TRUE,_targetsRadius]) isEqualTo [])))}) isEqualTo -1))) then {
-				['GRID_IG_UPDATE',['Side Task','Enemy has detected our presence']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+				['GRID_IG_UPDATE',[(localize 'STR_QS_aoSM_task'),(localize 'STR_QS_aoSM_detected')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 				_enemyDetected = TRUE;
 				_sentryGrp setSpeedMode 'FULL';
 				_sentryGrp setBehaviour 'COMBAT';
@@ -380,10 +380,10 @@ for '_x' from 0 to 1 step 0 do {
 		};
 	};
 	if (_taskSucceeded) exitWith {
-		['GRID_IG_UPDATE',['Side Task Complete','Intel secured']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['GRID_IG_UPDATE',[(localize 'STR_QS_aoSM_taskComplete'),(localize 'STR_QS_aoSM_intelSecured')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 	};		
 	if (_taskFailed) exitWith {
-		['GRID_IG_UPDATE',['Side Task Failed','Intel lost']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['GRID_IG_UPDATE',[(localize 'STR_QS_aoSM_taskFailed'),(localize 'STR_QS_aoSM_intelLost')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 	};
 	uiSleep 3;
 };
