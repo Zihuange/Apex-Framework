@@ -691,7 +691,7 @@ if (_case < 40) exitWith {
 		if (isDedicated) then {
 			if (_rxID isEqualTo _cid) then {
 				diag_log format ['***** ADMIN ***** %1 ***** %2 kicked for AFK timeout *****',time,_profileName];
-				['systemChat',(format ['Robocop kicked %1 for AFK timeout.',_profileName])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+				['systemChat',(format ['%1 已因挂机被踢出',_profileName])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 				([] call (uiNamespace getVariable 'QS_fnc_serverCommandPassword')) serverCommand (format ['#kick %1 AFK timeout',_cid]);
 			};
 		};
@@ -747,7 +747,7 @@ if (_case < 40) exitWith {
 				];
 				_vehicle setDir _direction;
 				_vehicle setPos _position;
-				_text = format ['%1 has inflated a(n) %2 at grid %3',_clientPN,(getText (configFile >> 'CfgVehicles' >> (_array # 0) >> 'displayName')),(mapGridPosition _unit)];
+				_text = format ['%1 在地图坐标 %3 为一个 %2 充气',_clientPN,(getText (configFile >> 'CfgVehicles' >> (_array # 0) >> 'displayName')),(mapGridPosition _unit)];
 				['systemChat',_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 				if (surfaceIsWater _position) then {
 					_vehicle setPosASL _position;
@@ -884,7 +884,7 @@ if (_case < 60) exitWith {
 			if (!isNil {missionNamespace getVariable 'QS_staff_requestBaseCleanup_time'}) then {
 				if (time > (missionNamespace getVariable 'QS_staff_requestBaseCleanup_time')) then {
 					missionNamespace setVariable ['QS_staff_requestBaseCleanup_time',(time + 300),FALSE];
-					diag_log format ['%1 (%2) (staff) has initiated base cleanup',((_this # 1) # 0),((_this # 1) # 1)];
+					diag_log format ['%1 (%2) (管理员) 已启动基地清理',((_this # 1) # 0),((_this # 1) # 1)];
 					0 = 0 spawn {
 						_baseMarker = markerPos 'QS_marker_base_marker';
 						{
@@ -1035,7 +1035,7 @@ if (_case < 60) exitWith {
 			];
 			[(missionNamespace getVariable 'QS_AO_HQ_flag'),WEST,'',FALSE,objNull,1] call (missionNamespace getVariable 'QS_fnc_setFlag');
 			['QS_IA_TASK_AO_2'] call (missionNamespace getVariable 'BIS_fnc_deleteTask');
-			['sideChat',[WEST,'HQ'],(format ['Enemy commander captured by %1!',_name])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+			['sideChat',[WEST,'HQ'],(format ['敌军指挥官已被 %1 俘虏！',_name])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		};
 	};
 	/*/===== Remote Add To Remains Collector/*/
@@ -1068,7 +1068,7 @@ if (_case < 70) exitWith {
 				FALSE
 			];
 			((_array # 2) # 0) addScore ((_array # 2) # 1);
-			diag_log format ['***** LEADERBOARD ***** %1 (%2) incarcerated a prisoner *****',_name,_puid];	
+			diag_log format ['***** 排行榜 ***** %1 (%2) 将一名俘虏收押 *****',_name,_puid];	
 		};
 	};
 	/*/===== Add Ear/*/
@@ -1257,7 +1257,7 @@ if (_case < 80) exitWith {
 			};
 			comment 'Communicate here';
 			['QS_virtualSectors_sub_1_task'] call (missionNamespace getVariable 'BIS_fnc_deleteTask');
-			['SC_SUB_COMPLETED',['','Datalink secured']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+			['SC_SUB_COMPLETED',['','数据终端已夺取']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 			if (missionNamespace getVariable ['QS_virtualSectors_active',FALSE]) then {
 				private ['_QS_virtualSectors_scoreSides','_scoreEast','_scoreToRemove'];
 				_QS_virtualSectors_scoreSides = missionNamespace getVariable ['QS_virtualSectors_scoreSides',[0,0,0,0,0]];
@@ -1331,7 +1331,7 @@ if (_case < 80) exitWith {
 				_marker1 setMarkerShapeLocal 'ICON';
 				_marker1 setMarkerTypeLocal 'mil_dot';
 				_marker1 setMarkerColorLocal 'ColorWEST';
-				_marker1 setMarkerTextLocal (format ['%1Supply Depot',(toString [32,32,32])]);
+				_marker1 setMarkerTextLocal (format ['%1敌军补给仓库',(toString [32,32,32])]);
 				_marker1 setMarkerSizeLocal [0.5,0.5];
 				_marker1 setMarkerPosLocal (missionNamespace getVariable ['QS_virtualSectors_sd_position',[-1000,-1000,0]]);
 				_marker1 setMarkerAlpha 1;
@@ -1344,7 +1344,7 @@ if (_case < 80) exitWith {
 			};		
 			comment 'Communicate here';
 			['QS_virtualSectors_sub_3_task'] call (missionNamespace getVariable 'BIS_fnc_deleteTask');
-			['SC_SUB_COMPLETED',['','Supply Depot secured']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+			['SC_SUB_COMPLETED',['','补给仓库已夺取']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		};
 	};
 	/*/===== CAS spawner/*/
@@ -1499,7 +1499,7 @@ if (_case < 90) exitWith {
 			if (!(isObjectHidden _entity)) then {
 				_entity hideObjectGlobal TRUE;
 			};
-			_text = format ['%1 (%2) located intel',_profileName,_groupID];
+			_text = format ['%1 (%2) 已确定情报位置',_profileName,_groupID];
 			_text remoteExec ['systemChat',-2];
 			if ((_entity getVariable ['QS_intel_marker',-1]) isNotEqualTo -1) then {
 				for '_x' from 0 to 1 step 1 do {
@@ -1513,7 +1513,7 @@ if (_case < 90) exitWith {
 		if (!(isObjectHidden _entity)) then {
 			_entity hideObjectGlobal TRUE;
 			_entity enableSimulationGlobal FALSE;
-			_text = format ['%1 (%2) located intel',_profileName,_groupID];
+			_text = format ['%1 (%2) 已确定情报位置',_profileName,_groupID];
 			_text remoteExec ['systemChat',-2];
 			[(_entity getVariable ['QS_entity_assocPos',(position _entity)]),_clientOwner] spawn (missionNamespace getVariable 'QS_fnc_aoTaskIDAP');
 		};
@@ -1523,7 +1523,7 @@ if (_case < 90) exitWith {
 		if (!(isObjectHidden _entity)) then {
 			_entity hideObjectGlobal TRUE;
 			_entity enableSimulationGlobal FALSE;
-			_text = format ['%1 (%2) located intel',_profileName,_groupID];
+			_text = format ['%1 (%2) 已确定情报位置',_profileName,_groupID];
 			_text remoteExec ['systemChat',-2];
 			[(_entity getVariable ['QS_entity_assocPos',(getPosATL _entity)]),_clientOwner] spawn (missionNamespace getVariable 'QS_fnc_aoTaskIG');
 		};
@@ -1620,13 +1620,13 @@ if (_case < 90) exitWith {
 		if (!(isObjectHidden _entity)) then {
 			_entity hideObjectGlobal TRUE;
 			_entity enableSimulationGlobal FALSE;
-			_text = format ['%1 (%2) located intel',_profileName,_groupID];
+			_text = format ['%1 (%2) 已确定情报位置',_profileName,_groupID];
 			_text remoteExec ['systemChat',-2];
 			[(getPosATL _entity)] spawn (missionNamespace getVariable 'QS_fnc_aoTaskKill');
 		};
 	};
 	if (_case isEqualTo 85) then {
-		['GRID_IDAP_UPDATE',['Area Of Operations','Objective failed<br/>No civilian casualties']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['GRID_IDAP_UPDATE',['主线战区','目标失败<br/>No civilian casualties']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		'QS_marker_grid_civState' setMarkerText (format ['%1No civilian casualties (failed)',(toString [32,32,32])]);
 		'QS_marker_grid_civState' setMarkerColor 'ColorRED';
 	};

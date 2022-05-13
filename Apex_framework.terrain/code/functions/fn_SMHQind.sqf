@@ -25,9 +25,9 @@ private [
 ];
 
 _c4Messages = [
-	"Weapons transfer secured. The charge has been set! 15 seconds until detonation.",
-	"Launchers secured. The explosives have been set! 15 seconds until detonation.",
-	"Weapons secured. The charge is planted! 15 seconds until detonation."
+	"武器已安全转移。摧毁指令已发出！ 15 秒后引爆，所有单位迅速撤离！",
+	"发射器已确保，炸药已安放！ 15 秒后引爆，迅速撤离！",
+	"武器已安全转移。摧毁指令已发出！ 15 秒后引爆，所有单位迅速撤离！"
 ];
 _c4Message = selectRandom _c4Messages;
 
@@ -116,15 +116,15 @@ _fuzzyPos = [((_flatPos select 0) - 300) + (random 600),((_flatPos select 1) - 3
 	_x setMarkerPos _fuzzyPos;
 	_x setMarkerAlpha 1;
 } count ['QS_marker_sideMarker','QS_marker_sideCircle'];
-'QS_marker_sideMarker' setMarkerText (format ['%1Secure AA Launchers',(toString [32,32,32])]);
+'QS_marker_sideMarker' setMarkerText (format ['%1搜索敌军单兵防空导弹',(toString [32,32,32])]);
 
 [
 	'QS_IA_TASK_SM_0',
 	TRUE,
 	[
-		'Intercept the weapons transfer! Enemy supply trucks have stopped in this area to transfer Anti-Air launchers. Intercept and secure them! This objective is not accurately marked.',
-		'Secure AA Launchers',
-		'Secure AA Launchers'
+		'阻止敌人武器转移，敌军运输卡车已经进入标记区域范围准备转移武器箱。 阻止敌人转移防空导弹并确认夺取武器箱！ 目标位于标记范围内某处。',
+		'阻止敌军运输便携式防空导弹',
+		'阻止敌军运输便携式防空导弹'
 	],
 	(markerPos 'QS_marker_sideMarker'),
 	'CREATED',
@@ -135,9 +135,9 @@ _fuzzyPos = [((_flatPos select 0) - 300) + (random 600),((_flatPos select 1) - 3
 	TRUE
 ] call (missionNamespace getVariable 'BIS_fnc_setTask');
 
-_briefing = parseText format ["<t align='center'><t size='2.2'>New Side Mission</t><br/><t size='1.5' color='#00B2EE'>Secure Launchers</t><br/>____________________<br/>Rogue AAF are supplying OPFOR with advanced weapons and anti-air launchers.<br/><br/>We've located the transfer location. Get over there quick before they get away, and secure those launchers.</t>"];
+_briefing = parseText format ["<t align='center'><t size='2.2'>支线任务</t><br/><t size='1.5' color='#00B2EE'>搜索敌军单兵防空导弹</t><br/>____________________<br/>我方情报人员获悉敌军正在向前线运输一批防空导弹。<br/><br/>我们已经找到了运输中转地点的大致位置，在敌军转移之前迅速到达那里。找到并清点导弹数量，确认无遗漏后摧毁单兵防空导弹。</t>"];
 //['hint',_briefing] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
-['NewSideMission',['Secure Launchers']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+['NewSideMission',['搜索敌军单兵防空导弹']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 	
 /*/-------------------- [ CORE LOOPS ] ------------------------ [ CORE LOOPS ]/*/
 
@@ -150,7 +150,7 @@ for '_x' from 0 to 1 step 0 do {
 
 	if (!alive _sideObj) exitWith {
 		missionNamespace setVariable ['QS_sideMissionUp',FALSE,TRUE];
-		['sideChat',[WEST,'HQ'],'Objective destroyed, mission FAILED!'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['sideChat',[WEST,'HQ'],'目标被提前破坏，任务失败！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		[0,_flatPos] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
 		{
 			_x setMarkerPos [-5000,-5000,0];

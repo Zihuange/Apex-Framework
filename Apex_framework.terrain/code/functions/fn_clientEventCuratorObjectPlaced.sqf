@@ -65,7 +65,7 @@ if (_object isKindOf 'Man') exitWith {
 					_killer = _this select 1;
 					if (!isNull _killer) then {
 						if (isPlayer _killer) then {
-							_text = format ['%1 has murdered a civilian!',(name _killer)];
+							_text = format ['%1 谋害了一名平民！',(name _killer)];
 							['systemChat',_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 						};
 					};
@@ -97,10 +97,10 @@ if (_object isKindOf 'Man') exitWith {
 			[[_object]] spawn (missionNamespace getVariable 'QS_fnc_serverTracers');
 			if (['recon',_type,FALSE] call (missionNamespace getVariable 'QS_fnc_inString')) then {
 				if ((side _object) isEqualTo EAST) then {
-					_object addHeadgear 'H_HelmetSpecO_blk';
+					_object addHeadgear '';
 				};
 				if ((random 1) > 0.5) then {
-					_object addPrimaryWeaponItem (selectRandom ['optic_Nightstalker','optic_tws']);
+					_object addPrimaryWeaponItem (selectRandom ['','']);
 				};
 			};
 			if ((['O_V_',_type,FALSE] call (missionNamespace getVariable 'QS_fnc_inString')) || {(['O_V_',_type,FALSE] call (missionNamespace getVariable 'QS_fnc_inString'))}) then {
@@ -111,7 +111,7 @@ if (_object isKindOf 'Man') exitWith {
 			};
 		};
 	};
-	if (_typeL in ['c_soldier_vr_f','b_soldier_vr_f','o_soldier_vr_f','i_soldier_vr_f','b_protagonist_vr_f','o_protagonist_vr_f','i_protagonist_vr_f']) then {
+	if (false) then {
 		50 cutText [(format ['Object %1 not configured for this scenario',(getText (configFile >> 'CfgVehicles' >> _type >> 'displayName'))]),'PLAIN'];
 		[17,_object] remoteExec ['QS_fnc_remoteExec',2,FALSE];
 	};
@@ -223,15 +223,7 @@ if ((_object isKindOf 'LandVehicle') || {(_object isKindOf 'Air')} || {(_object 
 };
 if (isNull _object) exitWith {};
 if (['Module',_type,FALSE] call (missionNamespace getVariable 'QS_fnc_inString')) then {
-	if (_typeL in [
-		'modulepostprocess_f','moduleskiptime_f','moduletimemultiplier_f','moduleweather_f',
-		'modulebootcampstage_f','modulehint_f','modulediary_f','modulecountdown_f','moduleendmission_f',
-		'modulerespawntickets_f','modulemissionname_f','modulerespawninventory_f','modulerespawnpositionwest_f',
-		'modulerespawnpositionciv_f','modulerespawnpositionguer_f','modulerespawnpositioneast_f','modulevehiclerespawnpositionwest_f',
-		'modulevehiclerespawnpositionciv_f','modulevehiclerespawnpositionguer_f','modulevehiclerespawnpositioneast_f',
-		'moduleobjectiveattackdefend_f','moduleobjectivesector_f','moduleobjectiveracecp_f','moduleobjectiveracefinish_f',
-		'moduleobjectiveracestart_f','moduleanimalsbutterflies_f'
-	]) then {
+	if (false) then {
 		[17,_object] remoteExec ['QS_fnc_remoteExec',2,FALSE];
 		closeDialog 0;
 		50 cutText [format ['Module %1 not configured for this scenario',(getText (configFile >> 'CfgVehicles' >> _type >> 'displayName'))],'PLAIN'];

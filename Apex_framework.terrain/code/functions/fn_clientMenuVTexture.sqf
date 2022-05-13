@@ -79,7 +79,7 @@ if (_type isEqualTo 'Select') then {
 				};
 			};
 			player setVariable ['QS_ClientVTexture',[objNull,(getPlayerUID player),[],(time + 5)],TRUE];
-			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,7.5,-1,'Vehicle texture reset, you can now texture a different vehicle. You must first reset that vehicle before texturing another!',[],-1,TRUE,'Vehicle Skin',TRUE];
+			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,7.5,-1,'载具皮肤已重置，现在你可以为另一个载具选择皮肤了。 同时只能为一个载具设置皮肤！',[],-1,TRUE,'Vehicle Skin',TRUE];
 		} else {
 			if (_supporterAccess <= _supporterLevel) then {
 				if ((typeOf _v) in _vehicleTypes) then {
@@ -103,23 +103,23 @@ if (_type isEqualTo 'Select') then {
 									} forEach _textures;
 									player setVariable ['QS_ClientVTexture',[_v,(getPlayerUID player),(getObjectTextures _v),(time + 2)],TRUE];
 									_v setVariable ['QS_ClientVTexture_owner',(getPlayerUID player),TRUE];
-									_text = format ['Vehicle Texture Set: %1<br/>Author: %2',_displayName,_author];
+									_text = format ['载具皮肤已设置为：%1<br/>作者：%2',_displayName,_author];
 									(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,7.5,-1,_text,[],-1,TRUE,'Vehicle Skin',FALSE];
 								} else {
-									(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,7.5,-1,'Please wait ... Can only set a vehicle texture every 2 seconds',[],-1,TRUE,'Vehicle Skin',FALSE];
+									(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,7.5,-1,'请稍等……每次载具皮肤设置必须间隔至少2秒！',[],-1,TRUE,'Vehicle Skin',FALSE];
 								};
 							} else {
-								(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,7.5,-1,'You must be at base to re-skin your vehicle!',[],-1,TRUE,'Vehicle Skin',FALSE];
+								(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,7.5,-1,'你必须在基地范围内选择载具皮肤！',[],-1,TRUE,'Vehicle Skin',FALSE];
 							};
 						} else {
-							_text = format ['You already have a textured vehicle. A(n) %1 at grid %2.',(getText (configFile >> 'CfgVehicles' >> (typeOf ((player getVariable 'QS_ClientVTexture') select 0)) >> 'displayName')),(mapGridPosition (getPosWorld ((player getVariable 'QS_ClientVTexture') select 0)))];
+							_text = format ['你已经给在坐标 %2 的 %1 设置了皮肤',(getText (configFile >> 'CfgVehicles' >> (typeOf ((player getVariable 'QS_ClientVTexture') select 0)) >> 'displayName')),(mapGridPosition (getPosWorld ((player getVariable 'QS_ClientVTexture') select 0)))];
 							(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,10,-1,_text,[],-1,TRUE,'Vehicle Skin',FALSE];
 						};
 					} else {
-						(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,7.5,-1,'You must be the vehicle commander/driver/owner.',[],-1,TRUE,'Vehicle Skin',FALSE];
+						(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,7.5,-1,'你必须是载具的驾驶员/指挥官/拥有者',[],-1,TRUE,'Vehicle Skin',FALSE];
 					};
 				} else {
-					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,12,-1,'Incorrect vehicle type. Vehicle texture not set. You must be inside the desired vehicle, and be the vehicle commander/driver/owner.',[],-1,TRUE,'Vehicle Skin',TRUE];
+					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,12,-1,'所选皮肤与载具种类无匹配，无法加载皮肤！',[],-1,TRUE,'Vehicle Skin',TRUE];
 				};
 			} else {
 				_text = format ['Supporter level required: %1<br/>Your supporter level: %2<br/>Vehicle Texture not set.',_supporterAccess,_supporterLevel];

@@ -56,7 +56,7 @@ if (_key in ((actionKeys 'Throw') + (actionKeys 'Put'))) then {
 	if (isNull (objectParent player)) then {
 		if (!(unitIsUav cameraOn)) then {
 			if ((cameraOn distance (markerPos 'QS_marker_base_marker')) < 300) then {
-				50 cutText ['Do not throw grenades near base, please!','PLAIN DOWN'];
+				50 cutText ['不要在基地内投掷手雷！','PLAIN DOWN'];
 				_c = TRUE;
 			};
 		};
@@ -69,7 +69,7 @@ if (_key in (actionKeys 'PushToTalk')) then {
 				if (!((getPlayerUID player) in (['ALL'] call (missionNamespace getVariable 'QS_fnc_whitelist')))) then {
 					if (!(player getUnitTrait 'QS_trait_HQ')) then {
 						setCurrentChannel 5;
-						50 cutText ['Use General channel for general voice communications. Press [Home] >> [Comm-Link] >> [Radio Management] to subscribe.','PLAIN DOWN'];
+						50 cutText ['使用常规频道进行一般通讯。 按 [Home] >> [通讯菜单] >> [无线电管理] 来兼此频道','PLAIN DOWN'];
 						_c = TRUE;
 					};
 				};
@@ -81,7 +81,7 @@ if (_key in (actionKeys 'PushToTalk')) then {
 								if (!(player getUnitTrait 'QS_trait_HQ')) then {
 									if (!((getPlayerUID player) in (['ALL'] call (missionNamespace getVariable 'QS_fnc_whitelist')))) then {
 										setCurrentChannel 5;
-										50 cutText ['Only Pilots and UAV Operator can transmit voice on Aircraft channel','PLAIN DOWN'];
+										50 cutText ['只有飞行员和UAV操作员可以使用航空频道','PLAIN DOWN'];
 										_c = TRUE;
 									};
 								};
@@ -116,7 +116,7 @@ if (_key in ((actionKeys 'PersonView') + (actionKeys 'TacticalView') + (actionKe
 			if (!(cameraView in ['INTERNAL','GUNNER'])) then {
 				if ((lifeState player) isNotEqualTo 'INCAPACITATED') then {
 					if ((missionNamespace getVariable ['QS_missionConfig_aoType','CLASSIC']) in ['CLASSIC','SC','GRID']) then {
-						50 cutText ['3rd Person disabled for OPFOR players','PLAIN DOWN',0.5];
+						50 cutText ['OPFOR玩家禁止使用第三人称','PLAIN DOWN',0.5];
 						player switchCamera 'INTERNAL';
 						_c = TRUE;
 					};
@@ -135,7 +135,7 @@ if (_key in (actionKeys 'AutoHover')) then {
 					player setVariable ['QS_client_lastAutoHoverMsg',(diag_tickTime + 5),FALSE];
 					_arrayToSend = (crew _v) select {((_x isNotEqualTo player) && (alive _x) && (isPlayer _x))};
 					if (_arrayToSend isNotEqualTo []) then {
-						[63,[5,[(format ['Your pilot ( %1 ) has turned on autohover!',profileName]),'PLAIN DOWN',0.3]]] remoteExec ['QS_fnc_remoteExec',_arrayToSend,FALSE];
+						[63,[5,[(format ['你的飞行员 ( %1 ) 已打开自动悬停功能！',profileName]),'PLAIN DOWN',0.3]]] remoteExec ['QS_fnc_remoteExec',_arrayToSend,FALSE];
 					};
 				};
 			};
@@ -196,17 +196,17 @@ if (_ctrl) then {
 							private _order = '';
 							if (_key isEqualTo 0x4C) exitWith {
 								player playActionNow (selectRandom ['gestureNo']);
-								50 cutText ['"No"','PLAIN DOWN',0.1];
+								50 cutText ['"否认"','PLAIN DOWN',0.1];
 							};
 							if (_key isEqualTo 0x4B) exitWith {
 								player playActionNow (selectRandom ['gestureGo']);
 								50 cutText ['"Go"','PLAIN DOWN',0.1];
-								_order = '"Go!" - (Group order)';
+								_order = '"Go！" - (Group order)';
 							};
 							if (_key isEqualTo 0x47) exitWith {
 								player playActionNow (selectRandom ['gesturePoint','gestureAdvance']);
-								50 cutText ['"Advance"','PLAIN DOWN',0.1];
-								_order = '"Advance!" - (Group order)';
+								50 cutText ['"前进"','PLAIN DOWN',0.1];
+								_order = '"前进！" - (Group order)';
 							};
 							if (_key isEqualTo 0x48) exitWith {
 								player playActionNow (selectRandom ['gestureNod']);
@@ -214,17 +214,17 @@ if (_ctrl) then {
 							};
 							if (_key isEqualTo 0x49) exitWith {
 								player playActionNow (selectRandom ['gestureFreeze']);
-								50 cutText ['"Freeze"','PLAIN DOWN',0.1];
-								_order = '"Hold!" - (Group order)';
+								50 cutText ['"别动"','PLAIN DOWN',0.1];
+								_order = '"停下！" - (Group order)';
 							};
 							if (_key isEqualTo 0x4D) exitWith {
 								player playActionNow (selectRandom ['gestureHi']);
-								50 cutText ['"Hi"','PLAIN DOWN',0.1];
+								50 cutText ['"你好"','PLAIN DOWN',0.1];
 							};
 							if (_key isEqualTo 0x51) exitWith {
 								player playActionNow (selectRandom ['gestureCeaseFire']);
-								50 cutText ['"Ceasefire"','PLAIN DOWN',0.1];
-								_order = '"Ceasefire!" - (Group order)';
+								50 cutText ['"停火"','PLAIN DOWN',0.1];
+								_order = '"停火！" - (Group order)';
 							};
 							if (isNull (objectParent player)) then {
 								if ((count (units (group player))) > 1) then {
@@ -232,7 +232,7 @@ if (_ctrl) then {
 										if (_order isNotEqualTo '') then {
 											_arrayToSend = (units (group player)) select {(((_x distance player) < 45) && (alive _x) && ((lifeState _x) in ['HEALTHY','INJURED']) && (isPlayer _x))};
 											if (_arrayToSend isNotEqualTo []) then {
-												[63,[5,[(format ['%1 (Group leader) - %2',profileName,_order]),'PLAIN DOWN',0.333]]] remoteExec ['QS_fnc_remoteExec',_arrayToSend,FALSE];
+												[63,[5,[(format ['%1 (队长) - %2',profileName,_order]),'PLAIN DOWN',0.333]]] remoteExec ['QS_fnc_remoteExec',_arrayToSend,FALSE];
 											};
 										};
 									};
@@ -254,10 +254,10 @@ if (_key isEqualTo 15) then {
 				player setVariable ['QS_pilot_rappellSafety',TRUE,FALSE];
 				if (isNil {(vehicle player) getVariable 'QS_rappellSafety'}) then {
 					(vehicle player) setVariable ['QS_rappellSafety',TRUE,TRUE];
-					50 cutText ['Fastrope disabled','PLAIN DOWN',1];
+					50 cutText ['索降系统已关闭','PLAIN DOWN',1];
 				} else {
 					(vehicle player) setVariable ['QS_rappellSafety',nil,TRUE];
-					50 cutText ['Fastrope enabled','PLAIN DOWN',1];
+					50 cutText ['索降系统已启用','PLAIN DOWN',1];
 				};
 				0 spawn {
 					uiSleep 4.5;

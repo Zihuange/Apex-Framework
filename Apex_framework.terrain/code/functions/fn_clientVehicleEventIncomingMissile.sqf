@@ -65,28 +65,28 @@ if (_vehicle isKindOf 'LandVehicle') then {
 private _relDir = _vehicle getRelDir _shooter;
 private _relDirText = '';
 if ((_relDir > 337.5) || {(_relDir <= 22.5)}) then {
-	_relDirText = '( Front )';
+	_relDirText = '( 前方 )';
 } else {
 	if ((_relDir > 22.5) && (_relDir <= 67.5)) then {
-		_relDirText = '( Front Right )';
+		_relDirText = '( 右前方 )';
 	} else {
 		if ((_relDir > 67.5) && (_relDir <= 112.5)) then {
-			_relDirText = '( Right )';
+			_relDirText = '( 右方 )';
 		} else {
 			if ((_relDir > 112.5) && (_relDir <= 157.5)) then {
-				_relDirText = '( Rear Right )';
+				_relDirText = '( 右后方 )';
 			} else {
 				if ((_relDir > 157.5) && (_relDir <= 202.5)) then {
-					_relDirText = '( Rear )';
+					_relDirText = '( 后方 )';
 				} else {
 					if ((_relDir > 202.5) && (_relDir <= 247.5)) then {
-						_relDirText = '( Rear Left )';
+						_relDirText = '( 左后方 )';
 					} else {
 						if ((_relDir > 247.5) && (_relDir <= 292.5)) then {
-							_relDirText = '( Left )';
+							_relDirText = '( 左方 )';
 						} else {
 							if ((_relDir > 292.5) && (_relDir <= 337.5)) then {
-								_relDirText = '( Front Left )';
+								_relDirText = '( 左前方 )';
 							};
 						};
 					};
@@ -95,7 +95,7 @@ if ((_relDir > 337.5) || {(_relDir <= 22.5)}) then {
 		};
 	};
 };
-50 cutText [(format ['Incoming missile! Bearing %1 %2',(round (_vehicle getDir _shooter)),_relDirText]),'PLAIN',0.5];
+50 cutText [(format ['导弹预警！来袭方向：%1 %2',(round (_vehicle getDir _shooter)),_relDirText]),'PLAIN',0.5];
 0 spawn {
 	uiSleep 2;
 	player setVariable ['QS_incomingMissile_active',nil,FALSE];

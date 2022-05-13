@@ -18,28 +18,28 @@ License Notes:
 
 __________________________________________________________/*/
 
-/*/========== Create Diary Subjects (this is the order they appear in the map tabs)/*/
+/*/========== Create Diary Subjects (this is the order they appear in the map tabs)-创建日记主题 (这是它们在地图标签中显示的顺序)/*/
 
 {
 	player createDiarySubject _x;
 } forEach [
-	['QS_diary_hotkeys','Key Bindings'],
-	['QS_diary_rules','Rules'],
-	['QS_diary_radio','Radio Channels'],
-	['QS_diary_roles','Roles'],
-	['QS_diary_mods','Mods'],
+	['QS_diary_hotkeys','按键绑定'],
+	['QS_diary_rules','规则'],
+	['QS_diary_radio','无线电频道'],
+	['QS_diary_roles','角色'],
+	['QS_diary_mods','模组'],
 	['QS_diary_teamspeak','Teamspeak'],
-	['QS_diary_leaderboards','Leaderboards'],
-	['QS_diary_gitmo','Gitmo'],
+	['QS_diary_leaderboards','排行榜'],
+	['QS_diary_gitmo','监狱'],
 	['QS_diary_fobs','FOBs'],
-	['QS_diary_revive','Revive'],
-	['QS_diary_inventory','Inventory']
+	['QS_diary_revive','医疗系统'],
+	['QS_diary_inventory','载具货箱']
 ];
 
-/*/========== Create Diary Records/*/
+/*/========== Create Diary Records-创建日记记录/*/
 
 if ((missionNamespace getVariable ['QS_missionConfig_aoType','']) isEqualTo 'GRID') then {
-	_description = format ['After the war between NATO and CSAT ended in an uneasy truce, an opportunistic insurgency sponsored by surrounding nations crushed local militias and moved in to fill the power vacuum.<br/><br/>They have been destabilizing the region and threatening to pull NATO and CSAT back into open conflict on %1.<br/><br/>Moving around using an old wartime tunnel network, they have thus far thwarted low-cost attempts to destroy the insurgency with drone warfare.<br/><br/>In a last ditch effort, NATO has deployed boots on the ground to root out the determined enemy and bring peace to %1.',worldName];
+	_description = format ['NATO在 %1 的驻军遭到了CSAT袭击，敌军认为我们的力量正在衰弱，打算乘虚而入。<br/><br/>但是很明显他们想错了！<br/><br/>我们不会放弃 %1！',worldName];
 	player createDiaryRecord [
 		'Diary',
 		[
@@ -49,58 +49,58 @@ if ((missionNamespace getVariable ['QS_missionConfig_aoType','']) isEqualTo 'GRI
 	];
 };
 
-/*/================================= RADIO CHANNELS/*/
+/*/================================= RADIO CHANNELS-无线电频道/*/
 
 player createDiaryRecord [
 	'QS_diary_radio',
 	[
-		'General channel',
-		'Subscribe to the General channel for Voice communications.<br/><br/>Transmission of music and other non-voice sounds is not permitted on this channel.<br/><br/>Verbal abuse is, of course, not tolerated.'
+		'General channel:常规频道',
+		'通常广泛使用的语音通信常规频道。<br/><br/>严禁在此频道播放音乐或做出其他扰乱游戏秩序的行为！'
 	]
 ];
 player createDiaryRecord [
 	'QS_diary_radio',
 	[
-		'Platoon channels',
-		'Join a Platoon channel (Alpha, Bravo or Charlie) for inter-squad communications.<br/><br/>You can only be subscribed to one Platoon channel at a time.'
+		'Platoon channels:班排组频道',
+		'加入班排频道 (Alpha, Bravo or Charlie) 进行小队间通信。'
 	]
 ];
 player createDiaryRecord [
 	'QS_diary_radio',
 	[
-		'AO channels',
-		'If you are subscribed to these channels, you will automatically be added to these channels when within 2km of the Primary AO, and 1km of the Secondary AO (side mission). When you leave this area, you will no longer be able to receive or transmit on it.'
+		'AO channels:战区频道',
+		'如果你兼听了这些频道, 在主作战区域的2km范围内 和 次要作战区域 (支线任务)的1km范围内,你将自动添加到这些频道。 当你离开该范围时，你将离开该频道。'
 	]
 ];
 player createDiaryRecord [
 	'QS_diary_radio',
 	[
-		'Aircraft channel',
-		'Pilots and UAV Operator are active on this channel.<br/><br/>Currently only Pilots and UAV Operator can transmit voice on this channel.<br/><br/>If you are not Pilot or UAV Operator, you can still listen to this channel, if you are in the Air Traffic Control tower or the TOC (map marker at base).'
+		'Aircraft channel:航空频道',
+		'飞行员和UAV无人机操作员使用的频道。<br/><br/>目前只有飞行员、无人机操作员和指挥官可以在此频道上发言。<br/><br/>其他单位可以在航空控制中心兼听此频道。'
 	]
 ];
 player createDiaryRecord [
 	'QS_diary_radio',
 	[
-		'Side channel',
-		'Voice communication is disabled on Side channel<br/><br/>Use General channel to transmit voice to all players on the server.'
+		'Side channel:阵营频道',
+		'阵营频道上禁用语音通信<br/><br/>使用常规频道向服务器上的所有玩家传送语音。'
 	]
 ];
 player createDiaryRecord [
 	'QS_diary_radio',
 	[
-		'Overview',
+		'概述',
 		'Beta v0.9<br/><br/>A number of custom radio channels are available for use in-game.<br/><br/>To access: Press [Home] >> [Comm-Link] >> [Radio Management]<br/><br/>A Radio inventory item is required to transmit voice communications.<br/><br/>Transmission of music or other audio is only permitted over Group, Vehicle and Direct channels (when away from base).<br/><br/>Spamming and generally annoying other players using Voice communications can lead to administrative action.'
 	]
 ];
 
-/*/================================= INVENTORY/*/
+/*/================================= INVENTORY-库存/*/
 
 player createDiaryRecord [
 	'QS_diary_inventory',
 	[
-		'Inventory Editing',
-		'Near the Crate Area and Inventory markers at base, you are able to easily customize the inventory of vehicles and ammo crates'
+		'编辑库存',
+		'你可以在基地地图的货物编辑区自定义车辆和弹药箱的库存（目前有bug）'
 	]
 ];
 
@@ -109,8 +109,8 @@ player createDiaryRecord [
 player createDiaryRecord [
 	'QS_diary_revive',
 	[
-		'Medical Vehicles',
-		'Load incapacitated soldiers into a Medical vehicle (HEMTT Medical, Taru Medical Pod, etc) to revive them.<br/><br/>The vehicle must have sufficient Revive Tickets.<br/>Reviving a player consumes a Revive Ticket.<br/>Revive tickets can be replenished at the Base Service markers.<br/>Revive tickets correspond to number of cargo seats in the vehicle.'
+		'医疗载具',
+		'将陷入昏迷的单位放入医疗载具（例如HEMTT医疗卡车、救护车、Taru医疗舱等）可以让他们恢复意识。<br/><br/>载具必须有足够的医疗票数。<br/>治疗一名玩家消耗一个医疗票数。<br/>在基地载具维护点，可以补充医疗票数。<br/>医疗票数上限等于载具的座位数量。'
 	]
 ];
 
@@ -119,41 +119,41 @@ player createDiaryRecord [
 player createDiaryRecord [
 	'QS_diary_fobs',
 	[
-		'General',
-		(format ['Forward Operating Bases are scattered around %1.<br/><br/>Some services are available from these FOBs, and they are also locations of interest to the enemy.',worldName])
+		'常规',
+		(format ['FOB 意为前线基地，会在 %1 的主要作战区域附近设立。<br/><br/>>FOB可以提供很多帮助，但也有可能遭到敌军攻击。<br/><br/>当某些类型的载具/补给箱位于FOB的半径范围内时，它们可以启动某些服务。',worldName])
 	]
 ];
 
 player createDiaryRecord [
 	'QS_diary_fobs',
 	[
-		'Radar Services',
-		'When the FOB is active and held by your faction, enemy map data and radar data will be available<br/><br/>To interact with the FOBs, there is a laptop inside the main building.<br/><br/>When certain types of vehicles/crates are within a radius of the FOB, they can activate certain services.'
+		'雷达设备',
+		'当FOB处于激活状态时，可以探测敌军位置和雷达数据。<br/><br/>在FOB主建筑内有一个可交互终端用于管理FOB的功能。'
 	]
 ];
 
 player createDiaryRecord [
 	'QS_diary_fobs',
 	[
-		'Respawning',
-		'Respawning is available at FOBs if several conditions are met:<br/><br/>
-		- The FOB must be online and held by your faction<br/>
-		- You must enable your personal FOB respawn. This can be done at the FOB terminal located inside the FOB HQ building<br/>
-		- You are NOT a pilot<br/>
-		- The FOB has more than 0 Respawn Tickets<br/>
-		- You have not respawned there in the past 3 minutes'
+		'重生',
+		'如果满足几个条件则可以在FOB内重生:<br/><br/>
+		- FOB必须被激活<br/>
+		- 玩家必须启用个人FOB重生。（可以在位于FOB主建筑内的FOB终端设置）<br/>
+		- 玩家不是飞行员兵种<br/>
+		- FOB有剩余复活票数<br/>
+		- 距离上一次在FOB重生过去至少3分钟'
 	]
 ];
 
 player createDiaryRecord [
 	'QS_diary_fobs',
 	[
-		'Vehicle Services',
-		'Several vehicle services are available at the FOBs for Aircraft and Land Vehicles:<br/><br/>
-		- Respawn - Bring a HEMTT Mover or HEMTT Box truck to the FOB to activate Vehicle Respawn Services<br/>
-		- Repair - Bring a repair truck or crate to the FOB to activate Repair Services<br/>
-		- Fuel - Bring a fuel truck or crate to the FOB to bring Refueling Services online<br/>
-		- Ammo - Bring an Ammo truck or crate to the FOB to bring Ammo Services online<br/>
+		'载具维护',
+		'FOB可以为地面和空中载具提供维护服务:<br/><br/>
+		- 重生 - 将HEMTT运输卡车或HEMTT货柜卡车开到FOB。<br/>
+		- 修理 - 将HEMTT维修卡车或Huron维修货柜带到FOB。<br/>
+		- 燃料 - 将HEMTT燃油补给卡车或Huron燃油货柜带到FOB。<br/>
+		- 弹药 - 将HEMTT弹药卡车或Huron弹药货柜带到FOB。（同时可以激活玩家使用的军火库）<br/>
 		'
 	]
 ];
@@ -161,89 +161,89 @@ player createDiaryRecord [
 player createDiaryRecord [
 	'QS_diary_fobs',
 	[
-		'Respawn Tickets',
-		'Bring Medical Vehicles and Crates to the FOB to replenish its Revive Tickets'
+		'重生票数',
+		'将医疗载具带到FOB补充重生票数。'
 	]
 ];
 
 player createDiaryRecord [
 	'QS_diary_fobs',
 	[
-		'Ammo Crate',
-		'Load Crates at base with gear and Tow or Sling to the FOB to add that gear to the FOB Ammo Crate'
+		'军火库',
+		'在基地内将装备放入车辆或弹药箱带到FOB可以增加FOB军火库的物品。'
 	]
 ];
 
-/*/================================= Leaderboards/*/
+/*/================================= Leaderboards-排行榜/*/
 
 player createDiaryRecord [
 	'QS_diary_leaderboards',
 	[
-		'Gitmo',
-		'Earn points by imprisoning enemies in "Gitmo".<br/><br/>Multipliers: n/a<br/><br/>Gitmo is marked on your map at base. See "Gitmo" diary tab for further details.'
+		'关塔那摩',
+		'将战俘送入监狱获得分数。<br/><br/>倍数计算: n/a'
 	]
 ];
 player createDiaryRecord [
 	'QS_diary_leaderboards',
 	[
-		'Tower Rangers',
-		'Earn points as an infantryman by destroying the radiotower (pilots not eligible).<br/><br/>Multipliers: n/a'
+		'电塔游骑兵',
+		'作为步兵通过摧毁无线电塔（不包括飞行员）获得分数。<br/><br/>倍数计算: n/a'
 	]
 ];
 player createDiaryRecord [
 	'QS_diary_leaderboards',
 	[
-		'Gold Diggers',
-		'Earn points by collecting human trophies (gold teeth) from dead enemies (very rare).<br/><br/>Multipliers: n/a'
+		'牙医',
+		'通过从死掉的敌人士兵中收集金牙获得分数。<br/><br/>倍数计算: n/a'
 	]
 ];
 player createDiaryRecord [
 	'QS_diary_leaderboards',
 	[
-		'Ear Slicers',
-		'Earn points by collecting human trophies (ears) from dead enemies.<br/><br/>Multipliers: n/a'
+		'耳科专家',
+		'通过从死掉的敌人士兵中收集耳朵获得分数。<br/><br/>倍数计算: n/a'
 	]
 ];
 player createDiaryRecord [
 	'QS_diary_leaderboards',
 	[
-		'Revivalists',
-		'Earn points as a Medic by reviving fallen soldiers.<br/><br/>Multipliers: Stamina<br/><br/>Top 3 medics of the week (ending Sunday 23:59h) added to whitelisted medic slot for following week.'
+		'医疗兵',
+		'通过治疗昏迷的士兵获得分数。'
 	]
 ];
 player createDiaryRecord [
 	'QS_diary_leaderboards',
 	[
-		'Transporters',
-		'Earn points as a Pilot by safely transporting soldiers to and from missions in helicopters.<br/><br/>Multipliers: Advanced Flight Model<br/><br/>Top 3 pilots of the week (ending Sunday 23:59h) added to whitelisted pilot slot for following week.<br/><br/>Sling loading is not currently supported.<br/>Vehicle cargo is not currently supported.'
+		'运输员',
+		'将士兵安全送到战区以获取分数。<br/><br/>倍数计算: n/a<br/><br/>目前不支持吊索货物运输<br/>目前不支持车辆货物运输'
 	]
 ];
 player createDiaryRecord [
 	'QS_diary_leaderboards',
 	[
-		'General Info',
-		format ['<t size="2">Version 1.0</t><br/><br/>Leaderboards are reset each Monday at 00:01h.<br/><br/>Please report bugs and weird shit on the forums or to Quiksilver on TS.<br/><br/>To maintain performance and FPS, the leaderboards are synchronized every 5-10 minutes instead of continuously, and saved to database every 10-15 minutes. For this reason, points accumulated just prior to server restart may not be saved (*sadface*). Since it is new, we are experimenting with the best and most performance-friendly methods.<br/><br/>Thanks for your patience, %1!',profileName]
+		'基本信息',
+		format ['<t size="2">为保持游戏流畅性并降低网络负荷，排行榜并不是实时刷新的。服务器重启也可能导致数据丢失！<br/><br/>祝游戏愉快， %1！',profileName]
 	]
 ];
 
-/*/-------------------------------------------------- Rules/*/
+/*/-------------------------------------------------- Rules-规则/*/
 
 player createDiaryRecord [
 	'QS_diary_hotkeys',
 	[
-		'Key Bindings',
+		'按键绑定',
 		(format ['
-		<br/>Player Menu - [Home]
-		<br/>Earplugs - [End]
-		<br/>Holster Weapon - [4]
-		<br/>Magazine Repack - [L.Ctrl]+[%2]
-		<br/>Jump - [%5] while running
-		<br/>Group Manager - [%6]
-		<br/>Tasks - [%3]
-		<br/>Hints - [%4]
-		<br/>Gestures - [Ctrl]+[Numpad x]
-		<br/>Tactical Ping - %1
-		<br/>Open and close doors - [Space]
+		<br/>客户端菜单 - [Home]
+		<br/>耳塞 - [End]
+		<br/>背上武器 - [4]
+		<br/>重新整理弹药 - [L.Ctrl]+[%2]
+		<br/>跳跃 - [%5] 在跑步的时候
+		<br/>小队管理器 - [%6]
+		<br/>任务 - [%3]
+		<br/>提示 - [%4]
+		<br/>手势 - [Ctrl]+[Numpad x]
+		<br/>战术指示标 - %1
+		<br/>打开和关闭门 - [Space]
 		',(actionKeysNames 'TacticalPing'),(actionKeysNames 'ReloadMagazine'),(actionKeysNames 'Diary'),(actionKeysNames 'Help'),(actionKeysNames 'GetOver'),(actionKeysNames 'Teamswitch')])
 	]
 ];
@@ -252,11 +252,11 @@ if ((getPlayerUID player) in (['ALL'] call (missionNamespace getVariable 'QS_fnc
 	player createDiaryRecord [
 		'QS_diary_hotkeys',
 		[
-			'Staff Bindings',
+			'管理员按键',
 			'
-			<br/>Staff Menu Open - [Shift]+[F2]
-			<br/>Staff Menu Close - [Shift]+[F2]
-			<br/>Exit Spectate - [Shift]+[F2]
+			<br/>管理菜单打开 - [Shift]+[F2]
+			<br/>管理菜单关闭 - [Shift]+[F2]
+			<br/>退出选项 - [Shift]+[F2]
 			'
 		]
 	];
@@ -264,17 +264,17 @@ if ((getPlayerUID player) in (['ALL'] call (missionNamespace getVariable 'QS_fnc
 		player createDiaryRecord [
 			'QS_diary_hotkeys',
 			[
-				'Curator (Zeus) Bindings',
+				'宙斯按键',
 				'
-				<br/>Sync Editable Objects - [Shift]+[F3]
-				<br/>(Selected Group) Garrison in Buildings - [Numpad 1]
-				<br/>(Selected Group) Patrol Area - [Numpad 2]
-				<br/>(Selected Group) Search Building - [Numpad 3]
-				<br/>(Selected Group) Stalk Target - [Numpad 4]
-				<br/>(Selected Group) Suppressive Fire - [Numpad 6]
-				<br/>(Selected Unit) Revive Player - [Numpad 7]
-				<br/>(All Players) View Directions - [Numpad 8]
-				<br/>(Selected Unit) Set unit Unconscious - [Numpad 9]
+				<br/>同步可编辑对象 - [Shift]+[F3]
+				<br/>(选定小组) 建筑物驻防 - [Numpad 1]
+				<br/>(选定小组) 巡逻区 - [Numpad 2]
+				<br/>(选定小组) 搜索建筑 - [Numpad 3]
+				<br/>(选定小组) 围捕目标 - [Numpad 4]
+				<br/>(选定小组) 压制射击 - [Numpad 6]
+				<br/>(选定小组) 治疗玩家 - [Numpad 7]
+				<br/>(选定小组) 查看方向 - [Numpad 8]
+				<br/>(选定小组) 设置单位无意识 - [Numpad 9]
 				'
 			]
 		];
@@ -319,7 +319,7 @@ player createDiaryRecord [
 player createDiaryRecord [
 	'QS_diary_rules',
 	[
-		'General',
+		'常规',
 		(missionNamespace getVariable ['QS_missionConfig_splash_serverRules',''])
 	]
 ];
@@ -362,7 +362,7 @@ player createDiaryRecord [
 player createDiaryRecord [
 	'QS_diary_rules',
 	[
-		'Close Air Support',
+		'空中支援准则',
 		"
 		<br/>0. CAS must be called in by ground elements (infantry who are near the target).
 		<br/><br/>1. CAS call-ins must be typed into Side Channel with a specific position or target, no exceptions.
@@ -380,7 +380,7 @@ player createDiaryRecord [
 player createDiaryRecord [
 	'QS_diary_rules',
 	[
-		'Comms',
+		'通讯准则',
 		'
 		<br />1. Spamming comms will not be tolerated
 		<br />2. Arguing on comms will not be tolerated
@@ -399,7 +399,7 @@ player createDiaryRecord [
 player createDiaryRecord [
 	'QS_diary_mods',
 	[
-	'Mods Allowed',
+	'模组列表',
 	'
 	<br /> Mods currently allowed (subject to change without notice):<br /><br />
 
@@ -413,8 +413,8 @@ player createDiaryRecord [
 player createDiaryRecord [
 	'QS_diary_gitmo',
 	[
-		'Enemy Capture',
-		'It is possible to capture enemies!<br/><br/>To capture an enemy soldier, you must get within 5m and aim at him. You may get a Command Surrender action on your scroll wheel. To receive full reward, bring the captive back to the Gitmo area at base. To incarcerate a prisoner into Gitmo, walk up to the Phone Booth with your prisoner, look at the Phone Booth, wait 3-5 seconds and Release your prisoner while looking at the phone booth.<br/><br/>Good hunting!'
+		'抓捕战俘',
+		'在战斗中可以逼迫敌军投降。<br/><br/>保持敌军单位和你的距离在5米以内，滚轮菜单选择 命令-俘虏 后，等待进度条完成即可抓捕战俘。将战俘送回监狱即可获得奖励！<br/><br/>祝你好运！'
 	]
 ];
 
@@ -423,16 +423,16 @@ player createDiaryRecord [
 player createDiaryRecord [
 	'QS_diary_teamspeak',
 	[
-		'TS3 Server',
+		'TS3 频道地址',
 		format ['
-		<br/> Address: %1
+		<br/> IP地址: %1
 		<br/>
-		<br/> Visitors and guests welcome!
+		<br/> 欢迎访客和来宾!
 		',(missionNamespace getVariable ['QS_missionConfig_commTS',''])]
 	]
 ];
 
-/*/-------------------------------------------------- Credits/*/
+/*/-------------------------------------------------- Credits-积分/*/
 player createDiarySubject ['QS_diary_credits','Credits'];				// EULA relevant line.
 
 ////////////////////////////////// EDIT BELOW ///////////////////////////////////////
@@ -440,8 +440,8 @@ player createDiarySubject ['QS_diary_credits','Credits'];				// EULA relevant li
 player createDiaryRecord [
 	'QS_diary_credits',
 	[
-		'Community Editors',
-		'Your Name Here'
+		'社区编辑',
+		'波西米亚旅游协会'
 	]
 ];
 
@@ -456,7 +456,7 @@ Servers which have made it difficult or impossible for players to access this li
 player createDiaryRecord [
 	'QS_diary_credits',
 	[
-		"Developer",
-		"<br/><br/><font size='20'>Quiksilver</font><br/><br/>This framework is the product of many thousands of hours of doing battle in notepad++ over a number of years (2013-2017). We sincerely hope you enjoy your experience!<br/><br/>If you would like to show your appreciation but do not know how, you can<br/><br/><executeClose expression=""createDialog 'QS_RD_client_dialog_menu_hub';"">Donate to Quiksilver (Patreon)</executeClose><br/><br/>Stay safe out there, soldier!"
+		"开发人员",
+		"<br/><br/><font size='20'>Quiksilver</font><br/><br/>这个框架是几年来 (2013-2022),在 notepad++ 中进行数千小时奋斗的成果。 我们真诚地希望玩家们可以享受这一游戏模式！<br/><br/>If you would like to show your appreciation but do not know how, you can<br/><br/><executeClose expression=""createDialog 'QS_RD_client_dialog_menu_hub';"">Donate to Quiksilver (Patreon)</executeClose><br/><br/>Stay safe out there, soldier!"
 	]
 ];

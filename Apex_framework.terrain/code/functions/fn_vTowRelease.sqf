@@ -26,19 +26,19 @@ if (isNull _towedVehicle) exitWith {
 	_vehicle setVariable ['QS_ropeAttached',FALSE,TRUE];
 };
 if (_towedVehicle call (missionNamespace getVariable 'QS_fnc_isBoundingBoxIntersected')) exitWith {
-	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'Obstructions detected! Please release elsewhere.',[],-1];
+	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'检测到障碍物！请在别处放开。',[],-1];
 };
 _line01 = lineIntersectsSurfaces [(AGLToASL (_vehicle modelToWorld [2,0,0])),(AGLToASL (_vehicle modelToWorld [2,-17,0])),_vehicle,_towedVehicle];
 if (!(_line01 isEqualTo [])) exitWith {
-	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'Obstructions detected! Please release elsewhere.',[],-1];
+	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'检测到障碍物！请在别处放开。',[],-1];
 };
 _line02 = lineIntersectsSurfaces [(AGLToASL (_vehicle modelToWorld [-2,0,0])),(AGLToASL (_vehicle modelToWorld [-1.5,-17,0])),_vehicle,_towedVehicle];
 if (!(_line02 isEqualTo [])) exitWith {
-	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'Obstructions detected! Please release elsewhere.',[],-1];
+	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'检测到障碍物！请在别处放开。',[],-1];
 };
 _line03 = lineIntersectsSurfaces [(AGLToASL (_vehicle modelToWorld [0,0,0])),(AGLToASL (_vehicle modelToWorld [0,-17,0])),_vehicle,_towedVehicle];
 if (!(_line03 isEqualTo [])) exitWith {
-	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'Obstructions detected! Please release elsewhere.',[],-1];
+	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'检测到障碍物！请在别处放开。',[],-1];
 };
 player removeAction (missionNamespace getVariable 'QS_action_towRelease');
 _vehicle setVariable ['QS_ropeAttached',FALSE,TRUE];

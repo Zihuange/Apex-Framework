@@ -21,9 +21,9 @@ if (_case isEqualTo 1) then {
 		_taskAuthor = _params select 1;
 		_taskAuthorClass = _params select 2;
 		_taskID = format ['QS_DYNTASK_%1_%2',_type,(round (random 10000))];
-		private _description = format ['Destroy a(n) %1.',(getText (configFile >> 'CfgVehicles' >> (typeOf _entity) >> 'displayName'))];
+		private _description = format ['摧毁了一个 %1',(getText (configFile >> 'CfgVehicles' >> (typeOf _entity) >> 'displayName'))];
 		if (_isRx) then {
-			_description = format ['%1 Task created by %2 ( %3 ).',_description,_taskAuthor,_taskAuthorClass];
+			_description = format ['%2 ( %3 ) 创建了新的目标： %1 ',_description,_taskAuthor,_taskAuthorClass];
 		};
 		_array = [
 			_taskID,
@@ -41,8 +41,8 @@ if (_case isEqualTo 1) then {
 						TRUE,
 						[
 							_description,
-							'Destroy',
-							'Destroy'
+							'摧毁目标',
+							'摧毁目标'
 						],
 						[_entity,TRUE],
 						'CREATED',
@@ -82,8 +82,8 @@ if (_case isEqualTo 1) then {
 		_entityName = _params select 1;
 		_taskID = format ['QS_DYNTASK_%1_%2',_type,(round (random 10000))];
 		(missionNamespace getVariable ['QS_dynTask_medevac_array',[]]) pushBack _entity;
-		[_entityName,{50 cutText [(format ['%1 has requested Medevac',_this]),'PLAIN DOWN',0.5];}] remoteExec ['call',(allPlayers select {(_x getUnitTrait 'QS_trait_pilot')}),FALSE];
-		private _description = format ['Medevac %1.<br/><br/> Bring %1 to the medical facility at base. The location is marked on your map as Medevac HQ.<br/><br/>This person cannot be revived by others.<br/><br/>If the task does not complete, have the patient wait at the medical facility for approximately 30 seconds.',_entityName];
+		[_entityName,{50 cutText [(format ['%1 呼叫了医疗撤离',_this]),'PLAIN DOWN',0.5];}] remoteExec ['call',(allPlayers select {(_x getUnitTrait 'QS_trait_pilot')}),FALSE];
+		private _description = format ['医疗撤离 %1。<br/><br/> 把 %1 带到基地的医疗设施。<br/><br/>这个伤员无法被战场救生员治疗！<br/><br/>如果任务无法正常完成，请让伤员在医疗设施内等待约30秒。',_entityName];
 		_array = [
 			_taskID,
 			'ADD',
@@ -100,8 +100,8 @@ if (_case isEqualTo 1) then {
 						TRUE,
 						[
 							_description,
-							'Medevac',
-							'Medevac'
+							'医疗撤离',
+							'医疗撤离'
 						],
 						[_entity,TRUE],
 						'CREATED',
@@ -153,7 +153,7 @@ if (_case isEqualTo 1) then {
 		_entity = _params select 0;
 		_entity setTaskMarkerOffset [0,-10,1];
 		_taskID = format ['QS_DYNTASK_%1_%2',_type,(round (random 10000))];
-		private _description = 'Ground forces have arrested a unit, get him back to base for interrogation. Locate the fenced area at base (map marker GITMO) and release him there to complete the mission.';
+		private _description = '地面部队逮捕了一个敌军单位，将目标带回基地审讯。 在基地找到围栏区域（地图标记监狱）并在那里关押目标以完成任务。';
 		_array = [
 			_taskID,
 			'ADD',
@@ -170,8 +170,8 @@ if (_case isEqualTo 1) then {
 						TRUE,
 						[
 							_description,
-							'Prisoner Extract',
-							'Prisoner Extract'
+							'撤离战俘',
+							'撤离战俘'
 						],
 						[_entity,TRUE],
 						'CREATED',
@@ -221,7 +221,7 @@ if (_case isEqualTo 1) then {
 		_entity = _params select 0;
 		_entityName = _params select 1;
 		_taskID = format ['QS_DYNTASK_%1_%2',_type,(round (random 10000))];
-		private _description = format ['A pilot ( %1 ) has been separated from his aircraft and needs a ride back to base. When he is within 500m of base the mission will be completed.',_entityName];
+		private _description = format ['一名飞行员( %1 )刚刚紧急跳伞逃生，现急需撤离。 当飞行员接近基地时，任务即可完成。',_entityName];
 		_array = [
 			_taskID,
 			'ADD',
@@ -238,8 +238,8 @@ if (_case isEqualTo 1) then {
 						TRUE,
 						[
 							_description,
-							'Pilot Extract',
-							'Pilot Extract'
+							'营救飞行员',
+							'营救飞行员'
 						],
 						[_entity,TRUE],
 						'CREATED',
@@ -287,7 +287,7 @@ if (_case isEqualTo 1) then {
 		_taskAuthorName = _params select 1;
 		_taskID = format ['QS_DYNTASK_%1_%2',_type,(round (random 10000))];
 		_timeout = diag_tickTime + 900;
-		private _description = format ['%1 has requested CAS/Artillery on a(n) %2. This task will expire in 15 minutes.',_taskAuthorName,(getText (configFile >> 'CfgVehicles' >> (typeOf _entity) >> 'displayName'))];
+		private _description = format ['%1 呼叫火力单位打击 %2！ 这项任务在15分钟后会自动取消。',_taskAuthorName,(getText (configFile >> 'CfgVehicles' >> (typeOf _entity) >> 'displayName'))];
 		_array = [
 			_taskID,
 			'ADD',
@@ -304,8 +304,8 @@ if (_case isEqualTo 1) then {
 						TRUE,
 						[
 							_description,
-							'CAS / Fire Support',
-							'CAS / Fire Support'
+							'火力打击',
+							'火力打击'
 						],
 						[_entity,TRUE],
 						'CREATED',

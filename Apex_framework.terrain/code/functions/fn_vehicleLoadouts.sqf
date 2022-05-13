@@ -52,34 +52,39 @@ if (_type isEqualTo 1) exitWith {
 			_vehicle setPylonLoadout _x;
 		} forEach [
 			[1,"PylonRack_1Rnd_Missile_AA_04_F",TRUE],
-			[2,"PylonRack_7Rnd_Rocket_04_AP_F",TRUE],
+			[2,"PylonRack_1Rnd_Missile_AA_04_F",TRUE],
 			[3,"PylonRack_7Rnd_Rocket_04_HE_F",TRUE],
 			[4,"PylonMissile_1Rnd_Bomb_04_F",TRUE],
-			[5,"PylonMissile_1Rnd_Mk82_F",TRUE],
-			[6,"PylonMissile_1Rnd_Mk82_F",TRUE],
+			[5,"PylonMissile_1Rnd_Bomb_04_F",TRUE],
+			[6,"PylonMissile_1Rnd_Bomb_04_F",TRUE],
 			[7,"PylonMissile_1Rnd_Bomb_04_F",TRUE],
 			[8,"PylonRack_7Rnd_Rocket_04_HE_F",TRUE],
-			[9,"PylonRack_7Rnd_Rocket_04_AP_F",TRUE],
+			[9,"PylonRack_1Rnd_Missile_AA_04_F",TRUE],
 			[10,"PylonRack_1Rnd_Missile_AA_04_F",TRUE]
 		];
 	};
 	if (_vehicleType isEqualTo 'b_plane_fighter_01_f') then {
+    _vehicle addMagazine "magazine_Fighter01_Gun20mm_AA_x450";
+	_vehicle addMagazine "magazine_Fighter01_Gun20mm_AA_x450";
+	_vehicle addMagazine "magazine_Fighter01_Gun20mm_AA_x450";
+    _vehicle addMagazines ["1000Rnd_25mm_shells",2];
+	_vehicle addWeapon "gatling_25mm";
 		//_vehicle call _preparePylons;
 		{ 
 			_vehicle setPylonLoadout _x; 
 		} forEach [ 
-			[1,"PylonRack_Missile_AMRAAM_D_x1",TRUE],
-			[2,"PylonRack_Missile_AMRAAM_D_x1",TRUE],
-			[3,"PylonMissile_Bomb_GBU12_x1",TRUE],
-			[4,"PylonMissile_Bomb_GBU12_x1",TRUE],
+			[1,"PylonRack_Missile_AMRAAM_D_x2",TRUE],
+			[2,"PylonRack_Missile_AMRAAM_D_x2",TRUE],
+			[3,"PylonRack_Missile_BIM9X_x2",TRUE],
+			[4,"PylonRack_Missile_BIM9X_x2",TRUE],
 			[5,"PylonMissile_Missile_BIM9X_x1",TRUE],
 			[6,"PylonMissile_Missile_BIM9X_x1",TRUE],
 			[7,"PylonMissile_Missile_AMRAAM_D_INT_x1",TRUE],
 			[8,"PylonMissile_Missile_AMRAAM_D_INT_x1",TRUE],
-			[9,"",TRUE],
-			[10,"",TRUE],
-			[11,"PylonMissile_Bomb_GBU12_x1",TRUE],
-			[12,"PylonMissile_Bomb_GBU12_x1",TRUE]
+			[9,"PylonMissile_Missile_AMRAAM_D_INT_x1",TRUE],
+			[10,"PylonMissile_Missile_AMRAAM_D_INT_x1",TRUE],
+			[11,"PylonMissile_1Rnd_Mk82_F",TRUE],
+			[12,"PylonMissile_1Rnd_Mk82_F",TRUE]
 		];
 	};
 	if (_vehicleType isEqualTo 'b_plane_fighter_01_stealth_f') then {
@@ -102,6 +107,16 @@ if (_type isEqualTo 1) exitWith {
 		];
 	};
 	if (_vehicleType isEqualTo 'b_heli_attack_01_dynamicloadout_f') then {
+	_vehicle removeWeapon "gatling_20mm";
+    _vehicle addWeapon "gatling_30mm";
+    _vehicle addMagazine "250Rnd_30mm_HE_shells_Tracer_Red";
+    _vehicle addMagazine "250Rnd_30mm_HE_shells_Tracer_Red";
+    _vehicle addMagazine "250Rnd_30mm_HE_shells_Tracer_Red";
+    _vehicle addMagazine "250Rnd_30mm_APDS_shells_Tracer_Red";
+    _vehicle addMagazine "250Rnd_30mm_APDS_shells_Tracer_Red";
+    _vehicle addMagazine "24Rnd_PG_missiles";
+    _vehicle addMagazine "4Rnd_AAA_missiles";
+    _vehicle addMagazine "4Rnd_AAA_missiles";
 		comment 'To Do';
 	};
 	if (_vehicleType isEqualTo 'b_heli_light_01_dynamicloadout_f') then {
@@ -210,13 +225,15 @@ if (_type isEqualTo 1) exitWith {
 			[2,'PylonMissile_1Rnd_Bomb_03_F',TRUE]
 		];
 	};
-	if (_vehicleType in ['i_heli_light_03_dynamicloadout_f','i_e_heli_light_03_dynamicloadout_f']) then {
+	if (_vehicleType isEqualTo 'i_heli_light_03_dynamicloadout_f') then {
+	    _vehicle addWeapon "rockets_Skyfire";
+		_vehicle addMagazine "38Rnd_80mm_rockets";
 		//_vehicle call _preparePylons;
 		{
 			_vehicle setPylonLoadout _x;
 		} forEach [
-			[1,'PylonRack_12Rnd_missiles',TRUE],
-			[2,'PylonRack_12Rnd_missiles',TRUE]
+			[1,'PylonRack_7Rnd_Rocket_04_AP_F',TRUE],
+			[2,'PylonRack_7Rnd_Rocket_04_AP_F',TRUE]
 		];		
 	};
 	if (_vehicleType isEqualTo 'i_plane_fighter_03_dynamicloadout_f') then {
@@ -248,7 +265,7 @@ if (_type isEqualTo 1) exitWith {
 	};
 	{
 		if ((toLower _x) in ['laserdesignator_pilotcamera']) then {
-			_vehicle removeWeapon 'Laserdesignator_pilotCamera';
+			_vehicle removeWeapon '';
 		};
 		/*/ removes UAV laser
 		if ((toLower _x) in ['laserdesignator_mounted']) then {

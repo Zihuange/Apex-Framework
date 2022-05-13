@@ -491,7 +491,7 @@ private _uncertainPosition = [
 	((_idapScenePosition select 1) + 250 - (random 600)),
 	0
 ];
-'QS_marker_sideMarker' setMarkerText (format ['%1Help IDAP',(toString [32,32,32])]);
+'QS_marker_sideMarker' setMarkerText (format ['%1营救IDAP工作人员',(toString [32,32,32])]);
 {
 	_x setMarkerPosLocal _uncertainPosition;
 	_x setMarkerAlpha 1;
@@ -500,9 +500,9 @@ private _uncertainPosition = [
 	'QS_TASK_SM_IDAP_1',
 	TRUE,
 	[
-		(format ['<br/>1. Examine scene.<br/>2. Find the wounded aid worker, and search for clues.<br/>3. Locate medical supplies.<br/>4. Bring critical medical supplies to wounded aid worker.<br/>5. Medevac aid worker to our Medevac HQ at base or another field hospital.<br/><br/><br/>A local IDAP supply depot has come under attack by insurgents. A nearby civilian reported that one aid worker appeared to be still alive. Your job is to get over there and recover him. Some of the insurgents have already left the scene, taking critical medical supplies with them. You may have to track them down to recover the medical supplies.<br/><br/>Examine bodies at the scene for clues as to the location of the insurgents.<br/><br/>This objective is not accurately marked.']),
-		'Help IDAP',
-		'Help IDAP'
+		(format ['<br/>1. 搜索现场。<br/>2. 找到受伤的IDAP人员并寻找线索。<br/>3. 找到医疗物资。<br/>4. 将医疗物资给受伤人员使用。<br/>5. 将受伤的IDAP人员带回基地医疗站。<br/><br/><br/>一个IDAP补给站被叛军攻击，平民报告说有一名IDAP工作人员似乎还活着。我们的任务是赶到那里找到并想办法救治伤员，叛军已经离开补给站，并且带走了重要的医疗物资。我们需要追查他们的行踪以成功找回被抢走的医疗物资。<br/><br/>在现场检查尸体，寻找叛军的线索。']),
+		'营救IDAP工作人员',
+		'营救IDAP工作人员'
 	],
 	_uncertainPosition,
 	'CREATED',
@@ -512,7 +512,7 @@ private _uncertainPosition = [
 	'Help',
 	TRUE
 ] call (missionNamespace getVariable 'BIS_fnc_setTask');
-['SM_IDAP_BRIEF',['Side Mission','Recover IDAP aid worker']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+['SM_IDAP_BRIEF',['支线任务','营救IDAP工作人员']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 for '_x' from 0 to 1 step 0 do {
 	sleep 3;
 	if (
@@ -621,7 +621,7 @@ private _sounds = [
 private _unitStabilised = FALSE;
 private _aidMarker = '';
 _aidMarker = createMarker [(format ['QS_marker_aid_%1',(str (random 10e3))]),[0,0,0]];
-_aidMarker setMarkerTextLocal (format ['%1 %2',(toString [32,32,32]),'Side Mission: Aid worker']);
+_aidMarker setMarkerTextLocal (format ['%1 %2',(toString [32,32,32]),'营救IDAP工作人员']);
 _aidMarker setMarkerPosLocal (getPosATL _recoverableUnit);
 _aidMarker setMarkerShapeLocal 'ICON';
 _aidMarker setMarkerSizeLocal [0.5,0.5];
@@ -639,12 +639,12 @@ for '_x' from 0 to 1 step 0 do {
 		};
 	};
 	if (_taskState isEqualTo 'SUCCEEDED') exitWith {
-		['SM_IDAP_BRIEF',['Side Mission','Mission succeeded!']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['SM_IDAP_BRIEF',['支线任务','任务成功！']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		sleep 5;
 		[1,[0,0,0]] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
 	};
 	if (_taskState isEqualTo 'FAILED') exitWith {
-		['SM_IDAP_BRIEF',['Side Mission','Mission failed!']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['SM_IDAP_BRIEF',['支线任务','任务失败！']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		sleep 5;
 		[0,[0,0,0]] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
 	};	
@@ -682,7 +682,7 @@ for '_x' from 0 to 1 step 0 do {
 			missionNamespace setVariable ['QS_sidemission_building',_house,FALSE];
 			_housePosition = position _house;
 			_houseMarker = createMarker [(format ['QS_marker_house_%1',(str (random 10e3))]),[0,0,0]];
-			_houseMarker setMarkerTextLocal (format ['%1 %2',(toString [32,32,32]),'Side Mission: Locate medical supplies']);
+			_houseMarker setMarkerTextLocal (format ['%1 %2',(toString [32,32,32]),'追查医疗物资']);
 			_houseMarker setMarkerAlphaLocal 0;
 			_houseMarker setMarkerPosLocal _housePosition;
 			_houseMarker setMarkerShapeLocal 'ICON';
@@ -691,7 +691,7 @@ for '_x' from 0 to 1 step 0 do {
 			_houseMarker setMarkerTypeLocal 'mil_triangle';
 			_houseMarker setMarkerAlpha 1;
 			
-			['SM_IDAP_UPDATE',['Side Mission Update','Locate medical supplies']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+			['SM_IDAP_UPDATE',['支线任务更新','追查医疗物资']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 
 			_truckPos = [_housePosition,10,25,5,0,0.5,0] call _fn_findSafePos;
 			if ((_truckPos distance2D _housePosition) < 30) then {
@@ -764,10 +764,10 @@ for '_x' from 0 to 1 step 0 do {
 						[
 							[],
 							{
-								50 cutText ['No medical supplies found. Keep searching, soldier!','PLAIN DOWN',0.75];
+								50 cutText ['没有找到医疗物资。继续搜索！','PLAIN DOWN',0.75];
 							}
 						] remoteExec ['call',(allPlayers select {((_x distance2D _housePosition) < 300)}),FALSE];
-						['SM_IDAP_UPDATE',['Side Mission Update','Medical supplies not found']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+						['SM_IDAP_UPDATE',['支线任务更新','没有发现医疗物资']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 						
 						_findNewLocation = TRUE;
 						_monitorScene = FALSE;
@@ -786,11 +786,11 @@ for '_x' from 0 to 1 step 0 do {
 						
 							if (!(_suppliesFound)) then {
 								_suppliesFound = TRUE;
-								['SM_IDAP_UPDATE',['Side Mission Update','Medical supplies located!']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+								['SM_IDAP_UPDATE',['支线任务更新','已找到医疗物资！']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 								[
 									[],
 									{
-										50 cutText ['Medical supplies located!','PLAIN DOWN',0.75];
+										50 cutText ['已找到医疗物资！','PLAIN DOWN',0.75];
 									}
 								] remoteExec ['call',(allPlayers select {((_x distance2D _housePosition) < 300)}),FALSE];
 							};
@@ -854,7 +854,7 @@ for '_x' from 0 to 1 step 0 do {
 								_x setMarkerAlpha 0;
 							} count ['QS_marker_sideMarker','QS_marker_sideCircle'];
 							['QS_TASK_SM_IDAP_1'] call (missionNamespace getVariable 'BIS_fnc_deleteTask');
-							['SM_IDAP_UPDATE',['Side Mission Update','Stabilise and Medevac aid worker']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+							['SM_IDAP_UPDATE',['支线任务更新','稳定IDPA工作人员伤情并立即送往基地医疗设施']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 							_sceneType = 1;
 							deleteMarker _aidMarker;
 							deleteVehicle _crate;
@@ -866,9 +866,9 @@ for '_x' from 0 to 1 step 0 do {
 								_medevacTaskID,
 								TRUE,
 								[
-									'The humanitarian worker has been stabilised, get him back to a field hospital to complete our mission!',
-									'Medevac',
-									'Medevac'
+									'IDPA工作人员已经得到紧急治疗，情况暂时稳定， 立即将伤员带回到基地医疗站！',
+									'医疗救助',
+									'医疗救助'
 								],
 								[_recoverableUnit,TRUE],
 								'CREATED',
@@ -982,11 +982,11 @@ for '_x' from 0 to 1 step 0 do {
 	};
 	if (_crateSpawned) then {
 		if (!alive _crate) then {
-			[[WEST,'BLU'],'Medical supplies destroyed, mission failed!'] remoteExec ['sideChat',-2,FALSE];
+			[[WEST,'BLU'],'医疗物资被损坏， 任务失败！'] remoteExec ['sideChat',-2,FALSE];
 			_taskState = 'FAILED';
 		};
 		if (serverTime > _timeoutFailsafe) then {
-			[[WEST,'BLU'],'Mission failed, took too long!'] remoteExec ['sideChat',-2,FALSE];
+			[[WEST,'BLU'],'任务失败， 我们浪费了太多时间！'] remoteExec ['sideChat',-2,FALSE];
 			_taskState = 'FAILED';
 		};
 	};

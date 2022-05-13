@@ -193,7 +193,7 @@ _jetPilot addEventHandler [
 			params ['_jet','_killer'];
 			_jet removeAllEventHandlers 'Hit';
 			if (!isNull _killer) then {
-				['EnemyJetDown',['Enemy plane is down!']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+				['EnemyJetDown',['敌军固定翼已被击毁！']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 			};
 		}
 	],
@@ -259,7 +259,7 @@ _grp setSpeedMode 'FULL';
 [9,EAST,_grp,(leader _grp),_jetActual] call (missionNamespace getVariable 'QS_fnc_AIGetKnownEnemies');
 if (!((toLower _jetSelect) in ['o_plane_fighter_02_stealth_f'])) then {
 	if (!(missionNamespace getVariable ['QS_defendActive',FALSE])) then {
-		['EnemyJet',['Enemy plane inbound!']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['EnemyJet',['敌方固定翼单位来袭！']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 	};
 } else {
 	if ((random 1) > 0.8) then {

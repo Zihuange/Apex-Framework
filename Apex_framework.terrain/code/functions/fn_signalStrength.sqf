@@ -24,11 +24,11 @@ if (_type isEqualTo 0) then {
 		if (underwater player) then {
 			if ((('ItemGPS' in (assignedItems player)) && _requireGPS) || {(!(_requireGPS))}) then {
 				if (isNull (objectParent player)) then {
-					_text = format ['<t size="1.5">Signal Strength</t><br/><br/> %1 percent',_val];
+					_text = format ['<t size="1.5">信号强度</t><br/><br/> %1 %',_val];
 					50 cutText [_text,'PLAIN DOWN',0.5,TRUE,TRUE];
 				};
 			} else {
-				_text = format ['<t size="1.5">Signal Strength</t><br/><br/> No GPS Receiver ...',_val];
+				_text = format ['<t size="1.5">信号强度</t><br/><br/>没有携带GPS',_val];
 				50 cutText [_text,'PLAIN DOWN',0.5,TRUE,TRUE];
 			};
 		};
@@ -42,10 +42,10 @@ if (_type isEqualTo 1) then {
 			};
 			if (isNull (objectParent player)) then {
 				if ((('ItemGPS' in (assignedItems player)) && _requireGPS) || {(!(_requireGPS))}) then {
-					_text = format ['<t size="1.5">Signal Strength</t><br/><br/> %1 percent',_val];
+					_text = format ['<t size="1.5">信号强度</t><br/><br/> %1 %',_val];
 					50 cutText [_text,'PLAIN DOWN',0.5,TRUE,TRUE];
 				} else {
-					_text = format ['<t size="1.5">Signal Strength</t><br/><br/> No GPS Receiver ...',_val];
+					_text = format ['<t size="1.5">信号强度</t><br/><br/>没有携带GPS',_val];
 					50 cutText [_text,'PLAIN DOWN',0.5,TRUE,TRUE];
 				};
 			};

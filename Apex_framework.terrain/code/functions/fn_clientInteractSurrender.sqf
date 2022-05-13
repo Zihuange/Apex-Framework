@@ -82,9 +82,9 @@ _onCompleted = {
 		['QS_RD_loadable',TRUE,TRUE],
 		['QS_surrender_captor',[profileName,(getPlayerUID player)],TRUE]
 	];
-	_text = format ['%1 has captured a unit at grid %2',profileName,(mapGridPosition player)];
+	_text = format ['%1 在 %2 位置俘虏了一名敌军',profileName,(mapGridPosition player)];
 	['systemChat',_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
-	50 cutText ['Captured!','PLAIN DOWN',0.75];
+	50 cutText ['已俘虏','PLAIN DOWN',0.75];
 };
 /*/ 
 How hard should it be to capture the unit?
@@ -94,7 +94,7 @@ private _timerRange = [1.5,2.1,2.35];
 private _timerMin = 0.5;
 private _duration = ((random _timerRange) + (morale _t) - (damage _t) - (needReload _t)) max _timerMin;
 [
-	'Capturing unit',
+	'俘虏单位',
 	_duration,
 	0,
 	[[_t],{FALSE}],

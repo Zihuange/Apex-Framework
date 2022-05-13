@@ -98,27 +98,6 @@ if (_type isEqualTo 0) then {
 		}
 	];
 	_module removeCuratorAddons [
-		'a3_modules_f_curator_respawn',
-		'a3_modules_f_curator_multiplayer',
-		'a3_modules_f_kart',
-		'a3_modules_f_mark_firingdrills',
-		'a3_modules_f_curator_intel',
-		'a3_modules_f_curator_environment',
-		'a3_modules_f_curator_effects',
-		'a3_characters_f_bootcamp',
-		'a3_structures_f_bootcamp_vr_blocks',
-		'a3_structures_f_bootcamp_vr_coverobjects',
-		'a3_structures_f_bootcamp_vr_helpers',
-		'a3_structures_f_exp_a_vr_blocks',
-		'a3_structures_f_exp_a_vr_helpers',
-		'a3_structures_f_mark_vr_helpers',
-		'a3_structures_f_mark_vr_shapes',
-		'a3_structures_f_mark_vr_targets',
-		'a3_structures_f_heli_vr_helpers',
-		'a3_modules_f_curator_lightning',
-		'a3_data_f_curator_respawn',
-		'curatoronly_modules_f_curator_environment',
-		'curatoronly_modules_f_curator_lightning'
 	];
 	diag_log format ['***** CURATOR ***** Module created for %1 ( %2 ) *****',(name _client),_puid];
 };
@@ -172,25 +151,25 @@ if (_type isEqualTo 1) then {
 			if (!isNull (missionNamespace getVariable 'QS_airdefense_laptop')) then {
 				_laptop = missionNamespace getVariable 'QS_airdefense_laptop';
 				_actionID = _laptop addAction [
-					'Suspend side missions',
+					'暂停支线任务',
 					{
 						params ['_actionTarget','','_actionID',''];
 						private ['_result'];
 						if (!(missionNamespace getVariable 'QS_smSuspend')) then {
-							_result = ['Suspend side missions','Side missions','Suspend','Cancel',(findDisplay 46),FALSE,FALSE] call (missionNamespace getVariable 'BIS_fnc_guiMessage');
+							_result = ['暂停支线任务','支线任务','暂停','取消',(findDisplay 46),FALSE,FALSE] call (missionNamespace getVariable 'BIS_fnc_guiMessage');
 							if (_result) then {
 								missionNamespace setVariable ['QS_smSuspend',TRUE,TRUE];
-								50 cutText ['Side missions suspended','PLAIN DOWN',0.5];
-								_actionTarget setUserActionText [_actionID,'Resume side missions',(format ["<t size='3'>%1</t>",'Resume side missions'])];
-								['systemChat',(format ['%1 (staff) suspended side missions',profileName])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+								50 cutText ['支线任务已暂停','PLAIN DOWN',0.5];
+								_actionTarget setUserActionText [_actionID,'重启支线任务',(format ["<t size='3'>%1</t>",'重启支线任务'])];
+								['systemChat',(format ['',profileName])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 							};
 						} else {
-							_result = ['Resume side missions','Side missions','Resume','Cancel',(findDisplay 46),FALSE,FALSE] call (missionNamespace getVariable 'BIS_fnc_guiMessage');
+							_result = ['重启支线任务','支线任务','重启','取消',(findDisplay 46),FALSE,FALSE] call (missionNamespace getVariable 'BIS_fnc_guiMessage');
 							if (_result) then {
 								missionNamespace setVariable ['QS_smSuspend',FALSE,TRUE];
-								50 cutText ['Side missions resumed','PLAIN DOWN',0.5];
-								_actionTarget setUserActionText [_actionID,'Suspend side missions',(format ["<t size='3'>%1</t>",'Suspend side missions'])];
-								['systemChat',(format ['%1 (staff) resumed side missions',profileName])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+								50 cutText ['支线任务已重启','PLAIN DOWN',0.5];
+								_actionTarget setUserActionText [_actionID,'暂停支线任务',(format ["<t size='3'>%1</t>",'已暂停支线任务'])];
+								['systemChat',(format ['',profileName])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 							};
 						};
 					},
@@ -205,7 +184,7 @@ if (_type isEqualTo 1) then {
 				];
 				_laptop setUserActionText [_actionID,((_laptop actionParams _actionID) select 0),(format ["<t size='3'>%1</t>",((_laptop actionParams _actionID) select 0)])];
 				_actionID2 = _laptop addAction [
-					'Suspend primary missions',
+					'暂停主线战区',
 					{
 						params ['_actionTarget','','_actionID',''];
 						private ['_result'];
@@ -213,30 +192,30 @@ if (_type isEqualTo 1) then {
 						if (!((missionNamespace getVariable ['QS_missionConfig_aoType','']) isEqualTo 'NONE')) then {
 							if (!(missionNamespace getVariable ['QS_customAO_GT_active',FALSE])) then {
 								if (!(missionNamespace getVariable 'QS_aoSuspended')) then {
-									_result = ['Suspend primary missions','Primary missions','Suspend','Cancel',(findDisplay 46),FALSE,FALSE] call (missionNamespace getVariable 'BIS_fnc_guiMessage');
+									_result = ['暂停主线战区','主线战区','暂停','取消',(findDisplay 46),FALSE,FALSE] call (missionNamespace getVariable 'BIS_fnc_guiMessage');
 									if (_result) then {
 										missionNamespace setVariable ['QS_aoSuspended',TRUE,TRUE];
 										missionNamespace setVariable ['QS_aoCycleVar',TRUE,TRUE];
 										missionNamespace setVariable ['QS_forceDefend',-1,TRUE];
-										50 cutText ['Primary missions suspended, please wait ...','PLAIN DOWN',0.5];
-										_actionTarget setUserActionText [_actionID,'Resume primary missions',(format ["<t size='3'>%1</t>",'Resume primary missions'])];
-										['systemChat',(format ['%1 (staff) suspended primary missions',profileName])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+										50 cutText ['主线战区正在暂停……','PLAIN DOWN',0.5];
+										_actionTarget setUserActionText [_actionID,'重启主线战区',(format ["<t size='3'>%1</t>",'重启主线战区'])];
+										['systemChat',(format ['',profileName])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 									};
 								} else {
-									_result = ['Resume primary missions','Primary missions','Resume','Cancel',(findDisplay 46),FALSE,FALSE] call (missionNamespace getVariable 'BIS_fnc_guiMessage');
+									_result = ['重启主线战区','主线战区','重启','取消',(findDisplay 46),FALSE,FALSE] call (missionNamespace getVariable 'BIS_fnc_guiMessage');
 									if (_result) then {
 										missionNamespace setVariable ['QS_aoSuspended',FALSE,TRUE];
 										missionNamespace setVariable ['QS_aoCycleVar',FALSE,TRUE];
-										50 cutText ['Primary missions resumed, please wait ...','PLAIN DOWN',0.5];
-										_actionTarget setUserActionText [_actionID,'Suspend primary missions',(format ["<t size='3'>%1</t>",'Suspend primary missions'])];
-										['systemChat',(format ['%1 (staff) resumed primary missions',profileName])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+										50 cutText ['正在暂停主线战区……','PLAIN DOWN',0.5];
+										_actionTarget setUserActionText [_actionID,'暂停主线战区',(format ["<t size='3'>%1</t>",'暂停主线战区'])];
+										['systemChat',(format ['',profileName])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 									};
 								};
 							} else {
-								50 cutText ['Cannot suspend this mission','PLAIN DOWN',0.5];
+								50 cutText ['无法暂停当前任务','PLAIN DOWN',0.5];
 							};
 						} else {
-							50 cutText ['Primary missions disabled in server config, cycle attempt failed','PLAIN DOWN',0.5];
+							50 cutText ['主线战区已被服务器设置关闭，暂停失败','PLAIN DOWN',0.5];
 						};
 					},
 					[],
@@ -250,7 +229,7 @@ if (_type isEqualTo 1) then {
 				];
 				_laptop setUserActionText [_actionID2,((_laptop actionParams _actionID2) select 0),(format ["<t size='3'>%1</t>",((_laptop actionParams _actionID2) select 0)])];
 				_actionID3 = _laptop addAction [
-					'Cycle primary mission',
+					'跳过当前主线战区',
 					{
 						params ['_actionTarget','','_actionID',''];
 						private ['_result'];
@@ -261,16 +240,16 @@ if (_type isEqualTo 1) then {
 								};
 								player setVariable ['QS_client_aoCycleCooldown',(diag_tickTime + 60),FALSE];
 								if (!(missionNamespace getVariable ['QS_aoSuspended',FALSE])) then {
-									_result = ['Cycle primary mission','Primary missions','Cycle','Cancel',(findDisplay 46),FALSE,FALSE] call (missionNamespace getVariable 'BIS_fnc_guiMessage');
+									_result = ['跳过主线战区','主线战区','跳过','取消',(findDisplay 46),FALSE,FALSE] call (missionNamespace getVariable 'BIS_fnc_guiMessage');
 									if (_result) then {
 										missionNamespace setVariable ['QS_aoCycleVar',TRUE,TRUE];
-										['systemChat',(format ['%1 (staff) cycled primary missions',profileName])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
-										50 cutText ['Primary mission cycling, please wait ...','PLAIN DOWN',0.5];
+										['systemChat',(format ['',profileName])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+										50 cutText ['正在跳过当前主线战区……','PLAIN DOWN',0.5];
 									} else {
-										50 cutText ['Cancelled cycle attempt','PLAIN DOWN',0.5];
+										50 cutText ['已取消跳过主线战区的尝试','PLAIN DOWN',0.5];
 									};
 								} else {
-									50 cutText ['Primary missions are suspended, cycle attempt failed','PLAIN DOWN',0.5];
+									50 cutText ['主线战区已被暂停，无法跳过','PLAIN DOWN',0.5];
 								};
 							} else {
 								50 cutText ['Cannot suspend this mission','PLAIN DOWN',0.5];

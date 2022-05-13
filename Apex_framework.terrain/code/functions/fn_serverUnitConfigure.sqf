@@ -29,6 +29,8 @@ _unit setVariable ['QS_RD_recruited',FALSE,TRUE];
 _unit setVariable ['QS_RD_dismissable',TRUE,TRUE];
 _unit setVariable ['QS_GRP_HC',FALSE,FALSE];
 _unit addPrimaryWeaponItem (selectRandom ['optic_erco_blk_f','optic_dms']);
+removeGoggles _unit;
+_unit addGoggles "g_airpurifyingrespirator_01_f";
 if (_unit getUnitTrait 'medic') then {
 	
 };

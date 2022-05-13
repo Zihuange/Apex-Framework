@@ -103,13 +103,13 @@ while {(_foundVehicles isEqualTo []) && (_findCount < 3)} do {
 	_findPos = [((_findPos select 0) - _findIncrementX),((_findPos select 1) - _findIncrementY),(_findPos select 2)];
 	_findCount = _findCount + 1;
 };
-if (_foundVehicles isEqualTo []) exitWith {50 cutText ['No towable vehicles found','PLAIN DOWN',0.5];};
+if (_foundVehicles isEqualTo []) exitWith {50 cutText ['没有发现可牵引物品','PLAIN DOWN',0.5];};
 _found = _foundVehicles select 0;
 _ft = typeOf _found;
 _foundMass = getMass _found;
 _foundName = getText (configFile >> 'CfgVehicles' >> _ft >> 'displayName');
 if (!(simulationEnabled _found)) exitWith {
-	_text = format ['This %1 may not towable at all! Try getting into it first before attempting Tow.',_foundName];
+	_text = format ['这个 %1 也许根本无法被拖拽，尝试拖拽之前先试试能不能进入其中！',_foundName];
 	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,7,-1,_text,[],-1];
 };
 if (!isNull (isVehicleCargo _found)) exitWith {(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,(format ['Cannot Tow the %1',_foundName]),[],-1];};
@@ -123,29 +123,29 @@ if (_foundMass > _towMaxMass) exitWith {
 	_text = format ['The %1 is too heavy for the %2 to tow!',_foundName,_vName];
 	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,_text,[],-1];
 };
-if ((toLower _ft) in _disAllowed) exitWith {50 cutText [format ['%1 cannot be towed',_foundName],'PLAIN DOWN',0.5];};
-if (isNil {_found getVariable 'QS_ropeAttached'}) exitWith {50 cutText ['This vehicle cannot be towed','PLAIN DOWN',0.5];};
+if ((toLower _ft) in _disAllowed) exitWith {50 cutText [format ['%1 无法被拖拽',_foundName],'PLAIN DOWN',0.5];};
+if (isNil {_found getVariable 'QS_ropeAttached'}) exitWith {50 cutText ['这个载具无法被拖拽','PLAIN DOWN',0.5];};
 if (!(((crew _found) findIf {(alive _x)}) isEqualTo -1)) then {
 	if (!(unitIsUAV _found)) then {
 		_crewInVehicle = TRUE;
 	};
 };
-if (_crewInVehicle) exitWith {50 cutText [format ['%1 is currently occupied. Cannot tow player-occupied vehicles.',_foundName],'PLAIN DOWN',0.5];};
+if (_crewInVehicle) exitWith {50 cutText [format ['%1 目前被其他玩家占用，无法进行拖拽！',_foundName],'PLAIN DOWN',0.5];};
 if (((vectorUp _found) select 2) < 0) exitWith {
-	_text = format ['The %1 must be unflipped before it can be towed!',_foundName];
+	_text = format ['必须先翻正 %1 才能拖拽它！',_foundName];
 	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,_text,[],-1];
 };
 if (_vehicle getVariable 'QS_ropeAttached') exitWith {
-	_text = format ['The %1 is currently towing a vehicle!',_vName];
+	_text = format ['%1 正在拖拽别的物件！',_vName];
 	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,_text,[],-1];
 };
 if (_found getVariable 'QS_ropeAttached') exitWith {
-	_text = format ['That %1 is already being towed!',_foundName];
+	_text = format ['这个 %1 已经被拖拽了！',_foundName];
 	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,_text,[],-1];
 };
 if (((toLower _ft) in ['b_sam_system_01_f','b_sam_system_02_f','b_aaa_system_01_f']) && (!((toLower _vt) in ['b_truck_01_mover_f','b_t_truck_01_mover_f']))) exitWith {
 	_image = "A3\EditorPreviews_F\Data\CfgVehicles\B_Truck_01_Mover_F.jpg";
-	50 cutText [(format ['A(n) %1 is only towable by a(n) HEMTT<br/><br/><img size="5" image="%2"/>',_foundName,_image]),'PLAIN DOWN',0.75,FALSE,TRUE];
+	50 cutText [(format ['这个 %1 只能被HEMTT拖拽<br/><br/><img size="5" image="%2"/>',_foundName,_image]),'PLAIN DOWN',0.75,FALSE,TRUE];
 };
 if (((toLower _ft) in [
 	"b_hmg_01_high_f","b_gmg_01_high_f","o_hmg_01_high_f","o_gmg_01_high_f","i_hmg_01_high_f","i_gmg_01_high_f",
@@ -157,7 +157,7 @@ if (((toLower _ft) in [
 	"i_c_van_01_transport_olive_f","c_van_01_transport_f","c_van_01_transport_red_f","c_van_01_transport_white_f"
 ]))) exitWith {
 	_image = "A3\EditorPreviews_F\Data\CfgVehicles\B_G_Van_01_transport_F.jpg";
-	50 cutText [(format ['A(n) %1 is only towable by a Truck<br/><br/><img size="5" image="%2"/>',_foundName,_image]),'PLAIN DOWN',0.75,FALSE,TRUE];
+	50 cutText [(format ['这个 %1 只能被卡车拖拽<br/><br/><img size="5" image="%2"/>',_foundName,_image]),'PLAIN DOWN',0.75,FALSE,TRUE];
 };
 if (((toLower _vt) in [
 	"b_g_van_01_transport_f","o_g_van_01_transport_f","i_g_van_01_transport_f","i_c_van_01_transport_f","i_c_van_01_transport_brown_f",
@@ -168,7 +168,7 @@ if (((toLower _vt) in [
 	"b_g_mortar_01_f","b_mortar_01_f","b_t_mortar_01_f","o_mortar_01_f","o_g_mortar_01_f","i_mortar_01_f","i_g_mortar_01_f",
 	'b_g_hmg_02_high_f', 'o_g_hmg_02_high_f', 'i_hmg_02_high_f', 'i_g_hmg_02_high_f', 'i_e_hmg_02_high_f', 'i_c_hmg_02_high_f'
 ]))) exitWith {
-	50 cutText ['This vehicle can only tow Static Weapons and Mortars currently','PLAIN DOWN',0.5];
+	50 cutText ['这个载具目前只能拖拽固定武器或迫击炮','PLAIN DOWN',0.5];
 };
 0 spawn {
 	disableUserInput TRUE;

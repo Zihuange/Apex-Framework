@@ -18,10 +18,10 @@ _t = cursorTarget;
 if (!isNull (objectParent _t)) exitWith {};
 if ((!(_t isKindOf 'CAManBase')) && (!([0,_t,objNull] call (missionNamespace getVariable 'QS_fnc_getCustomCargoParams')))) exitWith {};
 if (_t getVariable ['QS_interaction_disabled',FALSE]) exitWith {
-	50 cutText ['Interaction disabled on this object','PLAIN',0.3];
+	50 cutText ['此对象上的交互被禁用','PLAIN',0.3];
 };
 if (_t getVariable ['QS_unit_needsStabilise',FALSE]) exitWith {
-	50 cutText ['Unit needs to be stabilised','PLAIN',0.3];
+	50 cutText ['单位需要先被稳定伤情','PLAIN',0.3];
 };
 if (_t isKindOf 'CAManBase') then {
 	if (!((currentWeapon player) isEqualTo '')) then {
@@ -47,7 +47,7 @@ if (_t isKindOf 'CAManBase') then {
 			[7.2,_unit,'ainjpfalmstpsnonwnondf_carried_dead',player,'acinpercmstpsnonwnondnon'] remoteExec ['QS_fnc_remoteExec',0,FALSE];
 			player forceWalk TRUE;
 			_unit attachTo [player,[0.1,-0.1,-1.2],'leftshoulder'];
-			50 cutText [(format ['Carrying %1',(name _unit)]),'PLAIN DOWN',0.3];
+			50 cutText [(format ['正在背负 %1',(name _unit)]),'PLAIN DOWN',0.3];
 		};
 		_onFailed = {
 			FALSE
@@ -62,7 +62,7 @@ if (_t isKindOf 'CAManBase') then {
 			[[],{FALSE}]
 		] spawn (missionNamespace getVariable 'QS_fnc_clientProgressVisualization');
 	} else {
-		50 cutText ['Need a weapon in hand to start carrying a person.','PLAIN DOWN',0.4];
+		50 cutText ['你必须在持枪状态才能背负伤员','PLAIN DOWN',0.4];
 	};
 } else {
 	//comment 'Crate carrying';
@@ -112,7 +112,7 @@ if (_t isKindOf 'CAManBase') then {
 							['setDir',_entity,90] remoteExec ['QS_fnc_remoteExecCmd',[_entity,player],FALSE];
 						};
 					};
-					50 cutText [(format ['Carrying a(n) %1',(_entity getVariable ['QS_ST_customDN',(getText (configFile >> 'CfgVehicles' >> (typeOf _entity) >> 'displayName'))])]),'PLAIN DOWN',0.3];
+					50 cutText [(format ['正在背负一个 %1',(_entity getVariable ['QS_ST_customDN',(getText (configFile >> 'CfgVehicles' >> (typeOf _entity) >> 'displayName'))])]),'PLAIN DOWN',0.3];
 					[_entity] spawn {
 						scriptName 'QS Interact Carry Monitor';
 						params ['_entity'];
@@ -123,7 +123,7 @@ if (_t isKindOf 'CAManBase') then {
 							if (!((currentWeapon player) isEqualTo '')) then {_exit = TRUE;};
 							if (!((lifeState player) in ['HEALTHY','INJURED'])) then {_exit = TRUE;};
 							if (_exit) exitWith {
-								50 cutText ['Released','PLAIN DOWN',0.3];
+								50 cutText ['已放开','PLAIN DOWN',0.3];
 								detach _entity;
 								player forceWalk FALSE;
 								if (_entity call (missionNamespace getVariable 'QS_fnc_isBoundingBoxIntersected')) then {
@@ -132,7 +132,7 @@ if (_t isKindOf 'CAManBase') then {
 										_entity setVectorUp (surfaceNormal _position);
 										_entity setPos _position; /*/maybe setvehicleposition?/*/
 										_entity allowDamage (_entity getVariable ['QS_isDamageAllowed',TRUE]);
-										50 cutText ['Released','PLAIN DOWN',0.3];
+										50 cutText ['已放开','PLAIN DOWN',0.3];
 									};
 								};
 							};
@@ -151,7 +151,7 @@ if (_t isKindOf 'CAManBase') then {
 					FALSE
 				};
 				[
-					'Picking up',
+					'正在背起……',
 					2,
 					0,
 					[[_t],{FALSE}],
@@ -160,12 +160,12 @@ if (_t isKindOf 'CAManBase') then {
 					[[],{FALSE}]
 				] spawn (missionNamespace getVariable 'QS_fnc_clientProgressVisualization');
 			} else {
-				50 cutText ['Must be standing','PLAIN',0.3];
+				50 cutText ['必须在站立姿态','PLAIN',0.3];
 			};
 		} else {
-			50 cutText ['Object not carryable','PLAIN',0.3];
+			50 cutText ['对象不可携带','PLAIN',0.3];
 		};
 	} else {
-		50 cutText ['Object not carryable','PLAIN',0.3];
+		50 cutText ['对象不可携带','PLAIN',0.3];
 	};
 };

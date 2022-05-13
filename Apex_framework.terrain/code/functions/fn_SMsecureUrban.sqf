@@ -805,15 +805,15 @@ missionNamespace setVariable ['QS_mission_urban_objectsSecured',0,FALSE];
 	_x setMarkerAlpha 1;
 } count ['QS_marker_sideMarker','QS_marker_sideCircle'];
 _QS_firstDetected = FALSE;
-'QS_marker_sideMarker' setMarkerText (format ['%1Secure Caches',(toString [32,32,32])]);
+'QS_marker_sideMarker' setMarkerText (format ['%1夺取设备箱',(toString [32,32,32])]);
 
 [
 	'QS_IA_TASK_SM_0',
 	TRUE,
 	[
-		'The enemy is supplying an insurgency with advanced guidance systems for their anti-air launchers. Get over there and secure the crates! They look like small plastic boxes. There will be 3 crates located in the marked areas, search the nearby buildings to locate.',
-		'Secure Caches',
-		'Secure Caches'
+		'敌军正在为当地叛军提供用于防空武器的制导系统，这对我们的空中单位是个不小的威胁。立刻前往目标城镇并夺取这些设备！目标外观为弹药箱，存放在目标区域的建筑物内。',
+		'夺取设备箱',
+		'夺取设备箱'
 	],
 	(markerPos 'QS_marker_sideMarker'),
 	'CREATED',
@@ -825,7 +825,7 @@ _QS_firstDetected = FALSE;
 ] call (missionNamespace getVariable 'BIS_fnc_setTask');
 
 missionNamespace setVariable ['QS_mission_urban_active',TRUE,TRUE];
-['NewSideMission',['Secure Weapons Caches']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+['NewSideMission',['夺取设备箱']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 _box1_secured = FALSE;
 _box2_secured = FALSE;
 _box3_secured = FALSE;
@@ -914,7 +914,7 @@ for '_x' from 0 to 1 step 0 do {
 			if (_QS_enemyDetected) exitWith {};
 		} count _QS_enemyArray;
 		if (_QS_enemyDetected) then {
-			['ST_URBAN',['Side Mission Update','The enemy has detected our approach']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+			['ST_URBAN',['支线任务更新','敌人发现我们正在靠近']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 			{
 				if (alive _x) then {
 					if ((random 1) > 0.75) then {
@@ -926,7 +926,7 @@ for '_x' from 0 to 1 step 0 do {
 			['QS_IA_TASK_SM_0',TRUE,_QS_enemyDetected_endTime] call (missionNamespace getVariable 'QS_fnc_taskSetTimer');
 			_QS_bombTimer_started = TRUE;
 			_QS_urbanTimerBroadcast_delay = time + 25;
-			_QS_text = format ['CSAT will destroy the intel in %1',[((round(_QS_enemyDetected_endTime - serverTime))/60)+0.01,'HH:MM'] call (missionNamespace getVariable 'BIS_fnc_timeToString')];
+			_QS_text = format ['敌军将会在 %1 后销毁设备箱',[((round(_QS_enemyDetected_endTime - serverTime))/60)+0.01,'HH:MM'] call (missionNamespace getVariable 'BIS_fnc_timeToString')];
 			['systemChat',_QS_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		};
 	};
@@ -940,7 +940,7 @@ for '_x' from 0 to 1 step 0 do {
 					_QS_object1 setPos [-5000,-5000,0];
 					(_markers select 0) setMarkerAlpha 0;
 					missionNamespace setVariable ['QS_mission_urban_objectsSecured',((missionNamespace getVariable 'QS_mission_urban_objectsSecured') + 1),FALSE];
-					['ST_URBAN',['Side Mission Update',(format ['%1 / 3 intel secured',(missionNamespace getVariable 'QS_mission_urban_objectsSecured')])]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+					['ST_URBAN',['支线任务更新',(format ['%1 / 3 个设备箱已夺取',(missionNamespace getVariable 'QS_mission_urban_objectsSecured')])]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 				};
 			};
 		};
@@ -954,7 +954,7 @@ for '_x' from 0 to 1 step 0 do {
 					_QS_object2 setPos [-5000,-5000,0];
 					(_markers select 1) setMarkerAlpha 0;
 					missionNamespace setVariable ['QS_mission_urban_objectsSecured',((missionNamespace getVariable 'QS_mission_urban_objectsSecured') + 1),FALSE];
-					['ST_URBAN',['Side Mission Update',(format ['%1 / 3 intel secured',(missionNamespace getVariable 'QS_mission_urban_objectsSecured')])]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+					['ST_URBAN',['支线任务更新',(format ['%1 / 3 个设备箱已夺取',(missionNamespace getVariable 'QS_mission_urban_objectsSecured')])]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 				};
 			};
 		};
@@ -968,7 +968,7 @@ for '_x' from 0 to 1 step 0 do {
 					_QS_object3 setPos [-5000,-5000,0];
 					(_markers select 2) setMarkerAlpha 0;
 					missionNamespace setVariable ['QS_mission_urban_objectsSecured',((missionNamespace getVariable 'QS_mission_urban_objectsSecured') + 1),FALSE];
-					['ST_URBAN',['Side Mission Update',(format ['%1 / 3 intel secured',(missionNamespace getVariable 'QS_mission_urban_objectsSecured')])]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+					['ST_URBAN',['支线任务更新',(format ['%1 / 3 个设备箱已夺取',(missionNamespace getVariable 'QS_mission_urban_objectsSecured')])]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 				};
 			};
 		};
@@ -1009,7 +1009,7 @@ for '_x' from 0 to 1 step 0 do {
 			
 			if (serverTime > _QS_enemyDetected_endTime) then {
 				if (!(_allSecured)) then {
-					['systemChat','CSAT has destroyed the crates!'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+					['systemChat','敌方摧毁了设备箱！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 				};
 			};
 		};
@@ -1018,7 +1018,7 @@ for '_x' from 0 to 1 step 0 do {
 	if (_QS_bombTimer_started) then {
 		/*/
 		if (time > _QS_urbanTimerBroadcast_delay) then {
-			_QS_text = format ['CSAT will destroy the intel in %1',[((round(_QS_enemyDetected_endTime - time))/60)+0.01,'HH:MM'] call (missionNamespace getVariable 'BIS_fnc_timeToString')];
+			_QS_text = format ['敌军将会在 %1 后销毁设备箱',[((round(_QS_enemyDetected_endTime - time))/60)+0.01,'HH:MM'] call (missionNamespace getVariable 'BIS_fnc_timeToString')];
 			['systemChat',_QS_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 			_QS_urbanTimerBroadcast_delay = time + 25;
 		};

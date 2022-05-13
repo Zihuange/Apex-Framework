@@ -39,5 +39,5 @@ _obj disableAI 'FSM';
 _obj disableAI 'TEAMSWITCH';
 _obj allowDamage TRUE;
 _obj setCaptive FALSE;
-50 cutText ['Escorting','PLAIN DOWN',0.3];
+50 cutText ['正在护送','PLAIN DOWN',0.3];
 TRUE;

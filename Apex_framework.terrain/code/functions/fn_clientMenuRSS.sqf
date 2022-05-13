@@ -64,7 +64,7 @@ _QS_ctrl_3 ctrlSetPosition [
 	((ctrlPosition _QS_ctrl_1) # 2) * 0.85,
 	((ctrlPosition _QS_ctrl_1) # 3) * 0.05
 ];
-_QS_ctrl_3 ctrlSetText 'Role Selection';
+_QS_ctrl_3 ctrlSetText '兵种选择';
 _QS_ctrl_3 ctrlSetTextColor [1,1,1,1];
 _QS_ctrl_3 ctrlSetBackgroundColor _background_color_1;
 _QS_ctrl_3 ctrlCommit 0;
@@ -86,7 +86,7 @@ _controls pushBack _QS_ctrl_4;
 _QS_ctrlCreateArray = ['RscText',104];
 _QS_ctrl_5 = _display ctrlCreate _QS_ctrlCreateArray;
 _QS_ctrl_5 ctrlShow TRUE;
-_QS_ctrl_5 ctrlSetText 'Factions';
+_QS_ctrl_5 ctrlSetText '派系';
 _QS_ctrl_5 ctrlSetPosition [
 	((ctrlPosition _QS_ctrl_1) # 0) + (0.01 / _uiScale),
 	((ctrlPosition _QS_ctrl_1) # 1) + (0.065 / _uiScale),
@@ -100,7 +100,7 @@ _controls pushBack _QS_ctrl_5;
 _QS_ctrlCreateArray = ['RscText',105];
 _QS_ctrl_6 = _display ctrlCreate _QS_ctrlCreateArray;
 _QS_ctrl_6 ctrlShow TRUE;
-_QS_ctrl_6 ctrlSetText 'Roles';
+_QS_ctrl_6 ctrlSetText '兵种';
 _QS_ctrl_6 ctrlSetPosition [
 	((ctrlPosition _QS_ctrl_1) # 0) + (0.15 / _uiScale),
 	((ctrlPosition _QS_ctrl_1) # 1) + (0.065 / _uiScale),
@@ -114,7 +114,7 @@ _controls pushBack _QS_ctrl_6;
 _QS_ctrlCreateArray = ['RscText',106];
 _QS_ctrl_7 = _display ctrlCreate _QS_ctrlCreateArray;
 _QS_ctrl_7 ctrlShow TRUE;
-_QS_ctrl_7 ctrlSetText 'Role Description';
+_QS_ctrl_7 ctrlSetText '角色描述';
 _QS_ctrl_7 ctrlSetPosition [
 	((ctrlPosition _QS_ctrl_1) # 0) + (0.45 / _uiScale),
 	((ctrlPosition _QS_ctrl_1) # 1) + (0.065 / _uiScale),
@@ -265,7 +265,7 @@ _controls pushBack _QS_ctrl_13;
 _QS_ctrlCreateArray = ['RscText',118];
 _QS_ctrl_14 = _display ctrlCreate _QS_ctrlCreateArray;
 _QS_ctrl_14 ctrlShow TRUE;
-_QS_ctrl_14 ctrlSetText 'Player List';
+_QS_ctrl_14 ctrlSetText '玩家列表';
 _QS_ctrl_14 ctrlSetPosition [
 	((ctrlPosition _QS_ctrl_1) # 0) + (0.01 / _uiScale),
 	((ctrlPosition _QS_ctrl_1) # 1) + (0.25 / _uiScale),
@@ -321,8 +321,8 @@ _QS_ctrl_17 ctrlSetPosition [
 _QS_ctrl_17 ctrlEnable TRUE;
 _QS_buttonAction = "closeDialog 2;";
 _QS_ctrl_17 buttonSetAction _QS_buttonAction;
-_QS_ctrl_17 ctrlSetText 'Close';
-_QS_ctrl_17 ctrlSetTooltip 'Close role selection menu';
+_QS_ctrl_17 ctrlSetText '关闭';
+_QS_ctrl_17 ctrlSetTooltip '关闭兵种选择菜单';
 _QS_ctrl_17 ctrlSetTextColor [1,1,1,1];
 _QS_ctrl_17 ctrlSetBackgroundColor [0,0,0,1];
 _QS_ctrl_17 ctrlCommit 0;
@@ -336,10 +336,10 @@ _QS_ctrl_18 ctrlSetPosition [
 	((ctrlPosition _QS_ctrl_1) # 2) * 0.1,
 	((ctrlPosition _QS_ctrl_1) # 3) * 0.06
 ];
-_QS_ctrl_18 ctrlSetText 'Reset';
+_QS_ctrl_18 ctrlSetText '重置';
 _QS_buttonAction = "['SET_DEFAULT_LOADOUT',(player getVariable ['QS_unit_role','rifleman']),TRUE] call (missionNamespace getVariable 'QS_fnc_roles');";
 _QS_ctrl_18 buttonSetAction _QS_buttonAction;
-_QS_ctrl_18 ctrlSetTooltip 'Restore profile-saved loadout to server default';
+_QS_ctrl_18 ctrlSetTooltip '将当前装备重置为服务器设定的兵种默认装备';
 _QS_ctrl_18 ctrlSetTextColor [1,1,1,1];
 _QS_ctrl_18 ctrlSetBackgroundColor [0,0,0,1];
 _QS_ctrl_18 ctrlCommit 0;
@@ -354,7 +354,7 @@ _QS_ctrl_19 ctrlSetPosition [
 	((ctrlPosition _QS_ctrl_1) # 3) * 0.06
 ];
 _QS_ctrl_19 ctrlEnable TRUE;
-_QS_ctrl_19 ctrlSetText 'Arsenal';
+_QS_ctrl_19 ctrlSetText '武器库';
 _QS_buttonAction = "
 	0 spawn {
 		uiSleep 0.1;
@@ -366,7 +366,7 @@ _QS_buttonAction = "
 	};
 ";
 _QS_ctrl_19 buttonSetAction _QS_buttonAction;
-_QS_ctrl_19 ctrlSetTooltip 'Virtual Arsenal';
+_QS_ctrl_19 ctrlSetTooltip '进入武器库自定义装备';
 _QS_ctrl_19 ctrlSetTextColor [1,1,1,1];
 _QS_ctrl_19 ctrlSetBackgroundColor [0,0,0,1];
 _QS_ctrl_19 ctrlCommit 0;
@@ -381,7 +381,7 @@ _QS_ctrl_20 ctrlSetPosition [
 	((ctrlPosition _QS_ctrl_1) # 3) * 0.06
 ];
 _QS_ctrl_20 ctrlEnable TRUE;
-_QS_ctrl_20 ctrlSetText 'Group';
+_QS_ctrl_20 ctrlSetText '班组';
 _QS_buttonAction = "
 	0 spawn {
 		uiSleep 0.1;
@@ -391,11 +391,11 @@ _QS_buttonAction = "
 		};
 		uiSleep 0.01;
 		(findDisplay 46) createDisplay 'RscDisplayDynamicGroups';
-		50 cutText ['Use [Page Up] / [Page Down] to navigate the group list','PLAIN'];
+		50 cutText ['使用 [Page Up] / [Page Down] 来浏览班组列表','PLAIN'];
 	};
 ";
 _QS_ctrl_20 buttonSetAction _QS_buttonAction;
-_QS_ctrl_20 ctrlSetTooltip 'Group Management';
+_QS_ctrl_20 ctrlSetTooltip '班组管理';
 _QS_ctrl_20 ctrlSetTextColor [1,1,1,1];
 _QS_ctrl_20 ctrlSetBackgroundColor [0,0,0,1];
 _QS_ctrl_20 ctrlCommit 0;
@@ -440,8 +440,8 @@ _QS_ctrl_23 ctrlSetPosition [
 	((ctrlPosition _QS_ctrl_1) # 2) * 0.171,
 	((ctrlPosition _QS_ctrl_1) # 3) * 0.06
 ];
-_QS_ctrl_23 ctrlSetText 'Select Role';
-_QS_ctrl_23 ctrlSetTooltip 'Attempt to join selected role';
+_QS_ctrl_23 ctrlSetText '选择兵种';
+_QS_ctrl_23 ctrlSetTooltip '成为当前选择的兵种';
 _QS_ctrl_23 ctrlSetTextColor [1,1,1,1];
 _QS_ctrl_23 ctrlSetBackgroundColor [0,0,0,1];
 _QS_ctrl_23 ctrlCommit 0;

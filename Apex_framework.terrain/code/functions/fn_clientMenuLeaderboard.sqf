@@ -17,28 +17,28 @@ private ['_type','_display','_index','_list','_displayName','_toolTip','_leaderb
 _type = _this select 0;
 _list = [
 	[0,'<Empty>',''],
-	[1,'Transporters','Transport pilot leaderboard'],
-	[2,'Revivalists','Combat life saver leaderboard'],
-	[3,'---','---'],
-	[4,'Gold Diggers','Gold Tooth collector leaderboard'],
-	[5,'Tower Rangers','Radio tower leaderboard'],
-	[6,'Gitmo','Enemy capture leaderboard']
+	[1,'运输员','运输飞行员排行榜'],
+	[2,'医疗兵','战斗救生员排行榜'],
+	[3,'耳科专家','耳朵收集排行榜'],
+	[4,'牙医','金牙收集排行榜'],
+	[5,'电塔游骑兵','无线电塔爆破排行榜'],
+	[6,'关塔那摩','抓捕敌军排行榜']
 ];
 if (_type isEqualTo 'onLoad') exitWith {
 	disableSerialization;
 	_display = _this select 1;
 	setMousePosition (uiNamespace getVariable ['QS_ui_mousePosition',getMousePosition]);
-	(_display displayCtrl 1802) ctrlSetText 'Leaderboards';
+	(_display displayCtrl 1802) ctrlSetText '排行榜';
 	(_display displayCtrl 1802) ctrlSetToolTip 'v1.0';
 	(_display displayCtrl 1803) ctrlSetText 'media\images\insignia\comm_patch.paa';
-	(_display displayCtrl 1804) ctrlSetText 'Type';
-	(_display displayCtrl 1806) ctrlSetText 'Select';
-	(_display displayCtrl 1806) ctrlSetToolTip 'Refresh';
-	(_display displayCtrl 1807) ctrlSetText 'Back';
-	(_display displayCtrl 1809) ctrlSetText 'Rank';
-	(_display displayCtrl 1810) ctrlSetText 'Player';
-	(_display displayCtrl 1811) ctrlSetText 'Score';
-	(_display displayCtrl 1812) ctrlSetText 'Insignia';
+	(_display displayCtrl 1804) ctrlSetText '类型';
+	(_display displayCtrl 1806) ctrlSetText '选择';
+	(_display displayCtrl 1806) ctrlSetToolTip '刷新';
+	(_display displayCtrl 1807) ctrlSetText '返回';
+	(_display displayCtrl 1809) ctrlSetText '等级';
+	(_display displayCtrl 1810) ctrlSetText '玩家';
+	(_display displayCtrl 1811) ctrlSetText '得分';
+	(_display displayCtrl 1812) ctrlSetText '臂章';
 	(_display displayCtrl 1813) ctrlSetText 'v1.0';
 	{
 		_displayName = _x select 1;
@@ -59,9 +59,9 @@ if (_type isEqualTo 'B1') exitWith {
 		_leaderboardID = (_list select _index) select 0;
 		lnbClear 1808;
 		if (_leaderboardID in [0,3]) then {
-			(_display displayCtrl 1809) ctrlSetText 'Player';
-			(_display displayCtrl 1810) ctrlSetText 'Role';
-			(_display displayCtrl 1811) ctrlSetText 'Rating';
+			(_display displayCtrl 1809) ctrlSetText '玩家';
+			(_display displayCtrl 1810) ctrlSetText '兵种';
+			(_display displayCtrl 1811) ctrlSetText '评价';
 			if ((count allPlayers) > 0) then {
 				lnbSetColumnsPos [1808,[(1 * (safezoneW * 0.03)),(4 * (safezoneW * 0.03)),(7 * (safezoneW * 0.03)),(10 * (safezoneW * 0.03))]];
 				{
@@ -83,10 +83,10 @@ if (_type isEqualTo 'B1') exitWith {
 				} forEach allPlayers;
 			};
 		} else {
-			(_display displayCtrl 1809) ctrlSetText 'Rank';
-			(_display displayCtrl 1810) ctrlSetText 'Player';
-			(_display displayCtrl 1811) ctrlSetText 'Score';
-			(_display displayCtrl 1812) ctrlSetText 'Insignia';
+			(_display displayCtrl 1809) ctrlSetText '等级';
+			(_display displayCtrl 1810) ctrlSetText '玩家';
+			(_display displayCtrl 1811) ctrlSetText '得分';
+			(_display displayCtrl 1812) ctrlSetText '臂章';
 			if (isNil {missionNamespace getVariable 'QS_leaderboards'}) exitWith {};
 			_leaderboardDataArray = (missionNamespace getVariable 'QS_leaderboards') select _leaderboardID;
 			_leaderboardDataArray sort FALSE;

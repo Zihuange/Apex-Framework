@@ -74,10 +74,10 @@ if (_type isEqualTo 'Select') then {
 						/*/
 					};
 					saveProfileNamespace;
-					_text = parseText format ['Uniform Texture Set: %1<br/>by %2',_displayName,_author];
+					_text = parseText format ['制服皮肤已设置为：%1<br/>作者：%2',_displayName,_author];
 					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,_text,[],-1];
 				} else {
-					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'You must be at base to re-skin your uniform!',[],-1];
+					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'你必须在基地才能选择制服皮肤',[],-1];
 				};
 			} else {
 				if (_index isEqualTo 0) then {
@@ -87,9 +87,9 @@ if (_type isEqualTo 'Select') then {
 					profileNamespace setVariable ['QS_ClientUTexture2',''];
 					profileNamespace setVariable ['QS_ClientUTexture2_Uniforms2',[]];
 					saveProfileNamespace;
-					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'Uniform Texture Reset',[],-1];
+					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'制服皮肤已重置',[],-1];
 				} else {
-					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,8,-1,'Unsupported uniform for selected skin. Please select correct uniform type.',[],-1];
+					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,8,-1,'所选制服版型与皮肤不匹配，请选择对应的制服',[],-1];
 				};
 			};
 		} else {

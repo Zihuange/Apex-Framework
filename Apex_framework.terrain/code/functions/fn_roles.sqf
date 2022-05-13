@@ -332,36 +332,36 @@ if (_type isEqualTo 'REQUEST_ROLE') exitWith {
 					
 				} else {
 					_allowRequest = FALSE;
-					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'Already in selected role',[],-1,TRUE,'Role Selection',FALSE];
+					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'已经是所选兵种',[],-1,TRUE,'兵种选择系统',FALSE];
 				};
 			} else {
 				_allowRequest = FALSE;
-				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'Maximum number of players in selected role',[],-1,TRUE,'Role Selection',FALSE];
+				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'所选兵种数量已达上限',[],-1,TRUE,'兵种选择系统',FALSE];
 			};
 		} else {
 			if ((_side isNotEqualTo (player getVariable ['QS_unit_side',WEST])) && (!(missionNamespace getVariable ['QS_RSS_client_canSideSwitch',FALSE]))) then {
 				_allowRequest = FALSE;
-				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'Cannot switch faction',[],-1,TRUE,'Role Selection',FALSE];
+				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'无法变更派系',[],-1,TRUE,'兵种选择系统',FALSE];
 			} else {
 				_allowRequest = FALSE;
-				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'Cannot select role',[],-1,TRUE,'Role Selection',FALSE];
+				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'无法选择此兵种',[],-1,TRUE,'兵种选择系统',FALSE];
 			};
 		};
 		if (_role in ['pilot_plane','pilot_cas']) then {
 			_isCAS = TRUE;
 			if ((missionNamespace getVariable ['QS_missionConfig_CAS',2]) isEqualTo 0) then {
 				_allowRequest = FALSE;
-				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'Close Air Support roles disabled in mission parameters.',[],-1,TRUE,'Role Selection',FALSE];
+				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'服务器设定已关闭固定翼飞行员位置',[],-1,TRUE,'兵种选择系统',FALSE];
 			};
 			if ((missionNamespace getVariable ['QS_missionConfig_CAS',2]) in [1,3]) then {
 				if (!(_uid in (['CAS'] call (missionNamespace getVariable 'QS_fnc_whitelist')))) then {
-					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'Not in CAS role whitelist (talk to admins to get whitelisted!)',[],-1,TRUE,'Role Selection',FALSE];
+					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'未拥有固定翼白名单 (加入QQ群：813940305申请)',[],-1,TRUE,'兵种选择系统',FALSE];
 					_allowRequest = FALSE;
 				};
 			};
 			if ((missionNamespace getVariable ['QS_missionConfig_CAS',2]) isEqualTo 3) then {
 				if ((player getVariable ['QS_client_casAllowance',0]) >= (missionNamespace getVariable ['QS_CAS_jetAllowance_value',3])) then {
-					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,(format ['CAS jet limit exceeded ( %1 )',(missionNamespace getVariable ['QS_CAS_jetAllowance_value',3])]),[],-1,TRUE,'Role Selection',FALSE];
+					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,(format ['已突破固定翼飞行员上限 ( %1 )',(missionNamespace getVariable ['QS_CAS_jetAllowance_value',3])]),[],-1,TRUE,'兵种选择系统',FALSE];
 					_allowRequest = FALSE;
 				};
 			};
@@ -374,7 +374,7 @@ if (_type isEqualTo 'REQUEST_ROLE') exitWith {
 				//_roleCount set [1,((_roleCount # 1) - _whitelist_value)];
 				//if ((_roleCount # 0) >= (_roleCount # 1)) then {
 					_allowRequest = FALSE;
-					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,10,-1,'Whitelisted slot<br/><br/>(talk to admins to get whitelisted!)',[],-1,TRUE,'Role Selection',FALSE];
+					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,10,-1,'白名单兵种或保留给白名单的普通兵种<br/><br/>(加入QQ群：813940305申请)',[],-1,TRUE,'兵种选择系统',FALSE];
 				//};
 			};
 		};
@@ -472,7 +472,7 @@ if (_type isEqualTo 'HANDLE_REQUEST_ROLE') exitWith {
 		};
 		[_unit] joinSilent (createGroup [_side,TRUE]);
 		if (_side isNotEqualTo (_unit getVariable ['QS_unit_side',WEST])) then {
-			_txt = format ['%1 switched from %2 to %3',(name _unit),(_unit getVariable ['QS_unit_side',WEST]),_side];
+			_txt = format ['有玩家从 %2阵营更换到了 %3阵营',(name _unit),(_unit getVariable ['QS_unit_side',WEST]),_side];
 			_txt remoteExec ['systemChat',-2,FALSE];
 			remoteExec ['QS_fnc_clientEventRespawn',_unit,FALSE];
 		};
@@ -814,7 +814,7 @@ if (_type isEqualTo 'INIT_ROLE') exitWith {
 	['SET_SAVED_LOADOUT',_role] call (missionNamespace getVariable 'QS_fnc_roles');
 	call (missionNamespace getVariable 'QS_fnc_respawnPilot');
 	uiNamespace setVariable ['QS_client_respawnCooldown',diag_tickTime + 30];
-	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,(format ['Role changed to %1',(['GET_ROLE_DISPLAYNAME',_role] call (missionNamespace getVariable 'QS_fnc_roles'))]),[],-1,TRUE,'Role Selection',FALSE];
+	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,(format ['兵种已变更为：%1',(['GET_ROLE_DISPLAYNAME',_role] call (missionNamespace getVariable 'QS_fnc_roles'))]),[],-1,TRUE,'兵种选择系统',FALSE];
 };
 if (_type isEqualTo 'SET_DEFAULT_LOADOUT') exitWith {
 	params ['','_role',['_save',FALSE]];
@@ -824,13 +824,13 @@ if (_type isEqualTo 'SET_DEFAULT_LOADOUT') exitWith {
 		if ((getUnitLoadout player) isNotEqualTo (((missionNamespace getVariable 'QS_roles_defaultLoadouts') # 0) # 1)) then {
 			player setUnitLoadout [(((missionNamespace getVariable 'QS_roles_defaultLoadouts') # 0) # 1),TRUE];
 		} else {
-			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'Loadout already applied',[],-1,TRUE,'Role Selection',FALSE];
+			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'装备已读取',[],-1,TRUE,'兵种选择系统',FALSE];
 		};
 	} else {
 		if ((getUnitLoadout player) isNotEqualTo (((missionNamespace getVariable 'QS_roles_defaultLoadouts') # _loadout_index) # 1)) then {
 			player setUnitLoadout [(((missionNamespace getVariable 'QS_roles_defaultLoadouts') # _loadout_index) # 1),TRUE];
 		} else {
-			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'Loadout already applied',[],-1,TRUE,'Role Selection',FALSE];
+			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'装备已读取',[],-1,TRUE,'兵种选择系统',FALSE];
 		};
 	};
 	if (_save) then {

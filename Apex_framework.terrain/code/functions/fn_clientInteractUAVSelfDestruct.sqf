@@ -16,12 +16,12 @@ __________________________________________________________________________/*/
 _cameraOn = cameraOn;
 if (!(unitIsUAV _cameraOn)) exitWith {};
 if (!(((crew _cameraOn) findIf {((alive _x) && (isPlayer _x))}) isEqualTo -1)) exitWith {
-	50 cutText ['Other players are in this vehicle','PLAIN DOWN',0.333];
+	50 cutText ['有其他玩家仍然在载具内','PLAIN DOWN',0.333];
 };
-private _result = [(format ['Are you sure you want to destroy this %1',(getText (configFile >> 'CfgVehicles' >> (typeOf _cameraOn) >> 'displayName'))]),'Warning','Destroy','Cancel',(findDisplay 46),FALSE,FALSE] call (missionNamespace getVariable 'BIS_fnc_guiMessage'); 
+private _result = [(format ['你确定要销毁这个 %1 么？',(getText (configFile >> 'CfgVehicles' >> (typeOf _cameraOn) >> 'displayName'))]),'警告','销毁','取消',(findDisplay 46),FALSE,FALSE] call (missionNamespace getVariable 'BIS_fnc_guiMessage'); 
 if (_result) then {
-	['systemChat',(format ['%1 self-destructed a(n) %2 at grid %3',profileName,(getText (configFile >> 'CfgVehicles' >> (typeOf _cameraOn) >> 'displayName')),(mapGridPosition _cameraOn)])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+	['systemChat',(format ['%1 在坐标 %3 启动自毁程序销毁了一个 %2',profileName,(getText (configFile >> 'CfgVehicles' >> (typeOf _cameraOn) >> 'displayName')),(mapGridPosition _cameraOn)])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 	_cameraOn setDamage [1,FALSE];
 } else {
-	50 cutText ['Cancelled','PLAIN DOWN',0.333];
+	50 cutText ['已取消','PLAIN DOWN',0.333];
 };

@@ -229,7 +229,7 @@ if (_type isEqualTo 1) exitWith {
 			_marker1 setMarkerShapeLocal 'ICON';
 			_marker1 setMarkerTypeLocal 'mil_dot';
 			_marker1 setMarkerColorLocal 'ColorOPFOR';
-			_marker1 setMarkerTextLocal (format ['%1Datalink',(toString [32,32,32])]);
+			_marker1 setMarkerTextLocal (format ['%数据中心',(toString [32,32,32])]);
 			_marker1 setMarkerSizeLocal [0.5,0.5];
 			_marker1 setMarkerPos _uncertaintyPos;
 			(missionNamespace getVariable 'QS_virtualSectors_sub_1_markers') pushBack _marker1;
@@ -242,9 +242,9 @@ if (_type isEqualTo 1) exitWith {
 			_marker2 setMarkerSizeLocal [100,100];
 			_marker2 setMarkerPos _uncertaintyPos;
 			(missionNamespace getVariable 'QS_virtualSectors_sub_1_markers') pushBack _marker2;
-			_description = 'Locate and secure the enemy datalink.<br/><br/>The enemy datalink allows the enemy to more easily communicate and share information on our troop movements, strength and force disposition. With this data they can adapt and better counter our attacks.<br/><br/> This datalink also allows them to call in UAV recon support. Securing the datalink will deny the enemy these benefits.';
-			_title = 'Secure Datalink';
-			_tooltip = 'Datalink';
+			_description = '找到并获取敌方情报数据。<br/><br/>敌军的数据链增强了敌军通讯能力，让敌军更方便地共享我们的行动、兵力和部队位置。有了这些情报，敌军能更好地抵御我们的进攻并发起反击。<br/><br/> 数据中心还允许敌军呼叫UAV侦查，夺取这个目标可以让敌军失去这些优势。';
+			_title = '夺取数据中心';
+			_tooltip = '情报中心';
 			_icon = 'intel';
 			[
 				'QS_virtualSectors_sub_1_task',
@@ -388,9 +388,9 @@ if (_type isEqualTo 1) exitWith {
 			_marker2 setMarkerSizeLocal [100,100];
 			_marker2 setMarkerPos _uncertaintyPos;
 			(missionNamespace getVariable 'QS_virtualSectors_sub_2_markers') pushBack _marker2;
-			_description = 'Destroy the enemy radio tower!<br/><br/>The enemy relies on radio communications to call in helicopter and armored vehicle reinforcements.<br/><br/>Destroying this target will greatly reduce the enemies ability to call in these force multipliers.';
-			_title = 'Destroy Radio Tower';
-			_tooltip = 'Radio Tower';
+			_description = '摧毁敌方无线电塔!<br/><br/>敌军依靠无线电通讯来呼叫直升机和装甲载具增援。<br/><br/>破坏这个目标会大大降低敌人呼叫增援的能力。';
+			_title = '摧毁无线电塔';
+			_tooltip = '无线电塔';
 			_icon = 'destroy';
 			[
 				'QS_virtualSectors_sub_2_task',
@@ -529,9 +529,9 @@ if (_type isEqualTo 1) exitWith {
 			_marker2 setMarkerPos _uncertaintyPos;
 			(missionNamespace getVariable 'QS_virtualSectors_sub_3_markers') pushBack _marker2;
 			missionNamespace setVariable ['QS_virtualSectors_sd_position',_position,FALSE];
-			_description = 'Secure the enemy supply depot.<br/><br/>The enemy relies on this supply depot to distribute advanced gear to the enemy. This depot allows the enemy to equip with more Anti-Air, Anti-Tank and even call in the dreaded Viper units.<br/><br/>Securing this depot will greatly reduce the enemies ability to spawn AA teams, AT teams and Viper teams.<br/><br/>To secure the supply depot, simply use your Scroll Menu on the Taru pod located inside the fortifications.';
-			_title = 'Enemy Supply Depot';
-			_tooltip = 'Suppy Depot';
+			_description = '夺取敌军补给点。<br/><br/>>敌军依靠这个补给点将先进的装备分配给各个单位。这个补给点会让敌军装备更多的防空，反坦克装备，甚至可以呼叫可怕的毒蛇单位.<br/><br/>夺取这个补给点将大大降低敌军部署AA防空小队,AT反坦克小队和毒蛇小队的能力.<br/><br/>>要夺取后勤补给点的话，对防御工事内的Taru货仓使用滚轮菜单即可。';
+			_title = '敌方补给点';
+			_tooltip = '补给点';
 			_icon = 'rearm';
 			[
 				'QS_virtualSectors_sub_3_task',

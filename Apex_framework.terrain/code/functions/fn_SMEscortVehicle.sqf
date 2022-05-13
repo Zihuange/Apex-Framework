@@ -197,7 +197,7 @@ _vehicle addEventHandler [
 		params ['_vehicle','_position','_unit','_turret'];
 		if (_position == 'driver') then {
 			if (isPlayer _unit) then {
-				['vehicleChat',_vehicle,'Get this vehicle to its destination, soldier!'] remoteExec ['QS_fnc_remoteExecCmd',_unit,FALSE];
+				['vehicleChat',_vehicle,'将这辆载具安全送到目的地！'] remoteExec ['QS_fnc_remoteExecCmd',_unit,FALSE];
 			};
 		};
 	}
@@ -214,12 +214,12 @@ _vehicle addEventHandler [
 		params ['_vehicle','_unit1','_unit2'];
 		if ('Driver' in (assignedVehicleRole _unit1)) then {
 			if (isPlayer _unit1) then {
-				['vehicleChat',_vehicle,'Mission: Get this vehicle to its destination, soldier!'] remoteExec ['QS_fnc_remoteExecCmd',_unit1,FALSE];
+				['vehicleChat',_vehicle,'任务：将这辆载具安全送到目的地！'] remoteExec ['QS_fnc_remoteExecCmd',_unit1,FALSE];
 			};
 		};
 		if ('Driver' in (assignedVehicleRole _unit2)) then {
 			if (isPlayer _unit2) then {
-				['vehicleChat',_vehicle,'Mission: Get this vehicle to its destination, soldier!'] remoteExec ['QS_fnc_remoteExecCmd',_unit2,FALSE];
+				['vehicleChat',_vehicle,'任务：将这辆载具安全送到目的地！'] remoteExec ['QS_fnc_remoteExecCmd',_unit2,FALSE];
 			};
 		};
 	}
@@ -318,7 +318,7 @@ _marker0 setMarkerShapeLocal 'Icon';
 _marker0 setMarkerTypeLocal 'mil_dot';
 _marker0 setMarkerColorLocal 'ColorGreen';
 _marker0 setMarkerAlphaLocal 1;
-_marker0 setMarkerTextLocal (format ['%1Side mission: Truck Destination',(toString [32,32,32])]);
+_marker0 setMarkerTextLocal (format ['%1支线任务：载具护送',(toString [32,32,32])]);
 _marker0 setMarkerPos _destination;
 _distanceInFront_fixed = 250;
 _distanceInFront_random = 500;
@@ -346,9 +346,9 @@ _suppressTargets pushBack _suppressTarget;
 	'QS_IA_TASK_SM_ESCORT',
 	TRUE,
 	[
-		(format ['Get the vehicle to its destination near %1 (marked on map). It is strongly advised to stay on roads, and not to bring tanks or APCs, as this can disturb buried IEDs. It is suggested to keep moving even during contact, to prevent getting flanked and attacked by more heavily armed insurgents. Good luck, soldier!',_nearestVillage]),
-		'Side Mission: Escort truck',
-		'Side Mission: Escort truck'
+		(format ['将车辆送到 %1 (已在地图上标记)。 强烈建议始终保持在道路上行驶，不要使用装甲载具护送， 因为会触发道路上的IED。 建议在交火时尽量保持移动或者第一时间寻找掩体，防止被敌军侧翼包围。祝你好运！',_nearestVillage]),
+		'支线任务: 护送车辆',
+		'支线任务: 护送车辆'
 	],
 	[_vehicle,TRUE],
 	'CREATED',
@@ -358,8 +358,8 @@ _suppressTargets pushBack _suppressTarget;
 	'Truck',
 	TRUE
 ] call (missionNamespace getVariable 'BIS_fnc_setTask');
-['NewSideMission',['Escort truck']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
-'QS_marker_sideMarker' setMarkerText (format ['%1Escort truck',(toString [32,32,32])]);
+['NewSideMission',['护送载具']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+'QS_marker_sideMarker' setMarkerText (format ['%1护送载具',(toString [32,32,32])]);
 waitUntil {
 	sleep 3;
 	(!alive _vehicle) ||
@@ -369,7 +369,7 @@ if (!alive _vehicle) exitWith {
 	//comment 'Mission fail';
 	deleteMarker _marker0;
 	['QS_IA_TASK_SM_ESCORT'] call (missionNamespace getVariable 'BIS_fnc_deleteTask');
-	['TaskFailed',['','Truck destroyed!']] remoteExec [_fuctionNotification,-2,FALSE];
+	['TaskFailed',['','护送目标被摧毁！']] remoteExec [_fuctionNotification,-2,FALSE];
 	sleep 5;
 	[0,_destination] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
 };
@@ -389,7 +389,7 @@ for '_x' from 0 to 1 step 0 do {
 							if ((_vehiclePos distance2D _startPosition) > _safezone_radius) then {
 								_timeOffRoad = _timeOffRoad + 1;
 								if (_timeOffRoad > 7) then {
-									['sideChat',[WEST,'BLU'],'Side mission - The vehicle has struck a buried landmine!'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+									['sideChat',[WEST,'BLU'],'支线任务 - 载具遇到了地雷！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 									_hasHitLandmine = TRUE;
 								};
 							};

@@ -81,7 +81,7 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 					};
 					if ((missionNamespace getVariable 'QS_enemy_mortarFireMessage') > (diag_tickTime - 300)) exitWith {};
 					missionNamespace setVariable ['QS_enemy_mortarFireMessage',diag_tickTime,FALSE];
-					['sideChat',[WEST,'HQ'],'Enemy mortars are firing!'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+					['sideChat',[WEST,'HQ'],(localize "STR_QS_Mtr_firingMsg")] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 				}
 			];
 			(gunner _mortar) addEventHandler [
@@ -173,7 +173,7 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 					};
 					if ((missionNamespace getVariable 'QS_enemy_mortarFireMessage') > (diag_tickTime - 300)) exitWith {};
 					missionNamespace setVariable ['QS_enemy_mortarFireMessage',diag_tickTime,FALSE];
-					['sideChat',[WEST,'HQ'],'Enemy mortars are firing!'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+					['sideChat',[WEST,'HQ'],(localize "STR_QS_Mtr_firingMsg")] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 				}
 			];
 			(gunner _mortar) addEventHandler [
@@ -259,7 +259,7 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 					};
 					if ((missionNamespace getVariable 'QS_enemy_mortarFireMessage') > (diag_tickTime - 300)) exitWith {};
 					missionNamespace setVariable ['QS_enemy_mortarFireMessage',diag_tickTime,FALSE];
-					['sideChat',[WEST,'HQ'],'Enemy mortars are firing!'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+					['sideChat',[WEST,'HQ'],(localize "STR_QS_Mtr_firingMsg")] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 				}
 			];
 			(gunner _mortar) addEventHandler [
@@ -383,7 +383,7 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 				};
 				if ((missionNamespace getVariable 'QS_enemy_mortarFireMessage') > (diag_tickTime - 300)) exitWith {};
 				missionNamespace setVariable ['QS_enemy_mortarFireMessage',diag_tickTime,FALSE];
-				['sideChat',[WEST,'HQ'],'Enemy mortars are firing!'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+				['sideChat',[WEST,'HQ'],(localize "STR_QS_Mtr_firingMsg")] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 			}
 		];
 		(gunner _mortar) addEventHandler [
@@ -468,7 +468,7 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 				};
 				if ((missionNamespace getVariable 'QS_enemy_mortarFireMessage') > (diag_tickTime - 300)) exitWith {};
 				missionNamespace setVariable ['QS_enemy_mortarFireMessage',diag_tickTime,FALSE];
-				['sideChat',[WEST,'HQ'],'Enemy mortars are firing!'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+				['sideChat',[WEST,'HQ'],(localize "STR_QS_Mtr_firingMsg")] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 			}
 		];
 		(gunner _mortar) addEventHandler [
@@ -553,7 +553,7 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 				};
 				if ((missionNamespace getVariable 'QS_enemy_mortarFireMessage') > (diag_tickTime - 300)) exitWith {};
 				missionNamespace setVariable ['QS_enemy_mortarFireMessage',diag_tickTime,FALSE];
-				['sideChat',[WEST,'HQ'],'Enemy mortars are firing!'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+				['sideChat',[WEST,'HQ'],(localize "STR_QS_Mtr_firingMsg")] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 			}
 		];
 		(gunner _mortar) addEventHandler [

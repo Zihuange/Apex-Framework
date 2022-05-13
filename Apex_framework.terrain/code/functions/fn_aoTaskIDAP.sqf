@@ -327,14 +327,14 @@ private _qrfGroup = grpNull;
 missionNamespace setVariable ['QS_sm_enemy_reinforce',FALSE,FALSE];
 
 private _taskID = 'QS_GRID_TASK_IDAP_1';
-private _taskDescription = '<br/>- Investigate scene<br/>- Recover any medical supplies<br/>- Recover any casualties<br/>- Bring to IDAP field hospital before timer runs out.<br/><br/>An IDAP cargo truck carrying vital medical equipment failed to reach its destination. Get over there and see what you can do.<br/><br/>It would be helpful to have a vehicle to help carry cargo.';
+private _taskDescription = (localize 'STR_QS_aoSM_taskIDAPdesc');
 [
 	_taskID,
 	TRUE,
 	[
 		_taskDescription,
-		'IDAP Supplies',
-		'IDAP Supplies'
+		(localize 'STR_QS_aoSM_taskIDAPtitle'),
+		(localize 'STR_QS_aoSM_taskIDAPmarker')
 	],
 	_roadSegmentPosition,
 	'CREATED',
@@ -345,7 +345,7 @@ private _taskDescription = '<br/>- Investigate scene<br/>- Recover any medical s
 	TRUE
 ] call (missionNamespace getVariable 'BIS_fnc_setTask');
 [_taskID,TRUE,_missionTimeout] call (missionNamespace getVariable 'QS_fnc_taskSetTimer');
-['GRID_IDAP_UPDATE',['Side Task','IDAP Supplies']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+['GRID_IDAP_UPDATE',[(localize 'STR_QS_aoSM_task'),(localize 'STR_QS_aoSM_IDAPsupplies')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 for '_x' from 0 to 1 step 0 do {
 	_serverTime = serverTime;
 	{
@@ -368,10 +368,10 @@ for '_x' from 0 to 1 step 0 do {
 				_objective set [1,_objectiveReturn];
 				if (_objectiveType isEqualTo 'LOGISTICS_RECOVER') then {
 					_objectiveArguments call _objectiveOnCompleted;
-					['GRID_IDAP_UPDATE',['Side Task Update','IDAP Supplies recovered']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+					['GRID_IDAP_UPDATE',[(localize 'STR_QS_aoSM_taskUpdate'),(localize 'STR_QS_aoSM_IDAPrecovered')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 				};
 				if (_objectiveType isEqualTo 'MEDEVAC') then {
-					['GRID_IDAP_UPDATE',['Side Task Update','IDAP Medevac complete']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+					['GRID_IDAP_UPDATE',[(localize 'STR_QS_aoSM_taskUpdate'),(localize 'STR_QS_aoSM_IDAPcomplete')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 				};
 			};
 		};
@@ -391,8 +391,8 @@ for '_x' from 0 to 1 step 0 do {
 	if ((_objectivesCompleted) || {(_serverTime > _missionTimeout)}) exitWith {
 		private _text = '';
 		if (_serverTime > _missionTimeout) then {
-			_text = 'Task expired';
-			['GRID_IDAP_UPDATE',['Side Task Complete',_text]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+			_text = (localize 'STR_QS_aoSM_taskExpired');
+			['GRID_IDAP_UPDATE',[(localize 'STR_QS_aoSM_taskComplete'),_text]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		} else {
 			{
 				_objective = _x;
@@ -404,23 +404,23 @@ for '_x' from 0 to 1 step 0 do {
 				];
 				if (_objectiveState isEqualTo 1) then {
 					if (_objectiveType isEqualTo 'LOGISTICS_RECOVER') then {
-						_text = _text + 'Logistics task succeeded. ';
+						_text = _text + (localize 'STR_QS_aoSM_logTaskSucceeded');
 					};
 					if (_objectiveType isEqualTo 'MEDEVAC') then {
-						_text = _text + 'Aid worker task succeeded. ';
+						_text = _text + (localize 'STR_QS_aoSM_aidTaskSucceeded');
 					};
 				} else {
 					if (_objectiveState isEqualTo 2) then {
 						if (_objectiveType isEqualTo 'LOGISTICS_RECOVER') then {
-							_text = _text + 'Logistics task failed. ';
+							_text = _text + (localize 'STR_QS_aoSM_logTaskFailed');
 						};
 						if (_objectiveType isEqualTo 'MEDEVAC') then {
-							_text = _text + 'Aid worker task failed. ';
+							_text = _text + (localize 'STR_QS_aoSM_aidTaskFailed');
 						};
 					};
 				};
 			} forEach _objectives;
-			['GRID_IDAP_UPDATE',['Side Task Complete',_text]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+			['GRID_IDAP_UPDATE',[(localize 'STR_QS_aoSM_taskComplete'),_text]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		};
 	};
 	if (!(_enemyReinforceInit)) then {

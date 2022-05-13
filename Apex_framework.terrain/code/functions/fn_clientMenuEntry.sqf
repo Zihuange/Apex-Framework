@@ -25,7 +25,7 @@ if (_type isEqualTo 'onLoad') then {
 	_ctrlSText1 = _display displayCtrl 1806;
 	private _text = '';
 	_text = parseText format [
-		'<t underline="true">Briefing</t><br/><t size="1">Seize %1 from opposing forces.</t><br/><br/><t underline="true">Rules</t><t size="1"><br/>%3</t><br/><br/><t underline="true">Staff</t><br/><t size="1">%4</t><br/><br/><t underline="true">Teamspeak</t><br/><t size="1">%2</t><br/><br/><t underline="true">Hotkeys</t><br/><t size="1">[Home] - Player Menu<br/>[End] - Earplugs<br/>[4] - Weapon Holster<br/>[L.Ctrl]+[Reload] - Magazine Repack<br/>[V] - Jump (while running)<br/>[U] - Group Management<br/>[Space] - Open and Close doors<br/>[J]x2 - Tasks</t>',
+		'<t underline="true">简报</t><br/><t size="1">从敌军手中夺取 %1 ！</t><br/><br/><t underline="true">Rules</t><t size="1"><br/>%3</t><br/><br/><t underline="true">Staff</t><br/><t size="1">%4</t><br/><br/><t underline="true">Teamspeak</t><br/><t size="1">%2</t><br/><br/><t underline="true">Hotkeys</t><br/><t size="1">[Home] - 玩家菜单<br/>[End] - Earplugs<br/>[4] - 背起武器<br/>[L.Ctrl]+[Reload] - 整理弹匣<br/>[V] - 跳跃 (奔跑中使用)<br/>[U] - 班组管理<br/>[J]x2 - 打开任务简报</t>',
 		worldName,
 		(missionNamespace getVariable ['QS_missionConfig_commTS','']),
 		(missionNamespace getVariable ['QS_missionConfig_splash_serverRules','']),

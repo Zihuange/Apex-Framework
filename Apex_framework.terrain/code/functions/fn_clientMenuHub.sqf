@@ -52,9 +52,9 @@ if (_type isEqualTo 'onLoad') exitWith {
 	
 	
 	
-	(_display displayCtrl 1806) ctrlSetText 'Radio Management';
+	(_display displayCtrl 1806) ctrlSetText '无线电管理';
 	(_display displayCtrl 1806) ctrlEnable TRUE;
-	(_display displayCtrl 1807) ctrlSetText 'Group Management';
+	(_display displayCtrl 1807) ctrlSetText '班组管理';
 	(_display displayCtrl 1807) ctrlEnable TRUE;
 	(_display displayCtrl 1808) ctrlEnable FALSE;
 	(_display displayCtrl 1810) ctrlEnable TRUE;
@@ -104,7 +104,7 @@ if (_type isEqualTo 'B4') exitWith {
 			(!dialog)
 		};
 		(findDisplay 46) createDisplay 'RscDisplayDynamicGroups';
-		50 cutText ['Use [Page Up] / [Page Down] to navigate the group list','PLAIN'];
+		50 cutText ['按 [Page Up] / [Page Down] 来滚动小队菜单','PLAIN'];
 	};
 };
 if (_type isEqualTo 'B5') exitWith {

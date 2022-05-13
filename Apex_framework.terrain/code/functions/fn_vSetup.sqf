@@ -126,6 +126,9 @@ _gorgon = [
 _mora = [
 	'i_apc_tracked_03_cannon_f'
 ];
+_marshell = [
+	"b_apc_wheeled_01_cannon_f","b_t_apc_wheeled_01_cannon_f"
+];
 _vtol_west = [
 	'b_t_vtol_01_armed_blue_f','b_t_vtol_01_armed_f','b_t_vtol_01_armed_olive_f','b_t_vtol_01_infantry_blue_f',
 	'b_t_vtol_01_infantry_f','b_t_vtol_01_infantry_olive_f','b_t_vtol_01_vehicle_blue_f','b_t_vtol_01_vehicle_f',
@@ -230,11 +233,11 @@ if (_t2 in ['i_mbt_03_cannon_f']) then {
 	if (_isSimpleObject || {(isNull (driver _u))}) then {
 		{
 			_u setObjectTextureGlobal _x;
-		} forEach [
-			[0,'media\images\vskins\mbt52\mbt_03_ext01_blufor_co.paa'],
-			[1,'media\images\vskins\mbt52\mbt_03_ext02_blufor_co.paa'],
-			[2,'media\images\vskins\mbt52\mbt_03_rcws_blufor_co.paa']
-		];
+		} forEach 
+		(selectRandom[
+			[[0,'media\images\vskins\mbt52\UMP45_Kuma_17_CO.paa'],[1,'media\images\vskins\mbt52\UMP45_Kuma_26_CO.paa'],[2,'media\images\vskins\mbt52\UMP45_Kuma_31_CO.paa']],
+			[[0,'media\images\vskins\mbt52\mbt_03_ext01_blufor_co.paa'],[1,'media\images\vskins\mbt52\mbt_03_ext02_blufor_co.paa'],[2,'media\images\vskins\mbt52\mbt_03_rcws_blufor_co.paa']]
+		]);
 	};
 };
 if (_t2 in _gorgon) then {
@@ -260,6 +263,19 @@ if (_t2 in _marid) then {
 		];
 	};
 };
+if (_t2 in _marshell) then {
+	if (_isSimpleObject || {(isNull (driver _u))}) then {
+		if ((random 1) > 0.8) then {
+			{
+				_u setObjectTextureGlobal _x;
+			} forEach [
+				[0,'media\images\vskins\amv7\AMV_MARSHALL_BODY_0_MIKU.jpg'],
+				[1,'media\images\vskins\amv7\AMV_MARSHALL_OTHER_1.jpg'],
+				[2,'media\images\vskins\amv7\AMV_MARSHALL_CANNON_2.jpg']
+			];			
+		};
+	};
+};
 if (_t2 in ['o_t_apc_wheeled_02_rcws_ghex_f']) then {
 	if (_isSimpleObject || {(isNull (driver _u))}) then {
 		{ 
@@ -283,6 +299,9 @@ if (_t2 in _hellcat) then {
 		{ 
 			_u setObjectTextureGlobal [_forEachIndex,_x]; 
 		} forEach (getArray (configFile >> 'CfgVehicles' >> _t2 >> 'TextureSources' >> 'Green' >> 'textures'));
+		if ((random 1) > 0.666) then {
+			_u setObjectTextureGlobal [0,'media\images\vskins\wy55\Hellcat_SOPMOD2_CO.jpg'];
+		};
 	};
 };
 if (_t2 in _taru_default) then {
@@ -395,8 +414,8 @@ if (!(_isSimpleObject)) then {
 			{
 				_u animateSource _x;
 			} forEach [
-				['hidehull',1,1],
-				['hideturret',1,1]
+				['hidehull',0,1],
+				['hideturret',0,1]
 			];
 		};
 	};

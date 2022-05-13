@@ -170,8 +170,8 @@ if (_type isEqualTo 'FOOT') then {
 									if (!(missionNamespace getVariable ['QS_grid_civCasualties',FALSE])) then {
 										missionNamespace setVariable ['QS_grid_civCasualties',TRUE,TRUE];
 										if (isDedicated) then {
-											['GRID_IDAP_UPDATE',['Area Of Operations','Objective failed<br/>No civilian casualties']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
-											'QS_marker_grid_civState' setMarkerTextLocal (format ['%1No civilian casualties (failed)',(toString [32,32,32])]);
+											['GRID_IDAP_UPDATE',['作战区域','目标失败<br/>我们造成了平民伤亡！']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+											'QS_marker_grid_civState' setMarkerText (format ['%1无平民伤亡目标失败',(toString [32,32,32])]);
 											'QS_marker_grid_civState' setMarkerColor 'ColorRED';
 										} else {
 											[85] remoteExec ['QS_fnc_remoteExec',2,FALSE];
@@ -201,7 +201,7 @@ if (_type isEqualTo 'FOOT') then {
 						if (!isNull _instigator) then {
 							if (isPlayer _instigator) then {
 								_name = name _instigator;
-								_text = format ['%1 %2 a civilian!',_name,(selectRandom ['killed','murdered','butchered','slaughtered'])];
+								_text = format ['%1 %2 了一个平民！',_name,(selectRandom ['杀死','谋害','屠杀','杀害'])];
 								['systemChat',_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 							};
 						};

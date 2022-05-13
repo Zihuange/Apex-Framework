@@ -40,29 +40,29 @@ if ((_type2 isEqualType '') && (_type2 isEqualTo 'KeyDown')) exitWith {
 	player setVariable ['QS_staff_menuOpened',TRUE,FALSE];
 	0 spawn {uiSleep 2;player setVariable ['QS_staff_menuOpened',nil,FALSE];};
 	_moderatorsActions = [
-		['0 - Close Menu',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),2,81,TRUE,TRUE,'','TRUE'],
-		['1 - (Target) Delete',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),3,80,TRUE,TRUE,'','TRUE'],
-		['2 - Spectate',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),4,79,TRUE,TRUE,'','TRUE'],
-		['3 - Invincibility',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),5,78,TRUE,TRUE,'','TRUE'],
-		['4 - Show Pilots',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),6,77,TRUE,TRUE,'','TRUE'],
-		['5 - (Target) Repair',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),7,76,TRUE,TRUE,'','TRUE'],
-		['6 - (Target) Pardon',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),8,75,TRUE,TRUE,'','TRUE'],
-		['7 - (Target) Punish',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),9,75,TRUE,TRUE,'','TRUE'],
+		['0 - 关闭菜单',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),2,81,TRUE,TRUE,'','TRUE'],
+		['1 - (目标) 删除',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),3,80,TRUE,TRUE,'','TRUE'],
+		['2 - 观察者',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),4,79,TRUE,TRUE,'','TRUE'],
+		['3 - 无敌',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),5,78,TRUE,TRUE,'','TRUE'],
+		['4 - 显示飞行员',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),6,77,TRUE,TRUE,'','TRUE'],
+		['5 - (目标) 修理',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),7,76,TRUE,TRUE,'','TRUE'],
+		['6 - (目标) 原谅',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),8,75,TRUE,TRUE,'','TRUE'],
+		['7 - (目标) 惩罚',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),9,75,TRUE,TRUE,'','TRUE'],
 		['8 - No function assigned',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),10,74,TRUE,TRUE,'','TRUE'],
 		['9 - No function assigned',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),11,73,TRUE,TRUE,'','TRUE']
 	];
 	_adminsActions = [
-		['10 - (Target) Revive',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),12,72,TRUE,TRUE,'','TRUE'],
-		['11 - Map Teleport',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),13,71,TRUE,TRUE,'','TRUE'],
-		['12 - (Clean) Base',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),14,70,TRUE,TRUE,'','TRUE'],
-		['13 - (Clean) Island',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),15,69,TRUE,TRUE,'','TRUE']
+		['10 - (目标) 治疗',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),12,72,TRUE,TRUE,'','TRUE'],
+		['11 - 地图传送',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),13,71,TRUE,TRUE,'','TRUE'],
+		['12 - (清理) 基地',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),14,70,TRUE,TRUE,'','TRUE'],
+		['13 - (清理) 地图',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),15,69,TRUE,TRUE,'','TRUE']
 	];
 	_developersActions = [
-		['14 - Splendid Cam',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),16,68,TRUE,TRUE,'','TRUE'],
-		['15 - Dev Terminal',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),17,67,TRUE,TRUE,'','TRUE']
+		['14 - 摄像机',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),16,68,TRUE,TRUE,'','TRUE'],
+		['15 - 开发控制台',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),17,67,TRUE,TRUE,'','TRUE']
 	];
 	_mediaActions = [
-		['14 - Splendid Cam',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),16,68,TRUE,TRUE,'','TRUE']
+		['14 - 摄像机',(missionNamespace getVariable 'QS_fnc_clientMenuStaff'),16,68,TRUE,TRUE,'','TRUE']
 	];
 	if (!isNil {missionNamespace getVariable 'QS_staff_currentActions'}) then {
 		if ((count (missionNamespace getVariable 'QS_staff_currentActions')) > 0) then {
@@ -114,14 +114,14 @@ if ((_type2 isEqualType '') && (_type2 isEqualTo 'Curator')) exitWith {
 		if (!isNull _logic) then {
 			if (!isNil {player getVariable 'QS_staff_curatorLastUpdate'}) exitWith {
 				if (!isStreamFriendlyUIEnabled) then {
-					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'Please wait a short time (10s) between sync attempts...',[],(serverTime + 10),TRUE,'Curator',FALSE];
+					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'请稍等一会儿 (10s) 再尝试同步',[],(serverTime + 10),TRUE,'Curator',FALSE];
 				};
 			};
 			player setVariable ['QS_staff_curatorLastUpdate',TRUE,FALSE];
 			0 spawn {uiSleep 10;player setVariable ['QS_staff_curatorLastUpdate',nil,FALSE];};
 			[49,_logic] remoteExec ['QS_fnc_remoteExec',2,FALSE];
 			if (!isStreamFriendlyUIEnabled) then {
-				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'Synchronizing editable entities',[],-1,TRUE,'Curator',FALSE];
+				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'正在同步可编辑物品',[],-1,TRUE,'Curator',FALSE];
 			};
 		};
 	};
@@ -146,12 +146,12 @@ if (_type2 isEqualType 0) exitWith {
 			if ((!(_cursorTarget isKindOf 'LandVehicle')) && (!(_cursorTarget isKindOf 'Air')) && (!(_cursorTarget isKindOf 'Ship')) && (!(_cursorTarget isKindOf 'StaticWeapon')) && (!(_cursorTarget isKindOf 'Man')) && (!(_cursorTarget isKindOf 'WeaponHolder'))) exitWith {hint 'Invalid target type!';};
 			if ((_cursorTarget isKindOf 'Man') && (isPlayer _cursorTarget) && (alive _cursorTarget)) exitWith {
 				if (!isStreamFriendlyUIEnabled) then {
-					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'Cannot delete players!',[],-1];
+					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'无法删除玩家！',[],-1];
 				};
 			};
 			if (!isNil {_cursorTarget getVariable 'QS_cleanup_protected'}) exitWith {
 				if (!isStreamFriendlyUIEnabled) then {
-					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'Target is protected against cleanup!',[],-1];
+					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'目标受清除保护！',[],-1];
 				};
 			};
 			if (isNull _cursorTarget) exitWith {};
@@ -165,24 +165,24 @@ if (_type2 isEqualType 0) exitWith {
 		player setVariable ['QS_staff_spectating',TRUE,FALSE];
 		createDialog 'RscDisplayEGSpectator';
 		if (!isStreamFriendlyUIEnabled) then {
-			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'[Shift]+[F2] to Exit spectator mode',[],(serverTime + 10)];
+			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'[Shift]+[F2]退出观察者视角',[],(serverTime + 10)];
 		};
 	};
 	if (_type2 isEqualTo 5) then {
 		playSound 'ClickSoft';
 		if (isDamageAllowed player) then {
 			player allowDamage FALSE;
-			_text = format ['%1 (staff) has turned on Invincibility',profileName];
+			_text = '';
 			['systemChat',_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 			if (!isStreamFriendlyUIEnabled) then {
-				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'Invincibility ON',[],-1];
+				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'(1-K)',[],-1];
 			};
 		} else {
 			player allowDamage TRUE;
-			_text = format ['%1 (staff) has turned off Invincibility',profileName];
+			_text = '';
 			['systemChat',_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 			if (!isStreamFriendlyUIEnabled) then {
-				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'Invincibility OFF',[],-1];
+				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'(1-G)',[],-1];
 			};
 		};
 	};
@@ -207,11 +207,11 @@ if (_type2 isEqualType 0) exitWith {
 		_cursorTarget = cursorTarget;
 		if (isNull _cursorTarget) exitWith {
 			if (!isStreamFriendlyUIEnabled) then {
-				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'Repair failed, no valid target selected',[],-1];
+				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'修理失败，无有效目标',[],-1];
 			};
 		};
 		if ((!(_cursorTarget isKindOf 'LandVehicle')) && (!(_cursorTarget isKindOf 'Ship')) && (!(_cursorTarget isKindOf 'Air'))) exitWith {
-			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'Invalid target',[],-1];
+			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'无效目标',[],-1];
 		};
 		playSound 'ClickSoft';
 		_cursorTarget setDamage 0;
@@ -257,22 +257,22 @@ if (_type2 isEqualType 0) exitWith {
 	};
 	if (_type2 isEqualTo 10) then {
 		/*/No function assigned/*/
-		(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'No function assigned',[],-1,TRUE,'Admin Tools',FALSE];
+		(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'没有分配功能',[],-1,TRUE,'Admin Tools',FALSE];
 	};
 	if (_type2 isEqualTo 11) then {
 		/*/No function assigned/*/
-		(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'No function assigned',[],-1,TRUE,'Admin Tools',FALSE];
+		(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'没有分配功能',[],-1,TRUE,'Admin Tools',FALSE];
 	};
 	if (_type2 isEqualTo 12) then {
 		_cursorTarget = cursorTarget;
 		if (!(_cursorTarget isKindOf 'Man')) exitWith {
-			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'Invalid target',[],(serverTime + 10)];
+			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'无效目标',[],(serverTime + 10)];
 		};
 		if (!alive _cursorTarget) exitWith {
-			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'Invalid target',[],(serverTime + 10)];
+			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'无效目标',[],(serverTime + 10)];
 		};
 		if (!isNull (attachedTo _cursorTarget)) exitWith {
-			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'Cant revive this target currently',[],(serverTime + 10)];
+			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'目前无法治疗目标单位',[],(serverTime + 10)];
 		};
 		playSound 'ClickSoft';
 		if (local _cursorTarget) then {
@@ -304,7 +304,7 @@ if (_type2 isEqualType 0) exitWith {
 							if (surfaceIsWater _pos) then {};
 							openMap FALSE;
 							missionNamespace setVariable ['QS_mapSelected',TRUE,FALSE];
-							_text = format ['%1 (staff) has teleported to grid %2',profileName,(mapGridPosition _pos)];
+							_text = '';
 							['systemChat',_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 						}
 					]
@@ -324,23 +324,23 @@ if (_type2 isEqualType 0) exitWith {
 		};
 	};
 	if (_type2 isEqualTo 14) then {
-		_result = ['Clean base. Executing this function too often will increase network de-sync.','Base cleanup','Execute','Cancel',(findDisplay 46),FALSE,FALSE] call (missionNamespace getVariable 'BIS_fnc_guiMessage');
+		_result = ['清理基地。 过于频繁执行该命令会导致网络同步下降。','清理基地','执行','取消',(findDisplay 46),FALSE,FALSE] call (missionNamespace getVariable 'BIS_fnc_guiMessage');
 		if (_result) then {	
 			playSound 'ClickSoft';
 			[53,[profileName,(getPlayerUID player)]] remoteExec ['QS_fnc_remoteExec',2,FALSE];
-			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,3,-1,'Cleaning in progress ...',[],(serverTime + 6)];
-			(missionNamespace getVariable 'QS_managed_hints') pushBack [6,TRUE,10,-1,'Base cleaned. Executing this function too often will increase network de-sync.',[],(serverTime + 20)];
+			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,3,-1,'正在清理……',[],(serverTime + 6)];
+			(missionNamespace getVariable 'QS_managed_hints') pushBack [6,TRUE,10,-1,'基地已清理。 过于频繁执行该命令会导致网络同步下降。',[],(serverTime + 20)];
 			_text = format ['%1 (staff) has cleaned the spawn area.',profileName];
 			['systemChat',_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		};
 	};
 	if (_type2 isEqualTo 15) then {
-		_result = [(format ['Clean %1. Executing this function too often will increase network de-sync.',worldName]),(format ['%1 cleanup',worldName]),'Execute','Cancel',(findDisplay 46),FALSE,FALSE] call (missionNamespace getVariable 'BIS_fnc_guiMessage');	
+		_result = [(format ['清理 %1。 过于频繁执行该命令会导致网络同步下降。',worldName]),(format ['%1 cleanup',worldName]),'执行','取消',(findDisplay 46),FALSE,FALSE] call (missionNamespace getVariable 'BIS_fnc_guiMessage');	
 		if (_result) then {	
 			playSound 'ClickSoft';
 			[54] remoteExec ['QS_fnc_remoteExec',2,FALSE];
 			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,3,-1,'Cleaning in progress ...',[],(serverTime + 6)];
-			_hintText = format ['%1 cleaned. Executing this function too often will increase network de-sync.',worldName];
+			_hintText = format ['%1 已清理。 过于频繁执行该命令会导致网络同步下降。',worldName];
 			(missionNamespace getVariable 'QS_managed_hints') pushBack [6,TRUE,10,-1,_hintText,[],(serverTime + 20)];
 			_text = format ['%1 (staff) has initialized %2 cleanup.',profileName,worldName];
 			['systemChat',_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];

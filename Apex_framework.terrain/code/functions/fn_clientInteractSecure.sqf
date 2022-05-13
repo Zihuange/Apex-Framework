@@ -67,30 +67,30 @@ if (!isNil {_cursorObject getVariable 'QS_object_GT_1'}) exitWith {
 };
 if (!isNil {_cursorTarget getVariable 'QS_sc_subObj_1'}) exitWith {
 	player playAction 'PutDown';
-	50 cutText ['Sub-objective secured','PLAIN DOWN',0.75];
-	['sideChat',[WEST,'BLU'],(format ['%1 secured the enemy Datalink',(groupID (group player))])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+	50 cutText ['分支目标已完成','PLAIN DOWN',0.75];
+	['sideChat',[WEST,'BLU'],(format ['%1 夺取了敌军数据中心。',(groupID (group player))])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 	[73,1] remoteExec ['QS_fnc_remoteExec',2,FALSE];
 };
 if (!isNil {_cursorObject getVariable 'QS_sc_subObj_1'}) exitWith {
 	player playAction 'PutDown';
-	50 cutText ['Sub-objective secured','PLAIN DOWN',0.75];
-	['sideChat',[WEST,'BLU'],(format ['%1 secured the enemy Datalink',(groupID (group player))])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+	50 cutText ['分支目标已完成','PLAIN DOWN',0.75];
+	['sideChat',[WEST,'BLU'],(format ['%1 夺取了敌军数据中心。',(groupID (group player))])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 	[73,1] remoteExec ['QS_fnc_remoteExec',2,FALSE];
 };
 if (!isNil {_cursorTarget getVariable 'QS_sc_subObj_3'}) exitWith {
 	player playAction 'PutDown';
-	50 cutText ['Sub-objective secured','PLAIN DOWN',0.75];
-	['sideChat',[WEST,'BLU'],(format ['%1 secured the enemy supply depot',(groupID (group player))])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+	50 cutText ['分支目标已完成','PLAIN DOWN',0.75];
+	['sideChat',[WEST,'BLU'],(format ['%1 夺取了敌军补给仓库。',(groupID (group player))])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 	[73,3] remoteExec ['QS_fnc_remoteExec',2,FALSE];
 };
 if (!isNil {_cursorObject getVariable 'QS_sc_subObj_3'}) exitWith {
 	player playAction 'PutDown';
-	50 cutText ['Sub-objective secured','PLAIN DOWN',0.75];
-	['sideChat',[WEST,'BLU'],(format ['%1 secured the enemy supply depot',(groupID (group player))])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+	50 cutText ['分支目标已完成','PLAIN DOWN',0.75];
+	['sideChat',[WEST,'BLU'],(format ['%1 夺取了敌军补给仓库。',(groupID (group player))])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 	[73,3] remoteExec ['QS_fnc_remoteExec',2,FALSE];
 };
 player playAction 'PutDown';
-['sideChat',[WEST,'BLU'],(format ['%1 secured an objective!',(groupID (group player))])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+['sideChat',[WEST,'BLU'],(format ['%1 完成了一个目标！',(groupID (group player))])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 50 cutText ['Secured','PLAIN DOWN',0.75];
 missionNamespace setVariable ['QS_smSuccess',TRUE,TRUE];
 TRUE;

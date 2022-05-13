@@ -52,21 +52,21 @@ diag_log 'Defend AO 0.5';
 missionNamespace setVariable ['QS_defendCount',((missionNamespace getVariable 'QS_defendCount') + 1),TRUE];
 missionNamespace setVariable ['QS_defendActive',TRUE,TRUE];
 _defendMessages = [
-	'OPFOR Forces incoming! Seek cover immediately and defend the objective the HQ!',
-	'The enemy managed to mount a counterattack! Hold the HQ at all cost!',
-	'Dig in at the HQ boys, they are coming!'
+	(localize 'STR_QS_Def_defMsg0'),
+	(localize 'STR_QS_Def_defMsg1'),
+	(localize 'STR_QS_Def_defMsg2')
 ];
-['DEFEND_HQ',['Defend','Defend HQ']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+['DEFEND_HQ',[(localize 'STR_QS_Def_defend'),(localize 'STR_QS_Def_defendHQ')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 {
 	_x setMarkerAlpha 0.75;
 	_x setMarkerPos (missionNamespace getVariable 'QS_HQpos');
 } forEach ['QS_marker_aoCircle','QS_marker_aoMarker'];
-'QS_marker_aoMarker' setMarkerText format['%1Defend %2 HQ',(toString [32,32,32]),(missionNamespace getVariable 'QS_aoDisplayName')];
+'QS_marker_aoMarker' setMarkerText format[(localize 'STR_QS_Def_aoMarker'),(toString [32,32,32]),(missionNamespace getVariable 'QS_aoDisplayName')];
 _centerPos = missionNamespace getVariable 'QS_HQpos';
 _centerPos params ['_centerPosX','_centerPosY','_centerPosZ'];
 private _allPlayers = allPlayers;
 _taskID = 'QS_IA_TASK_DEFENDHQ';
-[_taskID,TRUE,['Defend the HQ boys!','Defend HQ','Defend HQ'],_centerPos,'AUTOASSIGNED',5,FALSE,TRUE,'Defend',TRUE] call (missionNamespace getVariable 'BIS_fnc_setTask');
+[_taskID,TRUE,[(localize 'STR_QS_Def_taskDesc'),(localize 'STR_QS_Def_taskTitle'),(localize 'STR_QS_Def_taskMarker')],_centerPos,'AUTOASSIGNED',5,FALSE,TRUE,'Defend',TRUE] call (missionNamespace getVariable 'BIS_fnc_setTask');
 _timeNow = time;
 _serverTime = serverTime;
 _tickTimeNow = diag_tickTime;
@@ -482,7 +482,7 @@ private _groupLeader = objNull;
 missionNamespace setVariable ['QS_defend_blockTimeout',FALSE,FALSE]; //missionNamespace setVariable ['QS_defend_blockTimeout',((random 1) > 0.95),FALSE];
 private _extended = FALSE;
 private _blockMessageShown = FALSE;
-private _blockMessage = 'The enemy is not giving up! Hold on as long as you can, soldiers!';
+private _blockMessage = (localize 'STR_QS_Def_blockMsg');
 missionNamespace setVariable ['QS_AI_targetsKnowledge_suspend',TRUE,FALSE];
 //comment 'Functions preload';
 _fn_serverDetector = missionNamespace getVariable 'QS_fnc_serverDetector';
@@ -1481,9 +1481,9 @@ for '_x' from 0 to 1 step 0 do {
 		if (serverTime > _durationAlmostOver) then {
 			_durationAlmostOverHint = TRUE;
 			if ((random 1) > 0.5) then {
-				_text = 'The attack is almost over!';
+				_text = (localize 'STR_QS_Def_almostOver0');
 			} else {
-				_text = 'Hang on boys, the end is near!';
+				_text = (localize 'STR_QS_Def_almostOver1');
 			};
 			['sideChat',[WEST,'HQ'],_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		};
@@ -1519,7 +1519,7 @@ for '_x' from 0 to 1 step 0 do {
 				if (_enemyInHQCount >= 5) then {
 					//comment 'There are more than 5 enemies in HQ';
 					if (_sectorControlTicker isEqualTo 1) then {
-						['sideChat',[WEST,'HQ'],'CSAT is taking the HQ!'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+						['sideChat',[WEST,'HQ'],(localize 'STR_QS_Def_enemyInHQ')] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 					};
 					if (_sectorControlTicker > _sectorControlThreshold) then {
 						_exitFail = TRUE;
@@ -1546,8 +1546,8 @@ for '_x' from 0 to 1 step 0 do {
 	};
 	
 	if (_exitSuccess) exitWith {
-		['sideChat',[WEST,'HQ'],'Well done boys! Secure an LZ and get back to base for rearm!'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
-		['DEFEND_SUCCESS',['Defend HQ','HQ defense completed!']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['sideChat',[WEST,'HQ'],(localize 'STR_QS_Def_successChat')] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['DEFEND_SUCCESS',[(localize 'STR_QS_Def_defendHQ'),(localize 'STR_QS_Def_defendCompleted')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		['QS_IA_TASK_DEFENDHQ','SUCCEEDED',FALSE] call (missionNamespace getVariable 'BIS_fnc_taskSetState');
 		profileNamespace setVariable [
 			'QS_defendHQ_statistics',
@@ -1558,8 +1558,8 @@ for '_x' from 0 to 1 step 0 do {
 		];
 	};
 	if (_exitFail) exitWith {
-		['sideChat',[WEST,'HQ'],'Bad luck soldiers!'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
-		['DEFEND_FAIL',['Defend','HQ Defense Failed!']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['sideChat',[WEST,'HQ'],(localize 'STR_QS_Def_failedChat')] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['DEFEND_FAIL',[(localize 'STR_QS_Def_defend'),(localize 'STR_QS_Def_defendFailed')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		['QS_IA_TASK_DEFENDHQ','FAILED',FALSE] call (missionNamespace getVariable 'BIS_fnc_taskSetState');
 		profileNamespace setVariable [
 			'QS_defendHQ_statistics',
@@ -1570,7 +1570,7 @@ for '_x' from 0 to 1 step 0 do {
 	   ];
 	};
 	if (missionNamespace getVariable 'QS_defend_terminate') exitWith {
-		['hint','Defense cancelled!'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['hint',(localize 'STR_QS_Def_defendCancelled')] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 	};
 	sleep 1.5;
 };

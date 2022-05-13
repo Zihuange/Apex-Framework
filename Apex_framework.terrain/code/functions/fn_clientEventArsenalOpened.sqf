@@ -36,7 +36,7 @@ ____________________________________________________________________________/*/
 			0 spawn {
 				for '_x' from 0 to 4 step 1 do {
 					if (isNull (uiNamespace getVariable ['BIS_fnc_arsenal_display',displayNull])) exitWith {};
-					['showMessage',[(uiNamespace getVariable 'BIS_fnc_arsenal_display'),"To add ammunition, select your uniform/vest/backpack on the left panel and add ammunition on the right panel."]] call (missionNamespace getVariable 'BIS_fnc_arsenal');
+					['showMessage',[(uiNamespace getVariable 'BIS_fnc_arsenal_display'),"想添加弹药，先选中左侧的制服/背心/背包位置，然后在右侧菜单添加需要的弹药"]] call (missionNamespace getVariable 'BIS_fnc_arsenal');
 					uiSleep 5;
 				};
 			};
