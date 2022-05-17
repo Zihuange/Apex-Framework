@@ -281,40 +281,39 @@ if ((getPlayerUID player) in (['ALL'] call (missionNamespace getVariable 'QS_fnc
 	};
 };
 
-/*/ Enable or change this if you like
+
 player createDiaryRecord [
 	'QS_diary_rules',
 	[
-		'Enforcement',
+		'服务器规定',
 		'
-		<br />The purpose of the above rules are to ensure a fun and relaxing environment for public players.
+		<br />服务器规定是为了给广大玩家群体创造更好的游戏环境，请务必遵守！
 		<br />
-		<br />Server rules are in place merely as a means to that end.
+		<br />1.禁止使用作弊程序或限制外的模组进行游戏。
 		<br />
-		<br />Guideline for enforcement:
+		<br />2.禁止在服务器内发表种族歧视、政治敏感话题，同时严禁互相辱骂，被发现将会被封禁。
 		<br />
-		<br />-	Innocent rule violation and disruptive behavior: 
+		<br />3.禁止使用步枪兵以外的兵种挂机
 		<br />
-		<br />		= Verbal / Written request to cease, or warning.
-		<br /> 
-		<br />-	Minor or first-time rule violation:
+		<br />4.不建议单人驾驶重型武装载具(如坦克，轮式突击炮，步兵战车）。
+		<br /> 		AI车组成员只仅允许用于坦克，轮式突击炮，步兵战车三种车辆，禁止放AI到乘客位。
+		<br />		防空载具禁止用于对地打击。
+		<br />		地面载具完成前期的压制后请主动进攻，禁止长时间蹲山头。
 		<br />
-		<br />		= Kick, or 0 - 3 day ban.
+		<br />5.飞行员禁止参与地面战斗，飞机坠毁后如果无法及时得到救援请重生回基地。
+		<br />		武装直升机(AH-99)和武装鱼鹰(V-44X武装版)禁止单人驾驶。
+		<br />		在基地内多次发生飞行事故会受到相应惩罚，本服并非用于练习飞行技术。
+		<br />		请与其他飞行员及友方地面单位保持良好沟通，防止友军误击。
+		<br />		除了地面请求，不要随意飞越4种支线附近（营救POW，武器箱，获取车辆情报，获取军官情报）。
 		<br />
-		<br />-	Serious or repetitive rule violation: 
+		<br />6.禁止用任何方式刷FOB重生票数。
 		<br />
-		<br />		= 3 - 7 day ban.
+		<br />7.服务器管理员对规则拥有最终解释权，有违反所有上述规定的都将受到严厉惩罚。
 		<br />
-		<br />-	Administrative ban (hack/exploit/verbal abuse/serious offense):
-		<br />
-		<br />		= permanent or 30 day.
-		<br />
-		<br />
-		<br />The above is subject to discretion.
+		<br />8.其它问题欢迎进群咨询：813940305
 		'
 	]
 ];
-/*/
 
 player createDiaryRecord [
 	'QS_diary_rules',
@@ -323,41 +322,22 @@ player createDiaryRecord [
 		(missionNamespace getVariable ['QS_missionConfig_splash_serverRules',''])
 	]
 ];
-/*/ Enable or change this if you like
+
 player createDiaryRecord [
 	'QS_diary_rules',
 	[
-		'Aviation',
+		'飞行准则',
 		"
-		<br /> Pilots have their own specialized roles, therefore they come with additional responsibilities. If you have any issues with any pilot, please report the player to an admin or moderator.
+		<br /> 飞行员是一个更加特殊的兵种，承担了运输或火力支援职能，所以有额外的规定要求。
 		<br />
-		<br />1. You MUST be on our Teamspeak server--in the correct channel--and communicable. Exception if TS is down or full.
+		<br />1.请保证您能够通过语音和其他玩家进行沟通，最好可以登录Teamspeak3频道进行交流
 		<br />
-		<br />2. You MUST be a pilot to fly an aircraft.
-		<br />	If you are a non-pilot and there are less than 20 players on the server, then you may fly a hummingbird in copilot. 
-		<br />	If there are over 20 players, you may fly a hummingbird to a side mission ONLY.
+		<br />2.禁止参与地面战斗！地面作战职能由其他单位承担，请不要浪费飞行员位置
 		<br />	
-		<br />3. Pilots must not play infantry while in a pilot slot.
-		<br />
-		<br />4a. If you are an inexperienced pilot, please consider the time and enjoyment of others. The editor is there for a reason.
-		<br /> 
-		<br />4b. This is a public server. Helicopters are not private/reserved transport. A Pilots primary role is to provide timely general transport to and from objectives.
-		<br /> 
-		<br />-		* General transport in this context is defined as: Indiscriminate and timely transport for each and all players on the server.
-		<br />
-		<br />5. You must be able to fly AND LAND any aircraft with reasonable competence, if you do not have experience in any aircraft, you may be asked to leave the role.
-		<br />		
-		<br />6. Landing or slinging objects/vehicles inside of infantry spawn may result in a warning or a kick for first offense.
-		<br />
-		<br />7. Ramming enemy or intentional crashing may result in a ban without warning, try to preserve assets.
-		<br />
-		<br />The above rules are subject to discretion of moderators and administrators.
-		<br />
-		<br />If you see a player in violation of the above, contact a moderator or admin (teamspeak).
+		<br />3.请对自己的飞行水平有一个合理的评估，选择合适的降落地点，不要多次带着友军单位一起阵亡。
 		"
 	]
 ];
-/*/
 /*/ Enable or change this if you like
 player createDiaryRecord [
 	'QS_diary_rules',
@@ -376,39 +356,49 @@ player createDiaryRecord [
 	]
 ];
 /*/
-/*/ Enable or change this if you like
 player createDiaryRecord [
 	'QS_diary_rules',
 	[
 		'通讯准则',
 		'
-		<br />1. Spamming comms will not be tolerated
-		<br />2. Arguing on comms will not be tolerated
-		<br />3. Shouting/Screaming on comms will not be tolerated. (This includes telling a pilot they suck and can not fly to save their own life)
-		<br />4. Speaking on Global or Side will result in a kick, and if done again a ban will be issued.
-		<br />5. Speaking over side is laggy and no-one can understand you. Type on side. Talk in Group or better join us on TS
-		<br />6. Excessive mic spam will result in a kick, if done again a ban will be issued
+		<br />1.长时间占用频道或在频道内播放音乐将会被警告甚至踢出
+		<br />
+		<br />2.请注意调试自己的麦克风保证通讯质量
+		<br />
+		<br />3.禁止在语音频道内辱骂他人，违反规定将被封禁处理
 		'
 	]
 ];
-/*/
 
 /*/-------------------------------------------------- Mods/*/
 
-/*/ Enable or change this if you like
+
 player createDiaryRecord [
 	'QS_diary_mods',
 	[
 	'模组列表',
 	'
-	<br /> Mods currently allowed (subject to change without notice):<br /><br />
+	<br /> 目前可用的模组:<br /><br />
 
-	<br/>- JSRS soundmod (Steam Workshop): Audio effects mod
-	<br/>- Blastcore standalone (Steam Workshop): Visual effects mod
+	<br/>-A3 Thermal Improvement    A3 热成像增强
+	<br/>-Achilles    宙斯增强模组
+	<br/>-Alternative Running    
+	<br/>-Atlas Hitmarkers    Atlas的命中提示
+	<br/>-Blastcore Edited    爆炸效果模组
+	<br/>-CBA A3    基础功能模组
+	<br/>-Enhanced Movement    高级动作模组
+	<br/>-JSRS SOUNDMOD    音效模组
+	<br/>-JSRS SOUNDMOD - Reloading Sounds    更换弹药音效模组
+	<br/>-Mf Heal Abort    终止治疗动作
+	<br/>-OD Colorize    自定义夜视仪颜色(和白磷管选一个挂载)
+	<br/>-White_Phosphor_No_ACE    白磷管夜视仪(和自定义夜视仪颜色选一个挂载)
+	<br/>-Zeus Enhanced    宙斯增强模组
+	<br/>-Zombies and Demons    丧尸模组
+	<br/>-Fire Suppression Effect    火力压制效果模组(是你被压制)
 	'
 	]
 ];
-/*/
+
 
 player createDiaryRecord [
 	'QS_diary_gitmo',
@@ -433,15 +423,15 @@ player createDiaryRecord [
 ];
 
 /*/-------------------------------------------------- Credits-积分/*/
-player createDiarySubject ['QS_diary_credits','Credits'];				// EULA relevant line.
+player createDiarySubject ['QS_diary_credits','关于我们'];				// EULA relevant line.
 
 ////////////////////////////////// EDIT BELOW ///////////////////////////////////////
 
 player createDiaryRecord [
 	'QS_diary_credits',
 	[
-		'社区编辑',
-		'波西米亚旅游协会'
+		'服务器简介',
+		'本服务器的老玩家组织成立于2019年初，由一群志同道合的人在公共服务器上成立了自发团体Arma3旅游团。<br/>三年来经历各类风雨，最终决定自建服务器与其它玩家同乐。我们的核心理念是在严肃和娱乐中找到平衡点，<br/>让玩家能够体会到Arma这款游戏中别的作品不具备的魅力；珍惜在这个游戏中和他人结成的缘分，以享受过程大于结果的心态来游戏。 <br/>如果多年以后，你还能因为我们的组织，记得曾经有一群不错的玩友和你一起玩过一款了不起的游戏，那将是我们最大的荣幸。'
 	]
 ];
 

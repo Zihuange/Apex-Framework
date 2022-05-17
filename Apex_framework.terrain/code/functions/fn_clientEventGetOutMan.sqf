@@ -51,7 +51,7 @@ if (!((typeOf _vehicle) in ['Steerable_Parachute_F'])) then {
 				player addBackpack ((player getVariable 'QS_backpack_data') select 0);
 				if (!(((player getVariable 'QS_backpack_data') select 1) isEqualTo [])) then {
 					{
-						if (player canAddItemToBackpack _x) then {
+						if ((loadBackpack player) < 1.0) then {						//canAddItemToBackpack不能正确判断能否添加物品
 							player addItemToBackpack _x;
 						};
 					} forEach ((player getVariable 'QS_backpack_data') select 1);

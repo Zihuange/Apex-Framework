@@ -245,53 +245,53 @@ reviveBleedOutDelay = 120;
 debriefing = 1;
 class CfgDebriefing {
 	class QS_RD_end_1 {
-		title = "Role whitelisted";
-		description = "You have joined a whitelisted role, please re-assign. If you would like to be on the whitelist, please speak to staff.";
+		title = "角色被列入白名单";
+		description = "你已经选择了白名单的角色，请重选。如果你想加入白名单，请联系管理员。";
 		picture = "media\images\insignia\comm_patch.paa";
 	};
 	class QS_RD_end_2 {
-		title = "Imperfect connection";
-		description = "Your connection was imperfect, please re-connect. This measure reduces the prevalence of bugs and glitches caused by de-sync/packet loss during initialization. Thank you for your patience.";
+		title = "网络链接不佳";
+		description = "你与服务器的链接状况不佳，请重连。连接有问题会导致丢包和BUG等问题发生，感谢您的耐心和理解。";
 		picture = "media\images\insignia\comm_patch.paa";
 	};
 	class QS_RD_end_3 {
-		title = "Blacklisted";
-		description = "You have been temporarily blacklisted from this role, please re-assign.";
+		title = "你被列入黑名单";
+		description = "你目前被列入这个角色的黑名单，请重选其他角色。";
 		picture = "media\images\insignia\comm_patch.paa";
 	};
 	class QS_RD_end_4 {
-		title = "Reserved Profile Name";
-		description = "Your profile name is reserved for a staff member or supporter on this server, please use a different profile name!";
+		title = "禁用的预留ID名称";
+		description = "你的ID是预留给管理人员使用的，请使用其它的名称。";
 		picture = "media\images\insignia\comm_patch.paa";
 	};
 	class QS_RD_end_5 {
-		title = "Invalid Profile Name";
-		description = "Your profile name has been rejected by this server. Please use a different profile name.";
+		title = "禁用的ID名称";
+		description = "你的ID名在本服务器内禁用，请退到游戏玩家资料页面换用其它的名称。";
 		picture = "media\images\insignia\comm_patch.paa";
 	};
 	class QS_RD_end_6 {
-		title = "Fighter Pilot Whitelist";
-		description = "You are not whitelisted as a Fighter Pilot.";
+		title = "需要固定翼驾驶员白名单";
+		description = "你目前不在固定翼驾驶员白名单内。";
 		picture = "\a3\UI_F_Jets\Data\CfgUnitInsignia\jets_patch_01.paa";
 	};
 	class QS_RD_end_7 {
-		title = "Depleted Assets";
-		description = "You have depleted your pool of aircraft (3), it will refresh after server restart!";
+		title = "飞行载具激活上限";
+		description = "你已经达到了分配给你的飞行载具上限，服务器重启后会重置。";
 		picture = "\a3\UI_F_Jets\Data\CfgUnitInsignia\jets_patch_01.paa";	
 	};
 	class QS_RD_end_8 {
-		title = "Role Disabled";
-		description = "This role is currently disabled!";
+		title = "不能选择角色";
+		description = "服务器当前不允许选择该角色。";
 		picture = "media\images\insignia\comm_patch.paa";
 	};
 	class QS_RD_end_9 {
-		title = "Insufficient Transport Score";
-		description = "You have insufficient Transport Score as a helipilot, please fly transport!";
+		title = "运输分数过低";
+		description = "作为直升机驾驶员，你的运输分数过低，请多进行有效运输！";
 		picture = "\a3\UI_F_Jets\Data\CfgUnitInsignia\jets_patch_01.paa";
 	};
 	class QS_RD_end_10 {
-		title = "Insufficient Playtime";
-		description = "You must play on the server more prior to using the Pilot roles";
+		title = "游戏时间不足";
+		description = "你需要在本服务器玩的更久才能选择驾驶员角色。";
 		picture = "\a3\UI_F_Jets\Data\CfgUnitInsignia\jets_patch_01.paa";	
 	};
 };
@@ -2632,7 +2632,7 @@ class QS_RD_client_dialog_menu_viewSettings {
 			sizeEx = 0.028;
 			shadow = 0;
 			colorText[] = {1,1,1,1};
-			tooltip = "Health, Equipment load (kg), FPS";
+			tooltip = "HP, 负重(kg), FPS";
 		};
 		class QS_RD_client_dialog_menu_view_button_1: QS_RD_dialog_RscButtonInvisible {
 			moving = 1;
@@ -3183,7 +3183,7 @@ class QS_RD_client_dialog_menu_options {
 		class QS_RD_client_dialog_menu_options_button_1: QS_RD_dialog_RscButton {
 			moving = 1;
 			idc = 1811;
-			text = "Back";
+			text = "返回";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 1.075 * safezoneH + safezoneY;
 			w = 0.13 * safezoneW;
@@ -3287,8 +3287,8 @@ class QS_RD_client_dialog_menu_options {
 		class QS_RD_client_dialog_menu_options_text_9: QS_RD_dialog_RscText {
 			moving = 1;
 			idc = 1820;
-			text = "3D Group Hexagons";
-			tooltip = "Toggle 3D Group Hexagons";
+			text = "友军识别标记";
+			tooltip = "切换友军识别";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.87 * safezoneH + safezoneY;
 			w = 0.08 * safezoneW;
@@ -3315,7 +3315,7 @@ class QS_RD_client_dialog_menu_options {
 			y = 0.865 * safezoneH + safezoneY;
 			w = 0.02 * safezoneW;
 			h = 0.04 * safezoneH;
-			tooltip = "Toggle 3D Group Hexagons";
+			tooltip = "切换友军识别";
 			onCheckedChanged = "['Toggle3DGroupHex',(_this select 0),(_this select 1)] spawn (missionNamespace getVariable 'QS_fnc_clientMenuOptions');";
 		};
 		
@@ -3324,8 +3324,8 @@ class QS_RD_client_dialog_menu_options {
 		class QS_RD_client_dialog_menu_options_text_10: QS_RD_dialog_RscText {
 			moving = 1;
 			idc = 1821;
-			text = "Hide System Messages";
-			tooltip = "Hides unnecessary extended system messages from chat, such as multiple lines for Connecting player, modified data, BattlEye steam ticket checks, etc.";
+			text = "隐藏系统提示";
+			tooltip = "从聊天框中隐藏不必要的扩展系统信息，如连接玩家上下线提示，MOD信息，BattlEye信息等。";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.915 * safezoneH + safezoneY;
 			w = 0.08 * safezoneW;
@@ -3352,7 +3352,7 @@ class QS_RD_client_dialog_menu_options {
 			y = 0.91 * safezoneH + safezoneY;
 			w = 0.02 * safezoneW;
 			h = 0.04 * safezoneH;
-			tooltip = "Toggle Extended System Chat";
+			tooltip = "切换扩展的系统聊天";
 			onCheckedChanged = "['ToggleSystemChatSpam',(_this select 0),(_this select 1)] spawn (missionNamespace getVariable 'QS_fnc_clientMenuOptions');";
 		};
 	};
@@ -3533,7 +3533,7 @@ class QS_RD_client_dialog_menu_vtexture {
 		class QS_RD_client_dialog_menu_vtexture_text_1: QS_RD_dialog_RscText {
 			moving = 1;
 			idc = 1802;
-			text = "Vehicle";
+			text = "车辆";
 			x = 0.374500 * safezoneW + safezoneX;
 			y = 0.525 * safezoneH + safezoneY;
 			w = 0.139 * safezoneW;
@@ -3609,7 +3609,7 @@ class QS_RD_client_dialog_menu_insignia {
 		class QS_RD_client_dialog_menu_insignia_text_1: QS_RD_dialog_RscText {
 			moving = 1;
 			idc = 1802;
-			text = "Insignia";
+			text = "徽章";
 			x = 0.374500 * safezoneW + safezoneX;
 			y = 0.525 * safezoneH + safezoneY;
 			w = 0.139 * safezoneW;
@@ -3621,7 +3621,7 @@ class QS_RD_client_dialog_menu_insignia {
 		class QS_RD_client_dialog_menu_insignia_button_1: QS_RD_dialog_RscButton {
 			moving = 1;
 			idc = 1810;
-			text = "Select";
+			text = "选择";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.815 * safezoneH + safezoneY;
 			w = 0.13 * safezoneW;
@@ -3634,7 +3634,7 @@ class QS_RD_client_dialog_menu_insignia {
 		class QS_RD_client_dialog_menu_insignia_button_2: QS_RD_dialog_RscButton {
 			moving = 1;
 			idc = 1811;
-			text = "Back";
+			text = "返回";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.87 * safezoneH + safezoneY;
 			w = 0.13 * safezoneW;
@@ -3685,7 +3685,7 @@ class QS_RD_client_dialog_menu_utexture {
 		class QS_RD_client_dialog_menu_utexture_text_1: QS_RD_dialog_RscText {
 			moving = 1;
 			idc = 1802;
-			text = "Uniform";
+			text = "制服";
 			x = 0.374500 * safezoneW + safezoneX;
 			y = 0.525 * safezoneH + safezoneY;
 			w = 0.139 * safezoneW;
@@ -3697,7 +3697,7 @@ class QS_RD_client_dialog_menu_utexture {
 		class QS_RD_client_dialog_menu_utexture_button_1: QS_RD_dialog_RscButton {
 			moving = 1;
 			idc = 1810;
-			text = "Select";
+			text = "选择";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.815 * safezoneH + safezoneY;
 			w = 0.13 * safezoneW;
@@ -3710,7 +3710,7 @@ class QS_RD_client_dialog_menu_utexture {
 		class QS_RD_client_dialog_menu_utexture_button_2: QS_RD_dialog_RscButton {
 			moving = 1;
 			idc = 1811;
-			text = "Back";
+			text = "返回";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.87 * safezoneH + safezoneY;
 			w = 0.13 * safezoneW;
@@ -3900,7 +3900,7 @@ class QS_RD_client_dialog_menu_hub {
 			moving = 1;
 			idc = 1811;
 			text = "向Quiksilver捐款";
-			tooltip = "Donate to the Apex Framework designer (Patreon)";
+			tooltip = "捐赠Apex框架设计者QS（Patreon）。";
 			x = 0.38 * safezoneW + safezoneX;
 			y = 0.82 * safezoneH + safezoneY;
 			w = 0.13 * safezoneW;
@@ -3967,7 +3967,7 @@ class QS_RD_client_dialog_menu_context {
 		class QS_RD_client_dialog_menu_context_text_1: QS_RD_dialog_RscText {
 			moving = 1;
 			idc = 1802;
-			text = "Context Menu";
+			text = "上下文菜单";
 			x = 0.374500 * safezoneW + safezoneX;
 			y = 0.525 * safezoneH + safezoneY;
 			w = 0.0955624 * safezoneW;

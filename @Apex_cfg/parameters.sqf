@@ -36,42 +36,42 @@ _______________________________________________________/*/
 
 //===================================================== COMMUNITY / SERVER
 
-_teamspeak_server = 'Discord: ';					// Teamspeak server address, for use with map marker, map tabs, ec. Customize this accordingly.		Example:	_teamspeak_server = 'ts3.address.com : 1234     - Password: N/A';
+_teamspeak_server = 'Teamspeak:124.248.64.47 QQ群:813940305';					// Teamspeak server address, for use with map marker, map tabs, ec. Customize this accordingly.		Example:	_teamspeak_server = 'ts3.address.com : 1234     - Password: N/A';
 																					// These options can be seen in your Player Menu under [Comm-Link]. Player menu default key binding is [Home], and also in the Escape menu, top button.
 _website_url = 
 [
-	"'https://goo.gl/7Xajd9'",														// Website URL of your website		Example:	"'https://goo.gl/7Xajd9'"
-	"Our Website",																	// Button text.
-	"Link 1"																		// Tooltip (text shown when mouse hovering over button).
+	"'https://jq.qq.com/?_wv=1027&amp;k=SfGyVVqX'",														// Website URL of your website		Example:	"'https://goo.gl/7Xajd9'"
+	"我们的qq群",																	// Button text.
+	"加Q群直达链接"																		// Tooltip (text shown when mouse hovering over button).
 ];
 _discord_server = 
 [
-	"'https://goo.gl/7Xajd9'",														// Discord server (change this to yours).	Example:	"'https://goo.gl/7Xajd9'"
-	"Our Discord",																	// Button text.
-	"Link 2"																		// Tooltip (text shown when mouse hovering over button).
+	"'https://github.com/Zihuange/Apex-Framework-BTA'",														// Discord server (change this to yours).	Example:	"'https://goo.gl/7Xajd9'"
+	"我们的Github",																	// Button text.
+	"欢迎来提交问题或学习"																		// Tooltip (text shown when mouse hovering over button).
 ];
 _arma_units_url = 
 [
-	"'https://units.arma3.com'", 													// url path to your A3 Unit		Example:	"'https://goo.gl/7Xajd9'"
-	"Our ArmA Unit",																// Button text.
-	"Link 3"																		// Tooltip (text shown when mouse hovering over button).
+	"'https://units.arma3.com/unit/78687'", 													// url path to your A3 Unit		Example:	"'https://goo.gl/7Xajd9'"
+	"我们的Arma3Unit",																// Button text.
+	"A3Unit直达链接"																		// Tooltip (text shown when mouse hovering over button).
 ];
 
-_serverRules = '- No teamkilling<br/>- No destruction of friendly assets<br/>- No advertising<br/>- No verbal abuse<br/>- Pilots and UAV operator must be on Teamspeak<br/>- Staff word is final';		// Server rules shown on splash screen text. Structured Text. Note: There are more rules listed in "code\functions\fn_clientDiary.sqf", edit that file to your liking.
+_serverRules = '- 严禁发表侮辱性、政治性或其他不当言论任何及广告。<br/>- 严禁攻击友军，侮辱他人，发生误击及时道歉。<br/>- 仔细阅读各兵种规则版上的守则，为他人提供愉快合作的游戏氛围。<br/>- 本服不设计分板，请享受游戏过程本身。<br/>- 违反规则会受到不同程度的处罚，服务器管理员对规则拥有最终解释权。<br/>- 波西米亚旅游协会';		// Server rules shown on splash screen text. Structured Text. Note: There are more rules listed in "code\functions\fn_clientDiary.sqf", edit that file to your liking.
 _staffNames = 'Miller (admin), Kerry (moderator), Stavrou (moderator), Orestes (mission editor)';						// This text gets shown on the splash screen when player enters the game, customize as you like.
 
 //===================================================== GAMEPLAY
 
-_baseLayout = 0;										// Base layout.	0 - Integrated base. 1 - Custom base.		Note: With custom base, you will have to define all the spawn points and set all the marker positions manually. Caution: Its a lot of work!
+_baseLayout = 1;										// Base layout.	0 - Integrated base. 1 - Custom base.		Note: With custom base, you will have to define all the spawn points and set all the marker positions manually. Caution: Its a lot of work!
 _closeAirSupport = 2;									// Jets.		0 - Disabled. 1 - Whitelisted only. 2 - Enabled. 3 - Whitelisted+Linked to Pilot Transport Points.     This controls Fixed-wing Jets access. If Disabled, players will not have access to Jets and Armed UAV drones will not spawn.
 _arsenal = 1;											// Arsenal.		0 - Unrestricted (scripted). 1 - Use Whitelist (scripted). 2 - Use Blacklist (scripted). 3 - Vanilla arsenal (unscripted).	(Recommended = 1).			Caution! Blacklist is unconfigured by default, you will have to do it. Only whitelist comes pre-configured.    #3 will disable scripted gear restrictions.
 _armor = 1;												// Armored Vehicles.	0 - Disabled. 1 - Enabled. (Default = 1). 		Controls whether players have access to respawning armored vehicles with default layout.
 _reducedDamage = 1;										// Damage Modeling.		0 - Disabled. 1 - Enabled. (Default/Recommended 1).		Controls whether players have added body armor and dynamic damage modeling to balance ArmA AI accuracy/aimbot shortcomings, especially in jungle/forest areas. Recommended: 1.
 _stamina = 0;											// Stamina.		0 - Optional. 1 - Forced On.	(Default: 0). If optional, players can toggle in menu.
 _enemyCAS = 1;											// Enemy Fixed-Wing Aircraft.	0 - Disabled. 1 - Enabled. (Default = 1). Controls whether enemy have access to fixed-wing planes.
-_commander = 0;											// Commander role. 0 - Disabled. 1 - Enabled. 2 - Enabled & Whitelisted. (Default = 2). Commander role has the ability to give player groups and AI groups orders and waypoints, can talk on Side Channel.
+_commander = 2;											// Commander role. 0 - Disabled. 1 - Enabled. 2 - Enabled & Whitelisted. (Default = 2). Commander role has the ability to give player groups and AI groups orders and waypoints, can talk on Side Channel.
 _artillery = 1;											// Base artillery.	0 - Disabled. 1 - Enabled. 	If enabled, a self-propelled artillery asset is available for use. Does not affect Mk.6 mortars access. Does not affect naval artillery.
-_artilleryComputer = 1;									// Artillery Computer settings. 	0. Disabled. 	1 - Enabled ONLY while in scripted base artillery.		2 - Enabled. (Recommended = 1). Note: Applies to mortars as well.
+_artilleryComputer = 2;									// Artillery Computer settings. 	0. Disabled. 	1 - Enabled ONLY while in scripted base artillery.		2 - Enabled. (Recommended = 1). Note: Applies to mortars as well.
 _mapContentEnemy = 1;									// Enemy Map Indicators. 	0 - Disabled. 1 - Enabled. Recommended = 1.	    Controls whether enemies known to the player are visible on the map.
 _recruitableAI = 1;										// Recruitable AI.	0 - Disabled. 1 - Enabled. 		If there are recruitable AI available (default base layout or placed by you in custom base layout), this toggles them on or off.
 _playable_opfor = 0;									// OPFOR player roles. 	0 - Disabled. 1 - Enabled (Whitelisted). 2 - Enabled (Unrestricted).	Recommended = 0.	Enable a limited number of enemy player roles for the supported mission types. Highly recommended to NOT use with the standard missions unless you know your players are comfortable with it. Designed for future Framework flexibility and development.
@@ -82,7 +82,7 @@ _vehicle_active_protection = 3;							// Vehicle Active Protection System. 	0 - 
 //===================================================== SYSTEM
 
 _role_selection_menu_button = 0;						// Role Selection Menu Button. 	Enables a button in the Escape Menu to access the Role Selection Menu.	0 - Disabled. 1 - Enabled. Default - 0.		Use this option to allow any player to change their role from any map location. If this value is 0, the only way to access the menu after login is via Arsenal crates user action. Recommend 0 for standard gamemodes to avoid exploitation.
-_restart_hours = [0,10,16];								// Hours (24hr clock) which server will restart. If you use this, disable your servers restart scheduler.   Leave blank to disable, like this:  _restart_hours = [];    Times are local to server machine (consider time zone). Recommended - 8hr intervals for steady play. 6hr intervals for constant full server. 12-16hr intervals for smaller server populations.
+_restart_hours = [2,12];								// Hours (24hr clock) which server will restart. If you use this, disable your servers restart scheduler.   Leave blank to disable, like this:  _restart_hours = [];    Times are local to server machine (consider time zone). Recommended - 8hr intervals for steady play. 6hr intervals for constant full server. 12-16hr intervals for smaller server populations.
 _dynamic_simulation = 1;								// Dynamic Simulation. 	0 - Disabled. 1 - Enabled. 	Raises FPS and performance slightly. Server freezes entities which are far away from all players.    Info: https://community.bistudio.com/wiki/Arma_3_Dynamic_Simulation
 
 //===================================================== MAIN MISSION TYPE
@@ -126,23 +126,23 @@ _infostand_2 = ['media\images\billboards\billboard6.jpg','media\images\billboard
 
 //===================================================== SECURITY
 
-_serverCommandPassword = "'ShVQArtpGdc5aDQq'";			// Enter a server command password like this. It MUST match servercommandpassword from your server.cfg config file. ---> serverCommandPassword = "ShVQArtpGdc5aDQq"; This is important and some mission systems will not function without it.
-_anticheat = 1;											// 0 - Disabled. 1 - Enabled. (Default 1). 		Disable if running mods or in private/secure setting.
+_serverCommandPassword = "'e0ee71265eb4436f9be815a1efafc206'";			// Enter a server command password like this. It MUST match servercommandpassword from your server.cfg config file. ---> serverCommandPassword = "ShVQArtpGdc5aDQq"; This is important and some mission systems will not function without it.
+_anticheat = 0;											// 0 - Disabled. 1 - Enabled. (Default 1). 		Disable if running mods or in private/secure setting.
 
 //===================================================== MONETIZATION
 
 // Cosmetics system (uniform + vehicle + shoulder patches). 	
 // Controls access to [Area 51] vehicle/uniform/insignia texture system.
 
-_monetizeCosmetics = 1;									// 0 - Disabled (None have access). 1 - Enabled (Only whitelisted "S3" have access). 2 - All have access.
+_monetizeCosmetics = 2;									// 0 - Disabled (None have access). 1 - Enabled (Only whitelisted "S3" have access). 2 - All have access.
 
 // Link for direct donations toward your server/community + whitelisting + cosmetics,etc. Replace this with your own, or leave blank.
 // This option can be seen in your Player Menu under [Comm-Link]. Player menu default key binding is [Home], and also in the Escape menu, top button.
 
 _monetizeURL = [
-	"'https://goo.gl/7Xajd9'",											// Monetization URL.
-	"Donate",															// Button text.
-	"Link 4"															// Tooltip (text shown when mouse hovering over button).
+	"'https://b23.tv/aGvPs1'",											// Monetization URL.
+	"引流",															// Button text.
+	"关注永雏塔菲喵!关注永雏塔菲谢谢喵！"															// Tooltip (text shown when mouse hovering over button).
 ];
 
 
@@ -156,8 +156,10 @@ _monetizeURL = [
 
 //================== DO NOT EDIT BELOW =================== INTERPRETING MISSION PARAMETERS
 
-if (_arsenal isEqualTo 3) then {};
-if (_restart_hours isNotEqualTo []) then {
+if (_arsenal isEqualTo 3) then {
+
+};
+if (!(_restart_hours isEqualTo [])) then {
 	_restart_hours sort TRUE;
 };
 if (_aircraft_carrier_enabled > 0) then {

@@ -192,7 +192,7 @@ if (_type isEqualTo 'GET_ROLE_DISPLAYNAME2') exitWith {
 	} forEach (missionNamespace getVariable 'QS_roles_data');
 	/*/
 	if (['_WL',_role,FALSE] call (missionNamespace getVariable 'QS_fnc_inString')) then {
-		_return = '[Whitelisted] ' + _return;
+		_return = '[白名单保留] ' + _return;
 	};
 	_return;
 };

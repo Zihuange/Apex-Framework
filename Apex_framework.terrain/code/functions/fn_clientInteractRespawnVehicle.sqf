@@ -50,7 +50,7 @@ if (_result) then {
 			if (alive (player getVariable 'QS_client_createdBoat')) then {
 				if (_t isEqualTo (player getVariable 'QS_client_createdBoat')) then {
 					if (!((backpack player) isEqualTo '')) then {
-						if (player canAddItemToBackpack ['ToolKit',1]) then {
+						if (player canAdd ['ToolKit',1]) then {			//canAddItemToBackpack不能正确判断能否添加物品
 							player addItemToBackpack 'ToolKit';
 							50 cutText [(format ['%1 已放气，重新成为工具包',(getText (configFile >> 'CfgVehicles' >> (typeOf _t) >> 'displayName'))]),'PLAIN DOWN'];
 						};
