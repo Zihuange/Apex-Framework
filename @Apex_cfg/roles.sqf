@@ -52,9 +52,9 @@ QS_roles_data = [
 		[
 			'autorifleman',
 			WEST,
-			3,
-			10,
-			8,
+			2,
+			6,
+			5,
 			0,	
 			0,
 			0,
@@ -66,8 +66,8 @@ QS_roles_data = [
 			'machine_gunner',
 			WEST,
 			1,
-			2,
-			10,
+			3,
+			8,
 			0,	
 			0,
 			0,
@@ -78,9 +78,9 @@ QS_roles_data = [
 		[
 			'rifleman_lat',
 			WEST,
-			2,
-			8,
-			8,
+			1,
+			4,
+			10,
 			0,	
 			0,
 			0,
@@ -93,7 +93,7 @@ QS_roles_data = [
 			WEST,
 			2,
 			4,
-			10,
+			8,
 			0,	
 			0,
 			0,
@@ -105,8 +105,8 @@ QS_roles_data = [
 			'medic',
 			WEST,
 			2,
-			10,
 			8,
+			4,
 			0,
 			0,
 			0,
@@ -118,8 +118,8 @@ QS_roles_data = [
 			'engineer',
 			WEST,
 			2,
-			10,
 			8,
+			5,
 			0,
 			0,
 			0,
@@ -146,9 +146,9 @@ QS_roles_data = [
 			'mortar_gunner',
 			WEST,
 			1,
+			2,
+			20,
 			1,
-			-1,
-			0,
 			0,
 			0,
 			{TRUE},
@@ -160,7 +160,7 @@ QS_roles_data = [
 			WEST,
 			1,
 			2,
-			10,
+			20,
 			0,
 			0,
 			0,
@@ -172,9 +172,9 @@ QS_roles_data = [
 			'jtac',
 			WEST,
 			1,
+			2,
+			10,
 			1,
-			-1,
-			0,
 			0,
 			0,
 			{TRUE},
@@ -199,7 +199,7 @@ QS_roles_data = [
 			WEST,
 			2,
 			5,
-			8,
+			6,
 			0,
 			0,
 			0,
@@ -210,8 +210,8 @@ QS_roles_data = [
 		[
 			'pilot_plane',
 			WEST,
-			1,		// Do not change this, only 1 CAS pilot slot configured
-			1,		// Do not change this, only 1 CAS pilot slot configured
+			2,		// Do not change this, only 1 CAS pilot slot configured
+			2,		// Do not change this, only 1 CAS pilot slot configured
 			-1,		// Do not change this, only 1 CAS pilot slot configured
 			0,		// Do not change this, only 1 CAS pilot slot configured
 			0,
@@ -223,10 +223,10 @@ QS_roles_data = [
 		[
 			'commander',
 			WEST,
-			1,		// Do not change this, only 1 Commander slot configured
-			1,		// Do not change this, only 1 Commander slot configured
-			-1,		// Do not change this, only 1 Commander slot configured
 			0,		// Do not change this, only 1 Commander slot configured
+			0,		// Do not change this, only 1 Commander slot configured
+			-1,		// Do not change this, only 1 Commander slot configured
+			1,		// Do not change this, only 1 Commander slot configured
 			0,
 			0,
 			{((missionNamespace getVariable ['QS_missionConfig_Commander',0]) isNotEqualTo 0)},
@@ -237,10 +237,10 @@ QS_roles_data = [
 		[
 			'medic_WL',
 			WEST,
-			1,
-			1,
-			-1,
 			0,
+			0,
+			-1,
+			2,
 			0,
 			0,
 			{TRUE},
@@ -250,10 +250,10 @@ QS_roles_data = [
 		[
 			'machine_gunner_WL',
 			WEST,
-			1,
-			1,
+			0,
+			0,
 			-1,
-			0,	
+			2,	
 			0,
 			0,
 			{TRUE},
@@ -263,10 +263,10 @@ QS_roles_data = [
 		[
 			'sniper_WL',
 			WEST,
-			1,
-			1,
-			-1,
 			0,
+			0,
+			-1,
+			2,
 			0,
 			0,
 			{TRUE},
@@ -276,10 +276,10 @@ QS_roles_data = [
 		[
 			'pilot_heli_WL',
 			WEST,
-			2,			// minimum 1 slot
-			2,			// maximum 2 slots
+			0,			// minimum 1 slot
+			0,			// maximum 2 slots
 			-1,			// per N players an extra role will open, up to the maximum
-			0,			// 2 whitelisted slots (should == maximum slots)
+			2,			// 2 whitelisted slots (should == maximum slots)
 			0,
 			0,
 			{TRUE},
@@ -291,27 +291,27 @@ QS_roles_data = [
 	[]
 ];
 QS_roles_UI_info = [
-	['rifleman','Rifleman','a3\ui_f\data\map\vehicleicons\iconMan_ca.paa','a3\ui_f\data\map\vehicleicons\iconMan_ca.paa'],
-	['autorifleman','Autorifleman','a3\ui_f\data\map\vehicleicons\iconManMG_ca.paa','a3\ui_f\data\map\vehicleicons\iconManMG_ca.paa'],
-	['machine_gunner','Machine Gunner','a3\ui_f\data\map\vehicleicons\iconManMG_ca.paa','a3\ui_f\data\map\vehicleicons\iconManMG_ca.paa'],
-	['rifleman_lat','Rifleman (LAT)','a3\ui_f\data\map\vehicleicons\iconManAT_ca.paa','a3\ui_f\data\map\vehicleicons\iconManAT_ca.paa'],
-	['rifleman_hat','Rifleman (HAT)','a3\ui_f\data\map\vehicleicons\iconManAT_ca.paa','a3\ui_f\data\map\vehicleicons\iconManAT_ca.paa'],
-	['engineer','Engineer','a3\ui_f\data\map\vehicleicons\iconManEngineer_ca.paa','a3\ui_f\data\map\vehicleicons\iconManEngineer_ca.paa'],
-	['medic','Medic','a3\ui_f\data\map\vehicleicons\iconManMedic_ca.paa','a3\ui_f\data\map\vehicleicons\iconManMedic_ca.paa'],
-	['sniper','Sniper','a3\ui_f\data\map\vehicleicons\iconManRecon_ca.paa','a3\ui_f\data\map\vehicleicons\iconManRecon_ca.paa'],
-	['crewman','Crewman','a3\ui_f\data\map\vehicleicons\iconMan_ca.paa','a3\ui_f\data\map\vehicleicons\iconMan_ca.paa'],
+	['rifleman','步枪兵','a3\ui_f\data\map\vehicleicons\iconMan_ca.paa','a3\ui_f\data\map\vehicleicons\iconMan_ca.paa'],
+	['autorifleman','自动步枪兵','a3\ui_f\data\map\vehicleicons\iconManMG_ca.paa','a3\ui_f\data\map\vehicleicons\iconManMG_ca.paa'],
+	['machine_gunner','机枪兵','a3\ui_f\data\map\vehicleicons\iconManMG_ca.paa','a3\ui_f\data\map\vehicleicons\iconManMG_ca.paa'],
+	['rifleman_lat','精确射手','a3\ui_f\data\map\vehicleicons\iconManAT_ca.paa','a3\ui_f\data\map\vehicleicons\iconManAT_ca.paa'],
+	['rifleman_hat','步枪兵 (重型AT)','a3\ui_f\data\map\vehicleicons\iconManAT_ca.paa','a3\ui_f\data\map\vehicleicons\iconManAT_ca.paa'],
+	['engineer','工程兵','a3\ui_f\data\map\vehicleicons\iconManEngineer_ca.paa','a3\ui_f\data\map\vehicleicons\iconManEngineer_ca.paa'],
+	['medic','作战救生员','a3\ui_f\data\map\vehicleicons\iconManMedic_ca.paa','a3\ui_f\data\map\vehicleicons\iconManMedic_ca.paa'],
+	['sniper','狙击手','a3\ui_f\data\map\vehicleicons\iconManRecon_ca.paa','a3\ui_f\data\map\vehicleicons\iconManRecon_ca.paa'],
+	['crewman','机组员','a3\ui_f\data\map\vehicleicons\iconMan_ca.paa','a3\ui_f\data\map\vehicleicons\iconMan_ca.paa'],
 	['jtac','JTAC','a3\ui_f\data\map\vehicleicons\iconManRecon_ca.paa','a3\ui_f\data\map\vehicleicons\iconManRecon_ca.paa'],
-	['mortar_gunner','Mortar Gunner','A3\Static_f\Mortar_01\data\UI\map_Mortar_01_CA.paa','a3\ui_f\data\map\vehicleicons\iconMan_ca.paa'],
-	['uav','UAV Operator','A3\Drones_F\Air_F_Gamma\UAV_02\Data\UI\Map_UAV_02_CA.paa','a3\ui_f\data\map\vehicleicons\iconMan_ca.paa'],
-	['pilot_heli','Transport Pilot','A3\Air_F_Beta\Heli_Transport_01\Data\UI\Map_Heli_Transport_01_base_CA.paa','a3\ui_f\data\map\vehicleicons\iconMan_ca.paa'],
-	['pilot_plane','Fighter Pilot','A3\Air_F_Jets\Plane_Fighter_01\Data\UI\Fighter01_icon_ca.paa','a3\ui_f\data\map\vehicleicons\iconMan_ca.paa'],
-	['commander','Commander','a3\ui_f\data\gui\cfg\ranks\general_gs.paa','a3\ui_f\data\map\vehicleicons\iconManCommander_ca.paa'],
-	['o_rifleman','Rifleman','a3\ui_f\data\map\vehicleicons\iconMan_ca.paa','a3\ui_f\data\map\vehicleicons\iconMan_ca.paa'],
-	['o_autorifleman','Autorifleman','a3\ui_f\data\map\vehicleicons\iconManMG_ca.paa','a3\ui_f\data\map\vehicleicons\iconManMG_ca.paa'],
-	['medic_WL','Medic','a3\ui_f\data\map\vehicleicons\iconManMedic_ca.paa','a3\ui_f\data\map\vehicleicons\iconManMedic_ca.paa'],
-	['machine_gunner_WL','Machine Gunner','a3\ui_f\data\map\vehicleicons\iconManMG_ca.paa','a3\ui_f\data\map\vehicleicons\iconManMG_ca.paa'],
-	['sniper_WL','Sniper','a3\ui_f\data\map\vehicleicons\iconManRecon_ca.paa','a3\ui_f\data\map\vehicleicons\iconManRecon_ca.paa'],
-	['pilot_heli_WL','Transport Pilot','A3\Air_F_Beta\Heli_Transport_01\Data\UI\Map_Heli_Transport_01_base_CA.paa','a3\ui_f\data\map\vehicleicons\iconMan_ca.paa']
+	['mortar_gunner','迫击炮手','A3\Static_f\Mortar_01\data\UI\map_Mortar_01_CA.paa','a3\ui_f\data\map\vehicleicons\iconMan_ca.paa'],
+	['uav','UAV操作员','A3\Drones_F\Air_F_Gamma\UAV_02\Data\UI\Map_UAV_02_CA.paa','a3\ui_f\data\map\vehicleicons\iconMan_ca.paa'],
+	['pilot_heli','直升机飞行员','A3\Air_F_Beta\Heli_Transport_01\Data\UI\Map_Heli_Transport_01_base_CA.paa','a3\ui_f\data\map\vehicleicons\iconMan_ca.paa'],
+	['pilot_plane','战斗机飞行员','A3\Air_F_Jets\Plane_Fighter_01\Data\UI\Fighter01_icon_ca.paa','a3\ui_f\data\map\vehicleicons\iconMan_ca.paa'],
+	['commander','指挥官','a3\ui_f\data\gui\cfg\ranks\general_gs.paa','a3\ui_f\data\map\vehicleicons\iconManCommander_ca.paa'],
+	['o_rifleman','基础士兵','a3\ui_f\data\map\vehicleicons\iconMan_ca.paa','a3\ui_f\data\map\vehicleicons\iconMan_ca.paa'],
+	['o_autorifleman','特殊士兵','a3\ui_f\data\map\vehicleicons\iconManMG_ca.paa','a3\ui_f\data\map\vehicleicons\iconManMG_ca.paa'],
+	['medic_WL','作战救生员','a3\ui_f\data\map\vehicleicons\iconManMedic_ca.paa','a3\ui_f\data\map\vehicleicons\iconManMedic_ca.paa'],
+	['machine_gunner_WL','机枪兵','a3\ui_f\data\map\vehicleicons\iconManMG_ca.paa','a3\ui_f\data\map\vehicleicons\iconManMG_ca.paa'],
+	['sniper_WL','狙击手','a3\ui_f\data\map\vehicleicons\iconManRecon_ca.paa','a3\ui_f\data\map\vehicleicons\iconManRecon_ca.paa'],
+	['pilot_heli_WL','直升机飞行员','A3\Air_F_Beta\Heli_Transport_01\Data\UI\Map_Heli_Transport_01_base_CA.paa','a3\ui_f\data\map\vehicleicons\iconMan_ca.paa']
 ];
 QS_roles_defaultLoadouts = [
 	['',([[['arifle_MX_F','','','optic_Hamr',['30Rnd_65x39_caseless_mag_Tracer',30],[],''],[],['hgun_P07_F','','','',['16Rnd_9x21_Mag',16],[],''],['U_B_CombatUniform_mcam',[['FirstAidKit',2],['16Rnd_9x21_Mag',3,16]]],['V_PlateCarrier1_rgr',[['30Rnd_65x39_caseless_mag_Tracer',10,30],['SmokeShell',2,1],['HandGrenade',2,1]]],['B_AssaultPack_mcamo',[]],'H_HelmetB_light','G_Combat',['Binocular','','','',[],[],''],['ItemMap','ItemGPS','ItemRadio','ItemCompass','ItemWatch','NVGoggles']],		[['arifle_MX_khk_F','','','optic_Hamr_khk_F',['30rnd_65x39_caseless_khaki_mag_tracer',30],[],''],[],['hgun_P07_khk_F','','','',['16Rnd_9x21_Mag',16],[],''],['U_B_T_Soldier_F',[['FirstAidKit',2],['16Rnd_9x21_Mag',3,16]]],['V_PlateCarrier1_tna_F',[['SmokeShell',2,1],['HandGrenade',2,1],['30rnd_65x39_caseless_khaki_mag_tracer',10,30]]],['B_AssaultPack_tna_F',[]],'H_HelmetB_Light_tna_F','G_Combat_Goggles_tna_F',['Binocular','','','',[],[],''],['ItemMap','ItemGPS','ItemRadio','ItemCompass','ItemWatch','NVGoggles_tna_F']]] select _tropical)],
@@ -337,60 +337,60 @@ QS_roles_defaultLoadouts = [
 	['sniper_WL',([[['srifle_LRR_camo_F','','','optic_LRPS',['7Rnd_408_Mag',7],[],''],[],['hgun_P07_F','muzzle_snds_L','','',['16Rnd_9x21_Mag',16],[],''],['U_B_FullGhillie_ard',[['FirstAidKit',2],['16Rnd_9x21_Mag',3,16]]],['V_Chestrig_rgr',[['MiniGrenade',3,1],['7Rnd_408_Mag',8,7]]],[],'','G_Bandanna_tan',['Rangefinder','','','',[],[],''],['ItemMap','ItemGPS','ItemRadio','ItemCompass','ItemWatch','NVGoggles']],		[['srifle_LRR_tna_F','','','optic_LRPS_tna_F',['7Rnd_408_Mag',7],[],''],[],['hgun_P07_khk_F','muzzle_snds_L','','',['16Rnd_9x21_Mag',16],[],''],['U_B_T_FullGhillie_tna_F',[['FirstAidKit',2],['16Rnd_9x21_Mag',3,16]]],['V_Chestrig_rgr',[['MiniGrenade',3,1],['7Rnd_408_Mag',8,7]]],[],'','G_Bandanna_oli',['Rangefinder','','','',[],[],''],['ItemMap','ItemGPS','ItemRadio','ItemCompass','ItemWatch','NVGoggles_tna_F']]] select _tropical)],
 	['pilot_heli_WL',([[['SMG_03C_khaki','','','',['50Rnd_570x28_SMG_03',50],[],''],[],['hgun_P07_F','','','',['16Rnd_9x21_Mag',16],[],''],['U_B_HeliPilotCoveralls',[['FirstAidKit',2],['16Rnd_9x21_Mag',3,16]]],['V_TacVest_blk',[['50Rnd_570x28_SMG_03',4,50],['DemoCharge_Remote_Mag',1,1]]],[],'H_PilotHelmetHeli_B','',['Binocular','','','',[],[],''],['ItemMap','ItemGPS','ItemRadio','ItemCompass','ItemWatch','NVGoggles']],		[['SMG_03C_black','','','',['50Rnd_570x28_SMG_03',50],[],''],[],['hgun_P07_F','','','',['16Rnd_9x21_Mag',16],[],''],['U_B_HeliPilotCoveralls',[['FirstAidKit',2],['16Rnd_9x21_Mag',3,16]]],['V_TacVest_blk',[['DemoCharge_Remote_Mag',1,1],['50Rnd_570x28_SMG_03',3,50]]],[],'H_PilotHelmetHeli_B','',['Binocular','','','',[],[],''],['ItemMap','ItemGPS','ItemRadio','ItemCompass','ItemWatch','NVGoggles_tna_F']]] select _tropical)]
 ];
-QS_fnc_roleDescription = compileFinal "
+QS_fnc_roleDescription = {
 	params ['_role'];
 	_tropical = worldName in ['Tanoa'];
 	private _description = 'Undefined';
 	if (_role in ['rifleman']) then {
-		_description = format ['As a Rifleman, you are a front line soldier, and the backbone of the military.<br/><br/><img shadow=""0"" align=""center"" size=""18"" image=""media\images\roles\%1\%2.jpg""/>',(['arid','tropic'] select (worldName in ['Tanoa'])),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
+		_description = format ['作为一名步枪兵，你是一名前线士兵，而且是这只部队的脊梁与支柱。<br/><br/><img shadow="0" align="center" size="18" image="media\images\roles\%1\%2.jpg"/>',(['arid','tropic'] select (worldName in ['Tanoa'])),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
 	};
 	if (_role in ['autorifleman','autorifleman_WL']) then {
-		_description = format ['An Automatic Riflemans job is to provide cover fire for their squad during engagements and while their squad is moving.<br/><br/><img shadow=""0"" align=""center"" size=""18"" image=""media\images\roles\%1\%2.jpg""/>',(['arid','tropic'] select (worldName in ['Tanoa'])),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
+		_description = format ['一名自动步枪兵的职责是在班组和敌人交火以及移动时提供迅速的压制火力。<br/><br/><img shadow="0" align="center" size="18" image="media\images\roles\%1\%2.jpg"/>',(['arid','tropic'] select (worldName in ['Tanoa'])),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
 	};
 	if (_role in ['machine_gunner','machine_gunner_WL']) then {
-		_description = format ['A Machine Gunners job is to provide suppressive fire at long ranges. Unlike their lighter Autorifleman cousins, Machine Gunners may operate as part of a smaller detachment of the squad, and move at a slower pace.<br/><br/><img shadow=""0"" align=""center"" size=""18"" image=""media\images\roles\%1\%2.jpg""/>',(['arid','tropic'] select (worldName in ['Tanoa'])),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
+		_description = format ['机枪手的职责是在远距离进行火力压制。不同于他的兄弟自动步枪兵，机枪手可能在班组稍微后方的位置，并且机动性不如后者。<br/><br/><img shadow="0" align="center" size="18" image="media\images\roles\%1\%2.jpg"/>',(['arid','tropic'] select (worldName in ['Tanoa'])),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
 	};
 	if (_role in ['rifleman_lat','rifleman_lat_WL']) then {
-		_description = format ['As a Rifleman (Light Anti-Tank), your role is to provide fire support against infantry, fortifications, unarmored and light-armored vehicles.<br/><br/><img shadow=""0"" align=""center"" size=""18"" image=""media\images\roles\%1\%2.jpg""/>',(['arid','tropic'] select (worldName in ['Tanoa'])),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
+		_description = format ['作为一名精确射手，你的职责是跟随自己的小队，提供中距离上的精确火力。<br/><br/><img shadow="0" align="center" size="18" image="media\images\roles\%1\%2.jpg"/>',(['arid','tropic'] select (worldName in ['Tanoa'])),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
 	};
 	if (_role in ['rifleman_hat','rifleman_hat_WL']) then {
-		_description = format ['As a Rifleman (Heavy Anti-Tank), your role is to provide fire support against armored vehicles.<br/><br/><img shadow=""0"" align=""center"" size=""18"" image=""media\images\roles\%1\%2.jpg""/>',(['arid','tropic'] select (worldName in ['Tanoa'])),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
+		_description = format ['作为一名重型反坦克兵，你的任务是对抗敌军重型装甲载具。<br/><br/><img shadow="0" align="center" size="18" image="media\images\roles\%1\%2.jpg"/>',(['arid','tropic'] select (worldName in ['Tanoa'])),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
 	};
 	if (_role in ['engineer','engineer_WL']) then {
-		_description = format ['An Engineer is a combat soldier with a range of tactical and technical skills.<br/><br/><img shadow=""0"" align=""center"" size=""18"" image=""media\images\roles\%1\%2.jpg""/>',(['arid','tropic'] select (worldName in ['Tanoa'])),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
+		_description = format ['工程兵是载具单位的好帮手，他们可以在前线进行紧急维修。<br/><br/><img shadow="0" align="center" size="18" image="media\images\roles\%1\%2.jpg"/>',(['arid','tropic'] select (worldName in ['Tanoa'])),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
 	};
 	if (_role in ['medic','medic_WL']) then {
-		_description = format ['A Medic is responsible for providing First Aid and Medical services to friendly soldiers and non-combatants.<br/><br/><img shadow=""0"" align=""center"" size=""18"" image=""media\images\roles\%1\%2.jpg""/>',(['arid','tropic'] select (worldName in ['Tanoa'])),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
+		_description = format ['作战救生员最主要的职责便是治疗友军伤兵，尤其是重伤昏迷的人，他们应该出现在前线战场而不是后方的山脊上。<br/><br/><img shadow="0" align="center" size="18" image="media\images\roles\%1\%2.jpg"/>',(['arid','tropic'] select (worldName in ['Tanoa'])),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
 	};
 	if (_role in ['sniper','sniper_WL']) then {
-		_description = format ['Marksman DLC Required.<br/><br/>A Snipers main task is reconaissance. When the mission calls for it, snipers can also dismantle and dishearten the enemy with a few well-placed rifle shots. When there is no specific objective, a sniper will look for targets of opportunity.<br/><br/><img shadow=""0"" align=""center"" size=""18"" image=""media\images\roles\%1\%2.jpg""/>',(['arid','tropic'] select _tropical),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
+		_description = format ['需要拥有Marksman DLC<br/><br/>狙击手的主要职责是侦察，但是当形势需要的时候，狙击手也能够通过精准的狙杀沉重打击敌军士气。这个兵种需要丰富的经验与耐心。<br/><br/><img shadow="0" align="center" size="18" image="media\images\roles\%1\%2.jpg"/>',(['arid','tropic'] select _tropical),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
 	};
 	if (_role in ['crewman']) then {
-		_description = format ['Tanks DLC Required.<br/><br/>A Crewman is able to operate the Driver and Gunner positions of armored vehicles (Tanks, IFVs and APCs).<br/><br/><img shadow=""0"" align=""center"" size=""18"" image=""media\images\roles\%1\%2.jpg""/>',(['arid','tropic'] select _tropical),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
+		_description = format ['Tanks DLC Required.<br/><br/>A Crewman is able to operate the Driver and Gunner positions of armored vehicles (Tanks, IFVs and APCs).<br/><br/><img shadow="0" align="center" size="18" image="media\images\roles\%1\%2.jpg"/>',(['arid','tropic'] select _tropical),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
 	};
 	if (_role in ['jtac','jtac_WL']) then {
-		_description = format ['Working from a forward position, a Joint Terminal Attack Controller (JTAC) directs the action of combat aircraft engaged in close air support and other offensive air operations. This soldier will work closely with Pilots, UAV Operators and Squad Leaders.<br/><br/><img shadow=""0"" align=""center"" size=""18"" image=""media\images\roles\%1\%2.jpg""/>',(['arid','tropic'] select _tropical),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
+		_description = format ['JTAC是活跃在前沿的优秀侦察兵和引导员，这些精锐士兵能够沉着冷静地同固定翼单位、直升机单位以及UAV操作员沟通，协调引导后方火力支援打击敌军。<br/><br/><img shadow="0" align="center" size="18" image="media\images\roles\%1\%2.jpg"/>',(['arid','tropic'] select _tropical),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
 	};
 	if (_role in ['mortar_gunner']) then {
-		_description = format ['Mortar Gunners provide indirect fire support to squads. These soldiers can also deactivate mines, explosives and IEDs.<br/><br/><img shadow=""0"" align=""center"" size=""18"" image=""media\images\roles\%1\%2.jpg""/>',(['arid','tropic'] select _tropical),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
+		_description = format ['迫击炮手为班组提供非直瞄火力支援，同时他们也能熟练地处理地雷、路边炸弹。<br/><br/><img shadow="0" align="center" size="18" image="media\images\roles\%1\%2.jpg"/>',(['arid','tropic'] select _tropical),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
 	};
 	if (_role in ['uav']) then {
-		_description = format ['A UAV Operator controls autonomous vehicles for logistics, intel-gathering, support and combat tasks.<br/><br/><img shadow=""0"" align=""center"" size=""18"" image=""media\images\roles\%1\%2.jpg""/>',(['arid','tropic'] select _tropical),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
+		_description = format ['UAV操作员是高技术兵种，集侦察、打击于一体的角色。<br/><br/><img shadow="0" align="center" size="18" image="media\images\roles\%1\%2.jpg"/>',(['arid','tropic'] select _tropical),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
 	};
 	if (_role in ['pilot_heli','pilot_heli_WL']) then {
-		_description = format ['Transport Pilots provide infantry transport to and from missions.<br/><br/><img shadow=""0"" align=""center"" size=""18"" image=""media\images\roles\%1\%2.jpg""/>',(['arid','tropic'] select _tropical),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
+		_description = format ['直升机驾驶员提供空中载具运输，将友军投送到战场前沿加入战斗。同时他们也承担着高风险的近距离空中支援任务。<br/><br/><img shadow="0" align="center" size="18" image="media\images\roles\%1\%2.jpg"/>',(['arid','tropic'] select _tropical),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
 	};
 	if (_role in ['pilot_plane']) then {
-		_description = format ['Jets DLC Required.<br/><br/>A Fighter Pilot is responsible for providing Close Air Support to ground elements when requested, and flying Combat Air Patrols to protect transport pilots from enemy aircraft.<br/><br/><img shadow=""0"" align=""center"" size=""18"" image=""media\images\roles\%1\%2.jpg""/>',(['arid','tropic'] select _tropical),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
+		_description = format ['需要拥有Jets DLC<br/><br/>固定翼飞行员需要保证战场的制空权，保护我军的作战单位，同时要为地面单位提供近距离空中支援。<br/><br/><img shadow="0" align="center" size="18" image="media\images\roles\%1\%2.jpg"/>',(['arid','tropic'] select _tropical),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
 	};
 	if (_role in ['commander']) then {
-		_description = format ['Organize and deploy available resources (including players) to defeat the enemy. <br/><br/>Soldiers are required under military law to obey your orders.<br/><br/><img shadow=""0"" align=""center"" size=""18"" image=""media\images\roles\%1\%2.jpg""/>',(['arid','tropic'] select _tropical),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
+		_description = format ['运筹帷幄，决胜千里之外是指挥官们最好的写照！<br/><br/><img shadow="0" align="center" size="18" image="media\images\roles\%1\%2.jpg"/>',(['arid','tropic'] select _tropical),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
 	};
 	if (_role in ['o_rifleman']) then {
-		_description = format ['As a Rifleman, you are a front line soldier, and the backbone of the military.<br/><br/><img shadow=""0"" align=""center"" size=""18"" image=""media\images\roles\%1\%2.jpg""/>',(['arid','tropic'] select (worldName in ['Tanoa'])),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
+		_description = format ['CSAT体验角色，此兵种只有最基础的武器。禁止大量杀伤NATO玩家，同时禁止围尸打援，酌情放过治疗或拖拽伤兵的NATO玩家。<br/><br/><img shadow="0" align="center" size="18" image="media\images\roles\%1\%2.jpg"/>',(['arid','tropic'] select (worldName in ['Tanoa'])),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
 	};
 	if (_role in ['o_autorifleman']) then {
-		_description = format ['An Automatic Riflemans job is to provide cover fire for their squad during engagements and while their squad is moving.<br/><br/><img shadow=""0"" align=""center"" size=""18"" image=""media\images\roles\%1\%2.jpg""/>',(['arid','tropic'] select (worldName in ['Tanoa'])),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
+		_description = format ['CSAT体验角色，请遵循CSAT玩家行动总体原则！此兵种拥有更多样的武器<br/><br/><img shadow="0" align="center" size="18" image="media\images\roles\%1\%2.jpg"/>',(['arid','tropic'] select (worldName in ['Tanoa'])),(uiNamespace getVariable ['QS_RSS_currentSelectedRole','rifleman'])];
 	};
 	(parseText _description);
-";
+};

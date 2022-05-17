@@ -505,7 +505,7 @@ if (_role isEqualTo '') exitWith {
 	]
 };
 // Rifleman role (Grenadier, marksman, engineer, medic, mortar gunner, etc)
-if (_role isEqualTo 'rifleman') exitWith {
+if (_role in ['rifleman']) exitWith {
 	[
 		[	// -------------------------------------------------------------- BLACKLIST
 			[	// ITEMS
@@ -554,7 +554,7 @@ if (_role isEqualTo 'rifleman') exitWith {
 	]
 };
 // Rifleman role (Grenadier, marksman, engineer, medic, mortar gunner, etc)
-if (_role in ['engineer','medic','mortar_gunner']) exitWith {
+if (_role in ['engineer','engineer_WL','medic','medic_WL','mortar_gunner']) exitWith {
 	[
 		[	// -------------------------------------------------------------- BLACKLIST
 			[	// ITEMS
@@ -603,7 +603,7 @@ if (_role in ['engineer','medic','mortar_gunner']) exitWith {
 	]
 };
 // Machine gunner, autorifleman, etc
-if (_role isEqualTo 'autorifleman') exitWith {
+if (_role in ['autorifleman','autorifleman_WL']) exitWith {
 	[
 		[	// -------------------------------------------------------------- BLACKLIST
 			[	// ITEMS
@@ -653,7 +653,7 @@ if (_role isEqualTo 'autorifleman') exitWith {
 		]
 	]
 };
-if (_role isEqualTo 'machine_gunner') exitWith {
+if (_role in ['machine_gunner','machine_gunner_WL']) exitWith {
 	[
 		[	// -------------------------------------------------------------- BLACKLIST
 			[	// ITEMS
@@ -704,7 +704,7 @@ if (_role isEqualTo 'machine_gunner') exitWith {
 	]
 };
 // AT / AA / Missile soldiers, etc
-if (_role isEqualTo 'rifleman_lat') exitWith {
+if (_role in ['rifleman_lat','rifleman_lat_WL']) exitWith {
 	[
 		[	// -------------------------------------------------------------- BLACKLIST
 			[	// ITEMS
@@ -754,7 +754,7 @@ if (_role isEqualTo 'rifleman_lat') exitWith {
 		]
 	]
 };
-if (_role isEqualTo 'rifleman_hat') exitWith {
+if (_role in ['rifleman_hat','rifleman_hat_WL']) exitWith {
 	[
 		[	// -------------------------------------------------------------- BLACKLIST
 			[	// ITEMS
@@ -805,7 +805,7 @@ if (_role isEqualTo 'rifleman_hat') exitWith {
 	]
 };
 // Sniper role
-if (_role isEqualTo 'sniper') exitWith {
+if (_role in ['sniper','sniper_WL']) exitWith {
 	[
 		[	// -------------------------------------------------------------- BLACKLIST
 			[	// ITEMS
@@ -906,7 +906,7 @@ if (_role isEqualTo 'crewman') exitWith {
 	]
 };
 // JTAC role
-if (_role isEqualTo 'jtac') exitWith {
+if (_role in ['jtac','jtac_WL']) exitWith {
 	[
 		[	// -------------------------------------------------------------- BLACKLIST
 			[	// ITEMS
@@ -957,7 +957,7 @@ if (_role isEqualTo 'jtac') exitWith {
 	]
 };
 // Pilot role
-if (_role in ['pilot','pilot_plane','pilot_cas','pilot_heli']) exitWith {
+if (_role in ['pilot','pilot_plane','pilot_cas','pilot_heli','pilot_heli_WL']) exitWith {
 	[
 		[	// -------------------------------------------------------------- BLACKLIST
 			[	// ITEMS

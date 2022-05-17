@@ -253,6 +253,7 @@ if (!isStreamFriendlyUIEnabled) then {
 		showChat TRUE;
 	};
 	if (!isNull _cameraOn) then {
+		_allUnit = (call BIS_fnc_listPlayers) + (units _player);
 		if (
 			('ItemGPS' in (assignedItems _player)) && 
 			(missionNamespace getVariable ['QS_HUD_show3DHex',TRUE])
@@ -309,7 +310,7 @@ if (!isStreamFriendlyUIEnabled) then {
 						TRUE
 					];
 				};
-			} count ((units _player) - [_player]);
+			} count (_allUnit arrayIntersect _myArray);
 		};
 		if (freeLook) then {
 			{
