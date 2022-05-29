@@ -1129,21 +1129,21 @@ _QS_module_opsec = (call (missionNamespace getVariable ['QS_missionConfig_AH',{1
 if (_QS_module_opsec) then {
 	_QS_module_opsec_delay = 15;
 	_QS_module_opsec_checkDelay = _timeNow + _QS_module_opsec_delay;
-	_QS_module_opsec_recoilSway = TRUE;											/*/ check recoil and sway and anim speed /*/
+	_QS_module_opsec_recoilSway = FALSE;											/*/ check recoil and sway and anim speed /*/
 	_QS_module_opsec_hidden = TRUE;												/*/ check hidden /*/
-	_QS_module_opsec_menus = TRUE;												/*/ check menus /*/
+	_QS_module_opsec_menus = FALSE;												/*/ check menus /*/
 	_QS_module_opsec_vars = FALSE;												/*/ check variables /*/
 	_QS_module_opsec_patches = TRUE && _QS_productVersionSync;							/*/ check patches /*/
 	_QS_module_opsec_checkScripts = FALSE;										/*/ check scripts /*/
-	_QS_module_opsec_checkActions = TRUE;										/*/ check action menu /*/
+	_QS_module_opsec_checkActions = FALSE;										/*/ check action menu /*/
 	_QS_module_opsec_checkMarkers = FALSE;										/*/ check map markers /*/
 	_QS_module_opsec_chatIntercept = TRUE;										/*/ check chat box /*/
-	_QS_module_opsec_memory = TRUE && _QS_productVersionSync;					/*/ check memory editing /*/
-	_QS_module_opsec_memoryMission = TRUE;										/*/ check memory editing of mission displays /*/
+	_QS_module_opsec_memory = FALSE && _QS_productVersionSync;					/*/ check memory editing /*/
+	_QS_module_opsec_memoryMission = FALSE;										/*/ check memory editing of mission displays /*/
 	_QS_module_opsec_iguiDisplays = TRUE && _QS_productVersionSync;				/*/ check memory editing of igui displays/*/
 	_QS_module_opsec_rsctitles = TRUE && _QS_productVersionSync;				/*/ check memory editing of titles /*/
 	_QS_module_opsec_rsctitlesMission = TRUE;									/*/ check memory editing of titles (mission)/*/
-	_QS_module_opsec_hints = TRUE && (!(_puid in (['ALL'] call (missionNamespace getVariable 'QS_fnc_whitelist'))));
+	_QS_module_opsec_hints = FALSE && (!(_puid in (['ALL'] call (missionNamespace getVariable 'QS_fnc_whitelist'))));
 	_QS_module_opsec_detected = 0;
 	_detected = '';
 	_QS_module_opsec_chatIntercept_IDD = 24;
@@ -1407,7 +1407,7 @@ if (_QS_module_opsec) then {
 				if (!(_patchConfigName in _patchList)) then {
 					if ((!(['jsrs',_patchConfigName,FALSE] call _fn_inString)) && (!(['jpex',_patchConfigName,FALSE] call _fn_inString)) && (!(['blastcore',_patchConfigName,FALSE] call _fn_inString)) && (!(['aegis',_patchConfigName,FALSE] call _fn_inString))) then {
 						_detected = format ['Unknown Addon Patch: %1',_patchConfigName];
-						_QS_module_opsec_detected = 1;	// change this to 2 to force a kick instead
+						_QS_module_opsec_detected = 2;	// change this to 2 to force a kick instead
 					};
 				};
 			};
