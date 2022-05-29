@@ -390,7 +390,7 @@ player createDiaryRecord [
 	<br/>-JSRS SOUNDMOD    音效模组
 	<br/>-JSRS SOUNDMOD - Reloading Sounds    更换弹药音效模组
 	<br/>-Mf Heal Abort    终止治疗动作
-	<br/>-OD Colorize    自定义夜视仪颜色(和白磷管选一个挂载)
+	<br/>-NOD Colorize    自定义夜视仪颜色(和白磷管选一个挂载)
 	<br/>-White_Phosphor_No_ACE    白磷管夜视仪(和自定义夜视仪颜色选一个挂载)
 	<br/>-Zeus Enhanced    宙斯增强模组
 	<br/>-Zombies and Demons    丧尸模组

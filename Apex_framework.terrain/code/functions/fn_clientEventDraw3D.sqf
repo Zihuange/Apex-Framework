@@ -310,7 +310,7 @@ if (!isStreamFriendlyUIEnabled) then {
 						TRUE
 					];
 				};
-			} count (_allUnit arrayIntersect _myArray);
+			} count (_allUnit arrayIntersect _allUnit);
 		};
 		if (freeLook) then {
 			{
