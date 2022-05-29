@@ -137,7 +137,7 @@ _weaponsLauncherAll = [
 ];
 // basic launchers (rpg)
 _weaponsLauncherBasic = [
-	'launch_rpg7_f'
+	'launch_rpg7_f','launch_B_Titan_F','launch_I_Titan_F','launch_O_Titan_F','launch_Titan_F','launch_nlaw_f'
 ];
 // regular launchers 
 _weaponsLauncherRegular = [
@@ -156,6 +156,9 @@ _weaponsLauncherHAT = [
 	'launch_rpg7_f','launch_i_titan_f','launch_o_titan_ghex_f','launch_o_titan_f','launch_b_titan_f','launch_b_titan_tna_f',
 	'launch_o_titan_short_f','launch_o_titan_short_ghex_f','launch_i_titan_short_f','launch_b_titan_short_tna_f','launch_b_titan_short_f','launch_o_vorona_brown_f','launch_o_vorona_green_f',
 	'launch_i_titan_eaf_f','launch_b_titan_olive_f'
+];
+_weaponsLauncherATGM = [
+	'launch_o_titan_short_f','launch_o_titan_short_ghex_f','launch_i_titan_short_f','launch_b_titan_short_tna_f','launch_b_titan_short_f','launch_o_vorona_brown_f','launch_o_vorona_green_f'
 ];
 // pistols / handguns
 _weaponsHandgun = [
@@ -324,7 +327,7 @@ _gogglesAll = [
 ];
 // armor piercing missiles
 _magazinesAT = [
-	'vorona_heat','mraws_heat_f','titan_at'
+	'vorona_heat','mraws_heat_f','titan_at','vorona_he'
 ];
 // all magazines and ammo
 _magazinesAll = [
@@ -357,7 +360,7 @@ _magazinesAll = [
 	'30rnd_762x39_ak12_arid_mag_f','30rnd_762x39_ak12_arid_mag_tracer_f','30rnd_762x39_ak12_lush_mag_f','30rnd_762x39_ak12_lush_mag_tracer_f','30rnd_762x39_ak12_mag_green_f','30rnd_762x39_ak12_mag_tracer_green_f',
 	'75rnd_762x39_mag_tracer_f','75rnd_762x39_mag_f','75rnd_762x39_ak12_mag_tracer_f','75rnd_762x39_ak12_mag_f','75rnd_762x39_ak12_lush_mag_tracer_f','75rnd_762x39_ak12_lush_mag_f',
 	'75rnd_762x39_ak12_arid_mag_tracer_f','75rnd_762x39_ak12_arid_mag_f',
-	'6rnd_12gauge_pellets','6rnd_12gauge_slug'
+	'6rnd_12gauge_pellets','6rnd_12gauge_slug','vorona_heat','vorona_he'
 ];
 // all weapon attachments
 _attachmentsAll = [
@@ -510,7 +513,7 @@ if (_role in ['rifleman']) exitWith {
 		[	// -------------------------------------------------------------- BLACKLIST
 			[	// ITEMS
 				[	// blacklisted uniforms
-				
+					'U_I_Protagonist_VR','U_O_Protagonist_VR','U_B_Protagonist_VR','U_C_Protagonist_VR','U_I_CombatUniform','U_I_OfficerUniform','U_I_CombatUniform_shortsleeve','U_O_SpecopsUniform_ocamo','U_O_OfficerUniform_ocamo','U_O_CombatUniform_ocamo','U_O_CombatUniform_oucamo','U_I_FullGhillie_sard','U_O_FullGhillie_sard','U_B_FullGhillie_sard','U_I_FullGhillie_ard','U_O_FullGhillie_ard','U_B_FullGhillie_ard','U_I_FullGhillie_lsh','U_O_FullGhillie_lsh','U_B_FullGhillie_lsh','U_I_GhillieSuit','U_O_GhillieSuit','U_B_GhillieSuit','U_I_Wetsuit','U_O_Wetsuit','U_I_HeliPilotCoveralls','U_B_HeliPilotCoveralls','U_I_pilotCoveralls','U_O_pilotCoveralls','U_B_pilotCoveralls','U_O_T_FullGhillie_tna_F','U_B_T_FullGhillie_tna_F','U_O_T_Sniper_F','U_O_T_Officer_F','U_O_V_Soldier_Viper_hex_F','U_O_V_Soldier_Viper_F','U_O_T_Soldier_F','U_I_E_Uniform_01_F','U_I_E_Uniform_01_officer_F','U_I_E_Uniform_01_shortsleeve_F','U_I_E_Uniform_01_sweater_F','U_I_E_Uniform_01_tanktop_F','U_I_E_Uniform_01_coveralls_F','U_O_officer_noInsignia_hex_F'
 				],
 				[	// blacklisted vests
 				
@@ -521,21 +524,25 @@ if (_role in ['rifleman']) exitWith {
 				[	// blacklisted assigned items
 					'b_uavterminal'
 				],
-				_headgearThermal,	// blacklisted Headgear
+				[	// blacklisted Headgear
+					'H_HelmetO_ocamo','H_HelmetO_oucamo','H_HelmetSpecO_ocamo','H_HelmetSpecO_blk','H_HelmetIA','H_CrewHelmetHeli_I','H_CrewHelmetHeli_O','H_PilotHelmetHeli_I','H_PilotHelmetHeli_O',
+					'H_HelmetLeaderO_ocamo','H_HelmetLeaderO_oucamo','H_PilotHelmetFighter_I','H_PilotHelmetFighter_O','H_PilotHelmetFighter_B','H_HelmetSpecO_ghex_F','H_HelmetO_ghex_F','H_HelmetO_ViperSP_hex_F','H_HelmetO_ViperSP_ghex_F',
+					'H_HelmetLeaderO_ghex_F','H_CrewHelmetHeli_I_E','H_PilotHelmetHeli_I_E','H_PilotHelmetFighter_I_E'
+				],
 				[	// blacklisted goggles
-				
+					'nvgogglesb_blk_f','nvgogglesb_grn_f','nvgogglesb_gry_f'
 				],
 				[	// blacklisted attachments
-				
+					'optic_nightstalker','optic_tws','optic_tws_mg','optic_LRPS','optic_SOS','optic_AMS_khk','optic_AMS_snd','optic_AMS','optic_KHS_hex','optic_KHS_old','optic_KHS_tan','optic_KHS_blk','optic_DMS_ghex_F','optic_LRPS_tna_F','optic_LRPS_ghex_F','optic_SOS_khk_F','optic_DMS_weathered_Kir_F','optic_DMS_weathered_F'
 				]
 			],
 			[	// blacklisted MAGAZINES
-				
+				'100Rnd_65x39_caseless_mag','100Rnd_65x39_caseless_black_mag','100Rnd_65x39_caseless_mag_Tracer','100Rnd_65x39_caseless_khaki_mag_tracer','100Rnd_65x39_caseless_black_mag_tracer','100Rnd_65x39_caseless_khaki_mag','100Rnd_65x39_caseless_khaki_mag','100Rnd_580x42_Mag_Tracer_F','100Rnd_580x42_Mag_F','100Rnd_580x42_ghex_Mag_F','100Rnd_580x42_ghex_Mag_Tracer_F','100Rnd_580x42_hex_Mag_Tracer_F','100Rnd_580x42_hex_Mag_F','150Rnd_556x45_Drum_Mag_F','150Rnd_556x45_Drum_Mag_Tracer_F','150Rnd_556x45_Drum_Sand_Mag_F','150Rnd_556x45_Drum_Sand_Mag_Tracer_F','150Rnd_556x45_Drum_Green_Mag_F','150Rnd_556x45_Drum_Green_Mag_Tracer_F','75Rnd_762x39_Mag_F','75Rnd_762x39_Mag_Tracer_F','75rnd_762x39_AK12_Mag_F','75rnd_762x39_AK12_Mag_Tracer_F','75rnd_762x39_AK12_Lush_Mag_F','75rnd_762x39_AK12_Lush_Mag_Tracer_F','75rnd_762x39_AK12_Arid_Mag_F','75rnd_762x39_AK12_Arid_Mag_Tracer_F'
 			],
 			[	// blacklisted BACKPACKS
-			
+				'B_Bergen_mcamo_F','B_Bergen_hex_F','B_Bergen_dgtl_F','B_Bergen_tna_F'
 			],
-			(_weaponsMMG + _weaponsSniper + _weaponsLauncherRegular)	// blacklisted WEAPONS
+			(_weaponsMMG + _weaponsLMG + _weaponsSniper + _weaponsMarksmanHeavy +_weaponsLauncherATGM)	// blacklisted WEAPONS
 		],
 		[	// -------------------------------------------------------------- WHITELIST
 			[	// ITEMS
@@ -559,7 +566,7 @@ if (_role in ['engineer','engineer_WL','medic','medic_WL','mortar_gunner']) exit
 		[	// -------------------------------------------------------------- BLACKLIST
 			[	// ITEMS
 				[	// blacklisted uniforms
-				
+					'U_I_Protagonist_VR','U_O_Protagonist_VR','U_B_Protagonist_VR','U_C_Protagonist_VR','U_I_CombatUniform','U_I_OfficerUniform','U_I_CombatUniform_shortsleeve','U_O_SpecopsUniform_ocamo','U_O_OfficerUniform_ocamo','U_O_CombatUniform_ocamo','U_O_CombatUniform_oucamo','U_I_FullGhillie_sard','U_O_FullGhillie_sard','U_B_FullGhillie_sard','U_I_FullGhillie_ard','U_O_FullGhillie_ard','U_B_FullGhillie_ard','U_I_FullGhillie_lsh','U_O_FullGhillie_lsh','U_B_FullGhillie_lsh','U_I_GhillieSuit','U_O_GhillieSuit','U_B_GhillieSuit','U_I_Wetsuit','U_O_Wetsuit','U_I_HeliPilotCoveralls','U_B_HeliPilotCoveralls','U_I_pilotCoveralls','U_O_pilotCoveralls','U_B_pilotCoveralls','U_O_T_FullGhillie_tna_F','U_B_T_FullGhillie_tna_F','U_O_T_Sniper_F','U_O_T_Officer_F','U_O_V_Soldier_Viper_hex_F','U_O_V_Soldier_Viper_F','U_O_T_Soldier_F','U_I_E_Uniform_01_F','U_I_E_Uniform_01_officer_F','U_I_E_Uniform_01_shortsleeve_F','U_I_E_Uniform_01_sweater_F','U_I_E_Uniform_01_tanktop_F','U_I_E_Uniform_01_coveralls_F','U_O_officer_noInsignia_hex_F'
 				],
 				[	// blacklisted vests
 				
@@ -570,21 +577,25 @@ if (_role in ['engineer','engineer_WL','medic','medic_WL','mortar_gunner']) exit
 				[	// blacklisted assigned items
 					'b_uavterminal'
 				],
-				_headgearThermal,	// blacklisted Headgear
+				[	// blacklisted Headgear
+					'H_HelmetO_ocamo','H_HelmetO_oucamo','H_HelmetSpecO_ocamo','H_HelmetSpecO_blk','H_HelmetIA','H_CrewHelmetHeli_I','H_CrewHelmetHeli_O','H_PilotHelmetHeli_I','H_PilotHelmetHeli_O',
+					'H_HelmetLeaderO_ocamo','H_HelmetLeaderO_oucamo','H_PilotHelmetFighter_I','H_PilotHelmetFighter_O','H_PilotHelmetFighter_B','H_HelmetSpecO_ghex_F','H_HelmetO_ghex_F','H_HelmetO_ViperSP_hex_F','H_HelmetO_ViperSP_ghex_F',
+					'H_HelmetLeaderO_ghex_F','H_CrewHelmetHeli_I_E','H_PilotHelmetHeli_I_E','H_PilotHelmetFighter_I_E'
+				],
 				[	// blacklisted goggles
-				
+
 				],
 				[	// blacklisted attachments
-				
+					'optic_nightstalker','optic_tws','optic_tws_mg','optic_LRPS','optic_SOS','optic_AMS_khk','optic_AMS_snd','optic_AMS','optic_KHS_hex','optic_KHS_old','optic_KHS_tan','optic_KHS_blk','optic_DMS_ghex_F','optic_LRPS_tna_F','optic_LRPS_ghex_F','optic_SOS_khk_F','optic_DMS_weathered_Kir_F','optic_DMS_weathered_F'
 				]
 			],
 			[	// blacklisted MAGAZINES
-				
+				'100Rnd_65x39_caseless_mag','100Rnd_65x39_caseless_black_mag','100Rnd_65x39_caseless_mag_Tracer','100Rnd_65x39_caseless_khaki_mag_tracer','100Rnd_65x39_caseless_black_mag_tracer','100Rnd_65x39_caseless_khaki_mag','100Rnd_65x39_caseless_khaki_mag','100Rnd_580x42_Mag_Tracer_F','100Rnd_580x42_Mag_F','100Rnd_580x42_ghex_Mag_F','100Rnd_580x42_ghex_Mag_Tracer_F','100Rnd_580x42_hex_Mag_Tracer_F','100Rnd_580x42_hex_Mag_F','150Rnd_556x45_Drum_Mag_F','150Rnd_556x45_Drum_Mag_Tracer_F','150Rnd_556x45_Drum_Sand_Mag_F','150Rnd_556x45_Drum_Sand_Mag_Tracer_F','150Rnd_556x45_Drum_Green_Mag_F','150Rnd_556x45_Drum_Green_Mag_Tracer_F','75Rnd_762x39_Mag_F','75Rnd_762x39_Mag_Tracer_F','75rnd_762x39_AK12_Mag_F','75rnd_762x39_AK12_Mag_Tracer_F','75rnd_762x39_AK12_Lush_Mag_F','75rnd_762x39_AK12_Lush_Mag_Tracer_F','75rnd_762x39_AK12_Arid_Mag_F','75rnd_762x39_AK12_Arid_Mag_Tracer_F'
 			],
 			[	// blacklisted BACKPACKS
 			
 			],
-			(_weaponsMMG + _weaponsSniper + _weaponsLauncherRegular)	// blacklisted WEAPONS
+			(_weaponsMMG + _weaponsLMG + _weaponsSniper + _weaponsMarksmanHeavy +_weaponsLauncherATGM)	// blacklisted WEAPONS
 		],
 		[	// -------------------------------------------------------------- WHITELIST
 			[	// ITEMS
@@ -608,7 +619,7 @@ if (_role in ['autorifleman','autorifleman_WL']) exitWith {
 		[	// -------------------------------------------------------------- BLACKLIST
 			[	// ITEMS
 				[	// blacklisted uniforms
-				
+					'U_I_Protagonist_VR','U_O_Protagonist_VR','U_B_Protagonist_VR','U_C_Protagonist_VR','U_I_CombatUniform','U_I_OfficerUniform','U_I_CombatUniform_shortsleeve','U_O_SpecopsUniform_ocamo','U_O_OfficerUniform_ocamo','U_O_CombatUniform_ocamo','U_O_CombatUniform_oucamo','U_I_FullGhillie_sard','U_O_FullGhillie_sard','U_B_FullGhillie_sard','U_I_FullGhillie_ard','U_O_FullGhillie_ard','U_B_FullGhillie_ard','U_I_FullGhillie_lsh','U_O_FullGhillie_lsh','U_B_FullGhillie_lsh','U_I_GhillieSuit','U_O_GhillieSuit','U_B_GhillieSuit','U_I_Wetsuit','U_O_Wetsuit','U_I_HeliPilotCoveralls','U_B_HeliPilotCoveralls','U_I_pilotCoveralls','U_O_pilotCoveralls','U_B_pilotCoveralls','U_O_T_FullGhillie_tna_F','U_B_T_FullGhillie_tna_F','U_O_T_Sniper_F','U_O_T_Officer_F','U_O_V_Soldier_Viper_hex_F','U_O_V_Soldier_Viper_F','U_O_T_Soldier_F','U_I_E_Uniform_01_F','U_I_E_Uniform_01_officer_F','U_I_E_Uniform_01_shortsleeve_F','U_I_E_Uniform_01_sweater_F','U_I_E_Uniform_01_tanktop_F','U_I_E_Uniform_01_coveralls_F','U_O_officer_noInsignia_hex_F'
 				],
 				[	// blacklisted vests
 				
@@ -619,23 +630,25 @@ if (_role in ['autorifleman','autorifleman_WL']) exitWith {
 				[	// blacklisted assigned items
 					'b_uavterminal'
 				],
-				_headgearThermal,	// blacklisted Headgear
+				[	// blacklisted Headgear
+					'H_HelmetO_ocamo','H_HelmetO_oucamo','H_HelmetSpecO_ocamo','H_HelmetSpecO_blk','H_HelmetIA','H_CrewHelmetHeli_I','H_CrewHelmetHeli_O','H_PilotHelmetHeli_I','H_PilotHelmetHeli_O',
+					'H_HelmetLeaderO_ocamo','H_HelmetLeaderO_oucamo','H_PilotHelmetFighter_I','H_PilotHelmetFighter_O','H_PilotHelmetFighter_B','H_HelmetSpecO_ghex_F','H_HelmetO_ghex_F','H_HelmetO_ViperSP_hex_F','H_HelmetO_ViperSP_ghex_F',
+					'H_HelmetLeaderO_ghex_F','H_CrewHelmetHeli_I_E','H_PilotHelmetHeli_I_E','H_PilotHelmetFighter_I_E'
+				],
 				[	// blacklisted goggles
-				
+					'nvgogglesb_blk_f','nvgogglesb_grn_f','nvgogglesb_gry_f'
 				],
 				[	// blacklisted attachments
-				
+					'optic_nightstalker','optic_tws','optic_tws_mg','optic_DMS','optic_LRPS','optic_SOS','optic_AMS_khk','optic_AMS_snd','optic_AMS','optic_KHS_hex','optic_KHS_old','optic_KHS_tan','optic_KHS_blk','optic_DMS_ghex_F','optic_LRPS_tna_F','optic_LRPS_ghex_F','optic_SOS_khk_F','optic_DMS_weathered_Kir_F','optic_DMS_weathered_F'
 				]
 			],
 			[	// blacklisted MAGAZINES
 				
 			],
 			[	// blacklisted BACKPACKS
-			
+				'B_Bergen_mcamo_F','B_Bergen_hex_F','B_Bergen_dgtl_F','B_Bergen_tna_F'
 			],
-			[	// blacklisted WEAPONS
-			
-			]
+			(_weaponsMMG + _weaponsSniper + _weaponsMarksmanHeavy +_weaponsLauncherATGM)	// blacklisted WEAPONS
 		],
 		[	// -------------------------------------------------------------- WHITELIST
 			[	// ITEMS
@@ -649,7 +662,7 @@ if (_role in ['autorifleman','autorifleman_WL']) exitWith {
 			],
 			_magazinesAll,							// whitelisted MAGAZINES
 			_backpacksAll,							// whitelisted BACKPACKS
-			(_weaponsSW + _weaponsLMG + _weaponsHandgun + _viewersAll + _weaponsUW)	// whitelisted WEAPONS
+			(_weaponsSW + _weaponsLMG + _weaponsHandgun + _viewersAll + _weaponsUW + _weaponsLauncherBasic)	// whitelisted WEAPONS
 		]
 	]
 };
@@ -658,7 +671,7 @@ if (_role in ['machine_gunner','machine_gunner_WL']) exitWith {
 		[	// -------------------------------------------------------------- BLACKLIST
 			[	// ITEMS
 				[	// blacklisted uniforms
-				
+					'U_I_Protagonist_VR','U_O_Protagonist_VR','U_B_Protagonist_VR','U_C_Protagonist_VR','U_I_CombatUniform','U_I_OfficerUniform','U_I_CombatUniform_shortsleeve','U_O_SpecopsUniform_ocamo','U_O_OfficerUniform_ocamo','U_O_CombatUniform_ocamo','U_O_CombatUniform_oucamo','U_I_FullGhillie_sard','U_O_FullGhillie_sard','U_B_FullGhillie_sard','U_I_FullGhillie_ard','U_O_FullGhillie_ard','U_B_FullGhillie_ard','U_I_FullGhillie_lsh','U_O_FullGhillie_lsh','U_B_FullGhillie_lsh','U_I_GhillieSuit','U_O_GhillieSuit','U_B_GhillieSuit','U_I_Wetsuit','U_O_Wetsuit','U_I_HeliPilotCoveralls','U_B_HeliPilotCoveralls','U_I_pilotCoveralls','U_O_pilotCoveralls','U_B_pilotCoveralls','U_O_T_FullGhillie_tna_F','U_B_T_FullGhillie_tna_F','U_O_T_Sniper_F','U_O_T_Officer_F','U_O_V_Soldier_Viper_hex_F','U_O_V_Soldier_Viper_F','U_O_T_Soldier_F','U_I_E_Uniform_01_F','U_I_E_Uniform_01_officer_F','U_I_E_Uniform_01_shortsleeve_F','U_I_E_Uniform_01_sweater_F','U_I_E_Uniform_01_tanktop_F','U_I_E_Uniform_01_coveralls_F','U_O_officer_noInsignia_hex_F'
 				],
 				[	// blacklisted vests
 				
@@ -669,23 +682,25 @@ if (_role in ['machine_gunner','machine_gunner_WL']) exitWith {
 				[	// blacklisted assigned items
 					'b_uavterminal'
 				],
-				_headgearThermal,	// blacklisted Headgear
+				[	// blacklisted Headgear
+					'H_HelmetO_ocamo','H_HelmetO_oucamo','H_HelmetSpecO_ocamo','H_HelmetSpecO_blk','H_HelmetIA','H_CrewHelmetHeli_I','H_CrewHelmetHeli_O','H_PilotHelmetHeli_I','H_PilotHelmetHeli_O',
+					'H_HelmetLeaderO_ocamo','H_HelmetLeaderO_oucamo','H_PilotHelmetFighter_I','H_PilotHelmetFighter_O','H_PilotHelmetFighter_B','H_HelmetSpecO_ghex_F','H_HelmetO_ghex_F','H_HelmetO_ViperSP_hex_F','H_HelmetO_ViperSP_ghex_F',
+					'H_HelmetLeaderO_ghex_F','H_CrewHelmetHeli_I_E','H_PilotHelmetHeli_I_E','H_PilotHelmetFighter_I_E'
+				],
 				[	// blacklisted goggles
-				
+					'nvgogglesb_blk_f','nvgogglesb_grn_f','nvgogglesb_gry_f'
 				],
 				[	// blacklisted attachments
-				
+					'optic_nightstalker','optic_tws','optic_tws_mg','optic_DMS','optic_LRPS','optic_SOS','optic_AMS_khk','optic_AMS_snd','optic_AMS','optic_KHS_hex','optic_KHS_old','optic_KHS_tan','optic_KHS_blk','optic_DMS_ghex_F','optic_LRPS_tna_F','optic_LRPS_ghex_F','optic_SOS_khk_F','optic_DMS_weathered_Kir_F','optic_DMS_weathered_F'
 				]
 			],
 			[	// blacklisted MAGAZINES
-				
+				'100Rnd_65x39_caseless_mag','100Rnd_65x39_caseless_black_mag','100Rnd_65x39_caseless_mag_Tracer','100Rnd_65x39_caseless_khaki_mag_tracer','100Rnd_65x39_caseless_black_mag_tracer','100Rnd_65x39_caseless_khaki_mag','100Rnd_65x39_caseless_khaki_mag','100Rnd_580x42_Mag_Tracer_F','100Rnd_580x42_Mag_F','100Rnd_580x42_ghex_Mag_F','100Rnd_580x42_ghex_Mag_Tracer_F','100Rnd_580x42_hex_Mag_Tracer_F','100Rnd_580x42_hex_Mag_F','150Rnd_556x45_Drum_Mag_F','150Rnd_556x45_Drum_Mag_Tracer_F','150Rnd_556x45_Drum_Sand_Mag_F','150Rnd_556x45_Drum_Sand_Mag_Tracer_F','150Rnd_556x45_Drum_Green_Mag_F','150Rnd_556x45_Drum_Green_Mag_Tracer_F','75Rnd_762x39_Mag_F','75Rnd_762x39_Mag_Tracer_F','75rnd_762x39_AK12_Mag_F','75rnd_762x39_AK12_Mag_Tracer_F','75rnd_762x39_AK12_Lush_Mag_F','75rnd_762x39_AK12_Lush_Mag_Tracer_F','75rnd_762x39_AK12_Arid_Mag_F','75rnd_762x39_AK12_Arid_Mag_Tracer_F'
 			],
 			[	// blacklisted BACKPACKS
-			
+				'B_Bergen_mcamo_F','B_Bergen_hex_F','B_Bergen_dgtl_F','B_Bergen_tna_F'
 			],
-			[	// blacklisted WEAPONS
-			
-			]
+			(_weaponsLMG + _weaponsSniper + _weaponsMarksmanHeavy +_weaponsLauncherATGM)	// blacklisted WEAPONS
 		],
 		[	// -------------------------------------------------------------- WHITELIST
 			[	// ITEMS
@@ -699,7 +714,7 @@ if (_role in ['machine_gunner','machine_gunner_WL']) exitWith {
 			],
 			_magazinesAll,							// whitelisted MAGAZINES
 			_backpacksAll,							// whitelisted BACKPACKS
-			(_weaponsMMG + _weaponsHandgun + _viewersAll + _weaponsUW)	// whitelisted WEAPONS
+			(_weaponsMMG + _weaponsHandgun + _viewersAll + _weaponsUW + _weaponsLauncherBasic)	// whitelisted WEAPONS
 		]
 	]
 };
@@ -709,7 +724,7 @@ if (_role in ['rifleman_lat','rifleman_lat_WL']) exitWith {
 		[	// -------------------------------------------------------------- BLACKLIST
 			[	// ITEMS
 				[	// blacklisted uniforms
-				
+					'U_I_Protagonist_VR','U_O_Protagonist_VR','U_B_Protagonist_VR','U_C_Protagonist_VR','U_I_CombatUniform','U_I_OfficerUniform','U_I_CombatUniform_shortsleeve','U_O_SpecopsUniform_ocamo','U_O_OfficerUniform_ocamo','U_O_CombatUniform_ocamo','U_O_CombatUniform_oucamo','U_I_FullGhillie_sard','U_O_FullGhillie_sard','U_B_FullGhillie_sard','U_I_FullGhillie_ard','U_O_FullGhillie_ard','U_B_FullGhillie_ard','U_I_FullGhillie_lsh','U_O_FullGhillie_lsh','U_B_FullGhillie_lsh','U_I_GhillieSuit','U_O_GhillieSuit','U_B_GhillieSuit','U_I_Wetsuit','U_O_Wetsuit','U_I_HeliPilotCoveralls','U_B_HeliPilotCoveralls','U_I_pilotCoveralls','U_O_pilotCoveralls','U_B_pilotCoveralls','U_O_T_FullGhillie_tna_F','U_B_T_FullGhillie_tna_F','U_O_T_Sniper_F','U_O_T_Officer_F','U_O_V_Soldier_Viper_hex_F','U_O_V_Soldier_Viper_F','U_O_T_Soldier_F','U_I_E_Uniform_01_F','U_I_E_Uniform_01_officer_F','U_I_E_Uniform_01_shortsleeve_F','U_I_E_Uniform_01_sweater_F','U_I_E_Uniform_01_tanktop_F','U_I_E_Uniform_01_coveralls_F','U_O_officer_noInsignia_hex_F'
 				],
 				[	// blacklisted vests
 				
@@ -720,23 +735,25 @@ if (_role in ['rifleman_lat','rifleman_lat_WL']) exitWith {
 				[	// blacklisted assigned items
 					'b_uavterminal'
 				],
-				_headgearThermal,	// blacklisted Headgear
+				[	// blacklisted Headgear
+					'H_HelmetO_ocamo','H_HelmetO_oucamo','H_HelmetSpecO_ocamo','H_HelmetSpecO_blk','H_HelmetIA','H_CrewHelmetHeli_I','H_CrewHelmetHeli_O','H_PilotHelmetHeli_I','H_PilotHelmetHeli_O',
+					'H_HelmetLeaderO_ocamo','H_HelmetLeaderO_oucamo','H_PilotHelmetFighter_I','H_PilotHelmetFighter_O','H_PilotHelmetFighter_B','H_HelmetSpecO_ghex_F','H_HelmetO_ghex_F','H_HelmetO_ViperSP_hex_F','H_HelmetO_ViperSP_ghex_F',
+					'H_HelmetLeaderO_ghex_F','H_CrewHelmetHeli_I_E','H_PilotHelmetHeli_I_E','H_PilotHelmetFighter_I_E'
+				],
 				[	// blacklisted goggles
-				
+					'nvgogglesb_blk_f','nvgogglesb_grn_f','nvgogglesb_gry_f'
 				],
 				[	// blacklisted attachments
-				
+					'optic_nightstalker','optic_tws','optic_tws_mg'
 				]
 			],
 			[	// blacklisted MAGAZINES
-				
+					'100Rnd_65x39_caseless_mag','100Rnd_65x39_caseless_black_mag','100Rnd_65x39_caseless_mag_Tracer','100Rnd_65x39_caseless_khaki_mag_tracer','100Rnd_65x39_caseless_black_mag_tracer','100Rnd_65x39_caseless_khaki_mag','100Rnd_65x39_caseless_khaki_mag','100Rnd_580x42_Mag_Tracer_F','100Rnd_580x42_Mag_F','100Rnd_580x42_ghex_Mag_F','100Rnd_580x42_ghex_Mag_Tracer_F','100Rnd_580x42_hex_Mag_Tracer_F','100Rnd_580x42_hex_Mag_F','150Rnd_556x45_Drum_Mag_F','150Rnd_556x45_Drum_Mag_Tracer_F','150Rnd_556x45_Drum_Sand_Mag_F','150Rnd_556x45_Drum_Sand_Mag_Tracer_F','150Rnd_556x45_Drum_Green_Mag_F','150Rnd_556x45_Drum_Green_Mag_Tracer_F','75Rnd_762x39_Mag_F','75Rnd_762x39_Mag_Tracer_F','75rnd_762x39_AK12_Mag_F','75rnd_762x39_AK12_Mag_Tracer_F','75rnd_762x39_AK12_Lush_Mag_F','75rnd_762x39_AK12_Lush_Mag_Tracer_F','75rnd_762x39_AK12_Arid_Mag_F','75rnd_762x39_AK12_Arid_Mag_Tracer_F'
 			],
 			[	// blacklisted BACKPACKS
-			
+				'B_Bergen_mcamo_F','B_Bergen_hex_F','B_Bergen_dgtl_F','B_Bergen_tna_F'
 			],
-			[	// blacklisted WEAPONS
-			
-			]
+			(_weaponsMMG + _weaponsLMG + _weaponsSniper + _weaponsMarksmanHeavy +_weaponsLauncherATGM)	// blacklisted WEAPONS
 		],
 		[	// -------------------------------------------------------------- WHITELIST
 			[	// ITEMS
@@ -759,7 +776,7 @@ if (_role in ['rifleman_hat','rifleman_hat_WL']) exitWith {
 		[	// -------------------------------------------------------------- BLACKLIST
 			[	// ITEMS
 				[	// blacklisted uniforms
-				
+					'U_I_Protagonist_VR','U_O_Protagonist_VR','U_B_Protagonist_VR','U_C_Protagonist_VR','U_I_CombatUniform','U_I_OfficerUniform','U_I_CombatUniform_shortsleeve','U_O_SpecopsUniform_ocamo','U_O_OfficerUniform_ocamo','U_O_CombatUniform_ocamo','U_O_CombatUniform_oucamo','U_I_FullGhillie_sard','U_O_FullGhillie_sard','U_B_FullGhillie_sard','U_I_FullGhillie_ard','U_O_FullGhillie_ard','U_B_FullGhillie_ard','U_I_FullGhillie_lsh','U_O_FullGhillie_lsh','U_B_FullGhillie_lsh','U_I_GhillieSuit','U_O_GhillieSuit','U_B_GhillieSuit','U_I_Wetsuit','U_O_Wetsuit','U_I_HeliPilotCoveralls','U_B_HeliPilotCoveralls','U_I_pilotCoveralls','U_O_pilotCoveralls','U_B_pilotCoveralls','U_O_T_FullGhillie_tna_F','U_B_T_FullGhillie_tna_F','U_O_T_Sniper_F','U_O_T_Officer_F','U_O_V_Soldier_Viper_hex_F','U_O_V_Soldier_Viper_F','U_O_T_Soldier_F','U_I_E_Uniform_01_F','U_I_E_Uniform_01_officer_F','U_I_E_Uniform_01_shortsleeve_F','U_I_E_Uniform_01_sweater_F','U_I_E_Uniform_01_tanktop_F','U_I_E_Uniform_01_coveralls_F','U_O_officer_noInsignia_hex_F'
 				],
 				[	// blacklisted vests
 				
@@ -770,23 +787,25 @@ if (_role in ['rifleman_hat','rifleman_hat_WL']) exitWith {
 				[	// blacklisted assigned items
 					'b_uavterminal'
 				],
-				_headgearThermal,	// blacklisted Headgear
+				[	// blacklisted Headgear
+					'H_HelmetO_ocamo','H_HelmetO_oucamo','H_HelmetSpecO_ocamo','H_HelmetSpecO_blk','H_HelmetIA','H_CrewHelmetHeli_I','H_CrewHelmetHeli_O','H_PilotHelmetHeli_I','H_PilotHelmetHeli_O',
+					'H_HelmetLeaderO_ocamo','H_HelmetLeaderO_oucamo','H_PilotHelmetFighter_I','H_PilotHelmetFighter_O','H_PilotHelmetFighter_B','H_HelmetSpecO_ghex_F','H_HelmetO_ghex_F','H_HelmetO_ViperSP_hex_F','H_HelmetO_ViperSP_ghex_F',
+					'H_HelmetLeaderO_ghex_F','H_CrewHelmetHeli_I_E','H_PilotHelmetHeli_I_E','H_PilotHelmetFighter_I_E'
+				],
 				[	// blacklisted goggles
-				
+					'nvgogglesb_blk_f','nvgogglesb_grn_f','nvgogglesb_gry_f'
 				],
 				[	// blacklisted attachments
-				
+					'optic_nightstalker','optic_tws','optic_tws_mg','optic_DMS','optic_LRPS','optic_SOS','optic_AMS_khk','optic_AMS_snd','optic_AMS','optic_KHS_hex','optic_KHS_old','optic_KHS_tan','optic_KHS_blk','optic_DMS_ghex_F','optic_LRPS_tna_F','optic_LRPS_ghex_F','optic_SOS_khk_F','optic_DMS_weathered_Kir_F','optic_DMS_weathered_F'
 				]
 			],
 			[	// blacklisted MAGAZINES
-				
+					'100Rnd_65x39_caseless_mag','100Rnd_65x39_caseless_black_mag','100Rnd_65x39_caseless_mag_Tracer','100Rnd_65x39_caseless_khaki_mag_tracer','100Rnd_65x39_caseless_black_mag_tracer','100Rnd_65x39_caseless_khaki_mag','100Rnd_65x39_caseless_khaki_mag','100Rnd_580x42_Mag_Tracer_F','100Rnd_580x42_Mag_F','100Rnd_580x42_ghex_Mag_F','100Rnd_580x42_ghex_Mag_Tracer_F','100Rnd_580x42_hex_Mag_Tracer_F','100Rnd_580x42_hex_Mag_F','150Rnd_556x45_Drum_Mag_F','150Rnd_556x45_Drum_Mag_Tracer_F','150Rnd_556x45_Drum_Sand_Mag_F','150Rnd_556x45_Drum_Sand_Mag_Tracer_F','150Rnd_556x45_Drum_Green_Mag_F','150Rnd_556x45_Drum_Green_Mag_Tracer_F','75Rnd_762x39_Mag_F','75Rnd_762x39_Mag_Tracer_F','75rnd_762x39_AK12_Mag_F','75rnd_762x39_AK12_Mag_Tracer_F','75rnd_762x39_AK12_Lush_Mag_F','75rnd_762x39_AK12_Lush_Mag_Tracer_F','75rnd_762x39_AK12_Arid_Mag_F','75rnd_762x39_AK12_Arid_Mag_Tracer_F'
 			],
 			[	// blacklisted BACKPACKS
 			
 			],
-			[	// blacklisted WEAPONS
-			
-			]
+			(_weaponsMMG + _weaponsLMG + _weaponsSniper + _weaponsMarksmanHeavy)	// blacklisted WEAPONS
 		],
 		[	// -------------------------------------------------------------- WHITELIST
 			[	// ITEMS
@@ -804,13 +823,13 @@ if (_role in ['rifleman_hat','rifleman_hat_WL']) exitWith {
 		]
 	]
 };
-// Sniper role
-if (_role in ['sniper','sniper_WL']) exitWith {
+// Marksman role
+if (_role in ['marksman']) exitWith {
 	[
 		[	// -------------------------------------------------------------- BLACKLIST
 			[	// ITEMS
 				[	// blacklisted uniforms
-				
+					'U_I_Protagonist_VR','U_O_Protagonist_VR','U_B_Protagonist_VR','U_C_Protagonist_VR','U_I_CombatUniform','U_I_OfficerUniform','U_I_CombatUniform_shortsleeve','U_O_SpecopsUniform_ocamo','U_O_OfficerUniform_ocamo','U_O_CombatUniform_ocamo','U_O_CombatUniform_oucamo','U_I_FullGhillie_sard','U_O_FullGhillie_sard','U_B_FullGhillie_sard','U_I_FullGhillie_ard','U_O_FullGhillie_ard','U_B_FullGhillie_ard','U_I_FullGhillie_lsh','U_O_FullGhillie_lsh','U_B_FullGhillie_lsh','U_I_GhillieSuit','U_O_GhillieSuit','U_B_GhillieSuit','U_I_Wetsuit','U_O_Wetsuit','U_I_HeliPilotCoveralls','U_B_HeliPilotCoveralls','U_I_pilotCoveralls','U_O_pilotCoveralls','U_B_pilotCoveralls','U_O_T_FullGhillie_tna_F','U_B_T_FullGhillie_tna_F','U_O_T_Sniper_F','U_O_T_Officer_F','U_O_V_Soldier_Viper_hex_F','U_O_V_Soldier_Viper_F','U_O_T_Soldier_F','U_I_E_Uniform_01_F','U_I_E_Uniform_01_officer_F','U_I_E_Uniform_01_shortsleeve_F','U_I_E_Uniform_01_sweater_F','U_I_E_Uniform_01_tanktop_F','U_I_E_Uniform_01_coveralls_F','U_O_officer_noInsignia_hex_F'
 				],
 				[	// blacklisted vests
 				
@@ -821,23 +840,78 @@ if (_role in ['sniper','sniper_WL']) exitWith {
 				[	// blacklisted assigned items
 					'b_uavterminal'
 				],
-				_headgearThermal,	// blacklisted Headgear
+				[	// blacklisted Headgear
+					'H_HelmetO_ocamo','H_HelmetO_oucamo','H_HelmetSpecO_ocamo','H_HelmetSpecO_blk','H_HelmetIA','H_CrewHelmetHeli_I','H_CrewHelmetHeli_O','H_PilotHelmetHeli_I','H_PilotHelmetHeli_O',
+					'H_HelmetLeaderO_ocamo','H_HelmetLeaderO_oucamo','H_PilotHelmetFighter_I','H_PilotHelmetFighter_O','H_PilotHelmetFighter_B','H_HelmetSpecO_ghex_F','H_HelmetO_ghex_F','H_HelmetO_ViperSP_hex_F','H_HelmetO_ViperSP_ghex_F',
+					'H_HelmetLeaderO_ghex_F','H_CrewHelmetHeli_I_E','H_PilotHelmetHeli_I_E','H_PilotHelmetFighter_I_E'
+				],
 				[	// blacklisted goggles
-				
+					'nvgogglesb_blk_f','nvgogglesb_grn_f','nvgogglesb_gry_f'
 				],
 				[	// blacklisted attachments
-				
+					'optic_nightstalker','optic_tws','optic_tws_mg'
 				]
 			],
 			[	// blacklisted MAGAZINES
-				
+					'100Rnd_65x39_caseless_mag','100Rnd_65x39_caseless_black_mag','100Rnd_65x39_caseless_mag_Tracer','100Rnd_65x39_caseless_khaki_mag_tracer','100Rnd_65x39_caseless_black_mag_tracer','100Rnd_65x39_caseless_khaki_mag','100Rnd_65x39_caseless_khaki_mag','100Rnd_580x42_Mag_Tracer_F','100Rnd_580x42_Mag_F','100Rnd_580x42_ghex_Mag_F','100Rnd_580x42_ghex_Mag_Tracer_F','100Rnd_580x42_hex_Mag_Tracer_F','100Rnd_580x42_hex_Mag_F','150Rnd_556x45_Drum_Mag_F','150Rnd_556x45_Drum_Mag_Tracer_F','150Rnd_556x45_Drum_Sand_Mag_F','150Rnd_556x45_Drum_Sand_Mag_Tracer_F','150Rnd_556x45_Drum_Green_Mag_F','150Rnd_556x45_Drum_Green_Mag_Tracer_F','75Rnd_762x39_Mag_F','75Rnd_762x39_Mag_Tracer_F','75rnd_762x39_AK12_Mag_F','75rnd_762x39_AK12_Mag_Tracer_F','75rnd_762x39_AK12_Lush_Mag_F','75rnd_762x39_AK12_Lush_Mag_Tracer_F','75rnd_762x39_AK12_Arid_Mag_F','75rnd_762x39_AK12_Arid_Mag_Tracer_F'
 			],
 			[	// blacklisted BACKPACKS
-			
+				'B_Bergen_mcamo_F','B_Bergen_hex_F','B_Bergen_dgtl_F','B_Bergen_tna_F'
 			],
-			[	// blacklisted WEAPONS
-			
-			]
+			(_weaponsMMG + _weaponsLMG + _weaponsSniper +_weaponsLauncherATGM)	// blacklisted WEAPONS
+		],
+		[	// -------------------------------------------------------------- WHITELIST
+			[	// ITEMS
+				_uniformsAll,							// whitelisted UNIFORMS
+				_vestsAll,								// whitelisted VESTS
+				_inventoryAll,							// whitelisted Inventory
+				_assignedItemsAll,						// whitelisted ASSIGNED ITEMS
+				_headgearBasic,							// whitelisted HEADGEAR
+				_gogglesAll,							// whitelisted goggles
+				_attachmentsAll							// whitelisted Attachments
+			],
+			_magazinesAll,								// whitelisted MAGAZINES
+			_backpacksAll,								// whitelisted BACKPACKS
+			(_weaponsBasic + _weaponsMarksmanHeavy + _weaponsHandgun + _weaponsSMG + _viewersAll + _weaponsLauncherBasic)	// whitelisted WEAPONS
+		]
+	]
+};
+// Sniper role
+if (_role in ['sniper','sniper_WL']) exitWith {
+	[
+		[	// -------------------------------------------------------------- BLACKLIST
+			[	// ITEMS
+				[	// blacklisted uniforms
+					'U_I_Protagonist_VR','U_O_Protagonist_VR','U_B_Protagonist_VR','U_C_Protagonist_VR','U_I_CombatUniform','U_I_OfficerUniform','U_I_CombatUniform_shortsleeve','U_O_SpecopsUniform_ocamo','U_O_OfficerUniform_ocamo','U_O_CombatUniform_ocamo','U_O_CombatUniform_oucamo','U_I_FullGhillie_sard','U_O_FullGhillie_sard','U_I_FullGhillie_ard','U_O_FullGhillie_ard','U_I_FullGhillie_lsh','U_O_FullGhillie_lsh','U_I_GhillieSuit','U_O_GhillieSuit','U_I_Wetsuit','U_O_Wetsuit','U_I_HeliPilotCoveralls','U_B_HeliPilotCoveralls','U_I_pilotCoveralls','U_O_pilotCoveralls','U_B_pilotCoveralls','U_O_T_FullGhillie_tna_F','U_O_T_Sniper_F','U_O_T_Officer_F','U_O_V_Soldier_Viper_hex_F','U_O_V_Soldier_Viper_F','U_O_T_Soldier_F','U_I_E_Uniform_01_F','U_I_E_Uniform_01_officer_F','U_I_E_Uniform_01_shortsleeve_F','U_I_E_Uniform_01_sweater_F','U_I_E_Uniform_01_tanktop_F','U_I_E_Uniform_01_coveralls_F','U_O_officer_noInsignia_hex_F'
+				],
+				[	// blacklisted vests
+				
+				],
+				[	// blacklisted inventory
+				
+				],
+				[	// blacklisted assigned items
+					'b_uavterminal'
+				],
+				[	// blacklisted Headgear
+					'H_HelmetO_ocamo','H_HelmetO_oucamo','H_HelmetSpecO_ocamo','H_HelmetSpecO_blk','H_HelmetIA','H_CrewHelmetHeli_I','H_CrewHelmetHeli_O','H_PilotHelmetHeli_I','H_PilotHelmetHeli_O',
+					'H_HelmetLeaderO_ocamo','H_HelmetLeaderO_oucamo','H_PilotHelmetFighter_I','H_PilotHelmetFighter_O','H_PilotHelmetFighter_B','H_HelmetSpecO_ghex_F','H_HelmetO_ghex_F','H_HelmetO_ViperSP_hex_F','H_HelmetO_ViperSP_ghex_F',
+					'H_HelmetLeaderO_ghex_F','H_CrewHelmetHeli_I_E','H_PilotHelmetHeli_I_E','H_PilotHelmetFighter_I_E'
+				],
+				[	// blacklisted goggles
+					'nvgogglesb_blk_f','nvgogglesb_grn_f','nvgogglesb_gry_f'
+				],
+				[	// blacklisted attachments
+					'optic_nightstalker','optic_tws','optic_tws_mg'
+				]
+			],
+			[	// blacklisted MAGAZINES
+					'100Rnd_65x39_caseless_mag','100Rnd_65x39_caseless_black_mag','100Rnd_65x39_caseless_mag_Tracer','100Rnd_65x39_caseless_khaki_mag_tracer','100Rnd_65x39_caseless_black_mag_tracer','100Rnd_65x39_caseless_khaki_mag','100Rnd_65x39_caseless_khaki_mag','100Rnd_580x42_Mag_Tracer_F','100Rnd_580x42_Mag_F','100Rnd_580x42_ghex_Mag_F','100Rnd_580x42_ghex_Mag_Tracer_F','100Rnd_580x42_hex_Mag_Tracer_F','100Rnd_580x42_hex_Mag_F','150Rnd_556x45_Drum_Mag_F','150Rnd_556x45_Drum_Mag_Tracer_F','150Rnd_556x45_Drum_Sand_Mag_F','150Rnd_556x45_Drum_Sand_Mag_Tracer_F','150Rnd_556x45_Drum_Green_Mag_F','150Rnd_556x45_Drum_Green_Mag_Tracer_F','75Rnd_762x39_Mag_F','75Rnd_762x39_Mag_Tracer_F','75rnd_762x39_AK12_Mag_F','75rnd_762x39_AK12_Mag_Tracer_F','75rnd_762x39_AK12_Lush_Mag_F','75rnd_762x39_AK12_Lush_Mag_Tracer_F','75rnd_762x39_AK12_Arid_Mag_F','75rnd_762x39_AK12_Arid_Mag_Tracer_F'
+			],
+			[	// blacklisted BACKPACKS
+				'B_Bergen_mcamo_F','B_Bergen_hex_F','B_Bergen_dgtl_F','B_Bergen_tna_F'
+			],
+			(_weaponsMMG + _weaponsLMG + _weaponsMarksmanHeavy)  // blacklisted WEAPONS
 		],
 		[	// -------------------------------------------------------------- WHITELIST
 			[	// ITEMS
@@ -851,7 +925,7 @@ if (_role in ['sniper','sniper_WL']) exitWith {
 			],
 			_magazinesAll,							// whitelisted MAGAZINES
 			_backpacksAll,							// whitelisted BACKPACKS
-			(_weaponsSniper + _weaponsSMG + _weaponsHandgun + _viewersAll)	// whitelisted WEAPONS
+			(_weaponsSniper + _weaponsSMG + _weaponsHandgun + _viewersAll + _weaponsLauncherBasic)	// whitelisted WEAPONS
 		]
 	]
 };
@@ -911,7 +985,7 @@ if (_role in ['jtac','jtac_WL']) exitWith {
 		[	// -------------------------------------------------------------- BLACKLIST
 			[	// ITEMS
 				[	// blacklisted uniforms
-				
+					'U_I_Protagonist_VR','U_O_Protagonist_VR','U_B_Protagonist_VR','U_C_Protagonist_VR','U_I_CombatUniform','U_I_OfficerUniform','U_I_CombatUniform_shortsleeve','U_O_SpecopsUniform_ocamo','U_O_OfficerUniform_ocamo','U_O_CombatUniform_ocamo','U_O_CombatUniform_oucamo','U_I_FullGhillie_sard','U_O_FullGhillie_sard','U_B_FullGhillie_sard','U_I_FullGhillie_ard','U_O_FullGhillie_ard','U_B_FullGhillie_ard','U_I_FullGhillie_lsh','U_O_FullGhillie_lsh','U_B_FullGhillie_lsh','U_I_GhillieSuit','U_O_GhillieSuit','U_B_GhillieSuit','U_I_Wetsuit','U_O_Wetsuit','U_I_HeliPilotCoveralls','U_B_HeliPilotCoveralls','U_I_pilotCoveralls','U_O_pilotCoveralls','U_B_pilotCoveralls','U_O_T_FullGhillie_tna_F','U_B_T_FullGhillie_tna_F','U_O_T_Sniper_F','U_O_T_Officer_F','U_O_V_Soldier_Viper_hex_F','U_O_V_Soldier_Viper_F','U_O_T_Soldier_F','U_I_E_Uniform_01_F','U_I_E_Uniform_01_officer_F','U_I_E_Uniform_01_shortsleeve_F','U_I_E_Uniform_01_sweater_F','U_I_E_Uniform_01_tanktop_F','U_I_E_Uniform_01_coveralls_F','U_O_officer_noInsignia_hex_F'
 				],
 				[	// blacklisted vests
 				
@@ -922,23 +996,25 @@ if (_role in ['jtac','jtac_WL']) exitWith {
 				[	// blacklisted assigned items
 					'b_uavterminal'
 				],
-				_headgearThermal,	// blacklisted Headgear
+				[	// blacklisted Headgear
+					'H_HelmetO_ocamo','H_HelmetO_oucamo','H_HelmetSpecO_ocamo','H_HelmetSpecO_blk','H_HelmetIA','H_CrewHelmetHeli_I','H_CrewHelmetHeli_O','H_PilotHelmetHeli_I','H_PilotHelmetHeli_O',
+					'H_HelmetLeaderO_ocamo','H_HelmetLeaderO_oucamo','H_PilotHelmetFighter_I','H_PilotHelmetFighter_O','H_PilotHelmetFighter_B','H_HelmetSpecO_ghex_F','H_HelmetO_ghex_F','H_HelmetO_ViperSP_hex_F','H_HelmetO_ViperSP_ghex_F',
+					'H_HelmetLeaderO_ghex_F','H_CrewHelmetHeli_I_E','H_PilotHelmetHeli_I_E','H_PilotHelmetFighter_I_E'
+				],
 				[	// blacklisted goggles
-				
+					'nvgogglesb_blk_f','nvgogglesb_grn_f','nvgogglesb_gry_f'
 				],
 				[	// blacklisted attachments
-				
+					'optic_DMS','optic_LRPS','optic_SOS','optic_AMS_khk','optic_AMS_snd','optic_AMS','optic_KHS_hex','optic_KHS_old','optic_KHS_tan','optic_KHS_blk','optic_DMS_ghex_F','optic_LRPS_tna_F','optic_LRPS_ghex_F','optic_SOS_khk_F','optic_DMS_weathered_Kir_F','optic_DMS_weathered_F'
 				]
 			],
 			[	// blacklisted MAGAZINES
-				
+				'100Rnd_65x39_caseless_mag','100Rnd_65x39_caseless_black_mag','100Rnd_65x39_caseless_mag_Tracer','100Rnd_65x39_caseless_khaki_mag_tracer','100Rnd_65x39_caseless_black_mag_tracer','100Rnd_65x39_caseless_khaki_mag','100Rnd_65x39_caseless_khaki_mag','100Rnd_580x42_Mag_Tracer_F','100Rnd_580x42_Mag_F','100Rnd_580x42_ghex_Mag_F','100Rnd_580x42_ghex_Mag_Tracer_F','100Rnd_580x42_hex_Mag_Tracer_F','100Rnd_580x42_hex_Mag_F','150Rnd_556x45_Drum_Mag_F','150Rnd_556x45_Drum_Mag_Tracer_F','150Rnd_556x45_Drum_Sand_Mag_F','150Rnd_556x45_Drum_Sand_Mag_Tracer_F','150Rnd_556x45_Drum_Green_Mag_F','150Rnd_556x45_Drum_Green_Mag_Tracer_F','75Rnd_762x39_Mag_F','75Rnd_762x39_Mag_Tracer_F','75rnd_762x39_AK12_Mag_F','75rnd_762x39_AK12_Mag_Tracer_F','75rnd_762x39_AK12_Lush_Mag_F','75rnd_762x39_AK12_Lush_Mag_Tracer_F','75rnd_762x39_AK12_Arid_Mag_F','75rnd_762x39_AK12_Arid_Mag_Tracer_F'
 			],
 			[	// blacklisted BACKPACKS
-			
+				'B_Bergen_mcamo_F','B_Bergen_hex_F','B_Bergen_dgtl_F','B_Bergen_tna_F'
 			],
-			[	// blacklisted WEAPONS
-			
-			]
+			(_weaponsMMG + _weaponsLMG + _weaponsSniper + _weaponsMarksmanHeavy +_weaponsLauncherATGM)	// blacklisted WEAPONS
 		],
 		[	// -------------------------------------------------------------- WHITELIST
 			[	// ITEMS
@@ -962,7 +1038,7 @@ if (_role in ['pilot','pilot_plane','pilot_cas','pilot_heli','pilot_heli_WL']) e
 		[	// -------------------------------------------------------------- BLACKLIST
 			[	// ITEMS
 				[	// blacklisted uniforms
-				
+					'U_I_Protagonist_VR','U_O_Protagonist_VR','U_B_Protagonist_VR','U_C_Protagonist_VR','U_I_CombatUniform','U_I_OfficerUniform','U_I_CombatUniform_shortsleeve','U_O_SpecopsUniform_ocamo','U_O_OfficerUniform_ocamo','U_O_CombatUniform_ocamo','U_O_CombatUniform_oucamo','U_I_FullGhillie_sard','U_O_FullGhillie_sard','U_B_FullGhillie_sard','U_I_FullGhillie_ard','U_O_FullGhillie_ard','U_B_FullGhillie_ard','U_I_FullGhillie_lsh','U_O_FullGhillie_lsh','U_B_FullGhillie_lsh','U_I_GhillieSuit','U_O_GhillieSuit','U_B_GhillieSuit','U_I_Wetsuit','U_O_Wetsuit','U_I_HeliPilotCoveralls','U_I_pilotCoveralls','U_O_pilotCoveralls','U_O_T_FullGhillie_tna_F','U_B_T_FullGhillie_tna_F','U_O_T_Sniper_F','U_O_T_Officer_F','U_O_V_Soldier_Viper_hex_F','U_O_V_Soldier_Viper_F','U_O_T_Soldier_F','U_I_E_Uniform_01_F','U_I_E_Uniform_01_officer_F','U_I_E_Uniform_01_shortsleeve_F','U_I_E_Uniform_01_sweater_F','U_I_E_Uniform_01_tanktop_F','U_O_officer_noInsignia_hex_F'
 				],
 				[	// blacklisted vests
 				
@@ -973,22 +1049,33 @@ if (_role in ['pilot','pilot_plane','pilot_cas','pilot_heli','pilot_heli_WL']) e
 				[	// blacklisted assigned items
 					'b_uavterminal'
 				],
-				_headgearThermal,	// blacklisted Headgear
+				[	// blacklisted Headgear
+					'H_HelmetO_ocamo','H_HelmetO_oucamo','H_HelmetSpecO_ocamo','H_HelmetSpecO_blk','H_HelmetIA','H_CrewHelmetHeli_I','H_CrewHelmetHeli_O','H_PilotHelmetHeli_I','H_PilotHelmetHeli_O',
+					'H_HelmetLeaderO_ocamo','H_HelmetLeaderO_oucamo','H_PilotHelmetFighter_I','H_PilotHelmetFighter_O','H_HelmetSpecO_ghex_F','H_HelmetO_ghex_F','H_HelmetO_ViperSP_hex_F','H_HelmetO_ViperSP_ghex_F',
+					'H_HelmetLeaderO_ghex_F','H_CrewHelmetHeli_I_E','H_PilotHelmetHeli_I_E','H_PilotHelmetFighter_I_E'
+				],
 				[	// blacklisted goggles
 				
 				],
 				[	// blacklisted attachments
-				
+					'optic_nightstalker','optic_tws','optic_tws_mg','optic_DMS','optic_LRPS','optic_SOS','optic_AMS_khk','optic_AMS_snd','optic_AMS','optic_KHS_hex','optic_KHS_old','optic_KHS_tan','optic_KHS_blk','optic_DMS_ghex_F','optic_LRPS_tna_F','optic_LRPS_ghex_F','optic_SOS_khk_F','optic_DMS_weathered_Kir_F','optic_DMS_weathered_F'
 				]
 			],
 			[	// blacklisted MAGAZINES
-				
+				'100Rnd_65x39_caseless_mag','100Rnd_65x39_caseless_black_mag','100Rnd_65x39_caseless_mag_Tracer','100Rnd_65x39_caseless_khaki_mag_tracer','100Rnd_65x39_caseless_black_mag_tracer','100Rnd_65x39_caseless_khaki_mag','100Rnd_65x39_caseless_khaki_mag','100Rnd_580x42_Mag_Tracer_F','100Rnd_580x42_Mag_F','100Rnd_580x42_ghex_Mag_F','100Rnd_580x42_ghex_Mag_Tracer_F','100Rnd_580x42_hex_Mag_Tracer_F','100Rnd_580x42_hex_Mag_F','150Rnd_556x45_Drum_Mag_F','150Rnd_556x45_Drum_Mag_Tracer_F','150Rnd_556x45_Drum_Sand_Mag_F','150Rnd_556x45_Drum_Sand_Mag_Tracer_F','150Rnd_556x45_Drum_Green_Mag_F','150Rnd_556x45_Drum_Green_Mag_Tracer_F','75Rnd_762x39_Mag_F','75Rnd_762x39_Mag_Tracer_F','75rnd_762x39_AK12_Mag_F','75rnd_762x39_AK12_Mag_Tracer_F','75rnd_762x39_AK12_Lush_Mag_F','75rnd_762x39_AK12_Lush_Mag_Tracer_F','75rnd_762x39_AK12_Arid_Mag_F','75rnd_762x39_AK12_Arid_Mag_Tracer_F'
 			],
 			[	// blacklisted BACKPACKS
-			
+				'B_Bergen_mcamo_F','B_Bergen_hex_F','B_Bergen_dgtl_F','B_Bergen_tna_F'
 			],
 			[	// blacklisted WEAPONS
-			
+			'srifle_gm6_ghex_f','srifle_gm6_f','srifle_gm6_camo_f','srifle_lrr_f','srifle_lrr_camo_f','srifle_lrr_tna_f',
+			'MMG_01_hex_F','MMG_01_tan_F','MMG_02_camo_F','MMG_02_sand_F','MMG_02_black_F',
+			'launch_nlaw_f','launch_rpg32_f','launch_rpg32_ghex_f','launch_rpg7_f','launch_i_titan_f','launch_o_titan_ghex_f','launch_o_titan_f','launch_b_titan_f','launch_b_titan_tna_f',
+			'launch_o_titan_short_f','launch_o_titan_short_ghex_f','launch_i_titan_short_f','launch_b_titan_short_tna_f','launch_b_titan_short_f',
+			'launch_o_vorona_brown_f','launch_o_vorona_green_f','launch_mraws_green_rail_f','launch_mraws_olive_rail_f','launch_mraws_sand_rail_f','launch_mraws_green_f','launch_mraws_olive_f','launch_mraws_sand_f',
+			'launch_rpg32_green_f','launch_i_titan_eaf_f','launch_b_titan_olive_f',
+			'LMG_Mk200_F','LMG_Zafir_F','LMG_03_F','LMG_Mk200_black_F',
+			'srifle_DMR_05_hex_F','srifle_DMR_05_tan_f','srifle_DMR_05_blk_F','srifle_DMR_02_sniper_F','srifle_DMR_02_camo_F','srifle_DMR_02_F'
 			]
 		],
 		[	// -------------------------------------------------------------- WHITELIST
@@ -1115,7 +1202,7 @@ if (_role isEqualTo 'uav') exitWith {
 		[	// -------------------------------------------------------------- BLACKLIST
 			[	// ITEMS
 				[	// blacklisted uniforms
-				
+					'U_I_Protagonist_VR','U_O_Protagonist_VR','U_B_Protagonist_VR','U_C_Protagonist_VR','U_I_CombatUniform','U_I_OfficerUniform','U_I_CombatUniform_shortsleeve','U_O_SpecopsUniform_ocamo','U_O_OfficerUniform_ocamo','U_O_CombatUniform_ocamo','U_O_CombatUniform_oucamo','U_I_FullGhillie_sard','U_O_FullGhillie_sard','U_B_FullGhillie_sard','U_I_FullGhillie_ard','U_O_FullGhillie_ard','U_B_FullGhillie_ard','U_I_FullGhillie_lsh','U_O_FullGhillie_lsh','U_B_FullGhillie_lsh','U_I_GhillieSuit','U_O_GhillieSuit','U_B_GhillieSuit','U_I_Wetsuit','U_O_Wetsuit','U_I_HeliPilotCoveralls','U_B_HeliPilotCoveralls','U_I_pilotCoveralls','U_O_pilotCoveralls','U_B_pilotCoveralls','U_O_T_FullGhillie_tna_F','U_B_T_FullGhillie_tna_F','U_O_T_Sniper_F','U_O_T_Officer_F','U_O_V_Soldier_Viper_hex_F','U_O_V_Soldier_Viper_F','U_O_T_Soldier_F','U_I_E_Uniform_01_F','U_I_E_Uniform_01_officer_F','U_I_E_Uniform_01_shortsleeve_F','U_I_E_Uniform_01_sweater_F','U_I_E_Uniform_01_tanktop_F','U_O_officer_noInsignia_hex_F'
 				],
 				[	// blacklisted vests
 				
@@ -1126,23 +1213,25 @@ if (_role isEqualTo 'uav') exitWith {
 				[	// blacklisted assigned items  (we dont blacklist the uav terminal for the uav operator!)
 					
 				],
-				_headgearThermal,	// blacklisted Headgear
+				[	// blacklisted Headgear
+				'H_HelmetO_ocamo','H_HelmetO_oucamo','H_HelmetSpecO_ocamo','H_HelmetSpecO_blk','H_HelmetIA','H_CrewHelmetHeli_I','H_CrewHelmetHeli_O','H_PilotHelmetHeli_I','H_PilotHelmetHeli_O',
+				'H_HelmetLeaderO_ocamo','H_HelmetLeaderO_oucamo','H_PilotHelmetFighter_I','H_PilotHelmetFighter_O','H_PilotHelmetFighter_B','H_HelmetSpecO_ghex_F','H_HelmetO_ghex_F','H_HelmetO_ViperSP_hex_F','H_HelmetO_ViperSP_ghex_F',
+				'H_HelmetLeaderO_ghex_F','H_CrewHelmetHeli_I_E','H_PilotHelmetHeli_I_E','H_PilotHelmetFighter_I_E'
+				],
 				[	// blacklisted goggles
-				
+					'nvgogglesb_blk_f','nvgogglesb_grn_f','nvgogglesb_gry_f'
 				],
 				[	// blacklisted attachments
-				
+					'optic_nightstalker','optic_tws','optic_tws_mg','optic_DMS','optic_LRPS','optic_SOS','optic_AMS_khk','optic_AMS_snd','optic_AMS','optic_KHS_hex','optic_KHS_old','optic_KHS_tan','optic_KHS_blk','optic_DMS_ghex_F','optic_LRPS_tna_F','optic_LRPS_ghex_F','optic_SOS_khk_F','optic_DMS_weathered_Kir_F','optic_DMS_weathered_F'
 				]
 			],
 			[	// blacklisted MAGAZINES
-				
+					'100Rnd_65x39_caseless_mag','100Rnd_65x39_caseless_black_mag','100Rnd_65x39_caseless_mag_Tracer','100Rnd_65x39_caseless_khaki_mag_tracer','100Rnd_65x39_caseless_black_mag_tracer','100Rnd_65x39_caseless_khaki_mag','100Rnd_65x39_caseless_khaki_mag','100Rnd_580x42_Mag_Tracer_F','100Rnd_580x42_Mag_F','100Rnd_580x42_ghex_Mag_F','100Rnd_580x42_ghex_Mag_Tracer_F','100Rnd_580x42_hex_Mag_Tracer_F','100Rnd_580x42_hex_Mag_F','150Rnd_556x45_Drum_Mag_F','150Rnd_556x45_Drum_Mag_Tracer_F','150Rnd_556x45_Drum_Sand_Mag_F','150Rnd_556x45_Drum_Sand_Mag_Tracer_F','150Rnd_556x45_Drum_Green_Mag_F','150Rnd_556x45_Drum_Green_Mag_Tracer_F','75Rnd_762x39_Mag_F','75Rnd_762x39_Mag_Tracer_F','75rnd_762x39_AK12_Mag_F','75rnd_762x39_AK12_Mag_Tracer_F','75rnd_762x39_AK12_Lush_Mag_F','75rnd_762x39_AK12_Lush_Mag_Tracer_F','75rnd_762x39_AK12_Arid_Mag_F','75rnd_762x39_AK12_Arid_Mag_Tracer_F'
 			],
 			[	// blacklisted BACKPACKS
-			
+				'B_Bergen_mcamo_F','B_Bergen_hex_F','B_Bergen_dgtl_F','B_Bergen_tna_F'
 			],
-			[	// blacklisted WEAPONS
-			
-			]
+			(_weaponsMMG + _weaponsLMG + _weaponsSniper + _weaponsMarksmanHeavy +_weaponsLauncherATGM)	// blacklisted WEAPONS
 		],
 		[	// -------------------------------------------------------------- WHITELIST
 			[	// ITEMS
