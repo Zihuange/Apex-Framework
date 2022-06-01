@@ -1133,7 +1133,7 @@ if (_QS_module_opsec) then {
 	_QS_module_opsec_hidden = TRUE;												/*/ check hidden /*/
 	_QS_module_opsec_menus = FALSE;												/*/ check menus /*/
 	_QS_module_opsec_vars = FALSE;												/*/ check variables /*/
-	_QS_module_opsec_patches = TRUE && _QS_productVersionSync;							/*/ check patches /*/
+	_QS_module_opsec_patches = TRUE ;//&& _QS_productVersionSync;							/*/ check patches /*/
 	_QS_module_opsec_checkScripts = FALSE;										/*/ check scripts /*/
 	_QS_module_opsec_checkActions = FALSE;										/*/ check action menu /*/
 	_QS_module_opsec_checkMarkers = FALSE;										/*/ check map markers /*/
