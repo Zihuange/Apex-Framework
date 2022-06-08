@@ -1405,7 +1405,8 @@ if (_QS_module_opsec) then {
 			if (isClass _patchEntry) then {
 				_patchConfigName = toLower (configName _patchEntry);
 				if (!(_patchConfigName in _patchList)) then {
-					if ((!(['jsrs',_patchConfigName,FALSE] call _fn_inString)) && (!(['jpex',_patchConfigName,FALSE] call _fn_inString)) && (!(['blastcore',_patchConfigName,FALSE] call _fn_inString)) && (!(['aegis',_patchConfigName,FALSE] call _fn_inString))) then {
+					if ((!(['jsrs',_patchConfigName,FALSE] call _fn_inString)) && (!(['jpex',_patchConfigName,FALSE] call _fn_inString)) && (!(['blastcore',_patchConfigName,FALSE] call _fn_inString)) && (!(['aegis',_patchConfigName,FALSE] call _fn_inString)) && 
+					(!(['piko',_patchConfigName,FALSE] call _fn_inString)) && (['plp_vehicleloadout',_patchConfigName,FALSE] call _fn_inString)) then {
 						_detected = format ['Unknown Addon Patch: %1',_patchConfigName];
 						_QS_module_opsec_detected = 2;	// change this to 2 to force a kick instead
 					};
@@ -1430,7 +1431,7 @@ if (_QS_module_opsec) then {
 	_allowedChildren = [
 		'title','missiontitle','difficultytitle','playersname','buttoncancel','buttonsave','buttonskip','buttonrespawn','buttonoptions',
 		'buttonvideo','buttonaudio','buttoncontrols','buttongame','buttontutorialhints','buttonabort','debugconsole','feedback','messagebox',
-		'cba_credits_m_p','cba_credits_cont_c','version','trafficlight','trafflight'
+		'cba_credits_m_p','cba_credits_cont_c','version','trafficlight','trafflight','achilles_eh_onclosedisplayinterrup'
 	];
 	{
 		_child = _x;
