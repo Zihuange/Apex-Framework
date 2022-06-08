@@ -723,14 +723,17 @@ if (isNil {profileNamespace getVariable 'QS_client_radioChannels_profile'}) then
 };
 if (isNil {uiNamespace getVariable 'QS_hasJoinedSession'}) then {
 	uiNamespace setVariable ['QS_hasJoinedSession',TRUE];
-	if ((random 1) > 0.333) then {
+	if ((random 1) > 0.666) then {
 		_track = selectRandomWeighted [
 			'Intro',0.1,
 			'Intro2',0.1,
 			'Intro3',0.1,
 			'Intro4',0.1,
 			'Intro5',0.1,
-			'Intro6',0.1
+			'Intro6',0.1,
+			'Intro7',0.1,
+			'Intro8',0.1,
+			'DangerZone_sound',0.1
 		];
 		if (isClass (missionConfigFile >> 'CfgSounds' >> _track)) then {
 			playSound [_track,FALSE];
