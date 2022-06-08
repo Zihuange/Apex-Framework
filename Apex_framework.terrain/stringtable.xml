@@ -526,6 +526,9 @@
 		<Chinesesimp>此事故报告已提交给在游戏中的管理员， 感谢你的帮助！ 你所在的服务器是：&lt;br/&gt;&lt;br/&gt;%1</Chinesesimp>
 		<Original>An incident report has been filed and in-game staff have been notified. Thank you for your assistance. You are on server:&lt;br/&gt;&lt;br/&gt;%1</Original>
 	</Key>
+	<Key ID="STR_QS_report_reported">
+		<Original>ROBOCOP: %1 has been reported</Original>
+	</Key>
 	<Key ID="STR_QS_CAS_shotDown">
 		<Original>Our CAS has been shot down!</Original>
 	</Key>
@@ -634,5 +637,449 @@
 	<Key ID="STR_QS_Action_examine">
 		<Chinesesimp>检查</Chinesesimp>
 		<Original>Examine</Original>
+	</Key>
+	<Key ID="STR_QS_Action_turretSafety">
+		<Chinesesimp>炮塔保险菜单</Chinesesimp>
+		<Original>Turret safety</Original>
+	</Key>
+	<Key ID="STR_QS_Action_ears">
+		<Chinesesimp>收集-耳朵</Chinesesimp>
+		<Original>Collect ear</Original>
+	</Key>
+	<Key ID="STR_QS_Action_teeth">
+		<Chinesesimp>收集-金牙</Chinesesimp>
+		<Original>Collect gold tooth</Original>
+	</Key>
+	<Key ID="STR_QS_Action_joinGroup">
+		<Chinesesimp>加入小队</Chinesesimp>
+		<Original>Join group</Original>
+	</Key>
+	<Key ID="STR_QS_Action_FOBstatus">
+		<Chinesesimp>FOB 状态</Chinesesimp>
+		<Original>FOB Status</Original>
+	</Key>
+	<Key ID="STR_QS_Action_FOBrespawn">
+		<Chinesesimp>启用 FOB 复活</Chinesesimp>
+		<Original>Enable FOB Respawn</Original>
+	</Key>
+	<Key ID="STR_QS_Action_ActivateFOB">
+		<Chinesesimp>激活 FOB</Chinesesimp>
+		<Original>Activate FOB</Original>
+	</Key>
+	<Key ID="STR_QS_Action_crateCustomize">
+		<Chinesesimp>编辑库存</Chinesesimp>
+		<Original>Edit Inventory</Original>
+	</Key>
+	<Key ID="STR_QS_Action_pushVeh">
+		<Chinesesimp>推动载具</Chinesesimp>
+		<Original>Push vehicle</Original>
+	</Key>
+	<Key ID="STR_QS_Action_createBoat">
+		<Chinesesimp>船只充气</Chinesesimp>
+		<Original>Inflate boat</Original>
+	</Key>
+	<Key ID="STR_QS_Action_sit">
+		<Chinesesimp>坐下</Chinesesimp>
+		<Original>Sit</Original>
+	</Key>
+	<Key ID="STR_QS_Action_loadCargo">
+		<Chinesesimp>装载货物</Chinesesimp>
+		<Original>Load cargo</Original>
+	</Key>
+	<Key ID="STR_QS_Action_unloadCargo">
+		<Chinesesimp>卸载货物</Chinesesimp>
+		<Original>Unload cargo</Original>
+	</Key>
+	<Key ID="STR_QS_Action_activateVeh">
+		<Chinesesimp>激活载具</Chinesesimp>
+		<Original>Activate vehicle</Original>
+	</Key>
+	<Key ID="STR_QS_Action_huronContainer">
+		<Chinesesimp>在医疗站治疗</Chinesesimp>
+		<Original>Treat at Medical Station</Original>
+	</Key>
+	<Key ID="STR_QS_Action_sensorTarget">
+		<Chinesesimp>汇报目标</Chinesesimp>
+		<Original>Report target</Original>
+	</Key>
+	<Key ID="STR_QS_Action_attachExp">
+		<Chinesesimp>安装炸药</Chinesesimp>
+		<Original>Put Explosive Charge</Original>
+	</Key>
+	<Key ID="STR_QS_Action_setCruiseControl">
+		<Original>Set Cruise Control</Original>
+	</Key>
+	<Key ID="STR_QS_Action_ugvLoad">
+		<Chinesesimp>装载</Chinesesimp>
+		<Original>Load</Original>
+	</Key>
+	<Key ID="STR_QS_Action_ugvUnload">
+		<Chinesesimp>卸载</Chinesesimp>
+		<Original>Unload</Original>
+	</Key>
+	<Key ID="STR_QS_Action_uavSelfDestruct">
+		<Chinesesimp>自毁程序</Chinesesimp>
+		<Original>Self destruct</Original>
+	</Key>
+	<Key ID="STR_QS_Action_carrierLaunch">
+		<Chinesesimp>启动弹射系统</Chinesesimp>
+		<Original>Initiate Launch Sequence</Original>
+	</Key>
+	<Key ID="STR_QS_Action_rappelSelf">
+		<Chinesesimp>快速索降</Chinesesimp>
+		<Original>Fastrope</Original>
+	</Key>
+	<Key ID="STR_QS_Action_rappelAI">
+		<Chinesesimp>快速索降-AI</Chinesesimp>
+		<Original>Fastrope AI units</Original>
+	</Key>
+	<Key ID="STR_QS_Action_rappelDetach">
+		<Chinesesimp>切断绳索</Chinesesimp>
+		<Original>Detach fastrope</Original>
+	</Key>
+	<Key ID="STR_QS_Action_rappelSafety_Disable">
+		<Chinesesimp>关闭索降系统</Chinesesimp>
+		<Original>Disable fastrope</Original>
+	</Key>
+	<Key ID="STR_QS_Action_rappelSafety_Enable">
+		<Chinesesimp>启用索降系统</Chinesesimp>
+		<Original>Enable fastrope</Original>
+	</Key>
+	<Key ID="STR_QS_Action_sandbagDeploy">
+		<Original>Deploy sandbag wall</Original>
+	</Key>
+	<Key ID="STR_QS_Action_sandbagRetract">
+		<Original>Pick up</Original>
+	</Key>
+	<Key ID="STR_QS_Action_deployCamonet">
+		<Chinesesimp>部署伪装网</Chinesesimp>
+		<Original>Deploy camo net</Original>
+	</Key>
+	<Key ID="STR_QS_Action_removeCamonet">
+		<Chinesesimp>移除伪装网</Chinesesimp>
+		<Original>Remove camo net</Original>
+	</Key>
+	<Key ID="STR_QS_Action_mountSlatArmor">
+		<Chinesesimp>安装格栅装甲</Chinesesimp>
+		<Original>Mount slat armor</Original>
+	</Key>
+	<Key ID="STR_QS_Action_removeSlatArmor">
+		<Chinesesimp>移除格栅装甲</Chinesesimp>
+		<Original>Remove slat armor</Original>
+	</Key>
+	<Key ID="STR_QS_LiveFeed_Live">
+		<Original>Helmet Cam (Live Feed):</Original>
+	</Key>
+	<Key ID="STR_QS_LiveFeed_turnOn">
+		<Original>Turn on live feed</Original>
+	</Key>
+	<Key ID="STR_QS_LiveFeed_turnOff">
+		<Original>Turn off live feed</Original>
+	</Key>
+	<Key ID="STR_QS_LiveFeed_acquiring">
+		<Original>Acquiring signal, please wait ...</Original>
+	</Key>
+	<Key ID="STR_QS_LiveFeed_liveFeedOff">
+		<Original>Live feed off</Original>
+	</Key>
+	<Key ID="STR_QS_LiveFeed_enablePiP">
+		<Original>Enable PiP to view the live feed</Original>
+	</Key>
+	<Key ID="STR_QS_speedRestricted_hint">
+		<Original>&lt;t color="#ff0000"&gt;This is a speed-restricted area.&lt;/t&gt;</Original>
+	</Key>
+	<Key ID="STR_QS_AirDefense_activate">
+		<Chinesesimp>启动基地防空</Chinesesimp>
+		<Original>Activate air defense</Original>
+	</Key>
+	<Key ID="STR_QS_AirDefense_cooldown">
+		<Chinesesimp>防空系统正在整备</Chinesesimp>
+		<Original>Air Defense on cooldown</Original>
+	</Key>
+	<Key ID="STR_QS_SafeZone_entering">
+		<Chinesesimp>正在进入安全区</Chinesesimp>
+		<Original>Entering safezone</Original>
+	</Key>
+	<Key ID="STR_QS_SafeZone_leaving">
+		<Chinesesimp>正在离开安全区</Chinesesimp>
+		<Original>Leaving safezone</Original>
+	</Key>
+	<Key ID="STR_QS_SafeZone_Weapons">
+		<Chinesesimp>基地内禁止使用武器</Chinesesimp>
+		<Original>Weapons safe on base</Original>
+	</Key>
+	<Key ID="STR_QS_OPSEC_tooManyChars">
+		<Chinesesimp>达到字数上限(140)</Chinesesimp>
+		<Original>Character limit (140) exceeded</Original>
+	</Key>
+	<Key ID="STR_QS_OPSEC_needRadio">
+		<Chinesesimp>你需要一个手台才能进行无线电通讯！</Chinesesimp>
+		<Original>You need a radio to use the radio channels!</Original>
+	</Key>
+	<Key ID="STR_QS_OPSEC_curatorInit">
+		<Chinesesimp>宙斯模块初始化失败，请返回大厅重新连接</Chinesesimp>
+		<Original>Curator Module initialization failed. Please abort to server browser and reconnect</Original>
+	</Key>
+	<Key ID="STR_QS_dialog_Ctrl1001_tip">
+		<Original>FPS, Time to server restart (estimated)</Original>
+	</Key>
+	<Key ID="STR_QS_dialog_Ctrl1001_text">
+		<Original>FPS: %1 | Restart: %2h</Original>
+	</Key>
+	<Key ID="STR_QS_dialog_Ctrl1002_tip">
+		<Original>Score, Rating, Health, Equipment</Original>
+	</Key>
+	<Key ID="STR_QS_dialog_Ctrl1002_text">
+		<Original>Score: %1 | Rating: %2 | Hp: %3 | Load: %4/100</Original>
+	</Key>
+	<Key ID="STR_QS_Action_reportTarget">
+		<Original>Report target</Original>
+	</Key>
+	<Key ID="STR_QS_Action_confirmTarget">
+		<Original>Confirm target</Original>
+	</Key>
+	<Key ID="STR_QS_Action_carrierLaunchAlt">
+		<Original>&lt;t size="3"&gt;Initiate Launch Sequence&lt;/t&gt;</Original>
+	</Key>
+	<Key ID="STR_QS_Action_carrierLaunchReady">
+		<Original>Launch</Original>
+	</Key>
+	<Key ID="STR_QS_Action_carrierLaunchReadyAlt">
+		<Original>&lt;t size="3"&gt;Launch&lt;/t&gt;</Original>
+	</Key>
+	<Key ID="STR_QS_SafeZone_prohibited">
+		<Chinesesimp>载具禁止进入重生区域</Chinesesimp>
+		<Original>Vehicles in the spawn area are prohibited.</Original>
+	</Key>
+	<Key ID="STR_QS_Pilot_notPilot">
+		<Original>You are not in a pilot role</Original>
+	</Key>
+	<Key ID="STR_QS_Pilot_notPilotBabysitter">
+		<Original>You are a pilot. Please play your role or re-assign. There are over 30 players on the server, please respawn if timely evac is not available.</Original>
+	</Key>
+	<Key ID="STR_QS_Pilot_afkTimeout">
+		<Chinesesimp>因挂机自动踢出</Chinesesimp>
+		<Original>Auto-kicked for AFK timeout.</Original>
+	</Key>
+	<Key ID="STR_QS_CRV_cleanWorld">
+		<Chinesesimp>正在清理 %1</Chinesesimp>
+		<Original>Cleaning up %1</Original>
+	</Key>
+	<Key ID="STR_QS_CRV_cleanMine">
+		<Original>Mine clearance</Original>
+	</Key>
+	<Key ID="STR_QS_Channel_general">
+		<Chinesesimp>想要使用常规频道进行交流，请按 [Home] &gt;&gt; [Comm-Link] &gt;&gt; [无线电管理] 来兼听频道。</Chinesesimp>
+		<Original>Use General channel for general voice communications. Press [Home] &gt;&gt; [Comm-Link] &gt;&gt; [Radio Management] to subscribe.</Original>
+	</Key>
+	<Key ID="STR_QS_Georgetown_lowerDistance">
+		<Chinesesimp>降低视野距离 (%1) ...</Chinesesimp>
+		<Original>Lowering view distance (%1) ...</Original>
+	</Key>
+	<Key ID="STR_QS_Georgetown_restDistance">
+		<Chinesesimp>恢复视野距离 (%1) ...</Chinesesimp>
+		<Original>Restoring view distance (%1) ...</Original>
+	</Key>
+	<Key ID="STR_QS_Menu_playerMenu_tip">
+		<Chinesesimp>Invade &amp; Annex 玩家菜单</Chinesesimp>
+		<Original>Invade &amp; Annex Player Menu</Original>
+	</Key>
+	<Key ID="STR_QS_Menu_playerMenu_text">
+		<Chinesesimp>玩家菜单</Chinesesimp>
+		<Original>Player Menu</Original>
+	</Key>
+	<Key ID="STR_QS_Menu_roleSelect_text">
+		<Chinesesimp>兵种选择</Chinesesimp>
+		<Original>Role Selection</Original>
+	</Key>
+	<Key ID="STR_QS_Menu_roleSelect_tip">
+		<Original>Change player role</Original>
+	</Key>
+	<Key ID="STR_QS_Menu_playerMenu_exit0_tip">
+		<Original>Abort to lobby.</Original>
+		<Chinesesimp>退出到大厅</Chinesesimp>
+	</Key>
+	<Key ID="STR_QS_Menu_playerMenu_exit0_Text">
+		<Chinesesimp>退出</Chinesesimp>
+		<Original>Abort</Original>
+	</Key>
+	<Key ID="STR_QS_Menu_playerMenu_exit1_Text">
+		<Chinesesimp>离开</Chinesesimp>
+		<Original>Exit</Original>
+	</Key>
+	<Key ID="STR_QS_Menu_playerMenu_exit1_tip">
+		<Chinesesimp>退出服务器</Chinesesimp>
+		<Original>Leave server.</Original>
+	</Key>
+	<Key ID="STR_QS_Error_456">
+		<Original>Uho! It appears something has gone wrong. Please report this error code to staff:&lt;br/&gt;&lt;br/&gt;456&lt;br/&gt;&lt;br/&gt;Thank you for your assistance.</Original>
+	</Key>
+	<Key ID="STR_QS_OPFOR_leaveAO">
+		<Chinesesimp>OPFOR玩家禁止离开主线站区</Chinesesimp>
+		<Original>OPFOR players cannot leave the Area of Operations.</Original>
+	</Key>
+	<Key ID="STR_QS_Civilian_murdered">
+		<Chinesesimp>%1 谋害了一名平民！</Chinesesimp>
+		<Original>%1 has murdered a civilian!</Original>
+	</Key>
+	<Key ID="STR_QS_SafeZone_grenades">
+		<Chinesesimp>基地内禁止投掷手雷！</Chinesesimp>
+		<Original>Grenades disabled at base</Original>
+	</Key>
+	<Key ID="STR_QS_SafeZone_grenadesNear">
+		<Chinesesimp>爆炸半径内有友军存在，无法引爆 %1</Chinesesimp>
+		<Original>Friendlies in lethal radius, %1 disarmed</Original>
+	</Key>
+	<Key ID="STR_QS_SafeZone_shell">
+		<Chinesesimp>射击目标为禁区，炮弹已被删除</Chinesesimp>
+		<Original>Firing into restricted area, shell disarmed</Original>
+	</Key>
+	<Key ID="STR_QS_Inventory_backpackUnlock">
+		<Chinesesimp>背包已解锁</Chinesesimp>
+		<Original>Backpack unlocked</Original>
+	</Key>
+	<Key ID="STR_QS_Inventory_backpackLocked">
+		<Chinesesimp>背包已上锁</Chinesesimp>
+		<Original>Backpack locked</Original>
+	</Key>
+	<Key ID="STR_QS_Inventory_backpackLock">
+		<Chinesesimp>锁定背包</Chinesesimp>
+		<Original>Backpack lock</Original>
+	</Key>
+	<Key ID="STR_QS_Inventory_load">
+		<Chinesesimp>负重：%1 lbs</Chinesesimp>
+		<Original>Load: %1 lbs</Original>
+	</Key>
+	<Key ID="STR_QS_Inventory_backpackIsLocked">
+		<Chinesesimp>%1 的背包已上锁</Chinesesimp>
+		<Original>%1s backpack is locked</Original>
+	</Key>
+	<Key ID="STR_QS_Inventory_addAmmo">
+		<Chinesesimp>想添加弹药，先选中左侧的制服/背心/背包位置，然后在右侧菜单添加需要的弹药</Chinesesimp>
+		<Original>To add ammunition, open the container on the LEFT (uniform,vest,backpack) and add ammunition on the RIGHT.</Original>
+	</Key>
+	<Key ID="STR_QS_Inventory_itemDisabled">
+		<Chinesesimp>此物品已被禁用！</Chinesesimp>
+		<Original>This inventory is disabled!</Original>
+	</Key>
+	<Key ID="STR_QS_handleHeal_revivedAI">
+		<Original>Revived by [AI] %1</Original>
+	</Key>
+	<Key ID="STR_QS_handleHeal_treated">
+		<Original>Being treated by %1</Original>
+	</Key>
+	<Key ID="STR_QS_KeyDown_throw">
+		<Chinesesimp>不要在基地内投掷手雷！</Chinesesimp>
+		<Original>Do not throw grenades near base, please!</Original>
+	</Key>
+	<Key ID="STR_QS_KeyDown_pushToTalk">
+		<Chinesesimp>使用常规频道进行一般通讯。 按 [Home] &gt;&gt; [通讯菜单] &gt;&gt; [无线电管理] 来兼此频道</Chinesesimp>
+		<Original>Use General channel for general voice communications. Press [Home] &gt;&gt; [Comm-Link] &gt;&gt; [Radio Management] to subscribe.</Original>
+	</Key>
+	<Key ID="STR_QS_KeyDown_pushToTalkPilot">
+		<Chinesesimp>只有飞行员和UAV操作员可以使用航空频道</Chinesesimp>
+		<Original>Only Pilots and UAV Operator can transmit voice on Aircraft channel</Original>
+	</Key>
+	<Key ID="STR_QS_KeyDown_personView">
+		<Chinesesimp>OPFOR玩家禁止使用第三人称</Chinesesimp>
+		<Original>3rd Person disabled for OPFOR players</Original>
+	</Key>
+	<Key ID="STR_QS_KeyDown_autoHover">
+		<Chinesesimp>你的飞行员 ( %1 ) 已打开自动悬停功能！</Chinesesimp>
+		<Original>Your pilot ( %1 ) has turned on autohover!</Original>
+	</Key>
+	<Key ID="STR_QS_KeyDown_No">
+		<Chinesesimp>"否认"</Chinesesimp>
+		<Original>"No"</Original>
+	</Key>
+	<Key ID="STR_QS_KeyDown_Go">
+		<Original>"Go!"</Original>
+	</Key>
+	<Key ID="STR_QS_KeyDown_Advance">
+		<Chinesesimp>"前进"</Chinesesimp>
+		<Original>"Advance"</Original>
+	</Key>
+	<Key ID="STR_QS_KeyDown_Nod">
+		<Original>"Nod"</Original>
+	</Key>
+	<Key ID="STR_QS_KeyDown_Freeze">
+		<Chinesesimp>"别动"</Chinesesimp>
+		<Original>"Freeze"</Original>
+	</Key>
+	<Key ID="STR_QS_KeyDown_Hold">
+		<Chinesesimp>"停下！"</Chinesesimp>
+		<Original>"Hold!"</Original>
+	</Key>
+	<Key ID="STR_QS_KeyDown_Hi">
+		<Chinesesimp>"你好"</Chinesesimp>
+		<Original>"Hi"</Original>
+	</Key>
+	<Key ID="STR_QS_KeyDown_Ceasefire">
+		<Chinesesimp>"停火"</Chinesesimp>
+		<Original>"Ceasefire"</Original>
+	</Key>
+	<Key ID="STR_QS_KeyDown_leader">
+		<Chinesesimp>%1 (队长) - %2</Chinesesimp>
+		<Original>%1 (Group leader) - %2</Original>
+	</Key>
+	<Key ID="STR_QS_KeyDown_fastropeDisabled">
+		<Chinesesimp>索降系统已关闭</Chinesesimp>
+		<Original>Fastrope disabled</Original>
+	</Key>
+	<Key ID="STR_QS_KeyDown_fastropeEnabled">
+		<Chinesesimp>索降系统已启用</Chinesesimp>
+		<Original>Fastrope enabled</Original>
+	</Key>
+	<Key ID="STR_QS_KeyDown_groupOrder">
+		<Original> - (Group order)</Original>
+	</Key>
+	<Key ID="STR_QS_KeyDown_pushToTalkNoRadio">
+		<Original>You need a Radio item to transmit over radio channels!</Original>
+	</Key>
+	<Key ID="STR_QS_MapClick_welcome">
+		<Chinesesimp>欢迎来到 %1</Chinesesimp>
+		<Original>Welcome to %1</Original>
+	</Key>
+	<Key ID="STR_QS_MapClick_incapacitated">
+		<Chinesesimp>重伤时无法传送</Chinesesimp>
+		<Original>Cannot teleport while incapacitated</Original>
+	</Key>
+	<Key ID="STR_QS_MapClick_encumbered">
+		<Chinesesimp>必须无阻碍才能传送</Chinesesimp>
+		<Original>Must be unencumbered to teleport</Original>
+	</Key>
+	<Key ID="STR_QS_MapClick_mustBeFoot">
+		<Chinesesimp>必须徒步才能传送</Chinesesimp>
+		<Original>Must be on foot to teleport</Original>
+	</Key>
+	<Key ID="STR_QS_MapClick_tooClose">
+		<Chinesesimp>距离传送点距离过短</Chinesesimp>
+		<Original>Too close to teleporter</Original>
+	</Key>
+	<Key ID="STR_QS_Entity_Killed_0">
+		<Chinesesimp>%2 击杀了敌方狙击手(%1)！</Chinesesimp>
+		<Original>Enemy sniper ( %1 ) killed by %2!</Original>
+	</Key>
+	<Key ID="STR_QS_Entity_Killed_1">
+		<Chinesesimp>%2 敲掉了敌军狙击手(%1)！</Chinesesimp>
+		<Original>Enemy sniper ( %1 ) killed by %2!</Original>
+	</Key>
+	<Key ID="STR_QS_Respawn_FOB">
+		<Original>Respawned at FOB %1</Original>
+	</Key>
+	<Key ID="STR_QS_Seat_notPilot">
+		<Original>You are not a pilot</Original>
+	</Key>
+	<Key ID="STR_QS_Examine_intelLocated">
+		<Chinesesimp>已确认情报位置！</Chinesesimp>
+		<Original>Intel located!</Original>
+	</Key>
+	<Key ID="STR_QS_Examine_foundSM">
+		<Chinesesimp>发现支线任务</Chinesesimp>
+		<Original>Side task found</Original>
+	</Key>
+	<Key ID="STR_QS_Examine_foundTunnel">
+		<Chinesesimp>&lt;br/&gt;&lt;br/&gt;你找到了一处敌军地道(已用红圈标记在地图上)</Chinesesimp>
+		<Original>&lt;br/&gt;&lt;br/&gt;You located an enemy respawn tunnel entrance (Map).</Original>
 	</Key>
 </Project>

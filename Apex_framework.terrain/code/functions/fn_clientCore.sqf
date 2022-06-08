@@ -304,53 +304,53 @@ private _QS_medicCameraOn = objNull;
 _QS_actions = [];
 _QS_interaction_escort = FALSE;
 _QS_action_escort = nil;
-_QS_action_escort_text = '护送';
+_QS_action_escort_text = (localize "STR_QS_Action_escort");
 _QS_action_escort_array = [_QS_action_escort_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractEscort')},[],95,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_load = FALSE;
 _QS_interaction_load2 = FALSE;
 _QS_action_load = nil;
-_QS_action_load_text = '装载';
+_QS_action_load_text = (localize "STR_QS_Action_load");
 _QS_action_load_array = [_QS_action_load_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractLoad')},[],94,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_unload = FALSE;
 _QS_action_unload = nil;
-_QS_action_unload_text = '卸载';
+_QS_action_unload_text = (localize "STR_QS_Action_Unload");
 _QS_action_unload_array = [_QS_action_unload_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractUnload')},[],-10,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_questionCivilian = FALSE;
 _QS_action_questionCivilian = nil;
-_QS_action_questionCivilian_text = '询问平民';
+_QS_action_questionCivilian_text = (localize "STR_QS_Action_question");
 _QS_action_questionCivilian_array = [_QS_action_questionCivilian_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractCivilian')},[],92,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_drag = FALSE;
 _QS_action_drag = nil;
-_QS_action_drag_text = '拖拽';
+_QS_action_drag_text = (localize "STR_QS_Action_darg");
 _QS_action_drag_array = [_QS_action_drag_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractDrag')},[],-9,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_carry = FALSE;
 _QS_action_carry = nil;
-_QS_action_carry_text = '背负';
+_QS_action_carry_text = (localize "STR_QS_Action_carry");
 _QS_action_carry_array = [_QS_action_carry_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractCarry')},[],-10,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_follow = FALSE;
 _QS_action_follow = nil;
-_QS_action_follow_text = '命令-跟随';
+_QS_action_follow_text = (localize "STR_QS_Action_follow");
 _QS_action_follow_array = [_QS_action_follow_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractFollow')},[],89,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_recruit = FALSE;
 _QS_action_recruit = nil;
-_QS_action_recruit_text = '命令-编组';
+_QS_action_recruit_text = (localize "STR_QS_Action_recruit");
 _QS_action_recruit_array = [_QS_action_recruit_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractRecruit')},[],88,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_dismiss = FALSE;
 _QS_action_dismiss = nil;
-_QS_action_dismiss_text = '命令-解散';
+_QS_action_dismiss_text = (localize "STR_QS_Action_dismiss");
 _QS_action_dismiss_array = [_QS_action_dismiss_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractDismiss')},[],-81,FALSE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_release = FALSE;
 _QS_action_release = nil;
-_QS_action_release_text = '放开';
+_QS_action_release_text = (localize "STR_QS_Action_release");
 _QS_action_release_array = [_QS_action_release_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractRelease')},[],88,FALSE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_respawnVehicle = FALSE;
 _QS_action_respawnVehicle = nil;
-_QS_action_respawnVehicle_text = '重生载具';
+_QS_action_respawnVehicle_text = (localize "STR_QS_Action_respawnVeh");
 _QS_action_respawnVehicle_array = [_QS_action_respawnVehicle_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractRespawnVehicle')},[],-80,FALSE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_vehDoors = FALSE;				
 _QS_action_vehDoors = nil;
-_QS_action_vehDoors_textOpen = '打开舱门';
-_QS_action_vehDoors_textClose = '关闭舱门';
+_QS_action_vehDoors_textOpen = (localize "STR_QS_Action_openCargo");
+_QS_action_vehDoors_textClose = (localize "STR_QS_Action_closeCargo");
 _QS_action_vehDoors_array = [_QS_action_vehDoors_textOpen,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractVehicleDoors')},[],-10,FALSE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_action_vehDoors_vehicles = [
 	'b_heli_transport_01_f','b_heli_transport_01_camo_f','o_heli_light_02_unarmed_f','o_heli_light_02_f','o_heli_light_02_v2_f','o_heli_attack_02_f',
@@ -366,7 +366,7 @@ _QS_action_vehDoors_vehicles = [
 	'b_gen_van_02_vehicle_f','b_gen_van_02_transport_f','i_e_van_02_medevac_f','i_e_van_02_transport_mp_f'
 ];
 _QS_action_serviceVehicle = nil;
-_QS_action_serviceVehicle_text = '维护载具';
+_QS_action_serviceVehicle_text = (localize "STR_QS_Action_service");
 _QS_action_serviceVehicle_array = [_QS_action_serviceVehicle_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractServiceVehicle')},[],10,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_serviceVehicle = FALSE;
 _isNearRepairDepot = FALSE;
@@ -375,13 +375,13 @@ _nearSite = FALSE;
 _nearSite2 = FALSE;
 _nearSite3 = FALSE;
 _QS_action_unflipVehicle = nil;
-_QS_action_unflipVehicle_text = '翻正';
+_QS_action_unflipVehicle_text = (localize "STR_QS_Action_unflip");
 _QS_action_unflipVehicle_array = [_QS_action_unflipVehicle_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractUnflipVehicle')},[],10,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_unflipVehicle = FALSE;
 
 /*/== Revive Anim/*/
 _QS_action_revive = nil;
-_QS_action_revive_text = '治疗';
+_QS_action_revive_text = (localize "STR_QS_Action_revice");
 _QS_action_revive_array = [_QS_action_revive_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractRevive')},[],99,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 private _QS_action_AIrevive_array = [_QS_action_revive_text,{_this spawn (missionNamespace getVariable 'QS_fnc_rcAIRevive')},[],99,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_revive = FALSE;
@@ -393,25 +393,25 @@ _QS_revive_injuredAnims = [
 _checkworldtime = time + 30 + (random 600);
 /*/===== Stabilise/*/
 _QS_action_stabilise = nil;
-_QS_action_stabilise_text = '稳定伤势';
+_QS_action_stabilise_text = (localize "STR_QS_Action_stabilise");
 _QS_action_stabilise_array = [_QS_action_stabilise_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractStabilise')},nil,91,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_stabilise = FALSE;
 /*/===== Arsenal/*/
 _QS_action_arsenal = nil;
-_QS_action_arsenal_text = '武器库';
+_QS_action_arsenal_text = (localize 'STR_A3_Arsenal');
 _QS_action_arsenal_array = [_QS_action_arsenal_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractArsenal')},[],90,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_arsenal = FALSE;
 _QS_arsenal_model = 'a3\weapons_f\ammoboxes\supplydrop.p3d';
 /*/===== Role Selection/*/
 _QS_action_RSS = nil;
-_QS_action_RSS_text = '兵种选择菜单';
+_QS_action_RSS_text = (localize 'STR_QS_Action_roleSelect');
 _QS_action_RSS_array = [_QS_action_RSS_text,{closeDialog 2;uiSleep 0.1;createDialog 'QS_client_dialog_menu_roles';},[],89,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_RSS = FALSE;
 
 /*/===== Utility offroad/*/
 _QS_action_utilityOffroad = nil;
-_QS_action_utilityOffroad_textOn = '信标打开';
-_QS_action_utilityOffroad_textOff = '信标关闭';
+_QS_action_utilityOffroad_textOn = (localize 'STR_QS_Action_beaconsOn');
+_QS_action_utilityOffroad_textOff = (localize 'STR_QS_Action_beaconsOff');
 _QS_action_utilityOffroad_array = [_QS_action_utilityOffroad_textOn,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractUtilityOffroad')},[],-10,FALSE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_utilityOffroad = FALSE;
 _offroadTypes = [
@@ -421,49 +421,49 @@ _offroadTypes = [
 ];
 /*/===== Tow/*/
 _QS_action_tow = nil;
-_QS_action_tow_text = '拖拽';
+_QS_action_tow_text = (localize 'STR_QS_Action_tow');
 _QS_action_tow_array = [_QS_action_tow_text,{_this spawn (missionNamespace getVariable 'QS_fnc_vTow')},[],21,FALSE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_tow = FALSE;
 /*/===== Surrender/*/
 _QS_action_commandSurrender = nil;
-_QS_action_commandSurrender_text = '命令-投降';
+_QS_action_commandSurrender_text = (localize 'STR_QS_Action_surrender');
 _QS_action_commandSurrender_array = [_QS_action_commandSurrender_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractSurrender')},[],90,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_commandSurrender = FALSE;
 /*/===== Rescue/*/
 _QS_action_rescue = nil;
-_QS_action_rescue_text = '解救';
+_QS_action_rescue_text = (localize 'STR_QS_Action_rescue');
 _QS_action_rescue_array = [_QS_action_rescue_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractRescue')},[],95,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_rescue = FALSE;
 /*/===== Secure/*/
 _QS_action_secure = nil;
-_QS_action_secure_text = '确认获取';
+_QS_action_secure_text = (localize 'STR_QS_Action_secure');
 _QS_action_secure_array = [_QS_action_secure_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractSecure')},[],95,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_secure = FALSE;
 /*/===== Examine/*/
 _QS_action_examine = nil;
-_QS_action_examine_text = '检查';
+_QS_action_examine_text = (localize 'STR_QS_Action_examine');
 _QS_action_examine_array = [_QS_action_examine_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractExamine')},[],94,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_examine = FALSE;
 /*/===== Turret safety/*/
 _QS_action_turretSafety = nil;
-_QS_action_turretSafety_text = '炮塔保险菜单';
+_QS_action_turretSafety_text = (localize 'STR_QS_Action_turretSafety');
 _QS_action_turretSafety_array = [_QS_action_turretSafety_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractTurretControl')},[],-50,FALSE,FALSE,'','TRUE',-1,FALSE,''];
 _QS_interaction_turretSafety = FALSE;
 missionNamespace setVariable ['QS_inturretloop',FALSE,FALSE];
 _QS_turretSafety_heliTypes = ['B_Heli_Transport_01_camo_F','B_Heli_Transport_01_F','B_Heli_Transport_03_F','B_CTRG_Heli_Transport_01_sand_F','B_CTRG_Heli_Transport_01_tropic_F'];
 /*/===== Ear collector/*/
 _QS_action_ears = nil;
-_QS_action_ears_text = '收集-耳朵';
+_QS_action_ears_text = (localize 'STR_QS_Action_ears');
 _QS_action_ears_array = [_QS_action_ears_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractEar')},[],-51,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_ears = FALSE;
 /*/===== Teeth collector/*/
 _QS_action_teeth = nil;
-_QS_action_teeth_text = '收集-金牙';
+_QS_action_teeth_text = (localize 'STR_QS_Action_teeth');
 _QS_action_teeth_array = [_QS_action_teeth_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractTooth')},[],-52,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_teeth = FALSE;
 /*/===== Join group/*/
 _QS_action_joinGroup = nil;
-_QS_action_joinGroup_text = '加入小队';
+_QS_action_joinGroup_text = (localize 'STR_QS_Action_joinGroup');
 _QS_action_joinGroup_array = [_QS_action_joinGroup_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractJoinGroup')},[],-50,FALSE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_joinGroup = FALSE;
 _QS_joinGroup_privateVar = 'BIS_dg_pri';
@@ -471,34 +471,34 @@ _grpTarget = grpNull;
 /*/===== Fob status terminal/*/
 _QS_action_fob_terminals = [];
 _QS_action_fob_status = nil;
-_QS_action_fob_status_text = 'FOB 状态';
+_QS_action_fob_status_text = (localize 'STR_QS_Action_FOBstatus');
 _QS_action_fob_status_array = [_QS_action_fob_status_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractFOBTerminal')},1,25,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_fob_status = FALSE;
 /*/===== Activate FOB/*/
 _QS_action_names = worldName;
 _QS_action_fob_activate = nil;
-_QS_action_fob_activate_text = '激活 FOB';
+_QS_action_fob_activate_text = (localize 'STR_QS_Action_ActivateFOB');
 _QS_action_fob_activate_array = [_QS_action_fob_activate_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractFOBTerminal')},2,25,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_fob_activate = FALSE;
 /*/===== Enable FOB Respawn/*/
 _QS_action_fob_respawn = nil;
-_QS_action_fob_respawn_text = '启用 FOB 复活';
+_QS_action_fob_respawn_text = (localize 'STR_QS_Action_FOBrespawn');
 _QS_action_fob_respawn_array = [_QS_action_fob_respawn_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractFOBTerminal')},3,25,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_fob_respawn = FALSE;
 /*/===== Crate Customization/*/
 _QS_action_crate_customize = nil;
-_QS_action_crate_customize_text = '编辑库存';
+_QS_action_crate_customize_text = (localize 'STR_QS_Action_crateCustomize');
 _QS_action_crate_array = [_QS_action_crate_customize_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractCustomizeInventory')},[],25,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_customizeCrate = FALSE;
 _nearInvSite = FALSE;
 /*/===== Push Vehicle/*/
 _QS_action_pushVehicle = nil;
-_QS_action_pushVehicle_text = '推动载具';
+_QS_action_pushVehicle_text = (localize 'STR_QS_Action_pushVeh');
 _QS_action_pushVehicle_array = [_QS_action_pushVehicle_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractPush')},[],25,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_pushVehicle = FALSE;
 /*/===== Create Boat/*/
 _QS_action_createBoat = nil;
-_QS_action_createBoat_text = '船只充气';
+_QS_action_createBoat_text = (localize 'STR_QS_Action_createBoat');
 _QS_action_createBoat_array = [_QS_action_createBoat_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractCreateBoat')},[],25,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_createBoat = FALSE;
 /*/===== Recover Boat (boat rack)/*/
@@ -508,14 +508,14 @@ _QS_action_recoverBoat_array = [_QS_action_recoverBoat_text,{_this spawn (missio
 _QS_interaction_recoverBoat = FALSE;
 /*/===== Sit/*/
 _QS_action_sit = nil;
-_QS_action_sit_text = '坐下';
+_QS_action_sit_text = (localize 'STR_QS_Action_sit');
 _QS_action_sit_array = [_QS_action_sit_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractSit')},1,50,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_sit = FALSE;
 _QS_action_sit_chairTypes = ['Land_CampingChair_V1_F','Land_CampingChair_V2_F','Land_ChairPlastic_F','Land_RattanChair_01_F','Land_ChairWood_F','Land_OfficeChair_01_F','Land_ArmChair_01_F'];
 _QS_action_sit_chairModels = ['campingchair_v1_f.p3d','campingchair_v2_f.p3d','chairplastic_f.p3d','rattanchair_01_f.p3d','chairwood_f.p3d','officechair_01_f.p3d','armchair_01_f.p3d'];
 /*/===== Load Cargo/*/
 _QS_action_loadCargo = nil;
-_QS_action_loadCargo_text = '装载货物';
+_QS_action_loadCargo_text = (localize 'STR_QS_Action_loadCargo');
 _QS_action_loadCargo_array = [_QS_action_loadCargo_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractLoadCargo')},[],50,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_loadCargo = FALSE;
 _QS_action_loadCargo_vTypes = [
@@ -530,7 +530,7 @@ _QS_action_loadCargo_vehicle = objNull;
 _nearCargoVehicles = [];
 /*/===== Unload Cargo/*/
 _QS_action_unloadCargo = nil;
-_QS_action_unloadCargo_text = '卸载货物';
+_QS_action_unloadCargo_text = (localize 'STR_QS_Action_unloadCargo');
 _QS_action_unloadCargo_array = [_QS_action_unloadCargo_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractUnloadCargo')},[],-30,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_unloadCargo = FALSE;
 _QS_action_unloadCargo_vTypes = [];
@@ -540,12 +540,12 @@ _QS_action_unloadCargo_vehicle = objNull;
 _nearUnloadCargoVehicles = [];
 /*/===== Interact Activate Vehicle/*/
 _QS_action_activateVehicle = nil;
-_QS_action_activateVehicle_text = '激活载具';
+_QS_action_activateVehicle_text = (localize 'STR_QS_Action_activateVeh');
 _QS_action_activateVehicle_array = [_QS_action_activateVehicle_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractActivateVehicle')},nil,49,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_activateVehicle = FALSE;
 /*/===== Huron Medical Container (Simple Object)/*/
 _QS_action_huronContainer = nil;
-_QS_action_huronContainer_text = '在医疗站治疗';
+_QS_action_huronContainer_text = (localize 'STR_QS_Action_huronContainer');
 _QS_action_huronContainer_array = [_QS_action_huronContainer_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractMedStation')},nil,48,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_huronContainer = FALSE;
 _QS_action_medevac_models = [
@@ -563,18 +563,18 @@ _QS_action_medevac_models = [
 ];
 /*/===== Sensor Target/*/
 _QS_action_sensorTarget = nil;
-_QS_action_sensorTarget_array = ['汇报目标',{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractSensorTarget')},nil,60,TRUE,TRUE,'','TRUE',-1,FALSE,''];
+_QS_action_sensorTarget_array = [(localize 'STR_QS_Action_sensorTarget'),{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractSensorTarget')},nil,60,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_sensorTarget = FALSE;
 /*/===== Attach Explosive (underwater)/*/
 _QS_action_attachExp = nil;
-_QS_action_attachExp_text = '安装炸药';
+_QS_action_attachExp_text = (localize 'STR_QS_Action_attachExp');
 _QS_action_attachExp_textReal = '';
 _QS_action_attachExp_array = [_QS_action_attachExp_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractUnderwaterDemo')},nil,59,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_attachExp = FALSE;
 /*/===== Cruise control/*/
 private _QS_interaction_cc = FALSE;
 private _QS_action_cc = nil;
-private _QS_action_cc_array = ['Set Cruise Control',{_this spawn (missionNamespace getVariable 'QS_fnc_setCruiseControl')},[],-50,FALSE,FALSE,'','TRUE',-1,FALSE,''];
+private _QS_action_cc_array = [(localize 'STR_QS_Action_setCruiseControl'),{_this spawn (missionNamespace getVariable 'QS_fnc_setCruiseControl')},[],-50,FALSE,FALSE,'','TRUE',-1,FALSE,''];
 /*/===== UGV/*/
 _QS_action_ugv_types = [
 	'b_ugv_01_f',
@@ -591,24 +591,24 @@ _QS_ugv = objNull;
 _QS_ugvTow = objNull;
 _QS_action_ugv_stretcherModel = 'a3\props_f_orange\humanitarian\camps\stretcher_01_f.p3d';
 _QS_action_ugvLoad = nil;
-_QS_action_ugvLoad_text = '装载';
+_QS_action_ugvLoad_text = (localize 'STR_QS_Action_ugvLoad');
 _QS_action_ugvLoad_array = [_QS_action_ugvLoad_text,{(_this # 3) spawn (missionNamespace getVariable 'QS_fnc_clientInteractUGV');},[_QS_ugv,4],50,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_ugvLoad = FALSE;
 _QS_action_ugvUnload = nil;
-_QS_action_ugvUnload_text = '卸载';
+_QS_action_ugvUnload_text = (localize 'STR_QS_Action_ugvUnload');
 _QS_action_ugvUnload_array = [_QS_action_ugvUnload_text,{(_this # 3) spawn (missionNamespace getVariable 'QS_fnc_clientInteractUGV');},[_QS_ugv,5],50,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_ugvUnload = FALSE;
 _QS_interaction_serviceDrone = FALSE;
 _QS_interaction_towUGV = FALSE;
 _QS_action_towUGV = nil;
 _QS_action_uavSelfDestruct = nil;
-_QS_action_uavSelfDestruct_text = '自毁程序';
+_QS_action_uavSelfDestruct_text = (localize 'STR_QS_Action_uavSelfDestruct');
 _QS_action_uavSelfDestruct_array = [_QS_action_uavSelfDestruct_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractUAVSelfDestruct')},nil,-20,FALSE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_uavSelfDestruct = FALSE;
 _QS_ugvSD = objNull;
 /*/===== Carrier Launch/*/
 _QS_action_carrierLaunch = nil;
-_QS_action_carrierLaunch_text = '启动弹射系统';
+_QS_action_carrierLaunch_text = (localize 'STR_QS_Action_carrierLaunch');
 _QS_action_carrierLaunch_array = [_QS_action_carrierLaunch_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractCarrierLaunch')},nil,85,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_carrierLaunch = FALSE;
 _QS_carrier_cameraOn = objNull;
@@ -620,16 +620,16 @@ _QS_carrierEnabled = missionNamespace getVariable ['QS_missionConfig_carrierEnab
 _QS_destroyerEnabled = missionNamespace getVariable ['QS_missionConfig_destroyerEnabled',0];
 /*/===== Armor Camonets/*/
 _QS_action_camonetArmor = nil;
-_QS_action_camonetArmor_textA = '部署伪装网';
-_QS_action_camonetArmor_textB = '移除伪装网';
+_QS_action_camonetArmor_textA = (localize 'STR_QS_Action_deployCamonet');
+_QS_action_camonetArmor_textB = (localize 'STR_QS_Action_removeCamonet');
 _QS_action_camonetArmor_array = [_QS_action_camonetArmor_textA,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractCamoNet')},[objNull,0],-10,FALSE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_camonetArmor = FALSE;
 _QS_action_camonetArmor_anims = ['showcamonethull','showcamonetcannon','showcamonetcannon1','showcamonetturret','showcamonetplates1','showcamonetplates2'];
 _QS_action_camonetArmor_vAnims = [];
 /*/===== Armor Slat/*/
 _QS_action_slatArmor = nil;
-_QS_action_slatArmor_textA = '安装格栅装甲';
-_QS_action_slatArmor_textB = '移除格栅装甲';
+_QS_action_slatArmor_textA = (localize 'STR_QS_Action_mountSlatArmor');
+_QS_action_slatArmor_textB = (localize 'STR_QS_Action_removeSlatArmor');
 _QS_action_slatArmor_array = [_QS_action_slatArmor_textA,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractSlatArmor')},[objNull,0],9,FALSE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_slatArmor = FALSE;
 _QS_action_slatArmor_anims = ['showslathull','showslatturret'];
@@ -640,31 +640,31 @@ _animationSource = configNull;
 _QS_rappelling = TRUE;
 if (_QS_rappelling) then {
 	_QS_action_rappelSelf = nil;
-	_QS_action_rappelSelf_text = '快速索降';
+	_QS_action_rappelSelf_text = (localize 'STR_QS_Action_rappelSelf');
 	_QS_action_rappelSelf_array = [_QS_action_rappelSelf_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractRappel')},1,-10,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 	_QS_interaction_rappelSelf = FALSE;
 	_QS_action_rappelAI = nil;
-	_QS_action_rappelAI_text = '快速索降-AI';
+	_QS_action_rappelAI_text = (localize 'STR_QS_Action_rappelAI');
 	_QS_action_rappelAI_array = [_QS_action_rappelAI_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractRappel')},2,-11,FALSE,TRUE,'','TRUE',-1,FALSE,''];
 	_QS_interaction_rappelAI = FALSE;
 	_QS_action_rappelDetach = nil;
-	_QS_action_rappelDetach_text = '切断绳索';
+	_QS_action_rappelDetach_text = (localize 'STR_QS_Action_rappelDetach');
 	_QS_action_rappelDetach_array = [_QS_action_rappelDetach_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractRappel')},3,48,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 	_QS_interaction_rappelDetach = FALSE;
 	_QS_action_rappelSafety = nil;
-	_QS_action_rappelSafety_textDisable = '关闭索降系统';
-	_QS_action_rappelSafety_textEnable = '启用索降系统';
+	_QS_action_rappelSafety_textDisable = (localize 'STR_QS_Action_rappelSafety_Disable');
+	_QS_action_rappelSafety_textEnable = (localize 'STR_QS_Action_rappelSafety_Enable');
 	_QS_action_rappelSafety_array = [_QS_action_rappelSafety_textDisable,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractRappel')},4,-12,FALSE,TRUE,'','TRUE',-1,FALSE,''];
 	_QS_interaction_rappelSafety = FALSE;
 };
 /*/============================ Sandbags/*/
 _QS_action_sandbagDeploy = nil;
-_QS_action_sandbagDeploy_text = 'Deploy sandbag wall';
+_QS_action_sandbagDeploy_text = (localize 'STR_QS_Action_sandbagDeploy');
 _QS_action_sandbagDeploy_array = [];
 _QS_interaction_sandbagDeploy = FALSE;
 
 _QS_action_sandbagRetract = nil;
-_QS_action_sandbagRetract_text = 'Pick up';
+_QS_action_sandbagRetract_text = (localize 'STR_QS_Action_sandbagRetract');
 _QS_action_sandbagRetract_array = [];
 _QS_interaction_sandbagRetract = FALSE;
 
@@ -684,16 +684,16 @@ if (_QS_module_liveFeed) then {
 	'qs_rd_lfe' setPiPEffect [0];
 	_QS_liveFeed_camera_offset = [-0.18,0.08,0.05];
 	_QS_liveFeed_vehicle_current = objNull;
-	_QS_liveFeed_text = 'Helmet Cam (Live Feed):';
+	_QS_liveFeed_text = (localize 'STR_QS_LiveFeed_Live');
 	player setVariable ['QS_RD_client_liveFeed',FALSE,FALSE];
 	_QS_liveFeed_action_1 = _QS_liveFeed_display addAction [
-		'Turn on live feed',
+		(localize 'STR_QS_LiveFeed_turnOn'),
 		{
 			if (isPipEnabled) then {
 				player setVariable ['QS_RD_client_liveFeed',TRUE,FALSE];
-				50 cutText ['Acquiring signal, please wait ...','PLAIN DOWN',0.5];
+				50 cutText [(localize 'STR_QS_LiveFeed_acquiring'),'PLAIN DOWN',0.5];
 			} else {
-				50 cutText ['Enable PiP to view the live feed','PLAIN DOWN',0.5];
+				50 cutText [(localize 'STR_QS_LiveFeed_enablePiP'),'PLAIN DOWN',0.5];
 			};
 		},
 		[],
@@ -706,12 +706,12 @@ if (_QS_module_liveFeed) then {
 		FALSE,
 		''
 	];
-	_QS_liveFeed_display setUserActionText [_QS_liveFeed_action_1,'Turn on live feed',(format ["<t size='3'>%1</t>",'Turn on live feed'])];
+	_QS_liveFeed_display setUserActionText [_QS_liveFeed_action_1,(localize 'STR_QS_LiveFeed_turnOn'),(format ["<t size='3'>%1</t>",'Turn on live feed'])];
 	_QS_liveFeed_action_2 = _QS_liveFeed_display addAction [
-		'Turn off live feed',
+		(localize 'STR_QS_LiveFeed_turnOff'),
 		{
 			player setVariable ['QS_RD_client_liveFeed',FALSE,FALSE];
-			50 cutText ['Live feed off','PLAIN DOWN',0.5];
+			50 cutText [(localize 'STR_QS_LiveFeed_liveFeedOff'),'PLAIN DOWN',0.5];
 		},
 		[],
 		89,
@@ -723,7 +723,7 @@ if (_QS_module_liveFeed) then {
 		FALSE,
 		''
 	];
-	_QS_liveFeed_display setUserActionText [_QS_liveFeed_action_2,'Turn off live feed',(format ["<t size='3'>%1</t>",'Turn off live feed'])];
+	_QS_liveFeed_display setUserActionText [_QS_liveFeed_action_2,(localize 'STR_QS_LiveFeed_turnOff'),(format ["<t size='3'>%1</t>",'Turn off live feed'])];
 };
 
 /*/======================= Vehicle manifest module/*/
@@ -788,15 +788,15 @@ if (!isNull (missionNamespace getVariable ['QS_airdefense_laptop',objNull])) the
 	if (_airDefenseLaptop isEqualType objNull) then {
 		if (!isNull _airDefenseLaptop) then {
 			_QS_airbaseDefense_action_1 = _airDefenseLaptop addAction [
-				'启动基地防空',
+				(localize 'STR_QS_AirDefense_activate'),
 				{
 					if (missionNamespace getVariable ['QS_airbaseDefense',FALSE]) exitWith {
-						50 cutText ['防空系统正在整备','PLAIN DOWN',0.5];
+						50 cutText [(localize 'STR_QS_AirDefense_cooldown'),'PLAIN DOWN',0.5];
 					};
 					missionNamespace setVariable ['QS_airbaseDefense',TRUE,TRUE];
 					player playAction 'PutDown';
 					playSound ['Orange_Access_FM',FALSE];
-					50 cutText ['启动基地防空','PLAIN DOWN',0.5];
+					50 cutText [(localize 'STR_QS_AirDefense_activate'),'PLAIN DOWN',0.5];
 				},
 				[],
 				90,
@@ -808,7 +808,7 @@ if (!isNull (missionNamespace getVariable ['QS_airdefense_laptop',objNull])) the
 				FALSE,
 				''
 			];
-			_airDefenseLaptop setUserActionText [_QS_airbaseDefense_action_1,'启动基地防空',(format ["<t size='3'>%1</t>",'启动基地防空'])];
+			_airDefenseLaptop setUserActionText [_QS_airbaseDefense_action_1,(localize 'STR_QS_AirDefense_activate'),(format ["<t size='3'>%1</t>",'启动基地防空'])];
 		};
 	};
 };
@@ -822,13 +822,13 @@ _QS_module_safezone_isInSafezone = FALSE;
 _QS_module_safezone_pos = markerPos 'QS_marker_base_marker';
 _QS_module_safezone_radius = 500;
 _QS_module_safezone_playerProtection = 1;
-_QS_safeZoneText_entering = '正在进入安全区';
-_QS_safeZoneText_leaving = '正在离开安全区';
+_QS_safeZoneText_entering = (localize 'STR_QS_SafeZone_entering');
+_QS_safeZoneText_leaving = (localize 'STR_QS_SafeZone_leaving');
 _QS_firstRun2 = TRUE;
 player addRating (0 - (rating player));
 _QS_safezone_action = -1;
 _QS_action_safezone = nil;
-_QS_action_safezone_text = '基地内禁止使用武器';
+_QS_action_safezone_text = (localize 'STR_QS_SafeZone_Weapons');
 _QS_action_safezone_array = [_QS_action_safezone_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractWeaponSafety')},nil,-99,FALSE,TRUE,'DefaultAction','TRUE',-1,FALSE];
 _QS_module_safezone_speedlimit_enabled = TRUE;
 _QS_module_safezone_speedlimit_event = nil;
@@ -869,7 +869,7 @@ _QS_module_safezone_speedlimit_code = {
 									if (!(profileNamespace getVariable ['QS_system_speedLimitMsg',FALSE])) then {
 										profileNamespace setVariable ['QS_system_speedLimitMsg',TRUE];
 										saveProfileNamespace;
-										50 cutText ['<t color="#ff0000">This is a speed-restricted area.</t>','PLAIN',1,FALSE,TRUE];
+										50 cutText [(localize 'STR_QS_speedRestricted_hint'),'PLAIN',1,FALSE,TRUE];
 									};
 									_velocityModelSpace = velocityModelSpace _vehicle;
 									_newVelocity = _velocityModelSpace vectorMultiply 0.90;
@@ -1173,7 +1173,7 @@ if (_QS_module_opsec) then {
 			_chatTextLower = toLower _chatText;
 			if ((count _chatText) > _maxCharacters) then {
 				//comment 'Too many characters';
-				50 cutText [(format ['达到字数上限(140)',(count _chatText),_maxCharacters]),'PLAIN DOWN',1];
+				50 cutText [(format [(localize 'STR_QS_OPSEC_tooManyChars'),(count _chatText),_maxCharacters]),'PLAIN DOWN',1];
 				((findDisplay 24) displayCtrl 101) ctrlSetText (_chatText select [0,140]);
 			};
 			if ([_chatTextLower,0,_fn_inString] call (missionNamespace getVariable 'QS_fnc_ahScanString')) then {
@@ -1184,7 +1184,7 @@ if (_QS_module_opsec) then {
 			};
 			if (!('ItemRadio' in (assignedItems player))) then {
 				if (!(currentChannel isEqualTo 5)) then {
-					50 cutText ['你需要一个手台才能进行无线电通讯！','PLAIN DOWN',1];
+					50 cutText [(localize 'STR_QS_OPSEC_needRadio'),'PLAIN DOWN',1];
 					if (!isNull (findDisplay 24)) then {
 						(findDisplay 24) closeDisplay 2;
 					};
@@ -1757,10 +1757,10 @@ for 'x' from 0 to 1 step 0 do {
 					_QS_fpsLastPull = round diag_fps;
 					_QS_fpsCheckDelay = _timeNow + _QS_fpsDelay;
 				};
-				((findDisplay _mainMenuIDD) displayCtrl 1001) ctrlSetToolTip 'FPS, Time to server restart (estimated)';
-				((findDisplay _mainMenuIDD) displayCtrl 1001) ctrlSetText format ['FPS: %1 | Restart: %2h',_QS_fpsLastPull,([(0 max (estimatedEndServerTime - _serverTime) min 36000),'HH:MM'] call _fn_secondsToString)];
-				((findDisplay _mainMenuIDD) displayCtrl 1002) ctrlSetToolTip 'Score, Rating, Health, Equipment';
-				((findDisplay _mainMenuIDD) displayCtrl 1002) ctrlSetText format ['Score: %1 | Rating: %2 | Hp: %3 | Load: %4/100',(score _QS_player),(rating _QS_player),_QS_clientHp,_QS_clientMass];
+				((findDisplay _mainMenuIDD) displayCtrl 1001) ctrlSetToolTip (localize 'STR_QS_dialog_Ctrl1001_tip');
+				((findDisplay _mainMenuIDD) displayCtrl 1001) ctrlSetText format [(localize 'STR_QS_dialog_Ctrl1001_text'),_QS_fpsLastPull,([(0 max (estimatedEndServerTime - _serverTime) min 36000),'HH:MM'] call _fn_secondsToString)];
+				((findDisplay _mainMenuIDD) displayCtrl 1002) ctrlSetToolTip (localize 'STR_QS_dialog_Ctrl1002_tip');
+				((findDisplay _mainMenuIDD) displayCtrl 1002) ctrlSetText format [(localize 'STR_QS_dialog_Ctrl1002_text'),(score _QS_player),(rating _QS_player),_QS_clientHp,_QS_clientMass];
 				((findDisplay _mainMenuIDD) displayCtrl 1001) ctrlCommit 0;
 				((findDisplay _mainMenuIDD) displayCtrl 1002) ctrlCommit 0;
 			};
@@ -1774,8 +1774,8 @@ for 'x' from 0 to 1 step 0 do {
 			if (isNull (findDisplay _viewMenuIDD)) then {
 				_viewMenuOpen = _false;
 			} else {
-				((findDisplay _viewMenuIDD) displayCtrl 1001) ctrlSetToolTip 'FPS, Time to server restart (estimated)';
-				((findDisplay _viewMenuIDD) displayCtrl 1001) ctrlSetText format ['FPS: %1 | Restart: %2h',_QS_fpsLastPull,([(0 max (estimatedEndServerTime - _serverTime) min 36000),'HH:MM'] call _fn_secondsToString)];
+				((findDisplay _viewMenuIDD) displayCtrl 1001) ctrlSetToolTip (localize 'STR_QS_dialog_Ctrl1001_tip');
+				((findDisplay _viewMenuIDD) displayCtrl 1001) ctrlSetText format [(localize 'STR_QS_dialog_Ctrl1001_text'),_QS_fpsLastPull,([(0 max (estimatedEndServerTime - _serverTime) min 36000),'HH:MM'] call _fn_secondsToString)];
 			};
 		};
 	};
@@ -3159,7 +3159,7 @@ for 'x' from 0 to 1 step 0 do {
 				) then {
 					if (!(_QS_interaction_sensorTarget)) then {
 						_QS_interaction_sensorTarget = _true;
-						_QS_action_sensorTarget_array set [0,(['Report target','Confirm target'] select (_QS_player getUnitTrait 'QS_trait_JTAC'))];
+						_QS_action_sensorTarget_array set [0,([(localize 'STR_QS_Action_reportTarget'),(localize 'STR_QS_Action_confirmTarget')] select (_QS_player getUnitTrait 'QS_trait_JTAC'))];
 						_QS_action_sensorTarget = player addAction _QS_action_sensorTarget_array;
 						player setUserActionText [_QS_action_sensorTarget,((player actionParams _QS_action_sensorTarget) # 0),(format ["<t size='3'>%1</t>",((player actionParams _QS_action_sensorTarget) # 0)])];
 					};
@@ -3422,15 +3422,15 @@ for 'x' from 0 to 1 step 0 do {
 										if (!(_QS_interaction_carrierLaunch)) then {
 											_QS_interaction_carrierLaunch = _true;
 											_QS_action_carrierLaunch = _QS_carrier_cameraOn addAction _QS_action_carrierLaunch_array;
-											_QS_carrier_cameraOn setUserActionText [_QS_action_carrierLaunch,'Initiate Launch Sequence','<t size="3">Initiate Launch Sequence</t>'];
+											_QS_carrier_cameraOn setUserActionText [_QS_action_carrierLaunch,(localize 'STR_QS_Action_carrierLaunch'),(localize 'STR_QS_Action_carrierLaunchAlt')];
 										};
 										if (_QS_carrier_cameraOn getVariable ['QS_carrier_launch',_false]) then {
-											if (((_QS_carrier_cameraOn actionParams _QS_action_carrierLaunch) # 0) isEqualTo 'Initiate Launch Sequence') then {
-												_QS_carrier_cameraOn setUserActionText [_QS_action_carrierLaunch,'Launch','<t size="3">Launch</t>'];
+											if (((_QS_carrier_cameraOn actionParams _QS_action_carrierLaunch) # 0) isEqualTo (localize 'STR_QS_Action_carrierLaunch')) then {
+												_QS_carrier_cameraOn setUserActionText [_QS_action_carrierLaunch, (localize 'STR_QS_Action_carrierLaunchReady'), (localize 'STR_QS_Action_carrierLaunchReadyAlt')];
 											};
 										} else {
-											if (((_QS_carrier_cameraOn actionParams _QS_action_carrierLaunch) # 0) isEqualTo 'Launch') then {
-												_QS_carrier_cameraOn setUserActionText [_QS_action_carrierLaunch,'Initiate Launch Sequence','<t size="3">Initiate Launch Sequence</t>'];
+											if (((_QS_carrier_cameraOn actionParams _QS_action_carrierLaunch) # 0) isEqualTo (localize 'STR_QS_Action_carrierLaunchReady')) then {
+												_QS_carrier_cameraOn setUserActionText [_QS_action_carrierLaunch,(localize 'STR_QS_Action_carrierLaunch'),(localize 'STR_QS_Action_carrierLaunchAlt')];
 											};
 										};
 									} else {
@@ -4074,7 +4074,7 @@ for 'x' from 0 to 1 step 0 do {
 						if (local _QS_v2) then {
 							if (isTouchingGround _QS_v2) then {
 								[17,_QS_v2] remoteExec ['QS_fnc_remoteExec',2,_false];
-								50 cutText ['载具禁止进入重生区域','PLAIN',1];
+								50 cutText [(localize 'STR_QS_SafeZone_prohibited'),'PLAIN',1];
 							};
 						};
 					};
@@ -4099,7 +4099,7 @@ for 'x' from 0 to 1 step 0 do {
 					_QS_module_safezone_isInSafezone = _false;
 					if (_QS_module_safezone_playerProtection isEqualTo 1) then {
 						player removeAction _QS_safezone_action;
-						/*/50 cutText ['正在离开安全区','PLAIN DOWN',0.25];/*/   /*/ ugly and intrusive on screen, IMO /*/
+						/*/50 cutText [(localize 'STR_QS_SafeZone_leaving'),'PLAIN DOWN',0.25];/*/   /*/ ugly and intrusive on screen, IMO /*/
 						_QS_safezone_action = -1;
 						if (!isDamageAllowed _QS_player) then {
 							_QS_player allowDamage _true;
@@ -4331,7 +4331,7 @@ for 'x' from 0 to 1 step 0 do {
 						if ((!(_QS_player getUnitTrait 'QS_trait_pilot')) && {(!(_QS_player getUnitTrait 'QS_trait_fighterPilot'))}) then {
 							if (((getPosATL _QS_v2) # 2) < 5) then {
 								moveOut _QS_player;
-								(missionNamespace getVariable 'QS_managed_hints') pushBack [5,_false,10,-1,'You are not in a pilot role',[],(serverTime + 20),_true,'Role Restriction',_false];
+								(missionNamespace getVariable 'QS_managed_hints') pushBack [5,_false,10,-1,(localize 'STR_QS_Pilot_notPilot'),[],(serverTime + 20),_true,'Role Restriction',_false];
 							};
 						};
 					};
@@ -4341,7 +4341,7 @@ for 'x' from 0 to 1 step 0 do {
 							if ((!(_QS_player getUnitTrait 'QS_trait_pilot')) && {(!(_QS_player getUnitTrait 'QS_trait_fighterPilot'))}) then {
 								if (((getPosATL _QS_v2) # 2) < 5) then {
 									moveOut _QS_player;
-									(missionNamespace getVariable 'QS_managed_hints') pushBack [5,_false,10,-1,'You are not in a pilot role',[],(serverTime + 20),_true,'Role Restriction',_false];
+									(missionNamespace getVariable 'QS_managed_hints') pushBack [5,_false,10,-1,(localize 'STR_QS_Pilot_notPilot'),[],(serverTime + 20),_true,'Role Restriction',_false];
 								};
 							};
 						};
@@ -4362,7 +4362,7 @@ for 'x' from 0 to 1 step 0 do {
 										forceRespawn _QS_player;
 									} else {
 										if (_QS_currentTimeOnGround > _QS_warningTimeOnGround) then {
-											(missionNamespace getVariable 'QS_managed_hints') pushBack [5,_false,10,-1,'You are a pilot. Please play your role or re-assign. There are over 30 players on the server, please respawn if timely evac is not available.',[],(serverTime + 20),_true,'Role Restriction',_false];
+											(missionNamespace getVariable 'QS_managed_hints') pushBack [5,_false,10,-1,(localize 'STR_QS_Pilot_notPilotBabysitter'),[],(serverTime + 20),_true,'Role Restriction',_false];
 										};
 									};
 								} else {
@@ -4384,7 +4384,7 @@ for 'x' from 0 to 1 step 0 do {
 								with uiNamespace do {
 									0 spawn {
 										[
-											'因挂机自动踢出',
+											(localize 'STR_QS_Pilot_afkTimeout'),
 											'Robocop',
 											TRUE, 
 											FALSE, 
@@ -4453,12 +4453,12 @@ for 'x' from 0 to 1 step 0 do {
 						if ((_x isKindOf 'CraterLong') || {(_x isKindOf 'CraterLong_small')}) then {
 							0 = _QS_toDelete pushBack _x;
 							[46,[_QS_player,1]] remoteExec ['QS_fnc_remoteExec',2,_false];
-							['ScoreBonus',[format ['正在清理 %1',_QS_worldName],'1']] call _fn_showNotification;
+							['ScoreBonus',[format [(localize 'STR_QS_CRV_cleanWorld'),_QS_worldName],'1']] call _fn_showNotification;
 							uiSleep 1;
 						};
 						if (_x in _QS_allMines) then {
 							[46,[_QS_player,1]] remoteExec ['QS_fnc_remoteExec',2,_false];
-							['ScoreBonus',['Mine clearance','1']] call _fn_showNotification;
+							['ScoreBonus',[(localize 'STR_QS_CRV_cleanMine'),'1']] call _fn_showNotification;
 							_x setDamage [1,_true];
 							uiSleep 1;
 						};
@@ -4742,7 +4742,7 @@ for 'x' from 0 to 1 step 0 do {
 		if (currentChannel isEqualTo 6) then {
 			if (!isNull (findDisplay 55)) then {
 				if (!(_puid in (['ALL'] call _fn_uidStaff))) then {
-					50 cutText ['想要使用常规频道进行交流，请按 [Home] >> [Comm-Link] >> [无线电管理] 来兼听频道。','PLAIN DOWN'];
+					50 cutText [(localize 'STR_QS_Channel_general'),'PLAIN DOWN'];
 					setCurrentChannel 5;
 				};
 			};
@@ -4761,7 +4761,7 @@ for 'x' from 0 to 1 step 0 do {
 		if (currentChannel isNotEqualTo 5) then {
 			if (!isNull (findDisplay 55)) then {
 				if (!('ItemRadio' in (assignedItems _QS_player))) then {
-					50 cutText ['你需要一个手台才能进行无线电通讯！','PLAIN DOWN'];
+					50 cutText [(localize 'STR_QS_OPSEC_needRadio'),'PLAIN DOWN'];
 					setCurrentChannel 5;
 				};
 			};
@@ -5022,7 +5022,7 @@ for 'x' from 0 to 1 step 0 do {
 							_QS_inGeorgetown = _true;
 							_QS_georgetown_priorVD = viewDistance;
 							_QS_georgetown_priorOVD = getObjectViewDistance # 0;
-							50 cutText [(format ['降低视野距离 (%1) ...',(['Kavala','Georgetown'] select (_QS_worldName isEqualTo 'Tanoa'))]),'PLAIN DOWN',0.25];
+							50 cutText [(format [(localize 'STR_QS_Georgetown_lowerDistance'),(['Kavala','Georgetown'] select (_QS_worldName isEqualTo 'Tanoa'))]),'PLAIN DOWN',0.25];
 							[_QS_georgetown_priorVD,_QS_georgetown_priorOVD,_QS_georgetown_VD,_QS_georgetown_OVD] spawn {
 								params ['_QS_georgetown_priorVD','_QS_georgetown_priorOVD','_QS_georgetown_VD','_QS_georgetown_OVD'];
 								if (_QS_georgetown_priorVD > _QS_georgetown_VD) then {
@@ -5064,7 +5064,7 @@ for 'x' from 0 to 1 step 0 do {
 					};
 					if ((!(_QS_posWorldPlayer inPolygon _QS_georgetown_polygon)) || {(!isNull _objectParent)} || {((_posATLPlayer # 2) >= 50)}) then {
 						_QS_inGeorgetown = FALSE;
-						50 cutText [(format ['Restoring view distance (%1) ...',(['Kavala','Georgetown'] select (_QS_worldName isEqualTo 'Tanoa'))]),'PLAIN DOWN',0.25];
+						50 cutText [(format [(localize 'STR_QS_Georgetown_restDistance'),(['Kavala','Georgetown'] select (_QS_worldName isEqualTo 'Tanoa'))]),'PLAIN DOWN',0.25];
 						[_QS_georgetown_priorVD,_QS_georgetown_priorOVD] spawn {
 							params ['_QS_georgetown_priorVD','_QS_georgetown_priorOVD'];
 							if (viewDistance < _QS_georgetown_priorVD) then {
@@ -5095,7 +5095,7 @@ for 'x' from 0 to 1 step 0 do {
 			} else {
 				if (_QS_inGeorgetown) then {
 					_QS_inGeorgetown = _false;
-					50 cutText [(format ['恢复视野距离 (%1) ...',(['Kavala','Georgetown'] select (_QS_worldName isEqualTo 'Tanoa'))]),'PLAIN DOWN',0.25];
+					50 cutText [(format [(localize 'STR_QS_Georgetown_restDistance'),(['Kavala','Georgetown'] select (_QS_worldName isEqualTo 'Tanoa'))]),'PLAIN DOWN',0.25];
 					[_QS_georgetown_priorVD,_QS_georgetown_priorOVD] spawn {
 						params ['_QS_georgetown_priorVD','_QS_georgetown_priorOVD'];
 						if (viewDistance < _QS_georgetown_priorVD) then {
@@ -5566,9 +5566,9 @@ for 'x' from 0 to 1 step 0 do {
 				{
 					_QS_buttonCtrl = _d49 displayCtrl _x;
 					if (!isNull _QS_buttonCtrl) then {
-						_QS_buttonCtrl ctrlSetText '玩家菜单';
+						_QS_buttonCtrl ctrlSetText (localize 'STR_QS_Menu_playerMenu_text');
 						_QS_buttonCtrl buttonSetAction _QS_buttonAction;
-						_QS_buttonCtrl ctrlSetTooltip '玩家菜单';
+						_QS_buttonCtrl ctrlSetTooltip (localize 'STR_QS_Menu_playerMenu_tip');
 						_QS_buttonCtrl ctrlSetBackgroundColor [1,0.5,0.5,1];
 						_QS_buttonCtrl ctrlCommit 0;
 					};
@@ -5576,18 +5576,18 @@ for 'x' from 0 to 1 step 0 do {
 				_QS_buttonCtrl = _d49 displayCtrl 103;
 				_QS_buttonCtrl ctrlEnable (([_false,_true] select _roleSelectionSystem) && _RSS_MenuButton);
 				_QS_buttonCtrl ctrlShow (([_false,_true] select _roleSelectionSystem) && _RSS_MenuButton);
-				_QS_buttonCtrl ctrlSetText (['','兵种选择'] select _roleSelectionSystem);
+				_QS_buttonCtrl ctrlSetText (['',(localize 'STR_QS_Menu_roleSelect_text')] select _roleSelectionSystem);
 				if (_roleSelectionSystem) then {
 					_QS_buttonCtrl buttonSetAction _QS_buttonAction2;
-					_QS_buttonCtrl ctrlSetTooltip 'Change player role';
+					_QS_buttonCtrl ctrlSetTooltip (localize 'STR_QS_Menu_roleSelect_tip');
 					_QS_buttonCtrl ctrlSetBackgroundColor [1,0.5,0.5,1];
 					_QS_buttonCtrl ctrlCommit 0;
 				};
 				(_d49 displayCtrl 523) ctrlSetText (format ['%1',_profileName]);
 				(_d49 displayCtrl 109) ctrlSetText (format ['%1',_roleDisplayName]);
 				(_d49 displayCtrl 104) ctrlEnable _true;
-				(_d49 displayCtrl 104) ctrlSetText (['退出','离开'] select _roleSelectionSystem);
-				(_d49 displayCtrl 104) ctrlSetTooltip (['退出到大厅','退出服务器'] select _roleSelectionSystem);
+				(_d49 displayCtrl 104) ctrlSetText ([(localize 'STR_QS_Menu_playerMenu_exit0_Text'),(localize 'STR_QS_Menu_playerMenu_exit1_Text')] select _roleSelectionSystem);
+				(_d49 displayCtrl 104) ctrlSetTooltip ([(localize 'STR_QS_Menu_playerMenu_exit0_tip'),(localize 'STR_QS_Menu_playerMenu_exit1_tip')] select _roleSelectionSystem);
 				(_d49 displayCtrl 1005) ctrlSetText (format ['%1 - A3 %2',_QS_missionVersion,(format ['%1.%2',(_QS_productVersion # 2),(_QS_productVersion # 3)])]);
 			};
 		} else {
@@ -5863,7 +5863,7 @@ for 'x' from 0 to 1 step 0 do {
 				if ((_QS_player distance2D (markerPos 'QS_marker_aoCircle')) > (((markerSize 'QS_marker_aoCircle') # 0) * 1.1)) then {
 					if (((markerAlpha 'QS_marker_aoCircle') > 0) || {((missionNamespace getVariable ['QS_missionConfig_aoType','CLASSIC']) isEqualTo 'GRID')}) then {
 						if (_QS_uiTime > (uiNamespace getVariable ['QS_client_respawnCooldown',-1])) then {
-							(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,20,-1,'OPFOR玩家禁止离开主线站区',[],-1,TRUE,'Mission Control',FALSE];		
+							(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,20,-1,(localize 'STR_QS_OPFOR_leaveAO'),[],-1,TRUE,'Mission Control',FALSE];		
 							_QS_player setDamage [1,_true];
 						};
 					};
@@ -5878,4 +5878,4 @@ for 'x' from 0 to 1 step 0 do {
 	};
 	uiSleep 0.1;
 };
-['Uho! It appears something has gone wrong. Please report this error code to staff:<br/><br/>456<br/><br/>Thank you for your assistance.',TRUE] call _fn_hint;
+[(localize 'STR_QS_Error_456'),TRUE] call _fn_hint;

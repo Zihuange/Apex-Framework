@@ -25,10 +25,10 @@ private _isBackpack = getNumber (configFile >> 'CfgVehicles' >> (typeOf _invento
 			if (!isNull ((findDisplay 602) displayCtrl 12346)) then {
 				if (!isNil {player getVariable 'QS_backpack_lockState'}) then {
 					if (player getVariable 'QS_backpack_lockState') then {
-						50 cutText ['背包已解锁','PLAIN DOWN',0.5];
+						50 cutText [(localize 'STR_QS_Inventory_backpackUnlock'),'PLAIN DOWN',0.5];
 						player setVariable ['QS_backpack_lockState',FALSE,TRUE];
 					} else {
-						50 cutText ['背包已上锁','PLAIN DOWN',0.5];
+						50 cutText [(localize 'STR_QS_Inventory_backpackLocked'),'PLAIN DOWN',0.5];
 						player setVariable ['QS_backpack_lockState',TRUE,TRUE];
 					};
 					player setVariable ['QS_backpack_lockTime',(time + 1),FALSE];
@@ -62,7 +62,7 @@ private _isBackpack = getNumber (configFile >> 'CfgVehicles' >> (typeOf _invento
 	_QS_buttonCtrl buttonSetAction _QS_buttonAction;
 	_QS_buttonCtrl ctrlShow TRUE;
 	_QS_buttonCtrl ctrlSetScale 0.175;
-	_QS_buttonCtrl ctrlSetTooltip '锁定背包';
+	_QS_buttonCtrl ctrlSetTooltip (localize 'STR_QS_Inventory_backpackLock');
 	_QS_buttonCtrl ctrlCommit 0;
 	ctrlDelete _myPicture;
 	_isOthersBackpack = FALSE;
@@ -77,8 +77,8 @@ private _isBackpack = getNumber (configFile >> 'CfgVehicles' >> (typeOf _invento
 		};
 	};
 	(_display displayCtrl 111) ctrlSetText (['GET_ROLE_DISPLAYNAME',(player getVariable ['QS_unit_role','rifleman'])] call (missionNamespace getVariable ['QS_fnc_roles',{'rifleman'}]));
-	(_display displayCtrl 6308) ctrlSetTooltip (format ['负重：%1 lbs',(round ((loadAbs player) * 0.1))]);
-	(_display displayCtrl 12346) ctrlSetTooltip '锁定背包';
+	(_display displayCtrl 6308) ctrlSetTooltip (format [(localize 'STR_QS_Inventory_load'),(round ((loadAbs player) * 0.1))]);
+	(_display displayCtrl 12346) ctrlSetTooltip (localize 'STR_QS_Inventory_backpackLock');
 	_exit = FALSE;
 	while {(!isNull (findDisplay 602))} do {
 		if (_isOthersBackpack) then {
@@ -93,7 +93,7 @@ private _isBackpack = getNumber (configFile >> 'CfgVehicles' >> (typeOf _invento
 				closeDialog 0;
 				(isNull (findDisplay 602))
 			};
-			50 cutText [(format ['%1 的背包已上锁',(name _objectParent)]),'PLAIN'];
+			50 cutText [(format [(localize 'STR_QS_Inventory_backpackIsLocked'),(name _objectParent)]),'PLAIN'];
 		};
 		if (player getVariable 'QS_backpack_lockState') then {
 			_QS_buttonCtrl ctrlSetText '\a3\Modules_f\data\iconlock_ca.paa';
@@ -127,7 +127,7 @@ if (!isNil {_inventory getVariable 'QS_arsenal_object'}) then {
 				['Open',TRUE] call (missionNamespace getVariable 'BIS_fnc_arsenal');
 				if (isNil {player getVariable 'QS_arsenalAmmoPrompt'}) then {
 					player setVariable ['QS_arsenalAmmoPrompt',TRUE,FALSE];
-					50 cutText ['想添加弹药，先选中左侧的制服/背心/背包位置，然后在右侧菜单添加需要的弹药','PLAIN'];
+					50 cutText [(localize 'STR_QS_Inventory_addAmmo'),'PLAIN'];
 				};
 				_c = TRUE;
 			};
@@ -135,7 +135,7 @@ if (!isNil {_inventory getVariable 'QS_arsenal_object'}) then {
 	};
 };
 if (!isNil {_inventory getVariable 'QS_inventory_disabled'}) then {
-	50 cutText ['此物品已被禁用！','PLAIN'];
+	50 cutText [(localize 'STR_QS_Inventory_itemDisabled'),'PLAIN'];
 	_c = TRUE;
 };
 if (_isBackpack isEqualTo 1) then {
@@ -145,7 +145,7 @@ if (_isBackpack isEqualTo 1) then {
 			if (alive _objectParent) then {
 				if (!isNil {_objectParent getVariable 'QS_backpack_lockState'}) then {
 					if (_objectParent getVariable 'QS_backpack_lockState') then {
-						50 cutText [(format ['%1 的背包已上锁',(name _objectParent)]),'PLAIN',0.5];
+						50 cutText [(format [(localize 'STR_QS_Inventory_backpackIsLocked'),(name _objectParent)]),'PLAIN',0.5];
 						_c = TRUE;
 					};
 				};

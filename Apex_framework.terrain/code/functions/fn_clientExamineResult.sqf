@@ -16,32 +16,32 @@ ____________________________________________________________________________/*/
 params ['_entity','_result'];
 if (_result isEqualTo -1) exitWith {
 	//comment 'No intel found';
-	50 cutText ['已确认情报位置！','PLAIN',0.5];
+	50 cutText [(localize 'STR_QS_Examine_intelLocated'),'PLAIN',0.5];
 };
 if (_result isEqualTo 0) exitWith {};
 if (_result isEqualTo 1) exitWith {
 	//comment 'IDAP scenario agent intel';
 	playSound ['Orange_Access_FM',FALSE];
-	50 cutText ['已确认情报位置！','PLAIN',0.5];
+	50 cutText [(localize 'STR_QS_Examine_intelLocated'),'PLAIN',0.5];
 };
 if (_result isEqualTo 2) exitWith {
-	50 cutText ['发现支线任务','PLAIN',0.5];
+	50 cutText [(localize 'STR_QS_Examine_foundSM'),'PLAIN',0.5];
 	[84,_entity,player,(groupID (group player)),profileName,clientOwner] remoteExec ['QS_fnc_remoteExec',2,FALSE];
 };
 if (_result isEqualTo 3) exitWith {
-	51 cutText ['<br/><br/>你找到了一处敌军地道(已用红圈标记在地图上)','PLAIN DOWN',0.5,TRUE,TRUE];
+	51 cutText [(localize 'STR_QS_Examine_foundTunnel'),'PLAIN DOWN',0.5,TRUE,TRUE];
 	playSound ['Orange_Access_FM',FALSE];
 	[80,_entity,player,(groupID (group player)),profileName,clientOwner] remoteExec ['QS_fnc_remoteExec',2,FALSE];
 };
 if (_result isEqualTo 4) exitWith {
 	//comment 'IDAP mini task';
-	50 cutText ['发现支线任务','PLAIN',0.5];
+	50 cutText [(localize 'STR_QS_Examine_foundSM'),'PLAIN',0.5];
 	playSound ['Orange_Access_FM',FALSE];
 	[81,_entity,player,(groupID (group player)),profileName,clientOwner] remoteExec ['QS_fnc_remoteExec',2,FALSE];
 };
 if (_result isEqualTo 5) exitWith {
 	//comment 'IG mini task';
-	50 cutText ['发现支线任务','PLAIN',0.5];
+	50 cutText [(localize 'STR_QS_Examine_foundSM'),'PLAIN',0.5];
 	playSound ['Orange_Access_FM',FALSE];
 	[82,_entity,player,(groupID (group player)),profileName,clientOwner] remoteExec ['QS_fnc_remoteExec',2,FALSE];
 };

@@ -36,18 +36,18 @@ if (missionNamespace getVariable ['QS_customAO_GT_active',FALSE]) then {
 								};
 								player setVehiclePosition [(markerPos 'QS_marker_GT_TP'),[],15,'NONE'];
 								openMap FALSE;
-								50 cutText [(format ['欢迎来到 %1',(['Kavala','Georgetown'] select (worldName isEqualTo 'Tanoa'))]),'PLAIN DOWN',0.5];
+								50 cutText [(format [(localize 'STR_QS_MapClick_welcome'),(['Kavala','Georgetown'] select (worldName isEqualTo 'Tanoa'))]),'PLAIN DOWN',0.5];
 							} else {
-								50 cutText ['重伤时无法传送','PLAIN DOWN',0.5];
+								50 cutText [(localize 'STR_QS_MapClick_incapacitated'),'PLAIN DOWN',0.5];
 							};
 						} else {
-							50 cutText ['必须无阻碍才能传送','PLAIN DOWN',0.5];
+							50 cutText [(localize 'STR_QS_MapClick_encumbered'),'PLAIN DOWN',0.5];
 						};
 					} else {
-						50 cutText ['必须徒步才能传送','PLAIN DOWN',0.5];
+						50 cutText [(localize 'STR_QS_MapClick_mustBeFoot'),'PLAIN DOWN',0.5];
 					};
 				} else {
-					50 cutText ['距离传送点距离过短','PLAIN DOWN',0.5];
+					50 cutText [(localize 'STR_QS_MapClick_tooClose'),'PLAIN DOWN',0.5];
 				};
 			};
 		};
