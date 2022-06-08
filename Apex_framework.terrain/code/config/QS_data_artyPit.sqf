@@ -156,12 +156,12 @@ __________________________________________________________________________/*/
 				if ((missionNamespace getVariable 'QS_enemy_artyFireMessage') > (diag_tickTime - 300)) exitWith {};
 				missionNamespace setVariable ['QS_enemy_artyFireMessage',diag_tickTime,FALSE];
 				_firingMessages = [
-					"Thermal scans are picking up those enemy Artillery firing! Heads down!",
-					"Enemy Artillery rounds incoming! Advise you seek cover immediately.",
-					"OPFOR Artillery rounds incoming! Seek cover immediately!",
-					"The Artillery team's firing, boys! Down on the ground!",
-					"Get that damned Artillery team down; they're firing right now! Seek cover!",
-					"They're zeroing in! Incoming Artillery fire; heads down!"
+					(localize "STR_QS_Arty_firingMsg0"),
+					(localize "STR_QS_Arty_firingMsg1"),
+					(localize "STR_QS_Arty_firingMsg2"),
+					(localize "STR_QS_Arty_firingMsg3"),
+					(localize "STR_QS_Arty_firingMsg4"),
+					(localize "STR_QS_Arty_firingMsg5")
 				];
 				
 				['sideChat',[WEST,'HQ'],(selectRandom _firingMessages)] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];

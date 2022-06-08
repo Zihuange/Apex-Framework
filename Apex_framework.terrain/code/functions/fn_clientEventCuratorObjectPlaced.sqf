@@ -65,7 +65,7 @@ if (_object isKindOf 'Man') exitWith {
 					_killer = _this select 1;
 					if (!isNull _killer) then {
 						if (isPlayer _killer) then {
-							_text = format ['%1 谋害了一名平民！',(name _killer)];
+							_text = format [(localize 'STR_QS_Civilian_murdered'),(name _killer)];
 							['systemChat',_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 						};
 					};
