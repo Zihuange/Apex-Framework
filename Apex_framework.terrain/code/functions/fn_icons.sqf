@@ -76,7 +76,7 @@ disableMapIndicators [
 	TRUE,				// --- Friendly
 	TRUE,				// --- Enemy
 	TRUE,				// --- Mines
-	TRUE				// --- Tactical Ping
+	FALSE				// --- Tactical Ping
 ];
 
 //================= ADMIN

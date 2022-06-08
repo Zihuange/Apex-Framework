@@ -130,7 +130,7 @@ if (_type isEqualTo 'onButtonClick') exitWith {
 	sliderSetRange [1807,100,12000];
 	sliderSetRange [1812,100,6000];
 	sliderSetRange [1817,0,200];
-	sliderSetRange [1822,3.125,47.5];
+	sliderSetRange [1822,3.125,50];
 	sliderSetSpeed [1807,100,100];
 	sliderSetSpeed [1812,100,100];
 	sliderSetSpeed [1817,5,5];

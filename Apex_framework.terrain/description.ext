@@ -854,6 +854,16 @@ class CfgSounds {
         sound[]={"\media\audio\intro6.ogg",0.9,1};
         titles[] = {};
     };
+	class Intro7 {
+        name="Intro7";
+        sound[]={"\media\audio\intro7.ogg",0.9,1};
+        titles[] = {};
+    };
+	class Intro8 {
+        name="Intro8";
+        sound[]={"\media\audio\intro8.ogg",0.9,1};
+        titles[] = {};
+    };
 	class QS_SC_outro_win {
 		name="QS_SC_outro_win";
 		sound[]={"media\audio\QS_sc_outro_usa.ogg",0.9,1};
@@ -924,6 +934,23 @@ class CfgSounds {
 		sound[] = {"media\audio\mockingjay.ogg",1.0,1};
 		titles[] = {};
 	};
+	class DangerZone_sound {
+		name = "DangerZone";
+		sound[] = {"media\audio\DangerZone.ogg",0.9,1};
+		titles[] = {};
+	};
+};
+class CfgMusic
+{
+	tracks[] = {};
+	class DangerZone
+	{
+        musicClass = "Lead";
+		name	= "Danger Zone - Kenny Loggins";
+		sound[]	= { "media\audio\DangerZone.ogg", db + 10, 1.0 };
+        theme = "Action";
+        type = "soundtrack";
+	};
 };
 class CfgSFX
 {
@@ -987,8 +1014,8 @@ class CfgCarrier {
 	class LaunchSettings {
 		duration = 6;
 		distance = 15;
-		condShow = "";
-		condProgres = "";		//----- yes, one S in Progres...
+		condShow = "true";
+		condProgres = "['DangerZone',0,0.6]call BIS_fnc_playMusic;";		//----- yes, one S in Progres...
 		codeEnd = "['TAKEOFF_END'] call (missionNamespace getVariable 'QS_fnc_carrier');";
 		codeStart = "['TAKEOFF_START'] call (missionNamespace getVariable 'QS_fnc_carrier');";
 	};
