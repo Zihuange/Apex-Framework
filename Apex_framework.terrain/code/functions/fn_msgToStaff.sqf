@@ -36,7 +36,7 @@ if (_type isEqualTo 1) then {
 	];
 	player setUserActionText [QS_kiddieAction2,((player actionParams QS_kiddieAction2) select 0),(format ["<t size='3'>%1</t>",((player actionParams QS_kiddieAction2) select 0)])];
 	QS_kiddieAction3 = player addAction [
-		'(ROBOCOP) Manual enforcement (do nothing)',
+		'(ROBOCOP)手动执行(什么都不做)',
 		{
 			{player removeAction _x;} count (missionNamespace getVariable 'QS_kiddieActions');
 			systemChat 'No action taken.';

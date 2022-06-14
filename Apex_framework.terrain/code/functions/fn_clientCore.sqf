@@ -1209,12 +1209,12 @@ if (_QS_module_opsec) then {
 				_onLoad = toArray (getText (configFile >> (_x # 1) >> 'onLoad'));
 				if ((_onLoad isNotEqualTo (_x # 2)) && (_onLoad isNotEqualTo '') && (_onLoad isNotEqualTo [])) then {
 					_QS_module_opsec_detected = 2;
-					_detected = format ['Modified Display Method OL: %1 (Memory Hack)',(_x # 1)];
+					_detected = format ['被修改的显示 method OL: %1 (内存破解)',(_x # 1)];
 				};
 				_onUnload = toArray (getText (configFile >> (_x # 1) >> 'onUnload'));
 				if ((_onUnload isNotEqualTo (_x # 3)) && (_onUnload isNotEqualTo '') && (_onUnload isNotEqualTo [])) then {
 					_QS_module_opsec_detected = 2;
-					_detected = format ['Modified Display Method OUL: %1 (Memory Hack)',(_x # 1)];
+					_detected = format ['被修改的显示 method OUL: %1 (内存破解)',(_x # 1)];
 				};
 				if (_canSuspend) then {
 					uiSleep 0.005;
@@ -1229,7 +1229,7 @@ if (_QS_module_opsec) then {
 					if (['RscUnitInfoAirRTDFullDigital',(_x # 1),FALSE] call _fn_inString) then {
 						_QS_module_opsec_detected = 1;
 					};
-					_detected = format ['Modified IGUI Method OL: %1 (Memory Hack)',(_x # 1)];
+					_detected = format ['被修改的IGUI method OL: %1 (内存破解)',(_x # 1)];
 				};
 				_onUnload = toArray (getText (configFile >> 'RscInGameUI' >> (_x # 1) >> 'onUnload'));
 				if ((_onUnload isNotEqualTo (_x # 3)) && (_onUnload isNotEqualTo '') && (_onUnload isNotEqualTo [])) then {
@@ -1237,7 +1237,7 @@ if (_QS_module_opsec) then {
 					if (['RscUnitInfoAirRTDFullDigital',(_x # 1),FALSE] call _fn_inString) then {
 						_QS_module_opsec_detected = 1;
 					};
-					_detected = format ['Modified IGUI Method OUL: %1 (Memory Hack)',(_x # 1)];
+					_detected = format ['被修改的IGUI method OUL: %1 (内存破解)',(_x # 1)];
 				};
 				if (_canSuspend) then {
 					uiSleep 0.01;
@@ -1249,12 +1249,12 @@ if (_QS_module_opsec) then {
 				_onLoad = toArray (getText (missionConfigFile >> (_x # 1) >> 'onLoad'));
 				if ((_onLoad isNotEqualTo (_x # 2)) && (_onLoad isNotEqualTo '') && (_onLoad isNotEqualTo [])) then {
 					_QS_module_opsec_detected = 2;
-					_detected = format ['Modified MissionDisplay Method OL: %1 (Memory Hack)',(_x # 1)];
+					_detected = format ['被修改的MissionDisplay Method OL: %1 (内存破解)',(_x # 1)];
 				};
 				_onUnload = toArray (getText (missionConfigFile >> (_x # 1) >> 'onUnload'));
 				if ((_onUnload isNotEqualTo (_x # 3)) && (_onUnload isNotEqualTo '') && (_onUnload isNotEqualTo [])) then {
 					_QS_module_opsec_detected = 2;
-					_detected = format ['Modified MissionDisplay Method OUL: %1 (Memory Hack)',(_x # 1)];
+					_detected = format ['被修改的MissionDisplay Method OUL: %1(内存破解)',(_x # 1)];
 				};
 				if (_canSuspend) then {
 					uiSleep 0.01;
@@ -1266,12 +1266,12 @@ if (_QS_module_opsec) then {
 				_onLoad = toArray (getText (configFile >> 'RscTitles' >> (_x # 1) >> 'onLoad'));
 				if ((_onLoad isNotEqualTo (_x # 2)) && (_onLoad isNotEqualTo '') && (_onLoad isNotEqualTo [])) then {
 					_QS_module_opsec_detected = 2;
-					_detected = format ['Modified RscTitles Method OL: %1 (Memory Hack)',(_x # 1)];
+					_detected = format ['被修改的RscTitles Method OL: %1 (内存破解)',(_x # 1)];
 				};
 				_onUnload = toArray (getText (configFile >> 'RscTitles' >> (_x # 1) >> 'onUnload'));
 				if ((_onUnload isNotEqualTo (_x # 3)) && (_onUnload isNotEqualTo '') && (_onUnload isNotEqualTo [])) then {
 					_QS_module_opsec_detected = 2;
-					_detected = format ['Modified RscTitles Method OUL: %1 (Memory Hack)',(_x # 1)];
+					_detected = format ['被修改的RscTitles Method OUL: %1 (内存破解)',(_x # 1)];
 				};
 				if (_canSuspend) then {
 					uiSleep 0.01;
@@ -1407,7 +1407,7 @@ if (_QS_module_opsec) then {
 				if (!(_patchConfigName in _patchList)) then {
 					if ((!(['jsrs',_patchConfigName,FALSE] call _fn_inString)) && (!(['jpex',_patchConfigName,FALSE] call _fn_inString)) && (!(['blastcore',_patchConfigName,FALSE] call _fn_inString)) && (!(['aegis',_patchConfigName,FALSE] call _fn_inString)) && 
 					(!(['piko',_patchConfigName,FALSE] call _fn_inString)) && (['plp_vehicleloadout',_patchConfigName,FALSE] call _fn_inString)) then {
-						_detected = format ['Unknown Addon Patch: %1',_patchConfigName];
+						_detected = format ['未知的模组补丁: %1',_patchConfigName];
 						_QS_module_opsec_detected = 2;	// change this to 2 to force a kick instead
 					};
 				};
@@ -1444,7 +1444,7 @@ if (_QS_module_opsec) then {
 	_children = nil;
 	if ((toLower (getText (configFile >> 'CfgFunctions' >> 'init'))) isNotEqualTo 'a3\functions_f\initfunctions.sqf') then {
 		_QS_module_opsec_detected = 2;
-		_detected = format ['Modified_Functions_Init: %1',(getText (configFile >> 'CfgFunctions' >> 'init'))];
+		_detected = format ['被修改的Functions_Init: %1',(getText (configFile >> 'CfgFunctions' >> 'init'))];
 	};
 	_bis_fnc_diagkey = uiNamespace getVariable ['BIS_fnc_diagKey',{FALSE}];
 	if (!isNil '_bis_fnc_diagkey') then {
@@ -5174,21 +5174,21 @@ for 'x' from 0 to 1 step 0 do {
 				if (_QS_module_opsec_recoilSway) then {
 					if (((unitRecoilCoefficient _QS_player) < 1) || {((getCustomAimCoef _QS_player) < 0.1)} || {((getAnimSpeedCoef _QS_player) > 1.1)}) then {
 						_QS_module_opsec_detected = 2;
-						_detected = format ['Recoil: %1 (min 1) Sway: %2 (min 0.1) AnimSpeed: %3 (max 1.1)',(unitRecoilCoefficient _QS_player),(getCustomAimCoef _QS_player),(getAnimSpeedCoef _QS_player)];
+						_detected = format ['后坐力: %1 (最小1) 摆动: %2 (最小0.1) 动画速度: %3 (最大1.1)',(unitRecoilCoefficient _QS_player),(getCustomAimCoef _QS_player),(getAnimSpeedCoef _QS_player)];
 					};
 				};
 				if (isFilePatchingEnabled) then {
 					_QS_module_opsec_detected = 2;
-					_detected = 'FilePatchingEnabled';
+					_detected = '启用文件修补功能';
 				};
 				if (cheatsEnabled) then {
 					_QS_module_opsec_detected = 1;
-					_detected = 'Cheats Enabled (Use discretion)';
+					_detected = '已启用作弊器（谨慎使用）';
 				};
 				if (_QS_module_opsec_hidden) then {
 					if (isObjectHidden _QS_player) then {
 						_QS_module_opsec_detected = 2;
-						_detected = 'IsInvisible';
+						_detected = '隐形';
 					};
 				};
 				if (!(simulationEnabled _QS_player)) then {
@@ -5196,11 +5196,11 @@ for 'x' from 0 to 1 step 0 do {
 				};
 				if (clientOwner isNotEqualTo _QS_clientOwner) then {
 					_QS_module_opsec_detected = 1;
-					_detected = 'Client Network ID Changed (bug? Use discretion)';
+					_detected = '客户端网络ID改变 (bug? 谨慎使用)';
 				};
 				if (serverCommandAvailable '#logout') then {
 					_QS_module_opsec_detected = 2;
-					_detected = 'Admin Logged';
+					_detected = '管理员已登录';
 				};
 				_bis_fnc_diagkey = uiNamespace getVariable ['BIS_fnc_diagKey',{FALSE}];
 				if (!isNil '_bis_fnc_diagkey') then {
@@ -5213,7 +5213,7 @@ for 'x' from 0 to 1 step 0 do {
 				if (_commandingMenu isNotEqualTo '') then {
 					if(!(_commandingMenu in _validCommMenus)) then {
 						if ((!(['#GET_IN',_commandingMenu,_false] call _fn_inString)) && {(!(['#WATCH',_commandingMenu,_false] call _fn_inString))} && {(!(['#ACTION',_commandingMenu,_false] call _fn_inString))}) then {
-							_detected = format ['CMD_Menu_Hack_%1 (Use Discretion)',_commandingMenu];
+							_detected = format ['CMD_Menu_Hack_%1 (谨慎使用)',_commandingMenu];
 							_QS_module_opsec_detected = 2;
 						};
 					};
@@ -5231,13 +5231,13 @@ for 'x' from 0 to 1 step 0 do {
 									if (_targetDisplay isEqualTo 'BIS_fnc_arsenal_display') then {
 										if ((count (allControls (uiNamespace getVariable 'BIS_fnc_arsenal_display'))) > 205) then {
 											_QS_module_opsec_detected = 1;
-											_detected = format ['MenuHack_%1_CtrlCnt_%2',_targetName,(count (allControls (uiNamespace getVariable 'BIS_fnc_arsenal_display')))];
+											_detected = format ['菜单Hack_%1_CtrlCnt_%2',_targetName,(count (allControls (uiNamespace getVariable 'BIS_fnc_arsenal_display')))];
 											_targetFlag = 1;
 											_QS_module_opsec_displays set [_forEachIndex,[_targetDisplay,_targetName,_targetFlag]];
 										};
 									} else {
 										_QS_module_opsec_detected = 2;
-										_detected = format ['MenuHack_%1',_targetName];
+										_detected = format ['菜单Hack_%1',_targetName];
 										_targetFlag = 1;
 										_QS_module_opsec_displays set [_forEachIndex,[_targetDisplay,_targetName,_targetFlag]];
 									};
@@ -5246,7 +5246,7 @@ for 'x' from 0 to 1 step 0 do {
 								if (_targetDisplay isEqualType 0) then {
 									if (!isNull (findDisplay _targetDisplay)) then {
 										_QS_module_opsec_detected = 2;
-										_detected = format ['MenuHack_%1',_targetName];
+										_detected = format ['菜单Hack_%1',_targetName];
 										_targetFlag = 1;
 										_QS_module_opsec_displays set [_forEachIndex,[_targetDisplay,_targetName,_targetFlag]];
 									};
@@ -5264,7 +5264,7 @@ for 'x' from 0 to 1 step 0 do {
 							if (_QS_module_opsec_displayIDDstr isEqualTo '148') then {
 								uiSleep 0.025;
 								if (((lbSize 104) - 1) > 3) exitWith {
-									_detected = 'MenuHack_RscDisplayConfigureControllers (JME 313)';
+									_detected = '菜单Hack_RscDisplayConfigureControllers (JME 313)';
 									_QS_module_opsec_detected = 2;
 								};
 							};
@@ -5277,7 +5277,7 @@ for 'x' from 0 to 1 step 0 do {
 							if (_QS_module_opsec_displayIDDstr isEqualTo '602') then {
 								if ((count (allControls _display)) > 90) then {		/*/88/*/
 									_QS_module_opsec_detected = 2;
-									_detected = format ['MenuHack_RscDisplayInventory_Controls_%1',(count (allControls _display))];
+									_detected = format ['菜单Hack_RscDisplayInventory_Controls_%1',(count (allControls _display))];
 								};									
 							};
 							if (_QS_module_opsec_displayIDDstr isEqualTo '163') then {
@@ -5299,7 +5299,7 @@ for 'x' from 0 to 1 step 0 do {
 								uiSleep 0.025;
 								{
 									if (_x && (!isNull _display)) exitWith {
-										_detected = 'MenuHack_RscDisplayConfigureAction';
+										_detected = '菜单Hack_RscDisplayConfigureAction';
 										_QS_module_opsec_detected = 2;
 									};
 								} forEach [
@@ -5311,7 +5311,7 @@ for 'x' from 0 to 1 step 0 do {
 								uiSleep 0.025;
 								{
 									if (_x && (!isNull _display)) exitWith {
-										_detected = 'MenuHack_RscDisplayInsertMarker';
+										_detected = '菜单Hack_RscDisplayInsertMarker';
 										_QS_module_opsec_detected = 2;
 									};
 								} forEach [
@@ -5335,14 +5335,14 @@ for 'x' from 0 to 1 step 0 do {
 							};									
 							if (_QS_module_opsec_displayIDDstr isEqualTo '49') then {
 								if (!isNull (_display displayCtrl 0)) then {
-									_detected = 'MenuHack_DISPLAY_49_C_0';
+									_detected = '菜单Hack_DISPLAY_49_C_0';
 									_QS_module_opsec_detected = 1;
 								};
 								{
 									for '_i' from 0 to ((count _x) - 1) step 1 do {
 										_ctrlCfg = _x # _i;
 										if (((getText (_ctrlCfg >> 'action')) != '') || {((getText (_ctrlCfg >> 'onButtonClick')) != '')}) exitWith {
-											_detected = format ['Unknown Escape Menu button: %1',(getText (_ctrlCfg >> 'text'))];
+											_detected = format ['未知的退出菜单按钮：%1',(getText (_ctrlCfg >> 'text'))];
 											_QS_module_opsec_detected = 2;
 										};
 									};
@@ -5354,18 +5354,18 @@ for 'x' from 0 to 1 step 0 do {
 							if (_QS_module_opsec_displayIDDstr isEqualTo '15000') then {
 								if (!(_puid in (['DEVELOPER'] call _fn_uidStaff))) then {
 									_QS_module_opsec_detected = 2;
-									_detected = 'Unauthorized Dev Terminal access';
+									_detected = '未经授权的开发终端访问';
 								};
 							};
 							if (_QS_module_opsec_displayIDDstr isEqualTo '312') then {
 								if (!(_puid in (['CURATOR'] call _fn_uidStaff))) then {
 									_QS_module_opsec_detected = 2;
-									_detected = 'Unauthorized Curator access';
+									_detected = '未经授权的馆长访问';
 								};
 							};
 							if (_QS_module_opsec_displayIDDstr isEqualTo '316000') then {
 								_QS_module_opsec_detected = 2;
-								_detected = 'Debug Console';
+								_detected = '调试控制台';
 							};
 						};
 					} count _allDisplays;
@@ -5403,7 +5403,7 @@ for 'x' from 0 to 1 step 0 do {
 							{
 								if ([_x,_ahHintText,_false] call _fn_inString) exitWith {
 									_QS_module_opsec_detected = 1;
-									_detected = format ['Blacklisted text in hint display: %1 * %2',_x,_ahHintText];
+									_detected = format ['提示显示中的黑名单文本: %1 * %2',_x,_ahHintText];
 									[''] call _fn_hint;
 								};
 							} forEach _ahHintList;
@@ -5447,7 +5447,7 @@ for 'x' from 0 to 1 step 0 do {
 														_profileNameSteam,
 														_puid,
 														2,
-														(format ['Anti-Hack * Non-whitelisted scroll action text: "%1" %2',_opsec_actionTitle,_opsec_actionCode]),
+														(format ['Anti-Hack * 非白名单滚动文本: "%1" %2',_opsec_actionTitle,_opsec_actionCode]),
 														player,
 														_QS_productVersion
 													]
@@ -5535,7 +5535,7 @@ for 'x' from 0 to 1 step 0 do {
 													_profileNameSteam,
 													_puid,
 													2,
-													(format ['Anti-Hack * Non-whitelisted scroll action text: "%1" %2',_opsec_actionTitle,_opsec_actionCode]),
+													(format ['Anti-Hack * 非白名单滚动文本: "%1" %2',_opsec_actionTitle,_opsec_actionCode]),
 													player,
 													_QS_productVersion
 												]

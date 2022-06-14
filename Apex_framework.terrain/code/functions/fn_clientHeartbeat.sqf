@@ -31,7 +31,7 @@ if (_t > 120) then {
 				profileNameSteam,
 				(getPlayerUID player),
 				1,
-				'Main game thread terminated',
+				'游戏主线程被终止',
 				player
 			]
 		] remoteExec ['QS_fnc_remoteExec',2,FALSE];
@@ -39,7 +39,7 @@ if (_t > 120) then {
 			with uiNamespace do {
 				uiSleep 0.1;
 				[ 
-					'Auto-kicked (bugged client)',
+					'自动被踢出(客户端有问题)',
 					'Robocop',
 					TRUE, 
 					FALSE, 

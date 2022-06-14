@@ -46,9 +46,9 @@ profileNamespace setVariable ['QS_robocop_log_1',_eventLog];
 saveProfileNamespace;
 _QS_UID = ['ALL'] call (missionNamespace getVariable 'QS_fnc_whitelist');
 if ((_array # 5) in _QS_UID) exitWith {};
-private _message = parseText format ['ROBOCOP believes %1 has hacked the server.<br/><br/> Detected: %2',(str (_array # 2)),(str (_array # 7))];
+private _message = parseText format ['ROBOCOP认为%1已经入侵了服务器。<br/><br/> 检测到：%2',(str (_array # 2)),(str (_array # 7))];
 if ((_array # 6) > 1) then {
-	(call (uiNamespace getVariable 'QS_fnc_serverCommandPassword')) serverCommand (format ['#kick %1',(owner (_array # 8))]);
+	(call (uiNamespace getVariable 'QS_fnc_serverCommandPassword')) serverCommand (format ['#kick %1 %2',(owner (_array # 8)),(_array # 7)]);
 	private _arrayToSend = [];
 	{
 		_unit = _x;
