@@ -76,7 +76,7 @@ ____________________________________________________________________________/*/
 						profileNameSteam,
 						(getPlayerUID player),
 						1,
-						'Arsenal (Too many buttons)',
+						'武器库（按钮太多）',
 						player
 					]		
 				] remoteExec ['QS_fnc_remoteExec',2,FALSE];
