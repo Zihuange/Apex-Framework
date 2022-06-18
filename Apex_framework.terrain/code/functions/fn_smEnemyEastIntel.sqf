@@ -1,5 +1,5 @@
 /*
-File: fn_smEnemyEastIntel.sqf
+File: fn_smEnemyWestIntel.sqf
 Author: 
 
 	Quiksilver

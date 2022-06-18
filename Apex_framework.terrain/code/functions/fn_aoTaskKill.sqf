@@ -42,10 +42,10 @@ for '_x' from 0 to 1 step 0 do {
 if (diag_tickTime > _timeout) exitWith {};
 _testPosition set [2,0];
 _unitTypes = [
-	['O_V_Soldier_M_hex_F','O_V_Soldier_hex_F'],
-	['O_V_Soldier_ghex_F','O_V_Soldier_M_ghex_F']
+	['B_CTRG_Soldier_M_medic_F','B_CTRG_soldier_engineer_exp_F'],
+	['B_CTRG_Soldier_tna_F','B_CTRG_Soldier_M_tna_F']
 ] select (_worldName isEqualTo 'Tanoa');
-_enemyGrp = createGroup [EAST,TRUE];
+_enemyGrp = createGroup [WEST,TRUE];
 _enemyUnit = _enemyGrp createUnit [(selectRandom _unitTypes),_testPosition,[],0,'CAN_COLLIDE'];
 _enemyUnit setVehiclePosition [(getPosWorld _enemyUnit),[],0,'NONE'];
 _enemyUnit allowDamage FALSE;
@@ -65,7 +65,7 @@ _enemyUnit addEventHandler [
 ];
 private _primaryWeapon = '';
 if ((random 1) > 0.5) then {
-	_primaryWeapon = ['srifle_GM6_camo_F','srifle_GM6_ghex_F'] select (_worldName isEqualTo 'Tanoa');
+	_primaryWeapon = ['srifle_LRR_F','srifle_LRR_tna_F'] select (_worldName isEqualTo 'Tanoa');
 	[_enemyUnit,_primaryWeapon,6] call (missionNamespace getVariable 'QS_fnc_addWeapon');
 	_enemyUnit addPrimaryWeaponItem 'optic_Nightstalker';
 } else {

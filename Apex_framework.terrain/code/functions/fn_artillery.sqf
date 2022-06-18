@@ -21,8 +21,8 @@ _ammo = [
 	[0.90,0.75]
 ];
 _va = [
-	['B_MBT_01_arty_F','B_MBT_01_mlrs_F'],
-	['B_T_MBT_01_arty_F','B_T_MBT_01_mlrs_F']
+	['O_MBT_02_arty_F','I_TRUCK_02_mrl_F'],
+	['O_T_MBT_02_arty_ghex_F','I_E_TRUCK_02_mrl_F']
 ] select (worldName in ['Tanoa','Enoch']);
 if (_type isEqualTo 0) exitWith {
 	if ((!isNil {missionNamespace getVariable 'QS_arty'}) && (!isNull (missionNamespace getVariable 'QS_arty'))) exitWith {};
@@ -61,7 +61,7 @@ if (_type isEqualTo 0) exitWith {
 		_arty setVariable ['QS_cleanup_protected',TRUE,TRUE];
 		_arty setVariable ['QS_inventory_disabled',TRUE,TRUE];
 		_arty lockInventory TRUE;
-		if (_arty isKindOf 'B_MBT_01_arty_F') then {
+		if (_arty isKindOf 'O_MBT_02_arty_F') then {
 			{
 				_arty removeMagazineTurret [_x,[0]];
 			} forEach (_arty magazinesTurret [0]);
@@ -69,7 +69,7 @@ if (_type isEqualTo 0) exitWith {
 				_arty removeMagazineTurret [_x,[0,0]];
 			} forEach (_arty magazinesTurret [0,0]);
 			for '_x' from 0 to 3 step 1 do {
-				_arty addMagazineTurret ['2Rnd_155mm_Mo_guided',[0]];
+				_arty addMagazineTurret ['2Rnd_155mm_Mo_guided_O',[0]];
 			};
 			if (local _arty) then {
 				/*/_arty setVehicleAmmo ((_ammo select (missionNamespace getVariable 'QS_artilleryUnlock')) select (_va find (typeOf (missionNamespace getVariable 'QS_arty'))));/*/		/*/12 shells/*/
@@ -78,7 +78,16 @@ if (_type isEqualTo 0) exitWith {
 			};
 			_arty lockTurret [[0,0],TRUE];
 		};
-		if ((_arty isKindOf 'B_MBT_01_mlrs_F') || (_arty isKindOf 'B_T_MBT_01_mlrs_F')) then {
+		if ((_arty isKindOf 'I_TRUCK_02_mrl_F') || (_arty isKindOf 'I_E_TRUCK_02_mrl_F')) then {
+			if (worldName in ['Tanoa','Enoch']) then {
+				this setObjectTextureGlobal [0,'\A3\soft_f_exp\Truck_02\Data\Truck_02_kab_GHEX_co.paa'];  
+				this setObjectTextureGlobal [1,'\A3\soft_f_beta\truck_02\data\truck_02_int_co.paa'];  
+				this setObjectTextureGlobal [2,'\A3\soft_f_gamma\truck_02\data\truck_02_mrl_OPFOR_co.paa'];
+			} else {
+				_arty setObjectTextureGlobal [0,'\A3\soft_f_beta\Truck_02\Data\Truck_02_kab_opfor_co.paa'];  
+				_arty setObjectTextureGlobal [1,'\A3\soft_f_beta\truck_02\data\truck_02_int_co.paa'];  
+				_arty setObjectTextureGlobal [2,'\A3\soft_f_gamma\truck_02\data\truck_02_mrl_OPFOR_co.paa'];
+			};
 			if (local _arty) then {
 				_arty setVehicleAmmo ((_ammo select (missionNamespace getVariable 'QS_artilleryUnlock')) select (_va find (typeOf _arty)));		/*/4 shells/*/
 			} else {
@@ -152,16 +161,16 @@ if (_type isEqualTo 1) exitWith {
 						[(missionNamespace getVariable 'QS_arty')],
 						{
 							for '_x' from 0 to 3 step 1 do {
-								(_this select 0) removeMagazineTurret ['2Rnd_155mm_Mo_guided',[0]];
+								(_this select 0) removeMagazineTurret ['2Rnd_155mm_Mo_guided_O',[0]];
 							};
 							for '_x' from 0 to 3 step 1 do {
-								(_this select 0) addMagazineTurret ['2Rnd_155mm_Mo_guided',[0]];
+								(_this select 0) addMagazineTurret ['2Rnd_155mm_Mo_guided_O',[0]];
 							};
 						}
 					] remoteExec ['call',(missionNamespace getVariable 'QS_arty'),FALSE];
 					missionNamespace setVariable ['QS_artyShells',8,TRUE];
 				};
-				if ((missionNamespace getVariable 'QS_arty') isKindOf 'B_MBT_01_mlrs_F') then {
+				if ((missionNamespace getVariable 'QS_arty') isKindOf 'I_TRUCK_02_mrl_F' || (missionNamespace getVariable 'QS_arty') isKindOf 'I_E_TRUCK_02_mrl_F') then {
 					if (local (missionNamespace getVariable 'QS_arty')) then {
 						(missionNamespace getVariable 'QS_arty') setVehicleAmmo ((_ammo select (missionNamespace getVariable 'QS_artilleryUnlock')) select (_va find (typeOf (missionNamespace getVariable 'QS_arty'))));			/*/4 shells/*/
 					} else {

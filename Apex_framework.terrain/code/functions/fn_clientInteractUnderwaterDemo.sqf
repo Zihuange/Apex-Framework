@@ -33,7 +33,7 @@ if (!(_cursorIntersections isEqualTo [])) then {
 	_canAttachExp = _objectParent getVariable ['QS_client_canAttachExp',FALSE];
 	if ((simulationEnabled _objectParent) || {(_canAttachExp)}) then {
 		if ((_objectParent isKindOf 'AllVehicles') || {(_canAttachExp)}) then {
-			if (((side _objectParent) in [EAST,RESISTANCE]) || {(_canAttachExp)}) then {
+			if (((side _objectParent) in [WEST,RESISTANCE]) || {(_canAttachExp)}) then {
 				player removeMagazine 'DemoCharge_Remote_Mag';
 				_mine = createVehicle ['democharge_remote_ammo',(position player),[],0,'NONE'];
 				_mine setVectorUp _surfaceNormal;

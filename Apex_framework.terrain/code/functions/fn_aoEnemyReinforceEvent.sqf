@@ -19,13 +19,13 @@ QS_fnc_aoEnemyReinforceEvent3 = {
 	_event = _this select 0;
 	if (_event isEqualTo 1) exitWith {
 		private ['_centerPos','_foundSpawnPos','_spawnPos','_v','_grp','_direction','_HLZ','_unit','_unitType','_unitTypes','_grp2','_wp','_foundHLZ','_helipad','_array'];
-		_type = param [1,'O_Heli_Transport_04_covered_F'];
+		_type = param [1,'B_Heli_Transport_03_F'];
 		_array = [];
 		_centerPos = QS_hqPos;
 		_unitTypes = [
 			"I_C_Soldier_Bandit_7_F","I_C_Soldier_Bandit_3_F","I_C_Soldier_Bandit_2_F","I_C_Soldier_Bandit_5_F","I_C_Soldier_Bandit_6_F",
 			"I_C_Soldier_Bandit_1_F","I_C_Soldier_Bandit_8_F","I_C_Soldier_Bandit_4_F","I_C_Soldier_Para_7_F","I_C_Soldier_Para_2_F","I_C_Soldier_Para_3_F",
-			"I_C_Soldier_Para_4_F","I_C_Soldier_Para_6_F","I_C_Soldier_Para_8_F","I_C_Soldier_Para_1_F","I_C_Soldier_Para_5_F",'O_T_Soldier_AA_F','O_T_Soldier_AT_F'
+			"I_C_Soldier_Para_4_F","I_C_Soldier_Para_6_F","I_C_Soldier_Para_8_F","I_C_Soldier_Para_1_F","I_C_Soldier_Para_5_F",'B_T_Soldier_AA_F','B_T_Soldier_AT_F'
 		];
 		missionNamespace setVariable ['QS_helipads',[],FALSE];
 		_unitType = '';
@@ -105,7 +105,7 @@ QS_fnc_aoEnemyReinforceEvent3 = {
 			} count (units _grp);
 			_direction = _spawnPos getDir _HLZ;
 			_v setDir _direction;
-			_grp2 = createGroup [EAST,TRUE];
+			_grp2 = createGroup [WEST,TRUE];
 			for '_x' from 0 to (round(((_v emptyPositions 'Cargo') - 1) / 2)) step 1 do {
 				_unitType = selectRandom _unitTypes;
 				_unit = _grp2 createUnit [_unitType,[0,0,0],[],0,'NONE'];
@@ -238,11 +238,11 @@ QS_fnc_aoEnemyReinforceEvent3 = {
 	_event = _this select 0;
 	if (_event isEqualTo 1) exitWith {
 		private ['_centerPos','_foundSpawnPos','_spawnPos','_v','_grp','_direction','_HLZ','_unit','_unitType','_unitTypes','_grp2','_wp','_foundHLZ','_helipad','_array'];
-		_type = param [1,'O_Heli_Transport_04_covered_F'];
+		_type = param [1,'B_Heli_Transport_03_F'];
 		_array = [];
 		_centerPos = position player;
 		_unitTypes = [
-			"O_soldier_F"
+			"B_soldier_F"
 		];
 		missionNamespace setVariable ['QS_helipads',[],FALSE];
 		_unitType = '';
@@ -320,7 +320,7 @@ QS_fnc_aoEnemyReinforceEvent3 = {
 			} count (units _grp);
 			_direction = _spawnPos getDir _HLZ;
 			_v setDir _direction;
-			_grp2 = createGroup [EAST,TRUE];
+			_grp2 = createGroup [WEST,TRUE];
 			for '_x' from 0 to ((_v emptyPositions 'Cargo') - 1) step 1 do {
 				_unitType = selectRandom _unitTypes;
 				_unit = _grp2 createUnit [_unitType,[0,0,0],[],0,'NONE'];
@@ -446,4 +446,4 @@ QS_fnc_aoEnemyReinforceEvent3 = {
 		_array;
 	};
 };
-[1,'O_Heli_Transport_04_covered_F'] spawn QS_fnc_aoEnemyReinforceEvent3;
+[1,'B_Heli_Transport_03_F'] spawn QS_fnc_aoEnemyReinforceEvent3;

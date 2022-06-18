@@ -150,7 +150,7 @@ for '_x' from 0 to 1 step 0 do {
 	if (!(_nearBuildings isEqualTo [])) then {
 		_nearBuilding = selectRandom _nearBuildings;
 		_nearBuildingPosition = getPosATL _nearBuilding;
-		if (([_nearBuildingPosition,300,[WEST],_allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
+		if (([_nearBuildingPosition,300,[EAST],_allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
 			_houseFound = TRUE;
 		};
 	};
@@ -166,10 +166,10 @@ private _buildingPositions = _nearBuilding buildingPos -1;
 _buildingPosition = selectRandom _buildingPositions;
 _buildingPositions = _buildingPositions apply { [(_x select 0),(_x select 1),((_x select 2) + 1)] };
 private _unitTypes = [
-	['O_G_Soldier_SL_F'],
+	['B_G_Soldier_SL_F'],
 	['I_C_Soldier_Para_1_F']
 ] select (worldName isEqualTo 'Tanoa');
-private _grp = createGroup [EAST,TRUE];
+private _grp = createGroup [WEST,TRUE];
 private _objUnit = _grp createUnit [(selectRandom _unitTypes),_buildingPosition,[],0,'NONE'];
 _objUnit allowDamage FALSE;
 [_objUnit] joinSilent _grp;
@@ -236,21 +236,21 @@ for '_x' from 0 to 2 step 1 do {
 //comment 'spawn sentries';
 _unitTypes = [
 	[
-		'O_G_Soldier_A_F',
-		'O_G_Soldier_AR_F',
-		'O_G_medic_F',
-		'O_G_engineer_F',
-		'O_G_Soldier_exp_F',
-		'O_G_Soldier_GL_F',
-		'O_G_Soldier_M_F',
-		'O_G_officer_F',
-		'O_G_Soldier_F',
-		'O_G_Soldier_LAT_F',
-		'O_G_Soldier_lite_F',
-		'O_G_Soldier_unarmed_F',
-		'O_G_Sharpshooter_F',
-		'O_G_Soldier_SL_F',
-		'O_G_Soldier_TL_F'
+		'B_G_Soldier_A_F',
+		'B_G_Soldier_AR_F',
+		'B_G_medic_F',
+		'B_G_engineer_F',
+		'B_G_Soldier_exp_F',
+		'B_G_Soldier_GL_F',
+		'B_G_Soldier_M_F',
+		'B_G_officer_F',
+		'B_G_Soldier_F',
+		'B_G_Soldier_LAT_F',
+		'B_G_Soldier_lite_F',
+		'B_G_Soldier_unarmed_F',
+		'B_G_Sharpshooter_F',
+		'B_G_Soldier_SL_F',
+		'B_G_Soldier_TL_F'
 	],
 	[
 		'I_C_Soldier_Bandit_7_F',
@@ -272,7 +272,7 @@ _unitTypes = [
 		'I_C_Soldier_base_unarmed_F'
 	]		
 ] select (worldName isEqualTo 'Tanoa');
-_sentryGrp = createGroup [EAST,TRUE];
+_sentryGrp = createGroup [WEST,TRUE];
 private _sentriesEnabled = FALSE;
 if ((random 1) > 0) then {
 	 _sentriesEnabled = TRUE;

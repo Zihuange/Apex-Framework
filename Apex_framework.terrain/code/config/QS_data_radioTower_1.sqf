@@ -22,9 +22,9 @@
 					if (isPlayer _instigator) then {
 						_name = name _instigator;
 						if ((random 1) > 0.5) then {
-							['sideChat',[WEST,'HQ'],(format ['%1 (%2) destroyed the radio tower! Good work soldiers!',_name,(groupID (group _instigator))])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+							['sideChat',[EAST,'HQ'],(format ['%1 (%2) destroyed the radio tower! Good work soldiers!',_name,(groupID (group _instigator))])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 						} else {
-							['sideChat',[WEST,'HQ'],(format ['%1 (%2) brought down the tower! Great work boys!',_name,(groupID (group _instigator))])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+							['sideChat',[EAST,'HQ'],(format ['%1 (%2) brought down the tower! Great work boys!',_name,(groupID (group _instigator))])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 						};
 						if ((!(_instigator getUnitTrait 'uavhacker')) && (!(_instigator getUnitTrait 'QS_trait_pilot')) && (!(_instigator getUnitTrait 'QS_trait_fighterPilot'))) then {
 							(missionNamespace getVariable 'QS_leaderboards_session_queue') pushBack ['TOWER',(getPlayerUID _instigator),(name _instigator),1];

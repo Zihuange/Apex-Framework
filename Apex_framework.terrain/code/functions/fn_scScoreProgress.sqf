@@ -52,10 +52,10 @@ if (_type isEqualTo 0) then {
 		};
 		_resultsFactor = (missionNamespace getVariable ['QS_virtualSectors_resultsFactors',[0,0,0,0,0,0]]) select _factorIndex;
 		_return = (_constant + _playerFactor + _resultsFactor);
-		if (!isNil {profileNamespace getVariable 'QS_sc_scoreCoef_east_override'}) then {
-			_return = call profileNamespace getVariable 'QS_sc_scoreCoef_east_override';
+		if (!isNil {profileNamespace getVariable 'QS_sc_scoreCoef_west_override'}) then {
+			_return = call profileNamespace getVariable 'QS_sc_scoreCoef_west_override';
 		};
-		missionNamespace setVariable ['QS_sc_scoreCoef_east',_return,FALSE];
+		missionNamespace setVariable ['QS_sc_scoreCoef_west',_return,FALSE];
 	};
 	if (_sideNumber isEqualTo 1) then {
 		_data params [
@@ -68,10 +68,10 @@ if (_type isEqualTo 0) then {
 		
 		_constant = 1;
 		_return = (_constant + (1 - _scorePlayerCoef));
-		if (!isNil {profileNamespace getVariable 'QS_sc_scoreCoef_west_override'}) then {
-			_return = call profileNamespace getVariable 'QS_sc_scoreCoef_west_override';
+		if (!isNil {profileNamespace getVariable 'QS_sc_scoreCoef_east_override'}) then {
+			_return = call profileNamespace getVariable 'QS_sc_scoreCoef_east_override';
 		};
-		missionNamespace setVariable ['QS_sc_scoreCoef_west',_return,FALSE];
+		missionNamespace setVariable ['QS_sc_scoreCoef_east',_return,FALSE];
 	};
 	if (_sideNumber isEqualTo 2) then {};
 };

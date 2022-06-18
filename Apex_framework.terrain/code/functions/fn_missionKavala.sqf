@@ -154,17 +154,17 @@ private _types = [
 	"I_C_Soldier_Para_1_F","I_C_Soldier_Para_2_F","I_C_Soldier_Para_3_F","I_C_Soldier_Para_4_F","I_C_Soldier_Para_5_F","I_C_Soldier_Para_6_F",
 	"I_C_Soldier_Para_7_F","I_C_Soldier_Para_8_F"
 ];
-private _type = 'O_soldierU_F';
-private _launcherType = 'launch_O_Titan_F';
+private _type = 'b_soldier_f';
+private _launcherType = 'launch_b_Titan_F';
 private _backpackType = 'B_Carryall_ocamo';
 if (worldName isEqualTo 'Tanoa') then {
-	_launcherType = 'launch_O_Titan_ghex_F';
+	_launcherType = 'launch_b_titan_tna_f';
 	_backpackType = 'B_Carryall_ghex_F';
 };
 private _uniformsExtra = ["U_IG_Guerilla1_1","U_IG_Guerilla2_3","U_IG_Guerilla2_2","U_IG_Guerilla2_1","U_IG_Guerilla3_1","U_IG_Guerrilla_6_1","U_IG_leader"];
 private _position = [0,0,0];
 private _nullPos = [0,0,0];
-private _sidesHiddenFrom = [WEST,CIVILIAN];
+private _sidesHiddenFrom = [EAST,CIVILIAN];
 private _wp = [];
 private _intersections = _QS_intersections;
 private _intersection = [0,0,0];
@@ -179,12 +179,12 @@ private _moveRefreshRandom = 180;
 private _destination = [0,0,0];
 private _random = -1;
 private _nearestEnemy = objNull;
-WEST setFriend [RESISTANCE,0];
-RESISTANCE setFriend [WEST,0];
+EAST setFriend [RESISTANCE,0];
+RESISTANCE setFriend [EAST,0];
 private _vehicles = [];
 private _vehicleTypes = [
 	"C_Hatchback_01_F","C_Hatchback_01_F","C_Hatchback_01_F","C_Offroad_01_F","C_Offroad_02_unarmed_F","C_Hatchback_01_F","C_Offroad_02_unarmed_F","C_Offroad_01_F","C_SUV_01_F","C_Van_01_transport_F","C_Van_01_box_F","C_Offroad_02_unarmed_F",
-	"I_Truck_02_transport_F","I_G_Offroad_01_F","B_G_Offroad_01_F","O_G_Offroad_01_F","B_G_Van_01_transport_F","I_G_Van_01_transport_F","O_G_Van_01_transport_F",
+	"I_Truck_02_transport_F","I_G_Offroad_01_F","B_G_Offroad_01_F","B_G_Offroad_01_F","B_G_Van_01_transport_F","I_G_Van_01_transport_F","B_G_Van_01_transport_F",
 	"B_GEN_Offroad_01_gen_F","C_Truck_02_transport_F","C_Truck_02_covered_F","I_C_Offroad_02_unarmed_F","I_C_Van_01_transport_F","c_van_02_vehicle_f","c_van_02_transport_f","B_GEN_Van_02_vehicle_F","B_GEN_Van_02_transport_F"
 ];	
 private _vehicleType = '';
@@ -251,7 +251,7 @@ for '_x' from 0 to _enemiesInBuildings step 1 do {
 	_unit setSkill 0.25;
 	_random = random 1;
 	if ((_random >= 0.4) && (_random <= 0.6)) then {
-		_unit forceAddUniform 'U_O_CombatUniform_oucamo';
+		_unit forceAddUniform 'u_i_g_story_protagonist_f';
 	} else {
 		if (_random > 0.9) then {
 			_unit forceAddUniform (selectRandom _uniformsExtra);
@@ -281,7 +281,7 @@ private _staticWeaponPositions = QS_buildingPositions_inner select {
 private _staticsEnabled = (!((allPlayers select {((getPlayerUID _x) isEqualTo '76561198084065754')}) isEqualTo []));
 private _staticWeaponsCount = 4 - 1;
 private _staticWeaponMinThreshold = 2 - 1;
-private _staticType = 'O_HMG_01_high_F';
+private _staticType = 'B_HMG_01_high_F';
 private _staticPosition = [0,0,0];
 private _staticWeapons = [];
 if (_staticsEnabled) then {
@@ -431,9 +431,9 @@ if (!isNil 'minEnemiesPatrolThreshold_override') then {
 };
 
 comment 'Spawn convoy for mission stuff';
-_opforTruckTypes = [
-	["O_Truck_03_repair_F","O_Truck_03_repair_F"],
-	["O_T_Truck_03_repair_ghex_F","O_T_Truck_03_repair_ghex_F"]
+_bluforTruckTypes = [
+	["B_Truck_01_Repair_F","B_Truck_01_Repair_F"],
+	["B_T_Truck_01_Repair_F","B_T_Truck_01_Repair_F"]
 ] select (worldName isEqualTo 'Tanoa');
 private _truck = objNull;
 private _truckType = '';
@@ -448,7 +448,7 @@ for '_x' from 0 to 1 step 0 do {
 	if ((_all select {((_x distance2D _truckRoadPosition) < 15)}) isEqualTo []) exitWith {};
 };
 _truckRoadPositionASL = AGLToASL _truckRoadPosition;
-_truckType = selectRandom _opforTruckTypes;
+_truckType = selectRandom _bluforTruckTypes;
 _truck = createSimpleObject [_truckType,_truckRoadPositionASL];
 _truckDir = _truckRoadAt getDir ((roadsConnectedTo _truckRoadAt) select 0);
 _truck setDir _truckDir;
@@ -624,7 +624,7 @@ private _aaPatrolRadius = 100;
 private _aaPatrols = TRUE;
 private _aaGrp = grpNull;
 private _aaUnitTypes = [
-	['O_Soldier_AA_F'],['O_T_soldier_AA_F']
+	['B_soldier_AA_F'],['B_T_Soldier_AA_F']
 ] select (worldName isEqualTo 'Tanoa');
 private _aaPatrolThresh = 2;
 private _aaUnits = [];
@@ -638,8 +638,8 @@ private _sniperPatrolRadius = 100;
 private _sniperPatrols = TRUE;
 private _sniperGrp = grpNull;
 private _sniperUnitTypes = [
-	['O_Sharpshooter_F','O_recon_F','O_recon_M_F','O_recon_LAT_F'],
-	['O_G_Sharpshooter_F','O_T_Recon_F','O_T_Recon_M_F','O_T_Recon_LAT_F']
+	['B_Sharpshooter_F','B_recon_F','B_recon_M_F','B_recon_LAT_F'],
+	['B_G_Sharpshooter_F','B_T_Recon_F','B_T_Recon_M_F','B_T_Recon_LAT_F']
 ] select (worldName isEqualTo 'Tanoa');
 private _sniperPatrolThresh = 2;
 private _sniperUnits = [];
@@ -652,7 +652,7 @@ private _atPatrolCenter = [
 private _atPatrolRadius = 100;
 private _atPatrols = TRUE;
 private _atGrp = grpNull;
-private _atUnitTypes = [['O_Soldier_LAT_F'],['O_T_Soldier_LAT_F']] select (worldName isEqualTo 'Tanoa');
+private _atUnitTypes = [['B_soldier_LAT_F'],['B_T_Soldier_LAT_F']] select (worldName isEqualTo 'Tanoa');
 private _atPatrolThresh = 2;
 private _atUnits = [];
 private _atDelay = 60;
@@ -682,7 +682,7 @@ comment 'Mission task location';
 			
 			CSAT载具位置没有被准确标记。<br/>
 			<img size="3" image="%1"/>
-		',(getText (configfile >> 'CfgVehicles' >> 'O_Truck_03_repair_F' >> 'editorPreview'))]),
+		',(getText (configfile >> 'CfgVehicles' >> 'B_Truck_01_Repair_F' >> 'editorPreview'))]),
 		'1 / 2: 寻找CSAT载具',
 		'1 / 2: 寻找CSAT载具'
 	],
@@ -744,12 +744,12 @@ for '_x' from 0 to 1 step 0 do {
 	if (_serverTime > _missionEnd) exitWith {
 		comment 'Mission failure';
 		['CUSTOM_GEORGETOWN',['','任务失败！']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
-		['sideChat',[WEST,'HQ'],'我们在Kavala耽搁了太长时间，下次不能这样了！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['sideChat',[EAST,'HQ'],'我们在Kavala耽搁了太长时间，下次不能这样了！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 	};
 	if (_missionStatus isEqualTo 'SUCCESS') exitWith {
 		comment 'Mission success';
 		['CUSTOM_GEORGETOWN',['','任务成功！']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
-		['sideChat',[WEST,'HQ'],'干得漂亮士兵们！返回基地并准备下次任务。'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['sideChat',[EAST,'HQ'],'干得漂亮士兵们！返回基地并准备下次任务。'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 	};
 	
 	if (_timeNow > _updateInfoCheckDelay) then {
@@ -855,7 +855,7 @@ for '_x' from 0 to 1 step 0 do {
 				_unit setSkill 0.25;
 				_all pushBack _unit;
 				if ((_random >= 0.4) && (_random <= 0.6)) then {
-					_unit forceAddUniform 'U_O_CombatUniform_oucamo';
+					_unit forceAddUniform 'U_i_g_story_protagonist_f';
 				};
 				_houseEnemies pushBack _unit;
 				_enemies pushBack _unit;
@@ -924,7 +924,7 @@ for '_x' from 0 to 1 step 0 do {
 				_random = random 1;
 				if ((_random >= 0.4) && (_random <= 0.6)) then {
 					_unit setVariable ['QS_AI_unit_canAttack',TRUE,FALSE];
-					_unit forceAddUniform 'U_O_CombatUniform_oucamo';
+					_unit forceAddUniform 'U_i_g_story_protagonist_f';
 				} else {
 					if (!(_unit isEqualTo (leader _grp))) then {
 						if ((random 1) > 0.8) then {
@@ -1137,7 +1137,7 @@ for '_x' from 0 to 1 step 0 do {
 	if (_aaPatrols) then {
 		if (_timeNow > _aaCheckDelay) then {
 			if (isNull _aaGrp) then {
-				_aaGrp = createGroup [EAST,TRUE];
+				_aaGrp = createGroup [WEST,TRUE];
 			};
 			if (({(alive _x)} count _aaUnits) < _aaPatrolThresh) then {
 				if (({(alive _x)} count _aaUnits) >= _aaPatrolThresh) exitWith {};
@@ -1167,7 +1167,7 @@ for '_x' from 0 to 1 step 0 do {
 	if (_sniperPatrols) then {
 		if (_timeNow > _sniperCheckDelay) then {
 			if (isNull _sniperGrp) then {
-				_sniperGrp = createGroup [EAST,TRUE];
+				_sniperGrp = createGroup [WEST,TRUE];
 			};
 			if (({(alive _x)} count _sniperUnits) < _aaPatrolThresh) then {
 				if (({(alive _x)} count _sniperUnits) >= _aaPatrolThresh) exitWith {};
@@ -1197,7 +1197,7 @@ for '_x' from 0 to 1 step 0 do {
 	if (_atPatrols) then {
 		if (_timeNow > _atCheckDelay) then {
 			if (isNull _atGrp) then {
-				_atGrp = createGroup [EAST,TRUE];
+				_atGrp = createGroup [WEST,TRUE];
 			};
 			if (({(alive _x)} count _atUnits) < _atPatrolThresh) then {
 				if (({(alive _x)} count _atUnits) >= _atPatrolThresh) exitWith {};
@@ -1224,7 +1224,7 @@ for '_x' from 0 to 1 step 0 do {
 		};
 	};
 	if (_timeNow > _markersCheckDelay) then {
-		_QS_allUnits = allUnits select {(((side _x) in [RESISTANCE,EAST]) && (alive _x))};
+		_QS_allUnits = allUnits select {(((side _x) in [RESISTANCE,WEST]) && (alive _x))};
 		{
 			if ((_QS_allUnits inAreaArray _x) isEqualTo []) then {
 				if (!((toLower (markerColor _x)) isEqualTo 'colorgreen')) then {
@@ -1315,7 +1315,7 @@ comment 'Cleanup';
 missionNamespace setVariable ['QS_customAO_blockSideMissions',FALSE,FALSE];
 waitUntil {
 	uiSleep 10;
-	(((count (allPlayers select {(((lifeState _x) in ['HEALTHY','INJURED']) && ((getPosWorld _x) inPolygon QS_georgetown_vExclusion_polygon))})) < (round((playersNumber WEST)/2))) || (allPlayers isEqualTo []))
+	(((count (allPlayers select {(((lifeState _x) in ['HEALTHY','INJURED']) && ((getPosWorld _x) inPolygon QS_georgetown_vExclusion_polygon))})) < (round((playersNumber EAST)/2))) || (allPlayers isEqualTo []))
 };
 {
 	if (_x isEqualType objNull) then {

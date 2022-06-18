@@ -18,7 +18,7 @@ _type = typeOf _object;
 _typeL = toLower _type;
 if (_object isKindOf 'Man') exitWith {
 	_side = side (group _object);
-	if ((_side getFriend WEST) < 0.6) then {
+	if ((_side getFriend EAST) < 0.6) then {
 		[_object] call (missionNamespace getVariable 'QS_fnc_setCollectible');
 	};
 	_object disableAI 'AUTOCOMBAT';
@@ -39,7 +39,7 @@ if (_object isKindOf 'Man') exitWith {
 					if (!isNull _killer) then {
 						if (isPlayer _killer) then {
 							_text = format ['Fugitive killed by %1!',(name _killer)];
-							['sideChat',[WEST,'HQ'],_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+							['sideChat',[EAST,'HQ'],_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 						};
 					};
 				}
@@ -83,8 +83,8 @@ if (_object isKindOf 'Man') exitWith {
 			'AIMINGERROR'
 		];
 	} else {
-		if (_side in [EAST,WEST,RESISTANCE]) then {
-			if (_side in [EAST,RESISTANCE]) then {
+		if (_side in [WEST,EAST,RESISTANCE]) then {
+			if (_side in [WEST,RESISTANCE]) then {
 				_object call (missionNamespace getVariable 'QS_fnc_unitSetup');
 			};
 			[[_object],1] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
@@ -96,7 +96,7 @@ if (_object isKindOf 'Man') exitWith {
 			};
 			[[_object]] spawn (missionNamespace getVariable 'QS_fnc_serverTracers');
 			if (['recon',_type,FALSE] call (missionNamespace getVariable 'QS_fnc_inString')) then {
-				if ((side _object) isEqualTo EAST) then {
+				if ((side _object) isEqualTo WEST) then {
 					_object addHeadgear '';
 				};
 				if ((random 1) > 0.5) then {
@@ -215,7 +215,7 @@ if ((_object isKindOf 'LandVehicle') || {(_object isKindOf 'Air')} || {(_object 
 		_object setFuelCargo 0;
 	};
 	if (alive _object) then {
-		if (((crew _object) isEqualTo []) || {(!(((crew _object) findIf {((side _x) in [WEST])}) isEqualTo -1))}) then {
+		if (((crew _object) isEqualTo []) || {(!(((crew _object) findIf {((side _x) in [EAST])}) isEqualTo -1))}) then {
 			[_object] call (missionNamespace getVariable 'QS_fnc_vSetup');
 			[47,_object] remoteExec ['QS_fnc_remoteExec',2,FALSE];
 		};

@@ -44,18 +44,18 @@ private _gridEnemy = [];
 private _allPlayers = allPlayers;
 private _playersCount = count _allPlayers;
 private _unitTypes = [
-	'O_G_Soldier_A_F',0.2,
-	'O_G_Soldier_AR_F',0.4,
-	'O_G_medic_F',0.2,
-	'O_G_engineer_F',0.2,
-	'O_G_Soldier_exp_F',0.2,
-	'O_G_Soldier_GL_F',0.2,
-	'O_G_Soldier_M_F',0.2,
-	'O_G_Soldier_F',0.2,
-	'O_G_Soldier_LAT_F',0.2,
-	'O_G_Soldier_lite_F',0.2,
-	'O_G_Sharpshooter_F',0.2,
-	'O_G_Soldier_TL_F',0.2,
+	'B_G_Soldier_A_F',0.2,
+	'B_G_Soldier_AR_F',0.4,
+	'B_G_medic_F',0.2,
+	'B_G_engineer_F',0.2,
+	'B_G_Soldier_exp_F',0.2,
+	'B_G_Soldier_GL_F',0.2,
+	'B_G_Soldier_M_F',0.2,
+	'B_G_Soldier_F',0.2,
+	'B_G_Soldier_LAT_F',0.2,
+	'B_G_Soldier_lite_F',0.2,
+	'B_G_Sharpshooter_F',0.2,
+	'B_G_Soldier_TL_F',0.2,
 	'I_C_Soldier_Bandit_7_F',0.2,
 	'I_C_Soldier_Bandit_3_F',0.4,
 	'I_C_Soldier_Bandit_2_F',0.2,
@@ -74,27 +74,27 @@ private _unitTypes = [
 	'I_C_Soldier_Para_5_F',0.1
 ];
 private _vehicleTypes = [
-	'O_G_Van_01_transport_F',
+	'B_G_Van_01_transport_F',
 	'I_C_Van_01_transport_F',
 	'I_C_Offroad_02_unarmed_F',
-	'O_G_Offroad_01_F'
+	'B_G_Offroad_01_F'
 ];
 private _vehicleTypesArmed = [];
 if (_worldName isEqualTo 'Tanoa') then {
 	_vehicleTypesArmed = [
-		'O_G_Offroad_01_armed_F',0.3,
-		'O_T_LSV_02_armed_F',0.2,
+		'B_G_Offroad_01_armed_F',0.3,
+		'B_T_LSV_01_armed_F',0.2,
 		'I_C_Van_01_transport_F',0.1,
-		'O_G_Offroad_01_AT_F',0.2,
+		'B_G_Offroad_01_AT_F',0.2,
 		'I_C_Offroad_02_AT_F',0.2,
 		'I_C_Offroad_02_LMG_F',0.2
 	];
 } else {
 	_vehicleTypesArmed = [
-		'O_G_Offroad_01_armed_F',0.3,
-		'O_LSV_02_armed_F',0.2,
-		'O_G_Van_01_transport_F',0.1,
-		'O_G_Offroad_01_AT_F',0.2,
+		'B_G_Offroad_01_armed_F',0.3,
+		'B_LSV_01_armed_F',0.2,
+		'B_G_Van_01_transport_F',0.1,
+		'B_G_Offroad_01_AT_F',0.2,
 		'I_C_Offroad_02_AT_F',0.2,
 		'I_C_Offroad_02_LMG_F',0.2
 	];
@@ -149,7 +149,7 @@ if (_playersCount > 50) then {
 private _enemyUnit = objNull;
 private _enemyUnitType = '';
 private _enemyGrp = grpNull;
-private _enemySide = EAST;
+private _enemySide = WEST;
 private _enemyTeamSize = 4;
 
 /*/================================================================================================== Building AI/*/
@@ -334,10 +334,10 @@ if (_areaPatrols > 0) then {
 				_enemyUnit disableAI 'AUTOCOMBAT';
 				_enemyUnit setVariable ['QS_AI_UNIT_enabled',TRUE,(call (missionNamespace getVariable 'QS_fnc_AIOwners'))];
 				_enemyUnit call (missionNamespace getVariable 'QS_fnc_unitSetup');
-				if ((toLower _enemyUnitType) in ['o_g_soldier_f','o_g_soldier_lite_f','i_c_soldier_bandit_6_f','i_c_soldier_para_1_f']) then {
+				if ((toLower _enemyUnitType) in ['b_g_soldier_f','b_g_soldier_lite_f','i_c_soldier_bandit_6_f','i_c_soldier_para_1_f']) then {
 					if ((random 1) > 0.5) then {
 						_enemyUnit addBackpack (['b_bergen_hex_f','b_carryall_ghex_f'] select (_worldName isEqualTo 'Tanoa'));
-						[_enemyUnit,(['launch_o_titan_f','launch_o_titan_ghex_f'] select (_worldName isEqualTo 'Tanoa')),4] call (missionNamespace getVariable 'QS_fnc_addWeapon');
+						[_enemyUnit,(['launch_b_titan_f','launch_b_titan_tna_f'] select (_worldName isEqualTo 'Tanoa')),4] call (missionNamespace getVariable 'QS_fnc_addWeapon');
 					};
 				};
 				[_enemyUnit] joinSilent _enemyGrp;
@@ -366,7 +366,7 @@ private _roadSegment = objNull;
 private _vehicle = objNull;
 private _spawnDirection = 0;
 private _static = objNull;
-private _staticTypes = ['o_hmg_01_high_f','o_gmg_01_high_f'];
+private _staticTypes = ['b_hmg_01_high_f','b_gmg_01_high_f'];
 _positionsMinRadius = 100;
 if (_armedVehicleCount > 0) then {
 	if ((count _roadSegmentsInPolygon) > 25) then {
@@ -446,7 +446,7 @@ if (_armedVehicleCount > 0) then {
 					_armedVehiclePatrolEnemies pushBack _enemyUnit;
 				};
 				
-				if ((toLower (typeOf _vehicle)) in ['i_c_van_01_transport_f','o_g_van_01_transport_f']) then {
+				if ((toLower (typeOf _vehicle)) in ['i_c_van_01_transport_f','b_g_van_01_transport_f']) then {
 					_vehicle addEventHandler [
 						'Deleted',
 						{

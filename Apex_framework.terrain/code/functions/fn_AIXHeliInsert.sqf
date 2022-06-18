@@ -26,12 +26,12 @@ __________________________________________________/*/
 
 params [
 	['_position',[0,0,0]],
-	['_side',EAST],
-	['_heliType','O_Heli_Transport_04_covered_black_F'],
+	['_side',WEST],
+	['_heliType','B_Heli_Transport_03_unarmed_F'],
 	['_nUnits',0.5],
-	['_unitTypes',['O_V_Soldier_ghex_F']],
+	['_unitTypes',['B_CTRG_Soldier_tna_F']],
 	['_useSupport',FALSE],
-	['_supportType','O_Heli_Attack_02_dynamicLoadout_black_F'],
+	['_supportType','B_Heli_Attack_01_dynamicLoadout_F'],
 	['_useUnits',[]],
 	['_manageGroup',FALSE]
 ];

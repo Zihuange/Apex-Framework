@@ -48,7 +48,7 @@ private _gunner = objNull;
 } forEach _composition;
 _composition pushBack _mortar;
 _spawnPos set [2,0];
-_gunnerGrp = createGroup [EAST,TRUE];
+_gunnerGrp = createGroup [WEST,TRUE];
 createVehicleCrew _mortar;
 _gunner = gunner _mortar;
 _gunner setVariable ['QS_AI_UNIT_regroup_disable',TRUE,FALSE];
@@ -94,7 +94,7 @@ _gunner addEventHandler [
 		(vehicle (_this select 0)) setVehicleAmmo 1;
 		if ((missionNamespace getVariable 'QS_enemy_mortarFireMessage') > (diag_tickTime - 300)) exitWith {};
 		missionNamespace setVariable ['QS_enemy_mortarFireMessage',diag_tickTime,FALSE];
-		['sideChat',[WEST,'HQ'],(localize 'STR_QS_Mtr_firingMsg')] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['sideChat',[EAST,'HQ'],(localize 'STR_QS_Mtr_firingMsg')] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 	}
 ];
 _gunner addEventHandler [
@@ -120,7 +120,7 @@ _gunnerGrp setVariable ['QS_AI_GRP_DATA',[TRUE,diag_tickTime],FALSE];
 _gunnerGrp setVariable ['QS_AI_GRP_TASK',['SUPPORT','MORTAR',diag_tickTime,-1],FALSE];
 _gunnerGrp setVariable ['QS_AI_GRP',TRUE,FALSE];
 _composition pushBack _gunner;
-_patrolGrp = [_spawnPos,(random 360),EAST,(selectRandom ['OG_ReconSentry','OG_SniperTeam_M']),FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
+_patrolGrp = [_spawnPos,(random 360),WEST,(selectRandom ['OG_ReconSentry','OG_SniperTeam_M']),FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 [(units _patrolGrp),2] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
 {
 	_x call (missionNamespace getVariable 'QS_fnc_unitSetup');
@@ -136,8 +136,8 @@ _truckPos = [_spawnPos,10,25,5,0,0.5,0] call (missionNamespace getVariable 'QS_f
 if ((_truckPos distance2D _spawnPos) < 30) then {
 	_truckPos set [2,0];
 	_truckTypes = [
-		'O_G_Offroad_01_F',
-		'O_G_Van_01_transport_F',
+		'B_G_Offroad_01_F',
+		'B_G_Van_01_transport_F',
 		'I_C_Van_01_transport_F',
 		'C_Truck_02_transport_F'
 	];

@@ -36,14 +36,14 @@ _priorityTargets = [];
 	
 	if (!isSimpleObject _x) then {
 		if ((toLower (typeOf _x)) in [
-			'o_mbt_02_arty_f','o_t_mbt_02_arty_ghex_f','i_truck_02_mrl_f'
+			'b_t_mbt_01_arty_f','b_mbt_01_arty_f','i_truck_02_mrl_f'
 		]) then {
-			[0,_x,EAST,1] call (missionNamespace getVariable 'QS_fnc_vSetup2');
+			[0,_x,WEST,1] call (missionNamespace getVariable 'QS_fnc_vSetup2');
 			_priorityTargets pushBack _x;
 		};
 	};
 } forEach _unitsArray;
-_enemiesArray = [_unitsArray # 0] call (missionNamespace getVariable 'QS_fnc_smEnemyEast');
+_enemiesArray = [_unitsArray # 0] call (missionNamespace getVariable 'QS_fnc_smEnemyWest');
 private _playerCount = count allPlayers;
 private _grp = grpNull;
 private _grpSpawnPos = [0,0,0];
@@ -65,7 +65,7 @@ private _tanks = [];
 for '_x' from 0 to (_tankCount - 1) step 1 do {
 	_grpSpawnPos = ['RADIUS',_flatPos,300,'LAND',[5,0,0.5,3,0,FALSE,objNull],TRUE,[],[],FALSE] call (missionNamespace getVariable 'QS_fnc_findRandomPos');
 	if ((_grpSpawnPos distance2D _flatPos) < 500) then {
-		//_grp = createGroup [EAST,TRUE];
+		_grp = createGroup [WEST,TRUE];
 		_tank = createVehicle [(selectRandomWeighted _tankTypes),_grpSpawnPos,[],0,'NONE'];
 		_tank setDir (random 360);
 		_tank setVehiclePosition [(getPosASL _tank),[],0,'NONE'];
@@ -76,7 +76,7 @@ for '_x' from 0 to (_tankCount - 1) step 1 do {
 		_tank setConvoySeparation 50;
 		_tank limitSpeed _speed;
 		_tank addEventHandler ['GetOut',(missionNamespace getVariable 'QS_fnc_AIXDismountDisabled')];
-		[0,_tank,EAST] call (missionNamespace getVariable 'QS_fnc_vSetup2');
+		[0,_tank,WEST] call (missionNamespace getVariable 'QS_fnc_vSetup2');
 		(missionNamespace getVariable 'QS_AI_vehicles') pushBack _tank;
 		_grp = createVehicleCrew _tank;
 		[_grp,_flatPos,400,[],TRUE] call (missionNamespace getVariable 'QS_fnc_taskPatrolVehicle');
@@ -86,7 +86,7 @@ for '_x' from 0 to (_tankCount - 1) step 1 do {
 		_enemiesArray pushBack _tank;
 		{
 			_x setUnitTrait ['engineer',TRUE,FALSE];
-			_x setUnitLoadout (getUnitLoadout (['O_engineer_F','O_T_Engineer_F'] select (worldName in ['Tanoa','Lingor3'])));
+			_x setUnitLoadout (getUnitLoadout (['B_engineer_F','B_T_Engineer_F'] select (worldName in ['Tanoa','Lingor3'])));
 			_enemiesArray pushBack _x;
 		} forEach (crew _tank);
 		_tanks pushBack _tank;

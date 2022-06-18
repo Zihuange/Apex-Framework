@@ -66,12 +66,12 @@ if (_type isEqualTo 0) exitWith {
 				if ((missionNamespace getVariable 'QS_AI_targetsKnowledge_EAST') isNotEqualTo []) then {
 					missionNamespace setVariable [
 						'QS_AI_targetsKnowledge_EAST',
-						((missionNamespace getVariable 'QS_AI_targetsKnowledge_EAST') select {((alive (_x # 0)) && (((_x # 0) distance2D _basePosition) > _baseRadius) && ((_east knowsAbout (_x # 0)) > 0) && ((_x # 3) isNotEqualTo 0))}),
+						((missionNamespace getVariable 'QS_AI_targetsKnowledge_EAST') select {((alive (_x # 0)) && (((_x # 0) distance2D _basePosition) > _baseRadius) && ((_west knowsAbout (_x # 0)) > 0) && (!((_x # 3) isEqualTo 0)))}),
 						_false
 					];
 				};
-				_threat_armor = _threat_armor select {((alive _x) && ((_east knowsAbout _x) > 3))};
-				_threat_air = _threat_air select {((alive _x) && (!isTouchingGround _x) && ((_east knowsAbout _x) > 3))};
+				_threat_armor = _threat_armor select {((alive _x) && ((_west knowsAbout _x) > 3))};
+				_threat_air = _threat_air select {((alive _x) && (!isTouchingGround _x) && ((_west knowsAbout _x) > 3))};
 				_allUnits = allUnits;
 				{
 					if (alive _x) then {
@@ -80,7 +80,7 @@ if (_type isEqualTo 0) exitWith {
 								_unit = _x;
 								{
 									if (alive _x) then {
-										if ((side _x) isEqualTo _west) then {
+										if ((side _x) isEqualTo _east) then {
 											_knownUnit = _x;
 											_knownVehicle = vehicle _knownUnit;
 											(_unit targetKnowledge _knownVehicle) params [
@@ -105,12 +105,12 @@ if (_type isEqualTo 0) exitWith {
 																		_threat_air pushBackUnique _knownVehicle;
 																	};
 																};
-																(missionNamespace getVariable 'QS_AI_targetsKnowledge_EAST') pushBack [_knownUnit,_targetPosition,_knownVehicle,(parseNumber (_positionError toFixed 3)),_unit,(parseNumber ((_time - _timeLastSeen) toFixed 3)),(rating _knownUnit),(_east knowsAbout _knownVehicle)];
+																(missionNamespace getVariable 'QS_AI_targetsKnowledge_EAST') pushBack [_knownUnit,_targetPosition,_knownVehicle,(parseNumber (_positionError toFixed 3)),_unit,(parseNumber ((_time - _timeLastSeen) toFixed 3)),(rating _knownUnit),(_west knowsAbout _knownVehicle)];
 															} else {
 																_targetElement = ((missionNamespace getVariable 'QS_AI_targetsKnowledge_EAST') # _targetIndexMem);
 																_positionErrorMem = _targetElement # 3;
 																if ((_positionError < _positionErrorMem) || {((_time - _timeLastSeen) > 60)}) then {
-																	_targetElement = [_knownUnit,_targetPosition,_knownVehicle,(parseNumber (_positionError toFixed 3)),_unit,(parseNumber ((_time - _timeLastSeen) toFixed 3)),(rating _knownUnit),(_east knowsAbout _knownVehicle)];
+																	_targetElement = [_knownUnit,_targetPosition,_knownVehicle,(parseNumber (_positionError toFixed 3)),_unit,(parseNumber ((_time - _timeLastSeen) toFixed 3)),(rating _knownUnit),(_west knowsAbout _knownVehicle)];
 																	(missionNamespace getVariable 'QS_AI_targetsKnowledge_EAST') set [_targetIndexMem,_targetElement];
 																};
 															};

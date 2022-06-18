@@ -24,7 +24,7 @@ private [
 	'_fuzzyPos','_briefing','_enemiesCheckDelay','_foundPos','_checkPos','_QS_fnc_radPos','_signalPulseCheckDelay','_val','_safePosATL','_endTimeBroadcastDelay',
 	'_text','_uavTypes','_arrayToSend'
 ];
-_diverTypes = ['O_diver_F','O_diver_exp_F','O_diver_TL_F','I_diver_F','I_diver_exp_F','I_diver_TL_F'];
+_diverTypes = ['B_diver_F','B_diver_exp_F','B_diver_TL_F','I_diver_F','I_diver_exp_F','I_diver_TL_F'];
 _inset = 2000;
 _max = worldSize - (_inset * 2);
 _safePos = [];
@@ -78,7 +78,7 @@ missionNamespace setVariable [
 	FALSE
 ];
 _safePosATL = [(_safePos select 0),(_safePos select 1),(getTerrainHeightASL _safePos)];
-_uavTypes = ['O_T_UAV_04_CAS_F','O_UAV_02_F','O_T_UAV_04_CAS_F'];
+_uavTypes = ['B_UAV_02_CAS_F','B_UAV_05_F','B_UAV_02_CAS_F'];
 _uav = createVehicle [(selectRandom _uavTypes),[0,0,0],[],0,'NONE'];
 missionNamespace setVariable [
 	'QS_analytics_entities_created',
@@ -197,7 +197,7 @@ for '_x' from 0 to 1 step 0 do {
 	if (!(_uavOnGround)) then {
 		if (isTouchingGround _uav) then {
 			_uavOnGround = TRUE;
-			_grp = createGroup [EAST,TRUE];
+			_grp = createGroup [WEST,TRUE];
 			for '_x' from 0 to 1 step 1 do {
 				_diverType = selectRandom _diverTypes;
 				_unit = _grp createUnit [_diverType,(getPosWorld _uav),[],0,'NONE'];
@@ -225,13 +225,13 @@ for '_x' from 0 to 1 step 0 do {
 			for '_x' from 0 to 1 step 0 do {
 				_checkPos = _safePos getPos [(150 + (random 400)),(random 360)];
 				if (surfaceIsWater _checkPos) then {
-					if (([_checkPos,150,[WEST,CIVILIAN],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
+					if (([_checkPos,150,[EAST,CIVILIAN],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
 						_foundPos = TRUE;
 					};
 				};
 				if (_foundPos) exitWith {};
 			};
-			_grp = createGroup [EAST,TRUE];
+			_grp = createGroup [WEST,TRUE];
 			for '_x' from 0 to 1 step 1 do {
 				_diverType = selectRandom _diverTypes;
 				_unit = _grp createUnit [_diverType,_checkPos,[],0,'FORM'];

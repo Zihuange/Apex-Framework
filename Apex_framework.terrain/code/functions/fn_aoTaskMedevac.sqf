@@ -45,9 +45,9 @@ if (_state isEqualTo 1) then {
 			if ((([(_position select 0),(_position select 1)] nearRoads 15) select {((_x isEqualType objNull) && (!((roadsConnectedTo _x) isEqualTo [])))}) isEqualTo []) exitWith {};
 		};
 		if (worldName isEqualTo 'Tanoa') then {
-			_unitType = selectRandom ['B_T_Recon_TL_F','B_T_Recon_M_F','B_T_Recon_Medic_F','B_T_Recon_LAT_F','B_T_Recon_JTAC_F','B_T_Recon_Exp_F'];
+			_unitType = selectRandom ['O_T_Recon_TL_F','O_T_Recon_M_F','O_T_Recon_Medic_F','O_T_Recon_LAT_F','O_T_Recon_JTAC_F','O_T_Recon_Exp_F'];
 		} else {
-			_unitType = selectRandom ['B_recon_TL_F','B_recon_M_F','B_recon_medic_F','B_recon_F','B_recon_LAT_F','B_recon_JTAC_F','B_recon_exp_F','B_Recon_Sharpshooter_F'];
+			_unitType = selectRandom ['O_recon_TL_F','O_recon_M_F','O_recon_medic_F','O_recon_F','O_recon_LAT_F','O_recon_JTAC_F','O_recon_exp_F','O_Sharpshooter_F'];
 		};
 		_unit = createAgent [_unitType,_position,[],0,'NONE'];
 		missionNamespace setVariable [
@@ -82,7 +82,7 @@ if (_state isEqualTo 1) then {
 			'AUTOCOMBAT',
 			'ANIM'
 		];
-		[_unit,'CTRG'] call (missionNamespace getVariable 'BIS_fnc_setUnitInsignia');
+		[_unit,'GryffinRegiment'] call (missionNamespace getVariable 'BIS_fnc_setUnitInsignia');
 		removeAllWeapons _unit;
 		if ((random 1) > 0.5) then {
 			removeHeadgear _unit;
@@ -95,7 +95,7 @@ if (_state isEqualTo 1) then {
 			{
 				params ['_killed','_killer'];
 				detach _killed;
-				['sideChat',[WEST,'BLU'],(localize 'STR_QS_aoSM_WoundedKIA')] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+				['sideChat',[EAST,'OPF'],(localize 'STR_QS_aoSM_WoundedKIA')] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 			}
 		];
 		for '_x' from 0 to 1 step 1 do {

@@ -165,13 +165,13 @@ if (_grp getVariable ['QS_AI_GRP_canNearTargets',TRUE]) then {
 			if (_grpLeaderLifestate in ['HEALTHY','INJURED']) then {
 				if (_fps > 12) then {
 					if (isNull _grpObjectParent) then {
-						[7,EAST,_grp,_grpLeader,_grpObjectParent,250] call (missionNamespace getVariable 'QS_fnc_AIGetKnownEnemies');
+						[7,WEST,_grp,_grpLeader,_grpObjectParent,250] call (missionNamespace getVariable 'QS_fnc_AIGetKnownEnemies');
 					} else {
 						if (((_grpObjectParent isKindOf 'LandVehicle') && (!(_grpObjectParent isKindOf 'Static'))) || {(_grpObjectParent isKindOf 'Ship')}) then {
-							[8,EAST,_grp,_grpLeader,_grpObjectParent] call (missionNamespace getVariable 'QS_fnc_AIGetKnownEnemies');
+							[8,WEST,_grp,_grpLeader,_grpObjectParent] call (missionNamespace getVariable 'QS_fnc_AIGetKnownEnemies');
 						} else {
 							if (_grpObjectParent isKindOf 'Air') then {
-								[9,EAST,_grp,_grpLeader,_grpObjectParent] call (missionNamespace getVariable 'QS_fnc_AIGetKnownEnemies');
+								[9,WEST,_grp,_grpLeader,_grpObjectParent] call (missionNamespace getVariable 'QS_fnc_AIGetKnownEnemies');
 							};
 						};
 					};
@@ -204,7 +204,7 @@ if ((_uiTime > _currentTask_timeout) || {(((lifeState _grpLeader) in ['HEALTHY',
 				if (_position isNotEqualTo []) exitWith {};
 			} forEach [2,3];
 			if (_position isEqualTo []) then {	
-				_position = [1,_grpLeaderPosition,WEST] call (missionNamespace getVariable 'QS_fnc_scGetNearestSector');
+				_position = [1,_grpLeaderPosition,EAST] call (missionNamespace getVariable 'QS_fnc_scGetNearestSector');
 			};
 			if (_position isNotEqualTo []) then {
 				if ((_position distance2D _grpLeader) > 50) then {
@@ -602,7 +602,7 @@ if ((_uiTime > _currentTask_timeout) || {(((lifeState _grpLeader) in ['HEALTHY',
 						};
 					};
 					if ((_grp getVariable 'QS_AI_GRP_DATA') # 0) then {
-						_firePosition = [13,EAST,TRUE,(_currentConfig # 2),((magazines (_currentConfig # 2)) # 0)] call (missionNamespace getVariable 'QS_fnc_AIGetKnownEnemies');
+						_firePosition = [13,WEST,TRUE,(_currentConfig # 2),((magazines (_currentConfig # 2)) # 0)] call (missionNamespace getVariable 'QS_fnc_AIGetKnownEnemies');
 						if (_firePosition isNotEqualTo [0,0,0]) then {
 							(_currentConfig # 2) setVehicleAmmo 1;
 							_smokePos = _firePosition getPos [(random 15),(random 360)];
@@ -794,7 +794,7 @@ if ((_uiTime > _currentTask_timeout) || {(((lifeState _grpLeader) in ['HEALTHY',
 	if (_currentConfig_major isEqualTo 'GENERAL') then {
 		if (_currentConfig_minor isEqualTo 'INF_VIPER') then {
 			if (_currentTask_type isEqualTo 'HUNT') then {
-				[7,EAST,_grp,_grpLeader,_grpObjectParent,400] call (missionNamespace getVariable 'QS_fnc_AIGetKnownEnemies');
+				[7,WEST,_grp,_grpLeader,_grpObjectParent,400] call (missionNamespace getVariable 'QS_fnc_AIGetKnownEnemies');
 				_targets = _grpLeader targets [TRUE,400];
 				if (_targets isEqualTo []) then {
 					if ( ((_grp getVariable ['QS_AI_GRP_DATA',[[0,0,0]]]) # 0) isNotEqualTo [0,0,0] ) then {

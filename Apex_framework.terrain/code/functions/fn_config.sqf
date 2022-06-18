@@ -178,7 +178,7 @@ if (isNil {uiNamespace getVariable 'QS_fnc_serverCommandPassword'}) exitWith {
 		{
 			0 spawn {
 				for '_x' from 0 to 1 step 0 do {
-					['Apex Framework config files missing: @Apex_cfg'] call (missionNamespace getVariable 'QS_fnc_hint');
+					['Apex Framework config files missing: @Apex_cfg_opfor'] call (missionNamespace getVariable 'QS_fnc_hint');
 					uisleep 1;
 				};
 			};
@@ -220,29 +220,29 @@ setTerrainGrid 50;
 	['CombatFormationSoft',FALSE],			// ---- this fucks up AI behaviours
 	['AwareFormationSoft',TRUE]
 ];
-{EAST setFriend _x;} forEach [[RESISTANCE,1],[WEST,0],[CIVILIAN,1]];
-{WEST setFriend _x;} forEach [[CIVILIAN,1],[EAST,0],[RESISTANCE,0]];
-{RESISTANCE setFriend _x;} forEach [[EAST,1],[WEST,0],[CIVILIAN,1]];
-{CIVILIAN setFriend _x;} forEach [[WEST,1],[EAST,1],[RESISTANCE,1]];
+{WEST setFriend _x;} forEach [[RESISTANCE,1],[EAST,0],[CIVILIAN,1]];
+{EAST setFriend _x;} forEach [[CIVILIAN,1],[WEST,0],[RESISTANCE,0]];
+{RESISTANCE setFriend _x;} forEach [[WEST,1],[EAST,0],[CIVILIAN,1]];
+{CIVILIAN setFriend _x;} forEach [[EAST,1],[WEST,1],[RESISTANCE,1]];
 _worldName = worldName;
 if (_worldName isEqualTo 'Altis') then {
 	{
-		_x setAirportSide WEST;
+		_x setAirportSide EAST;
 	} forEach (allAirports # 0);		/*/0 = Airbase 1 = AAC Airfield 2 = Krya Nera Airstrip 3 = Selakeno Airfield 4 = Molos Airfield 5 = Almyra Salt Lake Airstrip/*/
 };
 if (_worldName isEqualTo 'Tanoa') then {
 	{
-		_x setAirportSide WEST;
+		_x setAirportSide EAST;
 	} forEach (allAirports # 0);			/*/0 = Aeroport de Tanoa 1 = Tuvanaka Airbase 2 = Saint-George Airstrip 3 = Bala Airstrip 4 = La Rochelle Aerodome /*/
 };
 if (_worldName isEqualTo 'Malden') then {
 	{
-		_x setAirportSide WEST;
+		_x setAirportSide EAST;
 	} forEach (allAirports # 0);
 };
 if (_worldName isEqualTo 'Enoch') then {
 	{
-		_x setAirportSide WEST;
+		_x setAirportSide EAST;
 	} forEach (allAirports # 0);
 };
 _environment = ['mediterranean','tropic'] select (_worldName in ['Tanoa','Lingor3','Enoch']);
@@ -291,32 +291,32 @@ if ((missionNamespace getVariable ['QS_missionConfig_aoType','']) isEqualTo 'SC'
 	_sectorAreaObjects = [
 		[
 			[
-				(createSimpleObject ['a3\Modules_F_Curator\Multiplayer\surfaceSectorEast100m.p3d',[-1000,-1000,0]]),
-				(createSimpleObject ['a3\Modules_F_Curator\Multiplayer\surfaceSectorEast200m.p3d',[-1000,-1000,0]])
-			],
-			[
 				(createSimpleObject ['a3\Modules_F_Curator\Multiplayer\surfaceSectorWest100m.p3d',[-1000,-1000,0]]),
 				(createSimpleObject ['a3\Modules_F_Curator\Multiplayer\surfaceSectorWest200m.p3d',[-1000,-1000,0]])
+			],
+			[
+				(createSimpleObject ['a3\Modules_F_Curator\Multiplayer\surfaceSectorEast100m.p3d',[-1000,-1000,0]]),
+				(createSimpleObject ['a3\Modules_F_Curator\Multiplayer\surfaceSectorEast200m.p3d',[-1000,-1000,0]])
 			]
 		],
 		[
 			[
-				(createSimpleObject ['a3\Modules_F_Curator\Multiplayer\surfaceSectorEast100m.p3d',[-1000,-1000,0]]),
-				(createSimpleObject ['a3\Modules_F_Curator\Multiplayer\surfaceSectorEast200m.p3d',[-1000,-1000,0]])
-			],
-			[
 				(createSimpleObject ['a3\Modules_F_Curator\Multiplayer\surfaceSectorWest100m.p3d',[-1000,-1000,0]]),
 				(createSimpleObject ['a3\Modules_F_Curator\Multiplayer\surfaceSectorWest200m.p3d',[-1000,-1000,0]])
+			],
+			[
+				(createSimpleObject ['a3\Modules_F_Curator\Multiplayer\surfaceSectorEast100m.p3d',[-1000,-1000,0]]),
+				(createSimpleObject ['a3\Modules_F_Curator\Multiplayer\surfaceSectorEast200m.p3d',[-1000,-1000,0]])
 			]
 		],
 		[
 			[
-				(createSimpleObject ['a3\Modules_F_Curator\Multiplayer\surfaceSectorEast100m.p3d',[-1000,-1000,0]]),
-				(createSimpleObject ['a3\Modules_F_Curator\Multiplayer\surfaceSectorEast200m.p3d',[-1000,-1000,0]])
-			],
-			[
 				(createSimpleObject ['a3\Modules_F_Curator\Multiplayer\surfaceSectorWest100m.p3d',[-1000,-1000,0]]),
 				(createSimpleObject ['a3\Modules_F_Curator\Multiplayer\surfaceSectorWest200m.p3d',[-1000,-1000,0]])
+			],
+			[
+				(createSimpleObject ['a3\Modules_F_Curator\Multiplayer\surfaceSectorEast100m.p3d',[-1000,-1000,0]]),
+				(createSimpleObject ['a3\Modules_F_Curator\Multiplayer\surfaceSectorEast200m.p3d',[-1000,-1000,0]])
 			]
 		]
 	];
@@ -416,7 +416,7 @@ _recyclerUnitTypes = [
 	['QS_serverKey','abc123',TRUE],
 	['QS_teamspeak_address',_teamspeak,TRUE],
 	['QS_community_website',_website,TRUE],
-	['QS_chat_messages',(call (compileScript ['@Apex_cfg\chatMessages.sqf',FALSE])),FALSE],
+	['QS_chat_messages',(call (compileScript ['@Apex_cfg_opfor\chatMessages.sqf',FALSE])),FALSE],
 	['QS_pilot_whitelist',[],TRUE],
 	['QS_cls_whitelist',[],TRUE],
 	['QS_pilot_blacklist',[],TRUE],
@@ -754,9 +754,9 @@ _recyclerUnitTypes = [
 	['QS_projectile_manager',[],FALSE],
 	['QS_projectile_manager_PFH',-1,FALSE]
 ];
-call (compileScript ['@Apex_cfg\roles.sqf']);
+call (compileScript ['@Apex_cfg_opfor\roles.sqf']);
 ['INIT_SYSTEM'] call (missionNamespace getVariable 'QS_fnc_roles');
-missionNamespace setVariable ['QS_data_arsenal',(compileScript ['@Apex_cfg\arsenal.sqf',TRUE]),TRUE];
+missionNamespace setVariable ['QS_data_arsenal',(compileScript ['@Apex_cfg_opfor\arsenal.sqf',TRUE]),TRUE];
 if ((missionNamespace getVariable ['QS_missionConfig_baseLayout',0]) isEqualTo 0) then {
 	{
 		missionNamespace setVariable _x;

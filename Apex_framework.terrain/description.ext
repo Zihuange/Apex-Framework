@@ -690,7 +690,7 @@ class CfgFunctions {
 			class remoteExecCmd {file = "code\functions\fn_remoteExecCmd.sqf";};
 			class removeWeapon {file = "code\functions\fn_removeWeapon.sqf";};
 			class replaceWithVehicle {file = "code\functions\fn_replaceWithVehicle.sqf";};
-			class respawnOPFOR {file = "code\functions\fn_respawnOPFOR.sqf";};
+			class respawnBLUFOR {file = "code\functions\fn_respawnBLUFOR.sqf";};
 			class respawnPilot {file = "code\functions\fn_respawnPilot.sqf";};
 			class returnGroupComposition {file = "code\functions\fn_returnGroupComposition.sqf";};
 			class roles {file = "code\functions\fn_roles.sqf";};
@@ -737,8 +737,8 @@ class CfgFunctions {
 			class smDebrief {file = "code\functions\fn_smDebrief.sqf";};
 			class smDelete {file = "code\functions\fn_smDelete.sqf";};
 			class smEnemyDivers {file = "code\functions\fn_smEnemyDivers.sqf";};
-			class smEnemyEast {file = "code\functions\fn_smEnemyEast.sqf";};
-			class smEnemyEastIntel {file = "code\functions\fn_smEnemyEastIntel.sqf";};
+			class smEnemyWest {file = "code\functions\fn_smEnemyWest.sqf";};
+			class smEnemyWestIntel {file = "code\functions\fn_smEnemyWestIntel.sqf";};
 			class smEnemyGuer {file = "code\functions\fn_smEnemyGuer.sqf";};
 			class smEnemyInd {file = "code\functions\fn_smEnemyInd.sqf";};
 			class smIDAP {file = "code\functions\fn_smIDAP.sqf";};

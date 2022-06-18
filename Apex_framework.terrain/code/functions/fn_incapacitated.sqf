@@ -63,7 +63,7 @@ if (
 	(_unit getUnitTrait 'QS_trait_pilot') || 
 	{(_unit getUnitTrait 'QS_trait_fighterPilot')} || 
 	{(((getTerrainHeightASL (getPosWorld _unit)) < -2) && (!isTouchingGround _unit))} || 
-	{((_unit getVariable ['QS_unit_side',WEST]) in [EAST,RESISTANCE,CIVILIAN])}
+	{((_unit getVariable ['QS_unit_side',EAST]) in [EAST,RESISTANCE,CIVILIAN])}
 ) exitWith {
 	_unit setDamage [1,TRUE];
 	if (isPlayer _unit) then {
@@ -163,7 +163,7 @@ if (!isNull _instigator) then {
 				if ((getPlayerUID _instigator) in (['CURATOR'] call (missionNamespace getVariable 'QS_fnc_whitelist'))) then {
 					_incapacitatedText = format ['%1 重伤昏迷',_profileName];
 				} else {
-					if ((side _instigator) in [EAST,RESISTANCE]) then {
+					if ((side _instigator) in [WEST,RESISTANCE]) then {
 						_incapacitatedText = format ['%1 被 %2 重伤，陷入昏迷',_profileName,(name _instigator)];
 					} else {
 						_incapacitatedText = format ['%1 被 %2 重伤，陷入昏迷(友军误击)',_profileName,(name _instigator)];
@@ -370,7 +370,7 @@ for '_x' from 0 to 1 step 0 do {
 								_remainingTickets = (getNumber (configFile >> 'CfgVehicles' >> (typeOf _vehicle) >> 'transportSoldier')) - 1;
 								_vehicle setVariable ['QS_medicalVehicle_reviveTickets',_remainingTickets,TRUE];
 								_textReviveTickets = format ['%1 ( %2 ) - 剩余治疗次数 - %3',(getText (configFile >> 'CfgVehicles' >> (typeOf _vehicle) >> 'displayName')),(mapGridPosition _vehicle),_remainingTickets];
-								['sideChat',[WEST,'BLU'],_textReviveTickets] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+								['sideChat',[EAST,'OPF'],_textReviveTickets] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 							} else {
 								if ((_vehicle getVariable 'QS_medicalVehicle_reviveTickets') isEqualType 0) then {
 									if ((_vehicle getVariable 'QS_medicalVehicle_reviveTickets') > 0) then {
@@ -387,7 +387,7 @@ for '_x' from 0 to 1 step 0 do {
 										_remainingTickets = (_vehicle getVariable 'QS_medicalVehicle_reviveTickets') - 1;
 										_vehicle setVariable ['QS_medicalVehicle_reviveTickets',_remainingTickets,TRUE];
 										_textReviveTickets = format ['%1 ( %2 ) - 剩余治疗次数 - %3',(getText (configFile >> 'CfgVehicles' >> (typeOf _vehicle) >> 'displayName')),(mapGridPosition _vehicle),_remainingTickets];
-										['sideChat',[WEST,'BLU'],_textReviveTickets] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+										['sideChat',[EAST,'OPF'],_textReviveTickets] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 									};
 								};
 							};
@@ -630,7 +630,7 @@ _unit setMimic 'neutral';
 	['QS_respawn_disable',-1,FALSE],
 	['QS_client_medevacRequested',FALSE,FALSE]
 ];
-showHUD (missionNamespace getVariable [(format ['QS_allowedHUD_%1',(player getVariable ['QS_unit_side',WEST])]),WEST]);
+showHUD (missionNamespace getVariable [(format ['QS_allowedHUD_%1',(player getVariable ['QS_unit_side',EAST])]),EAST]);
 [29,(missionNamespace getVariable 'QS_module_fob_side')] call (missionNamespace getVariable 'QS_fnc_remoteExec');
 if ((lifeState _unit) in ['HEALTHY','INJURED']) then {
 	if (isNull _objectParent) then {

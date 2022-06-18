@@ -91,7 +91,7 @@ _trawlerPos = [_flatPos,200,300,10,2,1,0] call (missionNamespace getVariable 'QS
 _assault_boatPos = [_flatPos,15,25,10,0,1,0] call (missionNamespace getVariable 'QS_fnc_findSafePos');
 
 /*/--------- ENEMY HMG _boat (SEEMS RIGHT SINCE ITS BY THE COAST)/*/
-_boatType = ['O_boat_Armed_01_hmg_F','O_T_Boat_Armed_01_hmg_F'] select (worldName isEqualTo 'Tanoa');
+_boatType = ['B_boat_Armed_01_minigun_F','B_T_Boat_Armed_01_minigun_F'] select (worldName isEqualTo 'Tanoa');
 _boat = createVehicle [_boatType,_boatPos,[],0,'NONE'];
 missionNamespace setVariable [
 	'QS_analytics_entities_created',
@@ -99,8 +99,8 @@ missionNamespace setVariable [
 	FALSE
 ];
 _boat setDir (random 360);
-_smuggleGroup = createGroup [EAST,TRUE];
-_diverType = ['O_diver_F','O_T_Diver_F'] select (worldName isEqualTo 'Tanoa');
+_smuggleGroup = createGroup [WEST,TRUE];
+_diverType = ['B_diver_F','B_T_Diver_F'] select (worldName isEqualTo 'Tanoa');
 
 for '_x' from 0 to 4 step 1 do {
 	_smuggleGroup createUnit [_diverType,_boatPos,[],0,'NONE'];
@@ -156,7 +156,7 @@ _secondary5 = [_flatPos select 0,_flatPos select 1,0] getPos [(random 70),(rando
 
 /*/-------------------- SPAWN FORCE PROTECTION/*/
 
-_enemiesArray = [(missionNamespace getVariable 'QS_sideObj')] call (missionNamespace getVariable 'QS_fnc_smEnemyEast');
+_enemiesArray = [(missionNamespace getVariable 'QS_sideObj')] call (missionNamespace getVariable 'QS_fnc_smEnemyWest');
 {
 	0 = _enemiesArray pushBack _x;
 } count (units _smuggleGroup);
@@ -215,7 +215,7 @@ for '_x' from 0 to 1 step 0 do {
 		/*/-------------------- DE-BRIEFING/*/
 
 		missionNamespace setVariable ['QS_sideMissionUp',FALSE,TRUE];
-		['sideChat',[WEST,'HQ'],'目标被提前破坏，任务失败！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['sideChat',[EAST,'HQ'],'目标被提前破坏，任务失败！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		[0,_flatPos] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
 		
 		/*/-------------------- DELETE/*/
@@ -252,7 +252,7 @@ for '_x' from 0 to 1 step 0 do {
 	
 		/*/-------------------- BOOM!/*/
 		
-		['sideChat',[WEST,'HQ'],_c4Message] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['sideChat',[EAST,'HQ'],_c4Message] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		uiSleep 14;											/*/ghetto bomb timer/*/
 		'Bo_GBU12_LGB' createVehicle (getPos _object); 		/*/ default "Bo_Mk82"/*/
 		missionNamespace setVariable [

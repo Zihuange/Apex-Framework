@@ -83,7 +83,7 @@ if (_roadRoadValid isEqualTo [0,0,0]) then {
 
 /*/================================================ SELECT + SPAWN UNITS/*/
 
-_reinforceGroup = createGroup [EAST,TRUE];
+_reinforceGroup = createGroup [WEST,TRUE];
 _vType = selectRandomWeighted ([0] call (missionNamespace getVariable 'QS_fnc_getAIMotorPool'));
 _v = createVehicle [_vType,_roadRoadValid,[],0,'NONE'];
 missionNamespace setVariable [
@@ -99,15 +99,15 @@ _v enableVehicleCargo FALSE;
 _v forceFollowRoad TRUE;
 _v setConvoySeparation 50;
 _v limitSpeed (50 + (random [10,20,30]));
-[0,_v,EAST,1] call (missionNamespace getVariable 'QS_fnc_vSetup2');
+[0,_v,WEST,1] call (missionNamespace getVariable 'QS_fnc_vSetup2');
 clearMagazineCargoGlobal _v;
 clearWeaponCargoGlobal _v;
 clearItemCargoGlobal _v;
 clearBackpackCargoGlobal _v;
 _v lock 3;
 private _vCrewGroup = createVehicleCrew _v;
-if (!((side _vCrewGroup) in [EAST,RESISTANCE])) then {
-	_vCrewGroup = createGroup [EAST,TRUE];
+if (!((side _vCrewGroup) in [WEST,RESISTANCE])) then {
+	_vCrewGroup = createGroup [WEST,TRUE];
 	{
 		[_x] joinSilent _vCrewGroup;
 	} forEach (crew _v);
@@ -163,11 +163,11 @@ _vCrewGroup setVariable ['QS_GRP_HC',TRUE,FALSE];
 } count (units _vCrewGroup);
 _vCrewGroup enableAttack TRUE;
 if ((toLower _vType) in [
-	'o_mrap_02_f','o_mrap_02_gmg_f','o_mrap_02_hmg_f','o_lsv_02_armed_f','o_lsv_02_unarmed_f','o_t_mrap_02_ghex_f','o_t_mrap_02_gmg_ghex_f','o_t_mrap_02_hmg_ghex_f','o_t_lsv_02_armed_f','o_t_lsv_02_unarmed_f',
-	'i_mrap_03_f','i_mrap_03_gmg_f','i_mrap_03_hmg_f','o_g_offroad_01_armed_f','o_g_offroad_01_f','i_g_offroad_01_armed_f','i_g_offroad_01_f',
-	'i_truck_02_transport_f','i_truck_02_covered_f','o_truck_02_transport_f','o_truck_02_covered_f',
-	'o_ugv_01_f','o_ugv_01_rcws_f','o_t_ugv_01_rcws_ghex_f','o_t_ugv_01_ghex_f','i_ugv_01_f','i_ugv_01_rcws_f',
-	'o_lsv_02_at_f','o_g_offroad_01_at_f','i_c_offroad_02_at_f','i_c_offroad_02_lmg_f','i_g_offroad_01_at_f','o_t_lsv_02_at_f'
+	'b_mrap_01_f','b_mrap_01_gmg_f','b_mrap_01_hmg_f','b_lsv_01_armed_f','b_lsv_01_unarmed_f','b_t_mrap_01_f','b_t_mrap_01_gmg_f','b_t_mrap_01_hmg_f','b_t_lsv_01_armed_f','b_t_lsv_01_unarmed_f',
+	'i_mrap_03_f','i_mrap_03_gmg_f','i_mrap_03_hmg_f','b_g_offroad_01_armed_f','b_g_offroad_01_f','i_g_offroad_01_armed_f','i_g_offroad_01_f',
+	'i_truck_02_transport_f','i_truck_02_covered_f','b_truck_01_transport_f','b_truck_01_covered_f',
+	'b_uav_01_f','b_ugv_01_rcws_f','b_t_ugv_01_rcws_olive_f','b_uav_01_f','i_ugv_01_f','i_ugv_01_rcws_f',
+	'b_lsv_01_at_f','b_g_offroad_01_at_f','i_c_offroad_02_at_f','i_c_offroad_02_lmg_f','i_g_offroad_01_at_f','o_t_lsv_02_at_f'
 ]) then {
 	if (diag_fps > 15) then {
 		if (allPlayers isNotEqualTo []) then {
@@ -176,31 +176,31 @@ if ((toLower _vType) in [
 					if (({(alive _x)} count (missionNamespace getVariable ['QS_AI_insertHeli_helis',[]])) < (missionNamespace getVariable ['QS_AI_insertHeli_maxHelis',3])) then {
 						if (diag_tickTime > ((missionNamespace getVariable ['QS_AI_insertHeli_lastEvent',-1]) + (missionNamespace getVariable ['QS_AI_insertHeli_cooldown',600]))) then {
 							if ((missionNamespace getVariable ['QS_AI_insertHeli_spawnedAO',0]) < (missionNamespace getVariable ['QS_AI_insertHeli_maxAO',3])) then {
-								if (([4,EAST,(missionNamespace getVariable 'QS_aoPos'),2000] call (missionNamespace getVariable 'QS_fnc_AIGetKnownEnemies')) isEqualTo 0) then {
-									if (([3,EAST,(missionNamespace getVariable 'QS_aoPos'),2000] call (missionNamespace getVariable 'QS_fnc_AIGetKnownEnemies')) isEqualTo 0) then {
+								if (([4,WEST,(missionNamespace getVariable 'QS_aoPos'),2000] call (missionNamespace getVariable 'QS_fnc_AIGetKnownEnemies')) isEqualTo 0) then {
+									if (([3,WEST,(missionNamespace getVariable 'QS_aoPos'),2000] call (missionNamespace getVariable 'QS_fnc_AIGetKnownEnemies')) isEqualTo 0) then {
 										missionNamespace setVariable ['QS_AI_insertHeli_spawnedAO',((missionNamespace getVariable 'QS_AI_insertHeli_spawnedAO') + 1),FALSE];
 										missionNamespace setVariable ['QS_AI_insertHeli_lastEvent',diag_tickTime,FALSE];
 										_v enableRopeAttach TRUE;
 										_v enableVehicleCargo TRUE;
 										private _insertHeliType = '';
 										if ((toLower _vType) in [
-											'o_mrap_02_f','o_mrap_02_gmg_f','o_mrap_02_hmg_f','o_lsv_02_armed_f','o_lsv_02_unarmed_f','o_t_mrap_02_ghex_f','o_t_mrap_02_gmg_ghex_f','o_t_mrap_02_hmg_ghex_f','o_t_lsv_02_armed_f','o_t_lsv_02_unarmed_f',
-											'i_mrap_03_f','i_mrap_03_gmg_f','i_mrap_03_hmg_f','i_truck_02_transport_f','i_truck_02_covered_f','o_truck_02_transport_f','o_truck_02_covered_f',
-											'o_ugv_01_f','o_ugv_01_rcws_f','o_t_ugv_01_rcws_ghex_f','o_t_ugv_01_ghex_f','i_ugv_01_f','i_ugv_01_rcws_f','o_lsv_02_at_f','o_t_lsv_02_at_f'
+											'b_mrap_01_f','b_mrap_01_gmg_f','b_mrap_01_hmg_f','b_lsv_01_armed_f','b_lsv_01_unarmed_f','b_t_mrap_01_f','b_t_mrap_01_gmg_f','b_t_mrap_01_hmg_f','b_t_lsv_01_armed_f','b_t_lsv_01_unarmed_f',
+											'i_mrap_03_f','i_mrap_03_gmg_f','i_mrap_03_hmg_f','i_truck_02_transport_f','i_truck_02_covered_f','b_truck_01_transport_f','b_truck_01_covered_f',
+											'b_uav_01_f','b_ugv_01_rcws_f','b_t_ugv_01_rcws_olive_f','b_uav_01_f','i_ugv_01_f','i_ugv_01_rcws_f','b_lsv_01_at_f','o_t_lsv_02_at_f'
 										]) then {
-											_insertHeliType = ['O_Heli_Transport_04_F','O_Heli_Transport_04_black_F'] select (_worldName isEqualTo 'Tanoa');
+											_insertHeliType = ['B_Heli_Transport_03_F','B_Heli_Transport_03_black_F'] select (_worldName isEqualTo 'Tanoa');
 										};
 										if ((toLower _vType) in [
-											'o_g_offroad_01_armed_f','o_g_offroad_01_f','i_g_offroad_01_armed_f','i_g_offroad_01_f','o_g_offroad_01_at_f','i_c_offroad_02_at_f','i_c_offroad_02_lmg_f','i_g_offroad_01_at_f'
+											'b_g_offroad_01_armed_f','b_g_offroad_01_f','i_g_offroad_01_armed_f','i_g_offroad_01_f','b_g_offroad_01_at_f','i_c_offroad_02_at_f','i_c_offroad_02_lmg_f','i_g_offroad_01_at_f'
 										]) then {
-											_insertHeliType = ['O_Heli_Light_02_unarmed_F','O_Heli_Light_02_unarmed_F'] select (_worldName isEqualTo 'Tanoa');
+											_insertHeliType = ['B_Heli_Transport_01_F','B_Heli_Transport_01_camo_F'] select (_worldName isEqualTo 'Tanoa');
 										};
 										if (_insertHeliType isNotEqualTo '') then {
 											[
 												_pos,
 												_v,
 												_insertHeliType,
-												EAST
+												WEST
 											] call (missionNamespace getVariable 'QS_fnc_AIXHeliInsertVehicle');
 										};
 									};

@@ -30,7 +30,7 @@ if (_weapon isEqualTo 'Throw') then {
 			0 = [_projectile] spawn {
 				params ['_projectile'];
 				uiSleep 3.666;
-				private _playersNearby = ([(getPos _projectile),15,[WEST],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) select {(_x isNotEqualTo player)};
+				private _playersNearby = ([(getPos _projectile),15,[EAST],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) select {(_x isNotEqualTo player)};
 				if (_playersNearby isNotEqualTo []) then {
 					{
 						if ((([objNull,'GEOM'] checkVisibility [(getPosASL _x),(getPosASL _projectile)]) > 0) || {(([objNull,'VIEW'] checkVisibility [(getPosASL _x),(getPosASL _projectile)]) > 0)}) exitWith {
@@ -69,7 +69,7 @@ if (_weapon isEqualTo 'Throw') then {
 		_nearEntities = _unit nearEntities ['Air',25];
 		if (_nearEntities isNotEqualTo []) then {
 			{
-				if ((({(alive _x)} count (crew _x)) > 1) && (!(_unit getUnitTrait 'QS_trait_pilot')) && ((side _x) in [WEST,CIVILIAN,sideFriendly])) exitWith {
+				if ((({(alive _x)} count (crew _x)) > 1) && (!(_unit getUnitTrait 'QS_trait_pilot')) && ((side _x) in [EAST,CIVILIAN,sideFriendly])) exitWith {
 					deleteVehicle _projectile;
 				};
 			} forEach _nearEntities;
@@ -94,7 +94,7 @@ if (_weapon isEqualTo 'Throw') then {
 						'_objectParent'
 					];
 					_canAttachExp = _objectParent getVariable ['QS_client_canAttachExp',FALSE];
-					if (((_objectParent isKindOf 'AllVehicles') && (((side _objectParent) in [EAST,RESISTANCE]) || {(_canAttachExp)})) || {(!(_objectParent isKindOf 'AllVehicles'))}) then {
+					if (((_objectParent isKindOf 'AllVehicles') && (((side _objectParent) in [WEST,RESISTANCE]) || {(_canAttachExp)})) || {(!(_objectParent isKindOf 'AllVehicles'))}) then {
 						_projectile setVectorUp _surfaceNormal;
 						_projectile setPosASL _intersectPosASL;
 						[_projectile,_objectParent,TRUE] call (missionNamespace getVariable 'BIS_fnc_attachToRelative');
@@ -133,7 +133,7 @@ if (_weapon isEqualTo 'Throw') then {
 				{((!(isNull _cursorTarget)) && (isPlayer _cursorTarget))} ||
 				{((!(isNull _cursorObject)) && (!(isNull (effectiveCommander _cursorObject))) && (isPlayer (effectiveCommander _cursorObject)))}
 			) then {
-				if (!((side (group _cursorTarget)) in ((player getVariable ['QS_unit_side',WEST]) call (missionNamespace getVariable 'QS_fnc_enemySides')))) then {
+				if (!((side (group _cursorTarget)) in ((player getVariable ['QS_unit_side',EAST]) call (missionNamespace getVariable 'QS_fnc_enemySides')))) then {
 					deleteVehicle _projectile;
 				};
 			};

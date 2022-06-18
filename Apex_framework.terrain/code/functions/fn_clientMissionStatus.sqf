@@ -18,8 +18,8 @@ waitUntil {
 	uiSleep 0.1;
 	(!isNull (findDisplay 46))
 };
-_west = WEST;
-private _side = player getVariable ['QS_unit_side',_west];
+_east = EAST;
+private _side = player getVariable ['QS_unit_side',_east];
 _display = findDisplay 46;
 private _key = actionKeysNames 'NavigateMenu';
 private _keyText = _key select [1,((count _key) - 2)];
@@ -369,7 +369,7 @@ _QS_ctrl11_pos_y = ((0.005 * safezoneH) + safezoneY);
 _QS_ctrl11_pos_w = 0.1;
 _QS_ctrl11_pos_h = 0.03;
 _QS_ctrl11_scale = 1;
-_QS_ctrl_text11 = _QS_flag_west;
+_QS_ctrl_text11 = _QS_flag_east;
 _QS_ctrl_color11 = [1,1,1,0.75];
 _QS_ctrl11 ctrlSetPosition [
 	_QS_ctrl11_pos_x,
@@ -430,7 +430,7 @@ _QS_ctrl13_pos_y = ((0.005 * safezoneH) + safezoneY);
 _QS_ctrl13_pos_w = 0.1;
 _QS_ctrl13_pos_h = 0.03;
 _QS_ctrl13_scale = 1;
-_QS_ctrl_text13 = _QS_flag_east;
+_QS_ctrl_text13 = _QS_flag_west;
 _QS_ctrl_color13 = [1,1,1,0.75];
 _QS_ctrl13 ctrlSetPosition [
 	_QS_ctrl13_pos_x,
@@ -1557,7 +1557,7 @@ for '_x' from 0 to 1 step 0 do {
 			_ctrl_aps_2_ctrl ctrlShow _false;
 		};
 	};	
-	if (_side isNotEqualTo (player getVariable ['QS_unit_side',_west])) then {
-		_side = player getVariable ['QS_unit_side',_west];
+	if (_side isNotEqualTo (player getVariable ['QS_unit_side',_east])) then {
+		_side = player getVariable ['QS_unit_side',_east];
 	};
 };

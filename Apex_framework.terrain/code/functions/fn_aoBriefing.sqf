@@ -27,8 +27,8 @@ if (_type isEqualTo 'BRIEF') then {
 		'QS_marker_aoCircle',
 		'QS_marker_aoMarker'
 	];
-	if ((missionNamespace getVariable ['QS_missionConfig_playableOPFOR',0]) isNotEqualTo 0) then {
-		[objNull,_QS_AOpos] remoteExec ['QS_fnc_respawnOPFOR',[EAST,RESISTANCE],FALSE];
+	if ((missionNamespace getVariable ['QS_missionConfig_playableBLUFOR',0]) isNotEqualTo 0) then {
+		[objNull,_QS_AOpos] remoteExec ['QS_fnc_respawnBLUFOR',[WEST,RESISTANCE],FALSE];
 	};
 	'QS_marker_aoMarker' setMarkerText (format [(localize "STR_QS_Brief_take"),(toString [32,32,32]),_ao]);
 	_targetStartText = parseText format [
@@ -43,7 +43,7 @@ if (_type isEqualTo 'BRIEF') then {
 		missionNamespace setVariable ['QS_mainao_firstRun',FALSE,FALSE];
 	};
 	{
-		_x setMarkerColorLocal 'ColorOPFOR';
+		_x setMarkerColorLocal 'ColorWEST';
 		_x setMarkerAlpha 0.8;
 	} forEach [
 		'QS_marker_hqCircle',
@@ -55,25 +55,25 @@ if (_type isEqualTo 'BRIEF') then {
 	];
 	if ((missionNamespace getVariable 'QS_ao_aaMarkers') isNotEqualTo []) then {
 		{
-			_x setMarkerColorLocal 'ColorOPFOR';
+			_x setMarkerColorLocal 'ColorWEST';
 			_x setMarkerAlpha 0.8;
 		} count (missionNamespace getVariable 'QS_ao_aaMarkers');
 	};
 	if ((missionNamespace getVariable 'QS_virtualSectors_sub_1_markers') isNotEqualTo []) then {
 		{
-			_x setMarkerColorLocal 'ColorOPFOR';
+			_x setMarkerColorLocal 'ColorWEST';
 			_x setMarkerAlpha 0.5;
 		} forEach (missionNamespace getVariable 'QS_virtualSectors_sub_1_markers');
 	};
 	if ((missionNamespace getVariable 'QS_virtualSectors_sub_2_markers') isNotEqualTo []) then {
 		{
-			_x setMarkerColorLocal 'ColorOPFOR';
+			_x setMarkerColorLocal 'ColorWEST';
 			_x setMarkerAlpha 0.5;
 		} forEach (missionNamespace getVariable 'QS_virtualSectors_sub_2_markers');
 	};
 	if ((missionNamespace getVariable 'QS_virtualSectors_sub_3_markers') isNotEqualTo []) then {
 		{
-			_x setMarkerColorLocal 'ColorOPFOR';
+			_x setMarkerColorLocal 'ColorWEST';
 			_x setMarkerAlpha 0.5;
 		} forEach (missionNamespace getVariable 'QS_virtualSectors_sub_3_markers');
 	};	
@@ -146,7 +146,7 @@ if (_type isEqualTo 'DEBRIEF') then {
 	'QS_marker_aoMarker' setMarkerText (format ['%1',(toString [32,32,32])]);
 	{
 		_x setMarkerAlphaLocal 0;
-		_x setMarkerColor 'ColorOPFOR';
+		_x setMarkerColor 'ColorWEST';
 	} forEach [
 		'QS_marker_hqMarker',
 		'QS_marker_hqCircle'

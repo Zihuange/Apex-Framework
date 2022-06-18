@@ -20,7 +20,7 @@ if (isNull (objectParent _unit)) then {
 		if (!isNull _source) then {
 			if ((isPlayer _source) || {(isPlayer _instigator)}) then {
 				if (!(_unit in [_source,_instigator])) then {
-					if ((side (group _instigator)) in [(_unit getVariable ['QS_unit_side',WEST]),sideEnemy]) then {
+					if ((side (group _instigator)) in [(_unit getVariable ['QS_unit_side',EAST]),sideEnemy]) then {
 						_return = 0.05;
 					};
 				};
@@ -41,7 +41,7 @@ if (isNull (objectParent _unit)) then {
 	} else {
 		if (!isNull _instigator) then {
 			if (isPlayer _instigator) then {
-				if ((side (group _instigator)) in [(_unit getVariable ['QS_unit_side',WEST]),sideEnemy]) then {
+				if ((side (group _instigator)) in [(_unit getVariable ['QS_unit_side',EAST]),sideEnemy]) then {
 					_return = 0.05;
 				};
 			};
@@ -58,7 +58,7 @@ if (isNull (objectParent _unit)) then {
 					if (!isNull _instigator) then {
 						if (isPlayer _instigator) then {
 							if (!(_unit in [_source,_instigator])) then {
-								if ((side (group _instigator)) in [(_unit getVariable ['QS_unit_side',WEST]),sideEnemy]) then {
+								if ((side (group _instigator)) in [(_unit getVariable ['QS_unit_side',EAST]),sideEnemy]) then {
 									_return = 0;
 								};
 							};

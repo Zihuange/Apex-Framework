@@ -195,30 +195,30 @@ if (!((uniform player) isEqualTo '')) then {
 		};
 	};
 };
-// EAST respawn
-if ((_newUnit getVariable ['QS_unit_side',WEST]) isEqualTo EAST) exitWith {
-	if (!((missionNamespace getVariable ['QS_missionConfig_playableOPFOR',0]) isEqualTo 0)) then {
+// WEST respawn
+if ((_newUnit getVariable ['QS_unit_side',EAST]) isEqualTo WEST) exitWith {
+	if (!((missionNamespace getVariable ['QS_missionConfig_playableBLUFOR',0]) isEqualTo 0)) then {
 		if ((missionNamespace getVariable ['QS_missionConfig_aoType','CLASSIC']) in ['CLASSIC','SC','GRID']) then {
 			setPlayerRespawnTime 15;
 			['SET_DEFAULT_LOADOUT',(_newUnit getVariable ['QS_unit_role','rifleman'])] call (missionNamespace getVariable 'QS_fnc_roles');
-			[_newUnit,(missionNamespace getVariable 'QS_aoPos')] call (missionNamespace getVariable 'QS_fnc_respawnOPFOR');
+			[_newUnit,(missionNamespace getVariable 'QS_aoPos')] call (missionNamespace getVariable 'QS_fnc_respawnBLUFOR');
 		} else {
 			0 spawn {
-				preloadCamera (markerPos 'respawn_east');
+				preloadCamera (markerPos 'respawn_west');
 				uiSleep 0.25;
-				player setVehiclePosition [(markerPos 'respawn_east'),[],10,'NONE'];
+				player setVehiclePosition [(markerPos 'respawn_west'),[],10,'NONE'];
 			};
 		};
 	};
 	0 spawn {uiSleep 1;createDialog 'QS_client_dialog_menu_roles';};
 };
 // RESISTANCE respawn
-if ((_newUnit getVariable ['QS_unit_side',WEST]) isEqualTo RESISTANCE) exitWith {
-	if (!((missionNamespace getVariable ['QS_missionConfig_playableOPFOR',0]) isEqualTo 0)) then {
+if ((_newUnit getVariable ['QS_unit_side',EAST]) isEqualTo RESISTANCE) exitWith {
+	if (!((missionNamespace getVariable ['QS_missionConfig_playableBLUFOR',0]) isEqualTo 0)) then {
 		if ((missionNamespace getVariable ['QS_missionConfig_aoType','CLASSIC']) in ['CLASSIC','SC','GRID']) then {
 			setPlayerRespawnTime 15;
 			['SET_DEFAULT_LOADOUT',(_newUnit getVariable ['QS_unit_role','rifleman'])] call (missionNamespace getVariable 'QS_fnc_roles');
-			[_newUnit,(missionNamespace getVariable 'QS_aoPos')] call (missionNamespace getVariable 'QS_fnc_respawnOPFOR');
+			[_newUnit,(missionNamespace getVariable 'QS_aoPos')] call (missionNamespace getVariable 'QS_fnc_respawnBLUFOR');
 		} else {
 			0 spawn {
 				preloadCamera (markerPos 'respawn_resistance');
@@ -230,8 +230,8 @@ if ((_newUnit getVariable ['QS_unit_side',WEST]) isEqualTo RESISTANCE) exitWith 
 	0 spawn {uiSleep 1;createDialog 'QS_client_dialog_menu_roles';};
 };
 // CIVILIAN respawn
-if ((_newUnit getVariable ['QS_unit_side',WEST]) isEqualTo CIVILIAN) exitWith {
-	if (!((missionNamespace getVariable ['QS_missionConfig_playableOPFOR',0]) isEqualTo 0)) then {
+if ((_newUnit getVariable ['QS_unit_side',EAST]) isEqualTo CIVILIAN) exitWith {
+	if (!((missionNamespace getVariable ['QS_missionConfig_playableBLUFOR',0]) isEqualTo 0)) then {
 		0 spawn {
 			preloadCamera (markerPos 'respawn_civilian');
 			uiSleep 0.25;
@@ -241,7 +241,7 @@ if ((_newUnit getVariable ['QS_unit_side',WEST]) isEqualTo CIVILIAN) exitWith {
 	};
 	0 spawn {uiSleep 1;createDialog 'QS_client_dialog_menu_roles';};
 };
-// WEST respawn
+// EAST respawn
 setPlayerRespawnTime 5;
 ['SET_SAVED_LOADOUT',(_newUnit getVariable ['QS_unit_role','rifleman'])] call (missionNamespace getVariable 'QS_fnc_roles');
 [2,-1] spawn (missionNamespace getVariable 'QS_fnc_clientRadio');

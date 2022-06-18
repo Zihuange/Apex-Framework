@@ -33,8 +33,8 @@ missionNamespace setVariable [
 _flag setPos _sectorPosition;
 [
 	_flag,
-	EAST,
-	((missionNamespace getVariable 'QS_virtualSectors_sidesFlagsTextures') select ((missionNamespace getVariable 'QS_virtualSectors_sides') find EAST)),
+	WEST,
+	((missionNamespace getVariable 'QS_virtualSectors_sidesFlagsTextures') select ((missionNamespace getVariable 'QS_virtualSectors_sides') find WEST)),
 	FALSE,
 	objNull,
 	1
@@ -55,7 +55,7 @@ missionNamespace setVariable [
 ];
 _location setText _letter;
 _location setName _letter;
-_location setSide EAST;
+_location setSide WEST;
 _location setRectangular FALSE;
 _location setSize [50,50];
 _location setPosition _sectorPosition;

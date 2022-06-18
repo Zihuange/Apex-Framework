@@ -83,7 +83,7 @@ if (_type isEqualTo 'INIT') exitWith {
 		_positionData = selectRandom _positionsData;
 		_positionData params ['_pos','_dir'];
 		_dir = _dir + 180;
-		_markerData = ['QS_marker_destroyer_1',[-1500,-1500,0],'b_naval','Icon','','ColorWEST',[0.25,0.25],0.5,[-1500,-1500,0],0,'Destroyer'];
+		_markerData = ['QS_marker_destroyer_1',[-1500,-1500,0],'b_naval','Icon','','ColorEAST',[0.25,0.25],0.5,[-1500,-1500,0],0,'Destroyer'];
 		if ('QS_marker_destroyer_1' in allMapMarkers) then {
 			_marker = 'QS_marker_destroyer_1';
 			_pos = markerPos _marker;
@@ -260,7 +260,7 @@ if (_type isEqualTo 'DEFENSE') exitWith {
 			_logic = (missionNamespace getVariable 'QS_destroyerObject') getVariable 'QS_carrier_defenseLogic';
 			private _turret = objNull;
 			private _turrets = [];
-			private _turretGrp = createGroup [WEST,TRUE];
+			private _turretGrp = createGroup [EAST,TRUE];
 			{
 				_turret = createVehicle [(_x select 0),[-1000,-1000,500],[],100,'NONE'];
 				_turret allowDamage FALSE;

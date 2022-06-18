@@ -18,7 +18,7 @@ private [
 	'_QS_locationsUrban','_QS_urbanEnemyUnits','_QS_civilianTypes','_QS_approvedBuildingTypes','_QS_civVehicleArrayRsc','_QS_locationSelect','_QS_locationCenterPos',
 	'_QS_locationCenterName','_QS_buildingList','_QS_roadArrayRsc','_QS_flatEmptyPos','_QS_tempRoadPos','_QS_roadConnectedTo','_QS_connectedRoad','_QS_roadDir',
 	'_QS_vType','_QS_v','_QS_allArray','_QS_building','_QS_targetBuildings','_index','_QS_buildingPositions','_QS_obj1BP','_QS_obj2BP','_QS_obj3BP','_QS_buildingPositions1',
-	'_QS_buildingPositions2','_QS_buildingPositions3','_QS_object1','_QS_object2','_QS_object3','_QS_objectArray','_QS_objectType','_QS_eastGrp','_QS_unitType','_QS_pos',
+	'_QS_buildingPositions2','_QS_buildingPositions3','_QS_object1','_QS_object2','_QS_object3','_QS_objectArray','_QS_objectType','_QS_westGrp','_QS_unitType','_QS_pos',
 	'_QS_enemyArray','_QS_objectTypes','_QS_garrisonGrp','_QS_allBuildingPositions','_QS_buildingPos','_QS_inBuildingCount','_QS_garrisonCount','_QS_civilianCount',
 	'_QS_patrolCount','_wp1Pos','_wp2Pos','_wp3Pos','_wp4Pos','_QS_WP','_QS_patrolGroup','_QS_route','_QS_civilianGroup','_QS_spawnPos','_QS_unit','_QS_checkEnemyDelay',
 	'_QS_enemyDetected','_QS_BADGUY','_QS_dirTo','_QS_enemyDetected_endTime','_QS_firstDetected','_QS_positionAccepted','_QS_clearPos','_QS_qrfGroup','_markerStoragePos',
@@ -434,7 +434,7 @@ if (worldName isEqualTo 'Tanoa') then {
 	_QS_urbanEnemyUnits = [
 		"I_C_Soldier_Bandit_7_F","I_C_Soldier_Bandit_3_F","I_C_Soldier_Bandit_2_F","I_C_Soldier_Bandit_5_F","I_C_Soldier_Bandit_6_F",
 		"I_C_Soldier_Bandit_1_F","I_C_Soldier_Bandit_8_F","I_C_Soldier_Bandit_4_F","I_C_Soldier_Para_7_F","I_C_Soldier_Para_2_F","I_C_Soldier_Para_3_F",
-		"I_C_Soldier_Para_4_F","I_C_Soldier_Para_6_F","I_C_Soldier_Para_8_F","I_C_Soldier_Para_1_F","I_C_Soldier_Para_5_F",'O_T_Soldier_AA_F','O_T_Soldier_AT_F'
+		"I_C_Soldier_Para_4_F","I_C_Soldier_Para_6_F","I_C_Soldier_Para_8_F","I_C_Soldier_Para_1_F","I_C_Soldier_Para_5_F",'B_T_Soldier_AA_F','B_T_Soldier_AT_F'
 	];
 	_QS_civilianTypes = [
 		"C_Man_casual_1_F_tanoan","C_Man_casual_2_F_tanoan","C_Man_casual_3_F_tanoan","C_Man_casual_4_F_tanoan","C_Man_casual_5_F_tanoan",
@@ -447,9 +447,9 @@ if (worldName isEqualTo 'Tanoa') then {
 	];
 } else {
 	_QS_urbanEnemyUnits = [
-		'O_soldierU_A_F','O_soldierU_AAR_F','O_soldierU_AR_F','O_soldierU_medic_F','O_engineer_U_F','O_soldierU_exp_F','O_SoldierU_GL_F',
-		'O_Urban_HeavyGunner_F','O_soldierU_M_F','O_soldierU_AA_F','O_soldierU_AT_F','O_soldierU_F','O_soldierU_LAT_F','O_Urban_Sharpshooter_F',
-		'O_SoldierU_SL_F','O_soldierU_TL_F'
+		'B_Soldier_A_F','B_soldier_AAR_F','B_soldier_AR_F','B_medic_F','B_engineer_F','B_soldier_exp_F','B_Soldier_GL_F',
+		'B_HeavyGunner_F','B_soldier_M_F','B_soldier_AA_F','B_soldier_AT_F','B_soldier_F','B_soldier_LAT_F','B_Sharpshooter_F',
+		'B_Soldier_SL_F','B_Soldier_TL_F'
 	];
 	_QS_civilianTypes = [
 		"C_man_p_beggar_F","C_man_1","C_man_polo_1_F","C_man_polo_2_F","C_man_polo_3_F","C_man_polo_4_F","C_man_polo_5_F",
@@ -534,10 +534,10 @@ _index = 1;
 		};
 		0 = _QS_objectArray pushBack _QS_object1;
 		0 = _QS_allArray pushBack _QS_object1;
-		_QS_eastGrp = createGroup [EAST,TRUE];
+		_QS_westGrp = createGroup [WEST,TRUE];
 		for '_x' from 0 to (_QS_inBuildingCount - 1) step 1 do {
 			_QS_unitType = selectRandom _QS_urbanEnemyUnits;
-			_QS_unit = _QS_eastGrp createUnit [_QS_unitType,[0,0,0],[],0,'NONE'];
+			_QS_unit = _QS_westGrp createUnit [_QS_unitType,[0,0,0],[],0,'NONE'];
 			missionNamespace setVariable [
 				'QS_analytics_entities_created',
 				((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
@@ -557,7 +557,7 @@ _index = 1;
 			};
 		};
 		_safePos = [_QS_building_position,15,50,4,0,1,0] call (missionNamespace getVariable 'QS_fnc_findSafePos');
-		_grp = [_safePos,(random 360),EAST,'OIA_GuardSentry',FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
+		_grp = [_safePos,(random 360),WEST,'BUS_GuardSentry',FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 		{
 			0 = _QS_allArray pushBack _x;
 			0 = _QS_enemyArray pushBack _x;		
@@ -587,10 +587,10 @@ _index = 1;
 		};
 		0 = _QS_objectArray pushBack _QS_object2;
 		0 = _QS_allArray pushBack _QS_object2;
-		_QS_eastGrp = createGroup [EAST,TRUE];
+		_QS_westGrp = createGroup [WEST,TRUE];
 		for '_x' from 0 to (_QS_inBuildingCount - 1) step 1 do {
 			_QS_unitType = selectRandom _QS_urbanEnemyUnits;
-			_QS_unit = _QS_eastGrp createUnit [_QS_unitType,[0,0,0],[],0,'NONE'];
+			_QS_unit = _QS_westGrp createUnit [_QS_unitType,[0,0,0],[],0,'NONE'];
 			missionNamespace setVariable [
 				'QS_analytics_entities_created',
 				((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
@@ -611,7 +611,7 @@ _index = 1;
 			};
 		};
 		_safePos = [_QS_building_position,15,50,4,0,1,0] call (missionNamespace getVariable 'QS_fnc_findSafePos');
-		_grp = [_safePos,(random 360),EAST,'OIA_GuardSentry',FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
+		_grp = [_safePos,(random 360),WEST,'BUS_GuardSentry',FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 		{
 			0 = _QS_allArray pushBack _x;
 			0 = _QS_enemyArray pushBack _x;		
@@ -641,10 +641,10 @@ _index = 1;
 		};
 		0 = _QS_objectArray pushBack _QS_object3;
 		0 = _QS_allArray pushBack _QS_object3;
-		_QS_eastGrp = createGroup [EAST,TRUE];
+		_QS_westGrp = createGroup [WEST,TRUE];
 		for '_x' from 0 to (_QS_inBuildingCount - 1) step 1 do {
 			_QS_unitType = selectRandom _QS_urbanEnemyUnits;
-			_QS_unit = _QS_eastGrp createUnit [_QS_unitType,[0,0,0],[],0,'NONE'];
+			_QS_unit = _QS_westGrp createUnit [_QS_unitType,[0,0,0],[],0,'NONE'];
 			missionNamespace setVariable [
 				'QS_analytics_entities_created',
 				((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
@@ -666,7 +666,7 @@ _index = 1;
 			};
 		};
 		_safePos = [_QS_building_position,10,40,4,0,1,0] call (missionNamespace getVariable 'QS_fnc_findSafePos');
-		_grp = [_safePos,(random 360),EAST,'OIA_GuardSentry',FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
+		_grp = [_safePos,(random 360),WEST,'BUS_GuardSentry',FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 		{
 			0 = _QS_allArray pushBack _x;
 			0 = _QS_enemyArray pushBack _x;		
@@ -677,7 +677,7 @@ _index = 1;
 	_index = _index + 1;
 } count _QS_targetBuildings;
 
-_QS_garrisonGrp = createGroup [EAST,TRUE];
+_QS_garrisonGrp = createGroup [WEST,TRUE];
 for '_x' from 0 to (_QS_garrisonCount - 1) do {
 	_QS_unitType = selectRandom _QS_urbanEnemyUnits;
 	_QS_unit = _QS_garrisonGrp createUnit [_QS_unitType,[0,0,0],[],0,'NONE'];
@@ -706,7 +706,7 @@ for '_x' from 0 to (_QS_patrolCount - 1) step 1 do {
 	_wp3Pos = selectRandom _QS_allBuildingPositions;
 	_wp4Pos = selectRandom _QS_allBuildingPositions;
 	_QS_route = [_wp1Pos,_wp2Pos,_wp3Pos,_wp4Pos];
-	_QS_patrolGroup = createGroup [EAST,TRUE];
+	_QS_patrolGroup = createGroup [WEST,TRUE];
 	for '_x' from 0 to 1 step 1 do {
 		_QS_unitType = selectRandom _QS_urbanEnemyUnits;
 		_QS_unit = _QS_patrolGroup createUnit [_QS_unitType,[0,0,0],[],0,'NONE'];
@@ -988,13 +988,13 @@ for '_x' from 0 to 1 step 0 do {
 					_QS_clearPos = [];
 					_QS_clearPos = ['RADIUS',_QS_locationCenterPos,800,'LAND',[],FALSE,[],[],TRUE] call (missionNamespace getVariable 'QS_fnc_findRandomPos');
 					if ((count _QS_clearPos) > 0) then {
-						if (([_QS_clearPos,200,[WEST],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
+						if (([_QS_clearPos,200,[EAST],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
 							_QS_positionAccepted = TRUE;
 						};
 					};
 					if (_QS_positionAccepted) exitWith {};
 				};
-				_QS_qrfGroup = [_QS_clearPos,(random 360),EAST,'OI_reconTeam',FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
+				_QS_qrfGroup = [_QS_clearPos,(random 360),WEST,'OI_reconTeam',FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 				{
 					0 = _QS_allArray pushBack _x;
 					_x enableStamina FALSE;
@@ -1048,12 +1048,12 @@ for '_x' from 0 to 1 step 0 do {
 		if (({(alive _x)} count _QS_enemyArray) < 14) then {
 			for '_x' from 0 to 49 step 1 do {
 				_QS_spawnPos = [_QS_locationCenterPos,300,600,3,0,0.7,0] call (missionNamespace getVariable 'QS_fnc_findSafePos');
-				if (([_QS_spawnPos,250,[WEST],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) exitWith {};
+				if (([_QS_spawnPos,250,[EAST],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) exitWith {};
 			};
-			_QS_eastGrp = createGroup [EAST,TRUE];
+			_QS_westGrp = createGroup [WEST,TRUE];
 			for '_x' from 0 to 3 step 1 do {
 				_QS_unitType = selectRandom _QS_urbanEnemyUnits;
-				_QS_unit = _QS_eastGrp createUnit [_QS_unitType,_QS_spawnPos,[],0,'FORM'];
+				_QS_unit = _QS_westGrp createUnit [_QS_unitType,_QS_spawnPos,[],0,'FORM'];
 				missionNamespace setVariable [
 					'QS_analytics_entities_created',
 					((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
@@ -1065,9 +1065,9 @@ for '_x' from 0 to 1 step 0 do {
 				_QS_unit enableStamina FALSE;
 				[_QS_unit,'GryffinRegiment'] call (missionNamespace getVariable 'BIS_fnc_setUnitInsignia');
 			};
-			_QS_eastGrp setFormDir (_QS_spawnPos getDir _QS_locationCenterPos);
+			_QS_westGrp setFormDir (_QS_spawnPos getDir _QS_locationCenterPos);
 			_QS_attackPos = selectRandom [_QS_locationCenterPos,_QS_obj1BP,_QS_obj2BP,_QS_obj3BP];
-			[_QS_eastGrp,_QS_attackPos,TRUE] call (missionNamespace getVariable 'QS_fnc_taskAttack');
+			[_QS_westGrp,_QS_attackPos,TRUE] call (missionNamespace getVariable 'QS_fnc_taskAttack');
 		};
 		_QS_checkEnemyDelay = time + 10;
 	};

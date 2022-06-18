@@ -23,11 +23,11 @@ _centerRadius = missionNamespace getVariable 'QS_aoSize';
 _worldName = worldName;
 _worldSize = worldSize;
 if (_worldName isEqualTo 'Tanoa') then {
-	_pilotType = "O_T_Helipilot_F";
+	_pilotType = "B_T_Helipilot_F";
 } else {
-	_pilotType = "O_Helipilot_F";
+	_pilotType = "B_Helipilot_F";
 };
-_side = EAST;
+_side = WEST;
 _arrayHelicopters = [];
 _grp = createGroup [_side,TRUE];
 _playerCount = count allPlayers;
@@ -39,44 +39,44 @@ if (_playerCount > 20) then {
 	if (_playerCount > 40) then {
 		if (_worldName in ['Tanoa','Enoch']) then {
 			_airType = selectRandomWeighted [
-				'o_heli_light_02_dynamicloadout_f',1,
+				'b_heli_light_01_dynamicloadout_f',1,
 				'i_e_heli_light_03_dynamicloadout_f',1,
-				'o_heli_attack_02_dynamicloadout_f',0.25
+				'b_heli_attack_01_dynamicloadout_f',0.25
 			];
 		} else {
 			_airType = selectRandomWeighted [
-				'o_heli_light_02_dynamicloadout_f',1,
+				'b_heli_light_01_dynamicloadout_f',1,
 				'i_heli_light_03_dynamicloadout_f',1,
-				'o_heli_attack_02_dynamicloadout_f',([0,0.75] select (_worldName isEqualTo 'Altis'))
+				'b_heli_attack_01_dynamicloadout_f',([0,0.75] select (_worldName isEqualTo 'Altis'))
 			];
 		};
 	} else {
 		if (_worldName in ['Tanoa','Enoch']) then {
 			_airType = selectRandomWeighted [
-				'o_heli_light_02_dynamicloadout_f',1,
+				'b_heli_light_01_dynamicloadout_f',1,
 				'i_e_heli_light_03_dynamicloadout_f',1,
-				'o_heli_attack_02_dynamicloadout_f',0.1
+				'b_heli_attack_01_dynamicloadout_f',0.1
 			];		
 		} else {
 			_airType = selectRandomWeighted [
-				'o_heli_light_02_dynamicloadout_f',1,
+				'b_heli_light_01_dynamicloadout_f',1,
 				'i_heli_light_03_dynamicloadout_f',1,
-				'o_heli_attack_02_dynamicloadout_f',([0,0.25] select (_worldName isEqualTo 'Altis'))
+				'b_heli_attack_01_dynamicloadout_f',([0,0.25] select (_worldName isEqualTo 'Altis'))
 			];		
 		};
 	};
 } else {
 	if (_worldName in ['Tanoa','Enoch']) then {
 		_airType = selectRandomWeighted [
-			'o_heli_light_02_dynamicloadout_f',1,
+			'b_heli_light_01_dynamicloadout_f',1,
 			'i_e_heli_light_03_dynamicloadout_f',1,
-			'o_heli_attack_02_dynamicloadout_f',0
+			'b_heli_attack_01_dynamicloadout_f',0
 		];
 	} else {
 		_airType = selectRandomWeighted [
-			'o_heli_light_02_dynamicloadout_f',1,
+			'b_heli_light_01_dynamicloadout_f',1,
 			'i_heli_light_03_dynamicloadout_f',1,
-			'o_heli_attack_02_dynamicloadout_f',0
+			'b_heli_attack_01_dynamicloadout_f',0
 		];
 	};
 };
@@ -121,7 +121,7 @@ _unit = _unit call (missionNamespace getVariable 'QS_fnc_unitSetup');
 _unit assignAsDriver _air;
 _unit moveInDriver _air;
 removeAllWeapons _unit;
-if (!((typeOf _air) in ['O_Heli_Light_02_v2_F','O_Heli_Light_02_dynamicLoadout_F'])) then {
+if (!((typeOf _air) in ['B_Heli_Light_01_armed_F','B_Heli_Light_01_dynamicLoadout_F'])) then {
 	_unit = _grp createUnit [_pilotType,_randomPos,[],0,'NONE'];
 	missionNamespace setVariable [
 		'QS_analytics_entities_created',
@@ -133,15 +133,15 @@ if (!((typeOf _air) in ['O_Heli_Light_02_v2_F','O_Heli_Light_02_dynamicLoadout_F
 	_unit moveInTurret [_air,[0]];
 };
 if ((toLower _airType) in ['i_heli_light_03_dynamicloadout_f','i_e_heli_light_03_dynamicloadout_f']) then {
-	_unit = _grp createUnit [(['O_Soldier_AR_F','O_T_Soldier_AR_F'] select (_worldName in ['Tanoa','Enoch'])),[0,0,0],[],0,'NONE'];
+	_unit = _grp createUnit [(['B_soldier_AR_F','B_T_Soldier_AR_F'] select (_worldName in ['Tanoa','Enoch'])),[0,0,0],[],0,'NONE'];
 	_unit addBackpack 'B_AssaultPack_blk';
-	[_unit,'MMG_01_hex_ARCO_LP_F',4] call (missionNamespace getVariable 'QS_fnc_addWeapon');
+	[_unit,'MMG_02_sand_RCO_LP_F',4] call (missionNamespace getVariable 'QS_fnc_addWeapon');
 	_unit addPrimaryWeaponItem 'optic_lrps';
 	_unit moveInCargo [_air,0];
 	_unit selectWeapon (primaryWeapon _unit);
-	_unit = _grp createUnit [(['O_Soldier_AR_F','O_T_Soldier_AR_F'] select (_worldName isEqualTo ['Tanoa','Enoch'])),[0,0,0],[],0,'NONE'];
+	_unit = _grp createUnit [(['B_soldier_AR_F','B_T_Soldier_AR_F'] select (_worldName isEqualTo ['Tanoa','Enoch'])),[0,0,0],[],0,'NONE'];
 	_unit addBackpack 'B_AssaultPack_blk';
-	[_unit,'MMG_01_hex_ARCO_LP_F',4] call (missionNamespace getVariable 'QS_fnc_addWeapon');
+	[_unit,'MMG_02_sand_RCO_LP_F',4] call (missionNamespace getVariable 'QS_fnc_addWeapon');
 	_unit addPrimaryWeaponItem 'optic_lrps';
 	_unit moveInCargo [_air,1];
 	_unit selectWeapon (primaryWeapon _unit);

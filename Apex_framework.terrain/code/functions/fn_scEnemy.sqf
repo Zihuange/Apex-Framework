@@ -101,184 +101,184 @@ _boatPatrolEnabled = TRUE;
 _isArmedAirEnabled = missionNamespace getVariable ['QS_armedAirEnabled',TRUE];
 _grpCount = -1;
 _grp = grpNull;
-_side = EAST;
+_side = WEST;
 _infantryGroupType = '';
 _infantryGroupTypes = [
-	'OIA_InfSentry',1,
-	'OIA_InfSquad',3,
-	'OIA_InfTeam',4,
-	'OIA_InfTeam_LAT',3,
-	'OIA_InfAssault',2,
-	'OIA_InfTeam_AA',2,
-	'OIA_InfTeam_AT',2,
-	'OIA_ARTeam',2,
-	'OIA_InfTeam_HAT',2
+	'BUS_InfSentry',1,
+	'BUS_InfSquad',3,
+	'BUS_InfTeam',4,
+	'BUS_InfTeam_LAT',3,
+	'BUS_InfAssault',2,
+	'BUS_InfTeam_AA',2,
+	'BUS_InfTeam_AT',2,
+	'BUS_ARTeam',2,
+	'BUS_InfTeam_HAT',2
 ];
 if (_worldName in ['Tanoa','Enoch']) then {
-	_staticTypes = ['O_HMG_01_high_F'];
-	_airTypes = ['i_e_heli_light_03_dynamicloadout_f','O_Heli_Light_02_dynamicLoadout_F','O_Heli_Light_02_v2_F'];
-	_engineerType = 'O_T_Engineer_F';
-	_aaTypes = ['O_T_APC_Tracked_02_AA_ghex_F'];
-	_mrapTypes = ['O_T_MRAP_02_gmg_ghex_F','O_T_MRAP_02_hmg_ghex_F','O_T_LSV_02_armed_F'];
+	_staticTypes = ['B_HMG_01_high_F'];
+	_airTypes = ['i_e_heli_light_03_dynamicloadout_f','B_Heli_Light_01_dynamicLoadout_F','B_Heli_Light_01_armed_F'];
+	_engineerType = 'B_T_Engineer_F';
+	_aaTypes = ['B_T_APC_Tracked_01_AA_F'];
+	_mrapTypes = ['B_T_MRAP_01_gmg_F','B_T_MRAP_01_hmg_F','B_T_LSV_01_armed_F'];
 	if (_playerCount >= _playerThreshold) then {
 		if (_isArmedAirEnabled) then {
 			_vehTypes = [
-				'O_T_APC_Tracked_02_cannon_ghex_F',
-				'O_T_APC_Wheeled_02_rcws_v2_ghex_F',
-				'O_T_APC_Tracked_02_cannon_ghex_F',
+				'B_T_AFV_Wheeled_01_cannon_F',
+				'B_T_APC_Wheeled_01_cannon_F',
+				'B_T_AFV_Wheeled_01_cannon_F',
 				'I_APC_Wheeled_03_cannon_F',
 				'I_APC_tracked_03_cannon_F',
 				'B_APC_Tracked_01_rcws_F',
-				'O_T_MBT_02_cannon_ghex_F',
+				'B_T_MBT_01_cannon_F',
 				'I_APC_Wheeled_03_cannon_F',
 				'I_MBT_03_cannon_F',
-				'O_T_MRAP_02_gmg_ghex_F',
-				'O_T_MRAP_02_hmg_ghex_F',
-				'O_T_LSV_02_armed_F',
-				'O_T_MRAP_02_gmg_ghex_F',
-				'O_T_MRAP_02_hmg_ghex_F',
-				'O_T_LSV_02_armed_F'
+				'B_T_MRAP_01_gmg_F',
+				'B_T_MRAP_01_hmg_F',
+				'B_T_LSV_01_armed_F',
+				'B_T_MRAP_01_gmg_F',
+				'B_T_MRAP_01_hmg_F',
+				'B_T_LSV_01_armed_F'
 			];
 		} else {
 			_vehTypes = [
-				'O_T_APC_Tracked_02_cannon_ghex_F',
-				'O_T_APC_Wheeled_02_rcws_v2_ghex_F',
-				'O_T_APC_Tracked_02_cannon_ghex_F',
-				'O_T_APC_Tracked_02_cannon_ghex_F',
-				'O_T_APC_Wheeled_02_rcws_v2_ghex_F',
-				'O_T_APC_Tracked_02_cannon_ghex_F',
+				'B_T_AFV_Wheeled_01_cannon_F',
+				'B_T_APC_Wheeled_01_cannon_F',
+				'B_T_AFV_Wheeled_01_cannon_F',
+				'B_T_AFV_Wheeled_01_cannon_F',
+				'B_T_APC_Wheeled_01_cannon_F',
+				'B_T_AFV_Wheeled_01_cannon_F',
 				'I_APC_Wheeled_03_cannon_F',
 				'I_APC_tracked_03_cannon_F',
 				'B_APC_Tracked_01_rcws_F',
-				'O_T_MBT_02_cannon_ghex_F',
+				'B_T_MBT_01_cannon_F',
 				'I_APC_Wheeled_03_cannon_F',
 				'I_MBT_03_cannon_F',
-				'O_T_MRAP_02_gmg_ghex_F',
-				'O_T_MRAP_02_hmg_ghex_F',
-				'O_T_LSV_02_armed_F',
-				'O_T_MRAP_02_gmg_ghex_F',
-				'O_T_MRAP_02_hmg_ghex_F',
-				'O_T_LSV_02_armed_F'
+				'B_T_MRAP_01_gmg_F',
+				'B_T_MRAP_01_hmg_F',
+				'B_T_LSV_01_armed_F',
+				'B_T_MRAP_01_gmg_F',
+				'B_T_MRAP_01_hmg_F',
+				'B_T_LSV_01_armed_F'
 			];		
 		};
 	} else {
 		if (_isArmedAirEnabled) then {
 			_vehTypes = [
-				'O_T_APC_Tracked_02_cannon_ghex_F',
-				'O_T_APC_Wheeled_02_rcws_v2_ghex_F',
+				'B_T_AFV_Wheeled_01_cannon_F',
+				'B_T_APC_Wheeled_01_cannon_F',
 				'I_APC_Wheeled_03_cannon_F',
 				'I_MRAP_03_hmg_F'
 			];
 		} else {
 			_vehTypes = [
-				'O_T_APC_Tracked_02_cannon_ghex_F',
-				'O_T_APC_Wheeled_02_rcws_v2_ghex_F',
+				'B_T_AFV_Wheeled_01_cannon_F',
+				'B_T_APC_Wheeled_01_cannon_F',
 				'I_APC_Wheeled_03_cannon_F',
 				'I_MRAP_03_hmg_F'
 			];
 		};
 	};
-	_mortGunnerType = 'O_T_Support_Mort_F';
-	_pilotType = 'O_T_Helipilot_F';
-	_jtacType = 'O_T_Recon_JTAC_F';
-	_officerType = 'O_T_Officer_F';
+	_mortGunnerType = 'B_T_Support_Mort_F';
+	_pilotType = 'B_T_Helipilot_F';
+	_jtacType = 'B_T_Recon_JTAC_F';
+	_officerType = 'B_T_Officer_F';
 } else {
-	_staticTypes = ['O_HMG_01_high_F'];
-	_airTypes = ['i_heli_light_03_dynamicloadout_f','O_Heli_Light_02_dynamicLoadout_F','O_Heli_Light_02_v2_F','O_Heli_Attack_02_dynamicLoadout_black_F','O_Heli_Attack_02_dynamicLoadout_F'];
-	_engineerType = 'O_engineer_F';
-	_aaTypes = ['O_APC_Tracked_02_AA_F','O_APC_Tracked_02_AA_F','O_APC_Tracked_02_AA_F','B_APC_Tracked_01_AA_F','O_APC_Tracked_02_AA_F'];
-	_mrapTypes = ['O_MRAP_02_gmg_F','O_MRAP_02_hmg_F','O_LSV_02_armed_F'];
+	_staticTypes = ['B_HMG_01_high_F'];
+	_airTypes = ['i_heli_light_03_dynamicloadout_f','B_Heli_Light_01_dynamicLoadout_F','B_Heli_Light_01_armed_F','B_Heli_Attack_01_F','B_Heli_Attack_01_dynamicLoadout_F'];
+	_engineerType = 'B_engineer_F';
+	_aaTypes = ['B_APC_Tracked_01_AA_F','B_APC_Tracked_01_AA_F','B_APC_Tracked_01_AA_F','B_APC_Tracked_01_AA_F','B_APC_Tracked_01_AA_F'];
+	_mrapTypes = ['B_MRAP_01_gmg_F','B_MRAP_01_hmg_F','B_LSV_01_armed_F'];
 	if (_playerCount >= _playerThreshold) then {
 		if (_isArmedAirEnabled) then {
 			_vehTypes = [
-				'O_MBT_02_cannon_F',
-				'O_APC_Tracked_02_cannon_F',
-				'O_APC_Wheeled_02_rcws_v2_F',
-				'O_APC_Tracked_02_cannon_F',
+				'B_MBT_01_cannon_F',
+				'B_AFV_Wheeled_01_cannon_F',
+				'B_APC_Wheeled_01_cannon_F',
+				'B_AFV_Wheeled_01_cannon_F',
 				'I_APC_Wheeled_03_cannon_F',
 				'I_APC_tracked_03_cannon_F',
 				'I_MBT_03_cannon_F',
 				'B_APC_Tracked_01_rcws_F',
-				'O_MBT_02_cannon_F',
+				'B_MBT_01_cannon_F',
 				'I_APC_tracked_03_cannon_F',
-				'O_MRAP_02_gmg_F',
-				'O_MRAP_02_hmg_F',
-				'O_LSV_02_armed_F',
-				'O_MRAP_02_gmg_F',
-				'O_MRAP_02_hmg_F',
-				'O_LSV_02_armed_F'
+				'B_MRAP_01_gmg_F',
+				'B_MRAP_01_hmg_F',
+				'B_LSV_01_armed_F',
+				'B_MRAP_01_gmg_F',
+				'B_MRAP_01_hmg_F',
+				'B_LSV_01_armed_F'
 			];
 		} else {
 			_vehTypes = [
-				'O_MBT_02_cannon_F',
-				'O_APC_Tracked_02_cannon_F',
-				'O_APC_Wheeled_02_rcws_v2_F',
-				'O_APC_Tracked_02_cannon_F',
+				'B_MBT_01_cannon_F',
+				'B_AFV_Wheeled_01_cannon_F',
+				'B_APC_Wheeled_01_cannon_F',
+				'B_AFV_Wheeled_01_cannon_F',
 				'I_APC_Wheeled_03_cannon_F',
-				'O_APC_Wheeled_02_rcws_v2_F',
-				'O_APC_Tracked_02_cannon_F',
+				'B_APC_Wheeled_01_cannon_F',
+				'B_AFV_Wheeled_01_cannon_F',
 				'I_APC_Wheeled_03_cannon_F',
 				'I_APC_tracked_03_cannon_F',
 				'I_MBT_03_cannon_F',
 				'B_APC_Tracked_01_rcws_F',
-				'O_MBT_02_cannon_F',
+				'B_MBT_01_cannon_F',
 				'I_APC_tracked_03_cannon_F',
-				'O_MRAP_02_gmg_F',
-				'O_MRAP_02_hmg_F',
-				'O_LSV_02_armed_F',
-				'O_MRAP_02_gmg_F',
-				'O_MRAP_02_hmg_F',
-				'O_LSV_02_armed_F'
+				'B_MRAP_01_gmg_F',
+				'B_MRAP_01_hmg_F',
+				'B_LSV_01_armed_F',
+				'B_MRAP_01_gmg_F',
+				'B_MRAP_01_hmg_F',
+				'B_LSV_01_armed_F'
 			];	
 		};
 	} else {
 		if (_isArmedAirEnabled) then {
 			_vehTypes = [
-				'O_MBT_02_cannon_F',
-				'O_APC_Tracked_02_cannon_F',
-				'O_APC_Wheeled_02_rcws_v2_F',
-				'O_APC_Tracked_02_cannon_F',
+				'B_MBT_01_cannon_F',
+				'B_AFV_Wheeled_01_cannon_F',
+				'B_APC_Wheeled_01_cannon_F',
+				'B_AFV_Wheeled_01_cannon_F',
 				'I_APC_Wheeled_03_cannon_F',
 				'I_APC_tracked_03_cannon_F',
 				'I_MBT_03_cannon_F',
 				'B_APC_Tracked_01_rcws_F',
-				'O_MBT_02_cannon_F',
+				'B_MBT_01_cannon_F',
 				'I_APC_tracked_03_cannon_F',
-				'O_MRAP_02_gmg_F',
-				'O_MRAP_02_hmg_F',
-				'O_LSV_02_armed_F',
-				'O_MRAP_02_gmg_F',
-				'O_MRAP_02_hmg_F',
-				'O_LSV_02_armed_F'
+				'B_MRAP_01_gmg_F',
+				'B_MRAP_01_hmg_F',
+				'B_LSV_01_armed_F',
+				'B_MRAP_01_gmg_F',
+				'B_MRAP_01_hmg_F',
+				'B_LSV_01_armed_F'
 			];
 		} else {
 			_vehTypes = [
-				'O_MBT_02_cannon_F',
-				'O_APC_Tracked_02_cannon_F',
-				'O_APC_Wheeled_02_rcws_v2_F',
-				'O_APC_Tracked_02_cannon_F',
+				'B_MBT_01_cannon_F',
+				'B_AFV_Wheeled_01_cannon_F',
+				'B_APC_Wheeled_01_cannon_F',
+				'B_AFV_Wheeled_01_cannon_F',
 				'I_APC_Wheeled_03_cannon_F',
-				'O_APC_Wheeled_02_rcws_v2_F',
-				'O_APC_Tracked_02_cannon_F',
+				'B_APC_Wheeled_01_cannon_F',
+				'B_AFV_Wheeled_01_cannon_F',
 				'I_APC_Wheeled_03_cannon_F',
 				'I_APC_tracked_03_cannon_F',
 				'I_MBT_03_cannon_F',
 				'B_APC_Tracked_01_rcws_F',
-				'O_MBT_02_cannon_F',
+				'B_MBT_01_cannon_F',
 				'I_APC_tracked_03_cannon_F',
-				'O_MRAP_02_gmg_F',
-				'O_MRAP_02_hmg_F',
-				'O_LSV_02_armed_F',
-				'O_MRAP_02_gmg_F',
-				'O_MRAP_02_hmg_F',
-				'O_LSV_02_armed_F'
+				'B_MRAP_01_gmg_F',
+				'B_MRAP_01_hmg_F',
+				'B_LSV_01_armed_F',
+				'B_MRAP_01_gmg_F',
+				'B_MRAP_01_hmg_F',
+				'B_LSV_01_armed_F'
 			];
 		};
 	};
-	_mortGunnerType = 'O_support_MG_F';
-	_pilotType = 'O_Helipilot_F';
-	_jtacType = 'O_recon_JTAC_F';
-	_officerType = 'O_officer_F';
+	_mortGunnerType = 'B_support_MG_F';
+	_pilotType = 'B_Helipilot_F';
+	_jtacType = 'B_recon_JTAC_F';
+	_officerType = 'B_officer_F';
 };
 
 diag_log '****************************************************';
@@ -290,13 +290,13 @@ _grp = createGroup [_side,TRUE];
 _randomPos = ['RADIUS',_centerPos,_centerRadius,'LAND',[],FALSE,[],[],TRUE] call (missionNamespace getVariable 'QS_fnc_findRandomPos');
 if (_playerCount > 20) then {
 	_airTypes = if (_worldName isEqualTo 'Tanoa') then [
-		{['O_Heli_Light_02_dynamicLoadout_F','i_e_heli_light_03_dynamicloadout_f']},
-		{['O_Heli_Light_02_dynamicLoadout_F','i_heli_light_03_dynamicloadout_f','O_Heli_Attack_02_dynamicLoadout_black_F','O_Heli_Attack_02_dynamicLoadout_F']}
+		{['B_Heli_Light_01_dynamicLoadout_F','i_e_heli_light_03_dynamicloadout_f']},
+		{['B_Heli_Light_01_dynamicLoadout_F','i_heli_light_03_dynamicloadout_f','B_Heli_Attack_01_F','B_Heli_Attack_01_dynamicLoadout_F']}
 	];
 } else {
 	_airTypes = if (_worldName isEqualTo 'Tanoa') then [
-		{['O_Heli_Light_02_dynamicLoadout_F','i_e_heli_light_03_dynamicloadout_f']},
-		{['O_Heli_Light_02_dynamicLoadout_F','i_heli_light_03_dynamicloadout_f','O_Heli_Attack_02_dynamicLoadout_black_F','O_Heli_Attack_02_dynamicLoadout_F']}
+		{['B_Heli_Light_01_dynamicLoadout_F','i_e_heli_light_03_dynamicloadout_f']},
+		{['B_Heli_Light_01_dynamicLoadout_F','i_heli_light_03_dynamicloadout_f','B_Heli_Attack_01_F','B_Heli_Attack_01_dynamicLoadout_F']}
 	];
 };
 _airType = selectRandom _airTypes;
@@ -338,7 +338,7 @@ _unit = _unit call (missionNamespace getVariable 'QS_fnc_unitSetup');
 _unit assignAsDriver _air;
 _unit moveInDriver _air;
 (missionNamespace getVariable 'QS_AI_supportProviders_CASHELI') pushBack (effectiveCommander _air);
-if (!((typeOf _air) in ['O_Heli_Light_02_v2_F','O_Heli_Light_02_dynamicLoadout_F'])) then {
+if (!((typeOf _air) in ['B_Heli_Light_01_armed_F','B_Heli_Light_01_dynamicLoadout_F'])) then {
 	_unit = _grp createUnit [_pilotType,_randomPos,[],0,'NONE'];
 	missionNamespace setVariable [
 		'QS_analytics_entities_created',
@@ -354,15 +354,15 @@ if (!((typeOf _air) in ['O_Heli_Light_02_v2_F','O_Heli_Light_02_dynamicLoadout_F
 	/*/
 };
 if ((toLower _airType) in ['i_heli_light_03_dynamicloadout_f','i_e_heli_light_03_dynamicloadout_f']) then {
-	_unit = _grp createUnit [(['O_Soldier_AR_F','O_T_Soldier_AR_F'] select (_worldName in ['Tanoa','Enoch'])),[0,0,0],[],0,'NONE'];
+	_unit = _grp createUnit [(['B_Soldier_AR_F','B_T_Soldier_AR_F'] select (_worldName in ['Tanoa','Enoch'])),[0,0,0],[],0,'NONE'];
 	_unit addBackpack 'B_AssaultPack_blk';
-	[_unit,'MMG_01_hex_ARCO_LP_F',4] call (missionNamespace getVariable 'QS_fnc_addWeapon');
+	[_unit,'MMG_02_sand_RCO_LP_F',4] call (missionNamespace getVariable 'QS_fnc_addWeapon');
 	_unit addPrimaryWeaponItem 'optic_lrps';
 	_unit moveInCargo [_air,0];
 	_entityArray pushBack _unit;
-	_unit = _grp createUnit [(['O_Soldier_AR_F','O_T_Soldier_AR_F'] select (_worldName in ['Tanoa','Enoch'])),[0,0,0],[],0,'NONE'];
+	_unit = _grp createUnit [(['B_Soldier_AR_F','B_T_Soldier_AR_F'] select (_worldName in ['Tanoa','Enoch'])),[0,0,0],[],0,'NONE'];
 	_unit addBackpack 'B_AssaultPack_blk';
-	[_unit,'MMG_01_hex_ARCO_LP_F',4] call (missionNamespace getVariable 'QS_fnc_addWeapon');
+	[_unit,'MMG_02_sand_RCO_LP_F',4] call (missionNamespace getVariable 'QS_fnc_addWeapon');
 	_unit addPrimaryWeaponItem 'optic_lrps';
 	_unit moveInCargo [_air,1];
 	_entityArray pushBack _unit;
@@ -514,7 +514,7 @@ for '_x' from 0 to 1 step 0 do {
 		_vehicle addEventHandler ['Killed',(missionNamespace getVariable 'QS_fnc_vKilled2')];
 		_vehicle allowCrewInImmobile TRUE;
 		_vehicle setUnloadInCombat [TRUE,FALSE];
-		[0,_vehicle,EAST,1] call (missionNamespace getVariable 'QS_fnc_vSetup2');
+		[0,_vehicle,WEST,1] call (missionNamespace getVariable 'QS_fnc_vSetup2');
 		_vehicle addEventHandler [
 			'GetOut',
 			{
@@ -652,11 +652,11 @@ if (_allowedGarrison) then {
 		];
 	} else {
 		_indUnitTypes = [
-			"O_soldierU_A_F","O_soldierU_AAR_F","O_soldierU_AR_F","O_soldierU_medic_F","O_engineer_U_F","O_soldierU_exp_F","O_SoldierU_GL_F",
-			"O_Urban_HeavyGunner_F","O_soldierU_M_F","O_soldierU_AT_F","O_soldierU_F","O_soldierU_LAT_F","O_Urban_Sharpshooter_F",
-			"O_SoldierU_SL_F","O_soldierU_TL_F","O_G_engineer_F","O_G_medic_F","O_G_Soldier_A_F","O_G_Soldier_AR_F","O_G_Soldier_exp_F","O_G_Soldier_F","O_G_Soldier_F",
-			"O_G_Soldier_GL_F","O_G_Soldier_LAT_F","O_G_Soldier_lite_F","O_G_Soldier_M_F","O_G_Soldier_SL_F","O_G_Soldier_TL_F",
-			"O_G_Sharpshooter_F","O_G_Soldier_AR_F"
+			'B_Soldier_A_F','B_soldier_AAR_F','B_soldier_AR_F','B_medic_F','B_engineer_F','B_soldier_exp_F','B_Soldier_GL_F',
+			'B_HeavyGunner_F','B_soldier_M_F','B_soldier_AA_F','B_soldier_AT_F','B_soldier_F','B_soldier_LAT_F','B_Sharpshooter_F',
+			'B_Soldier_SL_F','B_Soldier_TL_F',"B_G_engineer_F","B_G_medic_F","B_G_Soldier_A_F","B_G_Soldier_AR_F","B_G_Soldier_exp_F","B_G_Soldier_F","B_G_Soldier_F",
+			"B_G_Soldier_GL_F","B_G_Soldier_LAT_F","B_G_Soldier_lite_F","B_G_Soldier_M_F","B_G_Soldier_SL_F","B_G_Soldier_TL_F",
+			"B_G_Sharpshooter_F","B_G_Soldier_AR_F"
 		];
 	};
 	_grp = createGroup [RESISTANCE,TRUE];

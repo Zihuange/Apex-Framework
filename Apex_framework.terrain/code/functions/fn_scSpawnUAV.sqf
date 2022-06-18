@@ -17,12 +17,12 @@ private _return = [];
 _centerPos = missionNamespace getVariable 'QS_AOpos';
 _centerRadius = missionNamespace getVariable 'QS_aoSize';
 _type = selectRandomWeighted [
-	'o_uav_02_dynamicloadout_f',([0.1,0.5] select ((count allPlayers) > 15)),
-	'o_uav_01_f',0.5
+	'b_uav_02_dynamicloadout_f',([0.1,0.5] select ((count allPlayers) > 15)),
+	'b_uav_01_f',0.5
 ];
 private _position = [0,0,0];
 private _dist = 2000;
-if (_type in ['o_uav_01_f']) then {
+if (_type in ['b_uav_01_f']) then {
 	_dist = 300;
 	_position = _centerPos getPos [(_dist + (random _dist)),(random 360)];
 	_position set [2,100];
@@ -75,7 +75,7 @@ if (!isNull _vehicle) then {
 	if (!((waypoints _grp) isEqualTo [])) then {
 		[_grp,0] setWaypointForceBehaviour FALSE;
 	};
-	if (_type in ['o_uav_02_dynamicloadout_f','i_uav_02_dynamicloadout_f']) then {
+	if (_type in ['b_uav_02_dynamicloadout_f','i_uav_02_dynamicloadout_f']) then {
 		['setFeatureType',_vehicle,2] remoteExec ['QS_fnc_remoteExecCmd',-2,_vehicle];
 		if ((random 1) > 0.333) then {
 			_vehicle flyInHeightASL [500,(300 + (random 100)),(500 + (random 500))];
@@ -111,7 +111,7 @@ if (!isNull _vehicle) then {
 		_grp setVariable ['QS_AI_GRP_PATROLINDEX',0,FALSE];
 		_grp setVariable ['QS_GRP_HC',TRUE,FALSE];
 	};
-	if (_type in ['o_uav_06_f','o_uav_06_medical_f','o_uav_01_f']) then {
+	if (_type in ['b_uav_06_f','b_uav_06_medical_f','b_uav_01_f']) then {
 		if ((random 1) > 0.333) then {
 			_vehicle flyInHeightASL [75,75,150];
 		};

@@ -20,9 +20,9 @@ private [
 _pos = _this select 0;
 _enemiesArray = [];
 _terrainHeightASL = getTerrainHeightASL _pos;
-_AboatTypes = ['O_Boat_Armed_01_hmg_F','I_Boat_Armed_01_minigun_F'];
-_boatTypes = ['I_Boat_Transport_01_F','O_Boat_Transport_01_F'];
-_subTypes = ['O_SDV_01_F','I_SDV_01_F'];
+_AboatTypes = ['B_Boat_Armed_01_minigun_F','I_Boat_Armed_01_minigun_F'];
+_boatTypes = ['I_Boat_Transport_01_F','B_Boat_Transport_01_F'];
+_subTypes = ['B_SDV_01_F','I_SDV_01_F'];
 _AboatsCount = 2;
 _boatsCount = 1;
 _boat = objNull;
@@ -70,9 +70,9 @@ for '_x' from 0 to (_AboatsCount - 1) step 1 do {
 	{
 		_grpUnit = _x;
 		_grpUnit call (missionNamespace getVariable 'QS_fnc_unitSetup');
-		_grpUnit forceAddUniform 'U_O_Wetsuit';
+		_grpUnit forceAddUniform 'U_B_Wetsuit';
 		_grpUnit addVest 'V_RebreatherIR';
-		_grpUnit addGoggles 'G_O_Diving';
+		_grpUnit addGoggles 'G_B_Diving';
 		[_grpUnit,'arifle_SDAR_F',3] call (missionNamespace getVariable 'QS_fnc_addWeapon');
 		_grpUnit selectWeapon (primaryWeapon _grpUnit);
 		0 = _enemiesArray pushBack _grpUnit;

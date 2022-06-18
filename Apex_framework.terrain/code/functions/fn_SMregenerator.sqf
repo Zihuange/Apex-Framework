@@ -106,20 +106,20 @@ _composition = [_spawnPosition,(random 360),_compositionData,FALSE] call (missio
 ];
 _unitTypes = [
 	[
-		'o_v_soldier_tl_hex_f',0.1,
-		'o_v_soldier_m_hex_f',0.3,
-		'o_v_soldier_exp_hex_f',0.3,
-		'o_v_soldier_lat_hex_f',0.4,
-		'o_v_soldier_medic_hex_f',0.2,
-		'o_v_soldier_hex_f',0.6
+		'b_ctrg_soldier_ar_a_f',0.1,
+		'b_ctrg_sharphooter_f',0.3,
+		'b_ctrg_soldier_ar_a_f',0.3,
+		'b_ctrg_soldier_gl_lat_f',0.4,
+		'b_ctrg_soldier_m_medic_f',0.2,
+		'b_ctrg_soldier_engineer_exp_f',0.6
 	],
 	[
-		'o_v_soldier_tl_ghex_f',0.1,
-		'o_v_soldier_m_ghex_f',0.3,
-		'o_v_soldier_exp_ghex_f',0.3,
-		'o_v_soldier_lat_ghex_f',0.4,
-		'o_v_soldier_medic_ghex_f',0.2,
-		'o_v_soldier_ghex_f',0.6
+		'b_ctrg_soldier_tl_tna_f',0.1,
+		'b_ctrg_soldier_m_tna_f',0.3,
+		'b_ctrg_soldier_exp_tna_f',0.3,
+		'b_ctrg_soldier_lat_tna_f',0.4,
+		'b_ctrg_soldier_medic_tna_f',0.2,
+		'b_ctrg_soldier_tna_f',0.6
 	]
 ] select (worldName in ['Tanoa','Lingor3']);
 private _playerCount = count _allPlayers;
@@ -147,7 +147,7 @@ private _tanks = [];
 for '_x' from 0 to (_tankCount - 1) step 1 do {
 	_grpSpawnPos = ['RADIUS',_spawnPosition,400,'LAND',[5,0,0.5,3,0,FALSE,objNull],TRUE,[],[],FALSE] call (missionNamespace getVariable 'QS_fnc_findRandomPos');
 	if ((_grpSpawnPos distance2D _spawnPosition) < 500) then {
-		_grp = createGroup [EAST,TRUE];
+		_grp = createGroup [WEST,TRUE];
 		_tank = createVehicle [(selectRandomWeighted _tankTypes),_grpSpawnPos,[],0,'NONE'];
 		_tank setDir (random 360);
 		_tank setVehiclePosition [(getPosASL _tank),[],0,'NONE'];
@@ -158,7 +158,7 @@ for '_x' from 0 to (_tankCount - 1) step 1 do {
 		_tank setConvoySeparation 50;
 		_tank limitSpeed _speed;
 		_tank addEventHandler ['GetOut',(missionNamespace getVariable 'QS_fnc_AIXDismountDisabled')];
-		[0,_tank,EAST] call (missionNamespace getVariable 'QS_fnc_vSetup2');
+		[0,_tank,WEST] call (missionNamespace getVariable 'QS_fnc_vSetup2');
 		(missionNamespace getVariable 'QS_AI_vehicles') pushBack _tank;
 		createVehicleCrew _tank;
 		(crew _tank) joinSilent _grp;
@@ -170,7 +170,7 @@ for '_x' from 0 to (_tankCount - 1) step 1 do {
 		_all pushBack _tank;
 		{
 			_x setUnitTrait ['engineer',TRUE,FALSE];
-			_x setUnitLoadout (getUnitLoadout (['O_engineer_F','O_T_Engineer_F'] select (worldName in ['Tanoa','Lingor3'])));
+			_x setUnitLoadout (getUnitLoadout (['B_engineer_F','B_T_Engineer_F'] select (worldName in ['Tanoa','Lingor3'])));
 			_all pushBack _x;
 		} forEach (crew _tank);
 		_tanks pushBack _tank;
@@ -189,7 +189,7 @@ if ((random 1) > 0.5) then {
 		_tank lock 3;
 		_tank lockDriver TRUE;
 		_tank setVariable ['QS_vehicle_disableAIUnstuck',TRUE,FALSE];
-		[0,_tank,EAST] call (missionNamespace getVariable 'QS_fnc_vSetup2');
+		[0,_tank,WEST] call (missionNamespace getVariable 'QS_fnc_vSetup2');
 		(missionNamespace getVariable 'QS_AI_vehicles') pushBack _tank;
 		createVehicleCrew _tank;
 		_tank deleteVehicleCrew (driver _tank);
@@ -246,7 +246,7 @@ private _forestPositions = (_terrainData select 8) select {((_x distance2D _spaw
 _enoughPositions = (count _forestPositions) > 10;
 private _arrayToSend = [];
 private _signalPulseCheckDelay = 15;
-_east = EAST;
+_west = WEST;
 missionNamespace setVariable ['QS_smSuccess',FALSE,FALSE];
 for '_x' from 0 to 1 step 0 do {
 	_time = diag_tickTime;
@@ -271,7 +271,7 @@ for '_x' from 0 to 1 step 0 do {
 				};
 			};
 			if (_posFound) then {
-				_grp = createGroup [EAST,TRUE];
+				_grp = createGroup [WEST,TRUE];
 				_grp setFormDir (_spawnPosition getDir _grpSpawnPos);
 				for '_x' from 0 to (_groupSize - 1) step 1 do {
 					_unit = _grp createUnit [(selectRandomWeighted _unitTypes),_grpSpawnPos,[],5,'FORM'];
@@ -289,13 +289,13 @@ for '_x' from 0 to 1 step 0 do {
 						{
 							_unit removeMagazine _x;
 						} forEach (magazines _unit);
-						[_unit,'MMG_01_hex_F',3] call (missionNamespace getVariable 'QS_fnc_addWeapon');
+						[_unit,'MMG_02_sand_RCO_LP_F',3] call (missionNamespace getVariable 'QS_fnc_addWeapon');
 						_unit setVariable ['QS_AI_UNIT_isMG',TRUE,FALSE];
 						_unit setVariable ['QS_AI_UNIT_lastSuppressiveFire',(diag_tickTime - 1),FALSE];
 						{
 							_unit addPrimaryWeaponItem _x;
 						} forEach [
-							'muzzle_snds_93mmg',
+							'muzzle_snds_338_sand',
 							(selectRandom ['optic_tws_mg','optic_Nightstalker'])
 						];
 						_unit selectWeapon (primaryWeapon _unit);
@@ -347,7 +347,7 @@ for '_x' from 0 to 1 step 0 do {
 		{
 			if (local _x) then {
 				if (simulationEnabled _x) then {
-					if ((side (group _x)) isEqualTo _east) then {
+					if ((side (group _x)) isEqualTo _west) then {
 						if ((damage _x) > 0) then {
 							_unit = _x;
 							if (!((getAllHitPointsDamage _unit) isEqualTo [])) then {

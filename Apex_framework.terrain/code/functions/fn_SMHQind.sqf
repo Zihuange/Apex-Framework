@@ -150,7 +150,7 @@ for '_x' from 0 to 1 step 0 do {
 
 	if (!alive _sideObj) exitWith {
 		missionNamespace setVariable ['QS_sideMissionUp',FALSE,TRUE];
-		['sideChat',[WEST,'HQ'],'目标被提前破坏，任务失败！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['sideChat',[EAST,'HQ'],'目标被提前破坏，任务失败！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		[0,_flatPos] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
 		{
 			_x setMarkerPos [-5000,-5000,0];
@@ -181,7 +181,7 @@ for '_x' from 0 to 1 step 0 do {
 	/*/--------------------------------------------- IF PACKAGE DESTROYED [FAIL]/*/
 	
 	if (missionNamespace getVariable 'QS_smSuccess') exitWith {
-		['sideChat',[WEST,'HQ'],_c4Message] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['sideChat',[EAST,'HQ'],_c4Message] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		uiSleep 14;											
 		'Bo_Mk82' createVehicle (getPos _object);
 		missionNamespace setVariable [

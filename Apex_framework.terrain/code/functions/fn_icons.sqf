@@ -89,22 +89,22 @@ _QS_ST_showAll = 0;											// NUMBER. Intended for Debug / Development use on
 _QS_ST_friendlySides_Dynamic = TRUE;						// BOOL. Set TRUE to allow faction alliances to change dynamically (IE. AAF may not always be loyal to NATO) and be represented on the map. Default TRUE.
 _QS_ST_friendlySides_EAST = [								// ARRAY (NUMBER). Uncomment the relevant number(s). Remove comma after last used entry (important!).
 	//1,					//EAST is friendly to WEST
-	//2,					//EAST is friendly to INDEPENDENT/RESISTANCE
-	3						//EAST is friendly to CIVILIANS
+	2					//EAST is friendly to INDEPENDENT/RESISTANCE
+	//3						//EAST is friendly to CIVILIANS
 ];
 _QS_ST_friendlySides_WEST = [								// ARRAY (NUMBER). Uncomment the relevant number(s). Remove comma after last used entry (important!).
 	//0,					//WEST is friendly to EAST
-	2						//WEST is friendly to INDEP/RESISTANCE
-	//3						//WEST is friendly to CIVILIAN
+	//2,						//WEST is friendly to INDEP/RESISTANCE
+	3						//WEST is friendly to CIVILIAN
 ];
 _QS_ST_friendlySides_RESISTANCE = [							// ARRAY (NUMBER). Uncomment the relevant number(s). Remove comma after last used entry (important!).
-	//0,					//RESISTANCE is friendly to EAST
-	1,						//RESISTANCE is friendly to WEST
+	1,					//RESISTANCE is friendly to EAST
+	//1,						//RESISTANCE is friendly to WEST
 	3						//RESISTANCE is friendly to CIVILIAN
 ];
 _QS_ST_friendlySides_CIVILIAN = [							// ARRAY (NUMBER). Uncomment the relevant number(s). Remove comma after last used entry (important!).
-	0,						//CIVILIAN is friendly to EAST
-	//1,					//CIVILIAN is friendly to WEST
+	//0,						//CIVILIAN is friendly to EAST
+	1,					//CIVILIAN is friendly to WEST
 	2						//CIVILIAN is friendly to INDEP/RESISTANCE
 ];
 
@@ -657,7 +657,7 @@ _QS_fnc_iconUnits = {
 	private _as = [];
 	private _au = [];
 	_isAdmin = ((_QS_ST_X # 86) && {((call (missionNamespace getVariable 'BIS_fnc_admin')) isEqualTo 2)});
-	if ((player getVariable ['QS_unit_side',WEST]) isNotEqualTo CIVILIAN) then {
+	if ((player getVariable ['QS_unit_side',EAST]) isNotEqualTo CIVILIAN) then {
 		if (!(_QS_ST_X # 74)) then {
 			_si = [EAST,WEST,RESISTANCE];
 		};
@@ -694,7 +694,7 @@ _QS_fnc_iconUnits = {
 	};
 	if (_exit) exitWith {_au;};
 	if ((_QS_ST_X # 62)) then {
-		_as pushBack (player getVariable ['QS_unit_side',WEST]);
+		_as pushBack (player getVariable ['QS_unit_side',EAST]);
 		//_as pushBack (_si # (_QS_ST_X # 3));
 	} else {
 		if (isMultiplayer) then {
@@ -704,15 +704,15 @@ _QS_fnc_iconUnits = {
 				} forEach _si;
 			} else {
 				//if ((_QS_ST_X # 8)) then {
-					_as pushBack (player getVariable ['QS_unit_side',WEST]);
+					_as pushBack (player getVariable ['QS_unit_side',EAST]);
 					//_as pushBack (_si # (_QS_ST_X # 3));
 					{
-						if (((player getVariable ['QS_unit_side',WEST]) getFriend _x) > 0.6) then {
+						if (((player getVariable ['QS_unit_side',EAST]) getFriend _x) > 0.6) then {
 							_as pushBackUnique _x;
 						};
 					} forEach _si;
 				//} else {
-				//	_as pushBack (_si # (player getVariable ['QS_unit_side',WEST]));
+				//	_as pushBack (_si # (player getVariable ['QS_unit_side',EAST]));
 				//	{
 				//		0 = _as pushBack (_si # _x);
 				//	} count (_QS_ST_X # 57);
@@ -720,9 +720,9 @@ _QS_fnc_iconUnits = {
 			};
 		} else {
 			//if ((_QS_ST_X # 8)) then {
-				_as pushBack (player getVariable ['QS_unit_side',WEST]);
+				_as pushBack (player getVariable ['QS_unit_side',EAST]);
 				{
-					if (((player getVariable ['QS_unit_side',WEST]) getFriend _x) > 0.6) then {
+					if (((player getVariable ['QS_unit_side',EAST]) getFriend _x) > 0.6) then {
 						_as pushBack _x;
 					};
 				} forEach _si;
@@ -876,7 +876,7 @@ _QS_fnc_onMapSingleClick = {
 		_QS_ST_X = call (missionNamespace getVariable 'QS_ST_X');
 		if (alive _vehicle) then {
 			if ((count (crew _vehicle)) > 1) then {
-				if ((side (effectiveCommander _vehicle)) isEqualTo (player getVariable ['QS_unit_side',WEST])) then {
+				if ((side (effectiveCommander _vehicle)) isEqualTo (player getVariable ['QS_unit_side',EAST])) then {
 					if (_vehicle isNotEqualTo (player getVariable ['QS_ST_map_vehicleShowCrew',objNull])) then {
 						player setVariable ['QS_ST_map_vehicleShowCrew',_vehicle,FALSE];
 						_vehicle setVariable ['QS_ST_mapClickShowCrew',TRUE,FALSE];
@@ -1431,7 +1431,7 @@ _QS_fnc_onGroupIconClick = {
 	scriptName 'QS_ST_onGroupIconClick';
 	params ['_is3D','_group','_wpID','_button','_posx','_posy','_shift','_ctrl','_alt'];
 	if (!isNull (objectParent (leader _group))) exitWith {};
-	if ((side _group) isNotEqualTo (player getVariable ['QS_unit_side',WEST])) exitWith {
+	if ((side _group) isNotEqualTo (player getVariable ['QS_unit_side',EAST])) exitWith {
 		[QS_ST_STR_text2] call (missionNamespace getVariable 'QS_fnc_hint');
 		0 spawn {uiSleep 3;[''] call (missionNamespace getVariable 'QS_fnc_hint');};
 	};
@@ -1514,13 +1514,13 @@ _QS_fnc_onGroupIconClick = {
 	])] call (missionNamespace getVariable 'QS_fnc_hint');
 };
 _QS_fnc_onGroupIconOverEnter = {
-	if ((side (_this # 1)) isNotEqualTo (player getVariable ['QS_unit_side',WEST])) exitWith {};
+	if ((side (_this # 1)) isNotEqualTo (player getVariable ['QS_unit_side',EAST])) exitWith {};
 };
 _QS_fnc_onGroupIconOverLeave = {
 	hintSilent '';
 };
 scriptName 'Soldier Tracker by Quiksilver - (Init)';
-_side = player getVariable ['QS_unit_side',WEST];
+_side = player getVariable ['QS_unit_side',EAST];
 _sides = [EAST,WEST,RESISTANCE,CIVILIAN];
 uiSleep 0.1;
 _QS_ST_faction = _sides find _side;
@@ -1802,7 +1802,7 @@ if (_QS_ST_X # 2) then {
 				if (diag_tickTime > _checkDiplomacy) then {
 					_as = [];
 					{
-						if (((player getVariable ['QS_unit_side',WEST]) getFriend _x) > 0.6) then {
+						if (((player getVariable ['QS_unit_side',EAST]) getFriend _x) > 0.6) then {
 							_as pushBack _x;
 						};
 					} forEach _sides;

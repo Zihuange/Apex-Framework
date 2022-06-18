@@ -26,9 +26,9 @@ if (!isNull _killer) then {
 	if (isPlayer _killer) then {
 		_name = name _killer;
 		if ((random 1) > 0.5) then {
-			['sideChat',[WEST,'HQ'],(format ['%1 炸毁了敌方无线电塔，干得漂亮！',_name])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+			['sideChat',[EAST,'HQ'],(format ['%1 炸毁了敌方无线电塔，干得漂亮！',_name])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		} else {
-			['sideChat',[WEST,'HQ'],(format ['%1 搞定了敌方无线电塔，做得好！',_name])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+			['sideChat',[EAST,'HQ'],(format ['%1 搞定了敌方无线电塔，做得好！',_name])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		};
 		if ((!(_killer getUnitTrait 'uavhacker')) && (!(_killer getUnitTrait 'QS_trait_pilot')) && (!(_killer getUnitTrait 'QS_trait_fighterPilot'))) then {
 			(missionNamespace getVariable 'QS_leaderboards_session_queue') pushBack ['TOWER',(getPlayerUID _killer),(name _killer),1];

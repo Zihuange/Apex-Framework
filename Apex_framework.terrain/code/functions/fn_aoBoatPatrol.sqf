@@ -21,7 +21,7 @@ params ['_pos'];
 private ['_return','_position','_boat','_grp','_count','_boatTypes'];
 private _isHCActive = missionNamespace getVariable ['QS_HC_Active',FALSE];
 _return = [];
-_boatTypes = [['O_Boat_Armed_01_hmg_F'],['O_T_Boat_Armed_01_hmg_F']] select (worldName in ['Tanoa','Lingor3']);
+_boatTypes = [['B_Boat_Armed_01_minigun_F'],['B_T_Boat_Armed_01_minigun_F']] select (worldName in ['Tanoa','Lingor3']);
 _boat = objNull;
 _count = [1,2] select (worldName in ['Tanoa','Lingor3']);
 for '_i' from 0 to 1 step 1 do {

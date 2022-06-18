@@ -31,10 +31,10 @@ if (_type isEqualTo 1) then {
 	['CompletedSideMission',[(markerText 'QS_marker_sideMarker')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 	private ['_rewardText','_rewardVeh','_landRewardLocations','_shipRewardLocations','_rewardType','_rewardPosition','_newRewardArray'];
 	if (missionNamespace getVariable ['QS_virtualSectors_active',FALSE]) then {
-		private ['_QS_virtualSectors_scoreSides','_scoreEast','_scoreToRemove'];
+		private ['_QS_virtualSectors_scoreSides','_scoreWest','_scoreToRemove'];
 		_QS_virtualSectors_scoreSides = missionNamespace getVariable ['QS_virtualSectors_scoreSides',[0,0,0,0,0]];
-		_scoreEast = _QS_virtualSectors_scoreSides select 0;
-		if (_scoreEast > ((missionNamespace getVariable ['QS_virtualSectors_scoreWin',300]) * 0.1)) then {
+		_scoreWest = _QS_virtualSectors_scoreSides select 0;
+		if (_scoreWest > ((missionNamespace getVariable ['QS_virtualSectors_scoreWin',300]) * 0.1)) then {
 			_scoreToRemove = (missionNamespace getVariable ['QS_virtualSectors_scoreWin',300]) * (missionNamespace getVariable ['QS_virtualSectors_bonusCoef_sideTask',0.1]);
 			_QS_virtualSectors_scoreSides set [0,((_QS_virtualSectors_scoreSides select 0) - _scoreToRemove)];
 			missionNamespace setVariable ['QS_virtualSectors_scoreSides',_QS_virtualSectors_scoreSides,FALSE];

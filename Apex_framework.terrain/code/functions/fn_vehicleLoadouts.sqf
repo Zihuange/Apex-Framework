@@ -141,10 +141,10 @@ if (_type isEqualTo 1) exitWith {
 			[1,"PylonRack_1Rnd_Missile_AA_03_F",TRUE],
 			[2,"PylonRack_20Rnd_Rocket_03_HE_F",TRUE],
 			[3,"PylonRack_20Rnd_Rocket_03_AP_F",TRUE],
-			[4,"",TRUE],
+			[4,"PylonMissile_1Rnd_Bomb_03_F",TRUE],
 			[5,"PylonMissile_1Rnd_Bomb_03_F",TRUE],
 			[6,"PylonMissile_1Rnd_Bomb_03_F",TRUE],
-			[7,"",TRUE],
+			[7,"PylonMissile_1Rnd_Bomb_03_F",TRUE],
 			[8,"PylonRack_20Rnd_Rocket_03_AP_F",TRUE],
 			[9,"PylonRack_20Rnd_Rocket_03_HE_F",TRUE],
 			[10,"PylonRack_1Rnd_Missile_AA_03_F",TRUE]

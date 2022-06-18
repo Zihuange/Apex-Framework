@@ -18,7 +18,7 @@ params [
 ];
 if (time > (missionNamespace getVariable 'QS_sectorScan_lastTime')) then {
 	missionNamespace setVariable ['QS_sectorScan_lastTime',(time + 300),TRUE];
-	['sideChat',[WEST,'HQ'],(format ['Satellite sector scan requested by [%1] %2 at grid %3 ...',_playerDisplayName,_profileName,_gridPos])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+	['sideChat',[EAST,'HQ'],(format ['Satellite sector scan requested by [%1] %2 at grid %3 ...',_playerDisplayName,_profileName,_gridPos])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 	[_gridPos,_clickPos] spawn {
 		private ['_gridPos','_clickPos','_count'];
 		_gridPos = _this select 0;
@@ -27,7 +27,7 @@ if (time > (missionNamespace getVariable 'QS_sectorScan_lastTime')) then {
 		_count = 0;
 		{
 			if ((_x distance2D _clickPos) < 250) then {
-				if ((side _x) in [EAST,RESISTANCE]) then {
+				if ((side _x) in [WEST,RESISTANCE]) then {
 					if ((mapGridPosition _x) isEqualTo _gridPos) then {
 						_count = _count + 1;
 					};
@@ -35,7 +35,7 @@ if (time > (missionNamespace getVariable 'QS_sectorScan_lastTime')) then {
 			};
 			sleep 0.001;
 		} count allUnits;
-		['sideChat',[WEST,'HQ'],(format ['Satellite scan complete, %1 signatures detected in grid %2',_count,_gridPos])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['sideChat',[EAST,'HQ'],(format ['Satellite scan complete, %1 signatures detected in grid %2',_count,_gridPos])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		_marker = createMarker [(format ['QS_marker_sectorScan_%1',time]),_clickPos];
 		_marker setMarkerShapeLocal 'Icon';
 		_marker setMarkerTypeLocal 'mil_dot';

@@ -431,7 +431,7 @@ private _QS_module_tracers_checkOverride = _false;
 
 
 //comment 'Targets Knowledge script';
-missionNamespace setVariable ['QS_AI_script_targetsKnowledge',([0,_east] spawn (missionNamespace getVariable 'QS_fnc_AIGetKnownEnemies')),_false];
+missionNamespace setVariable ['QS_AI_script_targetsKnowledge',([0,_west] spawn (missionNamespace getVariable 'QS_fnc_AIGetKnownEnemies')),_false];
 //comment 'Preload Functions';
 _fn_aoGetTerrainData = missionNamespace getVariable 'QS_fnc_aoGetTerrainData';
 _fn_serverDetector = missionNamespace getVariable 'QS_fnc_serverDetector';

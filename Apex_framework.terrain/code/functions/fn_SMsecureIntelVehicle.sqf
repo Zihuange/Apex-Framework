@@ -23,15 +23,15 @@ private [
 ];
 
 if (worldName isEqualTo 'Tanoa') then {
-	_objVehTypes = ["I_C_Van_01_transport_F","I_C_Offroad_02_unarmed_F","O_T_MRAP_02_ghex_F","O_T_LSV_02_unarmed_F","I_MRAP_03_F"];
-	_altVehTypes = ["O_T_MRAP_02_ghex_F"];
-	_objUnitTypes = ["O_T_Officer_F","I_officer_F"];
-	_crewUnitType = 'O_T_crew_F';
+	_objVehTypes = ["I_C_Van_01_transport_F","I_C_Offroad_02_unarmed_F","B_T_MRAP_01_F","B_T_LSV_01_unarmed_F","I_MRAP_03_F"];
+	_altVehTypes = ["B_T_MRAP_01_F"];
+	_objUnitTypes = ["B_T_Officer_F","I_officer_F"];
+	_crewUnitType = 'B_T_crew_F';
 } else {
-	_objVehTypes = ["O_MRAP_02_F","I_MRAP_03_F","O_MRAP_02_F","C_Offroad_01_F","C_SUV_01_F","C_Van_01_transport_F"];
-	_altVehTypes = ["O_MRAP_02_F"];
-	_objUnitTypes = ["O_officer_F","I_officer_F"];
-	_crewUnitType = 'O_crew_F';
+	_objVehTypes = ["B_MRAP_01_F","I_MRAP_03_F","B_MRAP_01_F","C_Offroad_01_F","C_SUV_01_F","C_Van_01_transport_F"];
+	_altVehTypes = ["B_MRAP_01_F"];
+	_objUnitTypes = ["B_officer_F","I_officer_F"];
+	_crewUnitType = 'B_crew_F';
 };
 _chaseTime = 0;
 _chaseTimer = 1200;
@@ -83,7 +83,7 @@ _obj1 setVectorUp (surfaceNormal (getPosWorld _obj1));
 _obj1 enableRopeAttach FALSE;
 _obj1 enableVehicleCargo FALSE;
 _obj1 setVariable ['QS_reportTarget_disable',TRUE,TRUE];
-_aGroup = createGroup [EAST,TRUE];
+_aGroup = createGroup [WEST,TRUE];
 _objUnit1 = _aGroup createUnit [(selectRandom _objUnitTypes),_flatPos1,[],0,'NONE'];
 missionNamespace setVariable [
 	'QS_analytics_entities_created',
@@ -107,7 +107,7 @@ _obj2 setVectorUp (surfaceNormal (getPosWorld _obj1));
 _obj2 enableRopeAttach FALSE;
 _obj2 enableVehicleCargo FALSE;
 _obj2 setVariable ['QS_reportTarget_disable',TRUE,TRUE];
-_bGroup = createGroup [EAST,TRUE];
+_bGroup = createGroup [WEST,TRUE];
 _objUnit2 = _bGroup createUnit [(selectRandom _objUnitTypes),_flatPos1,[],0,'NONE'];
 missionNamespace setVariable [
 	'QS_analytics_entities_created',
@@ -131,7 +131,7 @@ _obj3 setVectorUp (surfaceNormal (getPosWorld _obj1));
 _obj3 enableRopeAttach FALSE;
 _obj3 enableVehicleCargo FALSE;
 _obj3 setVariable ['QS_reportTarget_disable',TRUE,TRUE];
-_cGroup = createGroup [EAST,TRUE];
+_cGroup = createGroup [WEST,TRUE];
 _objUnit3 = _cGroup createUnit [(selectRandom _objUnitTypes),_flatPos2,[],0,'NONE'];
 missionNamespace setVariable [
 	'QS_analytics_entities_created',
@@ -181,7 +181,7 @@ _intelObj addEventHandler [
 			_killerDisplayName = getText (configFile >> 'CfgVehicles' >> _killerType >> 'displayName');
 			_objDisplayName = getText (configFile >> 'CfgVehicles' >> _objType >> 'displayName');
 			_name = name _killer;
-			['sideChat',[WEST,'BLU'],(format ['%1 摧毁了带有情报的车辆 ( %2 )',_name,_objDisplayName])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+			['sideChat',[EAST,'OPF'],(format ['%1 摧毁了带有情报的车辆 ( %2 )',_name,_objDisplayName])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		};
 	}
 ];
@@ -190,7 +190,7 @@ _intelObj addEventHandler [
 	{
 		params ['_container','_unit'];
 		if (isPlayer _unit) then {
-			['sideChat',[WEST,'BLU'],(format ['%1 获取了一个目标！',(name _unit)])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+			['sideChat',[EAST,'OPF'],(format ['%1 获取了一个目标！',(name _unit)])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 			missionNamespace setVariable ['QS_smSuccess',TRUE,FALSE];
 			_container setVariable ['QS_secureable',FALSE,TRUE];
 		};
@@ -199,7 +199,7 @@ _intelObj addEventHandler [
 
 /*/--------------------------------------------------------------------------- SPAWN GUARDS/*/
 
-_enemiesArray = [_flatPos1] call (missionNamespace getVariable 'QS_fnc_smEnemyEastIntel');
+_enemiesArray = [_flatPos1] call (missionNamespace getVariable 'QS_fnc_smEnemyWestIntel');
 	
 /*/-------------------------------------------------------------------------- BRIEFING/*/
 
@@ -248,7 +248,7 @@ for '_x' from 0 to 1 step 0 do {
 	
 	if (!alive _intelObj) exitWith {
 		sleep 0.3;
-		['sideChat',[WEST,'HQ'],'目标被摧毁，任务失败！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['sideChat',[EAST,'HQ'],'目标被摧毁，任务失败！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		missionNamespace setVariable ['QS_sideMissionUp',FALSE,TRUE];
 		[0,_flatPos] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
 		{
@@ -279,7 +279,7 @@ for '_x' from 0 to 1 step 0 do {
 		if (([_intelObj,500] call (missionNamespace getVariable 'QS_fnc_enemyDetected')) || {(missionNamespace getVariable 'QS_sm_enemyDetected')}) then {
 			missionNamespace setVariable ['QS_sm_enemyDetected',FALSE,FALSE];
 			sleep 0.3;
-			['sideChat',[WEST,'HQ'],'The target has spotted us and is trying to escape with the intel!'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+			['sideChat',[EAST,'HQ'],'The target has spotted us and is trying to escape with the intel!'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		
 			/*/--------- WHERE TO / HOW WILL THE OBJECTIVES ESCAPE?/*/
 			
@@ -311,7 +311,7 @@ for '_x' from 0 to 1 step 0 do {
 			_heEscaped = TRUE;
 			_gettingAway = FALSE;
 		};
-		if (([_currentIntelPos,1500,[WEST],(allPlayers + allUnitsUav),0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
+		if (([_currentIntelPos,1500,[EAST],(allPlayers + allUnitsUav),0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
 			_heEscaped = TRUE;
 			_gettingAway = FALSE;
 		};
@@ -333,7 +333,7 @@ for '_x' from 0 to 1 step 0 do {
 	/*/------------------------------------------ THE ENEMY ESCAPED [FAIL]/*/
 	
 	if (_heEscaped) exitWith {
-		['sideChat',[WEST,'HQ'],'目标逃脱，任务失败！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['sideChat',[EAST,'HQ'],'目标逃脱，任务失败！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		sleep 0.3;
 		missionNamespace setVariable ['QS_sideMissionUp',FALSE,TRUE];
 		[0,_flatPos] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
@@ -364,7 +364,7 @@ for '_x' from 0 to 1 step 0 do {
 	
 	if (missionNamespace getVariable 'QS_smSuccess') exitWith {
 		sleep 0.3;
-		['sideChat',[WEST,'HQ'],'情报已获取。 任务完成！ 我们正在将情报上传至到指挥部进行分析。'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['sideChat',[EAST,'HQ'],'情报已获取。 任务完成！ 我们正在将情报上传至到指挥部进行分析。'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		missionNamespace setVariable ['QS_sideMissionUp',FALSE,TRUE];
 		[1,_flatPos] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
 		{

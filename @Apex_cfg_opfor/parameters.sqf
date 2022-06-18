@@ -74,7 +74,7 @@ _artillery = 1;											// Base artillery.	0 - Disabled. 1 - Enabled. 	If enab
 _artilleryComputer = 2;									// Artillery Computer settings. 	0. Disabled. 	1 - Enabled ONLY while in scripted base artillery.		2 - Enabled. (Recommended = 1). Note: Applies to mortars as well.
 _mapContentEnemy = 1;									// Enemy Map Indicators. 	0 - Disabled. 1 - Enabled. Recommended = 1.	    Controls whether enemies known to the player are visible on the map.
 _recruitableAI = 1;										// Recruitable AI.	0 - Disabled. 1 - Enabled. 		If there are recruitable AI available (default base layout or placed by you in custom base layout), this toggles them on or off.
-_playable_opfor = 0;									// OPFOR player roles. 	0 - Disabled. 1 - Enabled (Whitelisted). 2 - Enabled (Unrestricted).	Recommended = 0.	Enable a limited number of enemy player roles for the supported mission types. Highly recommended to NOT use with the standard missions unless you know your players are comfortable with it. Designed for future Framework flexibility and development.
+_playable_blufor = 0;									// BLUFOR player roles. 	0 - Disabled. 1 - Enabled (Whitelisted). 2 - Enabled (Unrestricted).	Recommended = 0.	Enable a limited number of enemy player roles for the supported mission types. Highly recommended to NOT use with the standard missions unless you know your players are comfortable with it. Designed for future Framework flexibility and development.
 _ambient_civilians = 1;									// Ambient Civilians.	0 - Disabled. 1 - Enabled. Default = 1.		Disable to save FPS. 	Ambient civilian presence is auto-disabled when player count > 50.
 _ambient_animals = 1;									// Ambient Animals.		0 - Disabled. 1 - Enabled. Default = 1.		Disable to save FPS.	Ambient animal presence is auto-disabled when player count > 50.
 _vehicle_active_protection = 3;							// Vehicle Active Protection System. 	0 - Disabled. 1 - AI only. 2 - Players only. 3 - AI and players.
@@ -200,7 +200,7 @@ if (_aircraft_carrier_enabled > 0) then {
 	['QS_missionConfig_artyEngine',_artilleryComputer,TRUE],
 	['QS_missionConfig_mapContentEnemy',_mapContentEnemy,TRUE],
 	['QS_missionConfig_recruitableAI',_recruitableAI,FALSE],
-	['QS_missionConfig_playableOPFOR',_playable_opfor,TRUE],
+	['QS_missionConfig_playableBLUFOR',_playable_blufor,TRUE],
 	['QS_missionConfig_carrierEnabled',_aircraft_carrier_enabled,TRUE],
 	['QS_missionConfig_carrierVehicles',_aircraft_carrier_vehicles,TRUE],
 	['QS_missionConfig_carrierRespawn',_aircraft_carrier_respawning,TRUE],

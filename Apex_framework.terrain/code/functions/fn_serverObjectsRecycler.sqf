@@ -64,26 +64,26 @@ if (_type isEqualTo 0) exitWith {
 	];
 	_unitsData = [
 		[
-			['o_soldier_ar_f',2],
-			['o_medic_f',1],
-			['o_engineer_f',1],
-			['o_soldier_exp_f',1],
-			['o_soldier_gl_f',1],
-			['o_soldier_m_f',1],
-			['o_soldier_f',1],
-			['o_soldier_sl_f',1],
-			['o_soldier_tl_f',1]
+			['b_soldier_ar_f',2],
+			['b_medic_f',1],
+			['b_engineer_f',1],
+			['b_soldier_exp_f',1],
+			['b_soldier_gl_f',1],
+			['b_soldier_m_f',1],
+			['b_soldier_f',1],
+			['b_soldier_sl_f',1],
+			['b_soldier_tl_f',1]
 		],
 		[
-			['o_t_soldier_ar_f',2],
-			['o_t_medic_f',1],
-			['o_t_engineer_f',1],
-			['o_t_soldier_exp_f',1],
-			['o_t_soldier_gl_f',1],
-			['o_t_soldier_m_f',1],
-			['o_t_soldier_f',1],
-			['o_t_soldier_tl_f',1],
-			['o_t_soldier_sl_f',1]
+			['b_t_soldier_ar_f',2],
+			['b_t_medic_f',1],
+			['b_t_engineer_f',1],
+			['b_t_soldier_exp_f',1],
+			['b_t_soldier_gl_f',1],
+			['b_t_soldier_m_f',1],
+			['b_t_soldier_f',1],
+			['b_t_soldier_tl_f',1],
+			['b_t_soldier_sl_f',1]
 		]
 	] select (worldName in ['Tanoa','Lingor3']);
 	private _object = objNull;

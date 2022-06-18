@@ -181,7 +181,7 @@ if ((_baseService) || (_isDepot)) then {
 				if (diag_tickTime > (uiNamespace getVariable ['QS_fighterPilot_lastMsg',(diag_tickTime - 1)])) then {
 					uiNamespace setVariable ['QS_fighterPilot_lastMsg',(diag_tickTime + 300)];
 					[63,[4,['CAS_1',['','我方固定翼支援准备升空！']]]] remoteExec ['QS_fnc_remoteExec',-2,FALSE];
-					['sideChat',[WEST,'AirBase'],(format ['我方空中单位 (%1) 已经补给完毕，准备起飞执行CAS任务。 飞行员： %2',(getText (configFile >> 'CfgVehicles' >> (typeOf _v) >> 'displayName')),profileName])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+					['sideChat',[EAST,'AirBase'],(format ['我方空中单位 (%1) 已经补给完毕，准备起飞执行CAS任务。 飞行员： %2',(getText (configFile >> 'CfgVehicles' >> (typeOf _v) >> 'displayName')),profileName])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 				};
 			};
 		};

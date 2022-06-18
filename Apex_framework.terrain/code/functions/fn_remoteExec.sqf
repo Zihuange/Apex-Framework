@@ -642,7 +642,7 @@ if (_case < 30) exitWith {
 	if (_case isEqualTo 29) then {
 		if (isServer) exitWith {};
 		_side = _this # 1;
-		if ((player getVariable ['QS_unit_side',WEST]) isEqualTo _side) then {
+		if ((player getVariable ['QS_unit_side',EAST]) isEqualTo _side) then {
 			//comment 'Enable';
 			player enableAI 'TARGET';
 			player enableAI 'AUTOTARGET';
@@ -1027,15 +1027,15 @@ if (_case < 60) exitWith {
 			_array = _this # 1;
 			_name = _array # 0;
 			{
-				_x setMarkerColor 'ColorWEST'; 
+				_x setMarkerColor 'ColorEAST'; 
 				_x setMarkerPos (missionNamespace getVariable 'QS_HQpos');
 			} forEach [
 				'QS_marker_hqMarker',
 				'QS_marker_hqCircle'
 			];
-			[(missionNamespace getVariable 'QS_AO_HQ_flag'),WEST,'',FALSE,objNull,1] call (missionNamespace getVariable 'QS_fnc_setFlag');
+			[(missionNamespace getVariable 'QS_AO_HQ_flag'),EAST,'',FALSE,objNull,1] call (missionNamespace getVariable 'QS_fnc_setFlag');
 			['QS_IA_TASK_AO_2'] call (missionNamespace getVariable 'BIS_fnc_deleteTask');
-			['sideChat',[WEST,'HQ'],(format ['敌军指挥官已被 %1 俘虏！',_name])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+			['sideChat',[EAST,'HQ'],(format ['敌军指挥官已被 %1 俘虏！',_name])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		};
 	};
 	/*/===== Remote Add To Remains Collector/*/
@@ -1259,10 +1259,10 @@ if (_case < 80) exitWith {
 			['QS_virtualSectors_sub_1_task'] call (missionNamespace getVariable 'BIS_fnc_deleteTask');
 			['SC_SUB_COMPLETED',['','数据终端已夺取']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 			if (missionNamespace getVariable ['QS_virtualSectors_active',FALSE]) then {
-				private ['_QS_virtualSectors_scoreSides','_scoreEast','_scoreToRemove'];
+				private ['_QS_virtualSectors_scoreSides','_scoreWest','_scoreToRemove'];
 				_QS_virtualSectors_scoreSides = missionNamespace getVariable ['QS_virtualSectors_scoreSides',[0,0,0,0,0]];
-				_scoreEast = _QS_virtualSectors_scoreSides # 0;
-				if (_scoreEast > ((missionNamespace getVariable ['QS_virtualSectors_scoreWin',300]) * 0.1)) then {
+				_scoreWest = _QS_virtualSectors_scoreSides # 0;
+				if (_scoreWest > ((missionNamespace getVariable ['QS_virtualSectors_scoreWin',300]) * 0.1)) then {
 					_scoreToRemove = (missionNamespace getVariable ['QS_virtualSectors_scoreWin',300]) * (missionNamespace getVariable ['QS_virtualSectors_bonusCoef_subTask',0.05]);
 					_QS_virtualSectors_scoreSides set [0,((_QS_virtualSectors_scoreSides # 0) - _scoreToRemove)];
 					missionNamespace setVariable ['QS_virtualSectors_scoreSides',_QS_virtualSectors_scoreSides,FALSE];
@@ -1270,13 +1270,13 @@ if (_case < 80) exitWith {
 				
 				comment 'disrupt active datalink';
 				{
-					if ((side _x) in [EAST,RESISTANCE]) then {
+					if ((side _x) in [WEST,RESISTANCE]) then {
 						_x setDamage [1,TRUE];
 					};
 				} count allUnitsUav;
 				{
 					if (alive _x) then {
-						if ((side _x) in [EAST,RESISTANCE]) then {
+						if ((side _x) in [WEST,RESISTANCE]) then {
 							if ((crew _x) isNotEqualTo []) then {
 								_x setVehicleReceiveRemoteTargets (missionNamespace getVariable ['QS_virtualSectors_sub_1_active',FALSE]);
 								_x setVehicleReportRemoteTargets (missionNamespace getVariable ['QS_virtualSectors_sub_1_active',FALSE]);
@@ -1297,10 +1297,10 @@ if (_case < 80) exitWith {
 			comment 'Supply depot';
 			missionNamespace setVariable ['QS_virtualSectors_sub_3_active',FALSE,FALSE];
 			if (missionNamespace getVariable ['QS_virtualSectors_active',FALSE]) then {
-				private ['_QS_virtualSectors_scoreSides','_scoreEast','_scoreToRemove'];
+				private ['_QS_virtualSectors_scoreSides','_scoreWest','_scoreToRemove'];
 				_QS_virtualSectors_scoreSides = missionNamespace getVariable ['QS_virtualSectors_scoreSides',[0,0,0,0,0]];
-				_scoreEast = _QS_virtualSectors_scoreSides # 0;
-				if (_scoreEast > ((missionNamespace getVariable ['QS_virtualSectors_scoreWin',300]) * 0.1)) then {
+				_scoreWest = _QS_virtualSectors_scoreSides # 0;
+				if (_scoreWest > ((missionNamespace getVariable ['QS_virtualSectors_scoreWin',300]) * 0.1)) then {
 					_scoreToRemove = (missionNamespace getVariable ['QS_virtualSectors_scoreWin',300]) * (missionNamespace getVariable ['QS_virtualSectors_bonusCoef_subTask',0.05]);
 					_QS_virtualSectors_scoreSides set [0,((_QS_virtualSectors_scoreSides # 0) - _scoreToRemove)];
 					missionNamespace setVariable ['QS_virtualSectors_scoreSides',_QS_virtualSectors_scoreSides,FALSE];
@@ -1314,7 +1314,7 @@ if (_case < 80) exitWith {
 			private _unit = objNull;
 			{
 				_unit = _x;
-				if ((side _unit) in [EAST,RESISTANCE]) then {
+				if ((side _unit) in [WEST,RESISTANCE]) then {
 					if ((_unit distance2D _centroid) < 1500) then {
 						if ((secondaryWeapon _unit) isNotEqualTo '') then {
 							if ((random 1) > 0.8) then {
@@ -1330,7 +1330,7 @@ if (_case < 80) exitWith {
 				_marker1 setMarkerAlphaLocal 0;
 				_marker1 setMarkerShapeLocal 'ICON';
 				_marker1 setMarkerTypeLocal 'mil_dot';
-				_marker1 setMarkerColorLocal 'ColorWEST';
+				_marker1 setMarkerColorLocal 'ColorEAST';
 				_marker1 setMarkerTextLocal (format ['%1敌军补给仓库',(toString [32,32,32])]);
 				_marker1 setMarkerSizeLocal [0.5,0.5];
 				_marker1 setMarkerPosLocal (missionNamespace getVariable ['QS_virtualSectors_sd_position',[-1000,-1000,0]]);

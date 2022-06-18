@@ -144,7 +144,7 @@ _list = [
 	[RESISTANCE,'RESISTANCE','a3\Data_f\cfgFactionClasses_IND_ca.paa'],
 	[CIVILIAN,'CIVILIAN','a3\Data_f\cfgFactionClasses_CIV_ca.paa']
 ];
-private _selectedFactionRow = _list findIf { ((_x # 0) isEqualTo (player getVariable ['QS_unit_side',WEST])) };
+private _selectedFactionRow = _list findIf { ((_x # 0) isEqualTo (player getVariable ['QS_unit_side',EAST])) };
 private _factionList = [];
 {
 	if (_x isNotEqualTo []) then {
@@ -154,7 +154,7 @@ private _factionList = [];
 
 {
 	lnbAddRow [107,['',(_x # 1)]];
-	if ((!(missionNamespace getVariable ['QS_RSS_client_canSideSwitch',FALSE])) && ( (_x # 0) isNotEqualTo (player getVariable ['QS_unit_side',WEST]))) then {
+	if ((!(missionNamespace getVariable ['QS_RSS_client_canSideSwitch',FALSE])) && ( (_x # 0) isNotEqualTo (player getVariable ['QS_unit_side',EAST]))) then {
 		lnbSetColor [107,[_forEachIndex,1],[0.5,0.5,0.5,1]];
 	};
 	lnbSetPicture [107,[_forEachIndex,0],(_x # 2)];
@@ -192,7 +192,7 @@ _controls pushBack _QS_ctrl_9;
 private _listRoles = [];
 private _list = [];
 private _selectedRole = 'rifleman';
-private _selectedRoleSide = WEST;
+private _selectedRoleSide = EAST;
 {
 	lnbAddRow [108,[_x # 0,_x # 1]];
 	lnbSetPicture [108,[_forEachIndex,2],(_x # 2)];
@@ -489,7 +489,7 @@ uiNamespace setVariable ['QS_client_roles_menu_selectedRole',[]];
 lnbSetCurSelRow [107,_selectedFactionRow];
 {
 	_selectedRoleRow = 0;
-	if (((_x # 1) isEqualTo (player getVariable ['QS_unit_side',WEST])) && ((_x # 0) isEqualTo (player getVariable ['QS_unit_role','rifleman']))) exitWith {
+	if (((_x # 1) isEqualTo (player getVariable ['QS_unit_side',EAST])) && ((_x # 0) isEqualTo (player getVariable ['QS_unit_role','rifleman']))) exitWith {
 		_selectedRoleRow = _forEachIndex;
 	};
 } forEach ((missionNamespace getVariable 'QS_roles_data') # _selectedFactionRow);
@@ -529,7 +529,7 @@ waitUntil {
 			_selectedFaction = _factionList # _selectedFactionRow;
 			{
 				_selectedRoleRow = 0;
-				if (((_x # 1) isEqualTo (player getVariable ['QS_unit_side',WEST])) && ((_x # 0) isEqualTo (player getVariable ['QS_unit_role','rifleman']))) exitWith {
+				if (((_x # 1) isEqualTo (player getVariable ['QS_unit_side',EAST])) && ((_x # 0) isEqualTo (player getVariable ['QS_unit_role','rifleman']))) exitWith {
 					_selectedRoleRow = _forEachIndex;
 				};
 			} forEach ((missionNamespace getVariable 'QS_roles_data') # _selectedFactionRow);

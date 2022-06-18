@@ -32,7 +32,7 @@ if (_type isEqualTo 'GRID_MARKERS') exitWith {
 		(_centroid select 2)
 	];
 	_requiredCount = (15 + (round (_playersCount / 2))) min ((count _gridMarkers) - 3);
-	'QS_marker_grid_capState' setMarkerColor 'ColorOPFOR';
+	'QS_marker_grid_capState' setMarkerColor 'ColorBLUFOR';
 	'QS_marker_grid_capState' setMarkerPos _centroidOffset;
 	'QS_marker_grid_capState' setMarkerText (format ['%1网格占领进度: 0 / %2',(toString [32,32,32]),_requiredCount]);
 	_objectiveCode = {
@@ -170,7 +170,7 @@ if (_type isEqualTo 'SITE_TUNNEL') exitWith {
 		((_centroid select 1) - 300),
 		(_centroid select 2)
 	];
-	'QS_marker_grid_rspState' setMarkerColor 'ColorOPFOR';
+	'QS_marker_grid_rspState' setMarkerColor 'ColorBLUFOR';
 	'QS_marker_grid_rspState' setMarkerPos _centroidOffset;
 	'QS_marker_grid_rspState' setMarkerText (format ['%1地道摧毁进度: 0 / %2',(toString [32,32,32]),(missionNamespace getVariable 'QS_grid_AIRspTotal')]);
 	if (!(_entities isEqualTo [])) then {
@@ -230,7 +230,7 @@ if (_type isEqualTo 'SITE_IG') exitWith {
 			if (((missionNamespace getVariable 'QS_registeredPositions') findif {((_spawnPos distance2D _x) < _safeDistance)}) isEqualTo -1) then {
 				if (!([_spawnPos,30,6] call (missionNamespace getVariable 'QS_fnc_waterInRadius'))) then {
 					if ((([(_spawnPos select 0),(_spawnPos select 1)] nearRoads 20) select {((_x isEqualType objNull) && (!((roadsConnectedTo _x) isEqualTo [])))}) isEqualTo []) then {
-						if (([_spawnPos,300,[WEST],_allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
+						if (([_spawnPos,300,[EAST],_allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
 							if (!((toLower (surfaceType _spawnPos)) in ['#gdtasphalt'])) then {
 								_foundPosition = TRUE;
 							};
@@ -258,7 +258,7 @@ if (_type isEqualTo 'SITE_IG') exitWith {
 			(call (missionNamespace getVariable 'QS_data_siteIG')),
 			TRUE
 		] call (missionNamespace getVariable 'QS_fnc_serverObjectsMapper');
-		(missionNamespace getVariable 'QS_AI_regroupPositions') pushBack ['QS_ao_HQ',[EAST,RESISTANCE],_spawnPos];
+		(missionNamespace getVariable 'QS_AI_regroupPositions') pushBack ['QS_ao_HQ',[WEST,RESISTANCE],_spawnPos];
 		(missionNamespace getVariable 'QS_registeredPositions') pushBack _spawnPos;
 		diag_log format ['QS QS QS * IG Spawned position: %1',_spawnPos];
 		missionNamespace setVariable ['QS_grid_IGcomposition',_composition,FALSE];
@@ -290,7 +290,7 @@ if (_type isEqualTo 'SITE_IG') exitWith {
 			_leaderBuilding = selectRandom _potentialBuildings;
 			_buildingPositions = _leaderBuilding buildingPos -1;
 			_buildingPosition = selectRandom _buildingPositions;
-			_igLeader = (createGroup [EAST,TRUE]) createUnit [(['I_G_Soldier_SL_F','I_C_Soldier_Para_2_F'] select (worldName isEqualTo 'Tanoa')),[-50,-50,0],[],0,'CAN_COLLIDE'];
+			_igLeader = (createGroup [WEST,TRUE]) createUnit [(['I_G_Soldier_SL_F','I_C_Soldier_Para_2_F'] select (worldName isEqualTo 'Tanoa')),[-50,-50,0],[],0,'CAN_COLLIDE'];
 			_igLeader allowDamage FALSE;
 			_igLeader enableDynamicSimulation FALSE;
 			_igLeader setVariable ['QS_dynSim_ignore',TRUE,TRUE];
@@ -301,7 +301,7 @@ if (_type isEqualTo 'SITE_IG') exitWith {
 				(_spawnPos select 2)
 			];
 			{
-				_x setMarkerColor 'ColorOPFOR';
+				_x setMarkerColor 'ColorBLUFOR';
 				_x setMarkerPos _uncertainPos;
 			} forEach [
 				'QS_marker_grid_IGmkr',
@@ -332,7 +332,7 @@ if (_type isEqualTo 'SITE_IG') exitWith {
 			missionNamespace setVariable ['QS_grid_IGposition',_spawnPos,(call (missionNamespace getVariable 'QS_fnc_AIOwners'))];
 			_igLeader spawn {
 				uiSleep 1;
-				[_this] joinSilent (createGroup [EAST,TRUE]);
+				[_this] joinSilent (createGroup [WEST,TRUE]);
 				_this setDamage [0,FALSE];
 				_this allowDamage TRUE;
 				_this setSkill 1;
@@ -402,12 +402,12 @@ if (_type isEqualTo 'SITE_IG') exitWith {
 				params ['_igLeader','_spawnPos','_radius','_flag'];
 				private _c = 0;
 				if ((!alive _igLeader) || {(_igLeader getVariable ['QS_isSurrendered',FALSE])}) then {
-					if (((_spawnPos nearEntities ['CAManBase',_radius]) select {(((side _x) in [EAST,RESISTANCE]) && ((lifeState _x) in ['HEALTHY','INJURED']))}) isEqualTo []) then {
-						if (!(((_spawnPos nearEntities ['CAManBase',_radius]) select {(((side _x) in [WEST]) && ((lifeState _x) in ['HEALTHY','INJURED']))}) isEqualTo [])) then {
+					if (((_spawnPos nearEntities ['CAManBase',_radius]) select {(((side _x) in [WEST,RESISTANCE]) && ((lifeState _x) in ['HEALTHY','INJURED']))}) isEqualTo []) then {
+						if (!(((_spawnPos nearEntities ['CAManBase',_radius]) select {(((side _x) in [EAST]) && ((lifeState _x) in ['HEALTHY','INJURED']))}) isEqualTo [])) then {
 							['GRID_UPDATE',['主线战区','敌军HQ已被清空']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 							{
 								_x setMarkerPos (missionNamespace getVariable 'QS_grid_IGposition');
-								_x setMarkerColor 'ColorWEST';
+								_x setMarkerColor 'ColorEAST';
 							} forEach [
 								'QS_marker_grid_IGmkr',
 								'QS_marker_grid_IGcircle'
@@ -481,7 +481,7 @@ if (_type isEqualTo 'SITE_IDAP') exitWith {
 			if (((missionNamespace getVariable 'QS_registeredPositions') findif {((_checkPos distance2D _x) < _safeDistance)}) isEqualTo -1) then {
 				if (!([_checkPos,30,6] call (missionNamespace getVariable 'QS_fnc_waterInRadius'))) then {
 					if ((([(_checkPos select 0),(_checkPos select 1)] nearRoads 20) select {((_x isEqualType objNull) && (!((roadsConnectedTo _x) isEqualTo [])))}) isEqualTo []) then {
-						if (([_checkPos,300,[WEST],_allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
+						if (([_checkPos,300,[EAST],_allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
 							_foundPosition = TRUE;
 						};
 					};
@@ -802,7 +802,7 @@ if (_type isEqualTo 'INTEL') exitWith {
 							_mkr setMarkerShape 'ELLIPSE';
 							_mkr setMarkerBrush 'Border';
 							_mkr setMarkerSize [50,50];
-							_mkr setMarkerColor 'ColorOPFOR';
+							_mkr setMarkerColor 'ColorBLUFOR';
 							[_mkr,_intelPosition] spawn {
 								params ['_mkr','_intelPosition'];
 								uiSleep 0.5;

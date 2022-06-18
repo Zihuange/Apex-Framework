@@ -46,7 +46,7 @@ if (_type isEqualTo 0) exitWith {
 			private _icon = 'a3\ui_f\data\igui\RscCustomInfo\Sensors\Targets\EnemyMan_ca.paa';
 			private _color = [0.5,0,0,0.65];
 			_showStealth = missionNamespace getVariable ['QS_client_showStealthEnemies',FALSE];
-			_remoteTargets = [(listRemoteTargets (player getVariable ['QS_unit_side',WEST])),0] call (missionNamespace getVariable 'QS_fnc_listRemoteTargets');
+			_remoteTargets = [(listRemoteTargets (player getVariable ['QS_unit_side',EAST])),0] call (missionNamespace getVariable 'QS_fnc_listRemoteTargets');
 			private _isRemoteTarget = FALSE;
 			private _dir = 0;
 			_time = time;
@@ -155,7 +155,7 @@ if (_type isEqualTo 1) exitWith {
 	];
 	_player = player;
 	_cameraOn = cameraOn;
-	_playerSide = _player getVariable ['QS_unit_side',WEST];
+	_playerSide = _player getVariable ['QS_unit_side',EAST];
 	_enemySides = [_playerSide] call (missionNamespace getVariable 'QS_fnc_enemySides');
 	private _target = objNull;
 	private _targetType = '';
@@ -165,10 +165,10 @@ if (_type isEqualTo 1) exitWith {
 	private _color = [0.5,0,0,0.65];
 	_showStealth = missionNamespace getVariable ['QS_client_showStealthEnemies',FALSE];
 	_remoteTargets = [(listRemoteTargets _playerSide),0] call (missionNamespace getVariable 'QS_fnc_listRemoteTargets');
-	private _targetSide = EAST;
+	private _targetSide = WEST;
 	private _unit = objNull;
 	private _icon = '';
-	_allPlayers = (allUnits select {((side (group _x)) isEqualTo WEST)}) call (missionNamespace getVariable 'QS_fnc_arrayShuffle');
+	_allPlayers = (allUnits select {((side (group _x)) isEqualTo EAST)}) call (missionNamespace getVariable 'QS_fnc_arrayShuffle');
 	private _targetPosition = [0,0,0];
 	private _targetKnowledge = [];
 	if (((_player distance2D (markerPos 'QS_marker_base_marker')) < 500) || {((_player distance2D (markerPos 'QS_marker_module_fob')) < 150)} || {(((listVehicleSensors (vehicle _player)) isNotEqualTo []) && ( ((listVehicleSensors (vehicle _player)) findIf {((toLower (_x select 0)) isEqualTo 'activeradarsensorcomponent')}) isNotEqualTo -1) && (isVehicleRadarOn (vehicle _player)))}) then {

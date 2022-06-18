@@ -53,7 +53,7 @@ if (_worldName isEqualTo 'Tanoa') then {
 	_startPosition = [6817.86,7544.75,0.00139809];
 	_startDir = 314.032;
 	_vehicleTypes = [
-		'C_Truck_02_fuel_F','C_Truck_02_box_F','B_T_Truck_01_fuel_F','B_T_Truck_01_box_F'
+		'C_Truck_02_fuel_F','C_Truck_02_box_F','O_T_Truck_02_fuel_F','O_T_Truck_02_box_F'
 	];
 	_destinations = [
 		[5394.51,9905.93,0.00143862],
@@ -79,7 +79,7 @@ if (_worldName isEqualTo 'Altis') then {
 	_startPosition = [14450,16763.7,0];
 	_startDir = 330;
 	_vehicleTypes = [
-		'C_Truck_02_fuel_F','C_Truck_02_box_F','B_Truck_01_fuel_F','B_Truck_01_box_F'
+		'C_Truck_02_fuel_F','C_Truck_02_box_F','O_Truck_02_fuel_F','O_Truck_02_box_F'
 	];
 	_destinations = [
 		[5769.33,20082.4,0],[5025.37,14424.8,0],[6196.62,15083.5,0],[8248.69,10901.6,0],[9207.46,12108.8,0],[6801.55,15560.4,0],
@@ -91,7 +91,7 @@ if (_worldName isEqualTo 'Malden') then {
 	_startPosition = [8241.15,10087.8,0];
 	_startDir = 170;
 	_vehicleTypes = [
-		'C_Truck_02_fuel_F','C_Truck_02_box_F','B_Truck_01_fuel_F','B_Truck_01_box_F'
+		'C_Truck_02_fuel_F','C_Truck_02_box_F','O_Truck_02_fuel_F','O_Truck_02_box_F'
 	];
 	_destinations = [
 		[1069.92,678.717,0],
@@ -107,7 +107,7 @@ if (_worldName isEqualTo 'Malden') then {
 if (_worldName isEqualTo 'Enoch') then {
 	_startPosition = [4268.87,10463.4,0];
 	_startDir = 134;
-	_vehicleTypes = ['B_T_Truck_01_fuel_F','B_T_Truck_01_box_F'];
+	_vehicleTypes = ['O_T_Truck_02_fuel_F','O_T_Truck_02_box_F'];
 	_destinations = [
 		[11151.5,11434.7,0.00144577],
 		[11436.9,9484.55,0.0016613],
@@ -186,8 +186,8 @@ _vehicle setFuelCargo 0;
 _vehicle setAmmoCargo 0;
 _vehicle forceFollowRoad TRUE;
 _technicalTypes = [
-	'O_G_Offroad_01_armed_F',3,
-	'O_G_Offroad_01_AT_F',1,
+	'B_G_Offroad_01_armed_F',3,
+	'B_G_Offroad_01_AT_F',1,
 	'I_C_Offroad_02_LMG_F',3,
 	'I_C_Offroad_02_AT_F',1
 ];
@@ -245,15 +245,15 @@ if (worldName isEqualTo 'Tanoa') then {
 	_enemyGroupTypes = ['IG_InfSentry','IG_ReconSentry','IG_ReconSentry','IG_InfSentry','IG_InfTeam','IG_InfTeam'];
 	_enemyGroupTypes_big = ['IG_InfTeam','IG_InfSquad'];
 	_enemyGroupTypes_small = ['IG_InfSentry','IG_ReconSentry'];
-	_enemyGroupTypes_reinf_small = ['OG_InfAssaultTeam'];
-	_enemyGroupTypes_reinf_big = ['OG_InfAssaultTeam'];
+	_enemyGroupTypes_reinf_small = ['IRG_InfAssaultTeam'];
+	_enemyGroupTypes_reinf_big = ['IRG_InfAssaultTeam'];
 } else {
-	_groupSide = EAST;
-	_enemyGroupTypes = ['OG_InfSentry','OG_InfSentry','OG_ReconSentry','OG_InfSentry','OG_InfTeam','OG_InfTeam'];
-	_enemyGroupTypes_big = ['OG_InfAssault','OG_InfTeam'];
-	_enemyGroupTypes_small = ['OG_InfSentry','OG_ReconSentry'];
-	_enemyGroupTypes_reinf_small = ['OG_InfAssaultTeam'];
-	_enemyGroupTypes_reinf_big = ['OG_InfAssaultTeam'];
+	_groupSide = WEST;
+	_enemyGroupTypes = ['IRG_InfSentry','IRG_InfSentry','IRG_ReconSentry','IRG_InfSentry','IRG_InfTeam','IRG_InfTeam'];
+	_enemyGroupTypes_big = ['IRG_InfAssault','IRG_InfTeam'];
+	_enemyGroupTypes_small = ['IRG_InfSentry','IRG_ReconSentry'];
+	_enemyGroupTypes_reinf_small = ['IRG_InfAssaultTeam'];
+	_enemyGroupTypes_reinf_big = ['IRG_InfAssaultTeam'];
 };
 _enemyGroupType = '';
 _enemySpawnPos = [0,0,0];
@@ -389,7 +389,7 @@ for '_x' from 0 to 1 step 0 do {
 							if ((_vehiclePos distance2D _startPosition) > _safezone_radius) then {
 								_timeOffRoad = _timeOffRoad + 1;
 								if (_timeOffRoad > 7) then {
-									['sideChat',[WEST,'BLU'],'支线任务 - 载具遇到了地雷！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+									['sideChat',[EAST,'BLU'],'支线任务 - 载具遇到了地雷！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 									_hasHitLandmine = TRUE;
 								};
 							};
@@ -430,7 +430,7 @@ for '_x' from 0 to 1 step 0 do {
 			{
 				if (!isNull _x) then {
 					if (_x isKindOf 'Man') then {
-						if (([(getPosATL _x),100,[WEST],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
+						if (([(getPosATL _x),100,[EAST],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
 							missionNamespace setVariable [
 								'QS_analytics_entities_deleted',
 								((missionNamespace getVariable 'QS_analytics_entities_deleted') + 1),
@@ -441,7 +441,7 @@ for '_x' from 0 to 1 step 0 do {
 							_x setDamage 1;
 						};
 					} else {
-						if (([(getPosATL _x),200,[WEST],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
+						if (([(getPosATL _x),200,[EAST],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
 							missionNamespace setVariable [
 								'QS_analytics_entities_deleted',
 								((missionNamespace getVariable 'QS_analytics_entities_deleted') + 1),
@@ -503,7 +503,7 @@ for '_x' from 0 to 1 step 0 do {
 		_ambushPos = selectRandom _ambushPos_candidates;
 		_distanceToAmbush = _vehiclePos distance2D _ambushPos;
 		//comment 'Prepare force protection';
-		_nearbyPlayers = [_vehiclePos,500,[WEST],allUnits,1] call (missionNamespace getVariable 'QS_fnc_serverDetector');
+		_nearbyPlayers = [_vehiclePos,500,[EAST],allUnits,1] call (missionNamespace getVariable 'QS_fnc_serverDetector');
 		_intensity = 1;
 		if (_nearbyPlayers > 0) then {
 			_intensity = 1;
@@ -550,7 +550,7 @@ for '_x' from 0 to 1 step 0 do {
 				_x disableAI 'COVER';
 				if ((random 1) > 0.9) then {
 					_x addBackpack (['b_carryall_ocamo','b_carryall_ghex_f'] select (worldName in ['Tanoa','Lingor3']));
-					[_x,(['launch_o_titan_f','launch_o_titan_ghex_f'] select (worldName in ['Tanoa','Lingor3'])),4] call (missionNamespace getVariable 'QS_fnc_addWeapon');
+					[_x,(['launch_b_titan_f','launch_b_titan_tna_f'] select (worldName in ['Tanoa','Lingor3'])),4] call (missionNamespace getVariable 'QS_fnc_addWeapon');
 				};
 				_x enableStamina FALSE;
 				_x enableFatigue FALSE;
@@ -577,7 +577,7 @@ for '_x' from 0 to 1 step 0 do {
 						_x disableAI 'COVER';
 						if ((random 1) > 0.9) then {
 							_x addBackpack (['b_carryall_ocamo','b_carryall_ghex_f'] select (worldName in ['Tanoa','Lingor3']));
-							[_x,(['launch_o_titan_f','launch_o_titan_ghex_f'] select (worldName in ['Tanoa','Lingor3'])),4] call (missionNamespace getVariable 'QS_fnc_addWeapon');
+							[_x,(['launch_b_titan_f','launch_b_titan_tna_f'] select (worldName in ['Tanoa','Lingor3'])),4] call (missionNamespace getVariable 'QS_fnc_addWeapon');
 						};
 						_x enableStamina FALSE;
 						_x enableFatigue FALSE;
@@ -608,7 +608,7 @@ for '_x' from 0 to 1 step 0 do {
 						};
 						if ((random 1) > 0.9) then {
 							_x addBackpack (['b_carryall_ocamo','b_carryall_ghex_f'] select (worldName in ['Tanoa','Lingor3']));
-							[_x,(['launch_o_titan_f','launch_o_titan_ghex_f'] select (worldName in ['Tanoa','Lingor3'])),4] call (missionNamespace getVariable 'QS_fnc_addWeapon');
+							[_x,(['launch_b_titan_f','launch_b_titan_tna_f'] select (worldName in ['Tanoa','Lingor3'])),4] call (missionNamespace getVariable 'QS_fnc_addWeapon');
 						};
 						_x disableAI 'COVER';
 						_x enableStamina FALSE;
@@ -667,7 +667,7 @@ for '_x' from 0 to 1 step 0 do {
 			if (({(alive _x)} count _enemyArray) < 6) then {
 				for '_x' from 0 to 49 step 1 do {
 					_spawnPos = [_vehiclePos,200,400,3,0,0.7,0] call (missionNamespace getVariable 'QS_fnc_findSafePos');
-					if (([_spawnPos,150,[WEST],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) exitWith {};
+					if (([_spawnPos,150,[EAST],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) exitWith {};
 				};
 				if ((_spawnPos distance2D _vehiclePos) < 1000) then {
 					if (_intensity > 2) then {
@@ -804,7 +804,7 @@ for '_x' from 0 to 1 step 0 do {
 			};
 		};
 		if ((_vehiclePos distance2D _startPosition) > 600) then {
-			if (([(getPosATL _vehicle),500,[WEST],allUnits,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
+			if (([(getPosATL _vehicle),500,[EAST],allUnits,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
 				_vehicle setDamage [1,TRUE];
 			};
 		};

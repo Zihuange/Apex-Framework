@@ -1249,7 +1249,7 @@ if (_role isEqualTo 'uav') exitWith {
 		]
 	]
 };
-if (_role isEqualTo 'o_rifleman') exitWith {
+if (_role isEqualTo 'b_rifleman') exitWith {
 	[
 		[	// -------------------------------------------------------------- BLACKLIST
 			[	// ITEMS
@@ -1297,7 +1297,7 @@ if (_role isEqualTo 'o_rifleman') exitWith {
 		]
 	]
 };
-if (_role isEqualTo 'o_autorifleman') exitWith {
+if (_role isEqualTo 'b_autorifleman') exitWith {
 	[
 		[	// -------------------------------------------------------------- BLACKLIST
 			[	// ITEMS

@@ -35,8 +35,8 @@ if (_type isEqualTo 'MANAGE') exitWith {
 			private _sides = missionNamespace getVariable 'QS_virtualSectors_sides';
 			private _sidesFlagsTextures = missionNamespace getVariable 'QS_virtualSectors_sidesFlagsTextures';
 			private _markerColors = ['coloropfor','colorwest','colorresistance','colorcivilian','colorunknown'];
-			private _playerSide = WEST;
-			private _enemySide = EAST;
+			private _playerSide = EAST;
+			private _enemySide = WEST;
 			private _scoreSides = missionNamespace getVariable ['QS_virtualSectors_scoreSides',[0,0,0,0,0]];
 			private _sideIndex = -1;
 			private _scoreCoef = 1;
@@ -119,7 +119,7 @@ if (_type isEqualTo 'MANAGE') exitWith {
 									_x setMarkerColor (_markerColors select _sideIndex);
 								};
 							} forEach _markerData;
-							if ((_sidesOwnedBy select 0) isEqualTo EAST) then {
+							if ((_sidesOwnedBy select 0) isEqualTo WEST) then {
 								[
 									'SC_UPDATE_BAD',
 									[

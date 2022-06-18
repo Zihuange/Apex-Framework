@@ -94,7 +94,7 @@ for '_x' from 0 to 2 step 1 do {
 
 /*/------------------- SPAWN FORCE PROTECTION/*/
 
-_enemiesArray = [(missionNamespace getVariable 'QS_sideObj')] call (missionNamespace getVariable 'QS_fnc_smEnemyEast');
+_enemiesArray = [(missionNamespace getVariable 'QS_sideObj')] call (missionNamespace getVariable 'QS_fnc_smEnemyWest');
 
 /*/------------------- BRIEF/*/
 
@@ -134,7 +134,7 @@ for '_x' from 0 to 1 step 0 do {
 		
 		/*/------------------ DE-BRIEFING/*/
 
-		['sideChat',[WEST,'HQ'],'数据被提前损毁，任务失败！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['sideChat',[EAST,'HQ'],'数据被提前损毁，任务失败！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		[0,_flatPos] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
 		{
 			_x setMarkerPos [-5000,-5000,0];
@@ -162,7 +162,7 @@ for '_x' from 0 to 1 step 0 do {
 	
 	if (missionNamespace getVariable 'QS_smSuccess') exitWith {
 		
-		['sideChat',[WEST,'HQ'],_c4Message] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['sideChat',[EAST,'HQ'],_c4Message] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 	
 		/*/------------------- BOOM!/*/
 		

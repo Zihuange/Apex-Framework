@@ -449,7 +449,7 @@ if (_QS_actionName in ['TouchOffMines','TouchOff']) then {
 		_mine = _x;
 		if (!isNull _mine) then {
 			if (mineActive _mine) then {
-				_playersNearby = [(getPosATL _mine),30,[WEST],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector');
+				_playersNearby = [(getPosATL _mine),30,[EAST],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector');
 				if ((count _playersNearby) > 1) then {
 					{
 						if ((([objNull,'GEOM'] checkVisibility [(getPosASL (vehicle _x)),[((getPosASL _mine) select 0),((getPosASL _mine) select 1),(((getPosASL _mine) select 2)+0.5)]]) > 0) || {(([objNull,'VIEW'] checkVisibility [(getPosASL (vehicle _x)),[((getPosASL _mine) select 0),((getPosASL _mine) select 1),(((getPosASL _mine) select 2)+0.5)]]) > 0)}) then {

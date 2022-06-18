@@ -1,5 +1,5 @@
 /*/
-File: fn_smEnemyEast.sqf
+File: fn_smEnemyWest.sqf
 Author: 
 
 	Quiksilver
@@ -21,22 +21,22 @@ private [
 	'_smSniperTeam','_grp','_unitTypes','_unitType','_garrisonGrp','_unit','_aaType'
 ];
 _infTypes = [
-	'OIA_InfSquad',3,
-	'OIA_InfTeam',2,
-	'OIA_ARTeam',2,
-	'OIA_InfTeam_LAT',2,
-	'OIA_InfAssault',2,
-	'OIA_InfTeam_AA',1,
-	'OIA_InfTeam_AT',1,
-	'OIA_InfTeam_HAT',1
+	'BUS_InfSquad',3,
+	'BUS_InfTeam',2,
+	'BUS_ARTeam',2,
+	'BUS_InfTeam_LAT',2,
+	'BUS_InfAssault',2,
+	'BUS_InfTeam_AA',1,
+	'BUS_InfTeam_AT',1,
+	'BUS_InfTeam_HAT',1
 ];
 
 if (worldName in ['Tanoa','Lingor3']) then {
-	_aaType = 'O_T_APC_Tracked_02_AA_ghex_F';
-	_vehTypes = ['O_T_MRAP_02_gmg_ghex_F','O_T_MRAP_02_hmg_ghex_F','O_T_MBT_02_cannon_ghex_F','O_T_APC_Tracked_02_cannon_ghex_F','O_T_APC_Wheeled_02_rcws_v2_ghex_F'];
+	_aaType = 'B_T_APC_Tracked_01_AA_F';
+	_vehTypes = ['B_T_MRAP_01_gmg_F','B_T_MRAP_01_hmg_F','B_T_MBT_01_cannon_F','B_T_AFV_Wheeled_01_cannon_F','B_T_APC_Wheeled_01_cannon_F'];
 } else {
-	_aaType = 'O_APC_Tracked_02_AA_F';
-	_vehTypes = ['O_MRAP_02_gmg_F','O_MRAP_02_hmg_F','O_MBT_02_cannon_F','O_APC_Tracked_02_cannon_F','O_APC_Wheeled_02_rcws_v2_F'];
+	_aaType = 'B_APC_Tracked_01_AA_F';
+	_vehTypes = ['B_MRAP_01_gmg_F','B_MRAP_01_hmg_F','B_MBT_01_cannon_F','B_AFV_Wheeled_01_cannon_F','B_APC_Wheeled_01_cannon_F'];
 };
 _enemiesArray = [];
 if (isNull (_this select 0)) exitWith {};
@@ -46,7 +46,7 @@ _pos = getPos (_this select 0);
 
 for '_x' from 0 to (round (1 + (random 2))) step 1 do {
 	_randomPos = ['RADIUS',_pos,300,'LAND',[],FALSE,[],[],TRUE] call (missionNamespace getVariable 'QS_fnc_findRandomPos');
-	_infteamPatrol = [_randomPos,(random 360),EAST,(selectRandomWeighted _infTypes),FALSE,grpNull,TRUE,TRUE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
+	_infteamPatrol = [_randomPos,(random 360),WEST,(selectRandomWeighted _infTypes),FALSE,grpNull,TRUE,TRUE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 	[_infteamPatrol,_pos,100,TRUE] call (missionNamespace getVariable 'QS_fnc_taskPatrol');
 	[(units _infteamPatrol),1] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
 	{
@@ -64,7 +64,7 @@ for '_x' from 0 to (round (1 + (random 2))) step 1 do {
 
 for '_x' from 0 to 1 step 1 do {
 	_randomPos = [_pos,500,100,10] call (missionNamespace getVariable 'QS_fnc_findOverwatchPos');
-	_smSniperTeam = [_randomPos,(random 360),EAST,'OI_SniperTeam_2',FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
+	_smSniperTeam = [_randomPos,(random 360),WEST,'OI_SniperTeam_2',FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 	[(units _smSniperTeam),4] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
 	{
 		_x setBehaviour 'COMBAT';
@@ -84,14 +84,14 @@ _vehType = selectRandomWeighted ([2] call (missionNamespace getVariable 'QS_fnc_
 _SMveh1 = createVehicle [_vehType,_randomPos,[],0,'NONE'];
 missionNamespace setVariable ['QS_analytics_entities_created',((missionNamespace getVariable 'QS_analytics_entities_created') + 1),FALSE];
 _SMveh1 allowCrewInImmobile TRUE;
-[0,_SMveh1,EAST,1] call (missionNamespace getVariable 'QS_fnc_vSetup2');
+[0,_SMveh1,WEST,1] call (missionNamespace getVariable 'QS_fnc_vSetup2');
 _SMveh1 lock 3;
 (missionNamespace getVariable 'QS_AI_vehicles') pushBack _SMveh1;
 _SMveh1 addEventHandler ['GetOut',(missionNamespace getVariable 'QS_fnc_AIXDismountDisabled')];
 _SMveh1 addEventHandler ['Killed',(missionNamespace getVariable 'QS_fnc_vKilled2')];
 private _grp = createVehicleCrew _SMveh1;
-if (!((side _grp) in [EAST,RESISTANCE])) then {
-	_grp = createGroup [EAST,TRUE];
+if (!((side _grp) in [WEST,RESISTANCE])) then {
+	_grp = createGroup [WEST,TRUE];
 	{
 		[_x] joinSilent _grp;
 	} forEach (crew _SMveh1);
@@ -116,7 +116,7 @@ _enemiesArray pushBack _SMveh1;
 /*/---------- VEHICLE AA/*/
 
 if ((count allPlayers) > 25) then {
-	_SMaaPatrol = createGroup [EAST,TRUE];
+	_SMaaPatrol = createGroup [WEST,TRUE];
 	_randomPos = ['RADIUS',_pos,300,'LAND',[],FALSE,[],[],TRUE] call (missionNamespace getVariable 'QS_fnc_findRandomPos');
 	_SMaa = createVehicle [_aaType,_randomPos,[],0,'NONE'];
 	missionNamespace setVariable [
@@ -150,24 +150,24 @@ if ((count allPlayers) > 25) then {
 		[_x] call (missionNamespace getVariable 'QS_fnc_setCollectible');
 		0 = _enemiesArray pushBack _x;
 	} count (units _grp);
-	[0,_SMaa,EAST,1] call (missionNamespace getVariable 'QS_fnc_vSetup2');
+	[0,_SMaa,WEST,1] call (missionNamespace getVariable 'QS_fnc_vSetup2');
 	0 = _enemiesArray pushBack _SMaa;
 	[(units _grp),4] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
 };
 
 if (worldName isEqualTo 'Tanoa') then {
 	_unitTypes = [
-		"O_T_Soldier_SL_F","O_T_Soldier_AR_F","O_T_Soldier_GL_F","O_T_Soldier_M_F","O_T_Soldier_AT_F","O_T_Soldier_AAT_F","O_T_Soldier_A_F","O_T_Medic_F",
-		"O_T_Soldier_SL_F","O_T_Soldier_F","O_T_Soldier_LAT_F","O_T_Soldier_M_F","O_T_Soldier_TL_F","O_T_Soldier_AR_F","O_T_Soldier_A_F","O_T_Medic_F"
+		"B_T_Soldier_SL_F","B_T_Soldier_AR_F","B_T_Soldier_GL_F","B_T_Soldier_M_F","B_T_Soldier_AT_F","B_T_Soldier_AAT_F","B_T_Soldier_A_F","B_T_Medic_F",
+		"B_T_Soldier_SL_F","B_T_Soldier_F","B_T_Soldier_LAT_F","B_T_Soldier_M_F","B_T_Soldier_TL_F","B_T_Soldier_AR_F","B_T_Soldier_A_F","B_T_Medic_F"
 	];
 } else {
 	_unitTypes = [
-		'O_soldierU_A_F','O_soldierU_AAR_F','O_soldierU_AR_F','O_soldierU_medic_F','O_engineer_U_F','O_soldierU_exp_F','O_SoldierU_GL_F',
-		'O_Urban_HeavyGunner_F','O_soldierU_M_F','O_soldierU_AA_F','O_soldierU_AT_F','O_soldierU_F','O_soldierU_LAT_F','O_Urban_Sharpshooter_F',
-		'O_SoldierU_SL_F','O_soldierU_TL_F'
+		'B_Soldier_A_F','B_soldier_AAR_F','B_soldier_AR_F','B_medic_F','B_engineer_F','B_engineer_F','B_Soldier_GL_F',
+		'B_HeavyGunner_F','B_soldier_M_F','B_soldier_AA_F','B_soldier_AT_F','B_Soldier_F','B_soldier_LAT_F','B_Sharpshooter_F',
+		'B_Soldier_SL_F','B_Soldier_TL_F'
 	];
 };
-_garrisonGrp = createGroup [EAST,TRUE];
+_garrisonGrp = createGroup [WEST,TRUE];
 for '_x' from 0 to 11 step 1 do {
 	_unitType = selectRandom _unitTypes;
 	_unit = _garrisonGrp createUnit [_unitType,_pos,[],0,'FORM'];

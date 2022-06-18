@@ -55,9 +55,9 @@ for '_x' from 0 to (_numberOfSectors - 1) step 1 do {
 	_interruptMultiplier = 1;	comment 'dev default = 2';
 	_areaOrRadiusConvert = 50;
 	_areaOrRadiusInterrupt = 100;
-	_sidesOwnedBy = [EAST,RESISTANCE];
-	_sidesCanConvert = [WEST];
-	_sidesCanInterrupt = [EAST,RESISTANCE];
+	_sidesOwnedBy = [WEST,RESISTANCE];
+	_sidesCanConvert = [EAST];
+	_sidesCanInterrupt = [WEST,RESISTANCE];
 	_conversionValue = _minConversionTime;
 	_conversionValuePrior = _minConversionTime;
 	_conversionAlgorithm = {};

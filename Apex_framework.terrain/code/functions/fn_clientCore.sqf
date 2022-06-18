@@ -147,8 +147,8 @@ _QS_moveTime = moveTime player;
 _QS_objectTypePlayer = getObjectType player;
 _QS_modelInfoPlayer = getModelInfo player;
 _lifeState = lifeState player;
-_west = WEST;
-_QS_side = player getVariable ['QS_unit_side',_west];
+_east = EAST;
+_QS_side = player getVariable ['QS_unit_side',_east];
 _dNull = displayNull;
 _objNull = objNull;
 _QS_nullPos = [0,0,0];
@@ -767,7 +767,7 @@ _QS_module_fuelConsumption_useRPMFactor = FALSE;
 /*/===================== Gear manager module/*/
 _QS_module_gearManager = TRUE && ((missionNamespace getVariable ['QS_missionConfig_Arsenal',0]) isNotEqualTo 3);
 _arsenalType = missionNamespace getVariable ['QS_missionConfig_Arsenal',1];
-missionNamespace setVariable ['QS_client_arsenalData',([(player getVariable ['QS_unit_side',WEST]),(player getVariable ['QS_unit_role','rifleman'])] call (missionNamespace getVariable 'QS_data_arsenal')),FALSE];
+missionNamespace setVariable ['QS_client_arsenalData',([(player getVariable ['QS_unit_side',EAST]),(player getVariable ['QS_unit_role','rifleman'])] call (missionNamespace getVariable 'QS_data_arsenal')),FALSE];
 _QS_module_gearManager_delay = 3;
 _QS_module_gearManager_checkDelay = time + _QS_module_gearManager_delay;
 _szmkr = markerPos 'QS_marker_base_marker';
@@ -905,7 +905,7 @@ _QS_underEnforcement = FALSE;
 _QS_decayRate = 20 * 60;
 _QS_decayDelay = _timeNow + _QS_decayRate;
 _thermalsEnabled = (player getVariable ['QS_tto',0]) < 1.5;
-_s0 = EAST;
+_s0 = WEST;
 _s2 = RESISTANCE;
 /*/===== Pilot Check /*/
 _pilotCheck = TRUE;
@@ -2809,7 +2809,7 @@ for 'x' from 0 to 1 step 0 do {
 				{(!isNull _cursorObject)} &&
 				{(_cursorObjectDistance < 3)} &&
 				{(_cursorObject isEqualTo (missionNamespace getVariable ['QS_module_fob_dataTerminal',_objNull]))} &&
-				{((missionNamespace getVariable 'QS_module_fob_side') isNotEqualTo WEST)}
+				{((missionNamespace getVariable 'QS_module_fob_side') isNotEqualTo EAST)}
 			) then {
 				if (!(_QS_interaction_fob_activate)) then {
 					_QS_interaction_fob_activate = _true;
@@ -4595,7 +4595,7 @@ for 'x' from 0 to 1 step 0 do {
 		if (_timeNow > _QS_module_manageHUD_checkDelay) then {
 			if (_lifeState isNotEqualTo 'INCAPACITATED') then {
 				if (shownHud isNotEqualTo (missionNamespace getVariable (format ['QS_allowedHUD_%1',_QS_side]))) then {
-					showHud (missionNamespace getVariable [(format ['QS_allowedHUD_%1',_QS_side]),WEST]);
+					showHud (missionNamespace getVariable [(format ['QS_allowedHUD_%1',_QS_side]),EAST]);
 				};
 			};
 			if ((missionNamespace getVariable 'QS_draw2D_projectiles') isNotEqualTo []) then {
@@ -5843,10 +5843,10 @@ for 'x' from 0 to 1 step 0 do {
 				['UPDATE_UI',_x] call _fn_roles;
 			};
 		} count _allPlayers;
-		if (_QS_side isNotEqualTo (_QS_player getVariable ['QS_unit_side',_west])) then {
-			_QS_side = _QS_player getVariable ['QS_unit_side',_west];
+		if (_QS_side isNotEqualTo (_QS_player getVariable ['QS_unit_side',_east])) then {
+			_QS_side = _QS_player getVariable ['QS_unit_side',_east];
 			_enemysides = _QS_side call _fn_enemySides;
-			setPlayerRespawnTime ([15,5] select (_QS_side isEqualTo _west));
+			setPlayerRespawnTime ([15,5] select (_QS_side isEqualTo _east));
 		};
 		if (_playerRole isNotEqualTo (_QS_player getVariable ['QS_unit_role','rifleman'])) then {
 			_playerRole = _QS_player getVariable ['QS_unit_role','rifleman'];

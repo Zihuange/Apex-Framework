@@ -54,7 +54,7 @@ if (_state isEqualTo 1) then {
 							if (alive _testVehicle) then {
 								if (canMove _testVehicle) then {
 									if (!(((crew _testVehicle) findIf {(alive _x)}) isEqualTo -1)) then {
-										if ((side (effectiveCommander _testVehicle)) in [EAST,RESISTANCE]) then {
+										if ((side (effectiveCommander _testVehicle)) in [WEST,RESISTANCE]) then {
 											_vehicle = _x;
 										};
 									};
@@ -72,7 +72,7 @@ if (_state isEqualTo 1) then {
 					params ['_killed','_killer','_instigator'];
 					if (!isNull _instigator) then {
 						if (isPlayer _instigator) then {
-							['sideChat',[WEST,'HQ'],(format [(localize 'STR_QS_aoSM_SAMdestroyed'),(name _instigator)])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+							['sideChat',[EAST,'HQ'],(format [(localize 'STR_QS_aoSM_SAMdestroyed'),(name _instigator)])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 						};
 					};
 				}

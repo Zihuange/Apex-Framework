@@ -77,7 +77,7 @@ if ((_spawnPos distance2D _aoPos) < (_aoSize * 1.1)) then {
 		_mine setVectorUp (surfaceNormal (getPosWorld _mine));
 		{
 			_x revealMine _mine;
-		} forEach [EAST,RESISTANCE];
+		} forEach [WEST,RESISTANCE];
 	};
 };
 _return;

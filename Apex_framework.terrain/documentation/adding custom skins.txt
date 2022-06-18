@@ -15,7 +15,7 @@ Its better to show you how this works rather than to explain how to do it. We wi
 
 3. Look in the file "code\config\QS_insigniaTextures.sqf". In here you will see the file paths leading to those images. This is where you plug images into the framework to appear in the menu system.
 
-4. Ingame, open your Area 51 menu and navigate to the "Insignia" section (Add player UID to the "@Apex_cfg\whitelist.sqf" file first if necessary).
+4. Ingame, open your Area 51 menu and navigate to the "Insignia" section (Add player UID to the "@Apex_cfg_opfor\whitelist.sqf" file first if necessary).
 
 
 Uniform skins:

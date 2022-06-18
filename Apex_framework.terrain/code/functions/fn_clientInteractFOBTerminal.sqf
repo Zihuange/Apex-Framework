@@ -20,7 +20,7 @@ if (_type isEqualTo 1) exitWith {
 		'<t align="left" size="2">FOB %1<t/><br/><t align="left" size="1.5">状态</t><br/><t align="left" size="1">__________</t><br/>',
 		(missionNamespace getVariable 'QS_module_fob_displayName')
 	];
-	if ((missionNamespace getVariable 'QS_module_fob_side') isEqualTo (player getVariable ['QS_unit_side',WEST])) then {
+	if ((missionNamespace getVariable 'QS_module_fob_side') isEqualTo (player getVariable ['QS_unit_side',EAST])) then {
 		_radarServices = '<t size="1" align="left">雷达设备</t><t color="#008000" size="1" align="right">上线</t><br/>';
 	} else {
 		_radarServices = '<t size="1" align="left">雷达设备</t><t color="#ff0000" size="1" align="right">离线</t><br/>';
@@ -71,7 +71,7 @@ if (_type isEqualTo 1) exitWith {
 if (_type isEqualTo 2) exitWith {
 	if (([(getPosATL player),100,([player] call (missionNamespace getVariable 'QS_fnc_enemySides')),allUnits,1] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo 0) then {
 		playSound ['AddItemOK',FALSE];
-		[50,[(player getVariable ['QS_unit_side',WEST]),profileName]] remoteExec ['QS_fnc_remoteExec',2,FALSE];
+		[50,[(player getVariable ['QS_unit_side',EAST]),profileName]] remoteExec ['QS_fnc_remoteExec',2,FALSE];
 	} else {
 		50 cutText ['敌军在100米范围内，FOB 激活失败！','PLAIN DOWN',1];
 	};

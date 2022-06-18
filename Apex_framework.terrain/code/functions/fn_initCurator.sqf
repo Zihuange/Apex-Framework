@@ -277,8 +277,8 @@ if (_type isEqualTo 1) then {
 		private _nearUnits = [];
 		private _nearUnitsIncapacitated = [];
 		private _nearUnitsInjured = [];
-		private _entitySide = WEST;
-		private _unitSide = WEST;
+		private _entitySide = EAST;
+		private _unitSide = EAST;
 		private _unit = objNull;
 		private _jobData = [];
 		private _time = diag_tickTime;
@@ -295,7 +295,7 @@ if (_type isEqualTo 1) then {
 						_entity = _x;
 						_entitySide = side (group _entity);
 						if ((lifeState _entity) in ['HEALTHY','INJURED']) then {
-							if (_entitySide in [EAST,RESISTANCE]) then {
+							if (_entitySide in [WEST,RESISTANCE]) then {
 								if (!(_entity getVariable ['QS_zeus_aiSkill',FALSE])) then {
 									_entity setVariable ['QS_zeus_aiSkill',TRUE,FALSE];
 									_entity setSkill 1;

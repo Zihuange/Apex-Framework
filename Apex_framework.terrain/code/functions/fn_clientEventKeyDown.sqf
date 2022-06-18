@@ -112,7 +112,7 @@ if (_key in ((actionKeys 'PersonView') + (actionKeys 'TacticalView') + (actionKe
 				_c = TRUE;
 			};
 		};
-		if ((side cameraOn) in [EAST,RESISTANCE]) then {
+		if ((side cameraOn) in [WEST,RESISTANCE]) then {
 			if (!(cameraView in ['INTERNAL','GUNNER'])) then {
 				if ((lifeState player) isNotEqualTo 'INCAPACITATED') then {
 					if ((missionNamespace getVariable ['QS_missionConfig_aoType','CLASSIC']) in ['CLASSIC','SC','GRID']) then {

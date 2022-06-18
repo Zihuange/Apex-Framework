@@ -16,7 +16,7 @@ ______________________________________________/*/
 scriptName 'QS - SM - AA';
 //comment 'Get any data we need';
 private _spawnPosition = [0,0,0];
-private _aaTypes = ['o_apc_tracked_02_aa_f','o_t_apc_tracked_02_aa_ghex_f','o_t_apc_tracked_02_aa_ghex_f','o_t_apc_tracked_02_aa_ghex_f','o_sam_system_04_f'];
+private _aaTypes = ['b_apc_tracked_01_aa_f','b_t_apc_tracked_01_aa_f','b_t_apc_tracked_01_aa_f','b_t_apc_tracked_01_aa_f','b_sam_system_03_f'];
 private _aaHulls = [];
 private _aaTurrets = [];
 private _aaTurretObjects = [];
@@ -70,8 +70,8 @@ private _watchPosition = _spawnPosition vectorAdd [0,0,1000];
 //comment 'Generate composition and assets';
 private _compositionData = [
 	[
-		["o_sam_system_04_f",[0.230469,-6.17627,0.0173378],179.236,[],TRUE,TRUE,FALSE,{(_this select 0)}], 			// o_sam_system_04_f   O_APC_Tracked_02_AA_F
-		["o_sam_system_04_f",[-0.212402,9.61426,0.0157723],359.523,[],TRUE,TRUE,FALSE,{(_this select 0)}], 			//	o_sam_system_04_f   O_APC_Tracked_02_AA_F
+		["b_sam_system_03_f",[0.230469,-6.17627,0.0173378],179.236,[],TRUE,TRUE,FALSE,{(_this select 0)}], 			// b_sam_system_03_f   B_APC_Tracked_01_AA_F
+		["b_sam_system_03_f",[-0.212402,9.61426,0.0157723],359.523,[],TRUE,TRUE,FALSE,{(_this select 0)}], 			//	b_sam_system_03_f   B_APC_Tracked_01_AA_F
 		["Land_HBarrier_5_F",[-0.302979,1.63086,1.72132],0,[],FALSE,FALSE,TRUE,{}], 
 		["Land_HBarrier_Big_F",[-0.20874,1.77246,0],0,[],FALSE,FALSE,TRUE,{}], 
 		["Land_HBarrier_Big_F",[5.12134,-1.37109,0],271.094,[],FALSE,FALSE,TRUE,{}], 
@@ -98,8 +98,8 @@ private _compositionData = [
 		["Land_HBarrierWall_corner_F",[11.0156,14.7471,0],0,[],FALSE,FALSE,TRUE,{}]
 	],
 	[
-		["o_sam_system_04_f",[-0.0292969,-6.354,0.0168018],178.855,[],TRUE,TRUE,FALSE,{(_this select 0)}], 		// o_sam_system_04_f    O_T_APC_Tracked_02_AA_ghex_F
-		["o_sam_system_04_f",[-0.321777,8.54443,0.0163908],359.998,[],TRUE,TRUE,FALSE,{(_this select 0)}], 		// o_sam_system_04_f   O_T_APC_Tracked_02_AA_ghex_F
+		["b_sam_system_03_f",[-0.0292969,-6.354,0.0168018],178.855,[],TRUE,TRUE,FALSE,{(_this select 0)}], 		// b_sam_system_03_f    B_T_APC_Tracked_01_AA_F
+		["b_sam_system_03_f",[-0.321777,8.54443,0.0163908],359.998,[],TRUE,TRUE,FALSE,{(_this select 0)}], 		// b_sam_system_03_f   B_T_APC_Tracked_01_AA_F
 		["Land_HBarrier_01_big_4_green_F",[-0.081543,1.03174,0],0,[],FALSE,FALSE,TRUE,{}], 
 		["Land_HBarrier_01_line_5_green_F",[-0.195801,1.05566,1.74458],0,[],FALSE,FALSE,TRUE,{}], 
 		["Land_HBarrier_01_line_5_green_F",[5.23779,0.97168,1.69463],90,[],FALSE,FALSE,TRUE,{}], 
@@ -147,7 +147,7 @@ _compositionData = nil;
 		if (unitIsUav _aaHull) then {
 			_aaHull setVariable ['QS_uav_protected',TRUE,FALSE];
 		};
-		if ((toLower (typeOf _aaHull)) in ['o_sam_system_04_f','o_radar_system_02_f']) then {
+		if ((toLower (typeOf _aaHull)) in ['b_sam_system_03_f','o_radar_system_02_f']) then {
 			{
 				_aaHull setObjectTextureGlobal [_forEachIndex,_x];
 			} forEach (getArray (configFile >> 'CfgVehicles' >> (typeOf _aaHull) >> 'TextureSources' >> (['AridHex','JungleHex'] select (worldName in ['Tanoa','Lingor3'])) >> 'textures'));
@@ -166,7 +166,7 @@ _compositionData = nil;
 		clearMagazineCargoGlobal _aaHull;
 		_aaHull setVariable ['QS_client_canAttachExp',TRUE,TRUE];
 		_aaHull setVariable ['QS_RD_noRepair',TRUE,TRUE];
-		if ((toLower (typeOf _aaHull)) in ['o_sam_system_04_f','o_radar_system_02_f']) then {
+		if ((toLower (typeOf _aaHull)) in ['b_sam_system_03_f','o_radar_system_02_f']) then {
 			_aaHull addEventHandler [
 				'HandleDamage',
 				{
@@ -211,17 +211,17 @@ _compositionData = nil;
 				if (!isNull _instigator) then {
 					if (isPlayer _instigator) then {
 						_text = format ['%1 ( %2 ) 摧毁了一台防空设备！',(name _instigator),(groupID (group _instigator))];
-						[[WEST,'BLU'],_text] remoteExec ['sideChat',-2,FALSE];
+						[[EAST,'OPF'],_text] remoteExec ['sideChat',-2,FALSE];
 					} else {
-						[[WEST,'BLU'],'防空设备被摧毁！'] remoteExec ['sideChat',-2,FALSE];
+						[[EAST,'OPF'],'防空设备被摧毁！'] remoteExec ['sideChat',-2,FALSE];
 					};
 				} else {
-					[[WEST,'BLU'],'防空设备被摧毁！'] remoteExec ['sideChat',-2,FALSE];
+					[[EAST,'OPF'],'防空设备被摧毁！'] remoteExec ['sideChat',-2,FALSE];
 				};
 			}
 		];
 		createVehicleCrew _aaHull;
-		(crew _aaHull) joinSilent (createGroup [EAST,TRUE]);
+		(crew _aaHull) joinSilent (createGroup [WEST,TRUE]);
 		{
 			_x setVariable ['QS_hidden',TRUE,TRUE];
 		} forEach (crew _aaHull);
@@ -235,7 +235,7 @@ _compositionData = nil;
 	if (!isNull (group _x)) then {
 		(group _x) addVehicle (selectRandom _aaHulls);
 	};
-} forEach ([(_composition select 0)] call (missionNamespace getVariable 'QS_fnc_smEnemyEast'));
+} forEach ([(_composition select 0)] call (missionNamespace getVariable 'QS_fnc_smEnemyWest'));
 //comment 'Brief players';
 _fuzzyPos = [((_spawnPosition select 0) - 300) + (random 600),((_spawnPosition select 1) - 300) + (random 600),0];
 {
@@ -291,7 +291,7 @@ for '_x' from 0 to 1 step 0 do {
 		if (!(_allAircraft isEqualTo [])) then {
 			{
 				_targetCandidate = _x;
-				if ((side _targetCandidate) isEqualTo WEST) then {
+				if ((side _targetCandidate) isEqualTo EAST) then {
 					if (!(((crew _targetCandidate) findIf {(alive _x)}) isEqualTo -1)) then {
 						_targetType = toLower (typeOf _targetCandidate);
 						if (_targetCandidate isKindOf 'Plane') then {

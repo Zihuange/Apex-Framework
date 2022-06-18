@@ -15,8 +15,8 @@ _____________________________________________________________________/*/
 scriptName 'QS Script Client AI Behaviours';
 private _entity = objNull;
 private _nearUnits = [];
-private _entitySide = WEST;
-private _unitSide = WEST;
+private _entitySide = EAST;
+private _unitSide = EAST;
 private _unit = objNull;
 private _jobData = [];
 private _time = diag_tickTime;

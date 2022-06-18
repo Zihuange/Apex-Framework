@@ -34,8 +34,8 @@ private [
 	'_weaponHolderLimit','_weaponHolderDistCheck','_weaponHolderDist','_minesLimit','_minesDistCheck','_minesDist',
 	'_staticsLimit','_staticsDistCheck','_staticsDist','_orphanedTriggers','_emptyGroups','_crateResetPos','_crate',
 	'_crateArray','_crateIndex','_crateType','_backpackDroneLimit','_backpackDroneDistCheck','_backpackDroneDist',
-	'_orphanedTriggerCount','_QS_weather','_QS_weather_stormDelay','_QS_weather_clearDelay','_w','_eastVehicles',
-	'_eastVehicles_checkDelay','_eastVehicles_delay','_QS_setFogDelay','_QS_revealLoudPlayers','_QS_revealLoudPlayers_timer',
+	'_orphanedTriggerCount','_QS_weather','_QS_weather_stormDelay','_QS_weather_clearDelay','_w','_westVehicles',
+	'_westVehicles_checkDelay','_westVehicles_delay','_QS_setFogDelay','_QS_revealLoudPlayers','_QS_revealLoudPlayers_timer',
 	'_QS_revealLoudPlayers_delay','_grpLeader','_knownPlayers','_grp','_QS_fnc_reveal','_crate10Pos','_crate10Type','_QS_checkUAVsTime',
 	'_QS_checkUAVsTime_delay','_QS_uavRespawnDelay','_aoTypes','_aoType','_fpsCheckDelay','_scMasterList','_regionMasterList','_aoList',
 	'_defendAOActive','_mainMissionRegionListProxy','_mainMissionRegion','_ao','_defendAO','_defendAOScript','_nightVote','_nightVoteDelay',
@@ -119,7 +119,7 @@ _timeNow = time;
 _true = TRUE;
 _false = FALSE;
 _endl = endl;
-_enemySides = [EAST,RESISTANCE];
+_enemySides = [WEST,RESISTANCE];
 _east = EAST;
 _west = WEST;
 _resistance = RESISTANCE;
@@ -776,9 +776,9 @@ _enemyCasLimit = 0;
 _enemyQS_casJet = objNull;
 
 /*/===== dunno anymore*/
-_eastVehicles = [];
-_eastVehicles_checkDelay = 900;
-_eastVehicles_delay = time + _eastVehicles_checkDelay;
+_westVehicles = [];
+_westVehicles_checkDelay = 900;
+_westVehicles_delay = time + _westVehicles_checkDelay;
 
 _QS_fnc_reveal = {
 	_grp = _this # 0;
@@ -924,7 +924,7 @@ if (_QS_module_recruitableAI) then {
 	};
 	missionNamespace setVariable ['QS_RD_recruitableAI_1',_QS_module_recruitableAI_data,FALSE];
 	_QS_module_recruitableAI_array = missionNamespace getVariable 'QS_RD_recruitableAI_1';
-	_QS_module_recruitableAI_side = WEST;
+	_QS_module_recruitableAI_side = EAST;
 	if (_QS_worldName isEqualTo 'Tanoa') then {
 		_QS_module_recruitableAI_unitTypes = [	
 			'B_CTRG_Soldier_AR_tna_F','B_CTRG_Soldier_LAT_tna_F','B_CTRG_Soldier_M_tna_F'
@@ -1876,13 +1876,13 @@ for '_x' from 0 to 1 step 0 do {
 					
 					if (_timeNow > _QS_marker_hqMarker_checkDelay) then {
 						if (!alive (missionNamespace getVariable 'QS_csatCommander')) then {
-							if ((markerColor 'QS_marker_hqMarker') isEqualTo 'ColorWEST') then {
-								if (([(missionNamespace getVariable 'QS_HQpos'),100,[_west],_allPlayers,0] call _fn_serverDetector) isEqualTo []) then {
+							if ((markerColor 'QS_marker_hqMarker') isEqualTo 'ColorEAST') then {
+								if (([(missionNamespace getVariable 'QS_HQpos'),100,[_east],_allPlayers,0] call _fn_serverDetector) isEqualTo []) then {
 									if (([(missionNamespace getVariable 'QS_HQpos'),50,_enemySides,allUnits,1] call _fn_serverDetector) > 1) then {
-										['sideChat',[_west,'BLU'],'敌军正在夺回指挥部！'] remoteExec ['QS_fnc_remoteExecCmd',-2,_false];
-										[(missionNamespace getVariable 'QS_AO_HQ_flag'),_east,'',_false,objNull,1] call _fn_setFlag;
+										['sideChat',[_east,'OPF'],'敌军正在夺回指挥部！'] remoteExec ['QS_fnc_remoteExecCmd',-2,_false];
+										[(missionNamespace getVariable 'QS_AO_HQ_flag'),_west,'',_false,objNull,1] call _fn_setFlag;
 										{
-											_x setMarkerColor 'ColorOPFOR';
+											_x setMarkerColor 'ColorBLUFOR';
 										} forEach [
 											'QS_marker_hqMarker',
 											'QS_marker_hqCircle'
@@ -1890,10 +1890,10 @@ for '_x' from 0 to 1 step 0 do {
 									};
 								};
 							} else {
-								if ((markerColor 'QS_marker_hqMarker') isEqualTo 'ColorOPFOR') then {
-									if (([(missionNamespace getVariable 'QS_HQpos'),100,[_west],_allPlayers,0] call _fn_serverDetector) isNotEqualTo []) then {
+								if ((markerColor 'QS_marker_hqMarker') isEqualTo 'ColorBLUFOR') then {
+									if (([(missionNamespace getVariable 'QS_HQpos'),100,[_east],_allPlayers,0] call _fn_serverDetector) isNotEqualTo []) then {
 										if (([(missionNamespace getVariable 'QS_HQpos'),50,_enemySides,allUnits,0] call _fn_serverDetector) isEqualTo []) then {
-											[(missionNamespace getVariable 'QS_AO_HQ_flag'),_west,'',_false,objNull,1] call _fn_setFlag;
+											[(missionNamespace getVariable 'QS_AO_HQ_flag'),_east,'',_false,objNull,1] call _fn_setFlag;
 											{
 												_x setMarkerColor 'ColorWEST';
 											} forEach [
@@ -1911,7 +1911,7 @@ for '_x' from 0 to 1 step 0 do {
 					if (_timeNow > _QS_ao_invincibility_checkDelay) then {
 						if (alive (missionNamespace getVariable 'QS_radioTower')) then {
 							if (!isDamageAllowed (missionNamespace getVariable 'QS_radioTower')) then {
-								_QS_listNearbyPlayers = [(missionNamespace getVariable 'QS_radioTower_pos'),250,[_west],(_allPlayers unitsBelowHeight 30),0] call _fn_serverDetector;
+								_QS_listNearbyPlayers = [(missionNamespace getVariable 'QS_radioTower_pos'),250,[_east],(_allPlayers unitsBelowHeight 30),0] call _fn_serverDetector;
 								if (_QS_listNearbyPlayers isNotEqualTo []) then {
 									{
 										if (!((vehicle _x) isKindOf 'Air')) exitWith {
@@ -1924,7 +1924,7 @@ for '_x' from 0 to 1 step 0 do {
 						};
 						if (!(_minefieldSpawned)) then {
 							if (missionNamespace getVariable ['QS_ao_createDelayedMinefield',_false]) then {
-								_QS_listNearbyPlayers = [(missionNamespace getVariable 'QS_radioTower_pos'),150,[_west],(_allPlayers unitsBelowHeight 30),0] call _fn_serverDetector;
+								_QS_listNearbyPlayers = [(missionNamespace getVariable 'QS_radioTower_pos'),150,[_east],(_allPlayers unitsBelowHeight 30),0] call _fn_serverDetector;
 								if (_QS_listNearbyPlayers isNotEqualTo []) then {
 									_minefieldSpawned = _true;
 									call _fn_aoMinefield;
@@ -1932,7 +1932,7 @@ for '_x' from 0 to 1 step 0 do {
 							};
 						};
 						if (!isDamageAllowed (missionNamespace getVariable 'QS_csatCommander')) then {
-							_QS_listNearbyPlayers = [(missionNamespace getVariable 'QS_HQpos'),250,[_west],(_allPlayers unitsBelowHeight 30),0] call _fn_serverDetector;
+							_QS_listNearbyPlayers = [(missionNamespace getVariable 'QS_HQpos'),250,[_east],(_allPlayers unitsBelowHeight 30),0] call _fn_serverDetector;
 							if (_QS_listNearbyPlayers isNotEqualTo []) then {
 								{
 									if (!((vehicle _x) isKindOf 'Air')) exitWith {
@@ -1948,7 +1948,7 @@ for '_x' from 0 to 1 step 0 do {
 					if ((missionNamespace getVariable 'QS_mission_aoType') isEqualTo 'SC') then {
 						if (alive (missionNamespace getVariable 'QS_radioTower')) then {
 							if (!isDamageAllowed (missionNamespace getVariable 'QS_radioTower')) then {
-								_QS_listNearbyPlayers = [(missionNamespace getVariable 'QS_radioTower_pos'),250,[_west],(_allPlayers unitsBelowHeight 30),0] call _fn_serverDetector;
+								_QS_listNearbyPlayers = [(missionNamespace getVariable 'QS_radioTower_pos'),250,[_east],(_allPlayers unitsBelowHeight 30),0] call _fn_serverDetector;
 								if (_QS_listNearbyPlayers isNotEqualTo []) then {
 									{
 										if (!((vehicle _x) isKindOf 'Air')) exitWith {
@@ -1962,7 +1962,7 @@ for '_x' from 0 to 1 step 0 do {
 						// Delayed minefield
 						if (!(_minefieldSpawned)) then {
 							if (missionNamespace getVariable ['QS_ao_createDelayedMinefield',_false]) then {
-								_QS_listNearbyPlayers = [(missionNamespace getVariable 'QS_radioTower_pos'),150,[_west],(_allPlayers unitsBelowHeight 30),0] call _fn_serverDetector;
+								_QS_listNearbyPlayers = [(missionNamespace getVariable 'QS_radioTower_pos'),150,[_east],(_allPlayers unitsBelowHeight 30),0] call _fn_serverDetector;
 								if (_QS_listNearbyPlayers isNotEqualTo []) then {
 									_minefieldSpawned = _true;
 									_array = [(missionNamespace getVariable 'QS_radioTower_pos'),5,25,29,[],_true,_false] call _fn_createMinefield;
@@ -1975,7 +1975,7 @@ for '_x' from 0 to 1 step 0 do {
 						};
 						if ((missionNamespace getVariable 'QS_virtualSectors_aoMortars') isNotEqualTo []) then {
 							if (((missionNamespace getVariable 'QS_virtualSectors_aoMortars') select {((alive _x) && (alive (gunner _x)))}) isEqualTo []) then {
-								['sideChat',[_west,'HQ'],'敌军迫击炮阵地已被消灭！'] remoteExec ['QS_fnc_remoteExecCmd',-2,_false];
+								['sideChat',[_east,'HQ'],'敌军迫击炮阵地已被消灭！'] remoteExec ['QS_fnc_remoteExecCmd',-2,_false];
 								['SC_SUB_COMPLETED',['','迫击炮阵地已被消灭']] remoteExec ['QS_fnc_showNotification',-2,_false];
 								missionNamespace setVariable ['QS_virtualSectors_aoMortars',[],_false];
 								{
@@ -2492,14 +2492,14 @@ for '_x' from 0 to 1 step 0 do {
 											};
 											missionNamespace setVariable ['QS_module_fob_respawnTickets',((missionNamespace getVariable 'QS_module_fob_respawnTickets') + _module_fob_respawn_ticketsAdded),_true];										
 											_x setVariable ['QS_vehicle_isSuppliedFOB',_true,_true];
-											0 = ['sideChat',[_west,'HQ'],(format ['FOB 复活票数增加 %1 票，总复活票数：%2 票。',_module_fob_respawn_ticketsAdded,(missionNamespace getVariable 'QS_module_fob_respawnTickets')])] remoteExec ['QS_fnc_remoteExecCmd',-2,_false];
+											0 = ['sideChat',[_east,'HQ'],(format ['FOB 复活票数增加 %1 票，总复活票数：%2 票。',_module_fob_respawn_ticketsAdded,(missionNamespace getVariable 'QS_module_fob_respawnTickets')])] remoteExec ['QS_fnc_remoteExecCmd',-2,_false];
 											if (!isNil {_x getVariable 'QS_transporter'}) then {
 												if (alive ((_x getVariable 'QS_transporter') # 1)) then {
 													0 = (missionNamespace getVariable 'QS_leaderboards_session_queue') pushBack ['TRANSPORT',((_x getVariable 'QS_transporter') # 2),((_x getVariable 'QS_transporter') # 0),4];
 												};
 												if (!(_supportMessagePopped)) then {
 													_supportMessagePopped = _true;
-													['sideChat',[_west,'BLU'],(format ['%1 为 FOB 提供了 %2 支援补给。',((_x getVariable 'QS_transporter') # 0),(getText (configFile >> 'CfgVehicles' >> (typeOf _x) >> 'displayName'))])] remoteExec ['QS_fnc_remoteExecCmd',-2,_false];
+													['sideChat',[_east,'OPF'],(format ['%1 为 FOB 提供了 %2 支援补给。',((_x getVariable 'QS_transporter') # 0),(getText (configFile >> 'CfgVehicles' >> (typeOf _x) >> 'displayName'))])] remoteExec ['QS_fnc_remoteExecCmd',-2,_false];
 												};
 											};
 										};
@@ -2522,7 +2522,7 @@ for '_x' from 0 to 1 step 0 do {
 										};									
 										missionNamespace setVariable ['QS_module_fob_respawnTickets',((missionNamespace getVariable 'QS_module_fob_respawnTickets') + _module_fob_respawn_ticketsAdded),_true];
 										_x setVariable ['QS_vehicle_isSuppliedFOB',_true,_true];
-										0 = ['sideChat',[_west,'HQ'],(format ['FOB 复活票数增加 %1 票，总复活票数：%2 票。',_module_fob_respawn_ticketsAdded,(missionNamespace getVariable 'QS_module_fob_respawnTickets')])] remoteExec ['QS_fnc_remoteExecCmd',-2,_false];
+										0 = ['sideChat',[_east,'HQ'],(format ['FOB 复活票数增加 %1 票，总复活票数：%2 票。',_module_fob_respawn_ticketsAdded,(missionNamespace getVariable 'QS_module_fob_respawnTickets')])] remoteExec ['QS_fnc_remoteExecCmd',-2,_false];
 										if (!isNil {_x getVariable 'QS_transporter'}) then {
 											if (alive ((_x getVariable 'QS_transporter') # 1)) then {
 												if ((missionNamespace getVariable 'QS_module_fob_respawnTickets') <= 24) then {
@@ -2531,7 +2531,7 @@ for '_x' from 0 to 1 step 0 do {
 											};
 											if (!(_supportMessagePopped)) then {
 												_supportMessagePopped = _true;
-												['sideChat',[_west,'BLU'],(format ['%1 为 FOB 提供了 %2 支援补给。',((_x getVariable 'QS_transporter') # 0),(getText (configFile >> 'CfgVehicles' >> (typeOf _x) >> 'displayName'))])] remoteExec ['QS_fnc_remoteExecCmd',-2,_false];
+												['sideChat',[_east,'OPF'],(format ['%1 为 FOB 提供了 %2 支援补给。',((_x getVariable 'QS_transporter') # 0),(getText (configFile >> 'CfgVehicles' >> (typeOf _x) >> 'displayName'))])] remoteExec ['QS_fnc_remoteExecCmd',-2,_false];
 											};
 										};
 									};
@@ -2607,7 +2607,7 @@ for '_x' from 0 to 1 step 0 do {
 												};
 												if (!(_supportMessagePopped)) then {
 													_supportMessagePopped = _true;
-													['sideChat',[_west,'BLU'],(format ['%1 supported the FOB with a(n) %2',((_x getVariable 'QS_transporter') # 0),(getText (configFile >> 'CfgVehicles' >> (typeOf _x) >> 'displayName'))])] remoteExec ['QS_fnc_remoteExecCmd',-2,_false];
+													['sideChat',[_east,'OPF'],(format ['%1 supported the FOB with a(n) %2',((_x getVariable 'QS_transporter') # 0),(getText (configFile >> 'CfgVehicles' >> (typeOf _x) >> 'displayName'))])] remoteExec ['QS_fnc_remoteExecCmd',-2,_false];
 												};
 											};
 										};
@@ -2638,7 +2638,7 @@ for '_x' from 0 to 1 step 0 do {
 											};
 											if (!(_supportMessagePopped)) then {
 												_supportMessagePopped = _true;
-												0 = ['sideChat',[_west,'BLU'],(format ['%1 为 FOB 提供了 %2 支援补给。',((_x getVariable 'QS_transporter') # 0),(getText (configFile >> 'CfgVehicles' >> (typeOf _x) >> 'displayName'))])] remoteExec ['QS_fnc_remoteExecCmd',-2,_false];
+												0 = ['sideChat',[_east,'OPF'],(format ['%1 为 FOB 提供了 %2 支援补给。',((_x getVariable 'QS_transporter') # 0),(getText (configFile >> 'CfgVehicles' >> (typeOf _x) >> 'displayName'))])] remoteExec ['QS_fnc_remoteExecCmd',-2,_false];
 											};
 										};
 									};
@@ -2664,7 +2664,7 @@ for '_x' from 0 to 1 step 0 do {
 										};
 										if (!(_supportMessagePopped)) then {
 											_supportMessagePopped = _true;
-											0 = ['sideChat',[_west,'BLU'],(format ['%1 为 FOB 提供了 %2 支援补给。',((_x getVariable 'QS_transporter') # 0),(getText (configFile >> 'CfgVehicles' >> (typeOf _x) >> 'displayName'))])] remoteExec ['QS_fnc_remoteExecCmd',-2,_false];
+											0 = ['sideChat',[_east,'OPF'],(format ['%1 为 FOB 提供了 %2 支援补给。',((_x getVariable 'QS_transporter') # 0),(getText (configFile >> 'CfgVehicles' >> (typeOf _x) >> 'displayName'))])] remoteExec ['QS_fnc_remoteExecCmd',-2,_false];
 										};
 									};
 								};
@@ -2693,7 +2693,7 @@ for '_x' from 0 to 1 step 0 do {
 										};
 										if (!(_supportMessagePopped)) then {
 											_supportMessagePopped = _true;
-											['sideChat',[_west,'BLU'],(format ['%1 为 FOB 提供了 %2 支援补给。',((_x getVariable 'QS_transporter') # 0),(getText (configFile >> 'CfgVehicles' >> (typeOf _x) >> 'displayName'))])] remoteExec ['QS_fnc_remoteExecCmd',-2,_false];
+											['sideChat',[_east,'OPF'],(format ['%1 为 FOB 提供了 %2 支援补给。',((_x getVariable 'QS_transporter') # 0),(getText (configFile >> 'CfgVehicles' >> (typeOf _x) >> 'displayName'))])] remoteExec ['QS_fnc_remoteExecCmd',-2,_false];
 										};
 									};
 								};
@@ -2720,30 +2720,30 @@ for '_x' from 0 to 1 step 0 do {
 					[29,sideUnknown] remoteExec ['QS_fnc_remoteExec',-2,_false];
 				};
 			} else {
-				if ((missionNamespace getVariable 'QS_module_fob_side') isEqualTo _east) then {
-					if ((missionNamespace getVariable 'QS_allowedHUD_EAST') isNotEqualTo _QS_module_fob_sideShownHUD_radarON) then {
+				if ((missionNamespace getVariable 'QS_module_fob_side') isEqualTo _west) then {
+					if ((missionNamespace getVariable 'QS_allowedHUD_WEST') isNotEqualTo _QS_module_fob_sideShownHUD_radarON) then {
 						{
 							missionNamespace setVariable _x;
 						} forEach [
 							[(format ['QS_allowedHUD_%1',(missionNamespace getVariable 'QS_module_fob_side')]),_QS_module_fob_sideShownHUD_radarON,_true],
-							['QS_allowedHUD_WEST',_QS_module_fob_sideShownHUD_radarOFF,_true],
+							['QS_allowedHUD_EAST',_QS_module_fob_sideShownHUD_radarOFF,_true],
 							['QS_allowedHUD_RESISTANCE',_QS_module_fob_sideShownHUD_radarOFF,_true],
 							['QS_allowedHUD_CIVILIAN',_QS_module_fob_sideShownHUD_radarOFF,_true]
 						];
-						[29,_east] remoteExec ['QS_fnc_remoteExec',-2,_false];
+						[29,_west] remoteExec ['QS_fnc_remoteExec',-2,_false];
 					};
 				} else {
-					if ((missionNamespace getVariable 'QS_module_fob_side') isEqualTo _west) then {
-						if ((missionNamespace getVariable 'QS_allowedHUD_WEST') isNotEqualTo _QS_module_fob_sideShownHUD_radarON) then {
+					if ((missionNamespace getVariable 'QS_module_fob_side') isEqualTo _east) then {
+						if ((missionNamespace getVariable 'QS_allowedHUD_EAST') isNotEqualTo _QS_module_fob_sideShownHUD_radarON) then {
 							{
 								missionNamespace setVariable _x;
 							} forEach [
 								[(format ['QS_allowedHUD_%1',(missionNamespace getVariable 'QS_module_fob_side')]),_QS_module_fob_sideShownHUD_radarON,_true],
-								['QS_allowedHUD_EAST',_QS_module_fob_sideShownHUD_radarOFF,_true],
+								['QS_allowedHUD_WEST',_QS_module_fob_sideShownHUD_radarOFF,_true],
 								['QS_allowedHUD_RESISTANCE',_QS_module_fob_sideShownHUD_radarOFF,_true],
 								['QS_allowedHUD_CIVILIAN',_QS_module_fob_sideShownHUD_radarOFF,_true]
 							];
-							[29,_west] remoteExec ['QS_fnc_remoteExec',-2,_false];
+							[29,_east] remoteExec ['QS_fnc_remoteExec',-2,_false];
 						};			
 					} else {
 						if ((missionNamespace getVariable 'QS_module_fob_side') isEqualTo RESISTANCE) then {
@@ -2802,7 +2802,7 @@ for '_x' from 0 to 1 step 0 do {
 								if (_module_fob_underAssault) then {
 									_module_fob_underAssault = _false;
 									missionNamespace setVariable ['QS_module_fob_attacked',_module_fob_underAssault,_true];
-									[(missionNamespace getVariable 'QS_module_fob_flag'),_west,'',_false,objNull,1] call _fn_setFlag;
+									[(missionNamespace getVariable 'QS_module_fob_flag'),_east,'',_false,objNull,1] call _fn_setFlag;
 									_module_fob_assault_timer = _timeNow + 900 + 300 - (random 600);
 									if (((missionNamespace getVariable 'QS_module_fob_assaultArray') findIf {(alive _x)}) isNotEqualTo -1) then {
 										{
@@ -2817,8 +2817,8 @@ for '_x' from 0 to 1 step 0 do {
 						};
 						_QS_module_fob_allUnits = allUnits;
 						if (([(markerPos 'QS_marker_module_fob'),50,_enemySides,_QS_module_fob_allUnits,1] call _fn_serverDetector) > 1) then {
-							if (([(markerPos 'QS_marker_module_fob'),100,[_west],_QS_module_fob_allUnits,1] call _fn_serverDetector) < 1) then {
-								[(missionNamespace getVariable 'QS_module_fob_flag'),_east,'',_false,objNull,1] call _fn_setFlag;
+							if (([(markerPos 'QS_marker_module_fob'),100,[_east],_QS_module_fob_allUnits,1] call _fn_serverDetector) < 1) then {
+								[(missionNamespace getVariable 'QS_module_fob_flag'),_west,'',_false,objNull,1] call _fn_setFlag;
 							};
 						};					
 						_module_fob_assault_checkDelay = _timeNow + _module_fob_assault_delay;
@@ -2905,7 +2905,7 @@ for '_x' from 0 to 1 step 0 do {
 							if (isPlayer _casPilot) then {
 								if (_casPilot getUnitTrait 'QS_trait_fighterPilot') then {
 									missionNamespace setVariable ['QS_CAS_jetAllowance_gameover',_false,_false];
-									['HANDLE',['HANDLE_REQUEST_ROLE','',(_casPilot getVariable ['QS_unit_side',WEST]),'rifleman',_casPilot]] call (missionNamespace getVariable 'QS_fnc_roles');
+									['HANDLE',['HANDLE_REQUEST_ROLE','',(_casPilot getVariable ['QS_unit_side',EAST]),'rifleman',_casPilot]] call (missionNamespace getVariable 'QS_fnc_roles');
 									_casPilot spawn {
 										moveOut _this;
 										uiSleep 0.5;
@@ -2933,13 +2933,13 @@ for '_x' from 0 to 1 step 0 do {
 		if (_timeNow > _HVT_checkDelay) then {
 			_HVT_isTargeting = _false;
 			{
-				if ((alive (effectiveCommander _x)) && {((side (group (effectiveCommander _x))) isEqualTo _west)}) then {
+				if ((alive (effectiveCommander _x)) && {((side (group (effectiveCommander _x))) isEqualTo _east)}) then {
 					_HVT_removeFrom = _false;
 					_unit = _x;
 					_QS_v = vehicle _unit;
 					if (!(_QS_v in _HVT_currentTargets)) then {
 						if ((_QS_v isKindOf 'Tank') || {(_QS_v isKindOf 'Wheeled_APC_F')}) then {
-							if ((_east knowsAbout _QS_v) > 1) then {
+							if ((_west knowsAbout _QS_v) > 1) then {
 								if (!([_QS_v] call _HVT_fn_isStealthy)) then {
 									if ((_QS_v distance2D _baseMarker) > 1000) then {
 										if (!(_HVT_isTargeting)) then {
@@ -2987,7 +2987,7 @@ for '_x' from 0 to 1 step 0 do {
 									_HVT_removeFrom = _true;
 								};
 							} else {
-								if ((_east knowsAbout _QS_v) < 1) then {
+								if ((_west knowsAbout _QS_v) < 1) then {
 									if (!(_HVT_removeFrom)) then {
 										_HVT_removeFrom = _true;
 									};
@@ -3273,7 +3273,7 @@ for '_x' from 0 to 1 step 0 do {
 										_posCheck = getPosASL _v;
 									};
 									if (((crew _v) isEqualTo []) || {(((crew _v) findIf {(alive _x)}) isEqualTo -1)}) then {
-										if (([_posCheck, ([_QS_vRespawnDist_base,_QS_vRespawnDist_field] select ((_v distance2D _vpos) >= 750)) ,[_west,_civilian],(if (_v isKindOf 'Helicopter') then [{(_allPlayers select {(_x getUnitTrait 'QS_trait_pilot')})},{_allPlayers}]),0] call _fn_serverDetector) isEqualTo []) then {
+										if (([_posCheck, ([_QS_vRespawnDist_base,_QS_vRespawnDist_field] select ((_v distance2D _vpos) >= 750)) ,[_east,_civilian],(if (_v isKindOf 'Helicopter') then [{(_allPlayers select {(_x getUnitTrait 'QS_trait_pilot')})},{_allPlayers}]),0] call _fn_serverDetector) isEqualTo []) then {
 											if ((_isDynamicVehicle) || {(_v isKindOf 'Helicopter')}) then {
 												missionNamespace setVariable ['QS_analytics_entities_deleted',((missionNamespace getVariable 'QS_analytics_entities_deleted') + 1),_false];
 												deleteVehicle _v;
@@ -3313,7 +3313,7 @@ for '_x' from 0 to 1 step 0 do {
 									if ((_posCheck # 2) < -1.5) then {
 										if (!(_v isKindOf 'Ship')) then {
 											if (((crew _v) isEqualTo []) || {(((crew _v) findIf {(alive _x)}) isEqualTo -1)}) then {
-												if (([_posCheck,25,[_west,_civilian],_allPlayers,0] call _fn_serverDetector) isEqualTo []) then {
+												if (([_posCheck,25,[_east,_civilian],_allPlayers,0] call _fn_serverDetector) isEqualTo []) then {
 													if ((_isDynamicVehicle) || {(_v isKindOf 'Helicopter')}) then {
 														missionNamespace setVariable ['QS_analytics_entities_deleted',((missionNamespace getVariable 'QS_analytics_entities_deleted') + 1),_false];
 														deleteVehicle _v;
@@ -3405,7 +3405,7 @@ for '_x' from 0 to 1 step 0 do {
 		missionNamespace setVariable ['QS_draw2D_projectiles',((missionNamespace getVariable 'QS_draw2D_projectiles') select {(!isNull _x)}),_false];
 		missionNamespace setVariable ['QS_draw3D_projectiles',((missionNamespace getVariable 'QS_draw3D_projectiles') select {(!isNull _x)}),_false];
 		{
-			if ((([(getPosATL _x),500,[_west],_allPlayers,0] call _fn_serverDetector) isEqualTo []) || {(underwater _x)}) then {
+			if ((([(getPosATL _x),500,[_east],_allPlayers,0] call _fn_serverDetector) isEqualTo []) || {(underwater _x)}) then {
 				if (!(_x getVariable ['QS_dead_prop',_false])) then {
 					missionNamespace setVariable [
 						'QS_analytics_entities_deleted',
@@ -3590,7 +3590,7 @@ for '_x' from 0 to 1 step 0 do {
 			_missionObject = _x;
 			_missionObjectType = toLower (typeOf _x);
 			if (_missionObject isKindOf 'CraterLong') then {
-				if (([(getPosATL _missionObject),500,[_west,_civilian],_allPlayers,0] call _fn_serverDetector) isEqualTo []) then {
+				if (([(getPosATL _missionObject),500,[_east,_civilian],_allPlayers,0] call _fn_serverDetector) isEqualTo []) then {
 					missionNamespace setVariable ['QS_analytics_entities_deleted',((missionNamespace getVariable 'QS_analytics_entities_deleted') + 1),_false];
 					deleteVehicle _missionObject;
 				} else {
@@ -3610,7 +3610,7 @@ for '_x' from 0 to 1 step 0 do {
 				uiSleep 0.005;
 			};
 			if (_missionObject isKindOf 'GroundWeaponHolder') then {
-				if (([(getPosATL _missionObject),100,[_west,_civilian],_allPlayers,0] call _fn_serverDetector) isNotEqualTo []) then {
+				if (([(getPosATL _missionObject),100,[_east,_civilian],_allPlayers,0] call _fn_serverDetector) isNotEqualTo []) then {
 					0 = _missionGroundWeaponHolders pushBack _missionObject;
 				} else {
 					missionNamespace setVariable ['QS_analytics_entities_deleted',((missionNamespace getVariable 'QS_analytics_entities_deleted') + 1),_false];
@@ -3619,7 +3619,7 @@ for '_x' from 0 to 1 step 0 do {
 				uiSleep 0.005;
 			};
 			if (_missionObjectType isEqualTo 'weaponholdersimulated') then {
-				if (([(getPosATL _missionObject),100,[_west,_civilian],_allPlayers,0] call _fn_serverDetector) isNotEqualTo []) then {
+				if (([(getPosATL _missionObject),100,[_east,_civilian],_allPlayers,0] call _fn_serverDetector) isNotEqualTo []) then {
 					0 = _missionWeaponHolderSimulated pushBack _missionObject;
 				} else {
 					missionNamespace setVariable ['QS_analytics_entities_deleted',((missionNamespace getVariable 'QS_analytics_entities_deleted') + 1),_false];
@@ -3638,7 +3638,7 @@ for '_x' from 0 to 1 step 0 do {
 			};
 			if (_missionObject isKindOf 'StaticWeapon') then {
 				if (isNull (attachedTo _missionObject)) then {
-					if (([(getPosATL _missionObject),250,[_west,_civilian,_east,_resistance],allUnits,0] call _fn_serverDetector) isEqualTo []) then {
+					if (([(getPosATL _missionObject),250,[_east,_civilian,_west,_resistance],allUnits,0] call _fn_serverDetector) isEqualTo []) then {
 						if (!(_missionObject getVariable ['QS_cleanup_protected',_false])) then {
 							missionNamespace setVariable ['QS_analytics_entities_deleted',((missionNamespace getVariable 'QS_analytics_entities_deleted') + 1),_false];
 							deleteVehicle _missionObject;
@@ -3654,7 +3654,7 @@ for '_x' from 0 to 1 step 0 do {
 			if (_missionObject isKindOf 'Ruins') then {
 				if (!(_missionObject getVariable ['QS_cleanup_protected',_false])) then {
 					if ((_missionObject distance2D [-1000,-1000,0]) > 10) then {
-						if (([(getPosATL _missionObject),500,[_west,_civilian,_east,_resistance],_allPlayers,0] call _fn_serverDetector) isEqualTo []) then {
+						if (([(getPosATL _missionObject),500,[_east,_civilian,_west,_resistance],_allPlayers,0] call _fn_serverDetector) isEqualTo []) then {
 							_missionObject setPosWorld [-1000,-1000,0];
 							_missionObject hideObjectGlobal TRUE;
 							_missionObject enableSimulationGlobal FALSE;
@@ -3740,7 +3740,7 @@ for '_x' from 0 to 1 step 0 do {
 			deleteVehicle ((missionNamespace getVariable 'QS_prisoners') # 0);
 			missionNamespace setVariable ['QS_prisoners',((missionNamespace getVariable 'QS_prisoners') select {(alive _x)}),_true];
 		};
-		if (_timeNow > _eastVehicles_delay) then {
+		if (_timeNow > _westVehicles_delay) then {
 			{
 				if ((side _x) in _enemySides) then {
 					if (alive _x) then {
@@ -3756,7 +3756,7 @@ for '_x' from 0 to 1 step 0 do {
 				};
 				uiSleep 0.002;
 			} count vehicles;
-			_eastVehicles_delay = _timeNow + _eastVehicles_checkDelay;
+			_westVehicles_delay = _timeNow + _westVehicles_checkDelay;
 		};
 
 		if (_timeNow > _QS_checkUAVsTime) then {
@@ -4495,7 +4495,7 @@ for '_x' from 0 to 1 step 0 do {
 						};
 					} else {
 						if ((_unit distance2D _unitPos) > 1) then {
-							if (([(getPosATL _unit),500,[_west,_civilian],_allPlayers,0] call _fn_serverDetector) isEqualTo []) then {
+							if (([(getPosATL _unit),500,[_east,_civilian],_allPlayers,0] call _fn_serverDetector) isEqualTo []) then {
 								missionNamespace setVariable ['QS_analytics_entities_deleted',((missionNamespace getVariable 'QS_analytics_entities_deleted') + 1),_false];
 								if (!isNull (objectParent _unit)) then {
 									if ((objectParent _unit) isKindOf 'AllVehicles') then {
@@ -4728,7 +4728,7 @@ for '_x' from 0 to 1 step 0 do {
 				if (missionNamespace getVariable ['QS_airbaseDefense',_false]) then {
 					_airDefenseAvailable = _false;
 					_airDefenseOnline = _true;
-					['sideChat',[_west,'AirBase'],'基地防空系统已激活!'] remoteExec ['QS_fnc_remoteExecCmd',-2,_false];
+					['sideChat',[_east,'AirBase'],'基地防空系统已激活!'] remoteExec ['QS_fnc_remoteExecCmd',-2,_false];
 					_airDefenseArray = [(_airDefensePos nearEntities ['Air',1500])] call _fn_airbaseDefense;
 				};
 			} else {
@@ -4739,13 +4739,13 @@ for '_x' from 0 to 1 step 0 do {
 							missionNamespace setVariable ['QS_analytics_entities_deleted',((missionNamespace getVariable 'QS_analytics_entities_deleted') + 1),_false];
 							deleteVehicle _x;
 						} count (_airDefenseArray # 0);
-						['sideChat',[_west,'AirBase'],'防空系统离线！'] remoteExec ['QS_fnc_remoteExecCmd',-2,_false];
+						['sideChat',[_east,'AirBase'],'防空系统离线！'] remoteExec ['QS_fnc_remoteExecCmd',-2,_false];
 					};
 				};
 				if (_timeNow > (_airDefenseArray # 2)) then {
 					_airDefenseAvailable = _true;
 					missionNamespace setVariable ['QS_airbaseDefense',_false,_true];
-					['sideChat',[_west,'AirBase'],'基地防空系统整备完毕！'] remoteExec ['QS_fnc_remoteExecCmd',-2,_false];	
+					['sideChat',[_east,'AirBase'],'基地防空系统整备完毕！'] remoteExec ['QS_fnc_remoteExecCmd',-2,_false];	
 				};
 			};
 			_QS_module_airDefense_checkDelay = _timeNow + _QS_module_airDefense_delay;
@@ -5053,7 +5053,7 @@ for '_x' from 0 to 1 step 0 do {
 					if (!isNull _x) then {
 						if (alive _x) then {
 							if ((_x distance2D _gitmo) > 25) then {
-								if (([(getPosATL _x),200,[_west],_allPlayers,0] call _fn_serverDetector) isEqualTo []) then {
+								if (([(getPosATL _x),200,[_east],_allPlayers,0] call _fn_serverDetector) isEqualTo []) then {
 									missionNamespace setVariable ['QS_analytics_entities_deleted',((missionNamespace getVariable 'QS_analytics_entities_deleted') + 1),_false];
 									deleteVehicle _x;
 									_QS_enemyCaptives set [_forEachIndex,_false];

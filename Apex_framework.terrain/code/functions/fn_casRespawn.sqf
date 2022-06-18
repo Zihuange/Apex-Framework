@@ -83,7 +83,7 @@ if (_missionConfig_CAS isEqualTo 3) then {
 	if (_aircraftPool >= (missionNamespace getVariable ['QS_CAS_jetAllowance_value',3])) exitWith {
 		if (isPlayer _pilot) then {
 			if (_pilot getUnitTrait 'QS_trait_fighterPilot') then {
-				['HANDLE',['HANDLE_REQUEST_ROLE','',(_pilot getVariable ['QS_unit_side',WEST]),'rifleman',_pilot]] call (missionNamespace getVariable 'QS_fnc_roles');
+				['HANDLE',['HANDLE_REQUEST_ROLE','',(_pilot getVariable ['QS_unit_side',EAST]),'rifleman',_pilot]] call (missionNamespace getVariable 'QS_fnc_roles');
 				_pilot spawn {
 					moveOut _this;
 					uiSleep 0.5;
@@ -104,7 +104,7 @@ if (_missionConfig_CAS isEqualTo 3) then {
 	(missionNamespace getVariable 'QS_CAS_jetAllowance') set [_airIndex,[_uid,_aircraftPool]];
 	missionNamespace setVariable ['QS_CAS_jetAllowance_current',_aircraftPool,FALSE];
 	missionNamespace setVariable ['QS_casJet_destroyedAtBase',FALSE,FALSE];
-	['sideChat',[WEST,'AirBase'],(format ['Friendly CAS respawning ( %1 / %2 ) ...',_aircraftPool,(missionNamespace getVariable ['QS_CAS_jetAllowance_value',3])])] remoteExec ['QS_fnc_remoteExecCmd',_pilot,FALSE];
+	['sideChat',[EAST,'AirBase'],(format ['Friendly CAS respawning ( %1 / %2 ) ...',_aircraftPool,(missionNamespace getVariable ['QS_CAS_jetAllowance_value',3])])] remoteExec ['QS_fnc_remoteExecCmd',_pilot,FALSE];
 	private ['_newCasType','_dir','_obstructions','_obstructionArray'];
 	//comment 'Now lets decide what will spawn';
 	private [
@@ -232,7 +232,7 @@ if ((missionNamespace getVariable ['QS_missionConfig_carrierEnabled',0]) isEqual
 	};
 	[_pos,15,20,50] call (missionNamespace getVariable 'QS_fnc_clearPosition');
 } else {
-	_newCasType = 'B_Plane_Fighter_01_F';
+	_newCasType = 'O_Plane_Fighter_02_F';
 	_isCarrier = TRUE;
 	_pos = ((missionNamespace getVariable 'QS_carrierObject') modelToWorldWorld [-30.228,82.3711,25.7758]);
 	_dir = ((getDir (missionNamespace getVariable 'QS_carrierObject')) - -90.623);
@@ -249,8 +249,8 @@ if ((missionNamespace getVariable ['QS_missionConfig_carrierEnabled',0]) isEqual
 	private _casJet = missionNamespace getVariable 'QS_casJet';
 	_casJet setDir _dir;
 	if (_isCarrier) then {
-		_casJet animateSource ['wing_fold_r',1,TRUE];
-		_casJet animateSource ['wing_fold_l',1,TRUE];
+		// _casJet animateSource ['wing_fold_r',1,TRUE];
+		// _casJet animateSource ['wing_fold_l',1,TRUE];
 		_casJet setPosWorld _pos;
 		_casJet setVelocity [0,0,0];
 	} else {
@@ -275,7 +275,7 @@ if ((missionNamespace getVariable ['QS_missionConfig_carrierEnabled',0]) isEqual
 				_text = (localize 'STR_QS_CAS_destroyed');
 			};
 			if (!isDedicated) then {
-				[WEST,'AirBase'] sideChat _text;
+				[EAST,'AirBase'] sideChat _text;
 			};
 			if (isDedicated) then {
 				if ((_jet distance2D (markerPos 'QS_marker_base_marker')) < 600) then {

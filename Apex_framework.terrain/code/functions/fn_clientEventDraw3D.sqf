@@ -243,7 +243,7 @@ if (_player getUnitTrait 'medic') then {
 							];
 						};
 					};
-				} count (detectedMines (_player getVariable ['QS_unit_side',WEST]));
+				} count (detectedMines (_player getVariable ['QS_unit_side',EAST]));
 			};
 		};
 	};
@@ -315,7 +315,7 @@ if (!isStreamFriendlyUIEnabled) then {
 		if (freeLook) then {
 			{
 				_unit = _x;
-				if ((side (group _unit)) isEqualTo (player getVariable ['QS_unit_side',WEST])) then {
+				if ((side (group _unit)) isEqualTo (player getVariable ['QS_unit_side',EAST])) then {
 					if (!(_unit getVariable ['QS_hidden',FALSE])) then {
 						if (_unit isNotEqualTo _player) then {
 							if (((vectorMagnitude (velocity _unit)) * 3.6) <= 24) then {
@@ -383,7 +383,7 @@ if (!isStreamFriendlyUIEnabled) then {
 			};
 			if (!isNull _unit) then {
 				if ((_unit isKindOf 'CAManBase') || {((effectiveCommander _unit) isKindOf 'CAManBase')}) then {
-					if ((side (group _unit)) isEqualTo (player getVariable ['QS_unit_side',WEST])) then {
+					if ((side (group _unit)) isEqualTo (player getVariable ['QS_unit_side',EAST])) then {
 						if (_unit isNotEqualTo _player) then {
 							if (!(_unit getVariable ['QS_hidden',FALSE])) then {
 								_icon = '';

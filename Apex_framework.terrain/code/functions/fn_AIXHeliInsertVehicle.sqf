@@ -16,8 +16,8 @@ __________________________________________________/*/
 params [
 	['_position',[0,0,0]],
 	['_vehicle',objNull],
-	['_heliType','O_Heli_Transport_04_F'],
-	['_side',EAST]
+	['_heliType','B_Heli_Transport_03_unarmed_F'],
+	['_side',WEST]
 ];
 missionNamespace setVariable ['QS_AI_insertHeli_helis',((missionNamespace getVariable 'QS_AI_insertHeli_helis') select {(alive _x)}),FALSE];
 if (_heliType isEqualType []) then {

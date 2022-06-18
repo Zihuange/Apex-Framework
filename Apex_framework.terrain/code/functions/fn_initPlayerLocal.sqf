@@ -605,7 +605,7 @@ player addRating (0 - (rating player));
 ];
 player enableAI 'MOVE';
 if (isNil {(group player) getVariable 'BIS_dg_reg'}) then {
-	_allGroups = allGroups select {(((side _x) isEqualTo (player getVariable ['QS_unit_side',WEST])) && (isPlayer (leader _x)) && (!isNil {_x getVariable 'BIS_dg_reg'}) && (!(_x getVariable ['BIS_dg_pri',FALSE])))};
+	_allGroups = allGroups select {(((side _x) isEqualTo (player getVariable ['QS_unit_side',EAST])) && (isPlayer (leader _x)) && (!isNil {_x getVariable 'BIS_dg_reg'}) && (!(_x getVariable ['BIS_dg_pri',FALSE])))};
 	if (_allGroups isNotEqualTo []) then {
 		private _allGroupsSorted = [];
 		{
@@ -622,7 +622,7 @@ if (_squadParams isNotEqualTo []) then {
 	_squadName = (_squadParams select 0) select 0;
 	private _exit3 = FALSE;
 	{
-		if ((side (group _x)) isEqualTo (player getVariable ['QS_unit_side',WEST])) then {
+		if ((side (group _x)) isEqualTo (player getVariable ['QS_unit_side',EAST])) then {
 			if ((squadParams _x) isNotEqualTo []) then {
 				if ((((squadParams _x) select 0) select 0) isEqualTo _squadName) then {
 					[player] joinSilent (group _x);

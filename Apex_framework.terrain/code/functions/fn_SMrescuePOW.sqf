@@ -16,15 +16,15 @@ _________________________________________________________/*/
 scriptName 'Side Mission - Rescue POW';
 
 private [
-	'_QS_allArray','_QS_locationsUrban','_QS_approvedBuildingTypes','_QS_opforTruckTypes','_QS_powTypes','_QS_badGuyTypes',
-	'_QS_opforTruckType','_QS_powType','_QS_badGuyType','_QS_locationCenterPos','_QS_locationCenterName','_QS_locationSelect',
+	'_QS_allArray','_QS_locationsUrban','_QS_approvedBuildingTypes','_QS_bluforTruckTypes','_QS_powTypes','_QS_badGuyTypes',
+	'_QS_bluforTruckType','_QS_powType','_QS_badGuyType','_QS_locationCenterPos','_QS_locationCenterName','_QS_locationSelect',
 	'_QS_buildingList','_QS_building','_QS_buildingPositions','_QS_buildingPosition','_QS_dirToRelPos','_QS_relPos','_QS_powPos',
 	'_QS_badPos','_QS_nearRoadsList','_QS_nearestRoadPos','_QS_roadConnectedTo','_QS_connectedRoad','_QS_connectedRoadDir','_dirToBG',
-	'_dirToPow','_QS_posInFront','_QS_posBehind','_QS_opforOnlyTruckTypes','_QS_truck2_safePos','_QS_truck3_safePos','_QS_truckType',
+	'_dirToPow','_QS_posInFront','_QS_posBehind','_QS_bluforOnlyTruckTypes','_QS_truck2_safePos','_QS_truck3_safePos','_QS_truckType',
 	'_QS_urbanEnemyUnits','_QS_buildingPosATL',
 	'_QS_WP0','_QS_WP1','_QS_WP2','_QS_WP3','_QS_WP4','_QS_group','_QS_randomUnitType','_QS_randomUnit','_QS_nearRoadsList','_QS_testedRoadPos',
 	'_QS_roadWP0','_QS_roadWP1','_QS_roadWP2','_QS_roadWP3','_QS_roadWP4','_QS_nearHouses','_QS_toSpawn','_i','_QS_nearHousesGroup','_QS_index',
-	'_QS_inBuildingCount','_QS_eastGarrisonGroup','_QS_nearRoadsListCopy','_QS_roadPosition','_QS_range','_QS_roadPosFound',
+	'_QS_inBuildingCount','_QS_westGarrisonGroup','_QS_nearRoadsListCopy','_QS_roadPosition','_QS_range','_QS_roadPosFound',
 	'_QS_route','_QS_patrolHouse1','_QS_patrolHouse1_buildingPositions','_QS_patrolHouse1_buildingPosition_selected',
 	'_QS_patrolHouse2','_QS_patrolHouse2_buildingPositions','_QS_patrolHouse2_buildingPosition_selected','_QS_patrolHouse3',
 	'_QS_patrolHouse3_buildingPositions','_QS_patrolHouse3_buildingPosition_selected','_QS_patrolHouse4','_QS_patrolHouse4_buildingPositions',
@@ -396,9 +396,9 @@ _QS_approvedBuildingTypes = [
 ];
 if (worldName isEqualTo 'Altis') then {
 	_QS_urbanEnemyUnits = [
-		'O_soldierU_A_F','O_soldierU_AAR_F','O_soldierU_AR_F','O_soldierU_medic_F','O_engineer_U_F','O_soldierU_exp_F','O_SoldierU_GL_F',
-		'O_Urban_HeavyGunner_F','O_soldierU_M_F','O_soldierU_AA_F','O_soldierU_AT_F','O_soldierU_F','O_soldierU_LAT_F','O_Urban_Sharpshooter_F',
-		'O_SoldierU_SL_F','O_soldierU_TL_F'
+		'B_Soldier_A_F','B_soldier_AAR_F','B_soldier_AR_F','B_medic_F','B_engineer_F','B_soldier_exp_F','B_Soldier_GL_F',
+		'B_HeavyGunner_F','B_soldier_M_F','B_soldier_AA_F','B_soldier_AT_F','B_soldier_F','B_soldier_LAT_F','B_Sharpshooter_F',
+		'B_Soldier_SL_F','B_Soldier_TL_F'
 	];
 } else {
 	_QS_urbanEnemyUnits = [
@@ -489,19 +489,19 @@ _QS_pow_explosivesVest = {
 	_QS_expArr;
 };
 if (worldName isEqualTo 'Tanoa') then {
-	_QS_opforTruckTypes = ["O_T_MRAP_02_ghex_F","O_T_LSV_02_unarmed_F","O_T_Truck_03_transport_ghex_F","O_T_Truck_03_covered_ghex_F"];
-	_QS_opforOnlyTruckTypes = ["O_T_MRAP_02_ghex_F","O_T_LSV_02_unarmed_F","O_T_Truck_03_transport_ghex_F","O_T_Truck_03_covered_ghex_F"];
+	_QS_bluforTruckTypes = ["B_T_MRAP_01_F","B_T_LSV_01_unarmed_F","B_T_Truck_01_transport_F","B_T_Truck_01_covered_F"];
+	_QS_bluforOnlyTruckTypes = ["B_T_MRAP_01_F","B_T_LSV_01_unarmed_F","B_T_Truck_01_transport_F","B_T_Truck_01_covered_F"];
 } else {
-	_QS_opforTruckTypes = ['O_Truck_03_transport_F','O_Truck_03_covered_F','O_Truck_02_transport_F','O_Truck_02_covered_F','O_MRAP_02_F'];
-	_QS_opforOnlyTruckTypes = ['O_Truck_03_transport_F','O_Truck_03_covered_F','O_Truck_02_transport_F','O_Truck_02_covered_F'];
+	_QS_bluforTruckTypes = ['B_Truck_01_transport_F','B_Truck_01_covered_F','B_MRAP_01_F'];
+	_QS_bluforOnlyTruckTypes = ['B_Truck_01_transport_F','B_Truck_01_covered_F'];
 };
 _QS_powTypes = ['B_Story_Protagonist_F','b_survivor_F'];
 _QS_badGuyTypes = [
-	["O_Soldier_TL_F","O_Recon_TL_F","O_Officer_F","O_Soldier_SL_F"],
-	["O_V_Soldier_TL_ghex_F","O_T_Recon_TL_F","O_T_Officer_F","O_T_Soldier_SL_F"]
+	["B_Soldier_TL_F","B_Recon_TL_F","B_Officer_F","B_Soldier_SL_F"],
+	["B_CTRG_Soldier_TL_tna_F","B_T_Recon_TL_F","B_T_Officer_F","B_T_Soldier_SL_F"]
 ] select (worldName isEqualTo 'Tanoa');
 
-_QS_opforTruckType = selectRandom _QS_opforTruckTypes;
+_QS_bluforTruckType = selectRandom _QS_bluforTruckTypes;
 _QS_powType = selectRandom _QS_powTypes;
 _QS_badGuyType = selectRandom _QS_badGuyTypes;
 
@@ -552,7 +552,7 @@ if ((count _QS_nearRoadsList) > 0) then {
 	_QS_roadConnectedTo = roadsConnectedTo _QS_nearestRoadPos;
 	_QS_connectedRoad = _QS_roadConnectedTo select 0;
 	_QS_connectedRoadDir = _QS_nearestRoadPos getDir _QS_connectedRoad;
-	_QS_truckType = selectRandom _QS_opforTruckTypes;
+	_QS_truckType = selectRandom _QS_bluforTruckTypes;
 	_QS_truck = createVehicle [_QS_truckType,_QS_nearestRoadPos,[],0,'NONE'];
 	missionNamespace setVariable [
 		'QS_analytics_entities_created',
@@ -565,10 +565,10 @@ if ((count _QS_nearRoadsList) > 0) then {
 	_QS_truck lock 2;
 	_QS_truck setFuel 0;
 	_QS_truck enableRopeAttach FALSE;
-	_QS_truck2_safePos = (_QS_truck modelToWorld [0,12,0]) findEmptyPosition [0,5,_QS_opforTruckType];
+	_QS_truck2_safePos = (_QS_truck modelToWorld [0,12,0]) findEmptyPosition [0,5,_QS_bluforTruckType];
 	if ((count _QS_truck2_safePos) > 0) then {
-		_QS_truck2Type = selectRandom _QS_opforOnlyTruckTypes;
-		_QS_truck2 = createVehicle [_QS_opforTruckType,_QS_truck2_safePos,[],0,'NONE'];
+		_QS_truck2Type = selectRandom _QS_bluforOnlyTruckTypes;
+		_QS_truck2 = createVehicle [_QS_bluforTruckType,_QS_truck2_safePos,[],0,'NONE'];
 		missionNamespace setVariable [
 			'QS_analytics_entities_created',
 			((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
@@ -581,9 +581,9 @@ if ((count _QS_nearRoadsList) > 0) then {
 		_QS_truck2 setFuel 0;
 		_QS_truck2 enableRopeAttach FALSE;
 	};
-	_QS_truck3_safePos = (_QS_truck modelToWorld [0,-12,0]) findEmptyPosition [0,5,_QS_opforTruckType];
+	_QS_truck3_safePos = (_QS_truck modelToWorld [0,-12,0]) findEmptyPosition [0,5,_QS_bluforTruckType];
 	if ((count _QS_truck3_safePos) > 0) then {
-		_QS_truck3Type = selectRandom _QS_opforTruckTypes;
+		_QS_truck3Type = selectRandom _QS_bluforTruckTypes;
 		_QS_truck3 = createVehicle [_QS_truck3Type,_QS_truck3_safePos,[],0,'NONE'];
 		missionNamespace setVariable [
 			'QS_analytics_entities_created',
@@ -608,7 +608,7 @@ if ((count _QS_nearRoadsList) > 0) then {
 		_QS_connectedRoad = _QS_roadConnectedTo select 0;
 		_QS_connectedRoadDir = _QS_nearestRoadPos getDir _QS_connectedRoad;
 		
-		_QS_truckType = selectRandom _QS_opforTruckTypes;
+		_QS_truckType = selectRandom _QS_bluforTruckTypes;
 		_QS_truck = createVehicle [_QS_truckType,_QS_nearestRoadPos,[],0,'NONE'];
 		missionNamespace setVariable [
 			'QS_analytics_entities_created',
@@ -622,10 +622,10 @@ if ((count _QS_nearRoadsList) > 0) then {
 		_QS_truck setFuel 0;
 		_QS_truck enableRopeAttach FALSE;
 		
-		_QS_truck2_safePos = (_QS_truck modelToWorld [0,12,0]) findEmptyPosition [0,5,_QS_opforTruckType];
+		_QS_truck2_safePos = (_QS_truck modelToWorld [0,12,0]) findEmptyPosition [0,5,_QS_bluforTruckType];
 		if ((count _QS_truck2_safePos) > 0) then {
-			_QS_truck2Type = selectRandom _QS_opforOnlyTruckTypes;
-			_QS_truck2 = createVehicle [_QS_opforTruckType,_QS_truck2_safePos,[],0,'NONE'];
+			_QS_truck2Type = selectRandom _QS_bluforOnlyTruckTypes;
+			_QS_truck2 = createVehicle [_QS_bluforTruckType,_QS_truck2_safePos,[],0,'NONE'];
 			missionNamespace setVariable [
 				'QS_analytics_entities_created',
 				((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
@@ -639,9 +639,9 @@ if ((count _QS_nearRoadsList) > 0) then {
 			_QS_truck2 enableRopeAttach FALSE;
 		};
 		
-		_QS_truck3_safePos = (_QS_truck modelToWorld [0,-12,0]) findEmptyPosition [0,5,_QS_opforTruckType];
+		_QS_truck3_safePos = (_QS_truck modelToWorld [0,-12,0]) findEmptyPosition [0,5,_QS_bluforTruckType];
 		if ((count _QS_truck3_safePos) > 0) then {
-			_QS_truck3Type = selectRandom _QS_opforTruckTypes;
+			_QS_truck3Type = selectRandom _QS_bluforTruckTypes;
 			_QS_truck3 = createVehicle [_QS_truck3Type,_QS_truck3_safePos,[],0,'NONE'];
 			missionNamespace setVariable [
 				'QS_analytics_entities_created',
@@ -667,7 +667,7 @@ if ((count _QS_nearRoadsList) > 0) then {
 			_QS_connectedRoad = _QS_roadConnectedTo select 0;
 			_QS_connectedRoadDir = _QS_nearestRoadPos getDir _QS_connectedRoad;
 			
-			_QS_truckType = selectRandom _QS_opforTruckTypes;
+			_QS_truckType = selectRandom _QS_bluforTruckTypes;
 			_QS_truck = createVehicle [_QS_truckType,_QS_nearestRoadPos,[],0,'NONE'];
 			missionNamespace setVariable [
 				'QS_analytics_entities_created',
@@ -680,10 +680,10 @@ if ((count _QS_nearRoadsList) > 0) then {
 			_QS_truck lock 2;
 			_QS_truck setFuel 0;
 			_QS_truck enableRopeAttach FALSE;
-			_QS_truck2_safePos = (_QS_truck modelToWorld [0,12,0]) findEmptyPosition [0,5,_QS_opforTruckType];
+			_QS_truck2_safePos = (_QS_truck modelToWorld [0,12,0]) findEmptyPosition [0,5,_QS_bluforTruckType];
 			if ((count _QS_truck2_safePos) > 0) then {
-				_QS_truck2Type = selectRandom _QS_opforOnlyTruckTypes;
-				_QS_truck2 = createVehicle [_QS_opforTruckType,_QS_truck2_safePos,[],0,'NONE'];
+				_QS_truck2Type = selectRandom _QS_bluforOnlyTruckTypes;
+				_QS_truck2 = createVehicle [_QS_bluforTruckType,_QS_truck2_safePos,[],0,'NONE'];
 				missionNamespace setVariable [
 					'QS_analytics_entities_created',
 					((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
@@ -696,9 +696,9 @@ if ((count _QS_nearRoadsList) > 0) then {
 				_QS_truck2 setFuel 0;
 				_QS_truck2 enableRopeAttach FALSE;
 			};
-			_QS_truck3_safePos = (_QS_truck modelToWorld [0,-12,0]) findEmptyPosition [0,5,_QS_opforTruckType];
+			_QS_truck3_safePos = (_QS_truck modelToWorld [0,-12,0]) findEmptyPosition [0,5,_QS_bluforTruckType];
 			if ((count _QS_truck3_safePos) > 0) then {
-				_QS_truck3Type = selectRandom _QS_opforTruckTypes;
+				_QS_truck3Type = selectRandom _QS_bluforTruckTypes;
 				_QS_truck3 = createVehicle [_QS_truck3Type,_QS_truck3_safePos,[],0,'NONE'];
 				missionNamespace setVariable [
 					'QS_analytics_entities_created',
@@ -723,7 +723,7 @@ if ((count _QS_nearRoadsList) > 0) then {
 				_QS_connectedRoad = _QS_roadConnectedTo select 0;
 				_QS_connectedRoadDir = _QS_nearestRoadPos getDir _QS_connectedRoad;
 				
-				_QS_truck = createVehicle [_QS_opforTruckType,_QS_nearestRoadPos,[],0,'NONE'];
+				_QS_truck = createVehicle [_QS_bluforTruckType,_QS_nearestRoadPos,[],0,'NONE'];
 				missionNamespace setVariable [
 					'QS_analytics_entities_created',
 					((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
@@ -736,7 +736,7 @@ if ((count _QS_nearRoadsList) > 0) then {
 				_QS_truck setFuel 0;
 				_QS_truck enableRopeAttach FALSE;
 				
-				_QS_truck2 = createVehicle [_QS_opforTruckType,((_QS_truck modelToWorld [0,12,0]) findEmptyPosition [0,5,_QS_opforTruckType]),[],0,'NONE'];
+				_QS_truck2 = createVehicle [_QS_bluforTruckType,((_QS_truck modelToWorld [0,12,0]) findEmptyPosition [0,5,_QS_bluforTruckType]),[],0,'NONE'];
 				missionNamespace setVariable [
 					'QS_analytics_entities_created',
 					((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
@@ -749,7 +749,7 @@ if ((count _QS_nearRoadsList) > 0) then {
 				_QS_truck2 setFuel 0;
 				_QS_truck2 enableRopeAttach FALSE;
 
-				_QS_truck3 = createVehicle [_QS_opforTruckType,((_QS_truck modelToWorld [0,-12,0]) findEmptyPosition [0,5,_QS_opforTruckType]),[],0,'NONE'];
+				_QS_truck3 = createVehicle [_QS_bluforTruckType,((_QS_truck modelToWorld [0,-12,0]) findEmptyPosition [0,5,_QS_bluforTruckType]),[],0,'NONE'];
 				missionNamespace setVariable [
 					'QS_analytics_entities_created',
 					((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
@@ -836,13 +836,13 @@ _QS_sidemission_pow addEventHandler [
 		_killer = _this select 1;
 		if (isPlayer _killer) then {
 			_name = name _killer;
-			['sideChat',[WEST,'HQ'],(format ['我军战俘被 %1 杀死！',_name])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+			['sideChat',[EAST,'HQ'],(format ['我军战俘被 %1 杀死！',_name])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		};
 	}
 ];
 missionNamespace setVariable [
 	'QS_sideMission_BadGuy',
-	((createGroup [EAST,TRUE]) createUnit [_QS_badGuyType,[worldSize,worldSize,worldSize],[],0,'NONE']),
+	((createGroup [WEST,TRUE]) createUnit [_QS_badGuyType,[worldSize,worldSize,worldSize],[],0,'NONE']),
 	TRUE
 ];
 missionNamespace setVariable [
@@ -870,12 +870,12 @@ removeAllItems (missionNamespace getVariable 'QS_sideMission_BadGuy');
 } forEach (magazines (missionNamespace getVariable 'QS_sideMission_BadGuy'));
 
 _QS_inBuildingCount = (round ((count _QS_buildingPositions) / 2)) min 3;
-_QS_eastGarrisonGroup = createGroup [EAST,TRUE];
+_QS_westGarrisonGroup = createGroup [WEST,TRUE];
 _QS_index = 0;
 for '_x' from 1 to _QS_inBuildingCount step 1 do {
 	_QS_toSpawn = [];
 	_QS_randomUnitType = selectRandom _QS_urbanEnemyUnits;
-	_QS_randomUnit = _QS_eastGarrisonGroup createUnit [_QS_randomUnitType,(_QS_buildingPositions select _QS_index),[],0,'NONE'];
+	_QS_randomUnit = _QS_westGarrisonGroup createUnit [_QS_randomUnitType,(_QS_buildingPositions select _QS_index),[],0,'NONE'];
 	missionNamespace setVariable [
 		'QS_analytics_entities_created',
 		((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
@@ -896,14 +896,14 @@ for '_x' from 1 to _QS_inBuildingCount step 1 do {
 	0 = _QS_enemyArray pushBack _QS_randomUnit;
 	_QS_index = _QS_index + 1;
 };
-[(units _QS_eastGarrisonGroup),1] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
+[(units _QS_westGarrisonGroup),1] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
 _QS_nearHouses = _QS_buildingPosATL nearObjects ['House',100];
 _QS_toSpawn = [];
 for '_x' from 0 to 11 step 1 do {
 	_QS_randomUnitType = selectRandom _QS_urbanEnemyUnits;
 	0 = _QS_toSpawn pushBack _QS_randomUnitType;
 };
-_QS_nearHousesGroup = createGroup [EAST,TRUE];
+_QS_nearHousesGroup = createGroup [WEST,TRUE];
 for '_x' from 0 to 13 step 1 do {
 	_QS_randomUnitType = selectRandom _QS_urbanEnemyUnits;
 	_QS_randomUnit = _QS_nearHousesGroup createUnit [_QS_randomUnitType,[-100,-100,0],[],0,'NONE'];
@@ -944,7 +944,7 @@ if ((count _QS_nearRoadsList) > 50) then {
 			};
 		};
 		if ((count _waypointPositions) > 2) then {
-			_QS_group = createGroup [EAST,TRUE];
+			_QS_group = createGroup [WEST,TRUE];
 			_QS_groupSpawnPos = selectRandom _waypointPositions;
 			for '_x' from 0 to 1 step 1 do {
 				diag_log 'QS spawning road patrol unit';
@@ -1000,7 +1000,7 @@ if ((count _arrayPositions) > 50) then {
 			};
 		};
 		if ((count _waypointPositions) > 1) then {
-			_QS_group = createGroup [EAST,TRUE];
+			_QS_group = createGroup [WEST,TRUE];
 			_QS_groupSpawnPos = selectRandom _waypointPositions;
 			for '_x' from 0 to 1 step 1 do {
 				diag_log 'QS spawning building patrol unit';
@@ -1402,13 +1402,13 @@ for '_x' from 0 to 1 step 0 do {
 					_QS_clearPos = [];
 					_QS_clearPos = ['RADIUS',_QS_buildingPosATL,800,'LAND',[],FALSE,[],[],TRUE] call (missionNamespace getVariable 'QS_fnc_findRandomPos');
 					if ((count _QS_clearPos) > 0) then {
-						if (([_QS_clearPos,300,[WEST],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
+						if (([_QS_clearPos,300,[EAST],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
 							_QS_positionAccepted = TRUE;
 						};
 					};
 					if (_QS_positionAccepted) exitWith {};
 				};
-				_QS_qrfGroup = [_QS_clearPos,(random 360),EAST,'OI_reconTeam',FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
+				_QS_qrfGroup = [_QS_clearPos,(random 360),WEST,'OI_reconTeam',FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 				{0 = _QS_allArray pushBack _x;_x enableStamina FALSE;_x enableFatigue FALSE;_x setVehiclePosition [(getPosWorld _x),[],0,'NONE'];} count (units _QS_qrfGroup);
 				[(units _QS_qrfGroup),2] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
 				{

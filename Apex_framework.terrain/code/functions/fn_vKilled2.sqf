@@ -22,9 +22,9 @@ if (!isNull _killer) then {
 			_killerDisplayName = getText (configFile >> 'CfgVehicles' >> _killerType >> 'displayName');
 			_killedDisplayName = getText (configFile >> 'CfgVehicles' >> _killedType >> 'displayName');
 			if (isServer) then {
-				[[WEST,'BLU'],(format ['%1 使用 %3 摧毁了一个 %2！',_killerName,_killedDisplayName,_killerDisplayName])] remoteExec ['sideChat',-2,FALSE];
+				[[EAST,'OPF'],(format ['%1 使用 %3 摧毁了一个 %2！',_killerName,_killedDisplayName,_killerDisplayName])] remoteExec ['sideChat',-2,FALSE];
 			} else {
-				['sideChat',[WEST,'BLU'],(format ['%1 使用 %3 摧毁了一个 %2！',_killerName,_killedDisplayName,_killerDisplayName])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+				['sideChat',[EAST,'OPF'],(format ['%1 使用 %3 摧毁了一个 %2！',_killerName,_killedDisplayName,_killerDisplayName])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 			};
 		};
 	};

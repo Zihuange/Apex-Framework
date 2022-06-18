@@ -51,7 +51,7 @@ if (_side isEqualTo sideUnknown) then {
 ] remoteExec ['call',-2,FALSE];
 [(missionNamespace getVariable 'QS_module_fob_flag'),_side,'',FALSE,objNull,1] call (missionNamespace getVariable 'QS_fnc_setFlag');
 /*/'QS_marker_module_fob' setMarkerColor 'ColorINDEPENDENT';/*/
-['sideChat',[WEST,'HQ'],(format ['%2 激活了FOB %1 ！',(missionNamespace getVariable 'QS_module_fob_displayName'),_activatorName])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+['sideChat',[EAST,'HQ'],(format ['%2 激活了FOB %1 ！',(missionNamespace getVariable 'QS_module_fob_displayName'),_activatorName])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 ['FOB_UPDATE',['','Online']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 0 spawn {
 	sleep 2;

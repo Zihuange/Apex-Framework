@@ -36,7 +36,7 @@ for '_x' from 0 to 1 step 0 do {
 			_roadSegment = selectRandom _nearRoads;
 			_roadSegmentPosition = position _roadSegment;
 			if (!([_centerPos,_roadSegmentPosition,25] call (missionNamespace getVariable 'QS_fnc_waterIntersect'))) then {
-				if (([_roadSegmentPosition,300,[WEST],_allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
+				if (([_roadSegmentPosition,300,[EAST],_allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
 					_positionFound = TRUE;
 				};
 			};
@@ -235,8 +235,8 @@ if ((random 1) > 0.666) then {
 private _enemyArray = [];
 if ((random 1) > 0) then {
 	_enemyVehicleTypesWeighted = [
-		'O_G_Offroad_01_F',0.3,
-		'O_G_Van_01_transport_F',0.1,
+		'B_G_Offroad_01_F',0.3,
+		'B_G_Van_01_transport_F',0.1,
 		'I_C_Van_01_transport_F',0.1,
 		'I_C_Offroad_02_unarmed_F',0.3
 	];
@@ -277,7 +277,7 @@ _enemyTypes = [
 	"I_C_Soldier_Para_4_F","I_C_Soldier_Para_6_F","I_C_Soldier_Para_8_F","I_C_Soldier_Para_1_F","I_C_Soldier_Para_5_F"
 ];
 private _enemyUnit = objNull;
-_enemyGrp = createGroup [EAST,TRUE];
+_enemyGrp = createGroup [WEST,TRUE];
 for '_x' from 0 to (2 + (round (random 2))) step 1 do {
 	_enemyUnit = _enemyGrp createUnit [(selectRandom _enemyTypes),_connectedRoadPos,[],5,'NONE'];
 	_enemyUnit call (missionNamespace getVariable 'QS_fnc_unitSetup');
@@ -429,7 +429,7 @@ for '_x' from 0 to 1 step 0 do {
 			for '_x' from 0 to 19 step 1 do {
 				_reinforceSpawnPos = [_connectedRoadPos,_reinforceDistMin,_reinforceDistMax,5,0,0.25,0] call (missionNamespace getVariable 'QS_fnc_findSafePos');
 				if ((_reinforceSpawnPos distance2D _baseMarker) > 700) then {
-					if (([_reinforceSpawnPos,300,[WEST],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
+					if (([_reinforceSpawnPos,300,[EAST],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
 						if (!([_reinforceSpawnPos,_connectedRoadPos,25] call (missionNamespace getVariable 'QS_fnc_waterIntersect'))) then {
 							_reinforceSpawnPos set [2,0];
 							_positionFound = TRUE;

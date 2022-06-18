@@ -31,7 +31,7 @@ _vehicle spawn {uiSleep 3;_this enableSimulationGlobal TRUE;uiSleep 3;_this allo
 _vehicle setVehicleReceiveRemoteTargets TRUE;
 _vehicle setVehicleReportRemoteTargets TRUE;
 //_vehicle setVehicleRadar (selectRandomWeighted [0,0.5,1,0.5]);
-[0,_vehicle,EAST,1] call (missionNamespace getVariable 'QS_fnc_vSetup2');
+[0,_vehicle,WEST,1] call (missionNamespace getVariable 'QS_fnc_vSetup2');
 {
 	_vehicle addEventHandler _x;
 } forEach [
@@ -64,7 +64,7 @@ _vehicle setVehicleReportRemoteTargets TRUE;
 						_killerDisplayName = getText (configFile >> 'CfgVehicles' >> _killerType >> 'displayName');
 						_objDisplayName = getText (configFile >> 'CfgVehicles' >> _objType >> 'displayName');
 						_name = name _instigator;
-						['sideChat',[WEST,'BLU'],(format ['%1 使用 %3 摧毁了一个 %2 ！',_name,_objDisplayName,_killerDisplayName])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+						['sideChat',[EAST,'OPF'],(format ['%1 使用 %3 摧毁了一个 %2 ！',_name,_objDisplayName,_killerDisplayName])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 					};
 				};
 			};
@@ -132,9 +132,9 @@ missionNamespace setVariable [
 ];
 _vehicle deleteVehicleCrew (driver _vehicle);
 if (isNull (missionNamespace getVariable 'QS_AI_GRP_AO_AA')) then {
-	missionNamespace setVariable ['QS_AI_GRP_AO_AA',(createGroup [EAST,TRUE]),FALSE];
+	missionNamespace setVariable ['QS_AI_GRP_AO_AA',(createGroup [WEST,TRUE]),FALSE];
 };
-private _grp = createGroup [EAST,TRUE];
+private _grp = createGroup [WEST,TRUE];
 (crew _vehicle) joinSilent _grp;
 {
 	_x setVehicleReceiveRemoteTargets TRUE;
@@ -187,13 +187,13 @@ if (alive _vehicle) then {
 		0 = _vehicleMarkers pushBack _markerID;
 		0 = (missionNamespace getVariable 'QS_virtualSectors_siteMarkers') pushBack _markerID;
 	} count [
-		['',[0,0,0],'mil_dot','Icon','','ColorOPFOR',[0.5,0.5],0,_roughPos,0,'   '],
-		['',[0,0,0],'Empty','Ellipse','Border','ColorOPFOR',[100,100],0,_roughPos,0,'   ']
+		['',[0,0,0],'mil_dot','Icon','','ColorBLUFOR',[0.5,0.5],0,_roughPos,0,'   '],
+		['',[0,0,0],'Empty','Ellipse','Border','ColorBLUFOR',[100,100],0,_roughPos,0,'   ']
 	];
 	missionNamespace setVariable ['QS_ao_aaMarkers',_aoAAMarkers,FALSE];
 	_vehicle setVariable ['QS_vehicle_markers',_vehicleMarkers,FALSE];
 	if ((random 1) > 0.5) then {
-		_grp = [(_position getPos [(random 30),(random 360)]),(random 360),EAST,'OI_support_ENG',FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
+		_grp = [(_position getPos [(random 30),(random 360)]),(random 360),WEST,'OI_support_ENG',FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 		{
 			if ((random 1) < 0.666) then {
 				[_unit,(['launch_rpg32_f','launch_rpg32_ghex_f'] select (worldName in ['Tanoa','Lingor3'])),2] call (missionNamespace getVariable 'QS_fnc_addWeapon');

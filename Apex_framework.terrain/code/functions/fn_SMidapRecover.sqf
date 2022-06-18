@@ -697,8 +697,8 @@ for '_x' from 0 to 1 step 0 do {
 			if ((_truckPos distance2D _housePosition) < 30) then {
 				_truckPos set [2,0];
 				_truckTypes = [
-					'o_g_offroad_01_f',
-					'o_g_van_01_transport_f',
+					'b_g_offroad_01_f',
+					'b_g_van_01_transport_f',
 					'i_c_van_01_transport_f',
 					'c_truck_02_transport_f'
 				];
@@ -759,8 +759,8 @@ for '_x' from 0 to 1 step 0 do {
 	if (_monitorScene) then {
 		if (_sceneType isEqualTo 0) then {
 			if (_currentSceneChance isEqualTo 0) then {
-				if (([_housePosition,15,[WEST],allPlayers,1] call _fn_serverDetector) > 0) then {
-					if (([_housePosition,15,[EAST,RESISTANCE],allUnits,1] call _fn_serverDetector) isEqualTo 0) then {
+				if (([_housePosition,15,[EAST],allPlayers,1] call _fn_serverDetector) > 0) then {
+					if (([_housePosition,15,[1EAST,RESISTANCE],allUnits,1] call _fn_serverDetector) isEqualTo 0) then {
 						[
 							[],
 							{
@@ -923,7 +923,7 @@ for '_x' from 0 to 1 step 0 do {
 				_allPlayers = allPlayers;
 				for '_x' from 0 to 9 step 1 do {
 					_spawnPosition = [_idapScenePosition,250,500,3,0,0.7,0] call _fn_findSafePos;
-					if (([_spawnPosition,250,[WEST,CIVILIAN],_allPlayers,0] call _fn_serverDetector) isEqualTo []) exitWith {};
+					if (([_spawnPosition,250,[EAST,CIVILIAN],_allPlayers,0] call _fn_serverDetector) isEqualTo []) exitWith {};
 				};
 				_spawnPosition set [2,0];
 				_spawnArray = [_idapScenePosition,0,1,_spawnPosition] call _fn_smIDAP;
@@ -941,7 +941,7 @@ for '_x' from 0 to 1 step 0 do {
 							_allPlayers = allPlayers;
 							for '_x' from 0 to 9 step 1 do {
 								_spawnPosition = [_housePosition,250,500,3,0,0.7,0] call _fn_findSafePos;
-								if (([_spawnPosition,250,[WEST,CIVILIAN],_allPlayers,0] call _fn_serverDetector) isEqualTo []) exitWith {};
+								if (([_spawnPosition,250,[EAST,CIVILIAN],_allPlayers,0] call _fn_serverDetector) isEqualTo []) exitWith {};
 							};
 							if ((_spawnPosition distance2D _housePosition) < 1000) then {
 								_spawnPosition set [2,0];
@@ -982,11 +982,11 @@ for '_x' from 0 to 1 step 0 do {
 	};
 	if (_crateSpawned) then {
 		if (!alive _crate) then {
-			[[WEST,'BLU'],'医疗物资被损坏， 任务失败！'] remoteExec ['sideChat',-2,FALSE];
+			[[EAST,'OPF'],'医疗物资被损坏， 任务失败！'] remoteExec ['sideChat',-2,FALSE];
 			_taskState = 'FAILED';
 		};
 		if (serverTime > _timeoutFailsafe) then {
-			[[WEST,'BLU'],'任务失败， 我们浪费了太多时间！'] remoteExec ['sideChat',-2,FALSE];
+			[[EAST,'OPF'],'任务失败， 我们浪费了太多时间！'] remoteExec ['sideChat',-2,FALSE];
 			_taskState = 'FAILED';
 		};
 	};

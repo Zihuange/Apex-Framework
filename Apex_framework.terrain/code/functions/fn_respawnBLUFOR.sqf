@@ -1,5 +1,5 @@
 /*/
-File: fn_respawnOPFOR.sqf
+File: fn_respawnBLUFOR.sqf
 Author: 
 	
 	Quiksilver
@@ -10,7 +10,7 @@ Last modified:
 
 Description: 
 
-	OPFOR respawn
+	BLUFOR respawn
 ________________________________________/*/
 
 params [['_unit',player],'_pos'];
@@ -18,7 +18,7 @@ if ((missionNamespace getVariable ['QS_missionConfig_aoType','CLASSIC']) in ['CL
 	private _positionFound = FALSE;
 	if ((missionNamespace getVariable ['QS_missionConfig_aoType','CLASSIC']) isEqualTo 'CLASSIC') then {
 		if (
-			((toLower (markerColor 'QS_marker_hqMarker')) isEqualTo 'coloropfor') &&
+			((toLower (markerColor 'QS_marker_hqMarker')) isEqualTo 'colorblufor') &&
 			{(([(missionNamespace getVariable 'QS_hqPos'),300,[WEST],(allUnits + allUnitsUav),0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo [])}
 		) then {
 			private _hqBuildingPositions = [];

@@ -16,22 +16,22 @@ _____________________________________________________________________/*/
 params ['_type','_quantity','_total',['_viperGroup',grpNull]];
 _unitTypes = [
 	[
-		'o_v_soldier_tl_hex_f',0.1,
-		'o_v_soldier_jtac_hex_f',0.1,
-		'o_v_soldier_m_hex_f',0.3,
-		'o_v_soldier_exp_hex_f',0.3,
-		'o_v_soldier_lat_hex_f',0.3,
-		'o_v_soldier_medic_hex_f',0.2,
-		'o_v_soldier_hex_f',0.6
+		'b_ctrg_soldier_ar_a_f',0.1,
+		'b_recon_jtac_f',0.1,
+		'b_ctrg_sharphooter_f',0.3,
+		'b_ctrg_soldier_ar_a_f',0.3,
+		'b_ctrg_soldier_gl_lat_f',0.3,
+		'b_ctrg_soldier_m_medic_f',0.2,
+		'b_ctrg_soldier_engineer_exp_f',0.6
 	],
 	[
-		'o_v_soldier_tl_ghex_f',0.1,
-		'o_v_soldier_jtac_ghex_f',0.1,
-		'o_v_soldier_m_ghex_f',0.3,
-		'o_v_soldier_exp_ghex_f',0.3,
-		'o_v_soldier_lat_ghex_f',0.3,
-		'o_v_soldier_medic_ghex_f',0.2,
-		'o_v_soldier_ghex_f',0.6
+		'b_ctrg_soldier_tl_tna_f',0.1,
+		'b_ctrg_soldier_jtac_tna_f',0.1,
+		'b_ctrg_soldier_m_tna_f',0.3,
+		'b_ctrg_soldier_exp_tna_f',0.3,
+		'b_ctrg_soldier_lat_tna_f',0.3,
+		'b_ctrg_soldier_medic_tna_f',0.2,
+		'b_ctrg_soldier_tna_f',0.6
 	]
 ] select (worldName in ['Tanoa','Enoch']);
 if (_type in ['CLASSIC','SC']) exitWith {
@@ -42,14 +42,14 @@ if (_type in ['CLASSIC','SC']) exitWith {
 	private _iterations = 0;
 	private _checkVisibleDistance = 500;
 	private _players = allPlayers;
-	private _playersOnGround = (_players unitsBelowHeight 25) select {((side _x) in [WEST,CIVILIAN,SIDEFRIENDLY])};
+	private _playersOnGround = (_players unitsBelowHeight 25) select {((side _x) in [EAST,CIVILIAN,SIDEFRIENDLY])};
 	private _position1 = [0,0,0];
 	for '_x' from 0 to 1 step 0 do {
 		_position1 = ['RADIUS',_centerPos,_aoSize,'LAND',[1.5,0,0.5,3,0,FALSE,objNull],TRUE,[_centerPos,300,'(1 + forest) * (1 - houses)',15,3],[],FALSE] call (missionNamespace getVariable 'QS_fnc_findRandomPos');
 		if ((_position1 distance2D _centerPos) < 1500) then {
 			if ((_players inAreaArray [_position1,250,250,0,FALSE]) isEqualTo []) then {
 				if ((((_position1 select [0,2]) nearRoads 25) select {((_x isEqualType objNull) && (!((roadsConnectedTo _x) isEqualTo [])))}) isEqualTo []) then {
-					if (([(AGLToASL _position1),_checkVisibleDistance,_playersOnGround,[WEST,CIVILIAN,SIDEFRIENDLY],0,0] call (missionNamespace getVariable 'QS_fnc_isPosVisible')) <= 0.1) then {
+					if (([(AGLToASL _position1),_checkVisibleDistance,_playersOnGround,[EAST,CIVILIAN,SIDEFRIENDLY],0,0] call (missionNamespace getVariable 'QS_fnc_isPosVisible')) <= 0.1) then {
 						_positionFound = TRUE;
 					};
 				};
@@ -64,7 +64,7 @@ if (_type in ['CLASSIC','SC']) exitWith {
 	private _unit = objNull;
 	private _grp = _viperGroup;
 	if (isNull _grp) then {
-		_grp = createGroup [EAST,TRUE];
+		_grp = createGroup [WEST,TRUE];
 	};
 	for '_x' from 0 to ((_total - _quantity) - 1) step 1 do {
 		_unit = _grp createUnit [(selectRandomWeighted _unitTypes),_position1,[],0,'NONE'];
@@ -87,7 +87,7 @@ if (_type in ['CLASSIC','SC']) exitWith {
 					if (local _u) then {
 						if (((vectorMagnitude (velocity _u)) * 3.6) < 0.5) then {
 							if (alive _i) then {
-								if ((side _i) isEqualTo WEST) then {
+								if ((side _i) isEqualTo EAST) then {
 									if ((stance _u) in ['CROUCH','STAND']) then {
 										_u playAction (selectRandom ['TactLB','TactRB','TactL','TactR','TactLF','TactRf']);
 										if ((random 1) > 0.5) then {

@@ -52,9 +52,9 @@ if (_type isEqualTo 'S1') then {
 		'76561100000000000'
 	];
 };
-//================================================= OPFOR
-if (_type isEqualTo 'OPFOR') then {
-	/*/ These IDs have access to the OPFOR slots, if OPFOR whitelisting is used. /*/
+//================================================= BLUFOR
+if (_type isEqualTo 'BLUFOR') then {
+	/*/ These IDs have access to the BLUFOR slots, if BLUFOR whitelisting is used. /*/
 	_return = [
 		'76561100000000000',
 		'76561100000000000'

@@ -43,7 +43,7 @@ if (_killed isKindOf 'Man') then {
 			};
 		};
 		_grp = group _killed;
-		if ((side _grp) in [EAST,RESISTANCE]) then {
+		if ((side _grp) in [WEST,RESISTANCE]) then {
 			if (!isPlayer (leader _grp)) then {
 				if (_killed isEqualTo (leader _grp)) then {
 					private _grpUnits = (units _grp) select {((alive _x) && ((lifeState _x) in ['HEALTHY','INJURED']))};
@@ -71,7 +71,7 @@ if (isPlayer _killed) then {
 			missionNamespace setVariable ['QS_playerKilledCountServer',((missionNamespace getVariable 'QS_playerKilledCountServer') + 1),FALSE];
 			if (unitIsUAV _killer) then {
 				if (!local _killer) then {
-					if (([(getPosATL _killer),15,[WEST,CIVILIAN],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
+					if (([(getPosATL _killer),15,[EAST,CIVILIAN],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
 						deleteVehicle _killer;
 					};
 				};
@@ -87,7 +87,7 @@ if (isPlayer _killed) then {
 				} count (allVariables _killed);
 			};
 		};
-		if (((toLower (typeOf _killed)) in ['o_sniper_f','o_ghillie_ard_f','o_ghillie_lsh_f','o_ghillie_sard_f','o_t_sniper_f','o_t_ghillie_tna_f']) || {(_killed getUnitTrait 'QS_trait_sniper')}) then {
+		if (((toLower (typeOf _killed)) in ['b_sniper_f','b_ghillie_ard_f','b_ghillie_lsh_f','b_ghillie_sard_f','b_t_sniper_f','b_t_ghillie_tna_f']) || {(_killed getUnitTrait 'QS_trait_sniper')}) then {
 			if (!isNull _killer) then {
 				if (isPlayer _killer) then {
 					if (!((vehicle _killer) isKindOf 'Air')) then {

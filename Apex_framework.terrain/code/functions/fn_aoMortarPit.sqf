@@ -43,7 +43,7 @@ if ((missionNamespace getVariable 'QS_mission_aoType') isEqualTo 'SC') then {
 	_marker1 setMarkerAlphaLocal 0;
 	_marker1 setMarkerShapeLocal 'ICON';
 	_marker1 setMarkerTypeLocal 'mil_dot';
-	_marker1 setMarkerColorLocal 'ColorOPFOR';
+	_marker1 setMarkerColorLocal 'ColorWEST';
 	_marker1 setMarkerTextLocal (toString [32,32,32]);
 	_marker1 setMarkerSizeLocal [0.5,0.5];
 	_marker1 setMarkerPos _uncertaintyPos;
@@ -52,7 +52,7 @@ if ((missionNamespace getVariable 'QS_mission_aoType') isEqualTo 'SC') then {
 	_marker2 setMarkerAlphaLocal 0;
 	_marker2 setMarkerShapeLocal 'ELLIPSE';
 	_marker2 setMarkerBrushLocal 'Border';
-	_marker2 setMarkerColorLocal 'ColorOPFOR';
+	_marker2 setMarkerColorLocal 'ColorWEST';
 	_marker2 setMarkerTextLocal (toString [32,32,32]);
 	_marker2 setMarkerSizeLocal [100,100];
 	_marker2 setMarkerPos _uncertaintyPos;

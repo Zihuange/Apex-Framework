@@ -242,7 +242,7 @@ if (_type isEqualTo 'GET_ROLE_DESCRIPTION') exitWith {
 if (_type isEqualTo 'HANDLE_CONNECT') exitWith {
 	params ['','_data'];
 	_data params ['_unit','_jip','_cid','_uid','_profileName'];
-	(uiNamespace getVariable ['QS_roles_handler',[]]) pushBack ['HANDLE_REQUEST_ROLE',_uid,(missionNamespace getVariable ['QS_roles_defaultSide',WEST]),(missionNamespace getVariable ['QS_roles_defaultRole','rifleman']),_unit];
+	(uiNamespace getVariable ['QS_roles_handler',[]]) pushBack ['HANDLE_REQUEST_ROLE',_uid,(missionNamespace getVariable ['QS_roles_defaultSide',EAST]),(missionNamespace getVariable ['QS_roles_defaultRole','rifleman']),_unit];
 };
 if (_type isEqualTo 'HANDLE_DISCONNECT') exitWith {
 	params ['','_data'];
@@ -328,7 +328,7 @@ if (_type isEqualTo 'REQUEST_ROLE') exitWith {
 		if (uiNamespace getVariable ['QS_client_roles_menu_canSelectRole',FALSE]) then {
 			_roleCount = ['GET_ROLE_COUNT',_role,_side,FALSE] call (missionNamespace getVariable 'QS_fnc_roles');
 			if ((_roleCount # 0) < (_roleCount # 1)) then {
-				if (!( ((player getVariable ['QS_unit_role','rifleman']) isEqualTo _role) && ((player getVariable ['QS_unit_side',WEST]) isEqualTo _side) )) then {
+				if (!( ((player getVariable ['QS_unit_role','rifleman']) isEqualTo _role) && ((player getVariable ['QS_unit_side',EAST]) isEqualTo _side) )) then {
 					
 				} else {
 					_allowRequest = FALSE;
@@ -339,7 +339,7 @@ if (_type isEqualTo 'REQUEST_ROLE') exitWith {
 				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'所选兵种数量已达上限',[],-1,TRUE,'兵种选择系统',FALSE];
 			};
 		} else {
-			if ((_side isNotEqualTo (player getVariable ['QS_unit_side',WEST])) && (!(missionNamespace getVariable ['QS_RSS_client_canSideSwitch',FALSE]))) then {
+			if ((_side isNotEqualTo (player getVariable ['QS_unit_side',EAST])) && (!(missionNamespace getVariable ['QS_RSS_client_canSideSwitch',FALSE]))) then {
 				_allowRequest = FALSE;
 				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'无法变更派系',[],-1,TRUE,'兵种选择系统',FALSE];
 			} else {
@@ -387,7 +387,7 @@ if (_type isEqualTo 'HANDLE_REQUEST_ROLE') exitWith {
 	params [
 		'',
 		['_uid',''],
-		['_side',WEST],
+		['_side',EAST],
 		['_role','rifleman'],
 		['_unit',objNull]
 	];
@@ -471,8 +471,8 @@ if (_type isEqualTo 'HANDLE_REQUEST_ROLE') exitWith {
 			} forEach allGroups;
 		};
 		[_unit] joinSilent (createGroup [_side,TRUE]);
-		if (_side isNotEqualTo (_unit getVariable ['QS_unit_side',WEST])) then {
-			_txt = format ['有玩家从 %2阵营更换到了 %3阵营',(name _unit),(_unit getVariable ['QS_unit_side',WEST]),_side];
+		if (_side isNotEqualTo (_unit getVariable ['QS_unit_side',EAST])) then {
+			_txt = format ['有玩家从 %2阵营更换到了 %3阵营',(name _unit),(_unit getVariable ['QS_unit_side',EAST]),_side];
 			_txt remoteExec ['systemChat',-2,FALSE];
 			remoteExec ['QS_fnc_clientEventRespawn',_unit,FALSE];
 		};
@@ -511,7 +511,7 @@ if (_type isEqualTo 'INIT_ROLE') exitWith {
 		[['QS_trait_MMG',FALSE,TRUE]],
 		[['QS_trait_Sniper',FALSE,TRUE]]
 	];
-	if (_role in ['autorifleman','o_autorifleman','autorifleman_WL']) then {
+	if (_role in ['autorifleman','b_autorifleman','autorifleman_WL']) then {
 		_traitsData = [
 			[['medic',FALSE,FALSE]],
 			[['uavhacker',FALSE,FALSE]],
@@ -809,7 +809,7 @@ if (_type isEqualTo 'INIT_ROLE') exitWith {
 		uiSleep 0.1;
 		call (missionNamespace getVariable 'QS_fnc_clientArsenal');
 		uiSleep 0.1;
-		missionNamespace setVariable ['QS_client_arsenalData',([(player getVariable ['QS_unit_side',WEST]),_this] call (missionNamespace getVariable 'QS_data_arsenal')),FALSE];
+		missionNamespace setVariable ['QS_client_arsenalData',([(player getVariable ['QS_unit_side',EAST]),_this] call (missionNamespace getVariable 'QS_data_arsenal')),FALSE];
 	};
 	['SET_SAVED_LOADOUT',_role] call (missionNamespace getVariable 'QS_fnc_roles');
 	call (missionNamespace getVariable 'QS_fnc_respawnPilot');
@@ -851,7 +851,7 @@ if (_type isEqualTo 'SET_DEFAULT_LOADOUT') exitWith {
 if (_type isEqualTo 'SET_SAVED_LOADOUT') exitWith {
 	params ['',['_role','rifleman']];
 	private _customLoadout = FALSE;
-	if ((((missionNamespace getVariable ['QS_missionConfig_aoType','CLASSIC']) in ['CLASSIC','SC','GRID']) && ((player getVariable ['QS_unit_side',WEST]) isEqualTo WEST)) || {(!((missionNamespace getVariable ['QS_missionConfig_aoType','CLASSIC']) in ['CLASSIC','SC','GRID']))}) then {
+	if ((((missionNamespace getVariable ['QS_missionConfig_aoType','CLASSIC']) in ['CLASSIC','SC','GRID']) && ((player getVariable ['QS_unit_side',EAST]) isEqualTo EAST)) || {(!((missionNamespace getVariable ['QS_missionConfig_aoType','CLASSIC']) in ['CLASSIC','SC','GRID']))}) then {
 		if (!isNil {profileNamespace getVariable (format ['QS_RSS_loadouts_%1',(['arid','tropic'] select (worldName in ['Tanoa','Enoch']))])}) then {
 			if ((profileNamespace getVariable (format ['QS_RSS_loadouts_%1',(['arid','tropic'] select (worldName in ['Tanoa','Enoch']))])) isEqualType []) then {
 				if ((profileNamespace getVariable (format ['QS_RSS_loadouts_%1',(['arid','tropic'] select (worldName in ['Tanoa','Enoch']))])) isNotEqualTo []) then {

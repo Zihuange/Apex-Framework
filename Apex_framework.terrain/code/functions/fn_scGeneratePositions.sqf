@@ -196,8 +196,8 @@ for '_x' from 0 to 1 step 0 do {
 		_aoSize = _aoSize + 100;
 		missionNamespace setVariable ['QS_aoSize',_aoSize,FALSE];
 		'QS_marker_aoCircle' setMarkerSize [_aoSize,_aoSize];
-		if (!((missionNamespace getVariable ['QS_missionConfig_playableOPFOR',0]) isEqualTo 0)) then {
-			[objNull,_centroid] remoteExec ['QS_fnc_respawnOPFOR',[EAST,RESISTANCE],FALSE];
+		if (!((missionNamespace getVariable ['QS_missionConfig_playableBLUFOR',0]) isEqualTo 0)) then {
+			[objNull,_centroid] remoteExec ['QS_fnc_respawnBLUFOR',[EAST,RESISTANCE],FALSE];
 		};
 	};
 	if (_attempts > _maxAttempts) exitWith {};

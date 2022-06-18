@@ -33,13 +33,13 @@ if (
 	{(!((lifeState _unit) in ['HEALTHY','INJURED']))} ||
 	{(['U_O',(uniform _unit),FALSE] call (missionNamespace getVariable 'QS_fnc_inString'))} ||
 	{((!isNull _instigator) && (_instigator in (missionNamespace getVariable ['QS_robocop_excluded',[]])))} ||
-	{((!isNull _instigator) && ((side (group _instigator)) in ((_unit getVariable ['QS_unit_side',WEST]) call (missionNamespace getVariable 'QS_fnc_enemySides'))))} ||
+	{((!isNull _instigator) && ((side (group _instigator)) in ((_unit getVariable ['QS_unit_side',EAST]) call (missionNamespace getVariable 'QS_fnc_enemySides'))))} ||
 	{((missionNamespace getVariable ['QS_robocop_busy',FALSE]) && ((count _this) <= 4))}
 ) exitWith {
 	if (
 		(alive _instigator) &&
 		{(!isPlayer _instigator)} &&
-		{((side (group _instigator)) isEqualTo (_unit getVariable ['QS_unit_side',WEST]))} &&
+		{((side (group _instigator)) isEqualTo (_unit getVariable ['QS_unit_side',EAST]))} &&
 		{(_dmg > 0.25)}
 	) then {
 		[17,_instigator] remoteExec ['QS_fnc_remoteExec',2,FALSE];

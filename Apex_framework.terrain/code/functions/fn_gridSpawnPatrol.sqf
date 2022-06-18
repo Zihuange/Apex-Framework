@@ -41,19 +41,19 @@ _terrainData params [
 	'_buildingPositionsInPolygonNearGround'
 ];
 private _unitTypes = [
-	'O_G_Soldier_A_F',1,
-	'O_G_Soldier_AR_F',3,
-	'O_G_medic_F',1,
-	'O_G_engineer_F',1,
-	'O_G_Soldier_exp_F',1,
-	'O_G_Soldier_GL_F',1,
-	'O_G_Soldier_M_F',1,
-	'O_G_Soldier_F',1,
-	'O_G_Soldier_LAT_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
-	'O_G_Soldier_LAT2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
-	'O_G_Soldier_lite_F',1,
-	'O_G_Sharpshooter_F',3,
-	'O_G_Soldier_TL_F',1,
+	'B_G_Soldier_A_F',1,
+	'B_G_Soldier_AR_F',3,
+	'B_G_medic_F',1,
+	'B_G_engineer_F',1,
+	'B_G_Soldier_exp_F',1,
+	'B_G_Soldier_GL_F',1,
+	'B_G_Soldier_M_F',1,
+	'B_G_Soldier_F',1,
+	'B_G_Soldier_LAT_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
+	'B_G_Soldier_LAT2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
+	'B_G_Soldier_lite_F',1,
+	'B_G_Sharpshooter_F',3,
+	'B_G_Soldier_TL_F',1,
 	'I_C_Soldier_Bandit_7_F',1,
 	'I_C_Soldier_Bandit_3_F',3,
 	'I_C_Soldier_Bandit_2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
@@ -122,7 +122,7 @@ if (_type isEqualTo 0) exitWith {
 	};
 	if (!(_usedBuildingPositions isEqualTo [])) then {
 		_spawnPosition = selectRandom _usedBuildingPositions;
-		_enemyGrp = createGroup [EAST,TRUE];
+		_enemyGrp = createGroup [WEST,TRUE];
 		for '_j' from 0 to (_teamSize - 1) step 1 do {
 			_enemyUnitType = selectRandomWeighted _unitTypes;
 			_enemyUnit = _enemyGrp createUnit [_enemyUnitType,_spawnPosition,[],25,'NONE'];
@@ -136,10 +136,10 @@ if (_type isEqualTo 0) exitWith {
 			_enemyUnit disableAI 'AUTOCOMBAT';
 			_enemyUnit setVariable ['QS_AI_UNIT_enabled',TRUE,(call (missionNamespace getVariable 'QS_fnc_AIOwners'))];
 			_enemyUnit call (missionNamespace getVariable 'QS_fnc_unitSetup');
-			if ((toLower _enemyUnitType) in ['o_g_soldier_f','o_g_soldier_lite_f','i_c_soldier_bandit_6_f','i_c_soldier_para_1_f']) then {
+			if ((toLower _enemyUnitType) in ['b_g_soldier_f','b_g_soldier_lite_f','i_c_soldier_bandit_6_f','i_c_soldier_para_1_f']) then {
 				if ((random 1) > 0.5) then {
 					_enemyUnit addBackpack (['b_bergen_hex_f','b_carryall_ghex_f'] select (_worldName in ['Tanoa','Lingor3']));
-					[_enemyUnit,(['launch_o_titan_f','launch_o_titan_ghex_f'] select (_worldName in ['Tanoa','Lingor3'])),4] call (missionNamespace getVariable 'QS_fnc_addWeapon');
+					[_enemyUnit,(['launch_b_titan_f','launch_b_titan_tna_f'] select (_worldName in ['Tanoa','Lingor3'])),4] call (missionNamespace getVariable 'QS_fnc_addWeapon');
 				};
 			};
 			[_enemyUnit] joinSilent _enemyGrp;
@@ -196,7 +196,7 @@ if (_type isEqualTo 1) exitWith {
 		if ((count _patrolRoute) >= 3) exitWith {};
 	};
 	if ((count _patrolRoute) > 1) then {
-		_enemyGrp = createGroup [EAST,TRUE];
+		_enemyGrp = createGroup [WEST,TRUE];
 		for '_j' from 0 to (_teamSize - 1) step 1 do {
 			_enemyUnitType = selectRandomWeighted _unitTypes;
 			_enemyUnit = _enemyGrp createUnit [_enemyUnitType,(_patrolRoute select 0),[],25,'NONE'];
@@ -206,10 +206,10 @@ if (_type isEqualTo 1) exitWith {
 			_enemyUnit disableAI 'COVER';
 			_enemyUnit setVariable ['QS_AI_UNIT_enabled',TRUE,(call (missionNamespace getVariable 'QS_fnc_AIOwners'))];
 			_enemyUnit call (missionNamespace getVariable 'QS_fnc_unitSetup');
-			if ((toLower _enemyUnitType) in ['o_g_soldier_f','o_g_soldier_lite_f','i_c_soldier_bandit_6_f','i_c_soldier_para_1_f']) then {
+			if ((toLower _enemyUnitType) in ['b_g_soldier_f','b_g_soldier_lite_f','i_c_soldier_bandit_6_f','i_c_soldier_para_1_f']) then {
 				if ((random 1) > 0.5) then {
 					_enemyUnit addBackpack (['b_bergen_hex_f','b_carryall_ghex_f'] select (_worldName in ['Tanoa','Lingor3']));
-					[_enemyUnit,(['launch_o_titan_f','launch_o_titan_ghex_f'] select (_worldName in ['Tanoa','Lingor3'])),4] call (missionNamespace getVariable 'QS_fnc_addWeapon');
+					[_enemyUnit,(['launch_b_titan_f','launch_b_titan_tna_f'] select (_worldName in ['Tanoa','Lingor3'])),4] call (missionNamespace getVariable 'QS_fnc_addWeapon');
 				};
 			};
 			[_enemyUnit] joinSilent _enemyGrp;

@@ -43,19 +43,19 @@ if (_worldName isEqualTo 'Tanoa') then {
 private _spawnPos = [0,0,0];
 private _foundSpawnPos = FALSE;
 private _unitTypes = [
-	'O_G_Soldier_A_F',1,
-	'O_G_Soldier_AR_F',4,
-	'O_G_medic_F',1,
-	'O_G_engineer_F',1,
-	'O_G_Soldier_exp_F',1,
-	'O_G_Soldier_GL_F',1,
-	'O_G_Soldier_M_F',1,
-	'O_G_Soldier_F',1,
-	'O_G_Soldier_LAT_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
-	'O_G_Soldier_LAT2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
-	'O_G_Soldier_lite_F',1,
-	'O_G_Sharpshooter_F',3,
-	'O_G_Soldier_TL_F',1,
+	'B_G_Soldier_A_F',1,
+	'B_G_Soldier_AR_F',4,
+	'B_G_medic_F',1,
+	'B_G_engineer_F',1,
+	'B_G_Soldier_exp_F',1,
+	'B_G_Soldier_GL_F',1,
+	'B_G_Soldier_M_F',1,
+	'B_G_Soldier_F',1,
+	'B_G_Soldier_LAT_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
+	'B_G_Soldier_LAT2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
+	'B_G_Soldier_lite_F',1,
+	'B_G_Sharpshooter_F',3,
+	'B_G_Soldier_TL_F',1,
 	'I_C_Soldier_Bandit_7_F',1,
 	'I_C_Soldier_Bandit_3_F',3,
 	'I_C_Soldier_Bandit_2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
@@ -120,7 +120,7 @@ if (_type isEqualTo 0) exitWith {
 		} else {
 			_moveData = _igPos;
 		};
-		_enemyGrp = createGroup [EAST,TRUE];
+		_enemyGrp = createGroup [WEST,TRUE];
 		_grpSpeedCoef = random [1,1.05,1.1];
 		for '_j' from 0 to (_teamsize - 1) step 1 do {
 			_enemyUnitType = selectRandomWeighted _unitTypes;

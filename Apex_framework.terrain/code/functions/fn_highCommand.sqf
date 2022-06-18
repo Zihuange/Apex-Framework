@@ -107,7 +107,7 @@ QS_hc_mapTest_1 = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler [
 		_nearestWaypoint = [(_m ctrlMapScreenToWorld getMousePosition),_mScale] call (missionNamespace getVariable 'QS_fnc_mapGetNearestWaypoint');
 		{
 			if (!isNull _x) then {
-				if ((side _x) isEqualTo (player getVariable ['QS_unit_side',WEST])) then {
+				if ((side _x) isEqualTo (player getVariable ['QS_unit_side',EAST])) then {
 					_grp = _x;
 					if (((units _grp) findIf {(alive _x)}) isNotEqualTo -1) then {
 						_grpLeader = leader _grp;
@@ -267,7 +267,7 @@ if (isNull (missionNamespace getVariable ['QS_script_grpIcons',scriptNull])) the
 				if (diag_tickTime > _checkDiplomacy) then {
 					_as = [];
 					{
-						if (((player getVariable ['QS_unit_side',WEST]) getFriend _x) > 0.6) then {
+						if (((player getVariable ['QS_unit_side',EAST]) getFriend _x) > 0.6) then {
 							_as pushBack _x;
 						};
 					} forEach _sides;
@@ -389,7 +389,7 @@ for '_x' from 0 to 1 step 0 do {
 	};
 	{
 		_grp = _x;
-		if ((side _grp) isEqualTo WEST) then {
+		if ((side _grp) isEqualTo EAST) then {
 			if (!(_grp in (hcAllGroups player))) then {
 				if (((units _grp) findIf {(alive _x)}) isNotEqualTo -1) then {
 					if (isNil {_grp getVariable ['QS_HComm_grp',FALSE]}) then {

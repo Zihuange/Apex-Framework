@@ -44,11 +44,11 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 				]);
 			} else {
 				(effectiveCommander _mortar) setUnitLoadout (selectRandom [
-					"O_soldierU_A_F","O_soldierU_AAR_F","O_soldierU_AR_F","O_soldierU_medic_F","O_engineer_U_F","O_soldierU_exp_F","O_SoldierU_GL_F",
-					"O_Urban_HeavyGunner_F","O_soldierU_M_F","O_soldierU_AT_F","O_soldierU_F","O_soldierU_LAT_F","O_Urban_Sharpshooter_F",
-					"O_SoldierU_SL_F","O_soldierU_TL_F","O_G_engineer_F","O_G_medic_F","O_G_Soldier_A_F","O_G_Soldier_AR_F","O_G_Soldier_exp_F","O_G_Soldier_F","O_G_Soldier_F",
-					"O_G_Soldier_GL_F","O_G_Soldier_LAT_F","O_G_Soldier_lite_F","O_G_Soldier_M_F","O_G_Soldier_SL_F","O_G_Soldier_TL_F",
-					"O_G_Sharpshooter_F","O_G_Soldier_AR_F"
+					"B_Soldier_A_F","B_soldier_AAR_F","B_soldier_AR_F","B_medic_F","B_engineer_F","B_soldier_exp_F","B_Soldier_GL_F",
+					"B_HeavyGunner_F","B_soldier_M_F","B_soldier_AT_F","B_Soldier_F","B_soldier_LAT_F","B_Sharpshooter_F",
+					"B_Soldier_SL_F","B_Soldier_TL_F","B_G_engineer_F","B_G_medic_F","B_G_Soldier_A_F","B_G_Soldier_AR_F","B_G_Soldier_exp_F","B_G_Soldier_F","B_G_Soldier_F",
+					"B_G_Soldier_GL_F","B_G_Soldier_LAT_F","B_G_Soldier_lite_F","B_G_Soldier_M_F","B_G_Soldier_SL_F","B_G_Soldier_TL_F",
+					"B_G_Sharpshooter_F","B_G_Soldier_AR_F"
 				]);
 			};
 			_mortar lock 3;
@@ -136,11 +136,11 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 				]);
 			} else {
 				(effectiveCommander _mortar) setUnitLoadout (selectRandom [
-					"O_soldierU_A_F","O_soldierU_AAR_F","O_soldierU_AR_F","O_soldierU_medic_F","O_engineer_U_F","O_soldierU_exp_F","O_SoldierU_GL_F",
-					"O_Urban_HeavyGunner_F","O_soldierU_M_F","O_soldierU_AT_F","O_soldierU_F","O_soldierU_LAT_F","O_Urban_Sharpshooter_F",
-					"O_SoldierU_SL_F","O_soldierU_TL_F","O_G_engineer_F","O_G_medic_F","O_G_Soldier_A_F","O_G_Soldier_AR_F","O_G_Soldier_exp_F","O_G_Soldier_F","O_G_Soldier_F",
-					"O_G_Soldier_GL_F","O_G_Soldier_LAT_F","O_G_Soldier_lite_F","O_G_Soldier_M_F","O_G_Soldier_SL_F","O_G_Soldier_TL_F",
-					"O_G_Sharpshooter_F","O_G_Soldier_AR_F"
+					"B_Soldier_A_F","B_soldier_AAR_F","B_soldier_AR_F","B_medic_F","B_engineer_F","B_soldier_exp_F","B_Soldier_GL_F",
+					"B_HeavyGunner_F","B_soldier_M_F","B_soldier_AT_F","B_Soldier_F","B_soldier_LAT_F","B_Sharpshooter_F",
+					"B_Soldier_SL_F","B_Soldier_TL_F","B_G_engineer_F","B_G_medic_F","B_G_Soldier_A_F","B_G_Soldier_AR_F","B_G_Soldier_exp_F","B_G_Soldier_F","B_G_Soldier_F",
+					"B_G_Soldier_GL_F","B_G_Soldier_LAT_F","B_G_Soldier_lite_F","B_G_Soldier_M_F","B_G_Soldier_SL_F","B_G_Soldier_TL_F",
+					"B_G_Sharpshooter_F","B_G_Soldier_AR_F"
 				]);
 			};
 			_mortar lock 3;
@@ -222,11 +222,11 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 				]);
 			} else {
 				(effectiveCommander _mortar) setUnitLoadout (selectRandom [
-					"O_soldierU_A_F","O_soldierU_AAR_F","O_soldierU_AR_F","O_soldierU_medic_F","O_engineer_U_F","O_soldierU_exp_F","O_SoldierU_GL_F",
-					"O_Urban_HeavyGunner_F","O_soldierU_M_F","O_soldierU_AT_F","O_soldierU_F","O_soldierU_LAT_F","O_Urban_Sharpshooter_F",
-					"O_SoldierU_SL_F","O_soldierU_TL_F","O_G_engineer_F","O_G_medic_F","O_G_Soldier_A_F","O_G_Soldier_AR_F","O_G_Soldier_exp_F","O_G_Soldier_F","O_G_Soldier_F",
-					"O_G_Soldier_GL_F","O_G_Soldier_LAT_F","O_G_Soldier_lite_F","O_G_Soldier_M_F","O_G_Soldier_SL_F","O_G_Soldier_TL_F",
-					"O_G_Sharpshooter_F","O_G_Soldier_AR_F"
+					"B_Soldier_A_F","B_soldier_AAR_F","B_soldier_AR_F","B_medic_F","B_engineer_F","B_soldier_exp_F","B_Soldier_GL_F",
+					"B_HeavyGunner_F","B_soldier_M_F","B_soldier_AT_F","B_Soldier_F","B_soldier_LAT_F","B_Sharpshooter_F",
+					"B_Soldier_SL_F","B_Soldier_TL_F","B_G_engineer_F","B_G_medic_F","B_G_Soldier_A_F","B_G_Soldier_AR_F","B_G_Soldier_exp_F","B_G_Soldier_F","B_G_Soldier_F",
+					"B_G_Soldier_GL_F","B_G_Soldier_LAT_F","B_G_Soldier_lite_F","B_G_Soldier_M_F","B_G_Soldier_SL_F","B_G_Soldier_TL_F",
+					"B_G_Sharpshooter_F","B_G_Soldier_AR_F"
 				]);
 			};
 			_mortar lock 3;
@@ -346,11 +346,11 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 			]);
 		} else {
 			(effectiveCommander _mortar) setUnitLoadout (selectRandom [
-				"O_soldierU_A_F","O_soldierU_AAR_F","O_soldierU_AR_F","O_soldierU_medic_F","O_engineer_U_F","O_soldierU_exp_F","O_SoldierU_GL_F",
-				"O_Urban_HeavyGunner_F","O_soldierU_M_F","O_soldierU_AT_F","O_soldierU_F","O_soldierU_LAT_F","O_Urban_Sharpshooter_F",
-				"O_SoldierU_SL_F","O_soldierU_TL_F","O_G_engineer_F","O_G_medic_F","O_G_Soldier_A_F","O_G_Soldier_AR_F","O_G_Soldier_exp_F","O_G_Soldier_F","O_G_Soldier_F",
-				"O_G_Soldier_GL_F","O_G_Soldier_LAT_F","O_G_Soldier_lite_F","O_G_Soldier_M_F","O_G_Soldier_SL_F","O_G_Soldier_TL_F",
-				"O_G_Sharpshooter_F","O_G_Soldier_AR_F"
+				"B_Soldier_A_F","B_soldier_AAR_F","B_soldier_AR_F","B_medic_F","B_engineer_F","B_soldier_exp_F","B_Soldier_GL_F",
+				"B_HeavyGunner_F","B_soldier_M_F","B_soldier_AT_F","B_Soldier_F","B_soldier_LAT_F","B_Sharpshooter_F",
+				"B_Soldier_SL_F","B_Soldier_TL_F","B_G_engineer_F","B_G_medic_F","B_G_Soldier_A_F","B_G_Soldier_AR_F","B_G_Soldier_exp_F","B_G_Soldier_F","B_G_Soldier_F",
+				"B_G_Soldier_GL_F","B_G_Soldier_LAT_F","B_G_Soldier_lite_F","B_G_Soldier_M_F","B_G_Soldier_SL_F","B_G_Soldier_TL_F",
+				"B_G_Sharpshooter_F","B_G_Soldier_AR_F"
 			]);
 		};
 		_mortar lock 3;
@@ -431,11 +431,11 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 			]);
 		} else {
 			(effectiveCommander _mortar) setUnitLoadout (selectRandom [
-				"O_soldierU_A_F","O_soldierU_AAR_F","O_soldierU_AR_F","O_soldierU_medic_F","O_engineer_U_F","O_soldierU_exp_F","O_SoldierU_GL_F",
-				"O_Urban_HeavyGunner_F","O_soldierU_M_F","O_soldierU_AT_F","O_soldierU_F","O_soldierU_LAT_F","O_Urban_Sharpshooter_F",
-				"O_SoldierU_SL_F","O_soldierU_TL_F","O_G_engineer_F","O_G_medic_F","O_G_Soldier_A_F","O_G_Soldier_AR_F","O_G_Soldier_exp_F","O_G_Soldier_F","O_G_Soldier_F",
-				"O_G_Soldier_GL_F","O_G_Soldier_LAT_F","O_G_Soldier_lite_F","O_G_Soldier_M_F","O_G_Soldier_SL_F","O_G_Soldier_TL_F",
-				"O_G_Sharpshooter_F","O_G_Soldier_AR_F"
+				"B_Soldier_A_F","B_soldier_AAR_F","B_soldier_AR_F","B_medic_F","B_engineer_F","B_soldier_exp_F","B_Soldier_GL_F",
+				"B_HeavyGunner_F","B_soldier_M_F","B_soldier_AT_F","B_Soldier_F","B_soldier_LAT_F","B_Sharpshooter_F",
+				"B_Soldier_SL_F","B_Soldier_TL_F","B_G_engineer_F","B_G_medic_F","B_G_Soldier_A_F","B_G_Soldier_AR_F","B_G_Soldier_exp_F","B_G_Soldier_F","B_G_Soldier_F",
+				"B_G_Soldier_GL_F","B_G_Soldier_LAT_F","B_G_Soldier_lite_F","B_G_Soldier_M_F","B_G_Soldier_SL_F","B_G_Soldier_TL_F",
+				"B_G_Sharpshooter_F","B_G_Soldier_AR_F"
 			]);
 		};
 		_mortar lock 3;
@@ -516,11 +516,11 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 			]);
 		} else {
 			(effectiveCommander _mortar) setUnitLoadout (selectRandom [
-				"O_soldierU_A_F","O_soldierU_AAR_F","O_soldierU_AR_F","O_soldierU_medic_F","O_engineer_U_F","O_soldierU_exp_F","O_SoldierU_GL_F",
-				"O_Urban_HeavyGunner_F","O_soldierU_M_F","O_soldierU_AT_F","O_soldierU_F","O_soldierU_LAT_F","O_Urban_Sharpshooter_F",
-				"O_SoldierU_SL_F","O_soldierU_TL_F","O_G_engineer_F","O_G_medic_F","O_G_Soldier_A_F","O_G_Soldier_AR_F","O_G_Soldier_exp_F","O_G_Soldier_F","O_G_Soldier_F",
-				"O_G_Soldier_GL_F","O_G_Soldier_LAT_F","O_G_Soldier_lite_F","O_G_Soldier_M_F","O_G_Soldier_SL_F","O_G_Soldier_TL_F",
-				"O_G_Sharpshooter_F","O_G_Soldier_AR_F"
+				"B_Soldier_A_F","B_soldier_AAR_F","B_soldier_AR_F","B_medic_F","B_engineer_F","B_soldier_exp_F","B_Soldier_GL_F",
+				"B_HeavyGunner_F","B_soldier_M_F","B_soldier_AT_F","B_Soldier_F","B_soldier_LAT_F","B_Sharpshooter_F",
+				"B_Soldier_SL_F","B_Soldier_TL_F","B_G_engineer_F","B_G_medic_F","B_G_Soldier_A_F","B_G_Soldier_AR_F","B_G_Soldier_exp_F","B_G_Soldier_F","B_G_Soldier_F",
+				"B_G_Soldier_GL_F","B_G_Soldier_LAT_F","B_G_Soldier_lite_F","B_G_Soldier_M_F","B_G_Soldier_SL_F","B_G_Soldier_TL_F",
+				"B_G_Sharpshooter_F","B_G_Soldier_AR_F"
 			]);
 		};
 		_mortar lock 3;

@@ -23,7 +23,7 @@ if (_type isEqualTo 0) exitWith {
 	_grp setFormDir ((getPos _grpLeader) getDir _firePosition);
 	_sleep_1 = [5,2] select (_vehicle isKindOf 'StaticMortar');
 	_sleep_2 = [7,4] select (_vehicle isKindOf 'StaticMortar');
-	_nearbyTargetsCount = count ([12,EAST,_firePosition,100] call (missionNamespace getVariable 'QS_fnc_AIGetKnownEnemies'));
+	_nearbyTargetsCount = count ([12,WEST,_firePosition,100] call (missionNamespace getVariable 'QS_fnc_AIGetKnownEnemies'));
 	if ((_vehicle isKindOf 'StaticMortar') && (_nearbyTargetsCount > (selectRandom [5,6]))) then {
 		_fireRounds = round (_fireRounds * 2);
 	};
@@ -64,7 +64,7 @@ if (_type isEqualTo 1) exitWith {
 	];
 	_laserTarget attachTo [_targetAssistant,[0,0,0.5]];
 	_laserTarget allowDamage FALSE;
-	_laserTarget confirmSensorTarget [EAST,TRUE];
+	_laserTarget confirmSensorTarget [WEST,TRUE];
 	private _unit = objNull;
 	{
 		_unit = _x;
@@ -195,7 +195,7 @@ if (_type isEqualTo 2) exitWith {
 	];
 	_laserTarget attachTo [_targetAssistant,[0,0,0.5]];
 	_laserTarget allowDamage FALSE;
-	_laserTarget confirmSensorTarget [EAST,TRUE];
+	_laserTarget confirmSensorTarget [WEST,TRUE];
 	_supportGroup reveal [_laserTarget,3.9];
 	_supportProvider doWatch _laserTarget;
 	_supportProvider commandTarget _laserTarget;
@@ -325,7 +325,7 @@ if (_type isEqualTo 3) exitWith {
 	_laserTarget = createVehicle ['LaserTargetE',_targetPosition,[],0,'NONE'];
 	_laserTarget attachTo [_targetAssistant,[0,0,0.5]];
 	_laserTarget allowDamage FALSE;
-	_laserTarget confirmSensorTarget [EAST,TRUE];
+	_laserTarget confirmSensorTarget [WEST,TRUE];
 	_vehicle flyInHeight (100 + (random 100));
 	_supportGroup reveal [_laserTarget,4];
 	if (!isNull (gunner _vehicle)) then {

@@ -1,13 +1,13 @@
 Arsenal & Gear Restrictions
 
-Config options (in file "@Apex_cfg\parameters.sqf"):
+Config options (in file "@Apex_cfg_opfor\parameters.sqf"):
 
 _arsenal = 2;						----- 0,1,2. 0 = Unrestricted Arsenal, everything available. 1 = Use whitelist. 2 = Use Blacklist.   (you cannot use both).
 _gearRestrictions = 1;					----- 0,1. 0 = Gear restrictions will not be used. 1 = Gear restrictions will be used. Example, player may be able to use items/weapons which are not available to him in the Arsenal.
 
 Relevant files:
 
-"@Apex_cfg\arsenal.sqf"      				----- Role/class based whitelists and blacklists.
+"@Apex_cfg_opfor\arsenal.sqf"      				----- Role/class based whitelists and blacklists.
 "code\functions\fn_clientArsenal.sqf"			----- Interpret the whitelist/blacklist, prepare the Arsenal menu, and apply the hardcoded blacklist.
 "code\functions\fn_gearRestrictions.sqf"		----- Apply the gear restrictions
 "code\functions\fn_clientInteractArsenal.sqf"		----- User Interaction to open the Arsenal.
@@ -36,7 +36,7 @@ Notes:
 - The whitelist and blacklist is structured like this:
 
 --------------------------
-"@Apex_cfg\arsenal.sqf"
+"@Apex_cfg_opfor\arsenal.sqf"
 // Role (example: Sniper)
 [
 	BLACKLIST - If you are using the Blacklist, this part will be used. The items listed will NOT appear in the Arsenal and will be removed from the player if detected.

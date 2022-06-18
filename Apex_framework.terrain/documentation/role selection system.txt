@@ -13,13 +13,13 @@ Overview:
 Orientation:
 
 	File(s): 
-		0. "@Apex_cfg\parameters.sqf"
-		1. "@Apex_cfg\roles.sqf"
-		2. "@Apex_cfg\arsenal.sqf"
+		0. "@Apex_cfg_opfor\parameters.sqf"
+		1. "@Apex_cfg_opfor\roles.sqf"
+		2. "@Apex_cfg_opfor\arsenal.sqf"
 		3. "code\functions\fn_roles.sqf"
 		4. "code\functions\fn_initTrait.sqf"
 		5. "code\functions\fn_clientMenuRSS.sqf"
-		6. "@Apex_cfg\whitelist.sqf"
+		6. "@Apex_cfg_opfor\whitelist.sqf"
 
 	In File 0, there are several parameter options related to the role selection menu system.	
 	In File 1, is all the surface-level configuration of roles.
@@ -34,7 +34,7 @@ Orientation:
 	There are currently two parameter options available.
 		Under the "Gameplay" heading there is a _playable_opfor toggle. 
 		If it is set to 0, OPFOR will not be playable. 
-		If it is set to 1, then any pre-configured OPFOR roles will become available to WHITELISTED players (check your "@Apex_cfg\whitelist.sqf" file for a new section).
+		If it is set to 1, then any pre-configured OPFOR roles will become available to WHITELISTED players (check your "@Apex_cfg_opfor\whitelist.sqf" file for a new section).
 		If it is set to 2, then any player will be able to join the pre-configured OPFOR roles.
 
 		The other new parameter is under the "System" heading, as _role_selection_menu_button.
@@ -140,8 +140,8 @@ Adding a Role:
 
 Depending on the complexity of the role and the abilities you want to grant that player, you will have to make a number of edits.
 
-a. Add components of the new role to the lists in "@Apex_cfg\roles.sqf".
-b. Add a section in "@Apex_cfg\arsenal.sqf" to determine what gear the new role has access to.
+a. Add components of the new role to the lists in "@Apex_cfg_opfor\roles.sqf".
+b. Add a section in "@Apex_cfg_opfor\arsenal.sqf" to determine what gear the new role has access to.
 c. You may need to add a section to "code\functions\fn_roles.sqf" ( file search for 'INIT_ROLE' ) to enable initialization of the player Traits of that role.
 d. If you modify C, you will likely also need to modify "code\functions\fn_initTrait.sqf" , which is where Code related to C goes, and the specific scripted effects of certain traits.
 
@@ -149,7 +149,7 @@ Removing a Role:
 
 It is much easier to disable or remove a role than it is to add a role.
 
-a. Locate the file "@Apex_cfg\roles.sqf".
+a. Locate the file "@Apex_cfg_opfor\roles.sqf".
 b. Locate the main "QS_roles_data" list.
 c. Locate the role you would like to remove.
 d. Delete that section. It may be wise to save a copy of whatever you are removing, incase you would like to restore it in the future more easily.
@@ -159,7 +159,7 @@ Editing the number of slots:
 
 It is relatively easy to edit the number of slots a role has.
 
-a. Locate the file "@Apex_cfg\roles.sqf".
+a. Locate the file "@Apex_cfg_opfor\roles.sqf".
 b. Locate the main "QS_roles_data" list.
 c. Locate the role you would like to edit.
 d. Remember this format:
@@ -184,7 +184,7 @@ g. Important!!! Some roles like Fighter Pilot and UAV Operator are scripted and 
 
 Adding whitelisted slots to a Role:
 
-a. Locate the file "@Apex_cfg\roles.sqf".
+a. Locate the file "@Apex_cfg_opfor\roles.sqf".
 b. Locate the main "QS_roles_data" list.
 c. Locate the role you would like to edit.
 d. Important!!! Some roles like Fighter Pilot and UAV Operator are scripted and cannot support more than 1 slot.

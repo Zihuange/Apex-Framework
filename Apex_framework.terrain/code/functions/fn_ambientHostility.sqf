@@ -30,7 +30,7 @@ if (_type isEqualTo 0) exitWith {
 		[_smPosition,300],
 		[(markerPos 'QS_marker_Almyra_blacklist_area'),400]
 	];
-	_knowsAbout = EAST knowsAbout _targetVehicle;
+	_knowsAbout = WEST knowsAbout _targetVehicle;
 	private _threat = 2;
 	if (_targetVehicle isKindOf 'CAManBase') then {
 		_threat = 1;
@@ -77,19 +77,19 @@ if (_type isEqualTo 0) exitWith {
 		};
 	};
 	_unitTypes = [
-		'O_G_Soldier_A_F',1,
-		'O_G_Soldier_AR_F',3,
-		'O_G_medic_F',1,
-		'O_G_engineer_F',1,
-		'O_G_Soldier_exp_F',1,
-		'O_G_Soldier_GL_F',1,
-		'O_G_Soldier_M_F',1,
-		'O_G_Soldier_F',1,
-		'O_G_Soldier_LAT_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
-		'O_G_Soldier_LAT2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
-		'O_G_Soldier_lite_F',1,
-		'O_G_Sharpshooter_F',3,
-		'O_G_Soldier_TL_F',1,
+		'B_G_Soldier_A_F',1,
+		'B_G_Soldier_AR_F',3,
+		'B_G_medic_F',1,
+		'B_G_engineer_F',1,
+		'B_G_Soldier_exp_F',1,
+		'B_G_Soldier_GL_F',1,
+		'B_G_Soldier_M_F',1,
+		'B_G_Soldier_F',1,
+		'B_G_Soldier_LAT_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
+		'B_G_Soldier_LAT2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
+		'B_G_Soldier_lite_F',1,
+		'B_G_Sharpshooter_F',3,
+		'B_G_Soldier_TL_F',1,
 		'I_C_Soldier_Bandit_7_F',1,
 		'I_C_Soldier_Bandit_3_F',3,
 		'I_C_Soldier_Bandit_2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
@@ -120,14 +120,14 @@ if (_type isEqualTo 0) exitWith {
 	private _minDist = 300;
 	private _maxDist = 600;
 	private _players = allPlayers;
-	private _playersOnGround = (_players unitsBelowHeight 25) select { ((side _x) in [WEST,CIVILIAN,SIDEFRIENDLY]) };	
+	private _playersOnGround = (_players unitsBelowHeight 25) select { ((side _x) in [EAST,CIVILIAN,SIDEFRIENDLY]) };	
 	_checkVisibleDistance = 300;
 	for '_x' from 0 to 49 step 1 do {
 		_spawnPosition = ['RADIUS',_targetPosition,_maxDist,'LAND',[3,0,0.5,3,0,FALSE,objNull],TRUE,[],[],FALSE] call (missionNamespace getVariable 'QS_fnc_findRandomPos');
 		if (((_spawnPosition distance2D _targetPosition) > _minDist) && ((_spawnPosition distance2D _targetPosition) < _maxDist)) then {
 			if ((_players inAreaArray [_spawnPosition,300,300,0,FALSE]) isEqualTo []) then {
 				if (!([_spawnPosition,_targetPosition,25] call (missionNamespace getVariable 'QS_fnc_waterIntersect'))) then {
-					if (([(AGLToASL _spawnPosition),_checkVisibleDistance,_playersOnGround,[WEST,CIVILIAN,SIDEFRIENDLY],0,0] call (missionNamespace getVariable 'QS_fnc_isPosVisible')) <= 0.1) then {
+					if (([(AGLToASL _spawnPosition),_checkVisibleDistance,_playersOnGround,[EAST,CIVILIAN,SIDEFRIENDLY],0,0] call (missionNamespace getVariable 'QS_fnc_isPosVisible')) <= 0.1) then {
 						if ((_blacklistedPositions findIf {((_spawnPosition distance2D (_x select 0)) < (_x select 1))}) isEqualTo -1) then {
 							_positionFound = TRUE;
 						};
@@ -149,8 +149,8 @@ if (_type isEqualTo 0) exitWith {
 			_vehicle setDir (random 360);
 			_vehicle setVehiclePosition [(AGLToASL _spawnPosition),[],0,'NONE'];
 			_grp = createVehicleCrew _vehicle;
-			if (!((side _grp) in [EAST,RESISTANCE])) then {
-				_grp = createGroup [EAST,TRUE];
+			if (!((side _grp) in [WEST,RESISTANCE])) then {
+				_grp = createGroup [WEST,TRUE];
 				{
 					[_x] joinSilent _grp;
 				} forEach (crew _vehicle);
@@ -173,7 +173,7 @@ if (_type isEqualTo 0) exitWith {
 					[_vehicle] call (missionNamespace getVariable 'QS_fnc_downgradeVehicleWeapons');
 				};
 			};
-			[0,_vehicle,EAST] call (missionNamespace getVariable 'QS_fnc_vSetup2');
+			[0,_vehicle,WEST] call (missionNamespace getVariable 'QS_fnc_vSetup2');
 			_vehicle addEventHandler ['GetOut',(missionNamespace getVariable 'QS_fnc_AIXDismountDisabled')];
 			_vehicle addEventHandler ['Killed',(missionNamespace getVariable 'QS_fnc_vKilled2')];
 			_grp addVehicle _vehicle;
@@ -190,7 +190,7 @@ if (_type isEqualTo 0) exitWith {
 	} else {
 		_grpSize = [2,4] select (_nearbyCount > 4);
 		for '_x' from 0 to 1 step 1 do {
-			_grp = createGroup [EAST,TRUE];
+			_grp = createGroup [WEST,TRUE];
 			for '_x' from 0 to (_grpSize - 1) step 1 do {
 				_unitType = selectRandomWeighted _unitTypes;
 				_unit = _grp createUnit [_unitType,_spawnPosition,[],15,'NONE'];
@@ -198,10 +198,10 @@ if (_type isEqualTo 0) exitWith {
 				_unit setVehiclePosition [(getPosWorld _unit),[],10,'NONE'];
 				_unit setVariable ['QS_AI_UNIT_enabled',TRUE,(call (missionNamespace getVariable 'QS_fnc_AIOwners'))];
 				_unit call (missionNamespace getVariable 'QS_fnc_unitSetup');
-				if ((toLower _unitType) in ['o_g_soldier_f','o_g_soldier_lite_f','i_c_soldier_bandit_6_f','i_c_soldier_para_1_f']) then {
+				if ((toLower _unitType) in ['b_g_soldier_f','b_g_soldier_lite_f','i_c_soldier_bandit_6_f','i_c_soldier_para_1_f']) then {
 					if ((random 1) > 0.5) then {
 						_unit addBackpack (['b_bergen_hex_f','b_carryall_ghex_f'] select (worldName in ['Tanoa','Lingor3']));
-						[_unit,(['launch_o_titan_f','launch_o_titan_ghex_f'] select (worldName in ['Tanoa','Lingor3'])),4] call (missionNamespace getVariable 'QS_fnc_addWeapon');
+						[_unit,(['launch_b_titan_f','launch_b_titan_ghex_f'] select (worldName in ['Tanoa','Lingor3'])),4] call (missionNamespace getVariable 'QS_fnc_addWeapon');
 					};
 				};
 				_return pushBack _unit;

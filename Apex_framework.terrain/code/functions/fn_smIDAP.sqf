@@ -30,7 +30,7 @@ if (_type isEqualTo 0) exitWith {
 		comment 'Initial';
 		for '_x' from 0 to (round (2 + (random 2))) step 1 do {
 			_spawnPosition = ['RADIUS',_position,(150 + (random 150)),'LAND',[],FALSE,[],[],TRUE] call (missionNamespace getVariable 'QS_fnc_findRandomPos');
-			_grp = [_spawnPosition,(random 360),EAST,(selectRandom _grpTypes),FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
+			_grp = [_spawnPosition,(random 360),WEST,(selectRandom _grpTypes),FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 			[_grp,_position,(25 + (random 100)),TRUE] call (missionNamespace getVariable 'QS_fnc_taskPatrol');
 			[(units _grp),1] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
 			{
@@ -55,15 +55,15 @@ if (_type isEqualTo 0) exitWith {
 			_return pushBack _v;
 			_v addEventHandler ['Killed',(missionNamespace getVariable 'QS_fnc_vKilled2')];
 			_v addEventHandler ['GetOut',(missionNamespace getVariable 'QS_fnc_AIXDismountDisabled')];
-			[0,_v,EAST] call (missionNamespace getVariable 'QS_fnc_vSetup2');
+			[0,_v,WEST] call (missionNamespace getVariable 'QS_fnc_vSetup2');
 			_v allowCrewInImmobile TRUE;
 			_v enableRopeAttach FALSE;
 			_v enableVehicleCargo FALSE;
 			_v setUnloadInCombat [TRUE,FALSE];
 			(missionNamespace getVariable 'QS_AI_vehicles') pushBack _v;
 			_grp = createVehicleCrew _v;
-			if (!((side _grp) in [EAST,RESISTANCE])) then {
-				_grp = createGroup [EAST,TRUE];
+			if (!((side _grp) in [WEST,RESISTANCE])) then {
+				_grp = createGroup [WEST,TRUE];
 				{
 					[_x] joinSilent _grp;
 				} forEach (crew _v);
@@ -88,7 +88,7 @@ if (_type isEqualTo 0) exitWith {
 	if (_subType isEqualTo 1) then {
 		comment 'Refill';
 		_spawnPosition = _this select 3;
-		_grp = [_spawnPosition,(random 360),EAST,(selectRandom _grpTypes),FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
+		_grp = [_spawnPosition,(random 360),WEST,(selectRandom _grpTypes),FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 		[_grp,_position,(75 + (random 75)),TRUE] call (missionNamespace getVariable 'QS_fnc_taskPatrol');
 		[(units _grp),1] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
 		{
@@ -137,25 +137,25 @@ if (_type isEqualTo 1) exitWith {
 		'I_C_Soldier_Para_5_F'
 	];
 	_unitTypes2 = [
-		'O_G_Soldier_A_F',
-		'O_G_Soldier_AR_F',
-		'O_G_medic_F',
-		'O_G_engineer_F',
-		'O_G_Soldier_exp_F',
-		'O_G_Soldier_GL_F',
-		'O_G_Soldier_M_F',
-		'O_G_Soldier_F',
-		'O_G_Soldier_LAT_F',
-		'O_G_Soldier_lite_F',
-		'O_G_Sharpshooter_F',
-		'O_G_Soldier_SL_F',
-		'O_G_Soldier_TL_F'
+		'B_G_Soldier_A_F',
+		'B_G_Soldier_AR_F',
+		'B_G_medic_F',
+		'B_G_engineer_F',
+		'B_G_Soldier_exp_F',
+		'B_G_Soldier_GL_F',
+		'B_G_Soldier_M_F',
+		'B_G_Soldier_F',
+		'B_G_Soldier_LAT_F',
+		'B_G_Soldier_lite_F',
+		'B_G_Sharpshooter_F',
+		'B_G_Soldier_SL_F',
+		'B_G_Soldier_TL_F'
 	];
 	_unitTypesAll = _unitTypes1 + _unitTypes2;
 	if (_subType isEqualTo 0) then {
 		comment 'Initial';
 		_maxCount = 6;
-		_houseGrp = createGroup [EAST,TRUE];
+		_houseGrp = createGroup [WEST,TRUE];
 		private _houseBuildingPosition = [0,0,0];
 		private _houseBuildingPositionIndex = -1;
 		for '_x' from 0 to ((round ((count _houseBuildingPositions) - 1)) min _maxCount) step 1 do {
@@ -189,7 +189,7 @@ if (_type isEqualTo 1) exitWith {
 		private _spawnPosition = [0,0,0];
 		for '_x' from 0 to (round (1 + (random 1))) step 1 do {
 			_spawnPosition = ['RADIUS',_housePosition,(150 + (random 150)),'LAND',[],FALSE,[],[],TRUE] call (missionNamespace getVariable 'QS_fnc_findRandomPos');
-			_grp = [_spawnPosition,(random 360),EAST,(selectRandom _grpTypes),FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
+			_grp = [_spawnPosition,(random 360),WEST,(selectRandom _grpTypes),FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 			[_grp,_housePosition,(25 + (random 100)),TRUE] call (missionNamespace getVariable 'QS_fnc_taskPatrol');
 			[(units _grp),1] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
 			{
@@ -212,7 +212,7 @@ if (_type isEqualTo 1) exitWith {
 	if (_subType isEqualTo 1) then {
 		_spawnPosition = _this select 5;
 		comment 'Refill';
-		_grp = [_spawnPosition,(random 360),EAST,(selectRandom _grpTypes),FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
+		_grp = [_spawnPosition,(random 360),WEST,(selectRandom _grpTypes),FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 		_grp setVariable ['QS_AI_GRP_TASK',['PATROL',_houseBuildingPositions,diag_tickTime,-1],(call (missionNamespace getVariable 'QS_fnc_AIOwners'))];
 		_grp setVariable ['QS_AI_GRP_PATROLINDEX',0,(call (missionNamespace getVariable 'QS_fnc_AIOwners'))];
 		_grp move (selectRandom _houseBuildingPositions);

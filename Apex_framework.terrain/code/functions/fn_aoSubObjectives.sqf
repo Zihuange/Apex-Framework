@@ -72,7 +72,7 @@ if (_type isEqualTo 1) exitWith {
 		_objectiveCode = {
 			params ['_aoPos','_aoRadius','_detector','_threshold'];
 			private _return = 0;
-			if (([_aoPos,_aoRadius,[EAST],allUnits,1] call _detector) < _threshold) then {
+			if (([_aoPos,_aoRadius,[WEST],allUnits,1] call _detector) < _threshold) then {
 				_return = 1;
 			};
 			_return;

@@ -49,7 +49,7 @@ _infTypes = [
 	'OG_InfTeam',2
 ];
 _infType = selectRandomWeighted _infTypes;
-_reinforceGroup = [_spawnPosDefault,(random 360),EAST,_infType,FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
+_reinforceGroup = [_spawnPosDefault,(random 360),WEST,_infType,FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 
 /*/================================================ MANAGE UNITS/*/
 
@@ -69,7 +69,7 @@ if ((random 1) > 0.3) then {
 		};
 	} else {
 		_playerSelected = objNull;
-		_arr = [(missionNamespace getVariable 'QS_module_fob_centerPosition'),600,[WEST],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector');
+		_arr = [(missionNamespace getVariable 'QS_module_fob_centerPosition'),600,[EAST],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector');
 		if (!(_arr isEqualTo [])) then {
 			_arr = _arr call (missionNamespace getVariable 'QS_fnc_arrayShuffle');
 			{

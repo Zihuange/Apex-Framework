@@ -17,7 +17,7 @@ scriptName 'QS Paradrop';
 private ['_v','_openHeight','_t','_p','_ugvTypes'];
 _v = _this select 0;
 _openHeight = _this select 1;
-_ugvTypes = ['O_UGV_01_rcws_F','I_UGV_01_rcws_F'];
+_ugvTypes = ['B_UGV_01_rcws_F','I_UGV_01_rcws_F'];
 _t = time + 120;
 waitUntil {
 	sleep 0.25;
@@ -25,7 +25,7 @@ waitUntil {
 	(isNull _v) ||
 	(((getPosATL _v) select 2) < _openHeight)
 };
-_p = createVehicle ['O_Parachute_02_F',(getPosATL _v),[],0,'FLY'];
+_p = createVehicle ['B_Parachute_02_F',(getPosATL _v),[],0,'FLY'];
 missionNamespace setVariable [
 	'QS_analytics_entities_created',
 	((missionNamespace getVariable 'QS_analytics_entities_created') + 1),

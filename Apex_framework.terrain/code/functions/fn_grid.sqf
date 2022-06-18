@@ -397,8 +397,8 @@ if (_type isEqualTo 'MANAGE') then {
 	private _allPlayers = allPlayers;
 	private _allEnemies = [];
 	private _allFriends = [];
-	private _enemySides = [EAST,RESISTANCE];
-	private _friendSides = [WEST];
+	private _enemySides = [WEST,RESISTANCE];
+	private _friendSides = [EAST];
 	private _markerUpdateDelay = 5;
 	private _markerUpdateCheckDelay = _uiTime + _markerUpdateDelay;
 	private _markerColor = '';
