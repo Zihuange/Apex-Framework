@@ -760,7 +760,7 @@ for '_x' from 0 to 1 step 0 do {
 		if (_sceneType isEqualTo 0) then {
 			if (_currentSceneChance isEqualTo 0) then {
 				if (([_housePosition,15,[EAST],allPlayers,1] call _fn_serverDetector) > 0) then {
-					if (([_housePosition,15,[1EAST,RESISTANCE],allUnits,1] call _fn_serverDetector) isEqualTo 0) then {
+					if (([_housePosition,15,[WEST,RESISTANCE],allUnits,1] call _fn_serverDetector) isEqualTo 0) then {
 						[
 							[],
 							{
