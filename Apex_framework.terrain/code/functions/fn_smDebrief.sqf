@@ -745,7 +745,7 @@ if (_type isEqualTo 1) then {
 		_rewardVeh setCenterOfMass _centerOfMass;
 		_rewardVeh setVariable ['QS_vehicle_missilewarning',TRUE,TRUE];
 		_rewardVeh setObjectTextureGlobal [0,'a3\soft_f_gamma\suv_01\data\suv_01_ext_02_co.paa'];
-		_static = createVehicle ['B_Static_Designator_01_F',[0,0,0],[],0,'NONE'];
+		_static = createVehicle ['O_Static_Designator_02_F',[0,0,0],[],0,'NONE'];
 		missionNamespace setVariable [
 			'QS_analytics_entities_created',
 			((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
@@ -766,7 +766,7 @@ if (_type isEqualTo 1) then {
 			((missionNamespace getVariable 'QS_analytics_entities_created') + (count (crew _static))),
 			FALSE
 		];
-		_static1 = createVehicle ['B_HMG_01_A_F',[0,0,0],[],0,'NONE'];
+		_static1 = createVehicle ['O_HMG_01_A_F',[0,0,0],[],0,'NONE'];
 		missionNamespace setVariable [
 			'QS_analytics_entities_created',
 			((missionNamespace getVariable 'QS_analytics_entities_created') + 1),

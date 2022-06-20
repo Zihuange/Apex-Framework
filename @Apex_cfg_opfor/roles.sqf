@@ -22,21 +22,6 @@ _tropical = worldName in ['Tanoa'];
 QS_roles_data = [
 	[
 		[
-			'b_autorifleman',
-			WEST,
-			2,
-			2,
-			-1,
-			0,	
-			0,
-			0,
-			{((missionNamespace getVariable ['QS_RSS_client_canSideSwitch',FALSE]) && (((missionNamespace getVariable ['QS_missionConfig_playableBLUFOR',0]) isEqualTo 2) || {(((missionNamespace getVariable ['QS_missionConfig_playableBLUFOR',0]) isEqualTo 1) && ((getPlayerUID player) in (['BLUFOR'] call (missionNamespace getVariable 'QS_fnc_whitelist'))))}))},
-			{((player getVariable ['QS_unit_side',EAST]) isEqualTo WEST) || ((missionNamespace getVariable ['QS_RSS_client_canSideSwitch',FALSE]) && (((missionNamespace getVariable ['QS_missionConfig_playableBLUFOR',0]) isEqualTo 2) || {(((missionNamespace getVariable ['QS_missionConfig_playableBLUFOR',0]) isEqualTo 1) && ((getPlayerUID player) in (['BLUFOR'] call (missionNamespace getVariable 'QS_fnc_whitelist'))))}))},
-			{}
-		]
-	],
-	[
-		[
 			'rifleman',
 			EAST,
 			(playableSlotsNumber EAST),
@@ -297,6 +282,21 @@ QS_roles_data = [
 			0,
 			{TRUE},
 			{(((player getVariable ['QS_unit_side',EAST]) isEqualTo EAST) || (missionNamespace getVariable ['QS_RSS_client_canSideSwitch',FALSE]))},
+			{}
+		]
+	],
+	[
+		[
+			'b_autorifleman',
+			WEST,
+			2,
+			2,
+			-1,
+			0,	
+			0,
+			0,
+			{((missionNamespace getVariable ['QS_RSS_client_canSideSwitch',FALSE]) && (((missionNamespace getVariable ['QS_missionConfig_playableBLUFOR',0]) isEqualTo 2) || {(((missionNamespace getVariable ['QS_missionConfig_playableBLUFOR',0]) isEqualTo 1) && ((getPlayerUID player) in (['BLUFOR'] call (missionNamespace getVariable 'QS_fnc_whitelist'))))}))},
+			{((player getVariable ['QS_unit_side',EAST]) isEqualTo WEST) || ((missionNamespace getVariable ['QS_RSS_client_canSideSwitch',FALSE]) && (((missionNamespace getVariable ['QS_missionConfig_playableBLUFOR',0]) isEqualTo 2) || {(((missionNamespace getVariable ['QS_missionConfig_playableBLUFOR',0]) isEqualTo 1) && ((getPlayerUID player) in (['BLUFOR'] call (missionNamespace getVariable 'QS_fnc_whitelist'))))}))},
 			{}
 		]
 	],

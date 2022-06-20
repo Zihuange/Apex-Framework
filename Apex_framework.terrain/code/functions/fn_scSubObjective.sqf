@@ -185,14 +185,14 @@ if (_type isEqualTo 1) exitWith {
 			/*/
 			comment 'Force protection';
 			_grpTypes = [
-				'OIA_InfSentry',
-				'OIA_InfSentry',
-				'OI_reconSentry'
+				'BUS_InfSentry',
+				'BUS_InfSentry',
+				'IRG_reconSentry'
 			];	
-			private _grp = [_position,(random 360),EAST,(selectRandom _grpTypes),FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
+			private _grp = [_position,(random 360),WEST,(selectRandom _grpTypes),FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 			[(units _grp),2] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
 			{
-				_x setUnitLoadout (['o_soldier_uav_f','o_t_soldier_uav_f'] select (worldName in ['Tanoa','Enoch']));
+				_x setUnitLoadout (['b_soldier_uav_f','b_t_soldier_uav_f'] select (worldName in ['Tanoa','Enoch']));
 				_x allowDamage FALSE;
 				_x setUnitPosWeak (selectRandom ['UP','MIDDLE','UP']);
 				_x setVariable ['QS_hidden',TRUE,TRUE];
@@ -206,7 +206,7 @@ if (_type isEqualTo 1) exitWith {
 			};
 			[_position,25,(units _grp),['House','Building']] spawn (missionNamespace getVariable 'QS_fnc_garrisonUnits');
 			if ((random 1) > 0.666) then {
-				_grp = [(_position getPos [(random 30),(random 360)]),(random 360),EAST,(selectRandom _grpTypes),FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
+				_grp = [(_position getPos [(random 30),(random 360)]),(random 360),WEST,(selectRandom _grpTypes),FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 				[(units _grp),1] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
 				_grp setVariable ['QS_AI_GRP',TRUE,FALSE];
 				_grp setVariable ['QS_AI_GRP_CONFIG',['SC','INF_GENERAL',(count (units _grp))],FALSE];
@@ -339,10 +339,10 @@ if (_type isEqualTo 1) exitWith {
 				missionNamespace setVariable ['QS_ao_createDelayedMinefield',TRUE,FALSE];
 			};
 			_grpTypes = [
-				'OIA_InfSentry',
-				'OIA_InfSentry'
+				'BUS_InfSentry',
+				'BUS_InfSentry'
 			];
-			private _grp = [_position,(random 360),EAST,(selectRandom _grpTypes),FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
+			private _grp = [_position,(random 360),WEST,(selectRandom _grpTypes),FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 			[(units _grp),2] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
 			{
 				_x setUnitPosWeak 'UP';
@@ -358,7 +358,7 @@ if (_type isEqualTo 1) exitWith {
 			};
 			if (_mines isEqualTo []) then {
 				if ((random 1) > 0.666) then {
-					_grp = [(_position getPos [(random 30),(random 360)]),(random 360),EAST,(selectRandom _grpTypes),FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
+					_grp = [(_position getPos [(random 30),(random 360)]),(random 360),WEST,(selectRandom _grpTypes),FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 					[(units _grp),1] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
 					_grp setVariable ['QS_AI_GRP',TRUE,FALSE];
 					_grp setVariable ['QS_AI_GRP_CONFIG',['SC','INF_GENERAL',(count (units _grp))],FALSE];
@@ -479,13 +479,13 @@ if (_type isEqualTo 1) exitWith {
 					[_x,0] call (missionNamespace getVariable 'QS_fnc_customInventory');
 				};
 			} forEach _composition;
-			(missionNamespace getVariable 'QS_AI_regroupPositions') pushBack ['QS_ao_SD',[EAST,RESISTANCE],_position];
+			(missionNamespace getVariable 'QS_AI_regroupPositions') pushBack ['QS_ao_SD',[WEST,RESISTANCE],_position];
 			comment 'Force protection';
 			_grpTypes = [
-				'OIA_InfTeam_AA',
-				'OIA_InfTeam_AT'
+				'BUS_InfTeam_AA',
+				'BUS_InfTeam_AT'
 			];
-			private _grp = [_position,(random 360),EAST,(selectRandom _grpTypes),FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
+			private _grp = [_position,(random 360),WEST,(selectRandom _grpTypes),FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 			[(units _grp),2] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
 			{
 				_x allowDamage FALSE;
@@ -499,7 +499,7 @@ if (_type isEqualTo 1) exitWith {
 			};
 			[_position,25,(units _grp),['House','Building']] spawn (missionNamespace getVariable 'QS_fnc_garrisonUnits');
 			if ((random 1) > 0.666) then {
-				_grp = [(_position getPos [(random 30),(random 360)]),(random 360),EAST,(selectRandom ['OIA_InfSentry','OIA_InfSentry']),FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
+				_grp = [(_position getPos [(random 30),(random 360)]),(random 360),WEST,(selectRandom ['BUS_InfSentry','BUS_InfSentry']),FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 				[(units _grp),1] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
 				_grp setVariable ['QS_AI_GRP',TRUE,FALSE];
 				_grp setVariable ['QS_AI_GRP_CONFIG',['SC','INF_GENERAL',(count (units _grp))],FALSE];

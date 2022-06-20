@@ -725,7 +725,7 @@ if ((count (_terrainData select 4)) > 6) then {
 		_indArray = [
 			"b_soldier_a_f","b_soldier_aar_f","b_soldier_ar_f","b_medic_f","b_engineer_f","b_soldier_exp_f","b_soldier_gl_f",
 			"b_heavygunner_f","b_soldier_m_f","b_soldier_at_f","b_soldier_f","b_soldier_lat_f","b_sharpshooter_f",
-			"b_soldier_sl_f","o_soldieru_tl_f","b_g_engineer_f","b_g_medic_f","b_g_soldier_a_f","b_g_soldier_ar_f","b_g_soldier_exp_f","b_g_soldier_f","b_g_soldier_f",
+			"b_soldier_sl_f","b_soldier_tl_f","b_g_engineer_f","b_g_medic_f","b_g_soldier_a_f","b_g_soldier_ar_f","b_g_soldier_exp_f","b_g_soldier_f","b_g_soldier_f",
 			"b_g_soldier_gl_f","b_g_soldier_lat_f","b_g_soldier_lite_f","b_g_soldier_m_f","b_g_soldier_sl_f","b_g_soldier_tl_f",
 			"b_g_sharpshooter_f","b_g_soldier_ar_f"
 		];

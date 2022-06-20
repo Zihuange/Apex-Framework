@@ -59,7 +59,7 @@ _onCompleted = {
 		missionNamespace setVariable ['HE_SURRENDERS',TRUE,TRUE];
 	};
 	playSound 'click';
-	if (_entity isEqualTo (missionNamespace getVariable 'QS_csatCommander')) then {
+	if (_entity isEqualTo (missionNamespace getVariable 'QS_westCommander')) then {
 		[58,[profileName]] remoteExec ['QS_fnc_remoteExec',2,FALSE];
 	};
 	if (_entity isEqualTo (missionNamespace getVariable 'QS_arrest_target')) then {

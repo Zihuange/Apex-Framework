@@ -63,7 +63,7 @@ if (
 	(_unit getUnitTrait 'QS_trait_pilot') || 
 	{(_unit getUnitTrait 'QS_trait_fighterPilot')} || 
 	{(((getTerrainHeightASL (getPosWorld _unit)) < -2) && (!isTouchingGround _unit))} || 
-	{((_unit getVariable ['QS_unit_side',EAST]) in [EAST,RESISTANCE,CIVILIAN])}
+	{((_unit getVariable ['QS_unit_side',EAST]) in [WEST,RESISTANCE,CIVILIAN])}
 ) exitWith {
 	_unit setDamage [1,TRUE];
 	if (isPlayer _unit) then {

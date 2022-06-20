@@ -1875,7 +1875,7 @@ for '_x' from 0 to 1 step 0 do {
 					/*/===== HQ Marker color/*/
 					
 					if (_timeNow > _QS_marker_hqMarker_checkDelay) then {
-						if (!alive (missionNamespace getVariable 'QS_csatCommander')) then {
+						if (!alive (missionNamespace getVariable 'QS_westCommander')) then {
 							if ((markerColor 'QS_marker_hqMarker') isEqualTo 'ColorEAST') then {
 								if (([(missionNamespace getVariable 'QS_HQpos'),100,[_east],_allPlayers,0] call _fn_serverDetector) isEqualTo []) then {
 									if (([(missionNamespace getVariable 'QS_HQpos'),50,_enemySides,allUnits,1] call _fn_serverDetector) > 1) then {
@@ -1931,13 +1931,13 @@ for '_x' from 0 to 1 step 0 do {
 								};
 							};
 						};
-						if (!isDamageAllowed (missionNamespace getVariable 'QS_csatCommander')) then {
+						if (!isDamageAllowed (missionNamespace getVariable 'QS_westCommander')) then {
 							_QS_listNearbyPlayers = [(missionNamespace getVariable 'QS_HQpos'),250,[_east],(_allPlayers unitsBelowHeight 30),0] call _fn_serverDetector;
 							if (_QS_listNearbyPlayers isNotEqualTo []) then {
 								{
 									if (!((vehicle _x) isKindOf 'Air')) exitWith {
-										(missionNamespace getVariable 'QS_csatCommander') allowDamage _true;
-										(missionNamespace getVariable 'QS_csatCommander') allowDamage _true;
+										(missionNamespace getVariable 'QS_westCommander') allowDamage _true;
+										(missionNamespace getVariable 'QS_westCommander') allowDamage _true;
 									};
 								} count _QS_listNearbyPlayers;
 							};

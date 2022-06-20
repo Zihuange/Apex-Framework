@@ -104,6 +104,8 @@ if (_side isEqualTo WEST) exitWith {
 	if (worldName isEqualTo 'Tanoa') then {
 		if (_type isEqualTo 'BUS_reconPatrol') then {_return = [['B_T_Recon_TL_F','SERGEANT'],['B_T_Recon_M_F','CORPORAL'],['B_T_Recon_Medic_F','PRIVATE'],['B_T_Recon_F','PRIVATE']];breakTo 'main';};
 		if (_type isEqualTo 'BUS_reconSentry') then {_return = [['B_T_Recon_M_F','CORPORAL'],['B_T_Recon_F','PRIVATE']];breakTo 'main';};
+		if (_type isEqualTo 'BUS_SniperTeam') then {_return = [[(selectRandom ['B_T_Sniper_F','B_ghillie_lsh_F','B_T_ghillie_tna_F']),'CORPORAL'],['B_T_Spotter_F','PRIVATE']];breakTo 'main';};
+		if (_type isEqualTo 'BUS_SniperTeam_2') then {_return = [[(selectRandom ['B_T_Sniper_F','B_ghillie_lsh_F','B_T_ghillie_tna_F']),'CORPORAL'],[(selectRandom ['B_T_Sniper_F','B_ghillie_lsh_F','B_T_ghillie_tna_F']),'PRIVATE']];breakTo 'main';};
 		if (_type isEqualTo 'BUS_InfAssault') then {_return = [['B_T_Soldier_SL_F','SERGEANT'],['B_T_Soldier_AR_F','PRIVATE'],['B_T_Soldier_AR_F','CORPORAL'],['B_T_Soldier_AAR_F','PRIVATE'],['B_T_Soldier_M_F','PRIVATE'],['B_T_Sharpshooter_F','CORPORAL'],['B_T_Soldier_LAT_F','PRIVATE'],['B_T_medic_F','PRIVATE']];breakTo 'main';};
 		if (_type isEqualTo 'BUS_InfSentry') then {_return = [['B_T_soldier_GL_F','CORPORAL'],['B_T_soldier_F','PRIVATE']];breakTo 'main';};
 		if (_type isEqualTo 'BUS_InfSquad') then {_return = [['B_T_Soldier_SL_F','SERGEANT'],['B_T_Soldier_F','PRIVATE'],['B_T_Soldier_LAT_F','CORPORAL'],['B_T_Soldier_M_F','PRIVATE'],['B_T_Soldier_AR_F','SERGEANT'],['B_T_Soldier_AR_F','CORPORAL'],['B_T_Soldier_A_F','PRIVATE'],['B_T_medic_F','PRIVATE']];breakTo 'main';};
@@ -128,6 +130,8 @@ if (_side isEqualTo WEST) exitWith {
 	} else {
 		if (_type isEqualTo 'BUS_reconPatrol') then {_return = [['B_recon_TL_F','SERGEANT'],['B_recon_M_F','CORPORAL'],['B_recon_medic_F','PRIVATE'],['B_recon_F','PRIVATE']];breakTo 'main';};
 		if (_type isEqualTo 'BUS_reconSentry') then {_return = [['B_recon_M_F','CORPORAL'],['B_recon_F','PRIVATE']];breakTo 'main';};
+		if (_type isEqualTo 'BUS_SniperTeam') then {_return = [[(selectRandom ['B_sniper_F','B_ghillie_sard_F','B_ghillie_ard_F']),'CORPORAL'],['B_spotter_F','PRIVATE']];breakTo 'main';};
+		if (_type isEqualTo 'BUS_SniperTeam_2') then {_return = [[(selectRandom ['B_sniper_F','B_ghillie_sard_F','B_ghillie_ard_F']),'CORPORAL'],[(selectRandom ['B_sniper_F','B_ghillie_sard_F','B_ghillie_ard_F']),'PRIVATE']];breakTo 'main';};
 		if (_type isEqualTo 'BUS_InfAssault') then {_return = [['B_Soldier_SL_F','SERGEANT'],['B_Soldier_AR_F','PRIVATE'],['B_HeavyGunner_F','CORPORAL'],['B_Soldier_AAR_F','PRIVATE'],['B_Soldier_M_F','PRIVATE'],['B_Sharpshooter_F','CORPORAL'],['B_Soldier_LAT_F','PRIVATE'],['B_medic_F','PRIVATE']];breakTo 'main';};
 		if (_type isEqualTo 'BUS_InfSentry') then {_return = [['B_soldier_GL_F','CORPORAL'],['B_soldier_F','PRIVATE']];breakTo 'main';};
 		if (_type isEqualTo 'BUS_InfSquad') then {_return = [['B_Soldier_SL_F','SERGEANT'],['B_Soldier_F','PRIVATE'],['B_Soldier_LAT_F','CORPORAL'],['B_Soldier_M_F','PRIVATE'],['B_Soldier_AR_F','SERGEANT'],['B_Soldier_AR_F','CORPORAL'],['B_Soldier_A_F','PRIVATE'],['B_medic_F','PRIVATE']];breakTo 'main';};

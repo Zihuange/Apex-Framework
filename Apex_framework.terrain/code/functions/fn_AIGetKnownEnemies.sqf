@@ -63,10 +63,10 @@ if (_type isEqualTo 0) exitWith {
 		_baseRadius = 1000;
 		for '_x' from 0 to 1 step 0 do {
 			if ((diag_fps > 10) && (!(missionNamespace getVariable ['QS_AI_targetsKnowledge_suspend',_false]))) then {
-				if ((missionNamespace getVariable 'QS_AI_targetsKnowledge_EAST') isNotEqualTo []) then {
+				if ((missionNamespace getVariable 'QS_AI_targetsKnowledge_WEST') isNotEqualTo []) then {
 					missionNamespace setVariable [
-						'QS_AI_targetsKnowledge_EAST',
-						((missionNamespace getVariable 'QS_AI_targetsKnowledge_EAST') select {((alive (_x # 0)) && (((_x # 0) distance2D _basePosition) > _baseRadius) && ((_west knowsAbout (_x # 0)) > 0) && (!((_x # 3) isEqualTo 0)))}),
+						'QS_AI_targetsKnowledge_WEST',
+						((missionNamespace getVariable 'QS_AI_targetsKnowledge_WEST') select {((alive (_x # 0)) && (((_x # 0) distance2D _basePosition) > _baseRadius) && ((_west knowsAbout (_x # 0)) > 0) && ((_x # 3) isNotEqualTo 0))}),
 						_false
 					];
 				};
@@ -96,7 +96,7 @@ if (_type isEqualTo 0) exitWith {
 												if ((_targetPosition distance2D _basePosition) > _baseRadius) then {
 													if ((_positionError <= 50) || {(_knownVehicle isKindOf 'Air')}) then {		// <= 10
 														if (_targetPosition isNotEqualTo [0,0,0]) then {
-															_targetIndexMem = ((missionNamespace getVariable 'QS_AI_targetsKnowledge_EAST') findIf {((_x # 2) isEqualTo _knownVehicle)});
+															_targetIndexMem = ((missionNamespace getVariable 'QS_AI_targetsKnowledge_WEST') findIf {((_x # 2) isEqualTo _knownVehicle)});
 															if (_targetIndexMem isEqualTo -1) then {
 																if ((_knownVehicle isKindOf 'Tank') || {(_knownVehicle isKindOf 'Wheeled_APC_F')}) then {
 																	_threat_armor pushBackUnique _knownVehicle;
@@ -105,13 +105,13 @@ if (_type isEqualTo 0) exitWith {
 																		_threat_air pushBackUnique _knownVehicle;
 																	};
 																};
-																(missionNamespace getVariable 'QS_AI_targetsKnowledge_EAST') pushBack [_knownUnit,_targetPosition,_knownVehicle,(parseNumber (_positionError toFixed 3)),_unit,(parseNumber ((_time - _timeLastSeen) toFixed 3)),(rating _knownUnit),(_west knowsAbout _knownVehicle)];
+																(missionNamespace getVariable 'QS_AI_targetsKnowledge_WEST') pushBack [_knownUnit,_targetPosition,_knownVehicle,(parseNumber (_positionError toFixed 3)),_unit,(parseNumber ((_time - _timeLastSeen) toFixed 3)),(rating _knownUnit),(_west knowsAbout _knownVehicle)];
 															} else {
-																_targetElement = ((missionNamespace getVariable 'QS_AI_targetsKnowledge_EAST') # _targetIndexMem);
+																_targetElement = ((missionNamespace getVariable 'QS_AI_targetsKnowledge_WEST') # _targetIndexMem);
 																_positionErrorMem = _targetElement # 3;
 																if ((_positionError < _positionErrorMem) || {((_time - _timeLastSeen) > 60)}) then {
 																	_targetElement = [_knownUnit,_targetPosition,_knownVehicle,(parseNumber (_positionError toFixed 3)),_unit,(parseNumber ((_time - _timeLastSeen) toFixed 3)),(rating _knownUnit),(_west knowsAbout _knownVehicle)];
-																	(missionNamespace getVariable 'QS_AI_targetsKnowledge_EAST') set [_targetIndexMem,_targetElement];
+																	(missionNamespace getVariable 'QS_AI_targetsKnowledge_WEST') set [_targetIndexMem,_targetElement];
 																};
 															};
 														};
@@ -214,7 +214,7 @@ if (_type isEqualTo 3) exitWith {
 				};
 			};
 		};
-	} forEach (missionNamespace getVariable ['QS_AI_targetsKnowledge_EAST',[]]);
+	} forEach (missionNamespace getVariable ['QS_AI_targetsKnowledge_WEST',[]]);
 	_return;
 };
 if (_type isEqualTo 4) exitWith {
@@ -244,7 +244,7 @@ if (_type isEqualTo 4) exitWith {
 				};
 			};
 		};
-	} forEach (missionNamespace getVariable ['QS_AI_targetsKnowledge_EAST',[]]);
+	} forEach (missionNamespace getVariable ['QS_AI_targetsKnowledge_WEST',[]]);
 	_return;
 };
 if (_type isEqualTo 5) exitWith {
@@ -272,8 +272,8 @@ if (_type isEqualTo 6) exitWith {
 	private _vehicle = objNull;
 	private _val = -1;
 	private _vehicles = [];
-	if ((missionNamespace getVariable ['QS_AI_targetsKnowledge_EAST',[]]) isNotEqualTo []) then {
-		_targetsKnowledge = missionNamespace getVariable ['QS_AI_targetsKnowledge_EAST',[]];
+	if ((missionNamespace getVariable ['QS_AI_targetsKnowledge_WEST',[]]) isNotEqualTo []) then {
+		_targetsKnowledge = missionNamespace getVariable ['QS_AI_targetsKnowledge_WEST',[]];
 		{
 			_vehicle = _x # 2;
 			if (alive _vehicle) then {
@@ -295,10 +295,10 @@ if (_type isEqualTo 7) exitWith {
 	params ['','','_grp','_grpLeader','_objectParent',['_radius',200]];
 	// Infantry info-receiving
 	// Nearby enemies
-	if ((missionNamespace getVariable ['QS_AI_targetsKnowledge_EAST',[]]) isNotEqualTo []) then {
+	if ((missionNamespace getVariable ['QS_AI_targetsKnowledge_WEST',[]]) isNotEqualTo []) then {
 		private _targetEntity = objNull;
 		private _targetVehicle = objNull;
-		_targetsKnowledge = missionNamespace getVariable ['QS_AI_targetsKnowledge_EAST',[]];
+		_targetsKnowledge = missionNamespace getVariable ['QS_AI_targetsKnowledge_WEST',[]];
 		{
 			if ((random 1) > 0.5) then {
 				_targetEntity = _x # 0;
@@ -323,10 +323,10 @@ if (_type isEqualTo 8) exitWith {
 	params ['','','_grp','_grpLeader','_objectParent'];
 	// Vehicle/Ship info-receiving
 	// Nearby enemies, wider radius
-	if ((missionNamespace getVariable ['QS_AI_targetsKnowledge_EAST',[]]) isNotEqualTo []) then {
+	if ((missionNamespace getVariable ['QS_AI_targetsKnowledge_WEST',[]]) isNotEqualTo []) then {
 		private _targetEntity = objNull;
 		private _targetVehicle = objNull;
-		_targetsKnowledge = missionNamespace getVariable ['QS_AI_targetsKnowledge_EAST',[]];
+		_targetsKnowledge = missionNamespace getVariable ['QS_AI_targetsKnowledge_WEST',[]];
 		{
 			if ((random 1) > 0.333) then {
 				_targetEntity = _x # 0;
@@ -351,10 +351,10 @@ if (_type isEqualTo 9) exitWith {
 	params ['','','_grp','_grpLeader','_objectParent'];
 	// Aircraft info-receiving
 	// Priority targets like tanks and other aircraft
-	if ((missionNamespace getVariable ['QS_AI_targetsKnowledge_EAST',[]]) isNotEqualTo []) then {
+	if ((missionNamespace getVariable ['QS_AI_targetsKnowledge_WEST',[]]) isNotEqualTo []) then {
 		private _targetEntity = objNull;
 		private _targetVehicle = objNull;
-		_targetsKnowledge = missionNamespace getVariable ['QS_AI_targetsKnowledge_EAST',[]];
+		_targetsKnowledge = missionNamespace getVariable ['QS_AI_targetsKnowledge_WEST',[]];
 		{
 			if ((random 1) > 0.25) then {
 				_targetEntity = _x # 0;
@@ -392,7 +392,7 @@ if (_type isEqualTo 10) exitWith {
 	private _return = [];
 	private _vehicle = objNull;
 	private _val = -1;
-	_targetsKnowledge = missionNamespace getVariable ['QS_AI_targetsKnowledge_EAST',[]];
+	_targetsKnowledge = missionNamespace getVariable ['QS_AI_targetsKnowledge_WEST',[]];
 	{
 		_vehicle = _x # 2;
 		if (alive _vehicle) then {
@@ -409,8 +409,8 @@ if (_type isEqualTo 11) exitWith {
 	// Update hostile buildings
 	private _vehicle = objNull;
 	private _return = [];
-	if ((missionNamespace getVariable ['QS_AI_targetsKnowledge_EAST',[]]) isNotEqualTo []) then {
-		_targetsKnowledge = missionNamespace getVariable ['QS_AI_targetsKnowledge_EAST',[]];
+	if ((missionNamespace getVariable ['QS_AI_targetsKnowledge_WEST',[]]) isNotEqualTo []) then {
+		_targetsKnowledge = missionNamespace getVariable ['QS_AI_targetsKnowledge_WEST',[]];
 		_fn_inHouse = missionNamespace getVariable 'QS_fnc_inHouse';
 		{
 			_vehicle = _x # 2;
@@ -443,8 +443,8 @@ if (_type isEqualTo 12) exitWith {
 	private _vehicle = objNull;
 	private _val = -1;
 	private _targets = [];
-	if ((missionNamespace getVariable ['QS_AI_targetsKnowledge_EAST',[]]) isNotEqualTo []) then {
-		_targetsKnowledge = missionNamespace getVariable ['QS_AI_targetsKnowledge_EAST',[]];
+	if ((missionNamespace getVariable ['QS_AI_targetsKnowledge_WEST',[]]) isNotEqualTo []) then {
+		_targetsKnowledge = missionNamespace getVariable ['QS_AI_targetsKnowledge_WEST',[]];
 		{
 			_vehicle = _x # 2;
 			if (alive _vehicle) then {
@@ -474,7 +474,7 @@ if (_type isEqualTo 13) exitWith {
 					(((vectorMagnitude (velocity _vehicle)) * 3.6) < 30)
 				) || 
 				{(!isEngineOn _vehicle)}
-			) &&
+			) ||
 			{(!isVehicleRadarOn _vehicle)} &&
 			{(!isLaserOn _vehicle)} &&
 			{(!isOnRoad _vehicle)} &&
@@ -512,7 +512,7 @@ if (_type isEqualTo 13) exitWith {
 					_cost = -1;
 					if (_vehicle isKindOf 'CAManBase') then {
 						_cost = _camanbase;
-						if (_vehicle isKindOf 'B_Soldier_sniper_base_F') then {
+						if (_vehicle isKindOf 'O_Soldier_sniper_base_F') then {
 							_cost = _sniper;
 						};
 					};
@@ -541,7 +541,7 @@ if (_type isEqualTo 13) exitWith {
 				};
 			};
 		};
-	} forEach (missionNamespace getVariable ['QS_AI_targetsKnowledge_EAST',[]]);
+	} forEach (missionNamespace getVariable ['QS_AI_targetsKnowledge_WEST',[]]);
 	_data set [0,-1];
 	_data deleteAt 0;
 	_data sort FALSE;

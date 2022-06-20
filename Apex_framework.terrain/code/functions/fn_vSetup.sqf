@@ -178,12 +178,23 @@ _offroadPolice = [
 ];
 _offroad = ['b_g_offroad_01_f','b_g_offroad_01_at_f','b_g_offroad_01_armed_f','b_g_offroad_01_repair_f','o_g_offroad_01_f','o_g_offroad_01_at_f','o_g_offroad_01_armed_f','o_g_offroad_01_repair_f','i_g_offroad_01_f','i_g_offroad_01_at_f','i_g_offroad_01_armed_f','i_g_offroad_01_repair_f'];
 _hellcat = ['i_heli_light_03_f','i_heli_light_03_dynamicloadout_f','i_heli_light_03_unarmed_f','i_e_heli_light_03_dynamicloadout_f','i_e_heli_light_03_unarmed_f'];
+_pawnee = ['b_heli_light_01_armed_f','b_heli_light_01_dynamicloadout_f','b_heli_light_01_f','b_heli_light_01_stripped_f'];
 
 /*/============================================= APPLY/*/
 if (_t2 in _blackVehicles) then {
-	for '_i' from 0 to 9 do {_u setObjectTextureGlobal [_i,'#(argb,8,8,3)color(0,0,0,0.6)'];};
+	// for '_i' from 0 to 9 do {_u setObjectTextureGlobal [_i,'#(argb,8,8,3)color(0,0,0,0.6)'];};
 };
 if (_t2 in _bobcat) then {
+	if (_isSimpleObject || {(isNull (driver _u))}) then {
+		{
+			_u setObjectTextureGlobal _x;
+		} forEach [
+			[0,'A3\armor_f_beta\apc_tracked_01\data\apc_tracked_01_crv_opfor_co.paa'],
+			[1,'A3\armor_f_beta\apc_tracked_01\data\apc_tracked_01_aa_body_opfor_co.paa'],
+			[2,'A3\data_f\vehicles\turret_opfor_co.paa'],
+			[3,'A3\armor_f_beta\apc_tracked_01\data\apc_tracked_01_crv_opfor_co.paa']
+		];
+	};	
 	/*/_u setObjectTextureGlobal [0,'A3\armor_f_beta\apc_tracked_01\data\apc_tracked_01_crv_opfor_co.paa'];/*/
 	/*/_u lockTurret [[0],TRUE];/*/
 	/*/_u animateSource ['hideturret',1];/*/
@@ -197,9 +208,9 @@ if (_t2 in _buzzard) then {
 };
 if (_t2 in _angara) then {
 	if (_isSimpleObject || {(isNull (driver _u))}) then {
-		{ 
-			_u setObjectTextureGlobal [_forEachIndex,_x]; 
-		} forEach (getArray (configFile >> 'CfgVehicles' >> _t2 >> 'TextureSources' >> 'Grey' >> 'textures'));
+		// { 
+		// 	_u setObjectTextureGlobal [_forEachIndex,_x]; 
+		// } forEach (getArray (configFile >> 'CfgVehicles' >> _t2 >> 'TextureSources' >> 'Grey' >> 'textures'));
 	};
 };
 if (_t2 in _nyx) then {
@@ -211,22 +222,22 @@ if (_t2 in _nyx) then {
 };
 if (_t2 in _strider) then {
 	if (_isSimpleObject || {(isNull (driver _u))}) then {
-		{
-			_u setObjectTextureGlobal _x;
-		} forEach [
-			[0,'\A3\soft_f_beta\mrap_03\data\mrap_03_ext_co.paa'],
-			[1,'\A3\data_f\vehicles\turret_co.paa']
-		];
+		// {
+		// 	_u setObjectTextureGlobal _x;
+		// } forEach [
+		// 	[0,'\A3\soft_f_beta\mrap_03\data\mrap_03_ext_co.paa'],
+		// 	[1,'\A3\data_f\vehicles\turret_co.paa']
+		// ];
 	};
 };
 if (_t2 in _mora) then {
 	if (_isSimpleObject || {(isNull (driver _u))}) then {
-		{
-			_u setObjectTextureGlobal _x;
-		} forEach [
-			[0,'media\images\vskins\fv720\apc_tracked_03_ext_blufor_co.paa'],
-			[1,'media\images\vskins\fv720\apc_tracked_03_ext2_blufor_co.paa']
-		];
+		// {
+		// 	_u setObjectTextureGlobal _x;
+		// } forEach [
+		// 	[0,'media\images\vskins\fv720\apc_tracked_03_ext_blufor_co.paa'],
+		// 	[1,'media\images\vskins\fv720\apc_tracked_03_ext2_blufor_co.paa']
+		// ];
 	};
 };
 if (_t2 in ['i_mbt_03_cannon_f']) then {
@@ -242,25 +253,25 @@ if (_t2 in ['i_mbt_03_cannon_f']) then {
 };
 if (_t2 in _gorgon) then {
 	if (_isSimpleObject || {(isNull (driver _u))}) then {
-		{
-			_u setObjectTextureGlobal _x;
-		} forEach [
-			[0,'A3\Armor_F_Gamma\APC_Wheeled_03\Data\apc_wheeled_03_ext_co.paa'],
-			[1,'A3\Armor_F_Gamma\APC_Wheeled_03\Data\apc_wheeled_03_ext2_co.paa'],
-			[2,'A3\Armor_F_Gamma\APC_Wheeled_03\Data\rcws30_co.paa'],
-			[3,'A3\Armor_F_Gamma\APC_Wheeled_03\Data\apc_wheeled_03_ext_alpha_co.paa']
-		];
+		// {
+		// 	_u setObjectTextureGlobal _x;
+		// } forEach [
+		// 	[0,'A3\Armor_F_Gamma\APC_Wheeled_03\Data\apc_wheeled_03_ext_co.paa'],
+		// 	[1,'A3\Armor_F_Gamma\APC_Wheeled_03\Data\apc_wheeled_03_ext2_co.paa'],
+		// 	[2,'A3\Armor_F_Gamma\APC_Wheeled_03\Data\rcws30_co.paa'],
+		// 	[3,'A3\Armor_F_Gamma\APC_Wheeled_03\Data\apc_wheeled_03_ext_alpha_co.paa']
+		// ];
 	};
 };
 if (_t2 in _marid) then {
 	if (_isSimpleObject || {(isNull (driver _u))}) then {
-		{
-			_u setObjectTextureGlobal _x;
-		} forEach [
-			[0,'media\images\vskins\mse3\nato\apc_wheeled_02_ext_01_blufor_co.paa'],
-			[1,'media\images\vskins\mse3\nato\apc_wheeled_02_ext_02_blufor_co.paa'],
-			[2,'a3\data_f\vehicles\turret_co.paa']
-		];
+		// {
+		// 	_u setObjectTextureGlobal _x;
+		// } forEach [
+		// 	[0,'media\images\vskins\mse3\nato\apc_wheeled_02_ext_01_blufor_co.paa'],
+		// 	[1,'media\images\vskins\mse3\nato\apc_wheeled_02_ext_02_blufor_co.paa'],
+		// 	[2,'a3\data_f\vehicles\turret_co.paa']
+		// ];
 	};
 };
 if (_t2 in _marshell) then {
@@ -285,13 +296,13 @@ if (_t2 in ['o_t_apc_wheeled_02_rcws_ghex_f']) then {
 };
 if (_t2 in _t100) then {
 	if (_isSimpleObject || {(isNull (driver _u))}) then {
-		{
-			_u setObjectTextureGlobal _x;
-		} forEach [
-			[0,'media\images\vskins\t100\mbt_02_greengrey_body_co.paa'],
-			[1,'media\images\vskins\t100\mbt_02_greengrey_turret_co.paa'],
-			[2,'media\images\vskins\t100\mbt_02_greengrey_co.paa']
-		];
+		// {
+		// 	_u setObjectTextureGlobal _x;
+		// } forEach [
+		// 	[0,'media\images\vskins\t100\mbt_02_greengrey_body_co.paa'],
+		// 	[1,'media\images\vskins\t100\mbt_02_greengrey_turret_co.paa'],
+		// 	[2,'media\images\vskins\t100\mbt_02_greengrey_co.paa']
+		// ];
 	};
 };
 if (_t2 in _hellcat) then {
@@ -302,6 +313,15 @@ if (_t2 in _hellcat) then {
 		if ((random 1) > 0.666) then {
 			_u setObjectTextureGlobal [0,'media\images\vskins\wy55\Hellcat_SOPMOD2_CO.jpg'];
 		};
+	};
+};
+if (_t2 in _pawnee) then {
+	if (_isSimpleObject || {(isNull (driver _u))}) then {
+		{ 
+			_u setObjectTextureGlobal _x; 
+		} forEach [
+			[0,'\a3\air_f\Heli_Light_01\data\skins\Heli_Light_01_ext_digital_co.paa']
+		];
 	};
 };
 if (_t2 in _taru_default) then {
