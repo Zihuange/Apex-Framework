@@ -120,7 +120,7 @@ _gunnerGrp setVariable ['QS_AI_GRP_DATA',[TRUE,diag_tickTime],FALSE];
 _gunnerGrp setVariable ['QS_AI_GRP_TASK',['SUPPORT','MORTAR',diag_tickTime,-1],FALSE];
 _gunnerGrp setVariable ['QS_AI_GRP',TRUE,FALSE];
 _composition pushBack _gunner;
-_patrolGrp = [_spawnPos,(random 360),WEST,(selectRandom ['OG_ReconSentry','OG_SniperTeam_M']),FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
+_patrolGrp = [_spawnPos,(random 360),WEST,(selectRandom ['IRG_ReconSentry','IRG_SniperTeam_M']),FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 [(units _patrolGrp),2] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
 {
 	_x call (missionNamespace getVariable 'QS_fnc_unitSetup');

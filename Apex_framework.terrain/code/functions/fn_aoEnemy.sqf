@@ -40,7 +40,7 @@ _infTypes = [
 	'BUS_InfTeam',2,
 	'BUS_InfAssault',2,
 	'BUS_InfTeam_AA',3,
-	'BUS_InfTeam_AT',2,
+	'BUS_InfTeam_AT',1.5,
 	'BUS_InfTeam_LAT',2,
 	'BUS_ReconPatrol',1,
 	'BUS_ReconSquad',1,
@@ -332,7 +332,7 @@ if (worldName in ['Tanoa','Lingor3']) then {
 if (worldName isEqualTo 'Malden') then {
 	if (_playerCount > 10) then {_grpCount = [10,8] select _allowVehicles;};
 	if (_playerCount > 20) then {_grpCount = [10,8] select _allowVehicles;};
-	if (_playerCount > 30) then {_grpCount = [13,11] select _allowVehicles;};
+	if (_ > 30) then {_grpCount = [13,11] select _allowVehicles;};
 	if (_playerCount > 40) then {_grpCount = [13,11] select _allowVehicles;};
 	if (_playerCount > 50) then {_grpCount = [13,11] select _allowVehicles;};
 };

@@ -20,11 +20,11 @@ private ["_infTypes","_infType","_vehTypes","_vehType","_pos","_flatPos","_rando
 _pos = _this select 0;
 _enemiesArray = [];
 _x = 0;
-_infTypes = ["OIA_InfTeam","OIA_InfTeam_AT","OIA_InfTeam_AA","OI_reconPatrol",'OG_InfAssault'];
+_infTypes = ["BUS_InfTeam","BUS_InfTeam_AT","BUS_InfTeam_AA","BUS_reconPatrol",'IRG_InfAssault'];
 if (worldName isEqualTo 'Tanoa') then {
-	_vehTypes = ["O_T_MRAP_02_gmg_ghex_F","O_T_MRAP_02_hmg_ghex_F","O_T_LSV_02_armed_F","I_MRAP_03_hmg_F","I_MRAP_03_gmg_F",'o_t_apc_wheeled_02_rcws_v2_ghex_f'];
+	_vehTypes = ["B_T_MRAP_01_gmg_F","B_T_MRAP_01_hmg_F","B_T_LSV_01_armed_F","I_MRAP_03_hmg_F","I_MRAP_03_gmg_F",'B_T_AFV_Wheeled_01_cannon_F'];
 } else {
-	_vehTypes = ['O_MRAP_02_gmg_F','O_MRAP_02_hmg_F','I_MRAP_03_gmg_F','I_MRAP_03_hmg_F','O_G_Offroad_01_armed_F','o_apc_wheeled_02_rcws_v2_f'];
+	_vehTypes = ['B_MRAP_01_gmg_F','B_MRAP_01_hmg_F','I_MRAP_03_gmg_F','I_MRAP_03_hmg_F','B_G_Offroad_01_armed_F','B_AFV_Wheeled_01_cannon_F'];
 };
 
 /*/---------- INFANTRY/*/
@@ -32,7 +32,7 @@ if (worldName isEqualTo 'Tanoa') then {
 for "_x" from 0 to (1 + (random 1)) step 1 do {
 	_randomPos = ['RADIUS',_pos,300,'LAND',[],FALSE,[],[],TRUE] call (missionNamespace getVariable 'QS_fnc_findRandomPos');
 	_infType = selectRandom _infTypes;
-	_infteamPatrol = [_randomPos,(random 360),EAST,_infType,FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
+	_infteamPatrol = [_randomPos,(random 360),WEST,_infType,FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 	[_infteamPatrol,_pos,100,TRUE] call (missionNamespace getVariable 'QS_fnc_taskPatrol');
 	[(units _infteamPatrol),2] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
 	{
@@ -56,7 +56,7 @@ missionNamespace setVariable [
 	FALSE
 ];
 _SMveh lock 3;
-[0,_SMveh,EAST,1] call (missionNamespace getVariable 'QS_fnc_vSetup2');
+[0,_SMveh,WEST,1] call (missionNamespace getVariable 'QS_fnc_vSetup2');
 _SMveh addEventHandler ['GetOut',(missionNamespace getVariable 'QS_fnc_AIXDismountDisabled')];
 _SMveh addEventHandler ['Killed',(missionNamespace getVariable 'QS_fnc_vKilled2')];
 if ((random 1) >= 0.333) then {

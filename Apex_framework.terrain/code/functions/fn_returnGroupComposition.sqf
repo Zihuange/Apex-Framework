@@ -114,7 +114,7 @@ if (_side isEqualTo WEST) exitWith {
 		if (_type isEqualTo 'BUS_InfTeam') then {_return = [['B_T_Soldier_SL_F','SERGEANT'],['B_T_Soldier_AR_F','CORPORAL'],['B_T_Soldier_GL_F','PRIVATE'],['B_T_soldier_LAT_F','PRIVATE']];breakTo 'main';};
 		if (_type isEqualTo 'BUS_InfTeam_AA') then {_return = [['B_T_Soldier_SL_F','SERGEANT'],['B_T_soldier_AA_F','CORPORAL'],['B_T_soldier_AA_F','PRIVATE'],['B_T_soldier_AAA_F','PRIVATE']];breakTo 'main';};
 		if (_type isEqualTo 'BUS_InfTeam_AT') then {_return = [['B_T_Soldier_SL_F','SERGEANT'],['B_T_soldier_AT_F','CORPORAL'],['B_T_soldier_AT_F','PRIVATE'],['B_T_soldier_AAT_F','PRIVATE']];breakTo 'main';};
-		if (_type isEqualTo 'BUS_InfTeam_LAT') then {_return = [['B_T_soldier_TL_F','SERGEANT'],['B_T_soldier_LAT_F','CORPORAL'],['B_T_soldier_LAT_F','PRIVATE'],['B_T_soldier_LAT_F','PRIVATE']];breakTo 'main';};
+		if (_type isEqualTo 'BUS_InfTeam_LAT') then {_return = [['B_T_soldier_TL_F','SERGEANT'],['B_T_soldier_LAT_F','CORPORAL'],['B_T_Soldier_LAT2_F','PRIVATE'],['B_T_Soldier_LAT2_F','PRIVATE']];breakTo 'main';};
 		if (_type isEqualTo 'BUS_ReconPatrol') then {_return = [['B_T_Recon_TL_F','SERGEANT'],['B_T_Recon_M_F','CORPORAL'],['B_T_Recon_Medic_F','PRIVATE'],['B_T_Recon_F','PRIVATE']];breakTo 'main';};
 		if (_type isEqualTo 'BUS_ReconSentry') then {_return = [['B_T_Recon_M_F','CORPORAL'],['B_T_Recon_F','PRIVATE']];breakTo 'main';};
 		if (_type isEqualTo 'BUS_ReconSquad') then {_return = [['B_T_Recon_TL_F','SERGEANT'],['B_T_Recon_M_F','CORPORAL'],['B_T_Recon_Medic_F','PRIVATE'],['B_T_Recon_F','PRIVATE'],['B_T_Recon_LAT_F','PRIVATE'],['B_T_Recon_JTAC_F','PRIVATE'],['B_T_Recon_Exp_F','PRIVATE'],['B_Recon_Sharpshooter_F','CORPORAL']];breakTo 'main';};
@@ -140,7 +140,7 @@ if (_side isEqualTo WEST) exitWith {
 		if (_type isEqualTo 'BUS_InfTeam') then {_return = [['B_soldier_TL_F','SERGEANT'],['B_soldier_AR_F','CORPORAL'],['B_soldier_GL_F','PRIVATE'],['B_soldier_LAT_F','PRIVATE']];breakTo 'main';};
 		if (_type isEqualTo 'BUS_InfTeam_AA') then {_return = [['B_soldier_TL_F','SERGEANT'],['B_soldier_AA_F','CORPORAL'],['B_soldier_AA_F','PRIVATE'],['B_soldier_AAA_F','PRIVATE']];breakTo 'main';};
 		if (_type isEqualTo 'BUS_InfTeam_AT') then {_return = [['B_soldier_TL_F','SERGEANT'],['B_soldier_AT_F','CORPORAL'],['B_soldier_AT_F','PRIVATE'],['B_soldier_AAT_F','PRIVATE']];breakTo 'main';};
-		if (_type isEqualTo 'BUS_InfTeam_LAT') then {_return = [['B_soldier_TL_F','SERGEANT'],['B_soldier_LAT_F','CORPORAL'],['B_soldier_LAT_F','PRIVATE'],['B_soldier_LAT_F','PRIVATE']];breakTo 'main';};
+		if (_type isEqualTo 'BUS_InfTeam_LAT') then {_return = [['B_soldier_TL_F','SERGEANT'],['B_soldier_LAT_F','CORPORAL'],['B_soldier_LAT2_F','PRIVATE'],['B_soldier_LAT2_F','PRIVATE']];breakTo 'main';};
 		if (_type isEqualTo 'BUS_ReconPatrol') then {_return = [['B_recon_TL_F','SERGEANT'],['B_recon_M_F','CORPORAL'],['B_recon_medic_F','PRIVATE'],['B_recon_F','PRIVATE']];breakTo 'main';};
 		if (_type isEqualTo 'BUS_ReconSentry') then {_return = [['B_recon_M_F','CORPORAL'],['B_recon_F','PRIVATE']];breakTo 'main';};
 		if (_type isEqualTo 'BUS_ReconSquad') then {_return = [['B_recon_TL_F','SERGEANT'],['B_recon_M_F','CORPORAL'],['B_recon_medic_F','PRIVATE'],['B_recon_F','PRIVATE'],['B_recon_LAT_F','PRIVATE'],['B_recon_JTAC_F','PRIVATE'],['B_recon_exp_F','PRIVATE'],['B_Recon_Sharpshooter_F','CORPORAL']];breakTo 'main';};

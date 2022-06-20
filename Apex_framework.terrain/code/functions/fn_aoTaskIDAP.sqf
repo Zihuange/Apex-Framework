@@ -439,7 +439,7 @@ for '_x' from 0 to 1 step 0 do {
 				if (_positionFound) exitWith {};
 				uiSleep 0.01;
 			};
-			_qrfGroup = [_reinforceSpawnPos,(_reinforceSpawnPos getDir _connectedRoadPos),EAST,'OG_InfSquad_Weapons',FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
+			_qrfGroup = [_reinforceSpawnPos,(_reinforceSpawnPos getDir _connectedRoadPos),EAST,'IRG_InfSquad_Weapons',FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 			{
 				_x call (missionNamespace getVariable 'QS_fnc_unitSetup');
 				_x enableStamina FALSE;

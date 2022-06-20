@@ -80,16 +80,16 @@ if (_type isEqualTo 0) exitWith {
 		};
 		if ((_arty isKindOf 'I_TRUCK_02_mrl_F') || (_arty isKindOf 'I_E_TRUCK_02_mrl_F')) then {
 			if (worldName in ['Tanoa','Enoch']) then {
-				this setObjectTextureGlobal [0,'\A3\soft_f_exp\Truck_02\Data\Truck_02_kab_GHEX_co.paa'];  
-				this setObjectTextureGlobal [1,'\A3\soft_f_beta\truck_02\data\truck_02_int_co.paa'];  
-				this setObjectTextureGlobal [2,'\A3\soft_f_gamma\truck_02\data\truck_02_mrl_OPFOR_co.paa'];
+				_arty setObjectTextureGlobal [0,'\A3\soft_f_exp\Truck_02\Data\Truck_02_kab_GHEX_co.paa'];  
+				_arty setObjectTextureGlobal [1,'\A3\soft_f_beta\truck_02\data\truck_02_int_co.paa'];  
+				_arty setObjectTextureGlobal [2,'\A3\soft_f_gamma\truck_02\data\truck_02_mrl_OPFOR_co.paa'];
 			} else {
 				_arty setObjectTextureGlobal [0,'\A3\soft_f_beta\Truck_02\Data\Truck_02_kab_opfor_co.paa'];  
 				_arty setObjectTextureGlobal [1,'\A3\soft_f_beta\truck_02\data\truck_02_int_co.paa'];  
 				_arty setObjectTextureGlobal [2,'\A3\soft_f_gamma\truck_02\data\truck_02_mrl_OPFOR_co.paa'];
 			};
 			if (local _arty) then {
-				_arty setVehicleAmmo ((_ammo select (missionNamespace getVariable 'QS_artilleryUnlock')) select (_va find (typeOf _arty)));		/*/4 shells/*/
+				//_arty setVehicleAmmo ((_ammo select (missionNamespace getVariable 'QS_artilleryUnlock')) select (_va find (typeOf _arty)));		/*/4 shells/*/
 			} else {
 				['setVehicleAmmo',_arty,((_ammo select (missionNamespace getVariable 'QS_artilleryUnlock')) select (_va find (typeOf _arty)))] remoteExec ['QS_fnc_remoteExecCmd',_arty,FALSE];
 			};
@@ -172,7 +172,7 @@ if (_type isEqualTo 1) exitWith {
 				};
 				if ((missionNamespace getVariable 'QS_arty') isKindOf 'I_TRUCK_02_mrl_F' || (missionNamespace getVariable 'QS_arty') isKindOf 'I_E_TRUCK_02_mrl_F') then {
 					if (local (missionNamespace getVariable 'QS_arty')) then {
-						(missionNamespace getVariable 'QS_arty') setVehicleAmmo ((_ammo select (missionNamespace getVariable 'QS_artilleryUnlock')) select (_va find (typeOf (missionNamespace getVariable 'QS_arty'))));			/*/4 shells/*/
+						//(missionNamespace getVariable 'QS_arty') setVehicleAmmo ((_ammo select (missionNamespace getVariable 'QS_artilleryUnlock')) select (_va find (typeOf (missionNamespace getVariable 'QS_arty'))));			/*/4 shells/*/
 					} else {
 						['setVehicleAmmo',(missionNamespace getVariable 'QS_arty'),((_ammo select (missionNamespace getVariable 'QS_artilleryUnlock')) select (_va find (typeOf (missionNamespace getVariable 'QS_arty'))))] remoteExec ['QS_fnc_remoteExecCmd',(missionNamespace getVariable 'QS_arty'),FALSE];
 					};

@@ -172,7 +172,7 @@ if (_buildingPositions isEqualTo []) then {
 	} forEach (nearestObjects [_aoPos,['House'],_aoSize,TRUE]); 
 };
 if (!(_buildingPositions isEqualTo [])) then {
-	_enemyGrp = createGroup [EAST,TRUE];
+	_enemyGrp = createGroup [WEST,TRUE];
 	for '_x' from 0 to (_enemiesInBuildingsCount - 1) step 1 do {
 		_enemyUnitType = selectRandomWeighted _unitTypes;
 		_buildingPosition = selectRandom _buildingPositions;
@@ -261,7 +261,7 @@ if (_interBuildingPatrols > 0) then {
 		};
 		if (!(_usedBuildingPositions isEqualTo [])) then {
 			_spawnPosition = selectRandom _usedBuildingPositions;
-			_enemyGrp = createGroup [EAST,TRUE];
+			_enemyGrp = createGroup [WEST,TRUE];
 			for '_j' from 0 to (_enemyTeamSize - 1) step 1 do {
 				_enemyUnitType = selectRandomWeighted _unitTypes;
 				_enemyUnit = _enemyGrp createUnit [_enemyUnitType,_spawnPosition,[],25,'NONE'];
@@ -325,7 +325,7 @@ if (_areaPatrols > 0) then {
 			if ((count _patrolRoute) >= 3) exitWith {};
 		};
 		if ((count _patrolRoute) > 1) then {
-			_enemyGrp = createGroup [EAST,TRUE];
+			_enemyGrp = createGroup [WEST,TRUE];
 			for '_j' from 0 to (_enemyTeamSize - 1) step 1 do {
 				_enemyUnitType = selectRandomWeighted _unitTypes;
 				_enemyUnit = _enemyGrp createUnit [_enemyUnitType,(_patrolRoute select 0),[],25,'NONE'];
@@ -405,7 +405,7 @@ if (_armedVehicleCount > 0) then {
 				if ((count _patrolRoute) >= 3) exitWith {};
 			};
 			if ((count _patrolRoute) > 1) then {
-				_enemyGrp = createGroup [EAST,TRUE];
+				_enemyGrp = createGroup [WEST,TRUE];
 				_spawnPos = _patrolRoute select 0;
 				if (!isNull (roadAt _spawnPos)) then {
 					_spawnDirection = _spawnPos getDir ((roadsConnectedTo (roadAt _spawnPos)) select 0);
@@ -425,7 +425,7 @@ if (_armedVehicleCount > 0) then {
 				_vehicle forceFollowRoad TRUE;
 				_vehicle setConvoySeparation 50;
 				_vehicle limitSpeed 60;
-				[0,_vehicle,EAST] call (missionNamespace getVariable 'QS_fnc_vSetup2');
+				[0,_vehicle,WEST] call (missionNamespace getVariable 'QS_fnc_vSetup2');
 				_vehicle addEventHandler ['Killed',(missionNamespace getVariable 'QS_fnc_vKilled2')];
 				_vehicle addEventHandler ['GetOut',(missionNamespace getVariable 'QS_fnc_AIXDismountDisabled')];
 				_armedVehiclePatrolEnemies pushBack _vehicle;
@@ -522,7 +522,7 @@ if (alive (missionNamespace getVariable ['QS_grid_IGleader',objNull])) then {
 		};
 	} forEach _composition;
 	if (!(_hqBuildingPositions isEqualTo [])) then {
-		_enemyGrp = createGroup [EAST,TRUE];
+		_enemyGrp = createGroup [WEST,TRUE];
 		for '_k' from 0 to (_hqGuardsMax - 1) step 1 do {
 			_hqBuildingPosition = selectRandom _hqBuildingPositions;
 			_hqBuildingPositionIndex = _hqBuildingPositions find _hqBuildingPosition;

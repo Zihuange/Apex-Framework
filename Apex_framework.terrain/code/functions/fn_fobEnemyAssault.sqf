@@ -43,10 +43,10 @@ while {!_foundSpawnPos} do {
 /*/================================================ SELECT + SPAWN UNITS/*/
 
 _infTypes = [
-	'OG_ReconSentry',2,
-	'OG_InfAssaultTeam',2,
-	'OG_SniperTeam_M',2,
-	'OG_InfTeam',2
+	'IRG_ReconSentry',2,
+	'IRG_InfAssaultTeam',2,
+	'IRG_SniperTeam_M',2,
+	'IRG_InfTeam',2
 ];
 _infType = selectRandomWeighted _infTypes;
 _reinforceGroup = [_spawnPosDefault,(random 360),WEST,_infType,FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');

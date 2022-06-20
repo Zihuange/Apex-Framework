@@ -19,12 +19,12 @@ private [
 	'_unitType','_unit','_garrisonGrp','_unitTypes','_aaType'
 ];
 
-_infTeams = ["OG_InfSentry","OG_InfSquad","OG_InfSquad_Weapons","OG_InfTeam","OG_InfTeam_AT","OG_ReconSentry","OG_SniperTeam_M"];
-_vehTypes = ["O_G_Offroad_01_armed_F"];
+_infTeams = ["IRG_InfSentry","IRG_InfSquad","IRG_InfSquad_Weapons","IRG_InfTeam","IRG_InfTeam_AT","IRG_ReconSentry","IRG_SniperTeam_M"];
+_vehTypes = ["B_G_Offroad_01_armed_F"];
 if (worldName isEqualTo 'Tanoa') then {
 	_aaType = 'O_T_APC_Tracked_02_AA_ghex_F';
 } else {
-	_aaType = 'O_APC_Tracked_02_AA_F';
+	_aaType = 'B_T_APC_Tracked_01_AA_F';
 };
 _enemiesArray = [];
 _x = 0;
@@ -35,7 +35,7 @@ _pos = getPos (_this select 0);
 for '_x' from 0 to (2 + (random 1)) do {
 	_randomPos = ['RADIUS',_pos,300,'LAND',[],FALSE,[],[],TRUE] call (missionNamespace getVariable 'QS_fnc_findRandomPos');
 	_infTeam = selectRandom _infTeams;
-	_infteamPatrol = [_randomPos,(random 360),EAST,_infTeam,FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
+	_infteamPatrol = [_randomPos,(random 360),WEST,_infTeam,FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 	[_infteamPatrol,_pos, 100,TRUE] call (missionNamespace getVariable 'QS_fnc_taskPatrol');
 	[(units _infteamPatrol),1] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
 	{
@@ -52,7 +52,7 @@ for '_x' from 0 to (2 + (random 1)) do {
 
 for '_x' from 0 to 2 do {
 	_randomPos = [_pos,600,100,20] call (missionNamespace getVariable 'QS_fnc_findOverwatchPos');
-	_IRGsniperGroup = [_randomPos,(random 360),EAST,'OG_SniperTeam_M',FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
+	_IRGsniperGroup = [_randomPos,(random 360),WEST,'IRG_SniperTeam_M',FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 	{
 		_x setBehaviour 'COMBAT';
 		_x setCombatMode 'RED';
@@ -70,7 +70,7 @@ for '_x' from 0 to 2 do {
 	
 for '_x' from 0 to 2 do {
 	_randomPos = ['RADIUS',_pos,300,'LAND',[],FALSE,[],[],TRUE] call (missionNamespace getVariable 'QS_fnc_findRandomPos');
-	_SMveh = createVehicle ['O_G_Offroad_01_armed_F',_randomPos,[],0,'NONE'];
+	_SMveh = createVehicle ['B_G_Offroad_01_armed_F',_randomPos,[],0,'NONE'];
 	missionNamespace setVariable [
 		'QS_analytics_entities_created',
 		((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
@@ -79,7 +79,7 @@ for '_x' from 0 to 2 do {
 	_SMveh lock 3;
 	_SMveh allowCrewInImmobile TRUE;
 	_SMveh addEventHandler ['Killed',(missionNamespace getVariable 'QS_fnc_vKilled2')];
-	[0,_SMveh,EAST,1] call (missionNamespace getVariable 'QS_fnc_vSetup2');
+	[0,_SMveh,WEST,1] call (missionNamespace getVariable 'QS_fnc_vSetup2');
 	(missionNamespace getVariable 'QS_AI_vehicles') pushBack _SMveh;
 	_SMveh addEventHandler ['GetOut',(missionNamespace getVariable 'QS_fnc_AIXDismountDisabled')];
 	_grp = createVehicleCrew _SMveh;
@@ -148,12 +148,12 @@ if (worldName isEqualTo 'Tanoa') then {
 	];
 } else {
 	_unitTypes = [
-		"O_G_engineer_F","O_G_medic_F","O_G_Soldier_A_F","O_G_Soldier_AR_F","O_G_Soldier_exp_F","O_G_Soldier_F","O_G_Soldier_F",
-		"O_G_Soldier_GL_F","O_G_Soldier_LAT_F","O_G_Soldier_lite_F","O_G_Soldier_M_F","O_G_Soldier_SL_F","O_G_Soldier_TL_F",
-		"O_G_Sharpshooter_F","O_G_Soldier_AR_F"
+		"B_G_engineer_F","B_G_medic_F","B_G_Soldier_A_F","B_G_Soldier_AR_F","B_G_Soldier_exp_F","B_G_Soldier_F","B_G_Soldier_F",
+		"B_G_Soldier_GL_F","B_G_Soldier_LAT_F","B_G_Soldier_lite_F","B_G_Soldier_M_F","B_G_Soldier_SL_F","B_G_Soldier_TL_F",
+		"B_G_Sharpshooter_F","B_G_Soldier_AR_F"
 	];
 };
-_garrisonGrp = createGroup [EAST,TRUE];
+_garrisonGrp = createGroup [WEST,TRUE];
 for '_x' from 0 to 7 step 1 do {
 	_unitType = selectRandom _unitTypes;
 	_unit = _garrisonGrp createUnit [_unitType,_pos,[],0,'FORM'];

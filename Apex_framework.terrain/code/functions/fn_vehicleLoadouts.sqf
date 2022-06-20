@@ -196,8 +196,8 @@ if (_type isEqualTo 1) exitWith {
 			_vehicle setPylonLoadout _x;
 		} forEach 	[
 			[1,"PylonRack_4Rnd_LG_scalpel",TRUE],
-			[2,"PylonRack_19Rnd_Rocket_Skyfire",TRUE],
-			[3,"PylonRack_19Rnd_Rocket_Skyfire",TRUE],
+			[2,"PylonRack_19Rnd_Rocket_Skyfire",TRUE,[-1]],
+			[3,"PylonRack_19Rnd_Rocket_Skyfire",TRUE,[-1]],
 			[4,"PylonRack_4Rnd_LG_scalpel",TRUE]
 		];		
 	};
@@ -206,10 +206,10 @@ if (_type isEqualTo 1) exitWith {
 		{ 
 			_vehicle setPylonLoadout _x;
 		} forEach 	[
-			[1,"PylonRack_1Rnd_Missile_AA_03_F",TRUE],
-			[2,"PylonRack_1Rnd_Missile_AA_03_F",TRUE],
-			[3,"PylonRack_1Rnd_Missile_AA_03_F",TRUE],
-			[4,"PylonRack_1Rnd_Missile_AA_03_F",TRUE]
+			[1,"PylonRack_1Rnd_Missile_AA_03_F",TRUE,[-1]],
+			[2,"PylonRack_1Rnd_Missile_AA_03_F",TRUE,[-1]],
+			[3,"PylonRack_1Rnd_Missile_AA_03_F",TRUE,[-1]],
+			[4,"PylonRack_1Rnd_Missile_AA_03_F",TRUE,[-1]]
 		];
 	};
 	if (_vehicleType isEqualTo 'o_heli_light_02_dynamicloadout_f') then {

@@ -156,6 +156,7 @@ if (worldName isEqualTo 'Tanoa') then {
 _infTypes = [
 	'BUS_InfTeam_AA',0.25,
 	'BUS_InfTeam_AT',0.084,
+	'BUS_InfTeam_LAT',0.1,
 	'BUS_InfSquad',0.25,
 	'BUS_InfSquad_Weapons',0.2,
 	'BUS_InfAssault',0.25,

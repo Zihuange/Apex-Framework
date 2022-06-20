@@ -19,10 +19,10 @@ private _grp = grpNull;
 private _unit = objNull;
 private _spawnPosition = [0,0,0];
 private _grpTypes = [
-	'OG_InfTeam',
-	'OG_InfTeam_AT',
-	'OG_ReconSentry',
-	'OG_InfAssaultTeam'
+	'IRG_InfTeam',
+	'IRG_InfTeam_AT',
+	'IRG_ReconSentry',
+	'IRG_InfAssaultTeam'
 ];
 if (_type isEqualTo 0) exitWith {
 	comment 'IDAP scene';

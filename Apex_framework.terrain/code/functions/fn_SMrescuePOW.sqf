@@ -495,7 +495,7 @@ if (worldName isEqualTo 'Tanoa') then {
 	_QS_bluforTruckTypes = ['B_Truck_01_transport_F','B_Truck_01_covered_F','B_MRAP_01_F'];
 	_QS_bluforOnlyTruckTypes = ['B_Truck_01_transport_F','B_Truck_01_covered_F'];
 };
-_QS_powTypes = ['B_Story_Protagonist_F','b_survivor_F'];
+_QS_powTypes = ['I_Story_Colonel_F','O_Survivor_F'];
 _QS_badGuyTypes = [
 	["B_Soldier_TL_F","B_Recon_TL_F","B_Officer_F","B_Soldier_SL_F"],
 	["B_CTRG_Soldier_TL_tna_F","B_T_Recon_TL_F","B_T_Officer_F","B_T_Soldier_SL_F"]
