@@ -64,11 +64,11 @@ if (_type isEqualTo 1) exitWith {
 		];
 	};
 	if (_vehicleType isEqualTo 'b_plane_fighter_01_f') then {
-    _vehicle addMagazine "magazine_Fighter01_Gun20mm_AA_x450";
-	_vehicle addMagazine "magazine_Fighter01_Gun20mm_AA_x450";
-	_vehicle addMagazine "magazine_Fighter01_Gun20mm_AA_x450";
-    _vehicle addMagazines ["1000Rnd_25mm_shells",2];
-	_vehicle addWeapon "gatling_25mm";
+		// _vehicle addMagazine "magazine_Fighter01_Gun20mm_AA_x450";
+		// _vehicle addMagazine "magazine_Fighter01_Gun20mm_AA_x450";
+		// _vehicle addMagazine "magazine_Fighter01_Gun20mm_AA_x450";
+		// _vehicle addMagazines ["1000Rnd_25mm_shells",2];
+		// _vehicle addWeapon "gatling_25mm";
 		//_vehicle call _preparePylons;
 		{ 
 			_vehicle setPylonLoadout _x; 
@@ -107,16 +107,16 @@ if (_type isEqualTo 1) exitWith {
 		];
 	};
 	if (_vehicleType isEqualTo 'b_heli_attack_01_dynamicloadout_f') then {
-	_vehicle removeWeapon "gatling_20mm";
-    _vehicle addWeapon "gatling_30mm";
-    _vehicle addMagazine "250Rnd_30mm_HE_shells_Tracer_Red";
-    _vehicle addMagazine "250Rnd_30mm_HE_shells_Tracer_Red";
-    _vehicle addMagazine "250Rnd_30mm_HE_shells_Tracer_Red";
-    _vehicle addMagazine "250Rnd_30mm_APDS_shells_Tracer_Red";
-    _vehicle addMagazine "250Rnd_30mm_APDS_shells_Tracer_Red";
-    _vehicle addMagazine "24Rnd_PG_missiles";
-    _vehicle addMagazine "4Rnd_AAA_missiles";
-    _vehicle addMagazine "4Rnd_AAA_missiles";
+		// _vehicle removeWeapon "gatling_20mm";
+		// _vehicle addWeapon "gatling_30mm";
+		// _vehicle addMagazine "250Rnd_30mm_HE_shells_Tracer_Red";
+		// _vehicle addMagazine "250Rnd_30mm_HE_shells_Tracer_Red";
+		// _vehicle addMagazine "250Rnd_30mm_HE_shells_Tracer_Red";
+		// _vehicle addMagazine "250Rnd_30mm_APDS_shells_Tracer_Red";
+		// _vehicle addMagazine "250Rnd_30mm_APDS_shells_Tracer_Red";
+		// _vehicle addMagazine "24Rnd_PG_missiles";
+		// _vehicle addMagazine "4Rnd_AAA_missiles";
+		// _vehicle addMagazine "4Rnd_AAA_missiles";
 		comment 'To Do';
 	};
 	if (_vehicleType isEqualTo 'b_heli_light_01_dynamicloadout_f') then {
@@ -195,10 +195,10 @@ if (_type isEqualTo 1) exitWith {
 		{ 
 			_vehicle setPylonLoadout _x;
 		} forEach 	[
-			[1,"PylonRack_19Rnd_Rocket_Skyfire",TRUE],
+			[1,"PylonRack_4Rnd_LG_scalpel",TRUE],
 			[2,"PylonRack_19Rnd_Rocket_Skyfire",TRUE],
 			[3,"PylonRack_19Rnd_Rocket_Skyfire",TRUE],
-			[4,"PylonRack_19Rnd_Rocket_Skyfire",TRUE]
+			[4,"PylonRack_4Rnd_LG_scalpel",TRUE]
 		];		
 	};
 	if (_vehicleType in ['o_t_vtol_02_infantry_dynamicloadout_f','o_t_vtol_02_vehicle_dynamicLoadout_F']) then {
@@ -206,10 +206,10 @@ if (_type isEqualTo 1) exitWith {
 		{ 
 			_vehicle setPylonLoadout _x;
 		} forEach 	[
-			[1,"PylonRack_19Rnd_Rocket_Skyfire",TRUE],
-			[2,"PylonRack_19Rnd_Rocket_Skyfire",TRUE],
-			[3,"PylonRack_19Rnd_Rocket_Skyfire",TRUE],
-			[4,"PylonRack_19Rnd_Rocket_Skyfire",TRUE]
+			[1,"PylonRack_1Rnd_Missile_AA_03_F",TRUE],
+			[2,"PylonRack_1Rnd_Missile_AA_03_F",TRUE],
+			[3,"PylonRack_1Rnd_Missile_AA_03_F",TRUE],
+			[4,"PylonRack_1Rnd_Missile_AA_03_F",TRUE]
 		];
 	};
 	if (_vehicleType isEqualTo 'o_heli_light_02_dynamicloadout_f') then {

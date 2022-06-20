@@ -118,7 +118,7 @@ private _QS_restrictedItems = [
 	'integrated_nvg_f',
 	'integrated_nvg_ti_0_f',
 	'integrated_nvg_ti_1_f',
-	'o_uavterminal',
+	'b_uavterminal',
 	'i_uavterminal',
 	'c_uavterminal',
 	'i_e_uavterminal'

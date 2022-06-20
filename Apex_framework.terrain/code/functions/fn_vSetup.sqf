@@ -189,8 +189,8 @@ if (_t2 in _bobcat) then {
 		{
 			_u setObjectTextureGlobal _x;
 		} forEach [
-			[0,'A3\armor_f_beta\apc_tracked_01\data\apc_tracked_01_crv_opfor_co.paa'],
-			[1,'A3\armor_f_beta\apc_tracked_01\data\apc_tracked_01_aa_body_opfor_co.paa'],
+			[0,'A3\armor_f_beta\apc_tracked_01\data\apc_tracked_01_aa_body_opfor_co.paa'],
+			[1,'A3\armor_f_beta\apc_tracked_01\data\apc_tracked_01_crv_opfor_co.paa'],
 			[2,'A3\data_f\vehicles\turret_opfor_co.paa'],
 			[3,'A3\armor_f_beta\apc_tracked_01\data\apc_tracked_01_crv_opfor_co.paa']
 		];

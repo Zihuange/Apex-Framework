@@ -342,26 +342,26 @@ for '_x' from 0 to 9 step 1 do {
 /*/
 _recyclerUnitTypes = [
 	[
-		'o_soldier_ar_f',
-		'o_medic_f',
-		'o_engineer_f',
-		'o_soldier_exp_f',
-		'o_soldier_gl_f',
-		'o_soldier_m_f',
-		'o_soldier_f',
-		'o_soldier_sl_f',
-		'o_soldier_tl_f'
+		'b_soldier_ar_f',
+		'b_medic_f',
+		'b_engineer_f',
+		'b_soldier_exp_f',
+		'b_soldier_gl_f',
+		'b_soldier_m_f',
+		'b_soldier_f',
+		'b_soldier_sl_f',
+		'b_soldier_tl_f'
 	],
 	[
-		'o_t_soldier_ar_f',
-		'o_t_medic_f',
-		'o_t_engineer_f',
-		'o_t_soldier_exp_f',
-		'o_t_soldier_gl_f',
-		'o_t_soldier_m_f',
-		'o_t_soldier_f',
-		'o_t_soldier_tl_f',
-		'o_t_soldier_sl_f'
+		'b_t_soldier_ar_f',
+		'b_t_medic_f',
+		'b_t_engineer_f',
+		'b_t_soldier_exp_f',
+		'b_t_soldier_gl_f',
+		'b_t_soldier_m_f',
+		'b_t_soldier_f',
+		'b_t_soldier_tl_f',
+		'b_t_soldier_sl_f'
 	]
 ] select (worldName in ['Tanoa','Lingor3','Enoch']);
 {

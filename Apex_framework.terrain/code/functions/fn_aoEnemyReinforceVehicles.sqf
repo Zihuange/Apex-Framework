@@ -186,7 +186,7 @@ if ((toLower _vType) in [
 										if ((toLower _vType) in [
 											'b_mrap_01_f','b_mrap_01_gmg_f','b_mrap_01_hmg_f','b_lsv_01_armed_f','b_lsv_01_unarmed_f','b_t_mrap_01_f','b_t_mrap_01_gmg_f','b_t_mrap_01_hmg_f','b_t_lsv_01_armed_f','b_t_lsv_01_unarmed_f',
 											'i_mrap_03_f','i_mrap_03_gmg_f','i_mrap_03_hmg_f','i_truck_02_transport_f','i_truck_02_covered_f','b_truck_01_transport_f','b_truck_01_covered_f',
-											'b_uav_01_f','b_ugv_01_rcws_f','b_t_ugv_01_rcws_olive_f','b_uav_01_f','i_ugv_01_f','i_ugv_01_rcws_f','b_lsv_01_at_f','o_t_lsv_02_at_f'
+											'b_uav_01_f','b_ugv_01_rcws_f','b_t_ugv_01_rcws_olive_f','b_uav_01_f','i_ugv_01_f','i_ugv_01_rcws_f','b_lsv_01_at_f','b_t_lsv_01_at_f'
 										]) then {
 											_insertHeliType = ['B_Heli_Transport_03_F','B_Heli_Transport_03_black_F'] select (_worldName isEqualTo 'Tanoa');
 										};
