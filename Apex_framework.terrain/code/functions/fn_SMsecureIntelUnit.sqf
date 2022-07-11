@@ -116,7 +116,7 @@ _intelObj addEventHandler [
 				_killerDisplayName = getText (configFile >> 'CfgVehicles' >> _killerType >> 'displayName');
 				_objDisplayName = getText (configFile >> 'CfgVehicles' >> _objType >> 'displayName');
 				_name = name _killer;
-				['sideChat',[EAST,'BLU'],format ['%1 击杀了一名携带情报的目标！',_name]] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+				['sideChat',[EAST,'OPF'],format ['%1 击杀了一名携带情报的目标！',_name]] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 			};
 		};
 	}

@@ -117,8 +117,8 @@ _destroyer_hangar = 1;										// Hangar Door initial state. 0 - Hangar doors s
 //===================================================== TEXTURES
 
 _community_logo = '';
-_community_flag_texture = 'a3\data_f\flags\flag_nato_co.paa';						// Community texture applied to some flags.		Default: 'a3\data_f\flags\flag_nato_co.paa'
-_default_flag_texture = 'a3\data_f\flags\flag_nato_co.paa';							// Texture applied to friendly flags. 			Default: 'a3\data_f\flags\flag_nato_co.paa'
+_community_flag_texture = 'a3\data_f\flags\flag_csat_co.paa';						// Community texture applied to some flags.		Default: 'a3\data_f\flags\flag_nato_co.paa'
+_default_flag_texture = 'a3\data_f\flags\flag_csat_co.paa';							// Texture applied to friendly flags. 			Default: 'a3\data_f\flags\flag_nato_co.paa'
 _billboard_1 = ['media\images\billboards\billboard3.jpg','media\images\billboards\billboard3.jpg'];							// Textures applied to livefeed screen in default base. These parameters act as randomized arrays. Put more file paths in the [ ] array as desired. Example:   ['media\images\billboards\billboard3.jpg','media\images\billboards\billboard4.jpg'];
 _billboard_2 = ['media\images\billboards\billboard4.jpg','media\images\billboards\billboard4.jpg'];							// Textures applied to other screens in default base. These parameters act as randomized arrays. Put more file paths in the [ ] array as desired. Example:   ['media\images\billboards\billboard3.jpg','media\images\billboards\billboard4.jpg'];
 _infostand_1 = ['media\images\billboards\billboard5.jpg','media\images\billboards\billboard5.jpg'];							// Textures applied to info stands (V1) in default base. These parameters act as randomized arrays. Put more file paths in the [ ] array as desired. Example:   ['media\images\billboards\billboard3.jpg','media\images\billboards\billboard4.jpg'];

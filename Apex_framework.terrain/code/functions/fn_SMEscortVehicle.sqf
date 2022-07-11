@@ -389,7 +389,7 @@ for '_x' from 0 to 1 step 0 do {
 							if ((_vehiclePos distance2D _startPosition) > _safezone_radius) then {
 								_timeOffRoad = _timeOffRoad + 1;
 								if (_timeOffRoad > 7) then {
-									['sideChat',[EAST,'BLU'],'支线任务 - 载具遇到了地雷！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+									['sideChat',[EAST,'OPF'],'支线任务 - 载具遇到了地雷！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 									_hasHitLandmine = TRUE;
 								};
 							};

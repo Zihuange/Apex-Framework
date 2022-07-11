@@ -238,7 +238,7 @@
 	</Key>
 	<Key ID="STR_QS_Def_enemyInHQ">
 		<Chinesesimp>敌军正在占领指挥部</Chinesesimp>
-		<Original>CSAT is taking the HQ!</Original>
+		<Original>NATO is taking the HQ!</Original>
 	</Key>
 	<Key ID="STR_QS_Def_successChat">
 		<Chinesesimp>干得漂亮！ 确保LZ安全,等待友军空中单位,返回基地重新补给！</Chinesesimp>
@@ -262,11 +262,11 @@
 	</Key>
 	<Key ID="STR_QS_Enemy_csatCmdKIA">
 		<Chinesesimp>敌军指挥官已被击毙！</Chinesesimp>
-		<Original>CSAT Commander killed!</Original>
+		<Original>NATO Commander killed!</Original>
 	</Key>
 	<Key ID="STR_QS_Enemy_csatCmdKIAChat">
 		<Chinesesimp>%1 击毙了敌军指挥官！</Chinesesimp>
-		<Original>%1 has killed the CSAT Commander</Original>
+		<Original>%1 has killed the NATO Commander</Original>
 	</Key>
 	<Key ID="STR_QS_Mtr_mtrDestroyed">
 		<Chinesesimp>敌军迫击炮阵地已被摧毁</Chinesesimp>

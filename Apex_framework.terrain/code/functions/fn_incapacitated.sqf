@@ -155,7 +155,7 @@ if (!isNull _instigator) then {
 	if (_instigator isEqualTo _unit) then {
 		_incapacitatedText = format ['%1 重伤昏迷',_profileName];
 	} else {
-		if ((_instigator getUnitTrait 'QS_trait_sniper') || ((toLower (typeOf _instigator)) in ['o_sniper_f','o_ghillie_ard_f','o_ghillie_lsh_f','o_ghillie_sard_f','o_t_sniper_f','o_t_ghillie_tna_f'])) then {
+		if ((_instigator getUnitTrait 'QS_trait_sniper') || ((toLower (typeOf _instigator)) in ['b_sniper_f','b_ghillie_ard_f','b_ghillie_lsh_f','b_ghillie_sard_f','b_t_sniper_f','b_t_ghillie_tna_f'])) then {
 			_nameKiller = name _instigator;
 			_incapacitatedText = format ['%1 %2',_profileName,(selectRandom [(format ['被敌方狙击手( %1 )打倒。',_nameKiller]),(format ['被敌方狙击手( %1 )直接撂倒。',_nameKiller]),(format ['被狙击手( %1 )放了冷枪。',_nameKiller]),(format ['被敌军狙击手( %1 )远距离狙杀。',_nameKiller])])];
 		} else {

@@ -46,7 +46,7 @@ if (_type isEqualTo 0) exitWith {
 			{
 				playSound 'QS_SC_outro_win';
 				if (!isStreamFriendlyUIEnabled) then {
-					_text = parseText format ["<t align='center' size='2'>Mission Success</t><br/><br/><img size='7' image='%1'/><br/><br/>We dominated them soldiers, get ready for the next one!",(missionNamespace getVariable ['QS_missionConfig_textures_defaultFlag','a3\data_f\flags\flag_nato_co.paa'])];
+					_text = parseText format ["<t align='center' size='2'>Mission Success</t><br/><br/><img size='7' image='%1'/><br/><br/>We dominated them soldiers, get ready for the next one!",(missionNamespace getVariable ['QS_missionConfig_textures_defaultFlag','a3\data_f\flags\flag_csat_co.paa'])];
 					(missionNamespace getVariable 'QS_managed_hints') pushBack [2,FALSE,7.5,-1,_text,[],-1];
 				};
 			}

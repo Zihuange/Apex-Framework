@@ -135,6 +135,11 @@ if (_type isEqualTo 1) exitWith {
 	};
 	if (_vehicleType isEqualTo 'o_plane_cas_02_dynamicloadout_f') then {
 		//_vehicle call _preparePylons;
+		{
+			_vehicle addMagazineTurret _x;	
+		} forEach [
+			["500Rnd_Cannon_30mm_Plane_CAS_02_F",[-1]]
+		];
 		{ 
 			_vehicle setPylonLoadout _x; 
 		} forEach [
@@ -163,8 +168,8 @@ if (_type isEqualTo 1) exitWith {
 			[6,"PylonMissile_Bomb_KAB250_x1",TRUE],
 			[7,"PylonMissile_Missile_AA_R73_x1",TRUE],
 			[8,"PylonMissile_Missile_AA_R73_x1",TRUE],
-			[9,"PylonMissile_Missile_AA_R73_x1",TRUE],	/*/PylonMissile_Missile_AA_R77_x1/*/
-			[10,"PylonMissile_Missile_AA_R73_x1",TRUE],	/*/PylonMissile_Missile_AA_R77_x1/*/
+			[9,"PylonMissile_Missile_AA_R77_x1",TRUE],	/*/PylonMissile_Missile_AA_R77_x1/*/
+			[10,"PylonMissile_Missile_AA_R77_x1",TRUE],	/*/PylonMissile_Missile_AA_R77_x1/*/
 			[11,"PylonMissile_Missile_AA_R77_INT_x1",TRUE],
 			[12,"PylonMissile_Missile_AA_R77_INT_x1",TRUE],
 			[13,"PylonMissile_Bomb_KAB250_x1",TRUE]
@@ -192,6 +197,13 @@ if (_type isEqualTo 1) exitWith {
 	};
 	if (_vehicleType in ['o_heli_attack_02_dynamicloadout_f','o_heli_attack_02_dynamicloadout_black_f']) then {
 		//_vehicle call _preparePylons;
+		{
+			_vehicle addMagazineTurret _x;	
+		} forEach [
+			["250Rnd_30mm_APDS_shells_Tracer_Green",[0]],
+			["250Rnd_30mm_HE_shells_Tracer_Green",[0]],
+			["250Rnd_30mm_HE_shells_Tracer_Green",[0]]
+		];
 		{ 
 			_vehicle setPylonLoadout _x;
 		} forEach 	[

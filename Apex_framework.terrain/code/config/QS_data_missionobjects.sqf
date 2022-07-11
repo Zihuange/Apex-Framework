@@ -399,10 +399,10 @@ if (_worldName isEqualTo 'Altis') exitWith {
 			missionNamespace setVariable ['QS_arsenals',((missionNamespace getVariable 'QS_arsenals') + [(_this select 0)]),TRUE];
 		}],
 		["FlagPole_F","a3\structures_f\mil\flags\mast_f.p3d",[14656,16752.6,21.8868],[[0,1,0],[0,0,1]],0,1,0,0,[],{
-			(_this select 0) setFlagTexture (missionNamespace getVariable ['QS_missionConfig_textures_communityFlag','a3\data_f\flags\flag_nato_co.paa']);
+			(_this select 0) setFlagTexture (missionNamespace getVariable ['QS_missionConfig_textures_communityFlag','a3\data_f\flags\flag_csat_co.paa']);
 		}],
 		["FlagPole_F","a3\structures_f\mil\flags\mast_f.p3d",[14668.3,16788.5,21.8868],[[0.600961,-0.799278,0],[0,0,1]],0,1,0,0,[],{
-			(_this select 0) setFlagTexture (missionNamespace getVariable ['QS_missionConfig_textures_communityFlag','a3\data_f\flags\flag_nato_co.paa']);
+			(_this select 0) setFlagTexture (missionNamespace getVariable ['QS_missionConfig_textures_communityFlag','a3\data_f\flags\flag_csat_co.paa']);
 		}],
 		["Land_LampHalogen_F","a3\structures_f\civ\lamps\lamphalogen_f.p3d",[14605.7,16772.9,23.8922],[[-0.957925,-0.28702,0],[0,0,1]],0,1,0,0,[],{(missionNamespace getVariable 'QS_lamps') pushBack (_this select 0);}],
 		["Land_LampHalogen_F","a3\structures_f\civ\lamps\lamphalogen_f.p3d",[14606.5,16773.6,23.8922],[[-0.116459,-0.993195,0],[0,0,1]],0,1,0,0,[],{(missionNamespace getVariable 'QS_lamps') pushBack (_this select 0);}],
@@ -529,10 +529,10 @@ if (_worldName isEqualTo 'Tanoa') exitWith {
 		["Land_SatelliteAntenna_01_F","a3\props_f_exp\military\camps\satelliteantenna_01_f.p3d",[6929.88,7421.61,5.91977],[[0.891908,-0.448109,-0.0608109],[0.0633986,-0.00923933,0.997945]],0,0,2,1,[],{}],
 		["Land_TTowerSmall_2_F","a3\structures_f\ind\transmitter_tower\ttowersmall_2_f.p3d",[6912,7430.25,11.1387],[[0,1,0],[0,0,1]],0,0,2,1,[],{}],
 		["FlagPole_F","a3\structures_f\mil\flags\mast_f.p3d",[6938.05,7380.21,6.6368],[[-0.321516,-0.946904,0],[0,0,1]],0,1,0,0,[],{
-			(_this select 0) setFlagTexture (missionNamespace getVariable ['QS_missionConfig_textures_communityFlag','a3\data_f\flags\flag_nato_co.paa']);
+			(_this select 0) setFlagTexture (missionNamespace getVariable ['QS_missionConfig_textures_communityFlag','a3\data_f\flags\flag_csat_co.paa']);
 		}],
 		["FlagPole_F","a3\structures_f\mil\flags\mast_f.p3d",[6914.02,7422.88,6.6368],[[-0.321516,-0.946904,0],[0,0,1]],0,1,0,0,[],{
-			(_this select 0) setFlagTexture (missionNamespace getVariable ['QS_missionConfig_textures_communityFlag','a3\data_f\flags\flag_nato_co.paa']);
+			(_this select 0) setFlagTexture (missionNamespace getVariable ['QS_missionConfig_textures_communityFlag','a3\data_f\flags\flag_csat_co.paa']);
 		}],
 		["Land_HelipadSquare_F","a3\structures_f\mil\helipads\helipadsquare_f.p3d",[6982.85,7346.93,2.66],[[-0.985542,-0.169429,0],[0,0,1]],0,0,0,0,[],{}],
 		["Land_HelipadSquare_F","a3\structures_f\mil\helipads\helipadsquare_f.p3d",[6974.68,7393.39,2.66],[[-0.985542,-0.169429,0],[0,0,1]],0,0,0,0,[],{}],
@@ -874,10 +874,10 @@ if (_worldName isEqualTo 'Malden') exitWith {
 			missionNamespace setVariable ['QS_arsenals',((missionNamespace getVariable 'QS_arsenals') + [(_this select 0)]),TRUE];
 		}],
 		["FlagPole_F","a3\structures_f\mil\flags\mast_f.p3d",[8101.72,10134.8,33.5241],[[0,1,0],[0,0,1]],0,1,0,0,[],{
-			(_this select 0) setFlagTexture (missionNamespace getVariable ['QS_missionConfig_textures_communityFlag','a3\data_f\flags\flag_nato_co.paa']);
+			(_this select 0) setFlagTexture (missionNamespace getVariable ['QS_missionConfig_textures_communityFlag','a3\data_f\flags\flag_csat_co.paa']);
 		}],
 		["FlagPole_F","a3\structures_f\mil\flags\mast_f.p3d",[8123.6,10124.4,33.3987],[[0,1,0],[0,0,1]],0,1,0,0,[],{
-			(_this select 0) setFlagTexture (missionNamespace getVariable ['QS_missionConfig_textures_communityFlag','a3\data_f\flags\flag_nato_co.paa']);
+			(_this select 0) setFlagTexture (missionNamespace getVariable ['QS_missionConfig_textures_communityFlag','a3\data_f\flags\flag_csat_co.paa']);
 		}],
 		["Land_PedestrianCrossing_01_6m_4str_F","a3\structures_f_argo\decals\horizontal\pedestriancrossing_01_6m_4str_f.p3d",[8090.54,10124.9,29.5651],[[-0.0086324,-0.999963,0],[0,0,1]],0,0,2,0,[],{}],
 		["Land_InfoStand_V1_F","a3\structures_f\civ\infoboards\infostand_v1_f.p3d",[8102.17,10122.7,30.1219],[[-0.964404,-0.264428,0.00148912],[0.00154408,0,0.999999]],0,0,0,0,[],{
@@ -1031,10 +1031,10 @@ if (_worldName isEqualTo 'Malden') exitWith {
 if (_worldName isEqualTo 'Enoch') exitWith {
 	[
 		["FlagPole_F","a3\structures_f\mil\flags\mast_f.p3d",[4068.7,10214.2,72.1358],[[-0.706138,0.708074,0],[0,0,1]],0,1,0,0,[],{
-			(_this select 0) setFlagTexture (missionNamespace getVariable ['QS_missionConfig_textures_communityFlag','a3\data_f\flags\flag_nato_co.paa']);
+			(_this select 0) setFlagTexture (missionNamespace getVariable ['QS_missionConfig_textures_communityFlag','a3\data_f\flags\flag_csat_co.paa']);
 		}],
 		["FlagPole_F","a3\structures_f\mil\flags\mast_f.p3d",[4086,10231.8,72.1368],[[-0.706138,0.708074,0],[0,0,1]],0,1,0,0,[],{
-			(_this select 0) setFlagTexture (missionNamespace getVariable ['QS_missionConfig_textures_communityFlag','a3\data_f\flags\flag_nato_co.paa']);
+			(_this select 0) setFlagTexture (missionNamespace getVariable ['QS_missionConfig_textures_communityFlag','a3\data_f\flags\flag_csat_co.paa']);
 		}],
 		["Flag_RedCrystal_F","a3\structures_f\mil\flags\mast_f.p3d",[4032.36,10180.9,72.075],[[-0.73256,0.680703,0],[0,0,1]],0,1,0,0,[],{}],
 		["Land_HelipadSquare_F","a3\structures_f\mil\helipads\helipadsquare_f.p3d",[4032.29,10232.4,68.16],[[0.702466,-0.711717,0],[0,0,1]],0,0,2,0,[],{}],
