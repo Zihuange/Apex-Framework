@@ -298,6 +298,19 @@ QS_roles_data = [
 			{TRUE},
 			{(((player getVariable ['QS_unit_side',WEST]) isEqualTo WEST) || (missionNamespace getVariable ['QS_RSS_client_canSideSwitch',FALSE]))},
 			{}
+		],
+		[
+			'commander',
+			WEST,
+			1,		// Do not change this, only 1 Commander slot configured
+			1,		// Do not change this, only 1 Commander slot configured
+			-1,		// Do not change this, only 1 Commander slot configured
+			0,		// Do not change this, only 1 Commander slot configured
+			0,
+			0,
+			{((missionNamespace getVariable ['QS_missionConfig_Commander',0]) isNotEqualTo 0)},
+			{(((player getVariable ['QS_unit_side',WEST]) isEqualTo WEST) || (missionNamespace getVariable ['QS_RSS_client_canSideSwitch',FALSE]))},
+			{}
 		]
 	],
 	[],

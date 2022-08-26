@@ -49,7 +49,7 @@ _onCancelled = {
 	if (!((lifeState player) in ['HEALTHY','INJURED'])) then {
 		_c = TRUE;
 	};
-	if (!(cursorObject isEqualTo _cursorObject)) then {
+	if (cursorObject isNotEqualTo _cursorObject) then {
 		_c = TRUE;
 	};
 	if (!alive _cursorObject) then {

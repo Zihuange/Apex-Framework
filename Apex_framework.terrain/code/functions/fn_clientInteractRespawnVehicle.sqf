@@ -18,18 +18,18 @@ _t = cursorTarget;
 if (isNil {_t getVariable 'QS_RD_vehicleRespawnable'}) exitWith {};
 if (!(_t getVariable 'QS_RD_vehicleRespawnable')) exitWith {};
 if ((!(_t isKindOf 'LandVehicle')) && (!(_t isKindOf 'Air')) && (!(_t isKindOf 'Ship'))) exitWith {};
-if (!(((crew _t) findIf {(alive _x)}) isEqualTo -1)) exitWith {};
+if (((crew _t) findIf {(alive _x)}) isNotEqualTo -1) exitWith {};
 if (!simulationEnabled _t) exitWith {};
 if ((isMultiplayer) && (!(local _t))) exitWith {};
 if (((vectorMagnitude (velocity _t)) * 3.6) > 1) exitWith {};
 if (diag_tickTime < (player getVariable ['QS_RD_canRespawnVehicle',-1])) exitWith {};
-if (!((getVehicleCargo _t) isEqualTo [])) exitWith {
+if ((getVehicleCargo _t) isNotEqualTo []) exitWith {
 	50 cutText ['载具内有货物','PLAIN',0.3];
 };
 if (!isNull (getSlingLoad _t)) exitWith {
 	50 cutText ['载具仍吊载物品','PLAIN',0.3];
 };
-if (!((ropes _t) isEqualTo [])) exitWith {
+if ((ropes _t) isNotEqualTo []) exitWith {
 	50 cutText ['载具连接有绳索','PLAIN',0.3];
 };
 if (!(isNull (attachedTo _t))) exitWith {
@@ -49,7 +49,7 @@ if (_result) then {
 		if (!isNull (player getVariable 'QS_client_createdBoat')) then {
 			if (alive (player getVariable 'QS_client_createdBoat')) then {
 				if (_t isEqualTo (player getVariable 'QS_client_createdBoat')) then {
-					if (!((backpack player) isEqualTo '')) then {
+					if ((backpack player) isNotEqualTo '') then {
 						if (player canAdd ['ToolKit',1]) then {			//canAddItemToBackpack不能正确判断能否添加物品
 							player addItemToBackpack 'ToolKit';
 							50 cutText [(format ['%1 已放气，重新成为工具包',(getText (configFile >> 'CfgVehicles' >> (typeOf _t) >> 'displayName'))]),'PLAIN DOWN'];

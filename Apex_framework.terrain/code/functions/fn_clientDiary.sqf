@@ -6,7 +6,7 @@ Author:
 	
 Last Modified:
 
-	6/12/2017 A3 1.78 by Quiksilver
+	26/08/2022 A3 2.10 by Quiksilver
 
 Description:
 
@@ -179,8 +179,8 @@ player createDiaryRecord [
 player createDiaryRecord [
 	'QS_diary_leaderboards',
 	[
-		'关塔那摩',
-		'将战俘送入监狱获得分数。<br/><br/>倍数计算: n/a'
+		'Gitmo',
+		'Earn points by imprisoning enemies in "Gitmo".<br/><br/>Multipliers: n/a<br/><br/>Gitmo is marked on your map at base. See "Gitmo" diary tab for further details.'
 	]
 ];
 player createDiaryRecord [
@@ -200,8 +200,8 @@ player createDiaryRecord [
 player createDiaryRecord [
 	'QS_diary_leaderboards',
 	[
-		'耳科专家',
-		'通过从死掉的敌人士兵中收集耳朵获得分数。<br/><br/>倍数计算: n/a'
+		'Scalpers',
+		'Collect the Berets (hats) of enemy Commanders.<br/><br/>Multipliers: 1 for Black beret, 3 for Red beret'
 	]
 ];
 player createDiaryRecord [
@@ -221,8 +221,8 @@ player createDiaryRecord [
 player createDiaryRecord [
 	'QS_diary_leaderboards',
 	[
-		'基本信息',
-		format ['<t size="2">为保持游戏流畅性并降低网络负荷，排行榜并不是实时刷新的。服务器重启也可能导致数据丢失！<br/><br/>祝游戏愉快， %1！',profileName]
+		'General Info',
+		format ['<t size="2">Version 1.0</t><br/><br/>Leaderboards are reset each Monday at 00:01h.<br/><br/>To maintain performance and FPS, the leaderboards are not synchronized frequently, and only saved to database every 5-10 minutes. For this reason, points accumulated just prior to a server crash may not be saved (*sadface*).<br/><br/>Thanks for your patience, %1!',profileName]
 	]
 ];
 
@@ -244,6 +244,7 @@ player createDiaryRecord [
 		<br/>手势 - [Ctrl]+[Numpad x]
 		<br/>战术指示标 - %1
 		<br/>打开和关闭门 - [Space]
+		<br/>Raise and Lower sling ropes - [Page [Up/Down]]
 		',(actionKeysNames 'TacticalPing'),(actionKeysNames 'ReloadMagazine'),(actionKeysNames 'Diary'),(actionKeysNames 'Help'),(actionKeysNames 'GetOver'),(actionKeysNames 'Teamswitch')])
 	]
 ];
