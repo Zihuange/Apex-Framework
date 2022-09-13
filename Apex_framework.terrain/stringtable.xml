@@ -58,9 +58,7 @@ Notes:
 			[X] "STR_QS_Utility_001"
 	
 _____________________________________________________________-->
-
 <Project name="Apex Framework">
-
 	<Container name="QS_xml_userActions">
 		<Key ID="STR_QS_Interact_001">
 			<Original>Drag</Original>
@@ -345,7 +343,6 @@ _____________________________________________________________-->
 			<Original>Cancel turret actions</Original>
 			<Chinesesimp>取消炮塔保险菜单</Chinesesimp>
 		</Key>
-		
 		<Key ID="STR_QS_Interact_072">
 			<Original>0 - Close Menu</Original>
 			<Chinesesimp>0 - 关闭菜单</Chinesesimp>
@@ -410,7 +407,6 @@ _____________________________________________________________-->
 			<Original>15 - Dev Terminal</Original>
 			<Chinesesimp>15 - 开发控制台</Chinesesimp>
 		</Key>
-		
 		<Key ID="STR_QS_Interact_088">
 			<Original>Suspend side missions</Original>
 			<Chinesesimp>暂停支线任务</Chinesesimp>
@@ -524,9 +520,7 @@ _____________________________________________________________-->
 			<Chinesesimp>捡起拖拽绳</Chinesesimp>
 		</Key>
 	</Container>
-
 	<Container name="QS_xml_onScreenText">
-	
 		<Key ID="STR_QS_Text_000">
 			<Original>Busy</Original>
 			<Chinesesimp>忙碌</Chinesesimp>
@@ -650,7 +644,7 @@ _____________________________________________________________-->
 			<Original>Activating air defense</Original>
 		</Key>
 		<Key ID="STR_QS_Text_032">
-			<Original>Use General channel for general voice communications. Press [Home] >> [Comm-Link] >> [Radio Management] to subscribe</Original>
+			<Original>Use General channel for general voice communications. Press [Home] &gt;&gt; [Comm-Link] &gt;&gt; [Radio Management] to subscribe</Original>
 			<Chinesesimp>想要使用常规频道进行交流，请按 [Home] &gt;&gt; [Comm-Link] &gt;&gt; [无线电管理] 来兼听频道。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_033">
@@ -810,7 +804,7 @@ _____________________________________________________________-->
 			<Chinesesimp>移动时不能这么做</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_072">
-			<Original>Please bind these actions to keys. [Esc]>>[Configure]>>[Controls]>>[Keyboard]>>[Common]>>[Panels]. Default [ and ] keys</Original>
+			<Original>Please bind these actions to keys. [Esc]&gt;&gt;[Configure]&gt;&gt;[Controls]&gt;&gt;[Keyboard]&gt;&gt;[Common]&gt;&gt;[Panels]. Default [ and ] keys</Original>
 			<Chinesesimp>请将这些动作绑定按键。 [Esc]&gt;&gt;[配置]&gt;&gt;[控件]&gt;&gt;[按键]&gt;&gt;[一般]&gt;&gt;[面板] 默认 [ and ] 键</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_073">
@@ -1560,9 +1554,7 @@ _____________________________________________________________-->
 			<Original>minutes</Original>
 		</Key>
 	</Container>
-
 	<Container name="QS_xml_hints">
-	
 		<Key ID="STR_QS_Hints_000">
 			<Original>TEXT</Original>
 		</Key>
@@ -2094,9 +2086,7 @@ _____________________________________________________________-->
 			<Chinesesimp>百分之</Chinesesimp>
 		</Key>
 	</Container>
-
 	<Container name="QS_xml_chatMessages">
-
 		<Key ID="STR_QS_Chat_001">
 			<Original>Thermal scans are picking up those enemy Artillery firing! Heads down!</Original>
 			<Chinesesimp>热成像显示敌军155mm火炮正在开火，快隐蔽！</Chinesesimp>
@@ -2654,9 +2644,7 @@ _____________________________________________________________-->
 			<Original>destroyed an enemy tunnel entrance</Original>
 		</Key>
 	</Container>
-	
 	<Container name="QS_xml_notifications">
-	
 		<Key ID="STR_QS_Notif_001">
 			<Original>Radio tower destroyed</Original>
 		</Key>
@@ -3235,9 +3223,7 @@ _____________________________________________________________-->
 			<Chinesesimp>前线行动基地(FOB)</Chinesesimp>
 		</Key>
 	</Container>
-
 	<Container name="QS_xml_tasks">
-
 		<Key ID="STR_QS_Task_000">
 			<Original>Seize the enemy headquarters to degrade enemy coordination. This objective is completed when the enemy commander dies. He is usually located in the immediate vicinity of the HQ. This objective is not a requirement in order to finish the mission, however may be useful.</Original>
 			<Chinesesimp>找到并占领敌军的指挥部来打击敌军的指挥系统。 通过击杀敌军指挥官来完成这个任务。 指挥官通常位于敌人的指挥部附近。 这个目标不是必要任务,但对我们的作战有所帮助!</Chinesesimp>
@@ -3701,9 +3687,7 @@ _____________________________________________________________-->
 			<Chinesesimp>夺取设备箱</Chinesesimp>
 		</Key>
 	</Container>
-
 	<Container name="QS_xml_markerText">
-	
 		<Key ID="STR_QS_Marker_000">
 			<Original>TEXT</Original>
 		</Key>
@@ -3956,9 +3940,7 @@ _____________________________________________________________-->
 			<Original>Destroyer</Original>
 		</Key>
 	</Container>
-	
 	<Container name="QS_xml_diary">
-		
 		<Key ID="STR_QS_Diary_001">
 			<Original>Key Bindings</Original>
 			<Chinesesimp>按键绑定</Chinesesimp>
@@ -4090,7 +4072,7 @@ _____________________________________________________________-->
 			<Original>A number of custom radio channels are available for use in-game.</Original>
 		</Key>
 		<Key ID="STR_QS_Diary_037">
-			<Original>To access: Press [Home] >> [Comm-Link] >> [Radio Management]</Original>
+			<Original>To access: Press [Home] &gt;&gt; [Comm-Link] &gt;&gt; [Radio Management]</Original>
 		</Key>
 		<Key ID="STR_QS_Diary_038">
 			<Original>A Radio inventory item is required to transmit voice communications.</Original>
@@ -4469,9 +4451,7 @@ _____________________________________________________________-->
 			<Chinesesimp>开发人员</Chinesesimp>
 		</Key>
 	</Container>
-
 	<Container name="QS_xml_menus">
-
 		<Key ID="STR_QS_Menu_000">
 			<Original>TEXT</Original>
 		</Key>
@@ -5083,34 +5063,41 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Menu_165">
 			<Original>Deploying camo net</Original>
+			<Chinesesimp>正在部署伪装网</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_166">
 			<Original>Removing camo net</Original>
+			<Chinesesimp>正在移除伪装网</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_167">
 			<Original>Picking up</Original>
+			<Chinesesimp>正在背起……</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_168">
 			<Original>Examining</Original>
 		</Key>
 		<Key ID="STR_QS_Menu_169">
 			<Original>Reporting Target</Original>
+			<Chinesesimp>正在标记目标……</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_170">
 			<Original>Mounting slat armor</Original>
+			<Chinesesimp>正在安装格栅装甲</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_171">
 			<Original>Removing slat armor</Original>
+			<Chinesesimp>正在卸下格栅装甲</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_172">
 			<Original>Capturing</Original>
+			<Chinesesimp>俘虏单位</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_173">
 			<Original>Servicing</Original>
 		</Key>
-		
 		<Key ID="STR_QS_Menu_174">
 			<Original>Transporters</Original>
+			<Chinesesimp>运输员</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_175">
 			<Original>Transport Pilots</Original>
@@ -5120,6 +5107,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Menu_177">
 			<Original>Revivalists</Original>
+			<Chinesesimp>医疗兵</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_178">
 			<Original>Medics</Original>
@@ -5138,12 +5126,14 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Menu_183">
 			<Original>Gold Diggers</Original>
+			<Chinesesimp>牙医</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_184">
 			<Original>Gold Tooth collectors</Original>
 		</Key>
 		<Key ID="STR_QS_Menu_185">
 			<Original>Tower Rangers</Original>
+			<Chinesesimp>电塔游骑兵</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_186">
 			<Original>Radio tower destroyers</Original>
@@ -5153,6 +5143,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Menu_188">
 			<Original>Gitmo</Original>
+			<Chinesesimp>关塔那摩</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_189">
 			<Original>Enemy Capture</Original>
@@ -5176,9 +5167,7 @@ _____________________________________________________________-->
 			<Original>Sniper Accuracy</Original>
 		</Key>
 	</Container>
-
 	<Container name="QS_xml_roles">
-
 		<Key ID="STR_QS_Role_000">
 			<Original>Unknown Role</Original>
 			<Chinesesimp>未知兵种</Chinesesimp>
@@ -5293,16 +5282,17 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Role_028">
 			<Original>Whitelisted</Original>
+			<Chinesesimp>白名单保留</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Role_029">
 			<Original>Change player role</Original>
 		</Key>
 	</Container>
-
 	<Container name="QS_xml_utilityText">
 		<Key ID="STR_QS_Utility_000">
 			<Original>Server Restart</Original>
-		</Key>	
+			<Chinesesimp>服务器重启</Chinesesimp>
+		</Key>
 		<Key ID="STR_QS_Utility_001">
 			<Original>left</Original>
 			<Chinesesimp>剩下</Chinesesimp>
@@ -5348,48 +5338,63 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Utility_012">
 			<Original>Annex</Original>
+			<Chinesesimp>兼并</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_013">
 			<Original>Trenchfoot</Original>
+			<Chinesesimp>海沟足</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_014">
 			<Original>Forlorn Hope</Original>
+			<Chinesesimp>敢死队</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_015">
 			<Original>Nakamoto</Original>
+			<Chinesesimp>中本</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_016">
 			<Original>Alamo</Original>
+			<Chinesesimp>阿拉莫</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_017">
 			<Original>Lonestar</Original>
+			<Chinesesimp>孤星</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_018">
 			<Original>Kokoda</Original>
+			<Chinesesimp>科科达</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_019">
 			<Original>Singapore</Original>
+			<Chinesesimp>新加坡</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_020">
 			<Original>Fiji</Original>
+			<Chinesesimp>斐济</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_021">
 			<Original>Guadalcanal</Original>
+			<Chinesesimp>瓜达尔卡纳尔</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_022">
 			<Original>Dragon</Original>
+			<Chinesesimp>龙</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_023">
 			<Original>Rabbit</Original>
+			<Chinesesimp>兔子</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_024">
 			<Original>Oslo</Original>
+			<Chinesesimp>奥斯陆</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_025">
 			<Original>Paris</Original>
+			<Chinesesimp>巴黎</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_026">
 			<Original>Kyiv</Original>
+			<Chinesesimp>基辅</Chinesesimp>
 		</Key>
 	</Container>
 	<Container name="QS_xml_dialogs">
