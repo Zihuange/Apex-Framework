@@ -82,8 +82,8 @@ if (_case isEqualTo 1) then {
 		_entityName = _params # 1;
 		_taskID = format ['QS_DYNTASK_%1_%2',_type,(round (random 10000))];
 		(missionNamespace getVariable ['QS_dynTask_medevac_array',[]]) pushBack _entity;
-		[_entityName,{50 cutText [(format ['%1 呼叫了医疗撤离',_this]),'PLAIN DOWN',0.5];}] remoteExec ['call',(allPlayers select {(_x getUnitTrait 'QS_trait_pilot')}),FALSE];
-		private _description = format ['医疗撤离 %1。<br/><br/> 把 %1 带到基地的医疗设施。<br/><br/>这个伤员无法被战场救生员治疗！<br/><br/>如果任务无法正常完成，请让伤员在医疗设施内等待约30秒。',_entityName];
+		[_entityName,{50 cutText [(format ['%1 %2',_this,localize 'STR_QS_Text_207']),'PLAIN DOWN',0.5];}] remoteExec ['call',(allPlayers select {(_x getUnitTrait 'QS_trait_pilot')}),FALSE];
+		private _description = format ['Medevac %1.<br/><br/> Bring %1 to the medical facility at base. The location is marked on your map as Medevac HQ.<br/><br/>This person cannot be revived by others.<br/><br/>If the task does not complete, have the patient wait at the medical facility for approximately 30 seconds.',_entityName];
 		_array = [
 			_taskID,
 			'ADD',

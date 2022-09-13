@@ -13,7 +13,7 @@ Description:
 	-
 ____________________________________________________________________________/*/
 
-['GRID_IG_UPDATE',['防御任务','防御HQ']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+['GRID_IG_UPDATE',[localize 'STR_QS_Notif_003',localize 'STR_QS_Notif_004']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 missionNamespace setVariable ['QS_grid_defend_active',TRUE,TRUE];
 missionNamespace setVariable ['QS_grid_defend_AIinit',TRUE,TRUE];
 missionNamespace setVariable ['QS_system_restartEnabled',FALSE,FALSE];
@@ -46,8 +46,8 @@ _taskType = 'defend';
 	_taskID,
 	TRUE,
 	[
-		'武装分子正在准备进行反击，企图夺回他们的指挥部。不惜一切代价阻止他们！',
-		'防御HQ',
+		localize 'STR_QS_Task_041',
+		localize 'STR_QS_Task_011',
 		''
 	],
 	[(_centerPos # 0),(_centerPos # 1),10],
@@ -87,11 +87,11 @@ for '_x' from 0 to 1 step 0 do {
 	};
 	if (_sectorControl <= 0) exitWith {
 		//comment 'enemy wins';
-		['GRID_IG_UPDATE',['防御任务','防御任务失败！']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['GRID_IG_UPDATE',[localize 'STR_QS_Notif_003',localize 'STR_QS_Notif_006']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 	};
 	if (_serverTime > _endTime) exitWith {
 		//comment 'friends win';
-		['GRID_IG_UPDATE',['防御任务','防御任务成功！']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['GRID_IG_UPDATE',[localize 'STR_QS_Notif_003',localize 'STR_QS_Notif_005']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 	};
 	uiSleep 2;
 };

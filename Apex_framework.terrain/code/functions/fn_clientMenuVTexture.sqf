@@ -79,7 +79,7 @@ if (_type isEqualTo 'Select') then {
 				};
 			};
 			player setVariable ['QS_ClientVTexture',[objNull,(getPlayerUID player),[],(time + 5)],TRUE];
-			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,7.5,-1,'载具皮肤已重置，现在你可以为另一个载具选择皮肤了。 同时只能为一个载具设置皮肤！',[],-1,TRUE,'Vehicle Skin',TRUE];
+			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,7.5,-1,localize 'STR_QS_Hints_081',[],-1,TRUE,localize 'STR_QS_Hints_082',TRUE];
 		} else {
 			if (_supporterAccess <= _supporterLevel) then {
 				if ((typeOf _v) in _vehicleTypes) then {
@@ -103,32 +103,31 @@ if (_type isEqualTo 'Select') then {
 									} forEach _textures;
 									player setVariable ['QS_ClientVTexture',[_v,(getPlayerUID player),(getObjectTextures _v),(time + 2)],TRUE];
 									_v setVariable ['QS_ClientVTexture_owner',(getPlayerUID player),TRUE];
-									_text = format ['载具皮肤已设置为：%1<br/>作者：%2',_displayName,_author];
-									(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,7.5,-1,_text,[],-1,TRUE,'Vehicle Skin',FALSE];
+									_text = format ['%3 %1<br/>%4 %2',_displayName,_author,localize 'STR_QS_Hints_083',localize 'STR_QS_Hints_084'];
+									(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,7.5,-1,_text,[],-1,TRUE,localize 'STR_QS_Hints_082',FALSE];
 								} else {
-									(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,7.5,-1,'请稍等……每次载具皮肤设置必须间隔至少2秒！',[],-1,TRUE,'Vehicle Skin',FALSE];
+									(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,7.5,-1,localize 'STR_QS_Hints_085',[],-1,TRUE,localize 'STR_QS_Hints_082',FALSE];
 								};
 							} else {
-								(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,7.5,-1,'你必须在基地范围内选择载具皮肤！',[],-1,TRUE,'Vehicle Skin',FALSE];
+								(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,7.5,-1,localize 'STR_QS_Hints_086',[],-1,TRUE,localize 'STR_QS_Hints_082',FALSE];
 							};
 						} else {
-							_text = format ['你已经给在坐标 %2 的 %1 设置了皮肤',(getText (configFile >> 'CfgVehicles' >> (typeOf ((player getVariable 'QS_ClientVTexture') # 0)) >> 'displayName')),(mapGridPosition (getPosWorld ((player getVariable 'QS_ClientVTexture') # 0)))];
-							(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,10,-1,_text,[],-1,TRUE,'Vehicle Skin',FALSE];
+							_text = format ['%3 %1 %4 %2.',(getText (configFile >> 'CfgVehicles' >> (typeOf ((player getVariable 'QS_ClientVTexture') # 0)) >> 'displayName')),(mapGridPosition (getPosWorld ((player getVariable 'QS_ClientVTexture') # 0))),localize 'STR_QS_Hints_087',localize 'STR_QS_Hints_060'];
+							(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,10,-1,_text,[],-1,TRUE,localize 'STR_QS_Hints_082',FALSE];
 						};
 					} else {
-						(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,7.5,-1,'你必须是载具的驾驶员/指挥官/拥有者',[],-1,TRUE,'Vehicle Skin',FALSE];
+						(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,7.5,-1,localize 'STR_QS_Hints_088',[],-1,TRUE,localize 'STR_QS_Hints_082',FALSE];
 					};
 				} else {
-					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,12,-1,'所选皮肤与载具种类无匹配，无法加载皮肤！',[],-1,TRUE,'Vehicle Skin',TRUE];
+					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,12,-1,localize 'STR_QS_Hints_089',[],-1,TRUE,localize 'STR_QS_Hints_082',TRUE];
 				};
 			} else {
-				_text = format ['Supporter level required: %1<br/>Your supporter level: %2<br/>Vehicle Texture not set.',_supporterAccess,_supporterLevel];
-				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,12,-1,_text,[],-1,TRUE,'Vehicle Skin',FALSE];
+				_text = format ['%3 %1<br/>%4 %2<br/>%5',_supporterAccess,_supporterLevel,localize 'STR_QS_Hints_078',localize 'STR_QS_Hints_079',localize 'STR_QS_Hints_090'];
+				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,12,-1,_text,[],-1,TRUE,localize 'STR_QS_Hints_082',FALSE];
 			};
 		};
 	};
 };
-
 if (_type isEqualTo 'Back') then {
 	closeDialog 2;
 	0 spawn {
@@ -140,7 +139,6 @@ if (_type isEqualTo 'Back') then {
 		createDialog 'QS_RD_client_dialog_menu_supporters';
 	};
 };
-
 if (_type isEqualTo 'onUnload') then {
 	uiNamespace setVariable ['QS_ui_mousePosition',getMousePosition];
 };

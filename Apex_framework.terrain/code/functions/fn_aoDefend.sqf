@@ -58,21 +58,21 @@ diag_log 'Defend AO 0.5';
 	['QS_system_restartEnabled',FALSE,FALSE]
 ];
 _defendMessages = [
-	(localize 'STR_QS_Def_defMsg0'),
-	(localize 'STR_QS_Def_defMsg1'),
-	(localize 'STR_QS_Def_defMsg2')
+	localize 'STR_QS_Chat_010',
+	localize 'STR_QS_Chat_011',
+	localize 'STR_QS_Chat_012'
 ];
-['DEFEND_HQ',[(localize 'STR_QS_Def_defend'),(localize 'STR_QS_Def_defendHQ')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+['DEFEND_HQ',[localize 'STR_QS_Notif_003',localize 'STR_QS_Notif_004']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 {
 	_x setMarkerAlpha 0.75;
 	_x setMarkerPos (missionNamespace getVariable 'QS_HQpos');
 } forEach ['QS_marker_aoCircle','QS_marker_aoMarker'];
-'QS_marker_aoMarker' setMarkerText format[(localize 'STR_QS_Def_aoMarker'),(toString [32,32,32]),(missionNamespace getVariable 'QS_aoDisplayName')];
+'QS_marker_aoMarker' setMarkerText format['%1 %3 %2 %4',(toString [32,32,32]),(missionNamespace getVariable 'QS_aoDisplayName'),localize 'STR_QS_Marker_002',localize 'STR_QS_Marker_003'];
 _centerPos = missionNamespace getVariable 'QS_HQpos';
 _centerPos params ['_centerPosX','_centerPosY','_centerPosZ'];
 private _allPlayers = allPlayers;
 _taskID = 'QS_IA_TASK_DEFENDHQ';
-[_taskID,TRUE,[(localize 'STR_QS_Def_taskDesc'),(localize 'STR_QS_Def_taskTitle'),(localize 'STR_QS_Def_taskMarker')],_centerPos,'AUTOASSIGNED',5,FALSE,TRUE,'Defend',TRUE] call (missionNamespace getVariable 'BIS_fnc_setTask');
+[_taskID,TRUE,[localize 'STR_QS_Task_010',localize 'STR_QS_Task_011',localize 'STR_QS_Task_011'],_centerPos,'AUTOASSIGNED',5,FALSE,TRUE,'Defend',TRUE] call (missionNamespace getVariable 'BIS_fnc_setTask');
 _timeNow = time;
 _serverTime = serverTime;
 _tickTimeNow = diag_tickTime;
@@ -488,7 +488,7 @@ private _groupLeader = objNull;
 missionNamespace setVariable ['QS_defend_blockTimeout',FALSE,FALSE]; //missionNamespace setVariable ['QS_defend_blockTimeout',((random 1) > 0.95),FALSE];
 private _extended = FALSE;
 private _blockMessageShown = FALSE;
-private _blockMessage = (localize 'STR_QS_Def_blockMsg');
+private _blockMessage = localize 'STR_QS_Chat_015';
 missionNamespace setVariable ['QS_AI_targetsKnowledge_suspend',TRUE,FALSE];
 //comment 'Functions preload';
 _fn_serverDetector = missionNamespace getVariable 'QS_fnc_serverDetector';
@@ -1437,9 +1437,9 @@ for '_x' from 0 to 1 step 0 do {
 		if (serverTime > _durationAlmostOver) then {
 			_durationAlmostOverHint = TRUE;
 			if ((random 1) > 0.5) then {
-				_text = (localize 'STR_QS_Def_almostOver0');
+				_text = localize 'STR_QS_Chat_013';
 			} else {
-				_text = (localize 'STR_QS_Def_almostOver1');
+				_text = localize 'STR_QS_Chat_014';
 			};
 			['sideChat',[WEST,'HQ'],_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		};
@@ -1475,7 +1475,7 @@ for '_x' from 0 to 1 step 0 do {
 				if (_enemyInHQCount >= 5) then {
 					//comment 'There are more than 5 enemies in HQ';
 					if (_sectorControlTicker isEqualTo 1) then {
-						['sideChat',[WEST,'HQ'],(localize 'STR_QS_Def_enemyInHQ')] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+						['sideChat',[WEST,'HQ'],localize 'STR_QS_Chat_016'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 					};
 					if (_sectorControlTicker > _sectorControlThreshold) then {
 						_exitFail = TRUE;
@@ -1483,7 +1483,7 @@ for '_x' from 0 to 1 step 0 do {
 					if (!(_exitFail)) then {
 						_sectorControlTicker = _sectorControlTicker + 1;
 						if ((round((_sectorControlTicker / _sectorControlThreshold) * 100)) >= 100) then {
-							//['systemChat','HQ is 100 percent taken!'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+							//['systemChat',localize 'STR_QS_Chat_079'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 						};
 					};
 				} else {
@@ -1502,8 +1502,8 @@ for '_x' from 0 to 1 step 0 do {
 	};
 	
 	if (_exitSuccess) exitWith {
-		['sideChat',[WEST,'HQ'],(localize 'STR_QS_Def_successChat')] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
-		['DEFEND_SUCCESS',[(localize 'STR_QS_Def_defendHQ'),(localize 'STR_QS_Def_defendCompleted')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['sideChat',[WEST,'HQ'],localize 'STR_QS_Chat_017'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['DEFEND_SUCCESS',[localize 'STR_QS_Notif_003',localize 'STR_QS_Notif_005']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		['QS_IA_TASK_DEFENDHQ','SUCCEEDED',FALSE] call (missionNamespace getVariable 'BIS_fnc_taskSetState');
 		missionProfileNamespace setVariable [
 			'QS_defendHQ_statistics',
@@ -1514,8 +1514,8 @@ for '_x' from 0 to 1 step 0 do {
 		];
 	};
 	if (_exitFail) exitWith {
-		['sideChat',[WEST,'HQ'],(localize 'STR_QS_Def_failedChat')] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
-		['DEFEND_FAIL',[(localize 'STR_QS_Def_defend'),(localize 'STR_QS_Def_defendFailed')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['sideChat',[WEST,'HQ'],localize 'STR_QS_Chat_018'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['DEFEND_FAIL',[localize 'STR_QS_Notif_003',localize 'STR_QS_Notif_006']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		['QS_IA_TASK_DEFENDHQ','FAILED',FALSE] call (missionNamespace getVariable 'BIS_fnc_taskSetState');
 		missionProfileNamespace setVariable [
 			'QS_defendHQ_statistics',

@@ -6,7 +6,7 @@ Author:
 	
 Last Modified:
 
-	16/05/2018 A3 1.82 by Quiksilver
+	9/09/2022 A3 2.10 by Quiksilver
 	
 Description:
 
@@ -22,39 +22,39 @@ if (
 	{(!isNull (objectParent player))}
 ) exitWith {};
 if (_t getVariable ['QS_revive_disable',FALSE]) exitWith {
-	50 cutText [(format ['%1 已呼叫医疗撤离，无法被治疗！',(name _t)]),'PLAIN',0.5];
+	50 cutText [(format ['%1 %2',(name _t),localize 'STR_QS_Text_129']),'PLAIN',0.5];
 };
 if (_t getVariable ['QS_unit_needsStabilise',FALSE]) exitWith {
-	50 cutText ['目标需要先稳定伤势','PLAIN',0.3];
+	50 cutText [localize 'STR_QS_Text_088','PLAIN',0.3];
 };
-private _medi = ['Medikit'];
-private _fak = ['FirstAidKit'];
-private _itemsPlayer = items player;
-private _itemsIncapacitated = items _t;
 private _val = 1;
 if ((player getVariable 'QS_stamina_multiplier') # 0) then {
 	_val = 1.25;
 };
-private _playerHasMedikit = ((_medi findIf {(_x in _itemsPlayer)}) isNotEqualTo -1);
-if (!(_playerHasMedikit)) exitWith {
-	50 cutText ['无法治疗！你需要携带医疗包和急救包！','PLAIN DOWN'];	
+private _requiredMedikit = (getMissionConfigValue ['ReviveRequiredItems',2]) > 0;
+private _requiredFirstAidKit = (getMissionConfigValue ['ReviveRequiredItems',2]) > 1;
+private _firstAidKitConsumed = (getMissionConfigValue ['ReviveRequiredItemsFakConsumed',1]) > 0;
+private _playerHasMedikit = ((uniqueUnitItems player) getOrDefault ['Medikit',0]) > 0;
+private _incapacitatedHasMedikit = ((uniqueUnitItems _t) getOrDefault ['Medikit',0]) > 0;
+private _playerHasFAK = ((uniqueUnitItems player) getOrDefault ['FirstAidKit',0]) > 0;
+private _incapacitatedHasFAK = ((uniqueUnitItems _t) getOrDefault ['FirstAidKit',0]) > 0;
+if (
+	_requiredMedikit &&
+	((!(_playerHasMedikit)) && (!(_incapacitatedHasMedikit)))
+) exitWith {
+	50 cutText [localize 'STR_QS_Text_130','PLAIN DOWN'];	
 };
-private _playerHasFAK = ((_fak findIf {(_x in _itemsPlayer)}) isNotEqualTo -1);
-private _incapacitatedHasFAK = ((_fak findIf {(_x in _itemsIncapacitated)}) isNotEqualTo -1);
-if ((!(_playerHasFAK)) && (!(_incapacitatedHasFAK))) exitWith {
-	50 cutText ['无法治疗！你需要携带医疗包和急救包！','PLAIN DOWN'];
+if (
+	_requiredFirstAidKit &&
+	((!(_playerHasFAK)) && (!(_incapacitatedHasFAK)))
+) exitWith {
+	50 cutText [localize 'STR_QS_Text_130','PLAIN DOWN'];
 };
 if (isPlayer _t) then {
-	private _text = format ['正在被 %1 治疗',profileName];
+	private _text = format ['%2 %1',profileName,localize 'STR_QS_Text_262'];
 	[63,[5,[_text,'PLAIN',0.5]]] remoteExec ['QS_fnc_remoteExec',_t,FALSE];
 };
 private _time = diag_tickTime + 5.5;
-_fak = ['FirstAidKit'];
-if (_incapacitatedHasFAK) then {
-	_t removeItem 'FirstAidKit';
-} else {
-	player removeItem 'FirstAidKit';
-};
 private _currentWeapon = currentWeapon player;
 private _stance = stance player;
 player setVariable ['QS_client_currentAnim',(animationState player),FALSE];
@@ -126,7 +126,7 @@ if (diag_tickTime > _safetyTimeout) exitWith {};
 if (_stance isEqualTo 'PRONE') then {
 	_cancelEnabled = TRUE;
 	_action_cancel = player addAction [
-		'Cancel',
+		localize 'STR_QS_Interact_065',
 		{
 			player removeAction (_this # 2);
 			player setVariable ['QS_client_animCancel',TRUE,FALSE];
@@ -152,7 +152,7 @@ waitUntil {
 };
 if (player getVariable 'QS_client_animCancel') exitWith {
 	player setVariable ['QS_client_animCancel',FALSE,FALSE];
-	50 cutText ['已取消','PLAIN DOWN',0.333];
+	50 cutText [localize 'STR_QS_Text_128','PLAIN DOWN',0.333];
 };
 if (_stance isEqualTo 'PRONE') then {
 	private _time2 = diag_tickTime + 0.5;
@@ -178,13 +178,13 @@ if (_stance isEqualTo 'PRONE') then {
 };
 if (player getVariable 'QS_client_animCancel') exitWith {
 	player setVariable ['QS_client_animCancel',FALSE,FALSE];
-	50 cutText ['已取消','PLAIN DOWN',0.333];
+	50 cutText [localize 'STR_QS_Text_128','PLAIN DOWN',0.333];
 };
 if (_cancelEnabled) then {
 	player removeAction _action_cancel;
 };
 if (_exit) exitWith {
-	50 cutText ['已取消治疗','PLAIN DOWN',0.25];
+	50 cutText [localize 'STR_QS_Text_128','PLAIN DOWN',0.25];
 };
 if (missionNamespace getVariable ['QS_medical_garbage_enabled',FALSE]) then {
 	if (((getPosASL player) # 2) > 0.1) then {
@@ -209,6 +209,7 @@ if (!(player getVariable ['QS_client_animCancel',FALSE])) then {
 					if (isNull (attachedTo _t)) then {
 						_t setVariable ['QS_revive_healer',profileName,TRUE];
 						if ((lifeState _t) isEqualTo 'INCAPACITATED') then {
+						
 							if (local _t) then {
 								_t setUnconscious FALSE;
 								_t setCaptive FALSE;
@@ -216,9 +217,16 @@ if (!(player getVariable ['QS_client_animCancel',FALSE])) then {
 								[68,_t,FALSE,FALSE] remoteExec ['QS_fnc_remoteExec',_t,FALSE];
 							};
 							_t allowDamage TRUE;
+							if (_firstAidKitConsumed) then {
+								if (_incapacitatedHasFAK) then {
+									_t removeItem 'FirstAidKit';
+								} else {
+									player removeItem 'FirstAidKit';
+								};
+							};
 						};
 						if (isPlayer _t) then {
-							_text = format ['已被 %1 治疗',profileName];
+							_text = format ['%2 %1',profileName,localize 'STR_QS_Text_263'];
 							[63,[5,[_text,'PLAIN DOWN',0.75]]] remoteExec ['QS_fnc_remoteExec',_t,FALSE];
 						};
 						if (isNil {player getVariable 'QS_revive_lastPatient'}) then {
@@ -234,10 +242,10 @@ if (!(player getVariable ['QS_client_animCancel',FALSE])) then {
 							};
 						};
 					} else {
-						50 cutText ['治疗失败！可能有其他人在和伤员互动','PLAIN DOWN',0.3];
+						50 cutText [localize 'STR_QS_Text_131','PLAIN DOWN',0.3];
 					};
 				} else {
-					50 cutText ['治疗失败！','PLAIN DOWN',0.3];
+					50 cutText [localize 'STR_QS_Text_131','PLAIN DOWN',0.3];
 				};
 			};
 		};

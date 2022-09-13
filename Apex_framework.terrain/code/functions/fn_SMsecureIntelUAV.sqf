@@ -102,19 +102,23 @@ _signalPulseCheckDelay = time + 20;
 _endTimeBroadcastDelay = time + 30;
 _foundPos = FALSE;
 _fuzzyPos = [((_safePos # 0) - 300) + (random 600),((_safePos # 1) - 300) + (random 600),0];
+'QS_marker_sideMarker' setMarkerTextLocal (format ['%1 %2',(toString [32,32,32]),localize 'STR_QS_Marker_042']);
 {
 	_x setMarkerPosLocal _fuzzyPos;
 	_x setMarkerAlpha 1;
 } count ['QS_marker_sideMarker','QS_marker_sideCircle'];	
-'QS_marker_sideMarker' setMarkerText (format ['%1获取情报(UAV)',(toString [32,32,32])]);
-
 [
 	'QS_IA_TASK_SM_0',
 	TRUE,
 	[
-		(format ['敌方的无人机在 %1 附近水域坠毁。 这是一个获取敌军无人机系统运作数据的绝佳机会，潜入水下获取无人机的情报。 这项任务在水下进行，确保你携带了呼吸器、潜水护目镜和水下战斗步枪SDAR！ 我们不知道无人机残骸的准确位置，但GPS能够探测到UAV残骸的信号。 这项任务时间有限！',worldName]),
-		'获取情报(UAV)',
-		'获取情报(UAV)'
+		(format [
+			'%2 %1. %3',
+			worldName,
+			localize 'STR_QS_Task_107',
+			localize 'STR_QS_Task_108'
+		]),
+		localize 'STR_QS_Task_109',
+		localize 'STR_QS_Task_109'
 	],
 	(markerPos 'QS_marker_sideMarker'),
 	'CREATED',
@@ -125,10 +129,7 @@ _fuzzyPos = [((_safePos # 0) - 300) + (random 600),((_safePos # 1) - 300) + (ran
 	TRUE
 ] call (missionNamespace getVariable 'BIS_fnc_setTask');
 ['QS_IA_TASK_SM_0',TRUE,_timeEnd] call (missionNamespace getVariable 'QS_fnc_taskSetTimer');
-
-_briefing = parseText format ["<t align='center'><t size='2.2'>支线任务</t><br/><t size='1.5' color='#00B2EE'>获取情报(UAV)</t><br/>____________________<br/>一架敌军UAV坠毁在了 %1 的海岸。<br/><br/>情报显示敌军已经赶到坠毁地点寻找UAV并且试图摧毁情报。 迅速前往目标区域，在敌军之前找到UAV并回收情报！<br/>任务时限在30分钟左右<br/></t>",worldName];
-['hint',_briefing] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
-['NewSideMission',['获取情报(UAV)']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+['NewSideMission',[localize 'STR_QS_Notif_111']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 
 private _patrolRoute = [];
 

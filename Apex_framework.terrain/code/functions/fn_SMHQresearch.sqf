@@ -24,11 +24,10 @@ private [
 	"_dummy","_SMveh","_SMaa","_c4Message","_vehPos",'_vehType','_vehTypes','_dummyTypes','_dummyType','_objectTypes','_objectType',
 	'_c4Messages','_c4Message','_researchTable','_veh'
 ];
-
 _c4Messages = [
-	"硬盘数据已获得，已经安放炸药！ 15 秒后引爆，迅速撤离。",
-	"研究数据已获得，炸药已经安放! 15 秒后销毁,撤离。",
-	"已经获得数据，销毁指令已确认! 15 秒后销毁,撤离。"
+	localize 'STR_QS_Chat_061',
+	localize 'STR_QS_Chat_062',
+	localize 'STR_QS_Chat_063'
 ];
 _c4Message = selectRandom _c4Messages;
 if (worldName isEqualTo 'Tanoa') then {
@@ -100,16 +99,16 @@ _fuzzyPos = [((_flatPos # 0) - 300) + (random 600),((_flatPos # 1) - 300) + (ran
 	_x setMarkerPosLocal _fuzzyPos;
 	_x setMarkerAlpha 1;
 } count ['QS_marker_sideMarker','QS_marker_sideCircle'];
-'QS_marker_sideMarker' setMarkerText (format ['%1夺取研究数据',(toString [32,32,32])]);
+'QS_marker_sideMarker' setMarkerText (format ['%1 %2',(toString [32,32,32]),localize 'STR_QS_Marker_033']);
 
 [
 	'QS_IA_TASK_SM_0',
 	TRUE,
 	[
-		'夺取研究数据！ 敌军正在进行武器试验研究，我们发现了他们其中一个研究地点的大概位置，立即出发夺取他们的研究数据！ 目标地点在作战区域内某个位置。',
-		'夺取研究数据',
-		'夺取研究数据'
-    	],
+		localize 'STR_QS_Task_082',
+		localize 'STR_QS_Task_083',
+		localize 'STR_QS_Task_083'
+	],
 	(markerPos 'QS_marker_sideMarker'),
 	'CREATED',
 	5,
@@ -118,10 +117,7 @@ _fuzzyPos = [((_flatPos # 0) - 300) + (random 600),((_flatPos # 1) - 300) + (ran
 	'download',
 	TRUE
 ] call (missionNamespace getVariable 'BIS_fnc_setTask');
-
-_briefing = parseText "<t align='center'><t size='2.2'>支线任务</t><br/><t size='1.5' color='#00B2EE'>夺取研究数据</t><br/>____________________<br/>敌军正在进行武器试验研究。<br/><br/>找到我们需要的数据，然后摧毁敌军的研究设施！</t>";
-//['hint',_briefing] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
-['NewSideMission',['夺取研究数据']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+['NewSideMission',[localize 'STR_QS_Notif_087']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 missionNamespace setVariable ['QS_sideMissionUp',TRUE,TRUE];
 missionNamespace setVariable ['QS_smSuccess',FALSE,TRUE];
 	
@@ -133,7 +129,7 @@ for '_x' from 0 to 1 step 0 do {
 		
 		/*/-------------------- DE-BRIEFING/*/
 
-		['sideChat',[WEST,'HQ'],'目标被提前破坏，任务失败！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['sideChat',[WEST,'HQ'],localize 'STR_QS_Chat_060'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		[0,_flatPos] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
 		{
 			_x setMarkerPosLocal [-5000,-5000,0];
@@ -186,7 +182,7 @@ for '_x' from 0 to 1 step 0 do {
 		detach _object;
 		deleteVehicle _object;
 		uiSleep 14;											/*/ ghetto bomb timer/*/
-		'Bo_Mk82' createVehicle (getPos _dummy); 				/*/default "Bo_Mk82"/*/
+		'Bo_Mk82' createVehicle (getPosATL _dummy); 				/*/default "Bo_Mk82"/*/
 		{
 			missionNamespace setVariable [
 				'QS_analytics_entities_deleted',

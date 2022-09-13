@@ -90,7 +90,7 @@ if (_state isEqualTo 1) then {
 			{
 				params ['_killed','_killer'];
 				detach _killed;
-				['sideChat',[WEST,'BLU'],(localize 'STR_QS_aoSM_WoundedKIA')] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+				['sideChat',[WEST,'BLU'],localize 'STR_QS_Chat_023'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 			}
 		];
 		for '_x' from 0 to 1 step 1 do {
@@ -116,14 +116,14 @@ if (_state isEqualTo 1) then {
 				['QS_revive_disable',TRUE,TRUE]
 			];
 		};
-		['ST_MEDEVAC',[(localize 'STR_QS_aoSM_medevac'),(localize 'STR_QS_aoSM_medevacWounded')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['ST_MEDEVAC',[localize 'STR_QS_Notif_034',localize 'STR_QS_Notif_035']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		[
 			'QS_IA_TASK_AO_3',
 			TRUE,
 			[
-				(localize 'STR_QS_aoSM_taskMedDesc'),
-				(localize 'STR_QS_aoSM_taskMedTitle'),
-				(localize 'STR_QS_aoSM_taskMedMarker')
+				localize 'STR_QS_Task_028',
+				localize 'STR_QS_Task_029',
+				localize 'STR_QS_Task_029'
 			],
 			[_unit,TRUE],
 			'CREATED',
@@ -158,7 +158,7 @@ if (_state isEqualTo 2) then {
 	};
 	if (serverTime > _missionDuration) exitWith {
 		//comment 'Mission failure';
-		['ST_MEDEVAC',[(localize 'STR_QS_aoSM_medevac'),(localize 'STR_QS_aoSM_medevacFailed')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['ST_MEDEVAC',[localize 'STR_QS_Notif_034',localize 'STR_QS_Notif_036']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		['QS_IA_TASK_AO_3'] call (missionNamespace getVariable 'BIS_fnc_deleteTask');
 		_return = [
 			_case,
@@ -172,7 +172,7 @@ if (_state isEqualTo 2) then {
 	};	
 	if ((((_unit distance _missionDestination) < 3.5) && (isNull (attachedTo _unit))) || (([0,_unit] call (missionNamespace getVariable 'QS_fnc_isNearFieldHospital')) && (isNull (attachedTo _unit)) && (isNull (objectParent _unit)))) exitWith {
 		//comment 'Mission success';
-		['ST_MEDEVAC',[(localize 'STR_QS_aoSM_medevac'),(localize 'STR_QS_aoSM_medevacComleted')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['ST_MEDEVAC',[localize 'STR_QS_Notif_034',localize 'STR_QS_Notif_037']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		['QS_IA_TASK_AO_3'] call (missionNamespace getVariable 'BIS_fnc_deleteTask');
 		if (missionNamespace getVariable ['QS_virtualSectors_active',FALSE]) then {
 			private ['_QS_virtualSectors_scoreSides','_scoreEast','_scoreToRemove'];
@@ -196,7 +196,7 @@ if (_state isEqualTo 2) then {
 	};
 	if (!alive _unit) exitWith {
 		//comment 'Mission failure';
-		['ST_MEDEVAC',[(localize 'STR_QS_aoSM_medevac'),(localize 'STR_QS_aoSM_medevacKIA')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['ST_MEDEVAC',[localize 'STR_QS_Notif_034',localize 'STR_QS_Notif_038']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		['QS_IA_TASK_AO_3'] call (missionNamespace getVariable 'BIS_fnc_deleteTask');
 		_return = [
 			_case,

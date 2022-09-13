@@ -6,15 +6,15 @@ Author:
 	
 Last modified: 
 
-	27/08/2022 A3 2.10 by Quiksilver
+	29/08/2022 A3 2.10 by Quiksilver
 
 Description:
 
 	Configure Server
 ____________________________________________________/*/
 
-_missionProductVersion = '1.3.0';
-_missionProductStatus = 'Stable';
+_missionProductVersion = getMissionConfigValue ['missionProductVersion',''];
+_missionProductStatus = getMissionConfigValue ['missionProductStatus',''];
 missionNamespace setVariable ['QS_system_devBuild_text',(format ['Apex Framework %1 (%2)',_missionProductVersion,_missionProductStatus]),TRUE];
 private [
 	'_year','_month','_day','_hour','_minute','_n','_QS_currentWeatherData','_spawnPoint_1',
@@ -770,7 +770,8 @@ _recyclerUnitTypes = [
 	['QS_ao_hqBuildingPositions',[],FALSE],
 	['QS_AI_laserTargets',[],TRUE],
 	['QS_AI_cmdr_recentSuppPositions',[],FALSE],
-	['QS_zeus_captureMan',objNull,TRUE]
+	['QS_zeus_captureMan',objNull,TRUE],
+	['QS_cas_JetsDLCEnabled',TRUE,FALSE]
 ];
 call (compileScript ['@Apex_cfg\roles.sqf']);
 ['INIT_SYSTEM'] call (missionNamespace getVariable 'QS_fnc_roles');

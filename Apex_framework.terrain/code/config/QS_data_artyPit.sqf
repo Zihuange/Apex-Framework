@@ -94,14 +94,13 @@ __________________________________________________________________________/*/
 				if ((missionNamespace getVariable 'QS_enemy_artyFireMessage') > (diag_tickTime - 300)) exitWith {};
 				missionNamespace setVariable ['QS_enemy_artyFireMessage',diag_tickTime,FALSE];
 				_firingMessages = [
-					(localize "STR_QS_Arty_firingMsg0"),
-					(localize "STR_QS_Arty_firingMsg1"),
-					(localize "STR_QS_Arty_firingMsg2"),
-					(localize "STR_QS_Arty_firingMsg3"),
-					(localize "STR_QS_Arty_firingMsg4"),
-					(localize "STR_QS_Arty_firingMsg5")
+					localize 'STR_QS_Chat_001',
+					localize 'STR_QS_Chat_002',
+					localize 'STR_QS_Chat_003',
+					localize 'STR_QS_Chat_004',
+					localize 'STR_QS_Chat_005',
+					localize 'STR_QS_Chat_006'
 				];
-				
 				['sideChat',[WEST,'HQ'],(selectRandom _firingMessages)] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 			}
 		];
@@ -169,14 +168,13 @@ __________________________________________________________________________/*/
 				if ((missionNamespace getVariable 'QS_enemy_artyFireMessage') > (diag_tickTime - 300)) exitWith {};
 				missionNamespace setVariable ['QS_enemy_artyFireMessage',diag_tickTime,FALSE];
 				_firingMessages = [
-					(localize "STR_QS_Arty_firingMsg0"),
-					(localize "STR_QS_Arty_firingMsg1"),
-					(localize "STR_QS_Arty_firingMsg2"),
-					(localize "STR_QS_Arty_firingMsg3"),
-					(localize "STR_QS_Arty_firingMsg4"),
-					(localize "STR_QS_Arty_firingMsg5")
+					localize 'STR_QS_Chat_001',
+					localize 'STR_QS_Chat_002',
+					localize 'STR_QS_Chat_003',
+					localize 'STR_QS_Chat_004',
+					localize 'STR_QS_Chat_005',
+					localize 'STR_QS_Chat_006'
 				];
-				
 				['sideChat',[WEST,'HQ'],(selectRandom _firingMessages)] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 			}
 		];

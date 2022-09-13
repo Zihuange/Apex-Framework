@@ -91,13 +91,13 @@ if (_type isEqualTo 1) exitWith {
 					};
 					if (!isNull _instigator) then {
 						if (isPlayer _instigator) then {
-							_text = format ['%1 ( %2 ) 摧毁了GPS干扰器！',(name _instigator),(groupID (group _instigator))];
+							_text = format ['%1 ( %2 ) %3',(name _instigator),(groupID (group _instigator)),localize 'STR_QS_Chat_049'];
 							[[WEST,'BLU'],_text] remoteExec ['sideChat',-2,FALSE];
 						} else {
-							[[WEST,'BLU'],'GPS干扰器已被摧毁！'] remoteExec ['sideChat',-2,FALSE];
+							[[WEST,'BLU'],localize 'STR_QS_Chat_050'] remoteExec ['sideChat',-2,FALSE];
 						};
 					} else {
-						[[WEST,'BLU'],'GPS干扰器已被摧毁！'] remoteExec ['sideChat',-2,FALSE];
+						[[WEST,'BLU'],localize 'STR_QS_Chat_050'] remoteExec ['sideChat',-2,FALSE];
 					};
 					_gpsJammers = missionNamespace getVariable ['QS_mission_gpsJammers',[]];
 					if (_gpsJammers isNotEqualTo []) then {
@@ -147,9 +147,9 @@ if (_type isEqualTo 1) exitWith {
 				_id,
 				TRUE,
 				[
-					'敌方部署了一个mobile GPS干扰器，找到并摧毁它！',
-					'GPS干扰器',
-					'GPS干扰器'
+					localize 'STR_QS_Task_030',
+					localize 'STR_QS_Task_031',
+					localize 'STR_QS_Task_031'
 				],
 				(_spawnPosition getPos [150 * (sqrt (random 1)),random 360]),
 				'CREATED',

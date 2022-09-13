@@ -23,27 +23,35 @@ __________________________________________________________/*/
 {
 	player createDiarySubject _x;
 } forEach [
-	['QS_diary_hotkeys','按键绑定'],
-	['QS_diary_rules','规则'],
-	['QS_diary_radio','无线电频道'],
-	['QS_diary_roles','角色'],
-	['QS_diary_mods','模组'],
-	['QS_diary_teamspeak','Teamspeak'],
-	['QS_diary_leaderboards','排行榜'],
-	['QS_diary_gitmo','监狱'],
-	['QS_diary_fobs','FOBs'],
-	['QS_diary_revive','医疗系统'],
-	['QS_diary_inventory','载具货箱']
+	['QS_diary_hotkeys',localize 'STR_QS_Diary_001'],
+	['QS_diary_rules',localize 'STR_QS_Diary_002'],
+	['QS_diary_radio',localize 'STR_QS_Diary_003'],
+	['QS_diary_roles',localize 'STR_QS_Diary_004'],
+	['QS_diary_mods',localize 'STR_QS_Diary_005'],
+	['QS_diary_teamspeak',localize 'STR_QS_Diary_006'],
+	['QS_diary_discord',localize 'STR_QS_Diary_007'],
+	['QS_diary_leaderboards',localize 'STR_QS_Diary_008'],
+	['QS_diary_gitmo',localize 'STR_QS_Diary_009'],
+	['QS_diary_fobs',localize 'STR_QS_Diary_010'],
+	['QS_diary_revive',localize 'STR_QS_Diary_011'],
+	['QS_diary_inventory',localize 'STR_QS_Diary_012']
 ];
 
 /*/========== Create Diary Records-创建日记记录/*/
 
 if ((missionNamespace getVariable ['QS_missionConfig_aoType','']) isEqualTo 'GRID') then {
-	_description = format ['NATO在 %1 的驻军遭到了CSAT袭击，敌军认为我们的力量正在衰弱，打算乘虚而入。<br/><br/>但是很明显他们想错了！<br/><br/>我们不会放弃 %1！',worldName];
+	_description = format [
+		'%2<br/><br/>%3 %1.<br/><br/>%4<br/><br/>%5 %1.',
+		worldName,
+		localize 'STR_QS_Diary_014',
+		localize 'STR_QS_Diary_015',
+		localize 'STR_QS_Diary_016',
+		localize 'STR_QS_Diary_017'
+	];
 	player createDiaryRecord [
 		'Diary',
 		[
-			(format ['%1 Campaign',worldName]),
+			(format ['%1 %2',worldName,localize 'STR_QS_Diary_013']),
 			_description
 		]
 	];
@@ -54,43 +62,43 @@ if ((missionNamespace getVariable ['QS_missionConfig_aoType','']) isEqualTo 'GRI
 player createDiaryRecord [
 	'QS_diary_radio',
 	[
-		'General channel:常规频道',
-		'通常广泛使用的语音通信常规频道。<br/><br/>严禁在此频道播放音乐或做出其他扰乱游戏秩序的行为！'
+		localize 'STR_QS_Diary_018',
+		format ['%1<br/><br/>%2<br/><br/>',localize 'STR_QS_Diary_019',localize 'STR_QS_Diary_020',localize 'STR_QS_Diary_021']
 	]
 ];
 player createDiaryRecord [
 	'QS_diary_radio',
 	[
-		'Platoon channels:班排组频道',
-		'加入班排频道 (Alpha, Bravo or Charlie) 进行小队间通信。'
+		localize 'STR_QS_Diary_022',
+		format ['%1<br/><br/>%2',localize 'STR_QS_Diary_023',localize 'STR_QS_Diary_024']
 	]
 ];
 player createDiaryRecord [
 	'QS_diary_radio',
 	[
-		'AO channels:战区频道',
-		'如果你兼听了这些频道, 在主作战区域的2km范围内 和 次要作战区域 (支线任务)的1km范围内,你将自动添加到这些频道。 当你离开该范围时，你将离开该频道。'
+		localize 'STR_QS_Diary_025',
+		localize 'STR_QS_Diary_026'
 	]
 ];
 player createDiaryRecord [
 	'QS_diary_radio',
 	[
-		'Aircraft channel:航空频道',
-		'飞行员和UAV无人机操作员使用的频道。<br/><br/>目前只有飞行员、无人机操作员和指挥官可以在此频道上发言。<br/><br/>其他单位可以在航空控制中心兼听此频道。'
+		localize 'STR_QS_Diary_027',
+		format ['%1<br/><br/>%2<br/><br/>%3',localize 'STR_QS_Diary_028',localize 'STR_QS_Diary_029',localize 'STR_QS_Diary_030']
 	]
 ];
 player createDiaryRecord [
 	'QS_diary_radio',
 	[
-		'Side channel:阵营频道',
-		'阵营频道上禁用语音通信<br/><br/>使用常规频道向服务器上的所有玩家传送语音。'
+		localize 'STR_QS_Diary_032',
+		format ['%1<br/><br/>%2',localize 'STR_QS_Diary_033',localize 'STR_QS_Diary_034']
 	]
 ];
 player createDiaryRecord [
 	'QS_diary_radio',
 	[
-		'概述',
-		'Beta v0.9<br/><br/>A number of custom radio channels are available for use in-game.<br/><br/>To access: Press [Home] >> [Comm-Link] >> [Radio Management]<br/><br/>A Radio inventory item is required to transmit voice communications.<br/><br/>Transmission of music or other audio is only permitted over Group, Vehicle and Direct channels (when away from base).<br/><br/>Spamming and generally annoying other players using Voice communications can lead to administrative action.'
+		localize 'STR_QS_Diary_035',
+		format ['%1<br/><br/>%2<br/><br/>%3<br/><br/>%4<br/><br/>%5',localize 'STR_QS_Diary_036',localize 'STR_QS_Diary_037',localize 'STR_QS_Diary_038',localize 'STR_QS_Diary_039',localize 'STR_QS_Diary_040']
 	]
 ];
 
@@ -99,8 +107,8 @@ player createDiaryRecord [
 player createDiaryRecord [
 	'QS_diary_inventory',
 	[
-		'编辑库存',
-		'你可以在基地地图的货物编辑区自定义车辆和弹药箱的库存（目前有bug）'
+		localize 'STR_QS_Diary_041',
+		localize 'STR_QS_Diary_042'
 	]
 ];
 
@@ -109,8 +117,8 @@ player createDiaryRecord [
 player createDiaryRecord [
 	'QS_diary_revive',
 	[
-		'医疗载具',
-		'将陷入昏迷的单位放入医疗载具（例如HEMTT医疗卡车、救护车、Taru医疗舱等）可以让他们恢复意识。<br/><br/>载具必须有足够的医疗票数。<br/>治疗一名玩家消耗一个医疗票数。<br/>在基地载具维护点，可以补充医疗票数。<br/>医疗票数上限等于载具的座位数量。'
+		localize 'STR_QS_Diary_043',
+		format ['%1<br/><br/>%2<br/>%3<br/>%4<br/>%5',localize 'STR_QS_Diary_044',localize 'STR_QS_Diary_045',localize 'STR_QS_Diary_046',localize 'STR_QS_Diary_047',localize 'STR_QS_Diary_048']
 	]
 ];
 
@@ -119,58 +127,49 @@ player createDiaryRecord [
 player createDiaryRecord [
 	'QS_diary_fobs',
 	[
-		'常规',
-		(format ['FOB 意为前线基地，会在 %1 的主要作战区域附近设立。<br/><br/>>FOB可以提供很多帮助，但也有可能遭到敌军攻击。<br/><br/>当某些类型的载具/补给箱位于FOB的半径范围内时，它们可以启动某些服务。',worldName])
+		localize 'STR_QS_Diary_049',
+		(format ['%2 %1.<br/><br/>%3',worldName,localize 'STR_QS_Diary_050',localize 'STR_QS_Diary_051'])
 	]
 ];
 
 player createDiaryRecord [
 	'QS_diary_fobs',
 	[
-		'雷达设备',
-		'当FOB处于激活状态时，可以探测敌军位置和雷达数据。<br/><br/>在FOB主建筑内有一个可交互终端用于管理FOB的功能。'
+		localize 'STR_QS_Diary_052',
+		format ['%1<br/><br/>%2<br/><br/>%3',localize 'STR_QS_Diary_053',localize 'STR_QS_Diary_054',localize 'STR_QS_Diary_055']
 	]
 ];
 
 player createDiaryRecord [
 	'QS_diary_fobs',
 	[
-		'重生',
-		'如果满足几个条件则可以在FOB内重生:<br/><br/>
-		- FOB必须被激活<br/>
-		- 玩家必须启用个人FOB重生。（可以在位于FOB主建筑内的FOB终端设置）<br/>
-		- 玩家不是飞行员兵种<br/>
-		- FOB有剩余复活票数<br/>
-		- 距离上一次在FOB重生过去至少3分钟'
+		localize 'STR_QS_Diary_056',
+		format ['%1<br/><br/>
+		- %2<br/>
+		- %3<br/>
+		- %4<br/>
+		- %5',localize 'STR_QS_Diary_057',localize 'STR_QS_Diary_058',localize 'STR_QS_Diary_059',localize 'STR_QS_Diary_060',localize 'STR_QS_Diary_061']
 	]
 ];
 
 player createDiaryRecord [
 	'QS_diary_fobs',
 	[
-		'载具维护',
-		'FOB可以为地面和空中载具提供维护服务:<br/><br/>
-		- 重生 - 将HEMTT运输卡车或HEMTT货柜卡车开到FOB。<br/>
-		- 修理 - 将HEMTT维修卡车或Huron维修货柜带到FOB。<br/>
-		- 燃料 - 将HEMTT燃油补给卡车或Huron燃油货柜带到FOB。<br/>
-		- 弹药 - 将HEMTT弹药卡车或Huron弹药货柜带到FOB。（同时可以激活玩家使用的军火库）<br/>
-		'
+		localize 'STR_QS_Diary_062',
+		format ['%1<br/><br/>
+		%2<br/>
+		%3<br/>
+		%4<br/>
+		%5<br/>
+		',localize 'STR_QS_Diary_063',localize 'STR_QS_Diary_064',localize 'STR_QS_Diary_065',localize 'STR_QS_Diary_066',localize 'STR_QS_Diary_067']
 	]
 ];
 
 player createDiaryRecord [
 	'QS_diary_fobs',
 	[
-		'重生票数',
-		'将医疗载具带到FOB补充重生票数。'
-	]
-];
-
-player createDiaryRecord [
-	'QS_diary_fobs',
-	[
-		'军火库',
-		'在基地内将装备放入车辆或弹药箱带到FOB可以增加FOB军火库的物品。'
+		localize 'STR_QS_Diary_068',
+		localize 'STR_QS_Diary_069'
 	]
 ];
 
@@ -179,50 +178,71 @@ player createDiaryRecord [
 player createDiaryRecord [
 	'QS_diary_leaderboards',
 	[
-		'Gitmo',
-		'Earn points by imprisoning enemies in "Gitmo".<br/><br/>Multipliers: n/a<br/><br/>Gitmo is marked on your map at base. See "Gitmo" diary tab for further details.'
+		localize 'STR_QS_Diary_074',
+		format ['%1<br/><br/>%2<br/><br/>%3',localize 'STR_QS_Diary_070',localize 'STR_QS_Diary_071',localize 'STR_QS_Diary_072']
 	]
 ];
 player createDiaryRecord [
 	'QS_diary_leaderboards',
 	[
-		'电塔游骑兵',
-		'作为步兵通过摧毁无线电塔（不包括飞行员）获得分数。<br/><br/>倍数计算: n/a'
+		localize 'STR_QS_Diary_073',
+		format ['%1<br/><br/>%2<br/><br/>%3',localize 'STR_QS_Diary_075',localize 'STR_QS_Diary_076',localize 'STR_QS_Diary_077']
 	]
 ];
 player createDiaryRecord [
 	'QS_diary_leaderboards',
 	[
-		'牙医',
-		'通过从死掉的敌人士兵中收集金牙获得分数。<br/><br/>倍数计算: n/a'
+		localize 'STR_QS_Diary_078',
+		format ['%1<br/><br/>%2<br/><br/>Gitmo is marked on your map at base.',localize 'STR_QS_Diary_079',localize 'STR_QS_Diary_080',localize 'STR_QS_Diary_081']
 	]
 ];
 player createDiaryRecord [
 	'QS_diary_leaderboards',
 	[
-		'Scalpers',
-		'Collect the Berets (hats) of enemy Commanders.<br/><br/>Multipliers: 1 for Black beret, 3 for Red beret'
+		localize 'STR_QS_Diary_082',
+		format ['%1<br/><br/>%2',localize 'STR_QS_Diary_083',localize 'STR_QS_Diary_080']
 	]
 ];
 player createDiaryRecord [
 	'QS_diary_leaderboards',
 	[
-		'医疗兵',
-		'通过治疗昏迷的士兵获得分数。'
+		localize 'STR_QS_Diary_084',
+		format ['%1<br/><br/>%2',localize 'STR_QS_Diary_085',localize 'STR_QS_Diary_080']
 	]
 ];
 player createDiaryRecord [
 	'QS_diary_leaderboards',
 	[
-		'运输员',
-		'将士兵安全送到战区以获取分数。<br/><br/>倍数计算: n/a<br/><br/>目前不支持吊索货物运输<br/>目前不支持车辆货物运输'
+		localize 'STR_QS_Diary_086',
+		format ['%1<br/><br/>%2',localize 'STR_QS_Diary_087',localize 'STR_QS_Diary_088']
 	]
 ];
 player createDiaryRecord [
 	'QS_diary_leaderboards',
 	[
-		'General Info',
-		format ['<t size="2">Version 1.0</t><br/><br/>Leaderboards are reset each Monday at 00:01h.<br/><br/>To maintain performance and FPS, the leaderboards are not synchronized frequently, and only saved to database every 5-10 minutes. For this reason, points accumulated just prior to a server crash may not be saved (*sadface*).<br/><br/>Thanks for your patience, %1!',profileName]
+		localize 'STR_QS_Diary_089',
+		format ['%1<br/><br/>%2<br/><br/>%3',localize 'STR_QS_Diary_090',localize 'STR_QS_Diary_091',localize 'STR_QS_Diary_092']
+	]
+];
+player createDiaryRecord [
+	'QS_diary_leaderboards',
+	[
+		localize 'STR_QS_Diary_093',
+		format ['%1<br/><br/>%2<br/><br/>%3<br/><br/>%4<br/>%5',localize 'STR_QS_Diary_094',localize 'STR_QS_Diary_095',localize 'STR_QS_Diary_096',localize 'STR_QS_Diary_097',localize 'STR_QS_Diary_098']
+	]
+];
+player createDiaryRecord [
+	'QS_diary_leaderboards',
+	[
+		localize 'STR_QS_Diary_035',
+		format [
+			'<t size="2">%2</t><br/><br/>%3<br/><br/>%4<br/><br/>%5, %1!',
+			profileName,
+			localize 'STR_QS_Diary_099',
+			localize 'STR_QS_Diary_100',
+			localize 'STR_QS_Diary_101',
+			localize 'STR_QS_Diary_102'
+		]
 	]
 ];
 
@@ -231,21 +251,39 @@ player createDiaryRecord [
 player createDiaryRecord [
 	'QS_diary_hotkeys',
 	[
-		'按键绑定',
+		localize 'STR_QS_Diary_103',
 		(format ['
-		<br/>客户端菜单 - [Home]
-		<br/>耳塞 - [End]
-		<br/>背上武器 - [4]
-		<br/>重新整理弹药 - [L.Ctrl]+[%2]
-		<br/>跳跃 - [%5] 在跑步的时候
-		<br/>小队管理器 - [%6]
-		<br/>任务 - [%3]
-		<br/>提示 - [%4]
-		<br/>手势 - [Ctrl]+[Numpad x]
-		<br/>战术指示标 - %1
-		<br/>打开和关闭门 - [Space]
-		<br/>Raise and Lower sling ropes - [Page [Up/Down]]
-		',(actionKeysNames 'TacticalPing'),(actionKeysNames 'ReloadMagazine'),(actionKeysNames 'Diary'),(actionKeysNames 'Help'),(actionKeysNames 'GetOver'),(actionKeysNames 'Teamswitch')])
+		<br/>%7 - [Home]
+		<br/>%8 - [End]
+		<br/>%9 - [4]
+		<br/>%10 - [L.Ctrl]+[%2]
+		<br/>%11 - [%5] %12
+		<br/>%13 - [%6]
+		<br/>%14 - [%3]
+		<br/>%15 - [%4]
+		<br/>%16 - [Ctrl]+[Numpad x]
+		<br/>%17 - %1
+		<br/>%18 - [Page [Up/Down]]
+		',
+			(actionKeysNames 'TacticalPing'),
+			(actionKeysNames 'ReloadMagazine'),
+			(actionKeysNames 'Diary'),
+			(actionKeysNames 'Help'),
+			(actionKeysNames 'GetOver'),
+			(actionKeysNames 'Teamswitch'),
+			localize 'STR_QS_Diary_104',
+			localize 'STR_QS_Diary_105',
+			localize 'STR_QS_Diary_106',
+			localize 'STR_QS_Diary_107',
+			localize 'STR_QS_Diary_108',
+			localize 'STR_QS_Diary_109',
+			localize 'STR_QS_Diary_110',
+			localize 'STR_QS_Diary_111',
+			localize 'STR_QS_Diary_112',
+			localize 'STR_QS_Diary_113',
+			localize 'STR_QS_Diary_114',
+			localize 'STR_QS_Diary_115'
+		])
 	]
 ];
 
@@ -253,30 +291,39 @@ if ((getPlayerUID player) in (['ALL'] call (missionNamespace getVariable 'QS_fnc
 	player createDiaryRecord [
 		'QS_diary_hotkeys',
 		[
-			'管理员按键',
-			'
-			<br/>管理菜单打开 - [Shift]+[F2]
-			<br/>管理菜单关闭 - [Shift]+[F2]
-			<br/>退出选项 - [Shift]+[F2]
-			'
+			localize 'STR_QS_Diary_116',
+			format ['
+			<br/>%1 - [Shift]+[F2]
+			<br/>%2 - [Shift]+[F2]
+			',localize 'STR_QS_Diary_117',localize 'STR_QS_Diary_118']
 		]
 	];
 	if ((getPlayerUID player) in (['CURATOR'] call (missionNamespace getVariable 'QS_fnc_whitelist'))) then {
 		player createDiaryRecord [
 			'QS_diary_hotkeys',
 			[
-				'宙斯按键',
-				'
-				<br/>同步可编辑对象 - [Shift]+[F3]
-				<br/>(选定小组) 建筑物驻防 - [Numpad 1]
-				<br/>(选定小组) 巡逻区 - [Numpad 2]
-				<br/>(选定小组) 搜索建筑 - [Numpad 3]
-				<br/>(选定小组) 围捕目标 - [Numpad 4]
-				<br/>(选定小组) 压制射击 - [Numpad 6]
-				<br/>(选定小组) 治疗玩家 - [Numpad 7]
-				<br/>(选定小组) 查看方向 - [Numpad 8]
-				<br/>(选定小组) 设置单位无意识 - [Numpad 9]
-				'
+				localize 'STR_QS_Diary_119',
+				format ['
+				<br/>%1 - [Shift]+[F3]
+				<br/>%2 - [Numpad 1]
+				<br/>%3 - [Numpad 2]
+				<br/>%4 - [Numpad 3]
+				<br/>%5 - [Numpad 4]
+				<br/>%6 - [Numpad 6]
+				<br/>%7 - [Numpad 7]
+				<br/>%8 - [Numpad 8]
+				<br/>%9 - [Numpad 9]
+				',
+				localize 'STR_QS_Diary_120',
+				localize 'STR_QS_Diary_121',
+				localize 'STR_QS_Diary_122',
+				localize 'STR_QS_Diary_123',
+				localize 'STR_QS_Diary_124',
+				localize 'STR_QS_Diary_125',
+				localize 'STR_QS_Diary_126',
+				localize 'STR_QS_Diary_127',
+				localize 'STR_QS_Diary_128'
+				]
 			]
 		];
 	};
@@ -319,7 +366,7 @@ player createDiaryRecord [
 player createDiaryRecord [
 	'QS_diary_rules',
 	[
-		'常规',
+		localize 'STR_QS_Diary_129',
 		(missionNamespace getVariable ['QS_missionConfig_splash_serverRules',''])
 	]
 ];
@@ -404,8 +451,13 @@ player createDiaryRecord [
 player createDiaryRecord [
 	'QS_diary_gitmo',
 	[
-		'抓捕战俘',
-		'在战斗中可以逼迫敌军投降。<br/><br/>保持敌军单位和你的距离在5米以内，滚轮菜单选择 命令-俘虏 后，等待进度条完成即可抓捕战俘。将战俘送回监狱即可获得奖励！<br/><br/>祝你好运！'
+		localize 'STR_QS_Diary_130',
+		format [
+			'%1<br/><br/>%2<br/><br/>%3',
+			localize 'STR_QS_Diary_131',
+			localize 'STR_QS_Diary_132',
+			localize 'STR_QS_Diary_133'
+		]
 	]
 ];
 
@@ -414,12 +466,10 @@ player createDiaryRecord [
 player createDiaryRecord [
 	'QS_diary_teamspeak',
 	[
-		'TS3 频道地址',
+		localize 'STR_QS_Diary_134',
 		format ['
-		<br/> IP地址: %1
-		<br/>
-		<br/> 欢迎访客和来宾!
-		',(missionNamespace getVariable ['QS_missionConfig_commTS',''])]
+		<br/> %2 %1<br/><br/> %3
+		',(missionNamespace getVariable ['QS_missionConfig_commTS','']),localize 'STR_QS_Diary_135',localize 'STR_QS_Diary_136']
 	]
 ];
 

@@ -29,9 +29,9 @@ missionNamespace setVariable ['QS_sidemission_objectsArray',[],FALSE];
 missionNamespace setVariable ['QS_sideObj',objNull,FALSE];
 _objectsArray = [];
 _c4Messages = [
-	"敌方雷达技术情报已获取。 炸药已经放置！ 爆炸倒计时15秒，立刻撤离！",
-	"雷达数据已获取。 炸药已经放置！ 爆炸倒计时15秒，立刻撤离！",
-	"敌方雷达技术情报已获取。 炸药已经放置！ 爆炸倒计时15秒，立刻撤离！"
+	localize 'STR_QS_Chat_061',
+	localize 'STR_QS_Chat_062',
+	localize 'STR_QS_Chat_063'
 ];
 _c4Message = selectRandom _c4Messages;
 
@@ -89,19 +89,18 @@ _enemiesArray = [(missionNamespace getVariable 'QS_sideObj')] call (missionNames
 /*/------------------- BRIEF/*/
 
 _fuzzyPos = [((_flatPos # 0) - 300) + (random 600),((_flatPos # 1) - 300) + (random 600),0];
+'QS_marker_sideMarker' setMarkerTextLocal (format ['%1 %2',(toString [32,32,32]),localize 'STR_QS_Marker_045']);
 {
 	_x setMarkerPosLocal _fuzzyPos;
 	_x setMarkerAlpha 1;
 } count ['QS_marker_sideMarker','QS_marker_sideCircle'];
-'QS_marker_sideMarker' setMarkerText (format ['%1夺取敌军雷达数据',(toString [32,32,32])]);
-
 [
 	'QS_IA_TASK_SM_0',
 	TRUE,
 	[
-		'我们定位到了敌方雷达的大致位置，该雷达站目前防守不足，这是我们掌握敌方防空技术的一个机会。雷达的数据资料在圆顶雷达站旁的建筑内，前往该处获取数据。注意数据获取后15秒雷达会自毁。目前雷达的具体位置不详。',
-		'获取敌军雷达数据',
-		'获取敌军雷达数据'
+		localize 'STR_QS_Task_114',
+		localize 'STR_QS_Task_115',
+		localize 'STR_QS_Task_115'
 	],
 	(markerPos 'QS_marker_sideMarker'),
 	'CREATED',
@@ -111,10 +110,7 @@ _fuzzyPos = [((_flatPos # 0) - 300) + (random 600),((_flatPos # 1) - 300) + (ran
 	'download',
 	TRUE
 ] call (missionNamespace getVariable 'BIS_fnc_setTask');
-
-_briefing = parseText "<t align='center'><t size='2.2'>支线任务</t><br/><t size='1.5' color='#00B2EE'>Secure Radar</t><br/>____________________<br/>OPFOR have captured a small radar on the island to support their aircraft.<br/><br/>We've marked the position on your map; head over there and secure the site. Take the data and destroy it.</t>";
-//['hint',_briefing] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
-['NewSideMission',['获取敌军雷达数据']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+['NewSideMission',[localize 'STR_QS_Notif_112']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 missionNamespace setVariable ['QS_sideMissionUp',TRUE,TRUE];
 missionNamespace setVariable ['QS_smSuccess',FALSE,TRUE];
 
@@ -124,7 +120,7 @@ for '_x' from 0 to 1 step 0 do {
 		
 		/*/------------------ DE-BRIEFING/*/
 
-		['sideChat',[WEST,'HQ'],'数据被提前损毁，任务失败！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['sideChat',[WEST,'HQ'],localize 'STR_QS_Chat_073'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		[0,_flatPos] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
 		{
 			_x setMarkerPosLocal [-5000,-5000,0];
@@ -166,7 +162,7 @@ for '_x' from 0 to 1 step 0 do {
 		];
 		deleteVehicle _object;
 		uiSleep 12;											/*/ghetto bomb timer/*/
-		'Bo_Mk82' createVehicle (getPos _dummy); 			/*/ default "Bo_Mk82","Bo_GBU12_LGB"/*/
+		'Bo_Mk82' createVehicle (getPosATL _dummy); 			/*/ default "Bo_Mk82","Bo_GBU12_LGB"/*/
 		(missionNamespace getVariable 'QS_sideObj') setDamage 1;
 		missionNamespace setVariable [
 			'QS_analytics_entities_deleted',

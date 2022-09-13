@@ -47,7 +47,7 @@ if (_armor_vAnims isNotEqualTo []) then {
 	};
 };
 if (_exitArmor) exitWith {
-	50 cutText ['先卸下格栅装甲才能部署伪装网','PLAIN DOWN',0.5];
+	50 cutText [localize 'STR_QS_Text_082','PLAIN DOWN',0.5];
 };
 _onCancelled = {
 	params ['_t','_position'];
@@ -98,24 +98,24 @@ _onCompleted = {
 		};
 	};
 	if (_exitArmor) exitWith {
-		50 cutText ['先卸下格栅装甲才能部署伪装网','PLAIN DOWN',0.5];
+		50 cutText [localize 'STR_QS_Text_082','PLAIN DOWN',0.5];
 	};
 	{
 		_vehicle animateSource [_x,_newPhase,TRUE];
 	} forEach _animationSources;
 	if (_newPhase isEqualTo 1) then {
-		50 cutText ['已部署伪装网','PLAIN DOWN',0.333];
+		50 cutText [localize 'STR_QS_Text_083','PLAIN DOWN',0.333];
 	} else {
-		50 cutText ['伪装网已移除','PLAIN DOWN',0.333];
+		50 cutText [localize 'STR_QS_Text_084','PLAIN DOWN',0.333];
 	};
 	missionNamespace setVariable ['QS_repairing_vehicle',FALSE,FALSE];
 };
 missionNamespace setVariable ['QS_repairing_vehicle',TRUE,FALSE];
 private _text = '';
 if (_newPhase isEqualTo 1) then {
-	_text = '正在部署伪装网';
+	_text = localize 'STR_QS_Menu_165';
 } else {
-	_text = '正在移除伪装网';
+	_text = localize 'STR_QS_Menu_166';
 };
 private _duration = 5;
 [

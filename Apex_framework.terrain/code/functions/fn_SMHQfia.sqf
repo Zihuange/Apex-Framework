@@ -23,11 +23,10 @@ private [
 	"_flatPos","_accepted","_position","_enemiesArray","_fuzzyPos","_x","_briefing",
 	"_unitsArray","_object","_SMveh","_SMaa","_tower1","_tower2","_tower3","_c4Message",'_c4Messages','_objectTypes','_objectType'
 ];
-
 _c4Messages = [
-	"敌军武器装备已确认。 炸药已安放！ 15秒后引爆，所有人迅速远离目标！",
-	"敌军武器装备已确认。 炸药已安放！ 15秒后引爆，所有人迅速远离目标！",
-	"敌军武器装备已确认。 炸药已安放！ 15秒后引爆，所有人迅速远离目标！"
+	localize 'STR_QS_Chat_061',
+	localize 'STR_QS_Chat_062',
+	localize 'STR_QS_Chat_063'
 ];
 _c4Message = selectRandom _c4Messages;
 
@@ -99,15 +98,20 @@ _fuzzyPos = [((_flatPos # 0) - 300) + (random 600),((_flatPos # 1) - 300) + (ran
 	_x setMarkerPosLocal _fuzzyPos;
 	_x setMarkerAlpha 1;
 } count ['QS_marker_sideMarker','QS_marker_sideCircle'];
-'QS_marker_sideMarker' setMarkerText (format ['%1销毁敌军物资',(toString [32,32,32])]);
+'QS_marker_sideMarker' setMarkerText (format ['%1 %2',(toString [32,32,32]),localize 'STR_QS_Marker_031']);
 
 [
 	'QS_IA_TASK_SM_0',
 	TRUE,
 	[
-		(format ['敌军一直在向 %1 的叛军提供武器装备，我们截获到他们新一批物资到达的情报，即刻前往作战地区。 找到敌军物资，确认物资数量后将其销毁。 目标在区域内的某处。',worldName]),
-		'销毁敌军物资',
-		'销毁敌军物资'
+		(format [
+			'%2 %1, %3',
+			worldName,
+			localize 'STR_QS_Task_077',
+			localize 'STR_QS_Task_078'
+		]),
+		localize 'STR_QS_Task_079',
+		localize 'STR_QS_Task_079'
 	],
 	(markerPos 'QS_marker_sideMarker'),
 	'CREATED',
@@ -117,10 +121,7 @@ _fuzzyPos = [((_flatPos # 0) - 300) + (random 600),((_flatPos # 1) - 300) + (ran
 	'download',
 	TRUE
 ] call (missionNamespace getVariable 'BIS_fnc_setTask');
-
-_briefing = parseText format ["<t align='center'><t size='2.2'>支线任务</t><br/><t size='1.5' color='#00B2EE'>销毁敌军物资</t><br/>____________________<br/>>敌军一直在向 %1 的叛军提供武器装备，我们截获到他们新一批物资到达的情报，即刻前往作战地区。<br/><br/>找到敌军物资，确认物资数量后将其销毁。</t>",worldName];
-//['hint',_briefing] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
-['NewSideMission',['销毁敌军物资']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+['NewSideMission',[localize 'STR_QS_Notif_085']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 
 /*/-------------------- [ CORE LOOPS ] ------------------------ [ CORE LOOPS ]/*/
 
@@ -141,7 +142,7 @@ for '_x' from 0 to 1 step 0 do {
 		/*/-------------------- DE-BRIEFING/*/
 
 		missionNamespace setVariable ['QS_sideMissionUp',FALSE,TRUE];
-		['sideChat',[WEST,'HQ'],'目标被提前破坏， 任务失败！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['sideChat',[WEST,'HQ'],localize 'STR_QS_Chat_060'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		[0,_flatPos] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
 
 		/*/-------------------- DELETE/*/
@@ -181,7 +182,7 @@ for '_x' from 0 to 1 step 0 do {
 		/*/-------------------- BOOM!/*/
 	
 		uiSleep 14;											/*/ ghetto bomb timer/*/
-		'Bo_Mk82' createVehicle (getPos _object); 			/*/ default "Bo_Mk82"/*/
+		'Bo_Mk82' createVehicle (getPosATL _object); 			/*/ default "Bo_Mk82"/*/
 		uiSleep 0.1;
 		missionNamespace setVariable [
 			'QS_analytics_entities_deleted',

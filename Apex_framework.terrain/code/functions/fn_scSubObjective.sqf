@@ -77,7 +77,7 @@ if (_type isEqualTo 1) exitWith {
 						_position = [0,0,0];
 						for '_i' from 0 to 9 step 1 do {
 							_building = selectRandom _buildingList;
-							_position = getPos _building;
+							_position = getPosATL _building;
 							if (
 								((_position distance2D _hqPos) > 50) && 
 								(((missionNamespace getVariable 'QS_registeredPositions') inAreaArray [_position,50,50,0,FALSE]) isEqualTo [])
@@ -250,7 +250,7 @@ if (_type isEqualTo 1) exitWith {
 			_marker1 setMarkerShapeLocal 'ICON';
 			_marker1 setMarkerTypeLocal 'mil_dot';
 			_marker1 setMarkerColorLocal 'ColorOPFOR';
-			_marker1 setMarkerTextLocal (format ['%数据中心',(toString [32,32,32])]);
+			_marker1 setMarkerTextLocal (format ['%1 %2',(toString [32,32,32]),localize 'STR_QS_Marker_025']);
 			_marker1 setMarkerSizeLocal [0.5,0.5];
 			_marker1 setMarkerPosLocal _uncertaintyPos;
 			(missionNamespace getVariable 'QS_virtualSectors_sub_1_markers') pushBack _marker1;
@@ -263,9 +263,14 @@ if (_type isEqualTo 1) exitWith {
 			_marker2 setMarkerSizeLocal [100,100];
 			_marker2 setMarkerPosLocal _uncertaintyPos;
 			(missionNamespace getVariable 'QS_virtualSectors_sub_1_markers') pushBack _marker2;
-			_description = '找到并获取敌方情报数据。<br/><br/>敌军的数据链增强了敌军通讯能力，让敌军更方便地共享我们的行动、兵力和部队位置。有了这些情报，敌军能更好地抵御我们的进攻并发起反击。<br/><br/> 数据中心还允许敌军呼叫UAV侦查，夺取这个目标可以让敌军失去这些优势。';
-			_title = '夺取数据中心';
-			_tooltip = '情报中心';
+			_description = format [
+				'%1<br/><br/>%2<br/><br/>%3',
+				localize 'STR_QS_Task_055',
+				localize 'STR_QS_Task_056',
+				localize 'STR_QS_Task_057'
+			];
+			_title = localize 'STR_QS_Task_058';
+			_tooltip = localize 'STR_QS_Task_059';
 			_icon = 'intel';
 			[
 				'QS_virtualSectors_sub_1_task',
@@ -387,7 +392,7 @@ if (_type isEqualTo 1) exitWith {
 			_marker1 setMarkerShapeLocal 'ICON';
 			_marker1 setMarkerTypeLocal 'mil_dot';
 			_marker1 setMarkerColorLocal 'ColorOPFOR';
-			_marker1 setMarkerTextLocal (format ['%1Radio Tower',(toString [32,32,32])]);
+			_marker1 setMarkerTextLocal (format ['%1 %2',(toString [32,32,32]),localize 'STR_QS_Marker_026']);
 			_marker1 setMarkerSizeLocal [0.5,0.5];
 			_marker1 setMarkerPos _uncertaintyPos;
 			(missionNamespace getVariable 'QS_virtualSectors_sub_2_markers') pushBack _marker1;
@@ -400,9 +405,14 @@ if (_type isEqualTo 1) exitWith {
 			_marker2 setMarkerSizeLocal [100,100];
 			_marker2 setMarkerPos _uncertaintyPos;
 			(missionNamespace getVariable 'QS_virtualSectors_sub_2_markers') pushBack _marker2;
-			_description = '摧毁敌方无线电塔!<br/><br/>敌军依靠无线电通讯来呼叫直升机和装甲载具增援。<br/><br/>破坏这个目标会大大降低敌人呼叫增援的能力。';
-			_title = '摧毁无线电塔';
-			_tooltip = '无线电塔';
+			_description = format [
+				'%1<br/><br/>%2<br/><br/>%3',
+				localize 'STR_QS_Task_060',
+				localize 'STR_QS_Task_061',
+				localize 'STR_QS_Task_062'
+			];
+			_title = localize 'STR_QS_Task_063';
+			_tooltip = localize 'STR_QS_Task_064';
 			_icon = 'destroy';
 			[
 				'QS_virtualSectors_sub_2_task',
@@ -517,7 +527,7 @@ if (_type isEqualTo 1) exitWith {
 			_marker1 setMarkerShapeLocal 'ICON';
 			_marker1 setMarkerTypeLocal 'mil_dot';
 			_marker1 setMarkerColorLocal 'ColorOPFOR';
-			_marker1 setMarkerTextLocal (format ['%1Supply Depot',(toString [32,32,32])]);
+			_marker1 setMarkerTextLocal (format ['%1 %2',(toString [32,32,32]),localize 'STR_QS_Marker_023']);
 			_marker1 setMarkerSizeLocal [0.5,0.5];
 			_marker1 setMarkerPos _uncertaintyPos;
 			(missionNamespace getVariable 'QS_virtualSectors_sub_3_markers') pushBack _marker1;
@@ -531,9 +541,15 @@ if (_type isEqualTo 1) exitWith {
 			_marker2 setMarkerPos _uncertaintyPos;
 			(missionNamespace getVariable 'QS_virtualSectors_sub_3_markers') pushBack _marker2;
 			missionNamespace setVariable ['QS_virtualSectors_sd_position',_position,FALSE];
-			_description = '夺取敌军补给点。<br/><br/>>敌军依靠这个补给点将先进的装备分配给各个单位。这个补给点会让敌军装备更多的防空，反坦克装备，甚至可以呼叫可怕的毒蛇单位.<br/><br/>夺取这个补给点将大大降低敌军部署AA防空小队,AT反坦克小队和毒蛇小队的能力.<br/><br/>>要夺取后勤补给点的话，对防御工事内的Taru货仓使用滚轮菜单即可。';
-			_title = '敌方补给点';
-			_tooltip = '补给点';
+			_description = format [
+				'%1<br/><br/>%2<br/><br/>%3<br/><br/>%4',
+				localize 'STR_QS_Task_065',
+				localize 'STR_QS_Task_066',
+				localize 'STR_QS_Task_067',
+				localize 'STR_QS_Task_068'
+			];
+			_title = localize 'STR_QS_Task_069';
+			_tooltip = localize 'STR_QS_Task_069';
 			_icon = 'rearm';
 			[
 				'QS_virtualSectors_sub_3_task',
@@ -565,7 +581,6 @@ if (_type isEqualTo 1) exitWith {
 			_position = ['RADIUS',_centerPos,(_centerRadius * 0.666),'LAND',[],FALSE,[],[],TRUE] call (missionNamespace getVariable 'QS_fnc_findRandomPos');
 			if (((_position distance2D _basePosition) > 500) && ((((_position select [0,2]) nearRoads 20) select {((_x isEqualType objNull) && ((roadsConnectedTo _x) isNotEqualTo []))}) isEqualTo []) && (!([_position,50,8] call (missionNamespace getVariable 'QS_fnc_waterInRadius')))) exitWith {};
 		};
-		//_roughPos = [((_position # 0) - 140) + (random 280),((_position # 1) - 140) + (random 280),0];
 		_drawBlackCircle = FALSE;
 		_jammer = [1,'QS_ao_jammer_1',_position,QS_aoPos,QS_aoSize,TRUE,_drawBlackCircle] call (missionNamespace getVariable 'QS_fnc_gpsJammer');
 		if (alive _jammer) then {

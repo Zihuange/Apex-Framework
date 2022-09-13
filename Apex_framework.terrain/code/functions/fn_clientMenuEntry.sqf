@@ -21,11 +21,34 @@ if (_type isEqualTo 'onLoad') then {
 	_ctrlSText1 = _display displayCtrl 1806;
 	private _text = '';
 	_text = parseText format [
-		'<t underline="true">简报</t><br/><t size="1">完成主线和支线任务，夺取敌人在 %1 上的主动权！</t><br/><br/><t underline="true">规则</t><t size="1"><br/>%3</t><br/><br/><t underline="true">Staff</t><br/><t size="1">%4</t><br/><br/><t underline="true">Discord</t><br/><t size="1">%2</t><br/><br/><t underline="true">Hotkeys</t><br/><t size="1">[Home] - 玩家菜单<br/>[End] - Earplugs<br/>[4] - 背起武器<br/>[L.Ctrl]+[Reload] - 整理弹匣<br/>[V] - 跳跃 (奔跑中使用)<br/>[U] - 班组管理<br/>[J]x2 - 打开任务简报</t>',
+		'<t underline="true">%5</t>
+		<br/><t size="1">%6 %1 %7</t><br/><br/><t underline="true">%8</t><t size="1"><br/>%3</t><br/>
+		<br/><t underline="true">%9</t><br/><t size="1">%4</t><br/><br/><t underline="true">%10</t>
+		<br/><t size="1">%2</t><br/><br/><t underline="true">%11</t>
+		<br/><t size="1">%12 - %13<br/>%14 - %15
+		<br/>[4] - %16<br/>[L.Ctrl]+[%17] - %18<br/>[V] - %19
+		<br/>[U] - %20<br/>[J]x2 - %21</t>',
 		worldName,
 		(missionNamespace getVariable ['QS_missionConfig_commTS','']),
 		(missionNamespace getVariable ['QS_missionConfig_splash_serverRules','']),
-		(missionNamespace getVariable ['QS_missionConfig_splash_adminNames',''])
+		(missionNamespace getVariable ['QS_missionConfig_splash_adminNames','']),
+		localize 'STR_QS_Menu_148',
+		localize 'STR_QS_Menu_149',
+		localize 'STR_QS_Menu_150',
+		localize 'STR_QS_Menu_151',
+		localize 'STR_QS_Menu_152',
+		localize 'STR_QS_Menu_153',
+		localize 'STR_QS_Menu_154',
+		localize 'STR_QS_Menu_155',
+		localize 'STR_QS_Menu_009',
+		localize 'STR_QS_Menu_156',
+		localize 'STR_QS_Menu_157',
+		localize 'STR_QS_Menu_158',
+		localize 'STR_QS_Menu_159',
+		localize 'STR_QS_Menu_160',
+		localize 'STR_QS_Menu_161',
+		localize 'STR_QS_Menu_162',
+		localize 'STR_QS_Menu_163'
 	];
 	_ctrlSText1 ctrlSetStructuredText _text;
 };

@@ -53,9 +53,9 @@ if (_type isEqualTo 0) then {
 if (_type isEqualTo 1) then {
 	_array = ['CREATE',_2] call (missionNamespace getVariable 'QS_fnc_fobAssets');
 	missionNamespace setVariable ['QS_module_fob_displayName',(([_2] call (missionNamespace getVariable 'QS_data_fobs')) # 5),TRUE];
-	'QS_marker_module_fob' setMarkerPos (([_2] call (missionNamespace getVariable 'QS_data_fobs')) # 0);
-	'QS_marker_module_fob' setMarkerText (format ['%1FOB %2 (点击查看状态)',(toString [32,32,32]),(([_2] call (missionNamespace getVariable 'QS_data_fobs')) # 5)]);
-	'QS_marker_module_fob' setMarkerAlpha 0.8;
+	'QS_marker_module_fob' setMarkerPosLocal (([_2] call (missionNamespace getVariable 'QS_data_fobs')) # 0);
+	'QS_marker_module_fob' setMarkerTextLocal (format ['%1 %3 %2 (%4)',(toString [32,32,32]),(([_2] call (missionNamespace getVariable 'QS_data_fobs')) # 5),localize 'STR_QS_Marker_007',localize 'STR_QS_Marker_008']);
+	'QS_marker_module_fob' setMarkerAlphaLocal 0.8;
 	'QS_marker_module_fob' setMarkerColor 'ColorUnknown';
 	missionNamespace setVariable ['QS_module_fob_side',sideUnknown,TRUE];
 	[(missionNamespace getVariable 'QS_module_fob_flag'),(missionNamespace getVariable 'QS_module_fob_side'),'',FALSE,objNull,1] call (missionNamespace getVariable 'QS_fnc_setFlag');

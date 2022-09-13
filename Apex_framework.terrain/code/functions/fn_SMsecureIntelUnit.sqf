@@ -106,7 +106,7 @@ _intelObj addEventHandler [
 				_killerDisplayName = getText (configFile >> 'CfgVehicles' >> _killerType >> 'displayName');
 				_objDisplayName = getText (configFile >> 'CfgVehicles' >> _objType >> 'displayName');
 				_name = name _killer;
-				['sideChat',[WEST,'BLU'],format ['%1 击杀了一名携带情报的目标！',_name]] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+				['sideChat',[WEST,'BLU'],format ['%1 %2',_name,localize 'STR_QS_Chat_070']] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 			};
 		};
 	}
@@ -195,19 +195,18 @@ _enemiesArray = [_flatPos] call (missionNamespace getVariable 'QS_fnc_smEnemyEas
 /*/--------------------------------------------------------------------------- BRIEFING/*/
 
 _fuzzyPos = [((_flatPos # 0) - 300) + (random 600),((_flatPos # 1) - 300) + (random 600),0];
+'QS_marker_sideMarker' setMarkerTextLocal (format ['%1 %2',(toString [32,32,32]),localize 'STR_QS_Marker_043']);
 {
 	_x setMarkerPosLocal _fuzzyPos;
 	_x setMarkerAlpha 1;
 } count ['QS_marker_sideMarker','QS_marker_sideCircle'];	
-'QS_marker_sideMarker' setMarkerText (format ['%1夺取情报(军官)',(toString [32,32,32])]);
-
 [
 	'QS_IA_TASK_SM_0',
 	TRUE,
 	[
-		'敌军高阶军官正在交付重要情报，立即出发逮捕敌方军官。敌方军官在被捕后就会交出情报。注意，无准备的随意靠近将会导致目标乘车逃离，军官逃离和被击毙都将会导致任务失败。',
-		'夺取情报(军官)',
-		'夺取情报(军官)'
+		localize 'STR_QS_Task_110',
+		localize 'STR_QS_Task_111',
+		localize 'STR_QS_Task_111'
 	],
 	(markerPos 'QS_marker_sideMarker'),
 	'CREATED',
@@ -217,9 +216,7 @@ _fuzzyPos = [((_flatPos # 0) - 300) + (random 600),((_flatPos # 1) - 300) + (ran
 	'download',
 	TRUE
 ] call (missionNamespace getVariable 'BIS_fnc_setTask');
-_briefing = parseText "<t align='center'><t size='2.2'>支线任务</t><br/><t size='1.5' color='#00B2EE'>夺取情报(军官)</t><br/>____________________<br/>我们从当地平民那里得知，敌军高阶军官正在交付重要情报。这是一个获取情报的机会！<br/><br/>在地图上标记了行动区域，立刻前往此区域，找到并获取情报。情报可能存放在敌人的身上。</t>";
-['hint',_briefing] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
-['NewSideMission',['夺取情报(军官)']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+['NewSideMission',[localize 'STR_QS_Notif_111']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 
 /*/============= SET VARS/*/
 
@@ -241,7 +238,7 @@ for '_x' from 0 to 1 step 0 do {
 
 		/*/---------- DE-BRIEF/*/
 
-		['sideChat',[WEST,'HQ'],'目标死亡，任务失败！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['sideChat',[WEST,'HQ'],localize 'STR_QS_Chat_071'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		missionNamespace setVariable ['QS_sideMissionUp',FALSE,TRUE];
 		[0,_flatPos] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
 		{
@@ -278,7 +275,7 @@ for '_x' from 0 to 1 step 0 do {
 			{
 				_x enableAIFeature ['PATH',TRUE];
 			} forEach [_intelObj,_decoy1,_decoy2,_intelDriver,_decoyDriver1,_decoyDriver2];
-			['sideChat',[WEST,'HQ'],'敌军发现了我们，并且正在试图携带情报逃跑！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+			['sideChat',[WEST,'HQ'],localize 'STR_QS_Chat_072'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		
 			/*/---------- WHERE TO / HOW WILL THE OBJECTIVES ESCAPE?/*/
 			
@@ -347,7 +344,7 @@ for '_x' from 0 to 1 step 0 do {
 	if (_heEscaped) exitWith {
 			
 		/*/---------- DE-BRIEF/*/
-		['sideChat',[WEST,'HQ'],'目标逃脱，任务失败！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['sideChat',[WEST,'HQ'],localize 'STR_QS_Chat_074'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		missionNamespace setVariable ['QS_sideMissionUp',FALSE,TRUE];
 		[0,_flatPos] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
 		{
@@ -387,7 +384,7 @@ for '_x' from 0 to 1 step 0 do {
 		
 		/*/---------- DE-BRIEF/*/
 		
-		['sideChat',[WEST,'HQ'],"情报已获取。 任务完成！ 我们正在将情报上传至指挥部进行分析。"] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['sideChat',[WEST,'HQ'],localize 'STR_QS_Chat_075'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		missionNamespace setVariable ['QS_sideMissionUp',FALSE,TRUE];
 		[1,_flatPos] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
 		{

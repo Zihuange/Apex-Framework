@@ -16,7 +16,7 @@ ______________________________________________/*/
 scriptName 'QS - SM - AA';
 //comment 'Get any data we need';
 private _spawnPosition = [0,0,0];
-private _aaTypes = ['o_apc_tracked_02_aa_f','o_t_apc_tracked_02_aa_ghex_f','o_t_apc_tracked_02_aa_ghex_f','o_t_apc_tracked_02_aa_ghex_f','o_sam_system_04_f'];
+private _aaTypes = ['o_apc_tracked_02_aa_f','o_t_apc_tracked_02_aa_ghex_f','o_t_apc_tracked_02_aa_ghex_f','o_t_apc_tracked_02_aa_ghex_f'];
 private _aaHulls = [];
 private _aaTurrets = [];
 private _aaTurretObjects = [];
@@ -39,8 +39,8 @@ private _entitiesParams = [['Air'],['UAV_01_base_F','UAV_06_base_F','ParachuteBa
 private _rearmInterval = _time + (240 + (random 80));
 private _rearming = FALSE;
 private _rearmDelay = [15,20,30];
-_rearmingText = '敌军防空阵地正在重新装填！';
-_finishedRearmText = '敌军防空阵地已完成弹药装填！';
+_rearmingText = localize 'STR_QS_Task_096';
+_finishedRearmText = localize 'STR_QS_Task_097';
 private _turretParams = [];
 private _targetListEnemy = [];
 private _targetType = '';
@@ -210,13 +210,13 @@ _compositionData = nil;
 				};
 				if (!isNull _instigator) then {
 					if (isPlayer _instigator) then {
-						_text = format ['%1 ( %2 ) 摧毁了一台防空设备！',(name _instigator),(groupID (group _instigator))];
+						_text = format ['%1 ( %2 ) %3',(name _instigator),(groupID (group _instigator)),localize 'STR_QS_Chat_066'];
 						[[WEST,'BLU'],_text] remoteExec ['sideChat',-2,FALSE];
 					} else {
-						[[WEST,'BLU'],'防空设备被摧毁！'] remoteExec ['sideChat',-2,FALSE];
+						[[WEST,'BLU'],localize 'STR_QS_Chat_067'] remoteExec ['sideChat',-2,FALSE];
 					};
 				} else {
-					[[WEST,'BLU'],'防空设备被摧毁！'] remoteExec ['sideChat',-2,FALSE];
+					[[WEST,'BLU'],localize 'STR_QS_Chat_067'] remoteExec ['sideChat',-2,FALSE];
 				};
 			}
 		];
@@ -237,18 +237,18 @@ _compositionData = nil;
 } forEach ([(_composition # 0)] call (missionNamespace getVariable 'QS_fnc_smEnemyEast'));
 //comment 'Brief players';
 _fuzzyPos = [((_spawnPosition # 0) - 300) + (random 600),((_spawnPosition # 1) - 300) + (random 600),0];
+'QS_marker_sideMarker' setMarkerTextLocal (format ['%1 %2',(toString [32,32,32]),localize 'STR_QS_Marker_037']);
 {
 	_x setMarkerPosLocal _fuzzyPos;
 	_x setMarkerAlpha 1;
 } count ['QS_marker_sideMarker','QS_marker_sideCircle'];
-'QS_marker_sideMarker' setMarkerText (format ['%1优先目标：敌军大型防空阵地',(toString [32,32,32])]);
 [
 	'QS_IA_TASK_SM_0',
 	TRUE,
 	[
-		'敌方在我方基地附近建立了一个大型防空阵地。该阵地为最优先目标！ 防空阵地射程很远，对我方所有空中单位都造成了严重威胁，立即前往其所在区域不惜一切代价摧毁阵地。 防空阵地装填完毕后会一直处于攻击状态，建议暂时停止空中运输。 在重新装填(30秒)时，敌军防空设备无法攻击。 建议携带炸药将其摧毁。',
-		'敌方防空阵地',
-		'敌方防空阵地'
+		localize 'STR_QS_Task_094',
+		localize 'STR_QS_Task_095',
+		localize 'STR_QS_Task_095'
 	],
 	(markerPos 'QS_marker_sideMarker'),
 	'CREATED',
@@ -258,14 +258,12 @@ _fuzzyPos = [((_spawnPosition # 0) - 300) + (random 600),((_spawnPosition # 1) -
 	'destroy',
 	TRUE
 ] call (missionNamespace getVariable 'BIS_fnc_setTask');
-_briefing = parseText "<t align='center' size='2.2'>优先目标</t><br/><t size='1.5' color='#b60000'>敌军大型防空阵地</t><br/>____________________<br/>敌军部署了一个大型防空阵地，正在痛击我们的空中单位！ 我们通过热成像扫描找到了敌军防空阵地的大概位置，并标记在了地图上。<br/><br/>这是一个优先目标，请尽快处理！";
-//['hint',_briefing] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
-['NewPriorityTarget',['敌军大型防空阵地']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+['NewPriorityTarget',[localize 'STR_QS_Notif_096']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 //comment 'Loop';
 missionNamespace setVariable ['QS_smSuccess',FALSE,TRUE];
 for '_x' from 0 to 1 step 0 do {
 	if (((_aaHulls findIf {(alive _x)}) isEqualTo -1) || {(missionNamespace getVariable ['QS_smSuccess',FALSE])}) exitWith {
-		['CompletedPriorityTarget',['敌军大型防空阵地已被摧毁']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['CompletedPriorityTarget',[localize 'STR_QS_Notif_097']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		[1,_spawnPosition] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
 		{
 			_x setMarkerAlpha 0;

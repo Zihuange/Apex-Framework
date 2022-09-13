@@ -338,7 +338,7 @@ if (
 									(_targetPosition inRangeOfArtillery [[_supportProvider],((magazines (vehicle _supportProvider)) # 0)])
 								) then {
 									(missionNamespace getVariable ['QS_AI_cmdr_recentSuppPositions',[]]) pushBack [_targetPosition,serverTime + (60 + (random 300))];
-									(format ['Enemy commander has ordered a strike on %1',mapGridPosition _targetPosition]) remoteExec ['systemChat',-2];
+									(format ['%2 %1',mapGridPosition _targetPosition,localize 'STR_QS_Chat_078']) remoteExec ['systemChat',-2];
 									_supportGroup setVariable ['QS_AI_GRP_fireMission',[(_targetPosition getPos [random 50,random 360]),((magazines (vehicle _supportProvider)) # 0),(round (4 + (random 4))),(serverTime + 90)],QS_system_AI_owners];
 									_exit = TRUE;
 								};
@@ -1075,7 +1075,7 @@ if (
 					_grp enableAttack TRUE;
 				};
 				if (_grpIsReady || {(_uiTime > _currentTask_timeout)}) then {
-					_movePos = selectRandom _currentTask_position;
+					_movePos = _currentTask_position;
 					if ((_grpLeader distance2D _movePos) > 50) then {
 						_grp move _movePos;
 						_grp setFormDir (_grpLeader getDir _movePos);
@@ -1086,7 +1086,7 @@ if (
 						private _enemyPos = [0,0,0];
 						{
 							_grpUnit = _x;
-							_unitMovePos = selectRandom _currentTask_position;
+							_unitMovePos = _currentTask_position;
 							_unitMovePos set [2,((_unitMovePos # 2) + 1.5)];
 							if ((random 1) > 0.5) then {
 								_nearestEnemy = _grpUnit findNearestEnemy _grpUnit;

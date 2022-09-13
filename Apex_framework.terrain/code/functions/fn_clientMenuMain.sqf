@@ -19,9 +19,9 @@ if (_type isEqualTo 'onLoad') exitWith {
 	params ['','_display'];
 	setMousePosition (uiNamespace getVariable ['QS_ui_mousePosition',getMousePosition]);
 	(_display displayCtrl 1600) ctrlEnable TRUE;
-	(_display displayCtrl 1600) ctrlSetText '通讯菜单';
-	(_display displayCtrl 1600) ctrlSetToolTip '社区 & 通讯菜单';
-	(_display displayCtrl 1601) ctrlSetText '51区';
+	(_display displayCtrl 1600) ctrlSetText (localize 'STR_QS_Menu_027');
+	(_display displayCtrl 1600) ctrlSetToolTip (localize 'STR_QS_Menu_044');
+	(_display displayCtrl 1601) ctrlSetText (localize 'STR_QS_Menu_043');
 	(_display displayCtrl 1601) ctrlSetToolTip '';
 	(_display displayCtrl 1601) ctrlEnable FALSE;
 	if ((call (missionNamespace getVariable 'QS_missionConfig_cosmetics')) > 0) then {
@@ -33,13 +33,13 @@ if (_type isEqualTo 'onLoad') exitWith {
 			(_display displayCtrl 1601) ctrlEnable TRUE;
 		};
 	};
-	(_display displayCtrl 1602) ctrlSetText '排行榜';
+	(_display displayCtrl 1602) ctrlSetText (localize 'STR_QS_Menu_030');
 	(_display displayCtrl 1602) ctrlEnable TRUE;
-	(_display displayCtrl 1603) ctrlSetText '视距调整';
-	(_display displayCtrl 1603) ctrlSetToolTip '视距调整';
-	(_display displayCtrl 1604) ctrlSetText '关闭';
+	(_display displayCtrl 1603) ctrlSetText (localize 'STR_QS_Menu_045');
+	(_display displayCtrl 1603) ctrlSetToolTip (localize 'STR_QS_Menu_046');
+	(_display displayCtrl 1604) ctrlSetText (localize 'STR_QS_Menu_047');
 	(_display displayCtrl 1604) ctrlSetToolTip '';
-	(_display displayCtrl 1605) ctrlSetText '选项';
+	(_display displayCtrl 1605) ctrlSetText (localize 'STR_QS_Menu_048');
 	(_display displayCtrl 1605) ctrlSetToolTip '';
 };
 if (_type isEqualTo 'onUnload') exitWith {

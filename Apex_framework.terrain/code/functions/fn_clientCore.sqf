@@ -6,7 +6,7 @@ Author:
 	
 Last Modified:
 
-	19/10/2020 A3 2.00 by Quiksilver
+	4/09/2022 A3 2.10 by Quiksilver
 	
 Description:
 
@@ -129,7 +129,7 @@ _QS_clientOwner = clientOwner;
 _roleSelectionSystem = missionNamespace getVariable ['QS_RSS_enabled',TRUE];
 private _playerRole = player getVariable ['QS_unit_role','rifleman'];
 private _roleDisplayName = ['GET_ROLE_DISPLAYNAME',_playerRole] call (missionNamespace getVariable ['QS_fnc_roles',{'Rifleman'}]);
-private _roleDisplayNameL = toLowerANSI _roleDisplayName;
+private _roleDisplayNameL = toLower _roleDisplayName;
 private _RSS_MenuButton = (missionNamespace getVariable ['QS_missionConfig_RSS_MenuButton',0]) isNotEqualTo 0;
 _objectParent = objectParent player;
 _QS_v2 = vehicle player;
@@ -304,53 +304,53 @@ private _QS_medicCameraOn = objNull;
 _QS_actions = [];
 _QS_interaction_escort = FALSE;
 _QS_action_escort = nil;
-_QS_action_escort_text = (localize "STR_QS_Action_escort");
+_QS_action_escort_text = localize 'STR_QS_Interact_003';
 _QS_action_escort_array = [_QS_action_escort_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractEscort')},[],95,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_load = FALSE;
 _QS_interaction_load2 = FALSE;
 _QS_action_load = nil;
-_QS_action_load_text = (localize "STR_QS_Action_load");
+_QS_action_load_text = localize 'STR_QS_Interact_004';
 _QS_action_load_array = [_QS_action_load_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractLoad')},[],94,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_unload = FALSE;
 _QS_action_unload = nil;
-_QS_action_unload_text = (localize "STR_QS_Action_Unload");
+_QS_action_unload_text = localize 'STR_QS_Interact_005';
 _QS_action_unload_array = [_QS_action_unload_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractUnload')},[],-10,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_questionCivilian = FALSE;
 _QS_action_questionCivilian = nil;
-_QS_action_questionCivilian_text = (localize "STR_QS_Action_question");
+_QS_action_questionCivilian_text = 'STR_QS_Interact_006';
 _QS_action_questionCivilian_array = [_QS_action_questionCivilian_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractCivilian')},[],92,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_drag = FALSE;
 _QS_action_drag = nil;
-_QS_action_drag_text = (localize "STR_QS_Action_darg");
+_QS_action_drag_text = localize 'STR_QS_Interact_001';
 _QS_action_drag_array = [_QS_action_drag_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractDrag')},[],-9,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_carry = FALSE;
 _QS_action_carry = nil;
-_QS_action_carry_text = (localize "STR_QS_Action_carry");
+_QS_action_carry_text = localize 'STR_QS_Interact_002';
 _QS_action_carry_array = [_QS_action_carry_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractCarry')},[],-10,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_follow = FALSE;
 _QS_action_follow = nil;
-_QS_action_follow_text = (localize "STR_QS_Action_follow");
+_QS_action_follow_text = localize 'STR_QS_Interact_007';
 _QS_action_follow_array = [_QS_action_follow_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractFollow')},[],89,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_recruit = FALSE;
 _QS_action_recruit = nil;
-_QS_action_recruit_text = (localize "STR_QS_Action_recruit");
+_QS_action_recruit_text = localize 'STR_QS_Interact_008';
 _QS_action_recruit_array = [_QS_action_recruit_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractRecruit')},[],88,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_dismiss = FALSE;
 _QS_action_dismiss = nil;
-_QS_action_dismiss_text = (localize "STR_QS_Action_dismiss");
+_QS_action_dismiss_text = localize 'STR_QS_Interact_009';
 _QS_action_dismiss_array = [_QS_action_dismiss_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractDismiss')},[],-81,FALSE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_release = FALSE;
 _QS_action_release = nil;
-_QS_action_release_text = (localize "STR_QS_Action_release");
+_QS_action_release_text = localize 'STR_QS_Interact_010';
 _QS_action_release_array = [_QS_action_release_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractRelease')},[],88,FALSE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_respawnVehicle = FALSE;
 _QS_action_respawnVehicle = nil;
-_QS_action_respawnVehicle_text = (localize "STR_QS_Action_respawnVeh");
+_QS_action_respawnVehicle_text = localize 'STR_QS_Interact_011';
 _QS_action_respawnVehicle_array = [_QS_action_respawnVehicle_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractRespawnVehicle')},[],-80,FALSE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_vehDoors = FALSE;				
 _QS_action_vehDoors = nil;
-_QS_action_vehDoors_textOpen = (localize "STR_QS_Action_openCargo");
-_QS_action_vehDoors_textClose = (localize "STR_QS_Action_closeCargo");
+_QS_action_vehDoors_textOpen = localize 'STR_QS_Interact_012';
+_QS_action_vehDoors_textClose = localize 'STR_QS_Interact_013';
 _QS_action_vehDoors_array = [_QS_action_vehDoors_textOpen,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractVehicleDoors')},[],-10,FALSE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_action_vehDoors_vehicles = [
 	'b_heli_transport_01_f','b_heli_transport_01_camo_f','o_heli_light_02_unarmed_f','o_heli_light_02_f','o_heli_light_02_v2_f','o_heli_attack_02_f',
@@ -366,7 +366,7 @@ _QS_action_vehDoors_vehicles = [
 	'b_gen_van_02_vehicle_f','b_gen_van_02_transport_f','i_e_van_02_transport_mp_f','i_e_van_02_transport_f','i_e_van_02_vehicle_f','i_e_van_02_medevac_f'
 ];
 _QS_action_serviceVehicle = nil;
-_QS_action_serviceVehicle_text = (localize "STR_QS_Action_service");
+_QS_action_serviceVehicle_text = localize 'STR_QS_Interact_014';
 _QS_action_serviceVehicle_array = [_QS_action_serviceVehicle_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractServiceVehicle')},[],10,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_serviceVehicle = FALSE;
 _isNearRepairDepot = FALSE;
@@ -375,13 +375,13 @@ _nearSite = FALSE;
 _nearSite2 = FALSE;
 _nearSite3 = FALSE;
 _QS_action_unflipVehicle = nil;
-_QS_action_unflipVehicle_text = (localize "STR_QS_Action_unflip");
+_QS_action_unflipVehicle_text = localize 'STR_QS_Interact_015';
 _QS_action_unflipVehicle_array = [_QS_action_unflipVehicle_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractUnflipVehicle')},[],10,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_unflipVehicle = FALSE;
 
-/*/== Revive Anim/*/
+/*/===== Revive /*/
 _QS_action_revive = nil;
-_QS_action_revive_text = (localize "STR_QS_Action_revice");
+_QS_action_revive_text = localize 'STR_QS_Interact_016';
 _QS_action_revive_array = [_QS_action_revive_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractRevive')},[],99,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 private _QS_action_AIrevive_array = [_QS_action_revive_text,{_this spawn (missionNamespace getVariable 'QS_fnc_rcAIRevive')},[],99,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_revive = FALSE;
@@ -393,7 +393,7 @@ _QS_revive_injuredAnims = [
 _checkworldtime = time + 30 + (random 600);
 /*/===== Stabilise/*/
 _QS_action_stabilise = nil;
-_QS_action_stabilise_text = (localize "STR_QS_Action_stabilise");
+_QS_action_stabilise_text = localize 'STR_QS_Interact_017';
 _QS_action_stabilise_array = [_QS_action_stabilise_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractStabilise')},nil,91,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_stabilise = FALSE;
 /*/===== Arsenal/*/
@@ -404,14 +404,14 @@ _QS_interaction_arsenal = FALSE;
 _QS_arsenal_model = 'a3\weapons_f\ammoboxes\supplydrop.p3d';
 /*/===== Role Selection/*/
 _QS_action_RSS = nil;
-_QS_action_RSS_text = (localize 'STR_QS_Action_roleSelect');
+_QS_action_RSS_text = localize 'STR_QS_Interact_018';
 _QS_action_RSS_array = [_QS_action_RSS_text,{closeDialog 2;uiSleep 0.1;createDialog 'QS_client_dialog_menu_roles';},[],89,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_RSS = FALSE;
 
 /*/===== Utility offroad/*/
 _QS_action_utilityOffroad = nil;
-_QS_action_utilityOffroad_textOn = (localize 'STR_QS_Action_beaconsOn');
-_QS_action_utilityOffroad_textOff = (localize 'STR_QS_Action_beaconsOff');
+_QS_action_utilityOffroad_textOn = localize 'STR_QS_Interact_019';
+_QS_action_utilityOffroad_textOff = localize 'STR_QS_Interact_020';
 _QS_action_utilityOffroad_array = [_QS_action_utilityOffroad_textOn,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractUtilityOffroad')},[],-10,FALSE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_utilityOffroad = FALSE;
 _offroadTypes = [
@@ -421,49 +421,49 @@ _offroadTypes = [
 ];
 /*/===== Tow/*/
 _QS_action_tow = nil;
-_QS_action_tow_text = (localize 'STR_QS_Action_tow');
+_QS_action_tow_text = localize 'STR_QS_Interact_021';
 _QS_action_tow_array = [_QS_action_tow_text,{_this spawn (missionNamespace getVariable 'QS_fnc_vTow')},[],21,FALSE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_tow = FALSE;
 /*/===== Surrender/*/
 _QS_action_commandSurrender = nil;
-_QS_action_commandSurrender_text = (localize 'STR_QS_Action_surrender');
+_QS_action_commandSurrender_text = localize 'STR_QS_Interact_022';
 _QS_action_commandSurrender_array = [_QS_action_commandSurrender_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractSurrender')},[],90,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_commandSurrender = FALSE;
 /*/===== Rescue/*/
 _QS_action_rescue = nil;
-_QS_action_rescue_text = (localize 'STR_QS_Action_rescue');
+_QS_action_rescue_text = localize 'STR_QS_Interact_023';
 _QS_action_rescue_array = [_QS_action_rescue_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractRescue')},[],95,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_rescue = FALSE;
 /*/===== Secure/*/
 _QS_action_secure = nil;
-_QS_action_secure_text = (localize 'STR_QS_Action_secure');
+_QS_action_secure_text = localize 'STR_QS_Interact_024';
 _QS_action_secure_array = [_QS_action_secure_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractSecure')},[],95,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_secure = FALSE;
 /*/===== Examine/*/
 _QS_action_examine = nil;
-_QS_action_examine_text = (localize 'STR_QS_Action_examine');
+_QS_action_examine_text = localize 'STR_QS_Interact_025';
 _QS_action_examine_array = [_QS_action_examine_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractExamine')},[],94,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_examine = FALSE;
 /*/===== Turret safety/*/
 _QS_action_turretSafety = nil;
-_QS_action_turretSafety_text = (localize 'STR_QS_Action_turretSafety');
+_QS_action_turretSafety_text = localize 'STR_QS_Interact_026';
 _QS_action_turretSafety_array = [_QS_action_turretSafety_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractTurretControl')},[],-50,FALSE,FALSE,'','TRUE',-1,FALSE,''];
 _QS_interaction_turretSafety = FALSE;
 missionNamespace setVariable ['QS_inturretloop',FALSE,FALSE];
 _QS_turretSafety_heliTypes = ['B_Heli_Transport_01_camo_F','B_Heli_Transport_01_F','B_Heli_Transport_03_F','B_CTRG_Heli_Transport_01_sand_F','B_CTRG_Heli_Transport_01_tropic_F'];
 /*/===== Teeth collector/*/
 _QS_action_teeth = nil;
-_QS_action_teeth_text = (localize 'STR_QS_Action_teeth');
+_QS_action_teeth_text = localize 'STR_QS_Interact_027';
 _QS_action_teeth_array = [_QS_action_teeth_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractTooth')},[],-52,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_teeth = FALSE;
 /*/===== Commander Beret collector/*/
 private _QS_action_beret = nil;
-private _QS_action_beret_text = 'Take beret';
+private _QS_action_beret_text = localize 'STR_QS_Interact_028';
 private _QS_action_beret_array = [_QS_action_beret_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractBeret')},[],-51,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 private _QS_interaction_beret = FALSE;
 /*/===== Join group/*/
 _QS_action_joinGroup = nil;
-_QS_action_joinGroup_text = (localize 'STR_QS_Action_joinGroup');
+_QS_action_joinGroup_text = localize 'STR_QS_Interact_029';
 _QS_action_joinGroup_array = [_QS_action_joinGroup_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractJoinGroup')},[],-50,FALSE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_joinGroup = FALSE;
 _QS_joinGroup_privateVar = 'BIS_dg_pri';
@@ -472,51 +472,51 @@ private _groupLocking = missionNamespace getVariable ['QS_missionConfig_groupLoc
 /*/===== Fob status terminal/*/
 _QS_action_fob_terminals = [];
 _QS_action_fob_status = nil;
-_QS_action_fob_status_text = (localize 'STR_QS_Action_FOBstatus');
+_QS_action_fob_status_text = localize 'STR_QS_Interact_030';
 _QS_action_fob_status_array = [_QS_action_fob_status_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractFOBTerminal')},1,25,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_fob_status = FALSE;
 /*/===== Activate FOB/*/
 _QS_action_names = worldName;
 _QS_action_fob_activate = nil;
-_QS_action_fob_activate_text = (localize 'STR_QS_Action_ActivateFOB');
+_QS_action_fob_activate_text = localize 'STR_QS_Interact_031';
 _QS_action_fob_activate_array = [_QS_action_fob_activate_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractFOBTerminal')},2,25,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_fob_activate = FALSE;
 /*/===== Enable FOB Respawn/*/
 _QS_action_fob_respawn = nil;
-_QS_action_fob_respawn_text = (localize 'STR_QS_Action_FOBrespawn');
+_QS_action_fob_respawn_text = localize 'STR_QS_Interact_032';
 _QS_action_fob_respawn_array = [_QS_action_fob_respawn_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractFOBTerminal')},3,25,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_fob_respawn = FALSE;
 /*/===== Crate Customization/*/
 _QS_action_crate_customize = nil;
-_QS_action_crate_customize_text = (localize 'STR_QS_Action_crateCustomize');
+_QS_action_crate_customize_text = localize 'STR_QS_Interact_033';
 _QS_action_crate_array = [_QS_action_crate_customize_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractCustomizeInventory')},[],25,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_customizeCrate = FALSE;
 _nearInvSite = FALSE;
 /*/===== Push Vehicle/*/
 _QS_action_pushVehicle = nil;
-_QS_action_pushVehicle_text = (localize 'STR_QS_Action_pushVeh');
+_QS_action_pushVehicle_text = localize 'STR_QS_Interact_034';
 _QS_action_pushVehicle_array = [_QS_action_pushVehicle_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractPush')},[],25,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_pushVehicle = FALSE;
 /*/===== Create Boat/*/
 _QS_action_createBoat = nil;
-_QS_action_createBoat_text = (localize 'STR_QS_Action_createBoat');
+_QS_action_createBoat_text = localize 'STR_QS_Interact_035';
 _QS_action_createBoat_array = [_QS_action_createBoat_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractCreateBoat')},[],25,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_createBoat = FALSE;
 /*/===== Recover Boat (boat rack)/*/
 _QS_action_recoverBoat = nil;
-_QS_action_recoverBoat_text = if (isLocalized 'STR_A3_action_Recover_Boat') then {localize 'STR_A3_action_Recover_Boat'} else {'Recover boat'};
+_QS_action_recoverBoat_text = localize 'STR_A3_action_Recover_Boat';
 _QS_action_recoverBoat_array = [_QS_action_recoverBoat_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractRecoverBoat')},[],25,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_recoverBoat = FALSE;
 /*/===== Sit/*/
 _QS_action_sit = nil;
-_QS_action_sit_text = (localize 'STR_QS_Action_sit');
+_QS_action_sit_text = localize 'STR_QS_Interact_036';
 _QS_action_sit_array = [_QS_action_sit_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractSit')},1,50,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_sit = FALSE;
 _QS_action_sit_chairTypes = ['Land_CampingChair_V1_F','Land_CampingChair_V2_F','Land_ChairPlastic_F','Land_RattanChair_01_F','Land_ChairWood_F','Land_OfficeChair_01_F','Land_ArmChair_01_F'];
 _QS_action_sit_chairModels = ['campingchair_v1_f.p3d','campingchair_v2_f.p3d','chairplastic_f.p3d','rattanchair_01_f.p3d','chairwood_f.p3d','officechair_01_f.p3d','armchair_01_f.p3d'];
 /*/===== Load Cargo/*/
 _QS_action_loadCargo = nil;
-_QS_action_loadCargo_text = (localize 'STR_QS_Action_loadCargo');
+_QS_action_loadCargo_text = localize 'STR_QS_Interact_037';
 _QS_action_loadCargo_array = [_QS_action_loadCargo_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractLoadCargo')},[],50,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_loadCargo = FALSE;
 _QS_action_loadCargo_vTypes = [
@@ -531,7 +531,7 @@ _QS_action_loadCargo_vehicle = objNull;
 _nearCargoVehicles = [];
 /*/===== Unload Cargo/*/
 _QS_action_unloadCargo = nil;
-_QS_action_unloadCargo_text = (localize 'STR_QS_Action_unloadCargo');
+_QS_action_unloadCargo_text = localize 'STR_QS_Interact_038';
 _QS_action_unloadCargo_array = [_QS_action_unloadCargo_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractUnloadCargo')},[],-30,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_unloadCargo = FALSE;
 _QS_action_unloadCargo_vTypes = [];
@@ -541,12 +541,12 @@ _QS_action_unloadCargo_vehicle = objNull;
 _nearUnloadCargoVehicles = [];
 /*/===== Interact Activate Vehicle/*/
 _QS_action_activateVehicle = nil;
-_QS_action_activateVehicle_text = (localize 'STR_QS_Action_activateVeh');
+_QS_action_activateVehicle_text = localize 'STR_QS_Interact_039';
 _QS_action_activateVehicle_array = [_QS_action_activateVehicle_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractActivateVehicle')},nil,49,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_activateVehicle = FALSE;
 /*/===== Huron Medical Container (Simple Object)/*/
 _QS_action_huronContainer = nil;
-_QS_action_huronContainer_text = (localize 'STR_QS_Action_huronContainer');
+_QS_action_huronContainer_text = localize 'STR_QS_Interact_040';
 _QS_action_huronContainer_array = [_QS_action_huronContainer_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractMedStation')},nil,48,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_huronContainer = FALSE;
 _QS_action_medevac_models = [
@@ -564,18 +564,20 @@ _QS_action_medevac_models = [
 ];
 /*/===== Sensor Target/*/
 _QS_action_sensorTarget = nil;
-_QS_action_sensorTarget_array = [(localize 'STR_QS_Action_sensorTarget'),{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractSensorTarget')},nil,60,TRUE,TRUE,'','TRUE',-1,FALSE,''];
+private _sensorTarget_text_1 = localize 'STR_QS_Interact_041';
+private _sensorTarget_text_2 = localize 'STR_QS_Interact_060';
+_QS_action_sensorTarget_array = [_sensorTarget_text_1,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractSensorTarget')},nil,60,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_sensorTarget = FALSE;
 /*/===== Attach Explosive (underwater)/*/
 _QS_action_attachExp = nil;
-_QS_action_attachExp_text = (localize 'STR_QS_Action_attachExp');
+_QS_action_attachExp_text = localize 'STR_QS_Interact_042';
 _QS_action_attachExp_textReal = '';
 _QS_action_attachExp_array = [_QS_action_attachExp_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractUnderwaterDemo')},nil,59,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_attachExp = FALSE;
 /*/===== Cruise control/*/
 private _QS_interaction_cc = FALSE;
 private _QS_action_cc = nil;
-private _QS_action_cc_array = [(localize 'STR_QS_Action_setCruiseControl'),{_this spawn (missionNamespace getVariable 'QS_fnc_setCruiseControl')},[],-50,FALSE,FALSE,'','TRUE',-1,FALSE,''];
+private _QS_action_cc_array = [localize 'STR_QS_Interact_043',{_this spawn (missionNamespace getVariable 'QS_fnc_setCruiseControl')},[],-50,FALSE,FALSE,'','TRUE',-1,FALSE,''];
 /*/===== UGV/*/
 _QS_action_ugv_types = [
 	'b_ugv_01_f',
@@ -590,31 +592,31 @@ _QS_action_ugv_types = [
 //===== Parachute
 private _QS_interaction_para = FALSE;
 private _QS_action_para = nil;
-private _QS_action_para_array = ['Open Parachute',{_this call (missionNamespace getVariable 'QS_fnc_clientInteractOpenParachute')},[],50,TRUE,TRUE,'','TRUE',-1,FALSE,''];
+private _QS_action_para_array = [localize 'STR_QS_Interact_044',{_this call (missionNamespace getVariable 'QS_fnc_clientInteractOpenParachute')},[],50,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 //===== Drone stuff
 _QS_uav = objNull;
 _QS_ugv = objNull;
 _QS_ugvTow = objNull;
 _QS_action_ugv_stretcherModel = 'a3\props_f_orange\humanitarian\camps\stretcher_01_f.p3d';
 _QS_action_ugvLoad = nil;
-_QS_action_ugvLoad_text = (localize 'STR_QS_Action_ugvLoad');
+_QS_action_ugvLoad_text = localize 'STR_QS_Interact_004';
 _QS_action_ugvLoad_array = [_QS_action_ugvLoad_text,{(_this # 3) spawn (missionNamespace getVariable 'QS_fnc_clientInteractUGV');},[_QS_ugv,4],50,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_ugvLoad = FALSE;
 _QS_action_ugvUnload = nil;
-_QS_action_ugvUnload_text = (localize 'STR_QS_Action_ugvUnload');
+_QS_action_ugvUnload_text = localize 'STR_QS_Interact_005';
 _QS_action_ugvUnload_array = [_QS_action_ugvUnload_text,{(_this # 3) spawn (missionNamespace getVariable 'QS_fnc_clientInteractUGV');},[_QS_ugv,5],50,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_ugvUnload = FALSE;
 _QS_interaction_serviceDrone = FALSE;
 _QS_interaction_towUGV = FALSE;
 _QS_action_towUGV = nil;
 _QS_action_uavSelfDestruct = nil;
-_QS_action_uavSelfDestruct_text = (localize 'STR_QS_Action_uavSelfDestruct');
+_QS_action_uavSelfDestruct_text = localize 'STR_QS_Interact_045';
 _QS_action_uavSelfDestruct_array = [_QS_action_uavSelfDestruct_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractUAVSelfDestruct')},nil,-20,FALSE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_uavSelfDestruct = FALSE;
 _QS_ugvSD = objNull;
 /*/===== Carrier Launch/*/
 _QS_action_carrierLaunch = nil;
-_QS_action_carrierLaunch_text = (localize 'STR_QS_Action_carrierLaunch');
+_QS_action_carrierLaunch_text = localize 'STR_QS_Interact_046';
 _QS_action_carrierLaunch_array = [_QS_action_carrierLaunch_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractCarrierLaunch')},nil,85,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_carrierLaunch = FALSE;
 _QS_carrier_cameraOn = objNull;
@@ -627,24 +629,24 @@ _QS_destroyerEnabled = missionNamespace getVariable ['QS_missionConfig_destroyer
 /*/===== Destroyer hangar/*/
 private _QS_interaction_destroyerHeli = FALSE;
 private _QS_action_destroyerHeli = nil;
-private _QS_action_destroyerHeli_textLaunch = 'Launch';
-private _QS_action_destroyerHeli_textRetract = 'Retract';
+private _QS_action_destroyerHeli_textLaunch = localize 'STR_QS_Interact_047';
+private _QS_action_destroyerHeli_textRetract = localize 'STR_QS_Interact_048';
 private _QS_action_destroyerHeli_array = [
 	[_QS_action_destroyerHeli_textRetract,_QS_action_destroyerHeli_textLaunch] select (!isNull ((missionNamespace getVariable ['QS_destroyerObject',objNull]) getVariable ['QS_destroyer_hangarHeli',objNull])),
 	{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractDestroyerHeliLaunch')},nil,100,TRUE,TRUE,'','TRUE',1.5,FALSE,'','pos_door_hangar_1_trigger'
 ];
 /*/===== Armor Camonets/*/
 _QS_action_camonetArmor = nil;
-_QS_action_camonetArmor_textA = (localize 'STR_QS_Action_deployCamonet');
-_QS_action_camonetArmor_textB = (localize 'STR_QS_Action_removeCamonet');
+_QS_action_camonetArmor_textA = localize 'STR_QS_Interact_049';
+_QS_action_camonetArmor_textB = localize 'STR_QS_Interact_050';
 _QS_action_camonetArmor_array = [_QS_action_camonetArmor_textA,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractCamoNet')},[objNull,0],-10,FALSE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_camonetArmor = FALSE;
 _QS_action_camonetArmor_anims = ['showcamonethull','showcamonetcannon','showcamonetcannon1','showcamonetturret','showcamonetplates1','showcamonetplates2'];
 _QS_action_camonetArmor_vAnims = [];
 /*/===== Armor Slat/*/
 _QS_action_slatArmor = nil;
-_QS_action_slatArmor_textA = (localize 'STR_QS_Action_mountSlatArmor');
-_QS_action_slatArmor_textB = (localize 'STR_QS_Action_removeSlatArmor');
+_QS_action_slatArmor_textA = localize 'STR_QS_Interact_051';
+_QS_action_slatArmor_textB = localize 'STR_QS_Interact_052';
 _QS_action_slatArmor_array = [_QS_action_slatArmor_textA,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractSlatArmor')},[objNull,0],9,FALSE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_slatArmor = FALSE;
 _QS_action_slatArmor_anims = ['showslathull','showslatturret'];
@@ -655,31 +657,31 @@ _animationSource = configNull;
 _QS_rappelling = TRUE;
 if (_QS_rappelling) then {
 	_QS_action_rappelSelf = nil;
-	_QS_action_rappelSelf_text = (localize 'STR_QS_Action_rappelSelf');
+	_QS_action_rappelSelf_text = localize 'STR_QS_Interact_053';
 	_QS_action_rappelSelf_array = [_QS_action_rappelSelf_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractRappel')},1,-10,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 	_QS_interaction_rappelSelf = FALSE;
 	_QS_action_rappelAI = nil;
-	_QS_action_rappelAI_text = (localize 'STR_QS_Action_rappelAI');
+	_QS_action_rappelAI_text = localize 'STR_QS_Interact_054';
 	_QS_action_rappelAI_array = [_QS_action_rappelAI_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractRappel')},2,-11,FALSE,TRUE,'','TRUE',-1,FALSE,''];
 	_QS_interaction_rappelAI = FALSE;
 	_QS_action_rappelDetach = nil;
-	_QS_action_rappelDetach_text = (localize 'STR_QS_Action_rappelDetach');
+	_QS_action_rappelDetach_text = localize 'STR_QS_Interact_055';
 	_QS_action_rappelDetach_array = [_QS_action_rappelDetach_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractRappel')},3,48,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 	_QS_interaction_rappelDetach = FALSE;
 	_QS_action_rappelSafety = nil;
-	_QS_action_rappelSafety_textDisable = (localize 'STR_QS_Action_rappelSafety_Disable');
-	_QS_action_rappelSafety_textEnable = (localize 'STR_QS_Action_rappelSafety_Enable');
+	_QS_action_rappelSafety_textDisable = localize 'STR_QS_Interact_056';
+	_QS_action_rappelSafety_textEnable = localize 'STR_QS_Interact_057';
 	_QS_action_rappelSafety_array = [_QS_action_rappelSafety_textDisable,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractRappel')},4,-12,FALSE,TRUE,'','TRUE',-1,FALSE,''];
 	_QS_interaction_rappelSafety = FALSE;
 };
 /*/============================ Sandbags/*/
 _QS_action_sandbagDeploy = nil;
-_QS_action_sandbagDeploy_text = (localize 'STR_QS_Action_sandbagDeploy');
+_QS_action_sandbagDeploy_text = localize 'STR_QS_Interact_058';
 _QS_action_sandbagDeploy_array = [];
 _QS_interaction_sandbagDeploy = FALSE;
 
 _QS_action_sandbagRetract = nil;
-_QS_action_sandbagRetract_text = (localize 'STR_QS_Action_sandbagRetract');
+_QS_action_sandbagRetract_text = localize 'STR_QS_Interact_059';
 _QS_action_sandbagRetract_array = [];
 _QS_interaction_sandbagRetract = FALSE;
 
@@ -702,13 +704,13 @@ if (_QS_module_liveFeed) then {
 	_QS_liveFeed_text = (localize 'STR_QS_LiveFeed_Live');
 	player setVariable ['QS_RD_client_liveFeed',FALSE,FALSE];
 	_QS_liveFeed_action_1 = _QS_liveFeed_display addAction [
-		(localize 'STR_QS_LiveFeed_turnOn'),
+		localize 'STR_QS_Interact_095',
 		{
 			if (isPipEnabled) then {
 				player setVariable ['QS_RD_client_liveFeed',TRUE,FALSE];
-				50 cutText [(localize 'STR_QS_LiveFeed_acquiring'),'PLAIN DOWN',0.5];
+				50 cutText [localize 'STR_QS_Text_027','PLAIN DOWN',0.5];
 			} else {
-				50 cutText [(localize 'STR_QS_LiveFeed_enablePiP'),'PLAIN DOWN',0.5];
+				50 cutText [localize 'STR_QS_Text_028','PLAIN DOWN',0.5];
 			};
 		},
 		[],
@@ -721,12 +723,12 @@ if (_QS_module_liveFeed) then {
 		FALSE,
 		''
 	];
-	_QS_liveFeed_display setUserActionText [_QS_liveFeed_action_1,(localize 'STR_QS_LiveFeed_turnOn'),(format ["<t size='3'>%1</t>",'Turn on live feed'])];
+	_QS_liveFeed_display setUserActionText [_QS_liveFeed_action_1,localize 'STR_QS_Interact_095',(format ["<t size='3'>%1</t>",localize 'STR_QS_Interact_095'])];
 	_QS_liveFeed_action_2 = _QS_liveFeed_display addAction [
-		(localize 'STR_QS_LiveFeed_turnOff'),
+		localize 'STR_QS_Interact_096',
 		{
 			player setVariable ['QS_RD_client_liveFeed',FALSE,FALSE];
-			50 cutText [(localize 'STR_QS_LiveFeed_liveFeedOff'),'PLAIN DOWN',0.5];
+			50 cutText [localize 'STR_QS_Text_029','PLAIN DOWN',0.5];
 		},
 		[],
 		89,
@@ -738,7 +740,7 @@ if (_QS_module_liveFeed) then {
 		FALSE,
 		''
 	];
-	_QS_liveFeed_display setUserActionText [_QS_liveFeed_action_2,(localize 'STR_QS_LiveFeed_turnOff'),(format ["<t size='3'>%1</t>",'Turn off live feed'])];
+	_QS_liveFeed_display setUserActionText [_QS_liveFeed_action_2,localize 'STR_QS_Interact_096',(format ["<t size='3'>%1</t>",localize 'STR_QS_Interact_096'])];
 };
 
 /*/======================= Vehicle manifest module/*/
@@ -804,15 +806,15 @@ if (!isNull (missionNamespace getVariable ['QS_airdefense_laptop',objNull])) the
 	if (_airDefenseLaptop isEqualType objNull) then {
 		if (!isNull _airDefenseLaptop) then {
 			_QS_airbaseDefense_action_1 = _airDefenseLaptop addAction [
-				(localize 'STR_QS_AirDefense_activate'),
+				localize 'STR_QS_Interact_097',
 				{
 					if (missionNamespace getVariable ['QS_airbaseDefense',FALSE]) exitWith {
-						50 cutText [(localize 'STR_QS_AirDefense_cooldown'),'PLAIN DOWN',0.5];
+						50 cutText [localize 'STR_QS_Text_030','PLAIN DOWN',0.5];
 					};
 					missionNamespace setVariable ['QS_airbaseDefense',TRUE,TRUE];
 					player playAction 'PutDown';
-					playSound ['Orange_Access_FM',FALSE];
-					50 cutText [(localize 'STR_QS_AirDefense_activate'),'PLAIN DOWN',0.5];
+					playSound ['Click',FALSE];
+					50 cutText [localize 'STR_QS_Text_031','PLAIN DOWN',0.5];
 				},
 				[],
 				90,
@@ -824,7 +826,7 @@ if (!isNull (missionNamespace getVariable ['QS_airdefense_laptop',objNull])) the
 				FALSE,
 				''
 			];
-			_airDefenseLaptop setUserActionText [_QS_airbaseDefense_action_1,(localize 'STR_QS_AirDefense_activate'),(format ["<t size='3'>%1</t>",'启动基地防空'])];
+			_airDefenseLaptop setUserActionText [_QS_airbaseDefense_action_1,localize 'STR_QS_Interact_097',(format ["<t size='3'>%1</t>",localize 'STR_QS_Interact_097'])];
 		};
 	};
 };
@@ -885,7 +887,7 @@ _QS_module_safezone_speedlimit_code = {
 									if (!(missionProfileNamespace getVariable ['QS_system_speedLimitMsg',FALSE])) then {
 										missionProfileNamespace setVariable ['QS_system_speedLimitMsg',TRUE];
 										saveMissionProfileNamespace;
-										50 cutText [(localize 'STR_QS_speedRestricted_hint'),'PLAIN',1,FALSE,TRUE];
+										50 cutText [localize 'STR_QS_Text_001','PLAIN',1,FALSE,TRUE];
 									};
 									_velocityModelSpace = velocityModelSpace _vehicle;
 									_newVelocity = _velocityModelSpace vectorMultiply 0.90;
@@ -1174,7 +1176,7 @@ if (_QS_module_opsec) then {
 		scriptName 'QS OPSEC Chat Intercept';
 		private _allControls = allControls _display;
 		private _chatCtrl = _display displayCtrl 101;
-		private _chatText = toLowerANSI (ctrlText _chatCtrl);
+		private _chatText = toLower (ctrlText _chatCtrl);
 		private _chatTextLower = '';
 		private _maxCharacters = 140;
 		for '_x' from 0 to 1 step 0 do {
@@ -1188,10 +1190,10 @@ if (_QS_module_opsec) then {
 			};
 			if (isNull (findDisplay 24)) exitWith {};
 			_chatText = ctrlText ((findDisplay 24) displayCtrl 101);
-			_chatTextLower = toLowerANSI _chatText;
+			_chatTextLower = toLower _chatText;
 			if ((count _chatText) > _maxCharacters) then {
 				//comment 'Too many characters';
-				50 cutText [(format [(localize 'STR_QS_OPSEC_tooManyChars'),(count _chatText),_maxCharacters]),'PLAIN DOWN',1];
+				50 cutText [(format [localize 'STR_QS_Text_002',(count _chatText),_maxCharacters]),'PLAIN DOWN',1];
 				((findDisplay 24) displayCtrl 101) ctrlSetText (_chatText select [0,140]);
 			};
 			if ([_chatTextLower,0,_fn_inString] call (missionNamespace getVariable 'QS_fnc_ahScanString')) then {
@@ -1201,8 +1203,8 @@ if (_QS_module_opsec) then {
 				};
 			};
 			if (!('ItemRadio' in (assignedItems player))) then {
-				if (!(currentChannel isEqualTo 5)) then {
-					50 cutText [(localize 'STR_QS_OPSEC_needRadio'),'PLAIN DOWN',1];
+				if (currentChannel isNotEqualTo 5) then {
+					50 cutText [localize 'STR_QS_Text_003','PLAIN DOWN',1];
 					if (!isNull (findDisplay 24)) then {
 						(findDisplay 24) closeDisplay 2;
 					};
@@ -1580,7 +1582,7 @@ if (_puid in (['CURATOR'] call (missionNamespace getVariable 'QS_fnc_whitelist')
 				[27,player,(getPlayerUID player),clientOwner] remoteExec ['QS_fnc_remoteExec',2,FALSE];
 				uiSleep 5;
 			};
-			if (isNull (getAssignedCuratorLogic player)) exitWith {systemChat '宙斯模块初始化失败，请返回大厅重新连接';};
+			if (isNull (getAssignedCuratorLogic player)) exitWith {systemChat (localize 'STR_QS_Chat_087');};
 		};
 	};
 };
@@ -1799,10 +1801,10 @@ for 'x' from 0 to 1 step 0 do {
 					_QS_fpsLastPull = round diag_fps;
 					_QS_fpsCheckDelay = _timeNow + _QS_fpsDelay;
 				};
-				((findDisplay _mainMenuIDD) displayCtrl 1001) ctrlSetToolTip (localize 'STR_QS_dialog_Ctrl1001_tip');
-				((findDisplay _mainMenuIDD) displayCtrl 1001) ctrlSetText format [(localize 'STR_QS_dialog_Ctrl1001_text'),_QS_fpsLastPull,([(0 max (estimatedEndServerTime - _serverTime) min 36000),'HH:MM'] call _fn_secondsToString)];
-				((findDisplay _mainMenuIDD) displayCtrl 1002) ctrlSetToolTip (localize 'STR_QS_dialog_Ctrl1002_tip');
-				((findDisplay _mainMenuIDD) displayCtrl 1002) ctrlSetText format [(localize 'STR_QS_dialog_Ctrl1002_text'),(score _QS_player),(rating _QS_player),_QS_clientHp,_QS_clientMass];
+				((findDisplay _mainMenuIDD) displayCtrl 1001) ctrlSetToolTip (localize 'STR_QS_Menu_001');
+				((findDisplay _mainMenuIDD) displayCtrl 1001) ctrlSetText format ['%3 %1 | %4 %2h',_QS_fpsLastPull,([(0 max (estimatedEndServerTime - _serverTime) min 36000),'HH:MM'] call _fn_secondsToString),localize 'STR_QS_Menu_002',localize 'STR_QS_Menu_003'];
+				((findDisplay _mainMenuIDD) displayCtrl 1002) ctrlSetToolTip (localize 'STR_QS_Menu_004');
+				((findDisplay _mainMenuIDD) displayCtrl 1002) ctrlSetText format ['%5 %1 | %6 %2 | %7 %3 | %8 %4/100',(score _QS_player),(rating _QS_player),_QS_clientHp,_QS_clientMass,localize 'STR_QS_Menu_005',localize 'STR_QS_Menu_006',localize 'STR_QS_Menu_007',localize 'STR_QS_Menu_008'];
 				((findDisplay _mainMenuIDD) displayCtrl 1001) ctrlCommit 0;
 				((findDisplay _mainMenuIDD) displayCtrl 1002) ctrlCommit 0;
 			};
@@ -1816,8 +1818,8 @@ for 'x' from 0 to 1 step 0 do {
 			if (isNull (findDisplay _viewMenuIDD)) then {
 				_viewMenuOpen = _false;
 			} else {
-				((findDisplay _viewMenuIDD) displayCtrl 1001) ctrlSetToolTip (localize 'STR_QS_dialog_Ctrl1001_tip');
-				((findDisplay _viewMenuIDD) displayCtrl 1001) ctrlSetText format [(localize 'STR_QS_dialog_Ctrl1001_text'),_QS_fpsLastPull,([(0 max (estimatedEndServerTime - _serverTime) min 36000),'HH:MM'] call _fn_secondsToString)];
+				((findDisplay _viewMenuIDD) displayCtrl 1001) ctrlSetToolTip (localize 'STR_QS_Menu_001');
+				((findDisplay _viewMenuIDD) displayCtrl 1001) ctrlSetText format ['%3 %1 | %4 %2h',_QS_fpsLastPull,([(0 max (estimatedEndServerTime - _serverTime) min 36000),'HH:MM'] call _fn_secondsToString),localize 'STR_QS_Menu_002',localize 'STR_QS_Menu_003'];
 			};
 		};
 	};
@@ -3175,7 +3177,7 @@ for 'x' from 0 to 1 step 0 do {
 				) then {
 					if (!(_QS_interaction_sensorTarget)) then {
 						_QS_interaction_sensorTarget = _true;
-						_QS_action_sensorTarget_array set [0,([(localize 'STR_QS_Action_reportTarget'),(localize 'STR_QS_Action_confirmTarget')] select (_QS_player getUnitTrait 'QS_trait_JTAC'))];
+						_QS_action_sensorTarget_array set [0,([_sensorTarget_text_1,_sensorTarget_text_2] select (_QS_player getUnitTrait 'QS_trait_JTAC'))];
 						_QS_action_sensorTarget = player addAction _QS_action_sensorTarget_array;
 						player setUserActionText [_QS_action_sensorTarget,((player actionParams _QS_action_sensorTarget) # 0),(format ["<t size='3'>%1</t>",((player actionParams _QS_action_sensorTarget) # 0)])];
 					};
@@ -3199,12 +3201,12 @@ for 'x' from 0 to 1 step 0 do {
 			) then {
 				if (!(_QS_interaction_attachExp)) then {
 					_QS_interaction_attachExp = _true;
-					_QS_userActionText = format ['%1 (%2 left)',_QS_action_attachExp_text,({(_x isEqualTo 'DemoCharge_Remote_Mag')} count (magazines _QS_player))];
+					_QS_userActionText = format ['%1 (%2 %3)',_QS_action_attachExp_text,({(_x isEqualTo 'DemoCharge_Remote_Mag')} count (magazines _QS_player)),localize 'STR_QS_Utility_001'];
 					_QS_action_attachExp_array set [0,_QS_userActionText];
 					_QS_action_attachExp = player addAction _QS_action_attachExp_array;
 					player setUserActionText [_QS_action_attachExp,_QS_userActionText,(format ["<t size='3'>%1</t>",_QS_userActionText])];
 				} else {
-					_QS_userActionText = format ['%1 (%2 left)',_QS_action_attachExp_text,({(_x isEqualTo 'DemoCharge_Remote_Mag')} count (magazines _QS_player))];
+					_QS_userActionText = format ['%1 (%2 %3)',_QS_action_attachExp_text,({(_x isEqualTo 'DemoCharge_Remote_Mag')} count (magazines _QS_player)),localize 'STR_QS_Utility_001'];
 					player setUserActionText [_QS_action_attachExp,_QS_userActionText,(format ["<t size='3'>%1</t>",_QS_userActionText])];
 				};
 			} else {
@@ -3486,15 +3488,15 @@ for 'x' from 0 to 1 step 0 do {
 										if (!(_QS_interaction_carrierLaunch)) then {
 											_QS_interaction_carrierLaunch = _true;
 											_QS_action_carrierLaunch = _QS_carrier_cameraOn addAction _QS_action_carrierLaunch_array;
-											_QS_carrier_cameraOn setUserActionText [_QS_action_carrierLaunch,(localize 'STR_QS_Action_carrierLaunch'),(localize 'STR_QS_Action_carrierLaunchAlt')];
+											_QS_carrier_cameraOn setUserActionText [_QS_action_carrierLaunch,localize 'STR_QS_Interact_046',format ['<t size="3">%1</t>',localize 'STR_QS_Interact_046']];
 										};
 										if (_QS_carrier_cameraOn getVariable ['QS_carrier_launch',_false]) then {
-											if (((_QS_carrier_cameraOn actionParams _QS_action_carrierLaunch) # 0) isEqualTo (localize 'STR_QS_Action_carrierLaunch')) then {
-												_QS_carrier_cameraOn setUserActionText [_QS_action_carrierLaunch, (localize 'STR_QS_Action_carrierLaunchReady'), (localize 'STR_QS_Action_carrierLaunchReadyAlt')];
+											if (((_QS_carrier_cameraOn actionParams _QS_action_carrierLaunch) # 0) isEqualTo (localize 'STR_QS_Interact_046')) then {
+												_QS_carrier_cameraOn setUserActionText [_QS_action_carrierLaunch,localize 'STR_QS_Interact_047',format ['<t size="3">%1</t>',localize 'STR_QS_Interact_047']];
 											};
 										} else {
-											if (((_QS_carrier_cameraOn actionParams _QS_action_carrierLaunch) # 0) isEqualTo (localize 'STR_QS_Action_carrierLaunchReady')) then {
-												_QS_carrier_cameraOn setUserActionText [_QS_action_carrierLaunch,(localize 'STR_QS_Action_carrierLaunch'),(localize 'STR_QS_Action_carrierLaunchAlt')];
+											if (((_QS_carrier_cameraOn actionParams _QS_action_carrierLaunch) # 0) isEqualTo (localize 'STR_QS_Interact_047')) then {
+												_QS_carrier_cameraOn setUserActionText [_QS_action_carrierLaunch,localize 'STR_QS_Interact_046',format ['<t size="3">Initiate Launch Sequence</t>',localize 'STR_QS_Interact_046']];
 											};
 										};
 									} else {
@@ -4132,13 +4134,16 @@ for 'x' from 0 to 1 step 0 do {
 	
 	if (_QS_module_safezone) then {
 		if (_timeNow > _QS_module_safezone_checkDelay) then {
-			if (((_QS_player distance2D _QS_module_safezone_pos) < _QS_module_safezone_radius) && (_QS_v2 isNotEqualTo (missionNamespace getVariable 'QS_arty'))) then {
+			if (
+				((player distance2D _QS_module_safezone_pos) < _QS_module_safezone_radius) && 
+				(_QS_v2 isNotEqualTo (missionNamespace getVariable 'QS_arty'))
+			) then {
 				if (_QS_posWorldPlayer inPolygon _QS_baseAreaPolygon) then {
 					if (!(_QS_v2 isKindOf 'Man')) then {
 						if (local _QS_v2) then {
 							if (isTouchingGround _QS_v2) then {
 								[17,_QS_v2] remoteExec ['QS_fnc_remoteExec',2,_false];
-								50 cutText [(localize 'STR_QS_SafeZone_prohibited'),'PLAIN',1];
+								50 cutText [localize 'STR_QS_Text_004','PLAIN',1];
 							};
 						};
 					};
@@ -4147,8 +4152,8 @@ for 'x' from 0 to 1 step 0 do {
 					_QS_safezone_action = player addAction _QS_action_safezone_array;
 					player setUserActionText [_QS_safezone_action,((player actionParams _QS_safezone_action) # 0),'',''];
 				};
-				if (isDamageAllowed _QS_player) then {
-					_QS_player allowDamage _false;
+				if (isDamageAllowed player) then {
+					player allowDamage _false;
 				};
 				if (!(_QS_module_safezone_isInSafezone)) then {
 					_QS_module_safezone_isInSafezone = _true;
@@ -4163,10 +4168,10 @@ for 'x' from 0 to 1 step 0 do {
 					_QS_module_safezone_isInSafezone = _false;
 					if (_QS_module_safezone_playerProtection isEqualTo 1) then {
 						player removeAction _QS_safezone_action;
-						/*/50 cutText [(localize 'STR_QS_SafeZone_leaving'),'PLAIN DOWN',0.25];/*/   /*/ ugly and intrusive on screen, IMO /*/
+						/*/50 cutText [localize 'STR_QS_Text_005','PLAIN DOWN',0.25];/*/   /*/ ugly and intrusive on screen, IMO /*/
 						_QS_safezone_action = -1;
-						if (!isDamageAllowed _QS_player) then {
-							_QS_player allowDamage _true;
+						if (!isDamageAllowed player) then {
+							player allowDamage _true;
 						};
 						if (_QS_module_safezone_speedlimit_enabled) then {
 							removeMissionEventHandler ['EachFrame',_QS_module_safezone_speedlimit_event];
@@ -4429,7 +4434,7 @@ for 'x' from 0 to 1 step 0 do {
 						if ((!(_QS_player getUnitTrait 'QS_trait_pilot')) && {(!(_QS_player getUnitTrait 'QS_trait_fighterPilot'))}) then {
 							if (((getPosATL _QS_v2) # 2) < 5) then {
 								moveOut _QS_player;
-								(missionNamespace getVariable 'QS_managed_hints') pushBack [5,_false,10,-1,(localize 'STR_QS_Pilot_notPilot'),[],(serverTime + 20),_true,'Role Restriction',_false];
+								(missionNamespace getVariable 'QS_managed_hints') pushBack [5,_false,10,-1,localize 'STR_QS_Hints_003',[],(serverTime + 20),_true,localize 'STR_QS_Hints_004',_false];
 							};
 						};
 					};
@@ -4439,7 +4444,7 @@ for 'x' from 0 to 1 step 0 do {
 							if ((!(_QS_player getUnitTrait 'QS_trait_pilot')) && {(!(_QS_player getUnitTrait 'QS_trait_fighterPilot'))}) then {
 								if (((getPosATL _QS_v2) # 2) < 5) then {
 									moveOut _QS_player;
-									(missionNamespace getVariable 'QS_managed_hints') pushBack [5,_false,10,-1,(localize 'STR_QS_Pilot_notPilot'),[],(serverTime + 20),_true,'Role Restriction',_false];
+									(missionNamespace getVariable 'QS_managed_hints') pushBack [5,_false,10,-1,localize 'STR_QS_Hints_003',[],(serverTime + 20),_true,localize 'STR_QS_Hints_004',_false];
 								};
 							};
 						};
@@ -4460,7 +4465,7 @@ for 'x' from 0 to 1 step 0 do {
 										forceRespawn _QS_player;
 									} else {
 										if (_QS_currentTimeOnGround > _QS_warningTimeOnGround) then {
-											(missionNamespace getVariable 'QS_managed_hints') pushBack [5,_false,10,-1,(localize 'STR_QS_Pilot_notPilotBabysitter'),[],(serverTime + 20),_true,'Role Restriction',_false];
+											(missionNamespace getVariable 'QS_managed_hints') pushBack [5,_false,10,-1,localize 'STR_QS_Hints_005',[],(serverTime + 20),_true,localize 'STR_QS_Hints_004',_false];
 										};
 									};
 								} else {
@@ -4482,8 +4487,8 @@ for 'x' from 0 to 1 step 0 do {
 								with uiNamespace do {
 									0 spawn {
 										[
-											(localize 'STR_QS_Pilot_afkTimeout'),
-											'Robocop',
+											localize 'STR_QS_Menu_115',
+											localize 'STR_QS_Menu_109',
 											TRUE, 
 											FALSE, 
 											(findDisplay 46), 
@@ -4846,7 +4851,7 @@ for 'x' from 0 to 1 step 0 do {
 		if (currentChannel isEqualTo 6) then {
 			if (!isNull (findDisplay 55)) then {
 				if (!(_puid in (['ALL'] call _fn_uidStaff))) then {
-					50 cutText [(localize 'STR_QS_Channel_general'),'PLAIN DOWN'];
+					50 cutText [localize 'STR_QS_Text_032','PLAIN DOWN'];
 					setCurrentChannel 5;
 				};
 			};
@@ -4865,7 +4870,7 @@ for 'x' from 0 to 1 step 0 do {
 		if (currentChannel isNotEqualTo 5) then {
 			if (!isNull (findDisplay 55)) then {
 				if (!('ItemRadio' in (assignedItems _QS_player))) then {
-					50 cutText [(localize 'STR_QS_OPSEC_needRadio'),'PLAIN DOWN'];
+					50 cutText [localize 'STR_QS_Text_003','PLAIN DOWN'];
 					setCurrentChannel 5;
 				};
 			};
@@ -5126,7 +5131,7 @@ for 'x' from 0 to 1 step 0 do {
 							_QS_inGeorgetown = _true;
 							_QS_georgetown_priorVD = viewDistance;
 							_QS_georgetown_priorOVD = getObjectViewDistance # 0;
-							50 cutText [(format [(localize 'STR_QS_Georgetown_lowerDistance'),(['Kavala','Georgetown'] select (_QS_worldName isEqualTo 'Tanoa'))]),'PLAIN DOWN',0.25];
+							50 cutText [(format ['%2 (%1) ...',(['Kavala','Georgetown'] select (_QS_worldName isEqualTo 'Tanoa')),localize 'STR_QS_Text_033']),'PLAIN DOWN',0.25];
 							[_QS_georgetown_priorVD,_QS_georgetown_priorOVD,_QS_georgetown_VD,_QS_georgetown_OVD] spawn {
 								params ['_QS_georgetown_priorVD','_QS_georgetown_priorOVD','_QS_georgetown_VD','_QS_georgetown_OVD'];
 								if (_QS_georgetown_priorVD > _QS_georgetown_VD) then {
@@ -5168,7 +5173,7 @@ for 'x' from 0 to 1 step 0 do {
 					};
 					if ((!(_QS_posWorldPlayer inPolygon _QS_georgetown_polygon)) || {(!isNull _objectParent)} || {((_posATLPlayer # 2) >= 50)}) then {
 						_QS_inGeorgetown = FALSE;
-						50 cutText [(format [(localize 'STR_QS_Georgetown_restDistance'),(['Kavala','Georgetown'] select (_QS_worldName isEqualTo 'Tanoa'))]),'PLAIN DOWN',0.25];
+						50 cutText [(format ['%2 (%1) ...',(['Kavala','Georgetown'] select (_QS_worldName isEqualTo 'Tanoa')),localize 'STR_QS_Text_034']),'PLAIN DOWN',0.25];
 						[_QS_georgetown_priorVD,_QS_georgetown_priorOVD] spawn {
 							params ['_QS_georgetown_priorVD','_QS_georgetown_priorOVD'];
 							if (viewDistance < _QS_georgetown_priorVD) then {
@@ -5199,7 +5204,7 @@ for 'x' from 0 to 1 step 0 do {
 			} else {
 				if (_QS_inGeorgetown) then {
 					_QS_inGeorgetown = _false;
-					50 cutText [(format [(localize 'STR_QS_Georgetown_restDistance'),(['Kavala','Georgetown'] select (_QS_worldName isEqualTo 'Tanoa'))]),'PLAIN DOWN',0.25];
+					50 cutText [(format ['%2 (%1) ...',(['Kavala','Georgetown'] select (_QS_worldName isEqualTo 'Tanoa')),localize 'STR_QS_Text_034']),'PLAIN DOWN',0.25];
 					[_QS_georgetown_priorVD,_QS_georgetown_priorOVD] spawn {
 						params ['_QS_georgetown_priorVD','_QS_georgetown_priorOVD'];
 						if (viewDistance < _QS_georgetown_priorVD) then {
@@ -5391,7 +5396,7 @@ for 'x' from 0 to 1 step 0 do {
 										_QS_module_opsec_detected = 2;
 									};
 								} forEach [
-									((toLowerANSI (ctrlText (_display displayCtrl 1000))) != (toLowerANSI (localize 'STR_DISP_OPTIONS_SCHEME'))),
+									((toLower (ctrlText (_display displayCtrl 1000))) != (toLower (localize 'STR_DISP_OPTIONS_SCHEME'))),
 									{
 										if (buttonAction (_display displayCtrl _x) != '') exitWith {TRUE}; 
 										_false
@@ -5406,7 +5411,7 @@ for 'x' from 0 to 1 step 0 do {
 										_QS_module_opsec_detected = 2;
 									};
 								} forEach [
-									((toLowerANSI (ctrlText (_display displayCtrl 1000))) != (toLowerANSI (localize 'STR_A3_RscDisplayConfigureAction_Title'))),
+									((toLower (ctrlText (_display displayCtrl 1000))) != (toLower (localize 'STR_A3_RscDisplayConfigureAction_Title'))),
 									({if (buttonAction (_display displayCtrl _x) != '') exitWith {TRUE}; _false} forEach [1,104,105,106,107,108,109])
 								];
 							};
@@ -5418,7 +5423,7 @@ for 'x' from 0 to 1 step 0 do {
 										_QS_module_opsec_detected = 2;
 									};
 								} forEach [
-									((toLowerANSI (ctrlText (_display displayCtrl 1001))) != (toLowerANSI (localize 'STR_A3_RscDisplayInsertMarker_Title'))),
+									((toLower (ctrlText (_display displayCtrl 1001))) != (toLower (localize 'STR_A3_RscDisplayInsertMarker_Title'))),
 									({if (buttonAction (_display displayCtrl _x) != '') exitWith {TRUE}; _false} forEach [1,2])
 								];
 							};
@@ -5501,7 +5506,7 @@ for 'x' from 0 to 1 step 0 do {
 				if (_QS_module_opsec_hints) then {
 					_display = uiNamespace getVariable ['QS_hint_display_1',_dNull];
 					if (!isNull _display) then {
-						_ahHintText = toLowerANSI (ctrlText (_display displayCtrl 101));
+						_ahHintText = toLower (ctrlText (_display displayCtrl 101));
 						if (_ahHintText isNotEqualTo '') then {
 							{
 								if ([_x,_ahHintText,_false] call _fn_inString) exitWith {
@@ -5670,9 +5675,9 @@ for 'x' from 0 to 1 step 0 do {
 				{
 					_QS_buttonCtrl = _d49 displayCtrl _x;
 					if (!isNull _QS_buttonCtrl) then {
-						_QS_buttonCtrl ctrlSetText (localize 'STR_QS_Menu_playerMenu_text');
+						_QS_buttonCtrl ctrlSetText (localize 'STR_QS_Menu_009');
 						_QS_buttonCtrl buttonSetAction _QS_buttonAction;
-						_QS_buttonCtrl ctrlSetTooltip (localize 'STR_QS_Menu_playerMenu_tip');
+						_QS_buttonCtrl ctrlSetTooltip (format ['%1 %2 %3 %4',localize 'STR_QS_Utility_011','&',localize 'STR_QS_Utility_012',localize 'STR_QS_Menu_009']);
 						_QS_buttonCtrl ctrlSetBackgroundColor [1,0.5,0.5,1];
 						_QS_buttonCtrl ctrlCommit 0;
 					};
@@ -5680,7 +5685,7 @@ for 'x' from 0 to 1 step 0 do {
 				_QS_buttonCtrl = _d49 displayCtrl 103;
 				_QS_buttonCtrl ctrlEnable (([_false,_true] select _roleSelectionSystem) && _RSS_MenuButton);
 				_QS_buttonCtrl ctrlShow (([_false,_true] select _roleSelectionSystem) && _RSS_MenuButton);
-				_QS_buttonCtrl ctrlSetText (['',(localize 'STR_QS_Menu_roleSelect_text')] select _roleSelectionSystem);
+				_QS_buttonCtrl ctrlSetText (['',localize 'STR_QS_Role_001'] select _roleSelectionSystem);
 				if (_roleSelectionSystem) then {
 					_QS_buttonCtrl buttonSetAction _QS_buttonAction2;
 					_QS_buttonCtrl ctrlSetTooltip (localize 'STR_QS_Menu_roleSelect_tip');
@@ -5690,8 +5695,8 @@ for 'x' from 0 to 1 step 0 do {
 				(_d49 displayCtrl 523) ctrlSetText (format ['%1',_profileName]);
 				(_d49 displayCtrl 109) ctrlSetText (format ['%1',_roleDisplayName]);
 				(_d49 displayCtrl 104) ctrlEnable _true;
-				(_d49 displayCtrl 104) ctrlSetText ([(localize 'STR_QS_Menu_playerMenu_exit0_Text'),(localize 'STR_QS_Menu_playerMenu_exit1_Text')] select _roleSelectionSystem);
-				(_d49 displayCtrl 104) ctrlSetTooltip ([(localize 'STR_QS_Menu_playerMenu_exit0_tip'),(localize 'STR_QS_Menu_playerMenu_exit1_tip')] select _roleSelectionSystem);
+				(_d49 displayCtrl 104) ctrlSetText ([localize 'STR_QS_Menu_010',localize 'STR_QS_Menu_011'] select _roleSelectionSystem);
+				(_d49 displayCtrl 104) ctrlSetTooltip ([localize 'STR_QS_Menu_012',localize 'STR_QS_Menu_013'] select _roleSelectionSystem);
 				(_d49 displayCtrl 1005) ctrlSetText (format ['%1 - A3 %2',_QS_missionVersion,(format ['%1.%2',(_QS_productVersion # 2),(_QS_productVersion # 3)])]);
 			};
 		} else {
@@ -5980,7 +5985,7 @@ for 'x' from 0 to 1 step 0 do {
 					['_advTitle','',['',_parsedText]],
 					['_advRecall',_false,[_false]]
 				];	
-				if (((toLowerANSI (str _hintText)) isNotEqualTo (toLowerANSI (str _hintTextPrevious))) || {(_QS_uiTime > (_hintPriorClosedAt + 15))} || {(_hintsQueue isEqualTo [])}) then {
+				if (((toLower (str _hintText)) isNotEqualTo (toLower (str _hintTextPrevious))) || {(_QS_uiTime > (_hintPriorClosedAt + 15))} || {(_hintsQueue isEqualTo [])}) then {
 					if ((_hintIrrelevantWhen isEqualTo -1) || {(_serverTime < _hintIrrelevantWhen)}) then {
 						if (_hintPreset isNotEqualTo -1) then {
 							[_hintPreset,_hintOtherData] call _fn_clientHintPresets;
@@ -6005,7 +6010,7 @@ for 'x' from 0 to 1 step 0 do {
 		if (_QS_module_opsec_hints) then {
 			_display = uiNamespace getVariable ['QS_hint_display_1',_dNull];
 			if (!isNull _display) then {
-				_ahHintText = toLowerANSI (ctrlText (_display displayCtrl 101));
+				_ahHintText = toLower (ctrlText (_display displayCtrl 101));
 				if (_ahHintText isNotEqualTo '') then {
 					{
 						if ([_x,_ahHintText,_false] call _fn_inString) exitWith {
@@ -6068,7 +6073,7 @@ for 'x' from 0 to 1 step 0 do {
 		if (_playerRole isNotEqualTo (_QS_player getVariable ['QS_unit_role','rifleman'])) then {
 			_playerRole = _QS_player getVariable ['QS_unit_role','rifleman'];
 			_roleDisplayName = ['GET_ROLE_DISPLAYNAME',_playerRole] call _fn_roles;
-			_roleDisplayNameL = toLowerANSI _roleDisplayName;
+			_roleDisplayNameL = toLower _roleDisplayName;
 			if (_QS_player getUnitTrait 'QS_trait_pilot') then {
 				_iAmPilot = _true;
 				_pilotAtBase = _true;
@@ -6081,7 +6086,7 @@ for 'x' from 0 to 1 step 0 do {
 				if ((_QS_player distance2D (markerPos 'QS_marker_aoCircle')) > (((markerSize 'QS_marker_aoCircle') # 0) * 1.1)) then {
 					if (((markerAlpha 'QS_marker_aoCircle') > 0) || {((missionNamespace getVariable ['QS_missionConfig_aoType','CLASSIC']) isEqualTo 'GRID')}) then {
 						if (_QS_uiTime > (uiNamespace getVariable ['QS_client_respawnCooldown',-1])) then {
-							(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,20,-1,(localize 'STR_QS_OPFOR_leaveAO'),[],-1,TRUE,'Mission Control',FALSE];		
+							(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,20,-1,localize 'STR_QS_Hints_007',[],-1,TRUE,localize 'STR_QS_Hints_006',FALSE];		
 							_QS_player setDamage [1,_true];
 						};
 					};

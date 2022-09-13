@@ -743,12 +743,12 @@ _markers = [];
 	(_x # 0) setMarkerSizeLocal (_x # 6);
 	(_x # 0) setMarkerAlphaLocal (_x # 7);
 	(_x # 0) setMarkerPosLocal (_x # 8);
-	(_x # 0) setMarkerText (format ['%1%2',(toString [32,32,32]),(_x # 9)]);
+	(_x # 0) setMarkerText (_x # 9);
 	0 = _markers pushBack (_x # 0);
 } forEach [
-	['QS_marker_sideMission_urban_mkr1',_markerStoragePos,'mil_dot','Ellipse','SolidBorder','ColorOPFOR',[30,30],0.5,[(((getPosWorld(_QS_objectArray # 0)) # 0) + (15 - (random 30))),(((getPosWorld(_QS_objectArray # 0)) # 1) + (12.5 - (random 25))),0],'   '],
-	['QS_marker_sideMission_urban_mkr2',_markerStoragePos,'mil_dot','Ellipse','SolidBorder','ColorOPFOR',[30,30],0.5,[(((getPosWorld(_QS_objectArray # 1)) # 0) + (15 - (random 30))),(((getPosWorld(_QS_objectArray # 1)) # 1) + (12.5 - (random 25))),0],'   '],
-	['QS_marker_sideMission_urban_mkr3',_markerStoragePos,'mil_dot','Ellipse','SolidBorder','ColorOPFOR',[30,30],0.5,[(((getPosWorld(_QS_objectArray # 2)) # 0) + (15 - (random 30))),(((getPosWorld(_QS_objectArray # 2)) # 1) + (12.5 - (random 25))),0],'   ']
+	['QS_marker_sideMission_urban_mkr1',_markerStoragePos,'mil_dot','Ellipse','SolidBorder','ColorOPFOR',[30,30],0.5,[(((getPosWorld(_QS_objectArray # 0)) # 0) + (15 - (random 30))),(((getPosWorld(_QS_objectArray # 0)) # 1) + (12.5 - (random 25))),0],(toString [32,32,32])],
+	['QS_marker_sideMission_urban_mkr2',_markerStoragePos,'mil_dot','Ellipse','SolidBorder','ColorOPFOR',[30,30],0.5,[(((getPosWorld(_QS_objectArray # 1)) # 0) + (15 - (random 30))),(((getPosWorld(_QS_objectArray # 1)) # 1) + (12.5 - (random 25))),0],(toString [32,32,32])],
+	['QS_marker_sideMission_urban_mkr3',_markerStoragePos,'mil_dot','Ellipse','SolidBorder','ColorOPFOR',[30,30],0.5,[(((getPosWorld(_QS_objectArray # 2)) # 0) + (15 - (random 30))),(((getPosWorld(_QS_objectArray # 2)) # 1) + (12.5 - (random 25))),0],(toString [32,32,32])]
 ];
 _QS_missionSuccess = FALSE;
 _QS_missionFailed = FALSE;
@@ -759,20 +759,19 @@ _QS_enemyDetected = FALSE;
 _QS_checkEnemyDelay = time + 10;
 _QS_bombTimer_started = FALSE;
 missionNamespace setVariable ['QS_mission_urban_objectsSecured',0,FALSE];
+'QS_marker_sideMarker' setMarkerTextLocal (format ['%1 %2',(toString [32,32,32]),localize 'STR_QS_Marker_046']);
 {
 	_x setMarkerPosLocal _QS_locationCenterPos;
 	_x setMarkerAlpha 1;
 } count ['QS_marker_sideMarker','QS_marker_sideCircle'];
 _QS_firstDetected = FALSE;
-'QS_marker_sideMarker' setMarkerText (format ['%1夺取设备箱',(toString [32,32,32])]);
-
 [
 	'QS_IA_TASK_SM_0',
 	TRUE,
 	[
-		'敌军正在为当地叛军提供用于防空武器的制导系统，这对我们的空中单位是个不小的威胁。立刻前往目标城镇并夺取这些设备！目标外观为弹药箱，存放在目标区域的建筑物内。',
-		'夺取设备箱',
-		'夺取设备箱'
+		localize 'STR_QS_Task_116',
+		localize 'STR_QS_Task_117',
+		localize 'STR_QS_Task_117'
 	],
 	(markerPos 'QS_marker_sideMarker'),
 	'CREATED',
@@ -784,7 +783,7 @@ _QS_firstDetected = FALSE;
 ] call (missionNamespace getVariable 'BIS_fnc_setTask');
 
 missionNamespace setVariable ['QS_mission_urban_active',TRUE,TRUE];
-['NewSideMission',['夺取设备箱']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+['NewSideMission',[localize 'STR_QS_Notif_113']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 _box1_secured = FALSE;
 _box2_secured = FALSE;
 _box3_secured = FALSE;
@@ -873,7 +872,7 @@ for '_x' from 0 to 1 step 0 do {
 			if (_QS_enemyDetected) exitWith {};
 		} count _QS_enemyArray;
 		if (_QS_enemyDetected) then {
-			['ST_URBAN',['支线任务更新','敌人发现我们正在靠近']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+			['ST_URBAN',[localize 'STR_QS_Notif_091',localize 'STR_QS_Notif_114']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 			{
 				if (alive _x) then {
 					if ((random 1) > 0.75) then {
@@ -885,7 +884,7 @@ for '_x' from 0 to 1 step 0 do {
 			['QS_IA_TASK_SM_0',TRUE,_QS_enemyDetected_endTime] call (missionNamespace getVariable 'QS_fnc_taskSetTimer');
 			_QS_bombTimer_started = TRUE;
 			_QS_urbanTimerBroadcast_delay = time + 25;
-			_QS_text = format ['敌军将会在 %1 后销毁设备箱',[((round(_QS_enemyDetected_endTime - serverTime))/60)+0.01,'HH:MM'] call (missionNamespace getVariable 'BIS_fnc_timeToString')];
+			_QS_text = format ['%2 %1',[((round(_QS_enemyDetected_endTime - serverTime))/60)+0.01,'HH:MM'] call (missionNamespace getVariable 'BIS_fnc_timeToString'),localize 'STR_QS_Chat_156'];
 			['systemChat',_QS_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		};
 	};
@@ -899,7 +898,7 @@ for '_x' from 0 to 1 step 0 do {
 					_QS_object1 setPos [-5000,-5000,0];
 					(_markers # 0) setMarkerAlpha 0;
 					missionNamespace setVariable ['QS_mission_urban_objectsSecured',((missionNamespace getVariable 'QS_mission_urban_objectsSecured') + 1),FALSE];
-					['ST_URBAN',['支线任务更新',(format ['%1 / 3 个设备箱已夺取',(missionNamespace getVariable 'QS_mission_urban_objectsSecured')])]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+					['ST_URBAN',[localize 'STR_QS_Notif_091',(format ['%1 / 3 %2',(missionNamespace getVariable 'QS_mission_urban_objectsSecured'),localize 'STR_QS_Notif_115'])]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 				};
 			};
 		};
@@ -913,7 +912,7 @@ for '_x' from 0 to 1 step 0 do {
 					_QS_object2 setPos [-5000,-5000,0];
 					(_markers # 1) setMarkerAlpha 0;
 					missionNamespace setVariable ['QS_mission_urban_objectsSecured',((missionNamespace getVariable 'QS_mission_urban_objectsSecured') + 1),FALSE];
-					['ST_URBAN',['支线任务更新',(format ['%1 / 3 个设备箱已夺取',(missionNamespace getVariable 'QS_mission_urban_objectsSecured')])]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+					['ST_URBAN',[localize 'STR_QS_Notif_091',(format ['%1 / 3 %2',(missionNamespace getVariable 'QS_mission_urban_objectsSecured'),localize 'STR_QS_Notif_115'])]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 				};
 			};
 		};
@@ -927,7 +926,7 @@ for '_x' from 0 to 1 step 0 do {
 					_QS_object3 setPos [-5000,-5000,0];
 					(_markers # 2) setMarkerAlpha 0;
 					missionNamespace setVariable ['QS_mission_urban_objectsSecured',((missionNamespace getVariable 'QS_mission_urban_objectsSecured') + 1),FALSE];
-					['ST_URBAN',['支线任务更新',(format ['%1 / 3 个设备箱已夺取',(missionNamespace getVariable 'QS_mission_urban_objectsSecured')])]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+					['ST_URBAN',[localize 'STR_QS_Notif_091',(format ['%1 / 3 %2',(missionNamespace getVariable 'QS_mission_urban_objectsSecured'),localize 'STR_QS_Notif_115'])]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 				};
 			};
 		};
@@ -969,7 +968,7 @@ for '_x' from 0 to 1 step 0 do {
 			
 			if (serverTime > _QS_enemyDetected_endTime) then {
 				if (!(_allSecured)) then {
-					['systemChat','敌方摧毁了设备箱！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+					['systemChat',localize 'STR_QS_Chat_157'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 				};
 			};
 		};
@@ -989,7 +988,7 @@ for '_x' from 0 to 1 step 0 do {
 					if (!isNull _x) then {
 						if (!(_x getVariable 'QS_secured')) then {
 							_x setDamage 1;
-							'M_AT' createVehicle (getPos _x);
+							'M_AT' createVehicle (getPosATL _x);
 						};
 					};
 				} forEach _QS_objectArray;

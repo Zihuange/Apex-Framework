@@ -6,13 +6,16 @@ Author:
 	
 Last Modified:
 
-	7/07/2018 A3 1.82 by Quiksilver
+	1/09/2022 A3 2.10 by Quiksilver
 	
 Description:
 
 	Custom Curator Functions
 	
 Keys:
+
+	61 = F3
+	62 = F4
 
 	NUM_0 = 82
 	NUM_1 = 79
@@ -29,14 +32,45 @@ Keys:
 ______________________________________________________*/
 
 _key = _this # 0;
-if (isNull (findDisplay 312)) exitWith {};
-if (!(_key in [82,79,80,81,75,76,77,71,72,73])) exitWith {};
-if (diag_tickTime < (player getVariable ['QS_curator_executingFunction',-1])) exitWith {};
+_validKeys = [61,62,82,79,80,81,75,76,77,71,72,73];
+if (
+	(isNull (findDisplay 312)) ||
+	{(!(_key in _validKeys))} ||
+	{(diag_tickTime < (player getVariable ['QS_curator_executingFunction',-1]))}
+) exitWith {};
 player setVariable ['QS_curator_executingFunction',(diag_tickTime + 2),FALSE];
 scopeName 'main';
+if (_key isEqualTo 61) exitWith {
+	if (!isNil {player getVariable 'QS_staff_menuOpened'}) exitWith {};
+	playSound 'Click';
+	player setVariable ['QS_staff_menuOpened',TRUE,FALSE];
+	0 spawn {uiSleep 2;player setVariable ['QS_staff_menuOpened',nil,FALSE];};
+	private _curators = ['CURATOR'] call (missionNamespace getVariable 'QS_fnc_whitelist');
+	if ((getPlayerUID player) in _curators) then {
+		private _logic = getAssignedCuratorLogic player;
+		if (!isNull _logic) then {
+			if (!isNil {player getVariable 'QS_staff_curatorLastUpdate'}) exitWith {
+				if (!isStreamFriendlyUIEnabled) then {
+					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,localize 'STR_QS_Hints_103',[],(serverTime + 10),TRUE,localize 'STR_QS_Hints_104',FALSE];
+				};
+			};
+			player setVariable ['QS_staff_curatorLastUpdate',TRUE,FALSE];
+			0 spawn {uiSleep 10;player setVariable ['QS_staff_curatorLastUpdate',nil,FALSE];};
+			[49,_logic] remoteExec ['QS_fnc_remoteExec',2,FALSE];
+			if (!isStreamFriendlyUIEnabled) then {
+				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,localize 'STR_QS_Hints_105',[],-1,TRUE,localize 'STR_QS_Hints_104',FALSE];
+			};
+		};
+	};
+};
+if (_key isEqualTo 62) exitWith {
+	playSound ['ClickSoft',FALSE];
+	systemChat 'AI offload to Server/Headless Client - not implemented yet';
+
+};
 if (_key isEqualTo 82) exitWith {
 	playSound ['ClickSoft',FALSE];
-	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'无功能',[],-1,TRUE,'Curator',FALSE];
+	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,localize 'STR_QS_Hints_106',[],-1,TRUE,localize 'STR_QS_Hints_104',FALSE];
 };
 if (_key isEqualTo 79) exitWith {
 	//comment 'Garrison selected units into buildings';
@@ -60,7 +94,7 @@ if (_key isEqualTo 79) exitWith {
 	if (_countUnits > 16) then {_radius = 200;};
 	if (_countUnits > 24) then {_radius = 300;};
 	[(getPosATL (_selectedUnits # 0)),_radius,_selectedUnits,['House','Building']] spawn (missionNamespace getVariable 'QS_fnc_garrisonUnits');
-	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'单位驻防',[],-1,TRUE,'Curator',FALSE];
+	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,localize 'STR_QS_Hints_107',[],-1,TRUE,localize 'STR_QS_Hints_104',FALSE];
 };
 if (_key isEqualTo 80) exitWith {
 	//comment 'Group patrol';
@@ -79,12 +113,12 @@ if (_key isEqualTo 80) exitWith {
 	{
 		[_x,(getPosATL ((units _x) # 0)),100] call (missionNamespace getVariable 'QS_fnc_taskPatrol');
 	} forEach _selectedGroups;
-	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'单位巡逻',[],-1,TRUE,'Curator',FALSE];
+	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,localize 'STR_QS_Hints_108',[],-1,TRUE,localize 'STR_QS_Hints_104',FALSE];
 };
 if (_key isEqualTo 81) exitWith {
 	//comment 'Search building';
 	playSound ['ClickSoft',FALSE];
-	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'单位搜索建筑物',[],-1,TRUE,'Curator',FALSE];
+	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,localize 'STR_QS_Hints_109',[],-1,TRUE,localize 'STR_QS_Hints_104',FALSE];
 	private ['_buildings','_building','_selectedGroup','_waypoint','_grp'];
 	if ((curatorSelected # 1) isEqualTo []) then {breakTo 'main';};
 	{
@@ -139,35 +173,35 @@ if (_key isEqualTo 75) exitWith {
 												0,
 												FALSE
 											] spawn (missionNamespace getVariable 'QS_fnc_stalk');
-											0 = (missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'向目标突击',[],-1,TRUE,'Curator',FALSE];
+											0 = (missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,localize 'STR_QS_Hints_110',[],-1,TRUE,'Curator',FALSE];
 										};
 									};
 								};
 							} else {
-								(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,10,-1,'突击命令无效 - 路点15米范围内无目标',[],-1,TRUE,'Curator',FALSE];
+								(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,10,-1,localize 'STR_QS_Hints_111',[],-1,TRUE,localize 'STR_QS_Hints_104',FALSE];
 							};
 						} else {
-							(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,10,-1,'突击命令无效 - 无效路点',[],-1,TRUE,'Curator',FALSE];
+							(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,10,-1,localize 'STR_QS_Hints_112',[],-1,TRUE,localize 'STR_QS_Hints_104',FALSE];
 						};
 					} else {
-						(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'突击命令无效 - 未放置路点',[],-1,TRUE,'Curator',FALSE];
+						(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,localize 'STR_QS_Hints_113',[],-1,TRUE,localize 'STR_QS_Hints_104',FALSE];
 					};
 				} else {
-					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'突击命令无效 - 小队长为玩家',[],-1,TRUE,'Curator',FALSE];
+					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,localize 'STR_QS_Hints_114',[],-1,TRUE,localize 'STR_QS_Hints_104',FALSE];
 				};
 			};
 		} else {
-			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'突击命令无效 - 该小组非宙斯放置',[],-1,TRUE,'Curator',FALSE];
+			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,localize 'STR_QS_Hints_115',[],-1,TRUE,localize 'STR_QS_Hints_104',FALSE];
 		};
 	} count (curatorSelected # 1);
 };
 if (_key isEqualTo 76) exitWith {
 	playSound ['ClickSoft',FALSE];
-	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'无功能',[],-1,TRUE,'Curator',FALSE];
+	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,localize 'STR_QS_Hints_106',[],-1,TRUE,localize 'STR_QS_Hints_104',FALSE];
 };
 if (_key isEqualTo 77) exitWith {
 	playSound ['ClickSoft',FALSE];
-	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'火力压制',[],-1,TRUE,'Curator',FALSE];
+	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,localize 'STR_QS_Hints_116',[],-1,TRUE,localize 'STR_QS_Hints_104',FALSE];
 	private _selectedUnits = [];
 	private _unit = objNull;
 	private _target = objNull;
@@ -249,29 +283,29 @@ if (_key isEqualTo 71) exitWith {
 		TRUE
 	];
 	/*/
-	//systemChat format ['Curator revives remaining: %1',(missionNamespace getVariable 'QS_curator_revivePoints')];
+	//systemChat format ['%2 %1',(missionNamespace getVariable 'QS_curator_revivePoints'),localize 'STR_QS_Chat_106'];
 	_module = getAssignedCuratorLogic player;
 	/*/[28,_module,((curatorPoints _module) - 0.05)] remoteExec ['QS_fnc_remoteExec',2,FALSE];/*/
 	private _text = '';
 	if ((random 1) > 0.333) then {
-		_text = format ['%1 感受到了党组织的召唤，他苏醒了！',((name _unit) + ([' [AI]',''] select (isPlayer _unit)))];
+		_text = format ['%1 %2!',((name _unit) + ([' [AI]',''] select (isPlayer _unit))),localize 'STR_QS_Hints_117'];
 	} else {
 		if ((random 1) > 0.5) then {
-			_text = format ['马克思对 %1 笑了笑，他醒了！',((name _unit) + ([' [AI]',''] select (isPlayer _unit)))];
+			_text = format ['%2 %1!',((name _unit) + ([' [AI]',''] select (isPlayer _unit))),localize 'STR_QS_Hints_118'];
 		} else {
-			_text = format ['%1 被神秘的东方力量救醒了！',((name _unit) + ([' [AI]',''] select (isPlayer _unit)))];
+			_text = format ['%1 %2',((name _unit) + ([' [AI]',''] select (isPlayer _unit))),localize 'STR_QS_Hints_119'];
 		};
 	};
 	if (_text isNotEqualTo '') then {
 		['systemChat',_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 	};
-	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'治疗选择的单位',[],-1,TRUE,'Curator',FALSE];
+	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,localize 'STR_QS_Hints_120',[],-1,TRUE,localize 'STR_QS_Hints_104',FALSE];
 };
 if (_key isEqualTo 72) exitWith {
 	//comment 'Toggle player view directions';
 	playSound ['ClickSoft',FALSE];
 	if (isNil {missionNamespace getVariable 'QS_curator_playerViewDirections'}) then {
-		(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'玩家视野 - 显示',[],-1,TRUE,'Curator',FALSE];
+		(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,localize 'STR_QS_Hints_121',[],-1,TRUE,localize 'STR_QS_Hints_104',FALSE];
 		missionNamespace setVariable [
 			'QS_curator_playerViewDirections',
 			(
@@ -301,7 +335,7 @@ if (_key isEqualTo 72) exitWith {
 			FALSE
 		];
 	} else {
-		(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'玩家视野 - OFF',[],-1,TRUE,'Curator',FALSE];
+		(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,localize 'STR_QS_Hints_122',[],-1,TRUE,localize 'STR_QS_Hints_104',FALSE];
 		removeMissionEventHandler ['Draw3D',(missionNamespace getVariable 'QS_curator_playerViewDirections')];
 		missionNamespace setVariable ['QS_curator_playerViewDirections',nil,FALSE];
 	};	
@@ -338,11 +372,11 @@ if (_key isEqualTo 73) exitWith {
 			];
 			_unit setUnconscious TRUE;
 			_unit setCaptive TRUE;
-			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,3,-1,'设定单位昏迷',[],-1,TRUE,'Curator',FALSE];
+			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,3,-1,localize 'STR_QS_Hints_123',[],-1,TRUE,localize 'STR_QS_Hints_104',FALSE];
 		} else {
-			50 cutText ['只能将宙斯生成的单位设置为昏迷状态','PLAIN DOWN',0.333];
+			50 cutText [localize 'STR_QS_Text_205','PLAIN DOWN',0.333];
 		};
 	} else {
-		50 cutText ['无法将此单位设置为昏迷','PLAIN DOWN',0.333];
+		50 cutText [localize 'STR_QS_Text_206','PLAIN DOWN',0.333];
 	};
 };
