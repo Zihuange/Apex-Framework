@@ -62,7 +62,7 @@ private _isBackpack = getNumber (configFile >> 'CfgVehicles' >> (typeOf _invento
 	_QS_buttonCtrl buttonSetAction _QS_buttonAction;
 	_QS_buttonCtrl ctrlShow TRUE;
 	_QS_buttonCtrl ctrlSetScale 0.175;
-	_QS_buttonCtrl ctrlSetTooltip (localize 'STR_QS_Inventory_backpackLock');
+	_QS_buttonCtrl ctrlSetTooltip '锁定背包';
 	_QS_buttonCtrl ctrlCommit 0;
 	ctrlDelete _myPicture;
 	_isOthersBackpack = FALSE;
@@ -77,8 +77,8 @@ private _isBackpack = getNumber (configFile >> 'CfgVehicles' >> (typeOf _invento
 		};
 	};
 	(_display displayCtrl 111) ctrlSetText (['GET_ROLE_DISPLAYNAME',(player getVariable ['QS_unit_role','rifleman'])] call (missionNamespace getVariable ['QS_fnc_roles',{'rifleman'}]));
-	(_display displayCtrl 6308) ctrlSetTooltip (format [(localize 'STR_QS_Inventory_load'),(round ((loadAbs player) * 0.1))]);
-	(_display displayCtrl 12346) ctrlSetTooltip (localize 'STR_QS_Inventory_backpackLock');
+	(_display displayCtrl 6308) ctrlSetTooltip (format ['负重：%1 lbs',(round ((loadAbs player) * 0.1))]);
+	(_display displayCtrl 12346) ctrlSetTooltip '背包已上锁';
 	_exit = FALSE;
 	while {(!isNull (findDisplay 602))} do {
 		if (_isOthersBackpack) then {

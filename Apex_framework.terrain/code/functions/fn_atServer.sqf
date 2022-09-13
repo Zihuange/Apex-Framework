@@ -73,7 +73,7 @@ if (_type isEqualTo 1) then {
 		QS_robocop set [_uid,_val];
 		[nil,[_uid,_cid,_val,TRUE]] remoteExec ['QS_fnc_atClientMisc',_cid,FALSE];
 	};
-	_message = format [(localize "STR_QS_report_reported"),_nameCausedBy];
+	_message = format ['系统机器人: %1 已被举报',_nameCausedBy];
 	_QS_UID = ['ALL'] call (missionNamespace getVariable 'QS_fnc_whitelist');
 	private _arrayToSend = [];
 	{

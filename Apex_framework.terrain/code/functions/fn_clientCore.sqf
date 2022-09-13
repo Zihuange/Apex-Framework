@@ -701,7 +701,7 @@ if (_QS_module_liveFeed) then {
 	'qs_rd_lfe' setPiPEffect [0];
 	_QS_liveFeed_camera_offset = [-0.18,0.08,0.05];
 	_QS_liveFeed_vehicle_current = objNull;
-	_QS_liveFeed_text = (localize 'STR_QS_LiveFeed_Live');
+	_QS_liveFeed_text = '来自头盔摄像机的直播:';
 	player setVariable ['QS_RD_client_liveFeed',FALSE,FALSE];
 	_QS_liveFeed_action_1 = _QS_liveFeed_display addAction [
 		localize 'STR_QS_Interact_095',
@@ -840,13 +840,13 @@ _QS_module_safezone_isInSafezone = FALSE;
 _QS_module_safezone_pos = markerPos 'QS_marker_base_marker';
 _QS_module_safezone_radius = 500;
 _QS_module_safezone_playerProtection = 1;
-_QS_safeZoneText_entering = (localize 'STR_QS_SafeZone_entering');
-_QS_safeZoneText_leaving = (localize 'STR_QS_SafeZone_leaving');
+_QS_safeZoneText_entering = '正在进入安全区';
+_QS_safeZoneText_leaving = '正在离开安全区';
 _QS_firstRun2 = TRUE;
 player addRating (0 - (rating player));
 _QS_safezone_action = -1;
 _QS_action_safezone = nil;
-_QS_action_safezone_text = (localize 'STR_QS_SafeZone_Weapons');
+_QS_action_safezone_text = '基地内禁止使用武器';
 _QS_action_safezone_array = [_QS_action_safezone_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractWeaponSafety')},nil,-99,FALSE,TRUE,'DefaultAction','TRUE',-1,FALSE];
 _QS_module_safezone_speedlimit_enabled = TRUE;
 _QS_module_safezone_speedlimit_event = nil;
@@ -6107,4 +6107,4 @@ for 'x' from 0 to 1 step 0 do {
 	};
 	uiSleep 0.1;
 };
-[(localize 'STR_QS_Error_456'),TRUE] call _fn_hint;
+['淦！看来出了什么问题。请将此错误代码报告给工作人员：<br/><br/>456<br/><br/>谢谢您的反馈。',TRUE] call _fn_hint;

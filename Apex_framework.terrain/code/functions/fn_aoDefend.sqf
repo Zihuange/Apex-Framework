@@ -1526,7 +1526,7 @@ for '_x' from 0 to 1 step 0 do {
 	   ];
 	};
 	if (missionNamespace getVariable 'QS_defend_terminate') exitWith {
-		['hint',(localize 'STR_QS_Def_defendCancelled')] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['hint','防御任务取消！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 	};
 	sleep 1.5;
 };

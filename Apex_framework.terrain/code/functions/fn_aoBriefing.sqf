@@ -28,7 +28,7 @@ if (_type isEqualTo 'BRIEF') then {
 	};
 	'QS_marker_aoMarker' setMarkerTextLocal (format ['%1 %3 %2',(toString [32,32,32]),_ao,localize 'STR_QS_Marker_001']);
 	_targetStartText = parseText format [
-		(localize "STR_QS_Brief_newTarget"),
+		"<t align='center' size='2.2'>新的目标</t><br/><t size='1.5' align='center' color='#FFCF11'>%1</t><br/>____________________<br/>上个任务打的漂亮，指挥部希望你们继续保持！部署到 %1 并消灭所有敌军！<br/><br/>记得摧毁无线电塔阻止敌军呼叫空中支援！",
 		_ao
 	];
 	if (!(missionNamespace getVariable 'QS_mainao_firstRun')) then {
