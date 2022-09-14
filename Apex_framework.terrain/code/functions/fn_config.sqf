@@ -413,7 +413,7 @@ _recyclerUnitTypes = [
 	['QS_aar_B_killed_civ',0,TRUE],
 	['QS_aar_B_killed_bldg',0,TRUE],
 	['QS_aar_B_time_dur',0,TRUE],
-	['QS_armedAirEnabled',FALSE,TRUE],
+	['QS_armedAirEnabled',TRUE,TRUE],
 	['QS_var_debug',FALSE,FALSE],
 	['QS_serverKey','abc123',TRUE],
 	['QS_teamspeak_address',_teamspeak,TRUE],
