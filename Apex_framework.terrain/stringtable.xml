@@ -58,9 +58,7 @@ Notes:
 			[X] "STR_QS_Utility_001"
 	
 _____________________________________________________________-->
-
 <Project name="Apex Framework">
-
 	<Container name="QS_xml_userActions">
 		<Key ID="STR_QS_Interact_001">
 			<Original>Drag</Original>
@@ -345,7 +343,6 @@ _____________________________________________________________-->
 			<Original>Cancel turret actions</Original>
 			<Chinesesimp>取消炮塔保险菜单</Chinesesimp>
 		</Key>
-		
 		<Key ID="STR_QS_Interact_072">
 			<Original>0 - Close Menu</Original>
 			<Chinesesimp>0 - 关闭菜单</Chinesesimp>
@@ -410,7 +407,6 @@ _____________________________________________________________-->
 			<Original>15 - Dev Terminal</Original>
 			<Chinesesimp>15 - 开发控制台</Chinesesimp>
 		</Key>
-		
 		<Key ID="STR_QS_Interact_088">
 			<Original>Suspend side missions</Original>
 			<Chinesesimp>暂停支线任务</Chinesesimp>
@@ -524,9 +520,7 @@ _____________________________________________________________-->
 			<Chinesesimp>捡起拖拽绳</Chinesesimp>
 		</Key>
 	</Container>
-
 	<Container name="QS_xml_onScreenText">
-	
 		<Key ID="STR_QS_Text_000">
 			<Original>Busy</Original>
 			<Chinesesimp>忙碌</Chinesesimp>
@@ -557,6 +551,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Text_007">
 			<Original>Object not configured for this scenario</Original>
+			<Chinesesimp>未为该场景配置的对象</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_008">
 			<Original>Armed aircraft disabled in server settings</Original>
@@ -564,12 +559,15 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Text_009">
 			<Original>Module not configured for this scenario</Original>
+			<Chinesesimp>未为该场景配置模块</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_010">
 			<Original>Sending waypoint to remote group</Original>
+			<Chinesesimp>向远程组发送航点</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_011">
 			<Original>Waypoint sync cooldown (5 seconds)</Original>
+			<Chinesesimp>航点同步的冷却（5秒）</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_012">
 			<Original>GPS Offline</Original>
@@ -585,6 +583,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Text_015">
 			<Original>Explosives limit exceeded (7)</Original>
+			<Chinesesimp>爆炸物数量超标 (7)</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_016">
 			<Original>Shell disarmed (firing into restricted area)</Original>
@@ -648,9 +647,10 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Text_031">
 			<Original>Activating air defense</Original>
+			<Chinesesimp>正在激活防空系统</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_032">
-			<Original>Use General channel for general voice communications. Press [Home] >> [Comm-Link] >> [Radio Management] to subscribe</Original>
+			<Original>Use General channel for general voice communications. Press [Home] &gt;&gt; [Comm-Link] &gt;&gt; [Radio Management] to subscribe</Original>
 			<Chinesesimp>想要使用常规频道进行交流，请按 [Home] &gt;&gt; [Comm-Link] &gt;&gt; [无线电管理] 来兼听频道。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_033">
@@ -810,7 +810,7 @@ _____________________________________________________________-->
 			<Chinesesimp>移动时不能这么做</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_072">
-			<Original>Please bind these actions to keys. [Esc]>>[Configure]>>[Controls]>>[Keyboard]>>[Common]>>[Panels]. Default [ and ] keys</Original>
+			<Original>Please bind these actions to keys. [Esc]&gt;&gt;[Configure]&gt;&gt;[Controls]&gt;&gt;[Keyboard]&gt;&gt;[Common]&gt;&gt;[Panels]. Default [ and ] keys</Original>
 			<Chinesesimp>请将这些动作绑定按键。 [Esc]&gt;&gt;[配置]&gt;&gt;[控件]&gt;&gt;[按键]&gt;&gt;[一般]&gt;&gt;[面板] 默认 [ and ] 键</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_073">
@@ -847,6 +847,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Text_081">
 			<Original>Beret collected</Original>
+			<Chinesesimp>收集的贝雷帽</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_082">
 			<Original>Remove slat armor to deploy camo net</Original>
@@ -914,6 +915,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Text_098">
 			<Original>Initialisation complete, select tab</Original>
+			<Chinesesimp>初始化完成，选择标签</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_099">
 			<Original>Crate overfilled, removing excess backpacks</Original>
@@ -1069,6 +1071,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Text_137">
 			<Original>Secured</Original>
+			<Chinesesimp>已获取</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_138">
 			<Original>Target destroyed</Original>
@@ -1104,6 +1107,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Text_146">
 			<Original>Already seated</Original>
+			<Chinesesimp>已经就座</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_147">
 			<Original>Only Engineers and Crewmen can Mount/Remove slat armor</Original>
@@ -1147,6 +1151,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Text_157">
 			<Original>Insufficient cargo space</Original>
+			<Chinesesimp>货物空间不足</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_158">
 			<Original>Other players are in this vehicle</Original>
@@ -1210,9 +1215,11 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Text_173">
 			<Original>Ambient Life enabled</Original>
+			<Chinesesimp>启用环境生命</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_174">
 			<Original>Ambient Life disabled</Original>
+			<Chinesesimp>禁用环境寿命</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_175">
 			<Original>Dynamic Simulation enabled</Original>
@@ -1224,27 +1231,35 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Text_177">
 			<Original>3D Group Hexagons disabled</Original>
+			<Chinesesimp>禁用六边形友军标识</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_178">
 			<Original>3D Group Hexagons enabled</Original>
+			<Chinesesimp>启用六边形友军标识</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_179">
 			<Original>Extended System Messages hidden</Original>
+			<Chinesesimp>扩展系统消息隐藏</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_180">
 			<Original>Extended System Messages shown</Original>
+			<Chinesesimp>扩展系统消息显示</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_181">
 			<Original>Suppression Effects enabled</Original>
+			<Chinesesimp>启用压制效果</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_182">
 			<Original>Suppression Effects disabled</Original>
+			<Chinesesimp>禁用压制效果</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_183">
 			<Original>Hit Marker audio enabled</Original>
+			<Chinesesimp>启用命中提醒声音</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_184">
 			<Original>Hit Marker audio disabled</Original>
+			<Chinesesimp>禁用命中提醒声音</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_185">
 			<Original>&lt;t color='#ff0000'&gt; FRIENDLY FIRE &lt;/t&gt;</Original>
@@ -1320,15 +1335,19 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Text_203">
 			<Original>Custom controls: "Use Action 17" and "Use Action 18"</Original>
+			<Chinesesimp>自定义控制。"使用操作17 "和 "使用操作18"</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_204">
 			<Original>reset for FOB resupply</Original>
+			<Chinesesimp>重置为FOB补给</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_205">
 			<Original>Can only set unconscious units spawned by Zeus</Original>
+			<Chinesesimp>只能设置由宙斯生成的无意识单位</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_206">
 			<Original>Cannot set this unit unconscious</Original>
+			<Chinesesimp>不能设置该单位昏迷</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_207">
 			<Original>has requested Medevac</Original>
@@ -1336,9 +1355,11 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Text_208">
 			<Original>Commander requested a SITREP for</Original>
+			<Chinesesimp>指挥官要求提供SITREP</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_209">
 			<Original>No suitable vehicle found for GET IN waypoint</Original>
+			<Chinesesimp>没有找到合适的车辆用于GET IN航点</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_210">
 			<Original>Commander unable to leave the base area</Original>
@@ -1398,6 +1419,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Text_224">
 			<Original>Requesting plane</Original>
+			<Chinesesimp>正在请求飞机</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_225">
 			<Original>Too soon since last request (10s cooldown)</Original>
@@ -1405,6 +1427,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Text_226">
 			<Original>Command issued</Original>
+			<Chinesesimp>发出的命令</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_227">
 			<Original>Undefined command</Original>
@@ -1412,9 +1435,11 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Text_228">
 			<Original>SITREP requested</Original>
+			<Chinesesimp>请求SITREP</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_229">
 			<Original>[Commander] Waypoint complete</Original>
+			<Chinesesimp>[指挥官]航点完成</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_230">
 			<Original>Too close (30m)</Original>
@@ -1510,6 +1535,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Text_253">
 			<Original>is only towable by a(n)</Original>
+			<Chinesesimp>只能由一个拖动</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_254">
 			<Original>This vehicle can only tow Static Weapons and Mortars</Original>
@@ -1537,32 +1563,38 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Text_260">
 			<Original>Being treated by</Original>
+			<Chinesesimp>正在接受治疗</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_261">
 			<Original>Being repaired by</Original>
+			<Chinesesimp>被修复</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_262">
 			<Original>Being revived by</Original>
+			<Chinesesimp>被复活</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_263">
 			<Original>Revived by</Original>
+			<Chinesesimp>复活的人</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_264">
 			<Original>Orders assigned by Commander</Original>
+			<Chinesesimp>指挥官分配的命令</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_265">
 			<Original>Orders updated by Commander</Original>
+			<Chinesesimp>指挥官更新的命令</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_266">
 			<Original>Satellite sector scan unavailable for</Original>
+			<Chinesesimp>卫星扫描不可用</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Text_267">
 			<Original>minutes</Original>
+			<Chinesesimp>分钟</Chinesesimp>
 		</Key>
 	</Container>
-
 	<Container name="QS_xml_hints">
-	
 		<Key ID="STR_QS_Hints_000">
 			<Original>TEXT</Original>
 		</Key>
@@ -1584,34 +1616,43 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Hints_005">
 			<Original>You are a pilot. Please play your role or re-assign. There are over 30 players on the server, please respawn if timely evac is not available.</Original>
+			<Chinesesimp>你是飞行员。请扮演您的角色或更换兵种。服务器上有超过30名玩家，如果无法及时获得救援请重生</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_006">
 			<Original>Mission Control</Original>
-			<Chinesesimp>OPFOR玩家禁止离开主线站区</Chinesesimp>
+			<Chinesesimp>任务控制</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_007">
 			<Original>OPFOR players cannot leave the Area of Operations.</Original>
+			<Chinesesimp>OPFOR玩家禁止离开主线站区</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_008">
 			<Original>You were hit by</Original>
+			<Chinesesimp>你被以下目标击中：</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_009">
 			<Original>likely with a(n)</Original>
+			<Chinesesimp>可能有一个</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_010">
 			<Original>controlling a(n)</Original>
+			<Chinesesimp>控制一个</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_011">
 			<Original>pilot of a(n)</Original>
+			<Chinesesimp>的飞行员</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_012">
 			<Original>of a(n)</Original>
+			<Chinesesimp>的</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_013">
 			<Original>using a Static</Original>
+			<Chinesesimp>使用一个静态的</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_014">
 			<Original>In your Action Menu (SCROLL MENU), you have the option to anonymously report the incident. This option is available for</Original>
+			<Chinesesimp>在你的行动菜单（滚动菜单）中，你可以选择匿名报告该事件。这个选项适用于</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_015">
 			<Original>Pilot seats are for Pilots only</Original>
@@ -1647,6 +1688,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Hints_023">
 			<Original>Civilian</Original>
+			<Chinesesimp>平民</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_024">
 			<Original>has improved the accuracy of your mission map marker</Original>
@@ -1754,24 +1796,31 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Hints_050">
 			<Original>No other person nearby. You need another person nearby (10m) in order to push a vehicle this heavy.</Original>
+			<Chinesesimp>附近没有其他人。你需要有另一个人在附近（10米）才能推这么重的车</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_051">
 			<Original>Only Pilots can recruit</Original>
+			<Chinesesimp>只有飞行员可以招募</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_052">
 			<Original>Pilots and Aircrew cannot recruit</Original>
+			<Chinesesimp>飞行员和空勤人员不能招募</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_053">
 			<Original>Insignia Set:</Original>
+			<Chinesesimp>徽章套装:</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_054">
 			<Original>Supporter level required:</Original>
+			<Chinesesimp>需要支持者等级:</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_055">
 			<Original>Your supporter level:</Original>
+			<Chinesesimp>你的支持者等级:</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_056">
 			<Original>Insignia not set</Original>
+			<Chinesesimp>徽章未设置</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_057">
 			<Original>Cannot delete players</Original>
@@ -1783,9 +1832,11 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Hints_059">
 			<Original>(staff) has deleted a(n)</Original>
+			<Chinesesimp>(工作人员)已经删除了一个</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_060">
 			<Original>at grid</Original>
+			<Chinesesimp>在网格</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_061">
 			<Original>[Shift]+[F2] to Exit spectator mode</Original>
@@ -1793,12 +1844,15 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Hints_062">
 			<Original>Invincibility on</Original>
+			<Chinesesimp>无敌状态开启</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_063">
 			<Original>Invincibility off</Original>
+			<Chinesesimp>无敌状态关闭</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_064">
 			<Original>Repair failed (No valid target selected)</Original>
+			<Chinesesimp>修复失败（未选择有效目标）</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_065">
 			<Original>Invalid target</Original>
@@ -1806,6 +1860,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Hints_066">
 			<Original>(staff) has repaired a(n)</Original>
+			<Chinesesimp>(工作人员)已经修复了一个</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_067">
 			<Original>No function assigned</Original>
@@ -1829,15 +1884,19 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Hints_072">
 			<Original>(staff) has executed</Original>
+			<Chinesesimp>(工作人员)已执行</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_073">
 			<Original>cleanup</Original>
+			<Chinesesimp>清理</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_074">
 			<Original>Uniform Texture Set:</Original>
+			<Chinesesimp>制服皮肤已设置为：</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_075">
 			<Original>You must be at base to re-skin your uniform</Original>
+			<Chinesesimp>你必须在基地才能重新换上你的制服</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_076">
 			<Original>Uniform Texture Reset</Original>
@@ -1849,12 +1908,15 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Hints_078">
 			<Original>Supporter level required:</Original>
+			<Chinesesimp>需要支持者级别:</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_079">
 			<Original>Your supporter level:</Original>
+			<Chinesesimp>您的支持者级别:</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_080">
 			<Original>Uniform Texture not set.</Original>
+			<Chinesesimp>制服皮肤未设定</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_081">
 			<Original>Vehicle texture reset, you can now texture a different vehicle. You must first reset that vehicle before texturing another!</Original>
@@ -1862,6 +1924,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Hints_082">
 			<Original>Vehicle Skin</Original>
+			<Chinesesimp>车辆皮肤</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_083">
 			<Original>Vehicle Texture Set:</Original>
@@ -1881,6 +1944,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Hints_087">
 			<Original>You already have a textured vehicle. A(n)</Original>
+			<Chinesesimp>你已经有了一辆有纹理的车辆</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_088">
 			<Original>You must be the vehicle commander/driver/owner.</Original>
@@ -1932,12 +1996,15 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Hints_100">
 			<Original>Simulation Manager paused</Original>
+			<Chinesesimp>模拟管理器暂停了</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_101">
 			<Original>Simulation Manager resumed</Original>
+			<Chinesesimp>模拟管理器恢复</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_102">
 			<Original>Dynamic Simulation</Original>
+			<Chinesesimp>动态模拟</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_103">
 			<Original>Please wait a short time (10s) between sync attempts</Original>
@@ -1945,9 +2012,11 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Hints_104">
 			<Original>Curator</Original>
+			<Chinesesimp>宙斯</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_105">
 			<Original>Updating zeus entities</Original>
+			<Chinesesimp>更新宙斯实体</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_106">
 			<Original>No function</Original>
@@ -1995,12 +2064,15 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Hints_117">
 			<Original>has been revived by a divine intervention</Original>
+			<Chinesesimp>感受到了党组织的召唤，他苏醒了！</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_118">
 			<Original>The gods have smiled upon</Original>
+			<Chinesesimp>马克思对此人笑了笑，他醒了:</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_119">
 			<Original>has been revived by an act of the gods</Original>
+			<Chinesesimp>被神秘的东方力量救醒了！</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_120">
 			<Original>Revived selected unit</Original>
@@ -2020,27 +2092,35 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Hints_124">
 			<Original>ejected from the session</Original>
+			<Chinesesimp>被从会话中弹出</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_125">
 			<Original>Suspect is null object, action failed</Original>
+			<Chinesesimp>疑似为空对象，行动失败</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_126">
 			<Original>No action taken</Original>
+			<Chinesesimp>未采取任何行动</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_127">
 			<Original>Mission Failure</Original>
+			<Chinesesimp>任务失败</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_128">
 			<Original>The enemy dominated us, get ready for the next one!</Original>
+			<Chinesesimp>敌人主打赢我们，准备好迎接下一次吧!</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_129">
 			<Original>Mission Success</Original>
+			<Chinesesimp>任务成功</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_130">
 			<Original>We dominated them soldiers, get ready for the next one!</Original>
+			<Chinesesimp>敌人主打赢我们，准备好迎接下一次!</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_131">
 			<Original>is available at grid</Original>
+			<Chinesesimp>可在网格中找到</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_132">
 			<Original>may not towable at all. Try getting into it first before attempting Tow.</Original>
@@ -2048,15 +2128,19 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Hints_133">
 			<Original>Cannot tow</Original>
+			<Chinesesimp>不能拖动</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_134">
 			<Original>Cannot tow at this time</Original>
+			<Chinesesimp>目前不能拖动</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_135">
 			<Original>This vehicle is not towable</Original>
+			<Chinesesimp>此车不能拖动</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_136">
 			<Original>is too heavy for the</Original>
+			<Chinesesimp>太重了，无法拖动</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_137">
 			<Original>must be unflipped</Original>
@@ -2080,6 +2164,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Hints_142">
 			<Original>Attempts:</Original>
+			<Chinesesimp>任务尝试</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Hints_143">
 			<Original>Successful Completions:</Original>
@@ -2094,9 +2179,7 @@ _____________________________________________________________-->
 			<Chinesesimp>百分之</Chinesesimp>
 		</Key>
 	</Container>
-
 	<Container name="QS_xml_chatMessages">
-
 		<Key ID="STR_QS_Chat_001">
 			<Original>Thermal scans are picking up those enemy Artillery firing! Heads down!</Original>
 			<Chinesesimp>热成像显示敌军155mm火炮正在开火，快隐蔽！</Chinesesimp>
@@ -2131,6 +2214,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Chat_009">
 			<Original>brought down the tower! Great work boys!</Original>
+			<Chinesesimp>已摧毁信号塔！干的漂亮士兵们！</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_010">
 			<Original>Enemy attack incoming! Seek cover immediately and defend the HQ!</Original>
@@ -2174,9 +2258,11 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Chat_020">
 			<Original>Target destroyed by</Original>
+			<Chinesesimp>目标被他摧毁:</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_021">
 			<Original>Task failed! HVT killed by</Original>
+			<Chinesesimp>任务失败! HVT已被这个蠢蛋杀死:</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_022">
 			<Original>Bring the HVT back to base and imprison him in Gitmo</Original>
@@ -2184,12 +2270,15 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Chat_023">
 			<Original>Wounded soldier killed</Original>
+			<Chinesesimp>受伤的士兵被杀</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_024">
 			<Original>rearmed</Original>
+			<Chinesesimp>重新武装</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_025">
 			<Original>Friendly jet respawning</Original>
+			<Chinesesimp>友军飞机重生</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_026">
 			<Original>Our CAS has been destroyed!</Original>
@@ -2201,18 +2290,23 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Chat_028">
 			<Original>Objective killed by</Original>
+			<Chinesesimp>目标被杀死</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_029">
 			<Original>Close Air Support is available:</Original>
+			<Chinesesimp>有近距离空中支援，飞行员:</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_030">
 			<Original>secured the tracking device in</Original>
+			<Chinesesimp>获取了追踪装置</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_031">
 			<Original>secured an intel tablet in</Original>
+			<Chinesesimp>获取了平板电脑在</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_032">
 			<Original>(check map)</Original>
+			<Chinesesimp>(查看地图)</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_033">
 			<Original>secured the enemy Datalink</Original>
@@ -2228,12 +2322,15 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Chat_036">
 			<Original>(JTAC) marked a(n)</Original>
+			<Chinesesimp>(JTAC)标记了一个(n)</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_037">
 			<Original>for CAS/Artillery Support</Original>
+			<Chinesesimp>用于CAS/火炮支援</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_038">
 			<Original>arrested an HVT</Original>
+			<Chinesesimp>逮捕了一个HVT</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_039">
 			<Original>The enemy is taking back the HQ</Original>
@@ -2253,6 +2350,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Chat_043">
 			<Original>supported the FOB with a(n)</Original>
+			<Chinesesimp>支持了FOB用</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_044">
 			<Original>Base air defense available</Original>
@@ -2260,15 +2358,19 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Chat_045">
 			<Original>has destroyed a(n)</Original>
+			<Chinesesimp>摧毁了一个</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_046">
 			<Original>with a(n)</Original>
+			<Chinesesimp>用</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_047">
 			<Original>FOB</Original>
+			<Chinesesimp>FOB</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_048">
 			<Original>activated by</Original>
+			<Chinesesimp>被以下人员激活</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_049">
 			<Original>destroyed a GPS jammer</Original>
@@ -2296,15 +2398,19 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Chat_055">
 			<Original>Enemy commander captured by</Original>
+			<Chinesesimp>敌方指挥官被俘</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_056">
 			<Original>Satellite sector scan requested by</Original>
+			<Chinesesimp>卫星部门扫描要求</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_057">
 			<Original>Satellite scan complete</Original>
+			<Chinesesimp>卫星扫描完成</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_058">
 			<Original>signatures detected in grid</Original>
+			<Chinesesimp>在网格中检测到特征</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_059">
 			<Original>Side mission - The vehicle has struck a buried landmine!</Original>
@@ -2316,12 +2422,15 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Chat_061">
 			<Original>The charge has been set! 15 seconds until detonation.</Original>
+			<Chinesesimp>爆炸物品确认！已设置炸药！ 15 秒后引爆，所有人迅速远离。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_062">
 			<Original>The c4 has been set! 15 seconds until detonation.</Original>
+			<Chinesesimp>爆炸物品确认！已设置炸药！ 15 秒后引爆，所有人迅速远离。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_063">
 			<Original>The charge is set! 15 seconds until detonation.</Original>
+			<Chinesesimp>爆炸物品确认！已设置炸药！ 15 秒后引爆，所有人迅速远离。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_064">
 			<Original>Medical supplies destroyed (mission failed)</Original>
@@ -2341,6 +2450,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Chat_068">
 			<Original>POW killed by</Original>
+			<Chinesesimp>我军战俘被以下人员杀死:</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_069">
 			<Original>Prototype intel lost (mission failed)</Original>
@@ -2376,9 +2486,11 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Chat_078">
 			<Original>Enemy commander has ordered a strike on</Original>
+			<Chinesesimp>敌方指挥官已下令打击</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_079">
 			<Original>HQ is 100 percent taken</Original>
+			<Chinesesimp>总部百分之百被占领</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_080">
 			<Original>killed a Mk.6 Mortar gunner</Original>
@@ -2386,24 +2498,31 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Chat_081">
 			<Original>Robocop has banned</Original>
+			<Chinesesimp>Robocop已ban此玩家:</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_082">
 			<Original>Robocop has kicked</Original>
+			<Chinesesimp>Robocop已踢出此玩家:</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_083">
 			<Original>from the server</Original>
+			<Chinesesimp>从服务器中</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_084">
 			<Original>for disallowed profile name</Original>
+			<Chinesesimp>此玩家用户名非法被系统机器人踢出服务器:</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_085">
 			<Original>for reserved profile name</Original>
+			<Chinesesimp>此玩家用户名重复被系统机器人踢出服务器:</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_086">
 			<Original>has been pardoned by</Original>
+			<Chinesesimp>已被此人赦免:</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_087">
 			<Original>Zeus Module initialization failed. Please abort and reconnect</Original>
+			<Chinesesimp>宙斯模块初始化失败。请放弃并重新连接</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_088">
 			<Original>has murdered a civilian</Original>
@@ -2411,6 +2530,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Chat_089">
 			<Original>Revived by [AI]</Original>
+			<Chinesesimp>被此[AI]复活:</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_090">
 			<Original>You are not a pilot</Original>
@@ -2435,27 +2555,35 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Chat_096">
 			<Original>(staff) has turned on Invincibility</Original>
+			<Chinesesimp>(管理员)已经开启了无敌状态</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_097">
 			<Original>(staff) has turned off Invincibility</Original>
+			<Chinesesimp>(管理员)已经关闭了无敌状态</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_098">
 			<Original>(staff) has punished</Original>
+			<Chinesesimp>(管理员)已经惩罚了</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_099">
 			<Original>with 10 pushups</Original>
+			<Chinesesimp>做了10个俯卧撑</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_100">
 			<Original>(staff) has revived</Original>
+			<Chinesesimp>(管理员)已救活</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_101">
 			<Original>(staff) has teleported to grid</Original>
+			<Chinesesimp>(管理员)已传送到网格</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_102">
 			<Original>(staff) has cleaned the spawn area</Original>
+			<Chinesesimp>(管理员)已经清理了重生区</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_103">
 			<Original>requested medevac at grid</Original>
+			<Chinesesimp>在以下网格坐标请其医疗救援:</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_104">
 			<Original>Bad Weather Alert</Original>
@@ -2467,24 +2595,31 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Chat_106">
 			<Original>Zeus revives remaining:</Original>
+			<Chinesesimp>宙斯复活剩余:</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_107">
 			<Original>has killed a prisoner</Original>
+			<Chinesesimp>已杀死一名囚犯</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_108">
 			<Original>Enemy sniper</Original>
+			<Chinesesimp>击杀了敌方狙击手</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_109">
 			<Original>killed by</Original>
+			<Chinesesimp>被此人杀死:</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_110">
 			<Original>A headless client has connected</Original>
+			<Chinesesimp>一个无头客户已连接</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_111">
 			<Original>A headless client has disconnected</Original>
+			<Chinesesimp>一个无头的客户已经断开了连接</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_112">
 			<Original>No longer commander</Original>
+			<Chinesesimp>不再是指挥官</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_113">
 			<Original>was killed</Original>
@@ -2500,18 +2635,23 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Chat_116">
 			<Original>was rekt by an enemy sniper</Original>
+			<Chinesesimp>被敌人的狙击手击倒</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_117">
 			<Original>was incapacitated by an enemy sniper</Original>
+			<Chinesesimp>被敌人的狙击手击中失去行动能力</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_118">
 			<Original>got sniped</Original>
+			<Chinesesimp>被狙杀</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_119">
 			<Original>was blown away by an enemy sniper</Original>
+			<Chinesesimp>被敌人的狙击手狙杀</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_120">
 			<Original>was incapacitated by</Original>
+			<Chinesesimp>被敌方狙击失去行动能力</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_121">
 			<Original>Friendly fire</Original>
@@ -2519,18 +2659,23 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Chat_122">
 			<Original>%1 was blown away by the enemy Commander</Original>
+			<Chinesesimp>1%被敌方指挥官干死了</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_123">
 			<Original>Enemy Commander took out %1</Original>
+			<Chinesesimp>敌方指挥官干掉了%1</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_124">
 			<Original>%1 was rekt by the enemy Commander</Original>
+			<Chinesesimp>%1人被敌方指挥官击倒</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_125">
 			<Original>%1 was laid out by the enemy Commander</Original>
+			<Chinesesimp>%1人被敌方指挥官击倒</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_126">
 			<Original>Enemy Commander killed %1</Original>
+			<Chinesesimp>敌方指挥官杀死了%1</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_127">
 			<Original>bled out</Original>
@@ -2542,75 +2687,97 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Chat_129">
 			<Original>was revived with a(n)</Original>
+			<Chinesesimp>被以下单位复活:</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_130">
 			<Original>(staff) suspended side missions</Original>
+			<Chinesesimp>(管理员)暂停支线任务</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_131">
 			<Original>(staff) resumed side missions</Original>
+			<Chinesesimp>(管理员)恢复了支线任务</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_132">
 			<Original>(staff) suspended primary missions</Original>
+			<Chinesesimp>(管理员)暂停主线任务</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_133">
 			<Original>(staff) resumed primary missions</Original>
+			<Chinesesimp>(管理员)恢复主线任务</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_134">
 			<Original>(staff) cycled primary missions</Original>
+			<Chinesesimp>(管理员) 循环执行主线任务</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_135">
 			<Original>ejected from the session</Original>
+			<Chinesesimp>被弹出对话</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_136">
 			<Original>Suspect is null object (action failed)</Original>
+			<Chinesesimp>疑似为空对象（行动失败）</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_137">
 			<Original>ROBOCOP believes</Original>
+			<Chinesesimp>ROBOCOP认为</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_138">
 			<Original>has hacked the server</Original>
+			<Chinesesimp>已经入侵了服务器</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_139">
 			<Original>Detected:</Original>
+			<Chinesesimp>检测到:</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_140">
 			<Original>completed its task at grid</Original>
+			<Chinesesimp>完成任务于网格:</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_141">
 			<Original>Civilian was murdered by</Original>
+			<Chinesesimp>平民被此人谋杀:</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_142">
 			<Original>Civilian killed by</Original>
+			<Chinesesimp>平民被此人谋杀:</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_143">
 			<Original>No action taken</Original>
+			<Chinesesimp>没有采取任何行动</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_144">
 			<Original>ROBOCOP kicked</Original>
+			<Chinesesimp>ROBOCOP踢出</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_145">
 			<Original>for AFK timeout</Original>
+			<Chinesesimp>因为AFK超时</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_146">
 			<Original>has inflated a(n)</Original>
 		</Key>
 		<Key ID="STR_QS_Chat_147">
 			<Original>located intel</Original>
+			<Chinesesimp>找到情报</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_148">
 			<Original>took control of a crashing</Original>
+			<Chinesesimp>控制了一个坠毁的</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_149">
 			<Original>Pilot disconnect</Original>
+			<Chinesesimp>飞行员断开连接</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_150">
 			<Original>detected an enemy bomb incoming on</Original>
+			<Chinesesimp>检测到敌方炸弹来袭</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_151">
 			<Original>switched from</Original>
 		</Key>
 		<Key ID="STR_QS_Chat_152">
 			<Original>to</Original>
+			<Chinesesimp>到</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_153">
 			<Original>has killed an Unarmed Civilian</Original>
@@ -2626,6 +2793,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Chat_156">
 			<Original>CSAT will destroy the intel in</Original>
+			<Chinesesimp>敌方摧毁了情报在</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_157">
 			<Original>CSAT has destroyed the crates!</Original>
@@ -2649,16 +2817,17 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Chat_162">
 			<Original>reset for FOB resupply</Original>
+			<Chinesesimp>重置FOB补给</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Chat_163">
 			<Original>destroyed an enemy tunnel entrance</Original>
+			<Chinesesimp>摧毁了一个敌人的隧道入口</Chinesesimp>
 		</Key>
 	</Container>
-	
 	<Container name="QS_xml_notifications">
-	
 		<Key ID="STR_QS_Notif_001">
 			<Original>Radio tower destroyed</Original>
+			<Chinesesimp>无线电塔被摧毁</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Notif_002">
 			<Original>Destroy radio tower</Original>
@@ -2810,6 +2979,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Notif_039">
 			<Original>Beret Collector</Original>
+			<Chinesesimp>贝雷帽收藏家</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Notif_040">
 			<Original>Corrections</Original>
@@ -2817,6 +2987,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Notif_041">
 			<Original>Cleaning up</Original>
+			<Chinesesimp>维护整洁</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Notif_042">
 			<Original>Gold digger</Original>
@@ -2824,6 +2995,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Notif_043">
 			<Original>First Person</Original>
+			<Chinesesimp>第一人称</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Notif_044">
 			<Original>Server Restarting</Original>
@@ -2851,6 +3023,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Notif_050">
 			<Original>Ammo Service online</Original>
+			<Chinesesimp>弹药服务上线</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Notif_051">
 			<Original>AA Site destroyed</Original>
@@ -2902,6 +3075,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Notif_063">
 			<Original>Unexploded Ordnance (UXO) cleared</Original>
+			<Chinesesimp>未爆弹药（UXO）已被清除</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Notif_064">
 			<Original>Priority Mission</Original>
@@ -2937,15 +3111,19 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Notif_072">
 			<Original>No civilian casualties</Original>
+			<Chinesesimp>没有平民伤亡</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Notif_073">
 			<Original>Lost</Original>
+			<Chinesesimp>损失</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Notif_074">
 			<Original>Captured</Original>
+			<Chinesesimp>俘虏</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Notif_075">
 			<Original>Secure all objectives</Original>
+			<Chinesesimp>确保所有目标</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Notif_076">
 			<Original>No reward available</Original>
@@ -2965,6 +3143,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Notif_080">
 			<Original>Truck mission failed</Original>
+			<Chinesesimp>卡车任务失败</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Notif_081">
 			<Original>Side Mission</Original>
@@ -2972,9 +3151,11 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Notif_082">
 			<Original>Truck mission completed</Original>
+			<Chinesesimp>卡车任务完成</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Notif_083">
 			<Original>Truck at destination</Original>
+			<Chinesesimp>卡车到达目的地</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Notif_084">
 			<Original>Secure Smuggled Explosives</Original>
@@ -2982,6 +3163,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Notif_085">
 			<Original>Secure Insurgency Supply</Original>
+			<Chinesesimp>稽查走私物</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Notif_086">
 			<Original>Secure Launchers</Original>
@@ -3081,9 +3263,11 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Notif_110">
 			<Original>Secure Enemy Chopper</Original>
+			<Chinesesimp>获取敌方直升机</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Notif_111">
 			<Original>Secure Intel</Original>
+			<Chinesesimp>获取情报</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Notif_112">
 			<Original>Secure Radar</Original>
@@ -3091,6 +3275,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Notif_113">
 			<Original>Secure Weapons Caches</Original>
+			<Chinesesimp>获取武器箱</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Notif_114">
 			<Original>The enemy has detected our approach</Original>
@@ -3102,6 +3287,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Notif_116">
 			<Original>Respawn tunnel destroyed</Original>
+			<Chinesesimp>重生隧道被毁</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Notif_117">
 			<Original>TASK ASSIGNED</Original>
@@ -3129,6 +3315,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Notif_123">
 			<Original>Take</Original>
+			<Chinesesimp>占领</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Notif_124">
 			<Original>Taken</Original>
@@ -3136,18 +3323,23 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Notif_125">
 			<Original>MAIN OBJECTIVE COMPLETE</Original>
+			<Chinesesimp>主要目标完成</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Notif_126">
 			<Original>NEW MAIN OBJECTIVE</Original>
+			<Chinesesimp>新的主要目标</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Notif_127">
 			<Original>DEFEND MAIN OBJECTIVE</Original>
+			<Chinesesimp>守卫主要目标</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Notif_128">
 			<Original>Defended</Original>
+			<Chinesesimp>守卫成功</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Notif_129">
 			<Original>MAIN OBJECTIVE DEFENDED</Original>
+			<Chinesesimp>已防守主要目标</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Notif_130">
 			<Original>NEW SUB-OBJECTIVE</Original>
@@ -3163,6 +3355,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Notif_133">
 			<Original>FILE DATA SAVED</Original>
+			<Chinesesimp>文件数据已保存</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Notif_134">
 			<Original>SIDE MISSION COMPLETE</Original>
@@ -3222,9 +3415,11 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Notif_148">
 			<Original>Intel collected, mission complete</Original>
+			<Chinesesimp>情报已收集，任务完成</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Notif_149">
 			<Original>We took too long (mission failed)</Original>
+			<Chinesesimp>我们花了太长时间（任务失败）</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Notif_150">
 			<Original>Close Air Support</Original>
@@ -3235,9 +3430,7 @@ _____________________________________________________________-->
 			<Chinesesimp>前线行动基地(FOB)</Chinesesimp>
 		</Key>
 	</Container>
-
 	<Container name="QS_xml_tasks">
-
 		<Key ID="STR_QS_Task_000">
 			<Original>Seize the enemy headquarters to degrade enemy coordination. This objective is completed when the enemy commander dies. He is usually located in the immediate vicinity of the HQ. This objective is not a requirement in order to finish the mission, however may be useful.</Original>
 			<Chinesesimp>找到并占领敌军的指挥部来打击敌军的指挥系统。 通过击杀敌军指挥官来完成这个任务。 指挥官通常位于敌人的指挥部附近。 这个目标不是必要任务,但对我们的作战有所帮助!</Chinesesimp>
@@ -3332,6 +3525,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Task_023">
 			<Original>Intel</Original>
+			<Chinesesimp>情报</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Task_024">
 			<Original>A high-value target carrying sensitive intel has been located.</Original>
@@ -3359,9 +3553,11 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Task_030">
 			<Original>The enemy has deployed a mobile GPS jammer. Locate and destroy it!</Original>
+			<Chinesesimp>敌人已经部署了一个移动GPS干扰器。找出并摧毁它!</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Task_031">
 			<Original>GPS Jammer</Original>
+			<Chinesesimp>GPS干扰器</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Task_032">
 			<Original>Objectives</Original>
@@ -3437,18 +3633,23 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Task_050">
 			<Original>Control</Original>
+			<Chinesesimp>控制</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Task_051">
 			<Original>How to Capture:</Original>
+			<Chinesesimp>如何夺取:</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Task_052">
 			<Original>Occupy the inner area to help capture and hold the zone.</Original>
+			<Chinesesimp>占领内部区域以帮助占领和控制该区域。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Task_053">
 			<Original>Enemy within the outer area will slow down or even reverse your progress!</Original>
+			<Chinesesimp>外围地区的敌人会减慢甚至逆转你的进程!</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Task_054">
 			<Original>While it is necessary to hold the inner zone, it is also important to control and keep the enemy out of the larger zone.</Original>
+			<Chinesesimp>虽然守住内区是必要的，但控制和阻止敌人进入更大的区域也很重要。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Task_055">
 			<Original>Locate and secure the enemy datalink.</Original>
@@ -3476,9 +3677,11 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Task_061">
 			<Original>The enemy relies on radio communications to call in helicopter and armored vehicle reinforcements.</Original>
+			<Chinesesimp>敌人依靠无线电通讯来呼叫直升机和装甲车的增援。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Task_062">
 			<Original>Destroying this target will greatly reduce the enemies ability to call in these force multipliers.</Original>
+			<Chinesesimp>摧毁这个目标将大大降低敌人调用这些增援力量的能力。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Task_063">
 			<Original>Destroy Radio Tower</Original>
@@ -3494,12 +3697,15 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Task_066">
 			<Original>The enemy relies on this supply depot to distribute advanced gear to the enemy. This depot allows the enemy to equip with more Anti-Air, Anti-Tank and even call in the dreaded Viper units.</Original>
+			<Chinesesimp>敌人依靠这个补给站向敌人分发先进的装备。这个补给站允许敌人装备更多的防空部队、反坦克部队，甚至可以调用可怕的毒蛇部队。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Task_067">
 			<Original>Securing this depot will greatly reduce the enemies ability to spawn AA teams, AT teams and Viper teams.</Original>
+			<Chinesesimp>确保这个补给站的安全将大大降低敌人产生AA小队、AT小队和毒蛇小队的能力。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Task_068">
 			<Original>To secure the supply depot, simply use your Scroll Menu on the Taru pod located inside the fortifications.</Original>
+			<Chinesesimp>要确保补给站的安全，只需在位于防御工事内的Taru吊舱上使用你的滚动菜单。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Task_069">
 			<Original>Supply Depot</Original>
@@ -3535,12 +3741,15 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Task_077">
 			<Original>The enemy has been supplying an insurgency on</Original>
+			<Chinesesimp>敌人一直在为叛乱分子提供武器。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Task_078">
 			<Original>get over there and secure their weapons cache. This objective is not accurately marked.</Original>
+			<Chinesesimp>到那里去，保护他们的武器库。这个目标没有准确的标记。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Task_079">
 			<Original>Secure Insurgents Cache</Original>
+			<Chinesesimp>保护叛乱分子的藏匿处</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Task_080">
 			<Original>Intercept the weapons transfer! Enemy supply trucks have stopped in this area to transfer Anti-Air launchers. Intercept and secure them! This objective is not accurately marked.</Original>
@@ -3592,6 +3801,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Task_092">
 			<Original>This objective is not accurately marked.</Original>
+			<Chinesesimp>这个目标没有准确的标记</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Task_093">
 			<Original>The humanitarian worker has been stabilised, get him back to a field hospital to complete our mission!</Original>
@@ -3701,11 +3911,10 @@ _____________________________________________________________-->
 			<Chinesesimp>夺取设备箱</Chinesesimp>
 		</Key>
 	</Container>
-
 	<Container name="QS_xml_markerText">
-	
 		<Key ID="STR_QS_Marker_000">
 			<Original>TEXT</Original>
+			<Chinesesimp>文本</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Marker_001">
 			<Original>Take</Original>
@@ -3717,15 +3926,19 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Marker_003">
 			<Original>HQ</Original>
+			<Chinesesimp>指挥部</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Marker_004">
 			<Original>Armed</Original>
+			<Chinesesimp>武装</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Marker_005">
 			<Original>Server FPS:</Original>
+			<Chinesesimp>服务器FPS:</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Marker_006">
 			<Original>Active Zeus:</Original>
+			<Chinesesimp>活动中的宙斯:</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Marker_007">
 			<Original>FOB</Original>
@@ -3737,9 +3950,11 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Marker_009">
 			<Original>Grids Controlled: 0 / 0</Original>
+			<Chinesesimp>控制的网格:0 / 0</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Marker_010">
 			<Original>Tunnels Destroyed: 0 / 0</Original>
+			<Chinesesimp>摧毁的隧道:0 / 0</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Marker_011">
 			<Original>No Civilian Casualties</Original>
@@ -3751,6 +3966,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Marker_013">
 			<Original>Mortar</Original>
+			<Chinesesimp>迫击炮</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Marker_014">
 			<Original>Grid Squares Converted:</Original>
@@ -3881,6 +4097,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Marker_046">
 			<Original>Secure Caches</Original>
+			<Chinesesimp>获取武器箱</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Marker_047">
 			<Original>Capture</Original>
@@ -3956,9 +4173,7 @@ _____________________________________________________________-->
 			<Original>Destroyer</Original>
 		</Key>
 	</Container>
-	
 	<Container name="QS_xml_diary">
-		
 		<Key ID="STR_QS_Diary_001">
 			<Original>Key Bindings</Original>
 			<Chinesesimp>按键绑定</Chinesesimp>
@@ -4009,18 +4224,23 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Diary_013">
 			<Original>Campaign</Original>
+			<Chinesesimp>任务</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_014">
 			<Original>After the war between NATO and CSAT ended in an uneasy truce, an opportunistic insurgency sponsored by surrounding nations crushed local militias and moved in to fill the power vacuum.</Original>
+			<Chinesesimp>在北约和CSAT之间的战争以不安的休战结束后，一个由周边国家赞助的机会主义叛乱分子粉碎了当地民兵，并进入该地区以填补权力真空。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_015">
 			<Original>They have been destabilizing the region and threatening to pull NATO and CSAT back into open conflict on</Original>
+			<Chinesesimp>他们一直在破坏该地区的稳定，并威胁要将北约和CSAT重新拉回到公开冲突中。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_016">
 			<Original>Moving around using an old wartime tunnel network, they have thus far thwarted low-cost attempts to destroy the insurgency with drone warfare.</Original>
+			<Chinesesimp>他们利用旧的战时地道网络四处活动，迄今已挫败了用无人机战争摧毁叛乱的低成本尝试。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_017">
 			<Original>In a last ditch effort, NATO has deployed boots on the ground to root out the determined enemy and bring peace to</Original>
+			<Chinesesimp>在最后的努力中，北约已经在当地部署了部队，以根除这个坚定的敌人，并为其带来和平</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_018">
 			<Original>General channel</Original>
@@ -4028,12 +4248,15 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Diary_019">
 			<Original>Subscribe to the General channel for Voice communications.</Original>
+			<Chinesesimp>订阅普通频道的语音通信。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_020">
 			<Original>Transmission of music and other non-voice sounds is not permitted on this channel.</Original>
+			<Chinesesimp>本频道不允许播放音乐和其他非语音的声音。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_021">
 			<Original>Verbal abuse is, of course, not tolerated.</Original>
+			<Chinesesimp>当然，也不允许口头谩骂。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_022">
 			<Original>Platoon channels</Original>
@@ -4045,6 +4268,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Diary_024">
 			<Original>You can only be subscribed to one Platoon channel at a time.</Original>
+			<Chinesesimp>你在同一时间只能订阅一个排的频道。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_025">
 			<Original>AO channels</Original>
@@ -4088,18 +4312,23 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Diary_036">
 			<Original>A number of custom radio channels are available for use in-game.</Original>
+			<Chinesesimp>在游戏中可以使用一些自定义的无线电频道。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_037">
-			<Original>To access: Press [Home] >> [Comm-Link] >> [Radio Management]</Original>
+			<Original>To access: Press [Home] &gt;&gt; [Comm-Link] &gt;&gt; [Radio Management]</Original>
+			<Chinesesimp>要访问。按[home]&gt;&gt;[通讯菜单]&gt;&gt;[无线电管理]。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_038">
 			<Original>A Radio inventory item is required to transmit voice communications.</Original>
+			<Chinesesimp>发送语音通信需要一个无线电库存物品。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_039">
 			<Original>Transmission of music or other audio is only permitted over Group, Vehicle and Direct channels (when away from base).</Original>
+			<Chinesesimp>音乐或其他音频的传输只允许通过小组、车辆和直接频道（当离开基地时）。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_040">
 			<Original>Spamming and generally annoying other players using Voice communications can lead to administrative action.</Original>
+			<Chinesesimp>垃圾邮件和一般的烦扰其他玩家的语音通信可能会导致行政行为。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_041">
 			<Original>Inventory Editing</Original>
@@ -4139,6 +4368,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Diary_050">
 			<Original>Forward Operating Bases are scattered around</Original>
+			<Chinesesimp>FOB散布在各地</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_051">
 			<Original>Some services are available from these FOBs, and they are also locations of interest to the enemy.</Original>
@@ -4218,27 +4448,35 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Diary_070">
 			<Original>Sniper accuracy.</Original>
+			<Chinesesimp>狙击手的准确性。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_071">
 			<Original>Calculates hits and shots taken with a match-grade sniper rifle (Lynx and LRR).</Original>
+			<Chinesesimp>计算使用比赛级别的狙击枪（Lynx和LRR）的命中率和射击次数。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_072">
 			<Original>Top 3 performers are added to a Sniper whitelist role at the end of the week, to last for the duration of the following week.</Original>
+			<Chinesesimp>在本周结束时，表现最好的3名选手将被加入狙击手白名单角色，持续到下一周。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_073">
 			<Original>Hot Shots</Original>
+			<Chinesesimp>漂亮一击</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_074">
 			<Original>Vasily Zaytsev Memorial</Original>
+			<Chinesesimp>瓦西里-扎伊采夫纪念馆</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_075">
 			<Original>Weapon accuracy.</Original>
+			<Chinesesimp>武器精度</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_076">
 			<Original>Calculates hits and shots taken with your primary weapon.</Original>
+			<Chinesesimp>计算出你的主要武器的命中率和射击次数。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_077">
 			<Original>Excludes: Launchers, pistols, vehicle weapons, and sniper rifles.</Original>
+			<Chinesesimp>不包括。发射器、手枪、车辆武器和狙击步枪。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_078">
 			<Original>Gitmo</Original>
@@ -4246,12 +4484,15 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Diary_079">
 			<Original>Earn points by imprisoning enemies in "Gitmo".</Original>
+			<Chinesesimp>通过在 "监狱 "中监禁敌人来获得积分。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_080">
 			<Original>Multipliers: n/a</Original>
+			<Chinesesimp>倍数: n/a</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_081">
 			<Original>Gitmo is marked on your map at base.</Original>
+			<Chinesesimp>在基地的地图上标有 "Gitmo"。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_082">
 			<Original>Tower Rangers</Original>
@@ -4271,12 +4512,15 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Diary_086">
 			<Original>Scalpers</Original>
+			<Chinesesimp>剥皮者</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_087">
 			<Original>Collect the Berets (hats) of enemy Commanders.</Original>
+			<Chinesesimp>收集敌方指挥官的贝雷帽（帽子）。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_088">
 			<Original>Multipliers: 1 for Black beret, 3 for Red beret</Original>
+			<Chinesesimp>倍数：黑色贝雷帽为1，红色贝雷帽为3</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_089">
 			<Original>Revivalists</Original>
@@ -4288,9 +4532,11 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Diary_091">
 			<Original>Multipliers: Stamina</Original>
+			<Chinesesimp>倍数：体力</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_092">
 			<Original>Top 3 medics of the week (ending Sunday 23:59h) added to whitelisted medic slot for following week.</Original>
+			<Chinesesimp>本周前3名医护人员（截至周日23:59h）加入到下周的白名单医护人员名额。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_093">
 			<Original>Transporters</Original>
@@ -4302,27 +4548,35 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Diary_095">
 			<Original>Multipliers: Advanced Flight Model</Original>
+			<Chinesesimp>倍数：高级飞行模型</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_096">
 			<Original>Top 3 pilots of the week (ending Sunday 23:59h) added to whitelisted pilot slot for following week.</Original>
+			<Chinesesimp>本周（截止到周日23:59h）的前三名飞行员被添加到下周的白名单飞行员位置。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_097">
 			<Original>Sling loading is not currently supported.</Original>
+			<Chinesesimp>目前不支持吊索装载。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_098">
 			<Original>Vehicle cargo is not currently supported.</Original>
+			<Chinesesimp>目前不支持车辆载货。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_099">
 			<Original>Version 1.0</Original>
+			<Chinesesimp>1.0版</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_100">
 			<Original>Leaderboards are reset each Monday at 00:01h.</Original>
+			<Chinesesimp>排行榜在每周一的00:01重置。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_101">
 			<Original>To maintain performance and FPS, the leaderboards are not synchronized frequently, and only saved to database every 5-10 minutes. For this reason, points accumulated just prior to a server crash may not be saved (*sadface*).</Original>
+			<Chinesesimp>为了保持性能和FPS，排行榜并不经常同步，只是每5-10分钟保存到数据库。由于这个原因，在服务器崩溃前积累的积分可能不会被保存（*悲伤的脸*）。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_102">
 			<Original>Thanks for your patience</Original>
+			<Chinesesimp>谢谢您的耐心等待</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_103">
 			<Original>Key Bindings</Original>
@@ -4374,6 +4628,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Diary_115">
 			<Original>Raise and Lower sling ropes</Original>
+			<Chinesesimp>升高或降低吊绳</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_116">
 			<Original>Admins</Original>
@@ -4457,23 +4712,25 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Diary_136">
 			<Original>Visitors and guests welcome!</Original>
+			<Chinesesimp>欢迎访客和客人</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_137">
 			<Original>Community Editors</Original>
+			<Chinesesimp>社区编辑</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_138">
 			<Original>Your Name Here</Original>
+			<Chinesesimp>你的名字在这里</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Diary_139">
 			<Original>Developer</Original>
 			<Chinesesimp>开发人员</Chinesesimp>
 		</Key>
 	</Container>
-
 	<Container name="QS_xml_menus">
-
 		<Key ID="STR_QS_Menu_000">
 			<Original>TEXT</Original>
+			<Chinesesimp>文本</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_001">
 			<Original>FPS, Time to server restart (estimated)</Original>
@@ -4529,6 +4786,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Menu_014">
 			<Original>Dev Terminal</Original>
+			<Chinesesimp>调试控制台</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_015">
 			<Original>Execute</Original>
@@ -4536,36 +4794,47 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Menu_016">
 			<Original>SERVER EXEC</Original>
+			<Chinesesimp>服务器执行</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_017">
 			<Original>'Remotely execute expression on Server'</Original>
+			<Chinesesimp>'在服务器上远程执行表达'。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_018">
 			<Original>GLOBAL EXEC</Original>
+			<Chinesesimp>全局执行</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_019">
 			<Original>Remotely execute expression on Server and all Clients</Original>
+			<Chinesesimp>在服务器和所有客户端上远程执行表达式</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_020">
 			<Original>LOCAL EXEC</Original>
+			<Chinesesimp>本地执行</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_021">
 			<Original>Execute expression on your machine only</Original>
+			<Chinesesimp>只在你的机器上执行表达式</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_022">
 			<Original>FUNCTIONS</Original>
+			<Chinesesimp>函数</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_023">
 			<Original>Functions Viewer</Original>
+			<Chinesesimp>功能查看器</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_024">
 			<Original>CONFIG</Original>
+			<Chinesesimp>配置</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_025">
 			<Original>Config Viewer</Original>
+			<Chinesesimp>配置查看器</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_026">
 			<Original>Remote Execution Safety --- Check to enable Remote Execution</Original>
+			<Chinesesimp>远程执行安全 --- 勾选以启用远程执行</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_027">
 			<Original>Comm-Link</Original>
@@ -4617,9 +4886,11 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Menu_039">
 			<Original>Unsynced</Original>
+			<Chinesesimp>不同步的</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_040">
 			<Original>Synced</Original>
+			<Chinesesimp>同步的</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_041">
 			<Original>Role</Original>
@@ -4655,15 +4926,19 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Menu_049">
 			<Original>Stamina forced ON in server configuration, sorry</Original>
+			<Chinesesimp>在服务器配置中强制开启体力，抱歉</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_050">
 			<Original>Third Person View disabled by server</Original>
+			<Chinesesimp>第三人称视角被服务器禁用</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_051">
 			<Original>Simulation Manager not available for pilots, uav operators and commanders</Original>
+			<Chinesesimp>飞行员、无人机操作员和指挥官不能使用模拟管理器。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_052">
 			<Original>Hit Markers forced OFF in server configuration, sorry</Original>
+			<Chinesesimp>在服务器配置中强制关闭命中标记，抱歉</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_053">
 			<Original>Channels</Original>
@@ -4723,21 +4998,27 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Menu_067">
 			<Original>PLT Alpha "Jungleers"</Original>
+			<Chinesesimp> Alpha "Jungleers"排</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_068">
 			<Original>1st Platoon</Original>
+			<Chinesesimp>第一排</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_069">
 			<Original>PLT Bravo "Buckeyes"</Original>
+			<Chinesesimp>Bravo "Buckeyes"排</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_070">
 			<Original>2nd Platoon</Original>
+			<Chinesesimp>第二排</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_071">
 			<Original>PLT Charlie "Fighting Third"</Original>
+			<Chinesesimp>Charlie "Fighting Third"排</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_072">
 			<Original>3rd Platoon</Original>
+			<Chinesesimp>第三排</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_073">
 			<Original>General</Original>
@@ -4745,9 +5026,11 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Menu_074">
 			<Original>NSFW</Original>
+			<Chinesesimp>NSFW</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_075">
 			<Original>Unused channel</Original>
+			<Chinesesimp>未使用的频道</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_076">
 			<Original>N/A</Original>
@@ -4799,9 +5082,11 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Menu_088">
 			<Original>Undefined</Original>
+			<Chinesesimp>未定义</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_089">
 			<Original>Button 6</Original>
+			<Chinesesimp>按钮6</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_090">
 			<Original>Select Role</Original>
@@ -4813,15 +5098,19 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Menu_092">
 			<Original>Press</Original>
+			<Chinesesimp>按下</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_093">
 			<Original>to hide</Original>
+			<Chinesesimp>隐藏</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_094">
 			<Original>to show mission status</Original>
+			<Chinesesimp>显示任务状态</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_095">
 			<Original>APS</Original>
+			<Chinesesimp>APS</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_096">
 			<Original>Respawn at Base</Original>
@@ -4833,9 +5122,11 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Menu_098">
 			<Original>Respawn at FOB</Original>
+			<Chinesesimp>在FOB重生</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_099">
 			<Original>tickets remaining</Original>
+			<Chinesesimp>剩余车票</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_100">
 			<Original>Request Medevac</Original>
@@ -4859,12 +5150,15 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Menu_105">
 			<Original>Rope Length</Original>
+			<Chinesesimp>绳索长度</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_106">
 			<Original>Cargo Attached</Original>
+			<Chinesesimp>附带货物</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_107">
 			<Original>Rope Length:</Original>
+			<Chinesesimp>绳索长度:</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_108">
 			<Original>Auto-kicked for disallowed profile name</Original>
@@ -4880,12 +5174,15 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Menu_111">
 			<Original>Go to aircraft carrier</Original>
+			<Chinesesimp>转到航空母舰</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_112">
 			<Original>Aircraft Carrier</Original>
+			<Chinesesimp>航空母舰</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_113">
 			<Original>Go</Original>
+			<Chinesesimp>转到</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_114">
 			<Original>Cancel</Original>
@@ -4897,6 +5194,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Menu_116">
 			<Original>Auto-kicked (imperfect connection)</Original>
+			<Chinesesimp>自动踢出(链接不佳)</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_117">
 			<Original>Main game thread terminated</Original>
@@ -4916,6 +5214,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Menu_121">
 			<Original>Are you sure you want to respawn this</Original>
+			<Chinesesimp>你确定你要重生这个吗？</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_122">
 			<Original>Warning</Original>
@@ -4947,6 +5246,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Menu_129">
 			<Original>cleanup</Original>
+			<Chinesesimp>清理</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_130">
 			<Original>Medevac Mission Reminder (Please read)</Original>
@@ -4958,6 +5258,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Menu_132">
 			<Original>TEXT</Original>
+			<Chinesesimp>文本</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_133">
 			<Original>Selecting OK will disable your ability to respawn or abort for 10 minutes</Original>
@@ -4973,6 +5274,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Menu_136">
 			<Original>Go to Destroyer ship</Original>
+			<Chinesesimp>转到驱逐舰</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_137">
 			<Original>Suspend side missions</Original>
@@ -5016,6 +5318,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Menu_147">
 			<Original>Congratulations! You have been WHITELISTED for a role for the week, for finishing Top 3 on the weekly Leaderboard in that role</Original>
+			<Chinesesimp>祝贺你! 你被列为本周的白名单，因为你在该角色的每周排行榜上获得了前三名。</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_148">
 			<Original>Briefing</Original>
@@ -5035,12 +5338,15 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Menu_152">
 			<Original>Team</Original>
+			<Chinesesimp>团队</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_153">
 			<Original>Discord</Original>
+			<Chinesesimp>Discord</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_154">
 			<Original>Key Bindings</Original>
+			<Chinesesimp>按键绑定</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_155">
 			<Original>[Home]</Original>
@@ -5080,105 +5386,134 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Menu_164">
 			<Original>Destroyer</Original>
+			<Chinesesimp>驱逐舰</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_165">
 			<Original>Deploying camo net</Original>
+			<Chinesesimp>正在部署伪装网</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_166">
 			<Original>Removing camo net</Original>
+			<Chinesesimp>正在移除伪装网</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_167">
 			<Original>Picking up</Original>
+			<Chinesesimp>正在背起……</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_168">
 			<Original>Examining</Original>
+			<Chinesesimp>检查</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_169">
 			<Original>Reporting Target</Original>
+			<Chinesesimp>正在标记目标……</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_170">
 			<Original>Mounting slat armor</Original>
+			<Chinesesimp>正在安装格栅装甲</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_171">
 			<Original>Removing slat armor</Original>
+			<Chinesesimp>正在卸下格栅装甲</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_172">
 			<Original>Capturing</Original>
+			<Chinesesimp>俘虏单位</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_173">
 			<Original>Servicing</Original>
+			<Chinesesimp>服务</Chinesesimp>
 		</Key>
-		
 		<Key ID="STR_QS_Menu_174">
 			<Original>Transporters</Original>
+			<Chinesesimp>运输员</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_175">
 			<Original>Transport Pilots</Original>
+			<Chinesesimp>运输机飞行员</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_176">
 			<Original>Transport Score</Original>
+			<Chinesesimp>运输机得分</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_177">
 			<Original>Revivalists</Original>
+			<Chinesesimp>医疗兵</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_178">
 			<Original>Medics</Original>
+			<Chinesesimp>医疗兵</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_179">
 			<Original>Revive Score</Original>
+			<Chinesesimp>复活得分</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_180">
 			<Original>Scalpers</Original>
+			<Chinesesimp>剥皮者</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_181">
 			<Original>Commander beret collectors</Original>
+			<Chinesesimp>指挥官贝雷帽收集者</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_182">
 			<Original>Score</Original>
+			<Chinesesimp>分数</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_183">
 			<Original>Gold Diggers</Original>
+			<Chinesesimp>牙医</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_184">
 			<Original>Gold Tooth collectors</Original>
+			<Chinesesimp>金牙收集者</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_185">
 			<Original>Tower Rangers</Original>
+			<Chinesesimp>电塔游骑兵</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_186">
 			<Original>Radio tower destroyers</Original>
+			<Chinesesimp>无线电塔破坏者</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_187">
 			<Original>Towers Destroyed</Original>
+			<Chinesesimp>被摧毁的塔楼</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_188">
 			<Original>Gitmo</Original>
+			<Chinesesimp>关塔那摩</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_189">
 			<Original>Enemy Capture</Original>
+			<Chinesesimp>捕获的敌人</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_190">
 			<Original>Enemies Captured</Original>
+			<Chinesesimp>俘获的敌人</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_191">
 			<Original>Hot Shots</Original>
+			<Chinesesimp>漂亮一击</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_192">
 			<Original>Weapon Accuracy</Original>
+			<Chinesesimp>武器精度</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_193">
 			<Original>Accuracy (Hits / Shots Fired)</Original>
+			<Chinesesimp>准确度(命中率/射击次数)</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_194">
 			<Original>Vasily Zaytsev Memorial</Original>
+			<Chinesesimp>纪念瓦西里-扎伊采夫</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Menu_195">
 			<Original>Sniper Accuracy</Original>
+			<Chinesesimp>狙击手的准确性</Chinesesimp>
 		</Key>
 	</Container>
-
 	<Container name="QS_xml_roles">
-
 		<Key ID="STR_QS_Role_000">
 			<Original>Unknown Role</Original>
 			<Chinesesimp>未知兵种</Chinesesimp>
@@ -5293,16 +5628,18 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Role_028">
 			<Original>Whitelisted</Original>
+			<Chinesesimp>白名单保留</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Role_029">
 			<Original>Change player role</Original>
+			<Chinesesimp>改变玩家角色</Chinesesimp>
 		</Key>
 	</Container>
-
 	<Container name="QS_xml_utilityText">
 		<Key ID="STR_QS_Utility_000">
 			<Original>Server Restart</Original>
-		</Key>	
+			<Chinesesimp>服务器重启</Chinesesimp>
+		</Key>
 		<Key ID="STR_QS_Utility_001">
 			<Original>left</Original>
 			<Chinesesimp>剩下</Chinesesimp>
@@ -5313,6 +5650,7 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Utility_003">
 			<Original>seconds</Original>
+			<Chinesesimp>秒</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_004">
 			<Original>Unknown Vehicle Type</Original>
@@ -5344,57 +5682,73 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Utility_011">
 			<Original>Invade</Original>
-			<Chinesesimp>入侵</Chinesesimp>
+			<Chinesesimp>Invade</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_012">
 			<Original>Annex</Original>
+			<Chinesesimp>Annex</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_013">
 			<Original>Trenchfoot</Original>
+			<Chinesesimp>海沟足</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_014">
 			<Original>Forlorn Hope</Original>
+			<Chinesesimp>敢死队</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_015">
 			<Original>Nakamoto</Original>
+			<Chinesesimp>中本</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_016">
 			<Original>Alamo</Original>
+			<Chinesesimp>阿拉莫</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_017">
 			<Original>Lonestar</Original>
+			<Chinesesimp>孤星</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_018">
 			<Original>Kokoda</Original>
+			<Chinesesimp>科科达</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_019">
 			<Original>Singapore</Original>
+			<Chinesesimp>新加坡</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_020">
 			<Original>Fiji</Original>
+			<Chinesesimp>斐济</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_021">
 			<Original>Guadalcanal</Original>
+			<Chinesesimp>瓜达尔卡纳尔</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_022">
 			<Original>Dragon</Original>
+			<Chinesesimp>龙</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_023">
 			<Original>Rabbit</Original>
+			<Chinesesimp>兔子</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_024">
 			<Original>Oslo</Original>
+			<Chinesesimp>奥斯陆</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_025">
 			<Original>Paris</Original>
+			<Chinesesimp>巴黎</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Utility_026">
 			<Original>Kyiv</Original>
+			<Chinesesimp>基辅</Chinesesimp>
 		</Key>
 	</Container>
 	<Container name="QS_xml_dialogs">
 		<Key ID="STR_QS_Dialogs_000">
 			<Original>TEXT</Original>
+			<Chinesesimp>文本</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Dialogs_001">
 			<Original>Imperfect Connection</Original>
@@ -5610,15 +5964,19 @@ _____________________________________________________________-->
 		</Key>
 		<Key ID="STR_QS_Dialogs_054">
 			<Original>Suppression Effects</Original>
+			<Chinesesimp>压制效果</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Dialogs_055">
 			<Original>Toggles Suppression Effects</Original>
+			<Chinesesimp>切换压制效果</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Dialogs_056">
 			<Original>Hit Markers</Original>
+			<Chinesesimp>击中提示</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Dialogs_057">
 			<Original>Toggle Hit Marker audio effects</Original>
+			<Chinesesimp>切换击中提示的音频效果</Chinesesimp>
 		</Key>
 		<Key ID="STR_QS_Dialogs_058">
 			<Original>Area 51</Original>
