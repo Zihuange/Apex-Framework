@@ -4272,12 +4272,12 @@ for 'x' from 0 to 1 step 0 do {
 				_QS_clientDynamicGroups_checkDelay = _timeNow + _QS_clientDynamicGroups_delay;
 			} else {
 				if (_QS_isAdmin) then {
-					if (_groupLocking) then {
-						{
-							if (_x getVariable [_QS_joinGroup_privateVar,_false]) then {
-								_x setVariable [_QS_joinGroup_privateVar,_false,_false];
-							};
-						} forEach allGroups;
+					if (_groupLocking) then {	
+						// {
+						// 	if (_x getVariable [_QS_joinGroup_privateVar,_false]) then {
+						// 		_x setVariable [_QS_joinGroup_privateVar,_false,_false];
+						// 	};
+						// } forEach allGroups;
 					};
 				};
 			};

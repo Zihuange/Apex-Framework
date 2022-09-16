@@ -209,7 +209,7 @@ if (
 	['QS_missionConfig_APS',_vehicle_active_protection,TRUE],
 	['QS_missionConfig_hitMarker',_hitMarker_audio,TRUE],
 	['QS_missionConfig_craterEffects',_craters,TRUE],
-	['QS_missionConfig_groupLocking',_groupLocking > 0,TRUE],
+	['QS_missionConfig_groupLocking',_groupLocking,TRUE],
 	['QS_missionConfig_groupWaypoint',_groupWaypoint > 0,TRUE],
 	['QS_missionConfig_aoUrbanSpawning',_enemyUrbanSpawning,FALSE],
 	['QS_missionConfig_RSS_MenuButton',_role_selection_menu_button,TRUE],

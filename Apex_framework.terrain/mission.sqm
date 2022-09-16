@@ -12,18 +12,18 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=1032;
+		nextID=1033;
 	};
 	class LayerIndexProvider
 	{
-		nextID=113;
+		nextID=123;
 	};
 	class Camera
 	{
-		pos[]={14537.374,26.474737,16780.902};
-		dir[]={-0.78479588,-0.40882853,-0.46603334};
-		up[]={-0.35173073,0.91249043,-0.20886831};
-		aside[]={-0.51065624,1.0550721e-006,0.85993147};
+		pos[]={14651.635,25.739899,16792.219};
+		dir[]={0.87575853,-0.24073464,-0.41851911};
+		up[]={0.21723931,0.9705795,-0.10381775};
+		aside[]={-0.43120143,-6.2875915e-007,-0.90229225};
 	};
 };
 binarizationWanted=0;
@@ -136,6 +136,7 @@ addons[]=
 	"A3_Drones_F_Air_F_Gamma_UAV_02",
 	"A3_Air_F_Exp_UAV_03",
 	"A3_Soft_F_Orange_Van_02",
+	"A3_Armor_F_EPB_MBT_03",
 	"A3_Characters_F_Orange_Facewear",
 	"A3_Characters_F_Orange",
 	"A3_Weapons_F_Pistols_Pistol_Heavy_01",
@@ -149,7 +150,7 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=57;
+		items=58;
 		class Item0
 		{
 			className="A3_Props_F_Enoch";
@@ -530,19 +531,26 @@ class AddonsMetaData
 		};
 		class Item54
 		{
+			className="A3_Armor_F_EPB";
+			name="Arma 3 Adapt Episode - Armored Land Vehicles";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item55
+		{
 			className="A3_Characters_F_Orange";
 			name="Arma 3 Orange - Characters and Clothing";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item55
+		class Item56
 		{
 			className="A3_Characters_F_Enoch";
 			name="Arma 3 Contact Platform - Characters and Clothing";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item56
+		class Item57
 		{
 			className="A3_Structures_F_Orange";
 			name="Arma 3 Orange - Buildings and Structures";
@@ -23952,7 +23960,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="0 = this spawn { " \n "_actionID = _this addAction [ " \n "    format[""<t size='3.0'>空投到战区:%1 边缘</t>"",(missionNamespace getVariable ['QS_aoDisplayName','NotFound'])], " \n "    { " \n "        params ['_target', '_caller', '_actionId', '_arguments']; " \n "        private _maxPlayers = _arguments # 0; " \n "        private _maxPilots = _arguments # 1; " \n "        private _maxAlt = _arguments # 2; " \n "        private _AoPos = missionNamespace getVariable ['QS_AOpos',[0,0,0]]; " \n "        private _basePos = markerPos 'QS_marker_base_marker'; " \n "        private _allplayer = (allPlayers - (entities 'HeadlessClient_F')); " \n "        private _playerCount = ( " \n "            { " \n "                !(_x getUnitTrait 'QS_trait_pilot') " \n "            } count _allplayer " \n "        ); " \n "        private _roleIndex = ((missionNamespace getVariable 'QS_RSS_public') findIf {(_x # 0) isEqualTo 'pilot_heli'}); " \n "        private _heliPilotCount = (((missionNamespace getVariable 'QS_RSS_public') # _roleIndex) # 1); " \n "        if (missionNamespace getVariable 'QS_aoSuspended') exitWith { " \n "            50 cutText [""主站区被暂停!空投功能暂停!"",""PLAIN"",1]; " \n "        }; " \n "        if ((_caller getUnitTrait 'QS_trait_pilot' || _caller getUnitTrait 'QS_trait_fighterPilot')) exitWith { " \n "            50 cutText [""您选择的角色禁止被空投到战区!"",""PLAIN"",1]; " \n "        }; " \n "        if (!(localNamespace getVariable ['DR_Para_Ready',true])) exitWith { " \n "            50 cutText [""当前空投间隔为60秒,请稍后再重试!"",""PLAIN"",1]; " \n "        }; " \n "        if (((_playerCount <= _maxPlayers) && (_heliPilotCount < _maxPilots))) then { " \n "            private _cooldown = time + 60; " \n "            private _dir = _AoPos getDir _basePos; " \n "            private _dropZonePos = _AoPos getPos [(missionNamespace getVariable 'QS_aoSize')+300,_dir]; " \n "            private _dropZone = [_dropZonePos,0,200,0,0,10,0,[],_dropZonePos] call BIS_fnc_findSafePos; " \n "            50 cutText [""正在空投......"",""PLAIN"",1]; " \n "            [1, ""BLACK"", 8, 0] spawn BIS_fnc_fadeEffect; " \n "            if (!((backpack _caller) isEqualTo '')) then { " \n "    player setVariable ['QS_backpack_data',[(backpack player),(backpackItems player),(backpackMagazines player)],FALSE]; " \n "   }; " \n "            if (!((backpack _caller) isEqualTo 'B_Parachute')) then { " \n "                removeBackpack _caller; " \n "                _caller addBackpack 'B_Parachute'; " \n "            }; " \n "            _caller setPosATL [_dropZone # 0 ,_dropZone # 1,_maxAlt]; " \n "            localNamespace setVariable ['DR_Para_Ready',false]; " \n "            waitUntil {time > _cooldown}; " \n "            localNamespace setVariable ['DR_Para_Ready',true]; " \n "        } else { " \n "            50 cutText [format[""玩家人数或飞行员人数到达上限,暂停空投功能!<br/>非飞行员人数:%1<br/>飞行员人数:%2"",_playerCount,_heliPilotCount],""PLAIN"",1,true,true]; " \n "        }; " \n "        [_target,[_actionId,format[""<t size='3.0'>空投到战区:%1 边缘</t>"",(missionNamespace getVariable ['QS_aoDisplayName','NotFound'])]]]remoteExec['setUserActionText',0]; " \n "    }, " \n "    [(missionNamespace getVariable ['Dr_Air_Para_maxPlayer',25]),(missionNamespace getVariable ['Dr_Air_Para_maxPilots',5]),1000], " \n "    7, " \n "    true, " \n "    true, " \n "    """", " \n "    ""alive _this"", " \n "    5 " \n "]; " \n "};";
+				init="0 = this spawn {  " \n "_actionID = _this addAction [  " \n "    format[""<t size='3.0'>空投到战区:%1 边缘</t>"",(missionNamespace getVariable ['QS_aoDisplayName','NotFound'])],  " \n "    {  " \n "        params ['_target', '_caller', '_actionId', '_arguments'];  " \n "        private _maxPlayers = _arguments # 0;  " \n "        private _maxPilots = _arguments # 1;  " \n "        private _maxAlt = _arguments # 2;  " \n "        private _AoPos = missionNamespace getVariable ['QS_AOpos',[0,0,0]];  " \n "        private _basePos = markerPos 'QS_marker_base_marker';  " \n "        private _allplayer = (allPlayers - (entities 'HeadlessClient_F'));  " \n "        private _playerCount = (  " \n "            {  " \n "                !(_x getUnitTrait 'QS_trait_pilot')  " \n "            } count _allplayer  " \n "        );  " \n "        private _roleIndex = ((missionNamespace getVariable 'QS_RSS_public') findIf {(_x # 0) isEqualTo 'pilot_heli'});  " \n "        private _heliPilotCount = (((missionNamespace getVariable 'QS_RSS_public') # _roleIndex) # 1);  " \n "        if (missionNamespace getVariable 'QS_aoSuspended') exitWith {  " \n "            50 cutText [""主站区被暂停!空投功能暂停!"",""PLAIN"",1];  " \n "        };  " \n "        if ((_caller getUnitTrait 'QS_trait_pilot' || _caller getUnitTrait 'QS_trait_fighterPilot')) exitWith {  " \n "            50 cutText [""您选择的角色禁止被空投到战区!"",""PLAIN"",1];  " \n "        };  " \n "        if (!(localNamespace getVariable ['DR_Para_Ready',true])) exitWith {  " \n "            50 cutText [""当前空投间隔为60秒,请稍后再重试!"",""PLAIN"",1];  " \n "        };  " \n "        if (((_playerCount <= _maxPlayers) && (_heliPilotCount < _maxPilots))) then {  " \n "            private _cooldown = time + 60;  " \n "            private _dir = _AoPos getDir _basePos;  " \n "            private _dropZonePos = _AoPos getPos [(missionNamespace getVariable 'QS_aoSize')+300,_dir];  " \n "            private _dropZone = [_dropZonePos,0,200,0,0,10,0,[],_dropZonePos] call BIS_fnc_findSafePos;  " \n "            50 cutText [""正在空投......"",""PLAIN"",1];  " \n "            [1, ""BLACK"", 8, 0] spawn BIS_fnc_fadeEffect;  " \n "            _caller setPosATL [_dropZone # 0 ,_dropZone # 1,_maxAlt];  " \n "            localNamespace setVariable ['DR_Para_Ready',false];  " \n "            waitUntil {time > _cooldown};  " \n "            localNamespace setVariable ['DR_Para_Ready',true];  " \n "        } else {  " \n "            50 cutText [format[""玩家人数或飞行员人数到达上限,暂停空投功能!<br/>非飞行员人数:%1<br/>飞行员人数:%2"",_playerCount,_heliPilotCount],""PLAIN"",1,true,true];  " \n "        };  " \n "        [_target,[_actionId,format[""<t size='3.0'>空投到战区:%1 边缘</t>"",(missionNamespace getVariable ['QS_aoDisplayName','NotFound'])]]]remoteExec['setUserActionText',0];  " \n "    },  " \n "    [(missionNamespace getVariable ['Dr_Air_Para_maxPlayer',25]),(missionNamespace getVariable ['Dr_Air_Para_maxPilots',5]),1000],  " \n "    7,  " \n "    true,  " \n "    true,  " \n "    """",  " \n "    ""alive _this"",  " \n "    5  " \n "];  " \n "};";
 				disableSimulation=1;
 			};
 			id=972;
@@ -24512,23 +24520,6 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14515.688,20.32003,16810.418};
-						angles[]={0.0026529003,2.3613431,0.0066671576};
-					};
-					side="Empty";
-					flags=4;
-					class Attributes
-					{
-						init="0 = [    " \n " this,    " \n " 180,    " \n " false,    " \n " {   " \n "  _this addMagazine ""4Rnd_120mm_cannon_missiles"";   " \n "  _this addMagazine ""4Rnd_120mm_cannon_missiles""; " \n "  _this addMagazineTurret[""Laserbatteries"",[0,0]]; " \n "  _this addWeaponTurret[""Laserdesignator_vehicle"",[0,0]]; " \n " },    " \n " 50,    " \n " 500,    " \n " -1,    " \n " true    " \n "] call QS_fnc_registerVehicle;";
-					};
-					id=162;
-					type="B_MBT_01_TUSK_F";
-				};
-				class Item23
-				{
-					dataType="Object";
-					class PositionInfo
-					{
 						position[]={14526.442,20.352352,16821.076};
 						angles[]={0.0079936078,2.3566308,0.0053232545};
 					};
@@ -24542,7 +24533,7 @@ class Mission
 					type="B_MBT_01_TUSK_F";
 					atlOffset=1.9073486e-006;
 				};
-				class Item24
+				class Item23
 				{
 					dataType="Object";
 					class PositionInfo
@@ -24629,7 +24620,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item25
+				class Item24
 				{
 					dataType="Object";
 					class PositionInfo
@@ -24682,7 +24673,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item26
+				class Item25
 				{
 					dataType="Object";
 					class PositionInfo
@@ -24700,7 +24691,7 @@ class Mission
 					type="B_LSV_01_AT_F";
 					atlOffset=-5.7220459e-005;
 				};
-				class Item27
+				class Item26
 				{
 					dataType="Object";
 					class PositionInfo
@@ -24718,7 +24709,7 @@ class Mission
 					type="B_LSV_01_AT_F";
 					atlOffset=-0.0004234314;
 				};
-				class Item28
+				class Item27
 				{
 					dataType="Object";
 					class PositionInfo
@@ -24736,7 +24727,7 @@ class Mission
 					type="B_LSV_01_AT_F";
 					atlOffset=-0.00043296814;
 				};
-				class Item29
+				class Item28
 				{
 					dataType="Object";
 					class PositionInfo
@@ -24754,7 +24745,7 @@ class Mission
 					type="B_LSV_01_armed_F";
 					atlOffset=-0.00034713745;
 				};
-				class Item30
+				class Item29
 				{
 					dataType="Object";
 					class PositionInfo
@@ -24771,7 +24762,7 @@ class Mission
 					id=173;
 					type="B_LSV_01_armed_F";
 				};
-				class Item31
+				class Item30
 				{
 					dataType="Object";
 					class PositionInfo
@@ -24788,7 +24779,7 @@ class Mission
 					type="I_C_Boat_Transport_02_F";
 					atlOffset=8.3872833;
 				};
-				class Item32
+				class Item31
 				{
 					dataType="Object";
 					class PositionInfo
@@ -24805,7 +24796,7 @@ class Mission
 					type="I_C_Boat_Transport_02_F";
 					atlOffset=11.079466;
 				};
-				class Item33
+				class Item32
 				{
 					dataType="Object";
 					class PositionInfo
@@ -24913,7 +24904,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item34
+				class Item33
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25020,7 +25011,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item35
+				class Item34
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25037,7 +25028,7 @@ class Mission
 					type="B_SDV_01_F";
 					atlOffset=5.8260036;
 				};
-				class Item36
+				class Item35
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25056,7 +25047,7 @@ class Mission
 					type="Land_Pod_Heli_Transport_04_medevac_F";
 					atlOffset=-5.7220459e-006;
 				};
-				class Item37
+				class Item36
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25075,7 +25066,7 @@ class Mission
 					type="Land_Pod_Heli_Transport_04_bench_F";
 					atlOffset=-5.7220459e-006;
 				};
-				class Item38
+				class Item37
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25093,7 +25084,7 @@ class Mission
 					id=188;
 					type="B_Heli_Transport_01_F";
 				};
-				class Item39
+				class Item38
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25111,7 +25102,7 @@ class Mission
 					id=189;
 					type="B_Heli_Transport_01_F";
 				};
-				class Item40
+				class Item39
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25129,7 +25120,7 @@ class Mission
 					id=342;
 					type="B_Heli_Transport_01_F";
 				};
-				class Item41
+				class Item40
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25149,7 +25140,7 @@ class Mission
 					id=488;
 					type="B_T_VTOL_01_infantry_F";
 				};
-				class Item42
+				class Item41
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25169,7 +25160,7 @@ class Mission
 					id=347;
 					type="B_T_VTOL_01_armed_F";
 				};
-				class Item43
+				class Item42
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25191,7 +25182,7 @@ class Mission
 					type="B_T_VTOL_01_vehicle_F";
 					atlOffset=-0.0057468414;
 				};
-				class Item44
+				class Item43
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25244,7 +25235,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item45
+				class Item44
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25297,7 +25288,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item46
+				class Item45
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25313,7 +25304,7 @@ class Mission
 					id=482;
 					type="B_CargoNet_01_ammo_F";
 				};
-				class Item47
+				class Item46
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25330,7 +25321,7 @@ class Mission
 					type="B_CargoNet_01_ammo_F";
 					atlOffset=-3.8146973e-006;
 				};
-				class Item48
+				class Item47
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25346,7 +25337,7 @@ class Mission
 					id=171;
 					type="B_CargoNet_01_ammo_F";
 				};
-				class Item49
+				class Item48
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25364,7 +25355,7 @@ class Mission
 					type="B_Quadbike_01_F";
 					atlOffset=-2.6702881e-005;
 				};
-				class Item50
+				class Item49
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25382,7 +25373,7 @@ class Mission
 					type="B_Quadbike_01_F";
 					atlOffset=-5.7220459e-006;
 				};
-				class Item51
+				class Item50
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25400,7 +25391,7 @@ class Mission
 					type="B_Quadbike_01_F";
 					atlOffset=-0.093164444;
 				};
-				class Item52
+				class Item51
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25418,7 +25409,7 @@ class Mission
 					type="B_Quadbike_01_F";
 					atlOffset=-0.029762268;
 				};
-				class Item53
+				class Item52
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25435,7 +25426,7 @@ class Mission
 					id=518;
 					type="B_Quadbike_01_F";
 				};
-				class Item54
+				class Item53
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25452,7 +25443,7 @@ class Mission
 					id=517;
 					type="B_Quadbike_01_F";
 				};
-				class Item55
+				class Item54
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25469,7 +25460,7 @@ class Mission
 					type="B_Boat_Armed_01_minigun_F";
 					atlOffset=9.070508;
 				};
-				class Item56
+				class Item55
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25487,7 +25478,7 @@ class Mission
 					type="C_Offroad_01_covered_F";
 					atlOffset=-1.335144e-005;
 				};
-				class Item57
+				class Item56
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25504,7 +25495,7 @@ class Mission
 					id=537;
 					type="C_Offroad_01_covered_F";
 				};
-				class Item58
+				class Item57
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25624,7 +25615,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item59
+				class Item58
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25641,7 +25632,7 @@ class Mission
 					id=131;
 					type="Box_NATO_AmmoVeh_F";
 				};
-				class Item60
+				class Item59
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25659,7 +25650,7 @@ class Mission
 					type="Box_NATO_AmmoVeh_F";
 					atlOffset=-3.8146973e-006;
 				};
-				class Item61
+				class Item60
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25678,7 +25669,7 @@ class Mission
 					type="B_Plane_CAS_01_dynamicLoadout_F";
 					atlOffset=0.0003452301;
 				};
-				class Item62
+				class Item61
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25696,7 +25687,7 @@ class Mission
 					id=465;
 					type="B_Heli_Attack_01_dynamicLoadout_F";
 				};
-				class Item63
+				class Item62
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25713,7 +25704,7 @@ class Mission
 					id=163;
 					type="B_APC_Wheeled_01_cannon_F";
 				};
-				class Item64
+				class Item63
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25730,7 +25721,7 @@ class Mission
 					id=164;
 					type="B_APC_Wheeled_01_cannon_F";
 				};
-				class Item65
+				class Item64
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25748,7 +25739,7 @@ class Mission
 					type="B_APC_Wheeled_01_cannon_F";
 					atlOffset=-0.001001358;
 				};
-				class Item66
+				class Item65
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25765,7 +25756,7 @@ class Mission
 					id=550;
 					type="B_APC_Wheeled_01_cannon_F";
 				};
-				class Item67
+				class Item66
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25782,7 +25773,7 @@ class Mission
 					id=557;
 					type="B_APC_Wheeled_01_cannon_F";
 				};
-				class Item68
+				class Item67
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25902,7 +25893,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item69
+				class Item68
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25919,7 +25910,7 @@ class Mission
 					id=190;
 					type="B_Heli_Transport_03_F";
 				};
-				class Item70
+				class Item69
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25936,7 +25927,7 @@ class Mission
 					id=461;
 					type="B_Heli_Transport_03_F";
 				};
-				class Item71
+				class Item70
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25953,7 +25944,7 @@ class Mission
 					id=156;
 					type="B_APC_Tracked_01_CRV_F";
 				};
-				class Item72
+				class Item71
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25971,7 +25962,7 @@ class Mission
 					type="B_APC_Tracked_01_CRV_F";
 					atlOffset=-3.8146973e-006;
 				};
-				class Item73
+				class Item72
 				{
 					dataType="Object";
 					class PositionInfo
@@ -25988,7 +25979,7 @@ class Mission
 					id=484;
 					type="C_IDAP_Heli_Transport_02_F";
 				};
-				class Item74
+				class Item73
 				{
 					dataType="Object";
 					class PositionInfo
@@ -26062,7 +26053,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item75
+				class Item74
 				{
 					dataType="Object";
 					class PositionInfo
@@ -26081,7 +26072,7 @@ class Mission
 					id=515;
 					type="B_UAV_05_F";
 				};
-				class Item76
+				class Item75
 				{
 					dataType="Object";
 					class PositionInfo
@@ -26100,7 +26091,7 @@ class Mission
 					type="B_UGV_01_F";
 					atlOffset=-0.0045948029;
 				};
-				class Item77
+				class Item76
 				{
 					dataType="Object";
 					class PositionInfo
@@ -26119,7 +26110,7 @@ class Mission
 					type="B_UGV_01_rcws_F";
 					atlOffset=-0.00028800964;
 				};
-				class Item78
+				class Item77
 				{
 					dataType="Object";
 					class PositionInfo
@@ -26139,7 +26130,7 @@ class Mission
 					id=511;
 					type="B_UAV_02_dynamicLoadout_F";
 				};
-				class Item79
+				class Item78
 				{
 					dataType="Object";
 					class PositionInfo
@@ -26159,7 +26150,7 @@ class Mission
 					id=212;
 					type="B_T_UAV_03_dynamicLoadout_F";
 				};
-				class Item80
+				class Item79
 				{
 					dataType="Object";
 					class PositionInfo
@@ -26177,7 +26168,7 @@ class Mission
 					type="C_IDAP_Van_02_medevac_F";
 					atlOffset=-0.01404953;
 				};
-				class Item81
+				class Item80
 				{
 					dataType="Object";
 					class PositionInfo
@@ -26586,7 +26577,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item82
+				class Item81
 				{
 					dataType="Object";
 					class PositionInfo
@@ -26995,7 +26986,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item83
+				class Item82
 				{
 					dataType="Object";
 					class PositionInfo
@@ -27404,9 +27395,26 @@ class Mission
 						nAttributes=1;
 					};
 				};
+				class Item83
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14516.527,20.622004,16810.502};
+						angles[]={0.015079645,2.3560722,6.2681055};
+					};
+					side="Empty";
+					class Attributes
+					{
+						init="0 = [    " \n " this,    " \n " 180,    " \n " false,    " \n " {   " \n "  _this addMagazine ""4Rnd_120mm_cannon_missiles"";   " \n "  _this addMagazine ""4Rnd_120mm_cannon_missiles""; " \n "  _this addMagazineTurret[""Laserbatteries"",[0,0]]; " \n "  _this addWeaponTurret[""Laserdesignator_vehicle"",[0,0]]; " \n " },    " \n " 50,    " \n " 500,    " \n " -1,    " \n " true    " \n "] call QS_fnc_registerVehicle;";
+					};
+					id=1032;
+					type="I_MBT_03_cannon_F";
+					atlOffset=0.29477692;
+				};
 			};
 			id=975;
-			atlOffset=-0.087844849;
+			atlOffset=0.11182404;
 		};
 		class Item336
 		{

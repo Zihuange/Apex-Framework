@@ -766,7 +766,7 @@ _recyclerUnitTypes = [
 	['QS_ao_urbanSpawn_bldgs',[],FALSE],
 	['QS_ao_urbanSpawn_nodes',[],FALSE],
 	['QS_ao_urbanSpawn_init',FALSE,FALSE],
-	['QS_system_restartEnabled',((missionNamespace getVariable ['QS_missionConfig_restartDynamic',1]) isEqualTo 0),FALSE],
+	['QS_system_restartEnabled',TRUE,FALSE],
 	['QS_ao_hqBuildingPositions',[],FALSE],
 	['QS_AI_laserTargets',[],TRUE],
 	['QS_AI_cmdr_recentSuppPositions',[],FALSE],
