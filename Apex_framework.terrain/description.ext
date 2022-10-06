@@ -15,14 +15,14 @@ ____________________________________________/*/
 
 missionProductVersion = "1.3.2";
 missionProductStatus = "Stable";											// "Stable" // "Dev"
-author = "原作者:Quiksilver 汉化&修改:波西米亚旅游协会";																															/*/ Visible when loading mission/*/
-onLoadName = __EVAL(format ["%1 %2 %3",localize "STR_QS_Utility_011","&",localize "STR_QS_Utility_012"]);			// Invade & Annex : Opposing Forces			/*/ Visible when loading mission/*/
-onLoadMission = "感谢您参与这个测试,此任务副本是内部测试版本,请不要重新修改、合并、出版发行、散布、再授权及贩售任务及任务的副本";
+author = "Quiksilver & 波西米亚旅游协会";																															/*/ Visible when loading mission/*/
+onLoadName = __EVAL(format ["%1 %2 %3",localize "STR_QS_Utility_011","&",localize "STR_QS_Utility_012"]);			// Invade & Annex			/*/ Visible when loading mission/*/
+onLoadMission = "感谢您游玩我们的任务，如有遇到bug和未汉化文本请联系管理员。若长时间卡在加载任务请退出大厅重进!";
 loadScreen = __EVAL(selectRandom ["media\images\loadScreens\loading_0.jpg","media\images\loadScreens\loading_1.paa","media\images\loadScreens\loading_2.paa","media\images\loadScreens\loading_3.paa","media\images\loadScreens\loading_4.paa","media\images\loadScreens\loading_5.paa","media\images\loadScreens\loading_6.paa","media\images\loadScreens\loading_7.paa","media\images\loadScreens\loading_8.paa","media\images\loadScreens\loading_9.paa"]);
 overviewPicture = __EVAL(selectRandom ["media\images\loadScreens\loading_0.jpg","media\images\loadScreens\loading_1.paa","media\images\loadScreens\loading_2.paa","media\images\loadScreens\loading_3.paa","media\images\loadScreens\loading_4.paa","media\images\loadScreens\loading_5.paa","media\images\loadScreens\loading_6.paa","media\images\loadScreens\loading_7.paa","media\images\loadScreens\loading_8.paa","media\images\loadScreens\loading_9.paa"]);
-overviewText = "这是一个I&A框架OPFOR版本的Beta测试版,如果遇到任何bug，请将内容提供给管理员! ";
+overviewText = "你知道吗:框架原作者已经合并了我们的汉化，你现在可以在Github下载带中文支持的原始任务。";
 overviewTextLocked = "";
-onLoadIntro = "这是一个I&A框架OPFOR版本的Beta测试版,如果遇到任何bug，请将内容提供给管理员! ";													/*/ Displays a message while the intro is loading./*/
+onLoadIntro = "你知道吗:框架原作者已经合并了我们的汉化，你现在可以在Github下载带中文支持的原始任务。";													/*/ Displays a message while the intro is loading./*/
 onLoadIntroTime = 0;												/*/ Time and date displayed while the intro loads. 1 visible, 0 hidden./*/
 onLoadMissionTime = 0;												/*/ Time and date displayed while the mission loads. 1 visible, 0 hidden./*/
 missionGroup = "ApexFramework";										/*/ Required for missionProfileNamespace compatibility between updates./*/
@@ -963,6 +963,11 @@ class CfgSounds {
 	class DangerZone_sound {
 		name = "DangerZone";
 		sound[] = {"media\audio\DangerZone.ogg",0.9,1};
+		titles[] = {};
+	};
+	class YouAreTheJumpmaster_sound {
+		name = "YouAreTheJumpmaster";
+		sound[] = {"media\audio\YouAreTheJumpmaster.ogg",1.0,1};
 		titles[] = {};
 	};
 };
