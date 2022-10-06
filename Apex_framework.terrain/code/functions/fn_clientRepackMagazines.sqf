@@ -35,7 +35,7 @@ if (
 _vehicle = vehicle _unit;
 if ((isPlayer _unit) && (!isNull (objectParent _unit)) && (_unit in [(driver _vehicle),(gunner _vehicle),(commander _vehicle)])) exitWith {};
 if (_unit isEqualTo player) then {
-	50 cutText ['正在重新整理弹匣','PLAIN DOWN',0.3];
+	50 cutText [localize 'STR_QS_Text_186','PLAIN DOWN',0.3];
 };
 _unit setVariable ['QS_unit_repackingMagazines',TRUE,FALSE];
 _canSuspend = canSuspend;
@@ -61,7 +61,7 @@ private _magazineAmmoCapacity = 0;
 	_magazineAmmoCapacity = getNumber (configFile >> 'CfgMagazines' >> _magazineClass >> 'count');
 	if (_magazineAmmoCapacity > 3) then {
 		_magazineTypes pushBackUnique _magazineClass;
-		if (!(_data2 isEqualTo [])) then {
+		if (_data2 isNotEqualTo []) then {
 			_i = _data2 findIf {((_x # 0) isEqualTo _magazineClass)};
 			if (_i isEqualTo -1) then {
 				_data2 pushBack [_magazineClass,_magazineAmmoCapacity,[_magazineAmmoCount]];
@@ -108,14 +108,14 @@ private _currentMagIndex = 0;
 		};
 	};
 } forEach _data2;
-if (!((primaryWeapon _unit) isEqualTo '')) then {
+if ((primaryWeapon _unit) isNotEqualTo '') then {
 	_unit removePrimaryWeaponItem ((primaryWeaponMagazine _unit) # 0);
 };
-if (!((handgunWeapon _unit) isEqualTo '')) then {
+if ((handgunWeapon _unit) isNotEqualTo '') then {
 	_unit removeHandgunItem ((handgunMagazine _unit) # 0);
 };
 _currentMagazines = magazines _unit;
-if (!(_currentMagazines isEqualTo [])) then {
+if (_currentMagazines isNotEqualTo []) then {
 	{
 		if (_x in _magazineTypes) then {
 			_unit removeMagazine _x;
@@ -147,5 +147,5 @@ if (_canSuspend) then {
 	};
 };
 if (_unit isEqualTo player) then {
-	50 cutText ['弹匣已整理','PLAIN DOWN',0.2];
+	50 cutText [localize 'STR_QS_Text_187','PLAIN DOWN',0.2];
 };

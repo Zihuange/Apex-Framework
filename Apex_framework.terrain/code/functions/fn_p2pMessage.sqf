@@ -11,22 +11,6 @@ Last Modified:
 Description:
 
 	Send P2P Message
-	
-			_text = 'Hello';
-		[63,[5,[_text,'PLAIN DOWN',1]]] remoteExec ['QS_fnc_remoteExec',-2,FALSE];
-		[63,[2,'Hello!']] remoteExec ['QS_fnc_remoteExec',-2,FALSE];
-		
-if (_case isEqualTo 63) exitWith {
-	if (!isDedicated) then {
-		_array = _this select 1;
-		[5,[_text,'PLAIN DOWN',1]] call (missionNamespace getVariable 'QS_fnc_p2pMessage');
-	};
-};
-
-_text = 'Hello!';
-[63,[5,[_text,'PLAIN DOWN',1]]] remoteExec ['QS_fnc_remoteExec',-2,FALSE];
-
-[5,[(format ['%1 (Group leader) - %2',profileName,_order]),'PLAIN DOWN',0.333]]
 ____________________________________________________________________________*/
 
 params ['_type','_params'];
@@ -56,9 +40,9 @@ if (_type isEqualTo 5) exitWith {
 };
 if (_type isEqualTo 6) exitWith {
 	//comment 'Sidechat';
-	(_params select 0) sideChat (_params select 1);
+	(_params # 0) sideChat (_params # 1);
 };
 if (_type isEqualTo 7) exitWith {
 	//comment 'Group chat';
-	(_params select 0) sideChat (_params select 1);
+	(_params # 0) groupChat (_params # 1);
 };

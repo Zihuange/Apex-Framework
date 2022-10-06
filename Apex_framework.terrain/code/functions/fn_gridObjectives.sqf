@@ -16,7 +16,7 @@ ____________________________________________________________________________/*/
 params ['_type','_aoData','_aoPos','_aoSize','_terrainData','_playersCount'];
 private _return = [];
 if (_type isEqualTo 'GRID_MARKERS') exitWith {
-	_gridMarkers = _aoData select 3;
+	_gridMarkers = _aoData # 3;
 	_objectiveIsRequired = 1;
 	_objectiveArguments = [
 		_gridMarkers,
@@ -27,14 +27,14 @@ if (_type isEqualTo 'GRID_MARKERS') exitWith {
 	private _objectiveOnFailed = {};
 	_centroid = missionNamespace getVariable 'QS_grid_aoCentroid';
 	_centroidOffset = [
-		((_centroid select 0) + 1000),
-		(_centroid select 1),
-		(_centroid select 2)
+		((_centroid # 0) + 1000),
+		(_centroid # 1),
+		(_centroid # 2)
 	];
 	_requiredCount = (15 + (round (_playersCount / 2))) min ((count _gridMarkers) - 3);
 	'QS_marker_grid_capState' setMarkerColor 'ColorBLUFOR';
 	'QS_marker_grid_capState' setMarkerPos _centroidOffset;
-	'QS_marker_grid_capState' setMarkerText (format ['%1网格占领进度: 0 / %2',(toString [32,32,32]),_requiredCount]);
+	'QS_marker_grid_capState' setMarkerText (format ['%1 %3 0 / %2',(toString [32,32,32]),_requiredCount,localize 'STR_QS_Marker_014']);
 	_objectiveCode = {
 		params ['_gridMarkers','_gridMarkersCount','_duration'];
 		private _c = 0;
@@ -44,8 +44,8 @@ if (_type isEqualTo 'GRID_MARKERS') exitWith {
 			_requiredCount = round (_requiredCount / 2);
 		};
 		_currentCount = {((markerColor _x) isEqualTo 'ColorGREEN')} count _gridMarkers;
-		if (!( (markerText 'QS_marker_grid_capState') isEqualTo (format ['   网格占领进度: %1 / %2',_currentCount,_requiredCount]))) then {
-			'QS_marker_grid_capState' setMarkerText (format ['%1网格占领进度: %2 / %3',(toString [32,32,32]),_currentCount,_requiredCount]);
+		if ( (markerText 'QS_marker_grid_capState') isNotEqualTo (format ['%4 %3 %1 / %2',_currentCount,_requiredCount,localize 'STR_QS_Marker_014',(toString [32,32,32])])) then {
+			'QS_marker_grid_capState' setMarkerText (format ['%1 %4 %2 / %3',(toString [32,32,32]),_currentCount,_requiredCount,localize 'STR_QS_Marker_014']);
 		};
 		if (_currentCount >= _requiredCount) then {
 			_c = 1;
@@ -53,7 +53,7 @@ if (_type isEqualTo 'GRID_MARKERS') exitWith {
 		_c;
 	};
 	_objectiveOnCompleted = {
-		['GRID_UPDATE',['主线战区','网格转变完成！']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['GRID_UPDATE',[localize 'STR_QS_Notif_008',localize 'STR_QS_Notif_059']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		'QS_marker_grid_capState' setMarkerColor 'ColorGREEN';
 	};
 	_objectiveOnFailed = {
@@ -75,7 +75,7 @@ if (_type isEqualTo 'SITE_TUNNEL') exitWith {
 	private _objectiveIsRequired = 1;
 	private _objectiveOnCompleted = {};
 	private _objectiveOnFailed = {};
-	_aoPolygon = _aoData select 2;
+	_aoPolygon = _aoData # 2;
 	_nSites = (2 + (_playersCount / 10)) min 5;
 	private _position = [0,0,0];
 	private _usedPositions = [[-1000,-1000,0]];
@@ -101,9 +101,9 @@ if (_type isEqualTo 'SITE_TUNNEL') exitWith {
 			_intersections = lineIntersectsSurfaces [
 				_testPosASL,
 				[
-					_testPosASL select 0,
-					_testPosASL select 1,
-					((_testPosASL select 2) + _z)
+					_testPosASL # 0,
+					_testPosASL # 1,
+					((_testPosASL # 2) + _z)
 				],
 				objNull,
 				objNull,
@@ -113,9 +113,9 @@ if (_type isEqualTo 'SITE_TUNNEL') exitWith {
 				'VIEW',
 				TRUE
 			];
-			if (!(_intersections isEqualTo [])) then {
+			if (_intersections isNotEqualTo []) then {
 				{
-					if (!isNull (_x select 3)) exitWith {
+					if (!isNull (_x # 3)) exitWith {
 						_c = FALSE;
 					};
 				} forEach _intersections;
@@ -134,9 +134,9 @@ if (_type isEqualTo 'SITE_TUNNEL') exitWith {
 			if (_position inPolygon _aoPolygon) then {
 				if ((_usedPositions findif {((_position distance2D _x) < _safeDistance)}) isEqualTo -1) then {
 					if (!([_position,30,6] call (missionNamespace getVariable 'QS_fnc_waterInRadius'))) then {
-						if ((([(_position select 0),(_position select 1)] nearRoads 20) select {((_x isEqualType objNull) && (!((roadsConnectedTo _x) isEqualTo [])))}) isEqualTo []) then {
+						if ((([(_position # 0),(_position # 1)] nearRoads 20) select {((_x isEqualType objNull) && ((roadsConnectedTo _x) isNotEqualTo []))}) isEqualTo []) then {
 							if ([_position,1.5,6,2] call _fn_checkSafePosition) then {
-								if (!((toLower (surfaceType _position)) in ['#gdtasphalt'])) then {
+								if (!((toLowerANSI (surfaceType _position)) in ['#gdtasphalt'])) then {
 									_foundPosition = TRUE;
 								};
 							};
@@ -166,14 +166,14 @@ if (_type isEqualTo 'SITE_TUNNEL') exitWith {
 	missionNamespace setVariable ['QS_grid_AIRspTotal',(count _entities),FALSE];
 	_centroid = missionNamespace getVariable 'QS_grid_aoCentroid';
 	_centroidOffset = [
-		((_centroid select 0) + 1000),
-		((_centroid select 1) - 300),
-		(_centroid select 2)
+		((_centroid # 0) + 1000),
+		((_centroid # 1) - 300),
+		(_centroid # 2)
 	];
 	'QS_marker_grid_rspState' setMarkerColor 'ColorBLUFOR';
 	'QS_marker_grid_rspState' setMarkerPos _centroidOffset;
-	'QS_marker_grid_rspState' setMarkerText (format ['%1地道摧毁进度: 0 / %2',(toString [32,32,32]),(missionNamespace getVariable 'QS_grid_AIRspTotal')]);
-	if (!(_entities isEqualTo [])) then {
+	'QS_marker_grid_rspState' setMarkerText (format ['%1 %3 0 / %2',(toString [32,32,32]),(missionNamespace getVariable 'QS_grid_AIRspTotal'),localize 'STR_QS_Marker_015']);
+	if (_entities isNotEqualTo []) then {
 		_objectiveIsRequired = 1;
 		_objectiveArguments = [
 			_entities,
@@ -183,8 +183,8 @@ if (_type isEqualTo 'SITE_TUNNEL') exitWith {
 			params ['_entities','_entitiesTotal'];
 			private _c = 0;
 			_aliveCount = {(alive _x)} count _entities;
-			if (!((toLower (markerText 'QS_marker_grid_rspState')) isEqualTo (toLower (format ['   地道摧毁进度: %1 / %2',((_entitiesTotal - _aliveCount) max 0),(missionNamespace getVariable 'QS_grid_AIRspTotal')])))) then {
-				'QS_marker_grid_rspState' setMarkerText (format ['%1地道摧毁进度: %2 / %3',(toString [32,32,32]),(_entitiesTotal - _aliveCount),(missionNamespace getVariable 'QS_grid_AIRspTotal')]);
+			if ((toLower (markerText 'QS_marker_grid_rspState')) isNotEqualTo (toLower (format ['%4 %3 %1 / %2',((_entitiesTotal - _aliveCount) max 0),(missionNamespace getVariable 'QS_grid_AIRspTotal'),localize 'STR_QS_Marker_015',(toString [32,32,32])]))) then {
+				'QS_marker_grid_rspState' setMarkerText (format ['%1 %4 %2 / %3',(toString [32,32,32]),(_entitiesTotal - _aliveCount),(missionNamespace getVariable 'QS_grid_AIRspTotal'),localize 'STR_QS_Marker_015']);
 			};
 			if (_aliveCount isEqualTo 0) then {
 				_c = 1;
@@ -193,7 +193,7 @@ if (_type isEqualTo 'SITE_TUNNEL') exitWith {
 		};
 		_objectiveOnCompleted = {
 			'QS_marker_grid_rspState' setMarkerColor 'ColorGREEN';
-			['GRID_IG_UPDATE',['主线战区','敌军地道已被全部摧毁']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+			['GRID_IG_UPDATE',[localize 'STR_QS_Notif_008',localize 'STR_QS_Notif_060']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		};
 		_objectiveOnFailed = {};
 		_return = [
@@ -213,7 +213,7 @@ if (_type isEqualTo 'SITE_IG') exitWith {
 	private _objectiveIsRequired = 0;
 	private _objectiveOnCompleted = {};
 	private _objectiveOnFailed = {};
-	_aoPolygon = _aoData select 2;
+	_aoPolygon = _aoData # 2;
 	private _spawnPos = [0,0,0];
 	private _safeDistance = 75;
 	private _foundPosition = FALSE;
@@ -229,9 +229,9 @@ if (_type isEqualTo 'SITE_IG') exitWith {
 		if (_spawnPos inPolygon _aoPolygon) then {
 			if (((missionNamespace getVariable 'QS_registeredPositions') findif {((_spawnPos distance2D _x) < _safeDistance)}) isEqualTo -1) then {
 				if (!([_spawnPos,30,6] call (missionNamespace getVariable 'QS_fnc_waterInRadius'))) then {
-					if ((([(_spawnPos select 0),(_spawnPos select 1)] nearRoads 20) select {((_x isEqualType objNull) && (!((roadsConnectedTo _x) isEqualTo [])))}) isEqualTo []) then {
+					if ((([(_spawnPos # 0),(_spawnPos # 1)] nearRoads 20) select {((_x isEqualType objNull) && ((roadsConnectedTo _x) isNotEqualTo []))}) isEqualTo []) then {
 						if (([_spawnPos,300,[EAST],_allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
-							if (!((toLower (surfaceType _spawnPos)) in ['#gdtasphalt'])) then {
+							if (!((toLowerANSI (surfaceType _spawnPos)) in ['#gdtasphalt'])) then {
 								_foundPosition = TRUE;
 							};
 						};
@@ -270,7 +270,7 @@ if (_type isEqualTo 'SITE_IG') exitWith {
 			if (_x isKindOf 'FlagCarrierCore') then {
 				_igFlag = _x;
 			};
-			if (!((_x buildingPos -1) isEqualTo [])) then {
+			if ((_x buildingPos -1) isNotEqualTo []) then {
 				_potentialBuildings pushBack _x;
 			};
 		} forEach _composition;
@@ -281,12 +281,12 @@ if (_type isEqualTo 'SITE_IG') exitWith {
 			{	
 				_building = _x;
 				_buildingPositions = [_building,(_building buildingPos -1)] call (missionNamespace getVariable 'QS_fnc_customBuildingPositions');
-				if (!(_buildingPositions isEqualTo [])) then {
+				if (_buildingPositions isNotEqualTo []) then {
 					_potentialBuildings pushBack _building;
 				};
 			} forEach _composition;
 		};
-		if (!(_potentialBuildings isEqualTo [])) then {
+		if (_potentialBuildings isNotEqualTo []) then {
 			_leaderBuilding = selectRandom _potentialBuildings;
 			_buildingPositions = _leaderBuilding buildingPos -1;
 			_buildingPosition = selectRandom _buildingPositions;
@@ -296,9 +296,9 @@ if (_type isEqualTo 'SITE_IG') exitWith {
 			_igLeader setVariable ['QS_dynSim_ignore',TRUE,TRUE];
 			_igLeader addHeadgear 'H_Construction_basic_red_F';
 			_uncertainPos = [
-				((_spawnPos select 0) + 200 - (random 400)),
-				((_spawnPos select 1) + 200 - (random 400)),
-				(_spawnPos select 2)
+				((_spawnPos # 0) + 200 - (random 400)),
+				((_spawnPos # 1) + 200 - (random 400)),
+				(_spawnPos # 2)
 			];
 			{
 				_x setMarkerColor 'ColorBLUFOR';
@@ -308,11 +308,12 @@ if (_type isEqualTo 'SITE_IG') exitWith {
 				'QS_marker_grid_IGcircle'
 			];
 			_composition pushBack _igLeader;
-			missionNamespace setVariable ['QS_grid_IGcomposition',_composition,(call (missionNamespace getVariable 'QS_fnc_AIOwners'))];
+			missionNamespace setVariable ['QS_grid_IGcomposition',_composition,QS_system_AI_owners];
 			(group _igLeader) setCombatMode 'RED';
 			(group _igLeader) setBehaviour 'AWARE';
+			(group _igLeader) setGroupIdGlobal ['Command'];
 			{
-				_igLeader disableAI _x;
+				_igLeader enableAIFeature [_x,FALSE];
 			} forEach [
 				'PATH',
 				'COVER'
@@ -324,12 +325,12 @@ if (_type isEqualTo 'SITE_IG') exitWith {
 				_igLeader addEventHandler [
 					'FiredMan',
 					{
-						(_this select 0) setVehicleAmmo 1;
+						(_this # 0) setVehicleAmmo 1;
 					}
 				];
 			};
-			missionNamespace setVariable ['QS_grid_IGleader',_igLeader,(call (missionNamespace getVariable 'QS_fnc_AIOwners'))];
-			missionNamespace setVariable ['QS_grid_IGposition',_spawnPos,(call (missionNamespace getVariable 'QS_fnc_AIOwners'))];
+			missionNamespace setVariable ['QS_grid_IGleader',_igLeader,QS_system_AI_owners];
+			missionNamespace setVariable ['QS_grid_IGposition',_spawnPos,QS_system_AI_owners];
 			_igLeader spawn {
 				uiSleep 1;
 				[_this] joinSilent (createGroup [WEST,TRUE]);
@@ -346,10 +347,10 @@ if (_type isEqualTo 'SITE_IG') exitWith {
 				'Killed',
 				{
 					params ['_killed','_killer','_instigator','_usedEffects'];
-					['GRID_UPDATE',['主线战区','敌军指挥官已被击毙']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+					['GRID_UPDATE',[localize 'STR_QS_Notif_008',localize 'STR_QS_Notif_061']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 					if (!isNull _instigator) then {
 						if (isPlayer _instigator) then {
-							_text = format ['%1 (%2) 击毙了敌军指挥官！',(name _instigator),(groupID (group _instigator))];
+							_text = format ['%1 (%2) %3',(name _instigator),(groupID (group _instigator)),localize 'STR_QS_Chat_019'];
 							_text remoteExec ['systemChat',-2,FALSE];
 						};
 					};
@@ -361,11 +362,11 @@ if (_type isEqualTo 'SITE_IG') exitWith {
 						private _table = objNull;
 						private _potentialTables = [];
 						{
-							if ((toLower ((getModelInfo _x) select 1)) in ['a3\structures_f\civ\camping\campingtable_f.p3d','a3\structures_f\civ\camping\campingtable_small_f.p3d']) then {
+							if ((toLowerANSI ((getModelInfo _x) # 1)) in ['a3\structures_f\civ\camping\campingtable_f.p3d','a3\structures_f\civ\camping\campingtable_small_f.p3d']) then {
 								_potentialTables pushBack _x;
 							};
 						} forEach _composition;
-						if (!(_potentialTables isEqualTo [])) then {
+						if (_potentialTables isNotEqualTo []) then {
 							_table = selectRandom _potentialTables;
 							_intel = createSimpleObject ['Land_File1_F',(getPosASL _table)];
 							[_intel,_table] spawn {
@@ -403,18 +404,18 @@ if (_type isEqualTo 'SITE_IG') exitWith {
 				private _c = 0;
 				if ((!alive _igLeader) || {(_igLeader getVariable ['QS_isSurrendered',FALSE])}) then {
 					if (((_spawnPos nearEntities ['CAManBase',_radius]) select {(((side _x) in [WEST,RESISTANCE]) && ((lifeState _x) in ['HEALTHY','INJURED']))}) isEqualTo []) then {
-						if (!(((_spawnPos nearEntities ['CAManBase',_radius]) select {(((side _x) in [EAST]) && ((lifeState _x) in ['HEALTHY','INJURED']))}) isEqualTo [])) then {
-							['GRID_UPDATE',['主线战区','敌军HQ已被清空']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+						if (((_spawnPos nearEntities ['CAManBase',_radius]) select {(((side _x) in [EAST]) && ((lifeState _x) in ['HEALTHY','INJURED']))}) isNotEqualTo []) then {
+							['GRID_UPDATE',[localize 'STR_QS_Notif_008',localize 'STR_QS_Notif_062']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 							{
-								_x setMarkerPos (missionNamespace getVariable 'QS_grid_IGposition');
+								_x setMarkerPosLocal (missionNamespace getVariable 'QS_grid_IGposition');
 								_x setMarkerColor 'ColorEAST';
 							} forEach [
 								'QS_marker_grid_IGmkr',
 								'QS_marker_grid_IGcircle'
 							];
 							if (!isNull _flag) then {
-								if (!((flagTexture _flag) isEqualTo ((missionNamespace getVariable ['QS_virtualSectors_sidesFlagsTextures',['','a3\data_f\flags\flag_nato_co.paa']]) select 1))) then {
-									_flag setFlagTexture ((missionNamespace getVariable ['QS_virtualSectors_sidesFlagsTextures',['','a3\data_f\flags\flag_nato_co.paa']]) select 1);
+								if ((flagTexture _flag) isNotEqualTo ((missionNamespace getVariable ['QS_virtualSectors_sidesFlagsTextures',['','a3\data_f\flags\flag_nato_co.paa']]) # 1)) then {
+									_flag setFlagTexture ((missionNamespace getVariable ['QS_virtualSectors_sidesFlagsTextures',['','a3\data_f\flags\flag_nato_co.paa']]) # 1);
 								};
 							};
 							_c = 1;
@@ -430,7 +431,7 @@ if (_type isEqualTo 'SITE_IG') exitWith {
 					private _intersectCheckPos = [0,0,0];
 					private _intersections = 10;
 					private _intersectCheckDist = 1500;
-					private _centerPos = position (allPlayers select 0);
+					private _centerPos = position (allPlayers # 0);
 					for '_x' from 0 to 8 step 1 do {
 						_intersectCheckPos = _centerPos getPos [_intersectCheckDist,_incrementVal];
 						if ([_intersectCheckPos,_centerPos,25] call (missionNamespace getVariable 'QS_fnc_waterIntersect')) then {
@@ -464,7 +465,7 @@ if (_type isEqualTo 'SITE_IDAP') exitWith {
 	private _objectiveIsRequired = 0;
 	private _objectiveOnCompleted = {};
 	private _objectiveOnFailed = {};
-	_aoPolygon = _aoData select 2;
+	_aoPolygon = _aoData # 2;
 	private _position = [0,0,0];
 	private _safeDistance = 75;
 	private _foundPosition = FALSE;
@@ -480,7 +481,7 @@ if (_type isEqualTo 'SITE_IDAP') exitWith {
 		if (_checkPos inPolygon _aoPolygon) then {
 			if (((missionNamespace getVariable 'QS_registeredPositions') findif {((_checkPos distance2D _x) < _safeDistance)}) isEqualTo -1) then {
 				if (!([_checkPos,30,6] call (missionNamespace getVariable 'QS_fnc_waterInRadius'))) then {
-					if ((([(_checkPos select 0),(_checkPos select 1)] nearRoads 20) select {((_x isEqualType objNull) && (!((roadsConnectedTo _x) isEqualTo [])))}) isEqualTo []) then {
+					if ((([(_checkPos # 0),(_checkPos # 1)] nearRoads 20) select {((_x isEqualType objNull) && ((roadsConnectedTo _x) isNotEqualTo []))}) isEqualTo []) then {
 						if (([_checkPos,300,[EAST],_allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
 							_foundPosition = TRUE;
 						};
@@ -527,8 +528,8 @@ if (_type isEqualTo 'SITE_IDAP') exitWith {
 		for '_x' from 0 to 1 step 0 do {
 			_testPos = _checkPos getPos [(_distanceFixed + (random _distanceRandom)),_incrementDir];
 			_incrementDir = _incrementDir + _increment;
-			_nearRoads = ([_testPos select 0,_testPos select 1] nearRoads _nearRoadsRadius) select {((_x isEqualType objNull) && (!((roadsConnectedTo _x) isEqualTo [])))};
-			if (!(_nearRoads isEqualTo [])) then {
+			_nearRoads = ([_testPos # 0,_testPos # 1] nearRoads _nearRoadsRadius) select {((_x isEqualType objNull) && ((roadsConnectedTo _x) isNotEqualTo []))};
+			if (_nearRoads isNotEqualTo []) then {
 				_roadSegment = selectRandom _nearRoads;
 				_roadSegmentPosition = position _roadSegment;
 				if (!([_checkPos,_roadSegmentPosition,25] call (missionNamespace getVariable 'QS_fnc_waterIntersect'))) then {
@@ -544,11 +545,11 @@ if (_type isEqualTo 'SITE_IDAP') exitWith {
 					private _table = objNull;
 					private _potentialTables = [];
 					{
-						if ((toLower ((getModelInfo _x) select 1)) in ['a3\structures_f\civ\camping\campingtable_f.p3d','a3\structures_f\civ\camping\campingtable_small_f.p3d']) then {
+						if ((toLowerANSI ((getModelInfo _x) # 1)) in ['a3\structures_f\civ\camping\campingtable_f.p3d','a3\structures_f\civ\camping\campingtable_small_f.p3d']) then {
 							_potentialTables pushBack _x;
 						};
 					} forEach _composition;
-					if (!(_potentialTables isEqualTo [])) then {
+					if (_potentialTables isNotEqualTo []) then {
 						_table = selectRandom _potentialTables;
 						_intel = createSimpleObject ['Land_File1_F',(getPosASL _table)];
 						[_intel,_table] spawn {
@@ -598,16 +599,16 @@ if (_type isEqualTo 'SITE_IDAP') exitWith {
 				['BombCluster_03_UXO1_F',0.1,'BombCluster_03_UXO2_F',0.1,'BombCluster_03_UXO3_F',0.1,'BombCluster_03_UXO4_F',0.1]
 			];
 			_uxoArray = [_uxoPos,25,_total,(selectRandom _uxoTypeData)] call (missionNamespace getVariable 'QS_fnc_aoCreateUXOfield');
-			if (!(_uxoArray isEqualTo [])) then {
+			if (_uxoArray isNotEqualTo []) then {
 				_uncertaintyPos = [
-					((_uxoPos select 0) + 50 - (random 100)),
-					((_uxoPos select 1) + 50 - (random 100)),
+					((_uxoPos # 0) + 50 - (random 100)),
+					((_uxoPos # 1) + 50 - (random 100)),
 					0
 				];
 				{
-					_x setMarkerColor 'ColorOrange';
-					_x setMarkerPos _uncertaintyPos;
-					_x setMarkerText (format ['%1未爆弹雷区',(toString [32,32,32])]);
+					_x setMarkerColorLocal 'ColorOrange';
+					_x setMarkerPosLocal _uncertaintyPos;
+					_x setMarkerText (format ['%1 %2',(toString [32,32,32]),localize 'STR_QS_Marker_012']);
 				} forEach [
 					'QS_marker_grid_IDAPmkr',
 					'QS_marker_grid_IDAPcircle'
@@ -628,10 +629,10 @@ if (_type isEqualTo 'SITE_IDAP') exitWith {
 					_c;
 				};
 				_objectiveOnCompleted = {
-					['GRID_IDAP_UPDATE',['Area Of Operations','Unexploded Ordnance (UXO) cleared']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+					['GRID_IDAP_UPDATE',[localize 'STR_QS_Notif_008',localize 'STR_QS_Notif_063']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 					{
-						_x setMarkerColor 'ColorGreen';
-						_x setMarkerText (format ['%1未爆弹雷区(已清理)',(toString [32,32,32])]);
+						_x setMarkerColorLocal 'ColorGreen';
+						_x setMarkerText (format ['%1 %2 (%3)',(toString [32,32,32]),localize 'STR_QS_Marker_012',localize 'STR_QS_Marker_016']);
 					} forEach [
 						'QS_marker_grid_IDAPmkr',
 						'QS_marker_grid_IDAPcircle'
@@ -696,10 +697,10 @@ if (_type isEqualTo 'INTEL') exitWith {
 	private _markers = [];
 	private _table = objNull;
 	private _intel = objNull;
-	private _buildingPositionsInPolygon = _terrainData select 6;
-	if (!((_terrainData select 7) isEqualTo [])) then {
-		if ((count (_terrainData select 7)) > 20) then {
-			_buildingPositionsInPolygon = _terrainData select 7;
+	private _buildingPositionsInPolygon = _terrainData # 6;
+	if ((_terrainData # 7) isNotEqualTo []) then {
+		if ((count (_terrainData # 7)) > 20) then {
+			_buildingPositionsInPolygon = _terrainData # 7;
 		};
 	};
 	private _buildingPosition = [0,0,0];
@@ -718,7 +719,7 @@ if (_type isEqualTo 'INTEL') exitWith {
 	if (_intelCount > 0) then {
 		if ((count _buildingPositionsInPolygon) >= _intelCount) then {
 			for '_i' from 0 to (_intelCount - 1) step 1 do {
-				((missionNamespace getVariable 'QS_grid_intelTargets') select _i) params [
+				((missionNamespace getVariable 'QS_grid_intelTargets') # _i) params [
 					'_intelType',
 					'_intelEntity',
 					'_intelPosition',
@@ -742,7 +743,7 @@ if (_type isEqualTo 'INTEL') exitWith {
 						_buildingPositionASL = AGLToASL _buildingPosition;
 						_intersections = lineIntersectsSurfaces [
 							_buildingPositionASL,
-							[(_buildingPositionASL select 0),(_buildingPositionASL select 1),((_buildingPositionASL select 2) + 50)],
+							[(_buildingPositionASL # 0),(_buildingPositionASL # 1),((_buildingPositionASL # 2) + 50)],
 							objNull,
 							objNull,
 							TRUE,
@@ -754,7 +755,7 @@ if (_type isEqualTo 'INTEL') exitWith {
 						if (_intersections isEqualTo []) then {
 							_intersections = lineIntersectsSurfaces [
 								_buildingPositionASL,
-								[(_buildingPositionASL select 0),(_buildingPositionASL select 1),((_buildingPositionASL select 2) - 50)],
+								[(_buildingPositionASL # 0),(_buildingPositionASL # 1),((_buildingPositionASL # 2) - 50)],
 								objNull,
 								objNull,
 								TRUE,
@@ -764,17 +765,17 @@ if (_type isEqualTo 'INTEL') exitWith {
 								TRUE
 							];
 						};
-						if (!(_intersections isEqualTo [])) then {
-							_intersectedObject = (_intersections select 0) select 3;
+						if (_intersections isNotEqualTo []) then {
+							_intersectedObject = (_intersections # 0) # 3;
 							if (!isNull _intersectedObject) then {
-								if (!(([_intersectedObject,(_intersectedObject buildingPos -1)] call (missionNamespace getVariable 'QS_fnc_customBuildingPositions')) isEqualTo [])) then {
+								if (([_intersectedObject,(_intersectedObject buildingPos -1)] call (missionNamespace getVariable 'QS_fnc_customBuildingPositions')) isNotEqualTo []) then {
 									_monitorStructure = TRUE;
 								};
 							};
 						};
 						
 						//comment 'Create entities';
-						_buildingPositionASL set [2,((_buildingPositionASL select 2) + 0.15)];  /*/0.3 - can be too high off ground in some cases due to poorly configured vanilla building positions/*/
+						_buildingPositionASL set [2,((_buildingPositionASL # 2) + 0.15)];  /*/0.3 - can be too high off ground in some cases due to poorly configured vanilla building positions/*/
 						_table = createSimpleObject ['a3\structures_f\civ\camping\campingtable_small_f.p3d',_buildingPositionASL];
 						_table setDir (random 360);
 						_table setVectorUp [0,0,1];
@@ -796,19 +797,18 @@ if (_type isEqualTo 'INTEL') exitWith {
 						
 						if (_j isEqualTo 0) then {
 							_mkr = createMarker [(format ['QS_marker_intel_%1',_buildingPosition]),[-1000,-1000,0]];
-							_mkr setMarkerText (toString [32,32,32]);
-							_mkr setMarkerAlpha 0;
-							_mkr setMarkerAlpha 0;		// yes twice
-							_mkr setMarkerShape 'ELLIPSE';
-							_mkr setMarkerBrush 'Border';
-							_mkr setMarkerSize [50,50];
-							_mkr setMarkerColor 'ColorBLUFOR';
+							_mkr setMarkerTextLocal (toString [32,32,32]);
+							_mkr setMarkerAlphaLocal 0;
+							_mkr setMarkerShapeLocal 'ELLIPSE';
+							_mkr setMarkerBrushLocal 'Border';
+							_mkr setMarkerSizeLocal [50,50];
+							_mkr setMarkerColorLocal 'ColorBLUFOR';
 							[_mkr,_intelPosition] spawn {
 								params ['_mkr','_intelPosition'];
 								uiSleep 0.5;
 								_mkr setMarkerPos [
-									((_intelPosition select 0) - 45 + (random 90)),
-									((_intelPosition select 1) - 45 + (random 90)),
+									((_intelPosition # 0) - 45 + (random 90)),
+									((_intelPosition # 1) - 45 + (random 90)),
 									0
 								];
 								
@@ -837,7 +837,7 @@ if (_type isEqualTo 'INTEL') exitWith {
 					
 					};
 				};
-				if (!(_entityIntels isEqualTo [])) then {
+				if (_entityIntels isNotEqualTo []) then {
 					{
 						_x setVariable ['QS_intel_marker',_mkr,FALSE];
 						_x setVariable ['QS_entity_intel_copy',_entityIntels,FALSE];
@@ -848,12 +848,12 @@ if (_type isEqualTo 'INTEL') exitWith {
 						'Killed',
 						{
 							params ['_entity','_killer','_instigator','_usedEffects'];
-							if (!((_entity getVariable ['QS_entity_assocIntels',[]]) isEqualTo [])) then {
+							if ((_entity getVariable ['QS_entity_assocIntels',[]]) isNotEqualTo []) then {
 								{
 									_x hideObjectGlobal TRUE;
 								} forEach (_entity getVariable ['QS_entity_assocIntels',[]]);
 							};
-							if (!((_entity getVariable ['QS_entity_assocMkrs',[]]) isEqualTo [])) then {
+							if ((_entity getVariable ['QS_entity_assocMkrs',[]]) isNotEqualTo []) then {
 								{
 									deleteMarker _x;
 								} forEach (_entity getVariable ['QS_entity_assocMkrs',[]]);
@@ -864,12 +864,12 @@ if (_type isEqualTo 'INTEL') exitWith {
 						'Deleted',
 						{
 							params ['_entity'];
-							if (!((_entity getVariable ['QS_entity_assocIntels',[]]) isEqualTo [])) then {
+							if ((_entity getVariable ['QS_entity_assocIntels',[]]) isNotEqualTo []) then {
 								{
 									_x hideObjectGlobal TRUE;
 								} forEach (_entity getVariable ['QS_entity_assocIntels',[]]);
 							};
-							if (!((_entity getVariable ['QS_entity_assocMkrs',[]]) isEqualTo [])) then {
+							if ((_entity getVariable ['QS_entity_assocMkrs',[]]) isNotEqualTo []) then {
 								{
 									deleteMarker _x;
 								} forEach (_entity getVariable ['QS_entity_assocMkrs',[]]);

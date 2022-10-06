@@ -26,7 +26,7 @@ if (isNull (ropeAttachedTo _attachedObject)) then {
 						if (_displayName isEqualTo '') then {
 							_displayName = getText (configFile >> 'CfgVehicles' >> (typeOf _attachedObject) >> 'displayName');
 						};
-						_text = format ['%1 reset for FOB resupply',_displayName];
+						_text = format [localize 'STR_QS_Text_204',_displayName];
 						50 cutText [_text,'PLAIN DOWN',0.5];
 					};
 				};
@@ -38,7 +38,7 @@ if (isNull (ropeAttachedTo _attachedObject)) then {
 		if (_slingLoad in (attachedObjects _vehicle)) then {
 			_slingData = [_vehicle,_slingLoad] call (missionNamespace getVariable ['QS_fnc_slingData',{}]);
 			_slingData params ['','','','_attachCoordinates','','','',''];
-			_attachCoordinates set [2,((_attachCoordinates select 2) - ([1,0.1] select (isTouchingGround _vehicle)))];
+			_attachCoordinates set [2,((_attachCoordinates # 2) - ([1,0.1] select (isTouchingGround _vehicle)))];
 			_slingLoad attachTo [_vehicle,_attachCoordinates];
 			_slingLoad spawn {
 				uiSleep 0.1;

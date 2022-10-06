@@ -6,7 +6,7 @@ Author:
 	
 Last modified:
 
-	20/04/2022 A3 2.08 by Quiksilver
+	26/08/2022 A3 2.10 by Quiksilver
 	
 Description:
 
@@ -26,6 +26,7 @@ if ((!((lifeState _player) in ['HEALTHY','INJURED'])) || {(!isNull (findDisplay 
 _cameraOn = cameraOn;
 if ('MinimapDisplay' in ((infoPanel 'left') + (infoPanel 'right'))) then {
 	if ([0,_cameraOn] call (missionNamespace getVariable 'QS_fnc_gpsJammer')) then {
+		50 cutText [localize 'STR_QS_Text_012','PLAIN DOWN',0.5];
 		openGPS FALSE;
 		openGPS FALSE;
 	};
@@ -34,7 +35,7 @@ if ((missionNamespace getVariable ['QS_enabledWaypoints',2]) isEqualTo 0) then {
 	_cwp = customWaypointPosition;
 	if (_cwp isNotEqualTo []) then {
 		if (
-			(!(_cameraOn isKindOf 'Plane')) &&
+			((!(_cameraOn isKindOf 'Plane')) || (_cameraOn isKindOf 'VTOL_01_base_F')) &&
 			{(!(unitIsUAV _cameraOn))} &&
 			{((_cameraOn isKindOf 'Man') && ('ItemGPS' in (assignedItems _cameraOn))) || (!(_cameraOn isKindOf 'Man'))}
 		) then {
@@ -57,7 +58,7 @@ if ((missionNamespace getVariable ['QS_enabledWaypoints',2]) isEqualTo 0) then {
 				};
 				drawIcon3D [
 					'\a3\ui_f\data\igui\cfg\cursors\custommark_ca.paa',
-					[1,1,1,0.4], 
+					[1,1,1,0.5],
 					_cwp,
 					1, 
 					1, 
@@ -91,8 +92,8 @@ if ((missionNamespace getVariable ['QS_enabledWaypoints',2]) isEqualTo 0) then {
 		};
 		drawIcon3D [
 			'\a3\ui_f\data\igui\cfg\simpleTasks\background1_ca.paa',
-			[0.75,0.75,0.75,0.3], 
-			(taskDestination _task),
+			[0.75,0.75,0.75,0.5], 
+			_taskPosition,
 			0.7, 
 			0.7, 
 			0, 
@@ -107,8 +108,8 @@ if ((missionNamespace getVariable ['QS_enabledWaypoints',2]) isEqualTo 0) then {
 		];
 		drawIcon3D [
 			_taskFilePath,
-			[0.75,0.75,0.75,0.3], 
-			(taskDestination _task),
+			[0.75,0.75,0.75,0.5], 
+			_taskPosition,
 			0.4, 
 			0.4, 
 			0, 
@@ -223,27 +224,27 @@ if (_player getUnitTrait 'medic') then {
 		if ('MineDetectorDisplay' in ((infoPanel 'left') + (infoPanel 'right'))) then {
 			_v = vehicle _player;
 			_vt = typeOf _v;
-			if (('MineDetector' in (items _player)) || {((toLower _vt) in ['b_apc_tracked_01_crv_f','b_t_apc_tracked_01_crv_f'])}) then {
+			if (('MineDetector' in (items _player)) || {((toLowerANSI _vt) in ['b_apc_tracked_01_crv_f','b_t_apc_tracked_01_crv_f'])}) then {
 				_drawDist = 17.5;
-				if ((toLower _vt) in ['b_apc_tracked_01_crv_f','b_t_apc_tracked_01_crv_f']) then {
+				if ((toLowerANSI _vt) in ['b_apc_tracked_01_crv_f','b_t_apc_tracked_01_crv_f']) then {
 					_drawDist = 35;
 				};
 				{
-					if ((_x distance2D _player) < _drawDist) then {
+					if (_x mineDetectedBy (_player getVariable ['QS_unit_side',WEST])) then {
 						_minePos = getPosATLVisual _x;
 						_scale = 1 - ((((_cameraOn distance2D _x) / (_drawDist + 0.1))) % 1);
 						if (_scale > 0) then {
 							drawIcon3D [
 								'a3\ui_f\data\map\VehicleIcons\iconexplosivegp_ca.paa',
 								[1,0,0,_scale],
-								[(_minePos # 0),(_minePos # 1),((_minePos # 2) + 1)],
+								(_minePos vectorAdd [0,0,1]),	//[(_minePos # 0),(_minePos # 1),((_minePos # 2) + 1)],
 								1,
 								1,
 								0
 							];
-						};
-					};
-				} count (detectedMines (_player getVariable ['QS_unit_side',EAST]));
+						};					
+					};				
+				} forEach (nearestMines [_player,[],_drawDist]);
 			};
 		};
 	};
@@ -260,13 +261,17 @@ if (!isStreamFriendlyUIEnabled) then {
 		) then {
 			{
 				if ((_player isEqualTo (leader (group _player))) && (_x in (groupSelectedUnits _player))) then {
-					private _teamID = 0;
-					if (!isNil {assignedTeam _x}) then {
-						_teamID = (['MAIN','RED','GREEN','BLUE','YELLOW'] find (assignedTeam _x)) max 0;
-					};
+					private _teamID = (['','MAIN','RED','GREEN','BLUE','YELLOW'] find (assignedTeam _x)) max 1;
 					drawIcon3D [
 						'a3\ui_f\data\igui\cfg\cursors\select_ca.paa',
-						([([0,125,255,([1,0.75] select ((getPlayerChannel _x) isEqualTo -1))]),[1,0,0,([1,0.75] select ((getPlayerChannel _x) isEqualTo -1))],[0,1,0.5,([1,0.75] select ((getPlayerChannel _x) isEqualTo -1))],[0,0.5,1,([1,0.75] select ((getPlayerChannel _x) isEqualTo -1))],[1,1,0,([1,0.75] select ((getPlayerChannel _x) isEqualTo -1))]] select _teamID),
+						([
+							([0,125,255,([1,0.75] select ((getPlayerChannel _x) isEqualTo -1))]),
+							([0,125,255,([1,0.75] select ((getPlayerChannel _x) isEqualTo -1))]),
+							[1,0,0,([1,0.75] select ((getPlayerChannel _x) isEqualTo -1))],
+							[0,1,0.5,([1,0.75] select ((getPlayerChannel _x) isEqualTo -1))],
+							[0,0.5,1,([1,0.75] select ((getPlayerChannel _x) isEqualTo -1))],
+							[1,1,0,([1,0.75] select ((getPlayerChannel _x) isEqualTo -1))]
+						] # _teamID),
 						(if (isNull (objectParent _x)) then {(_x modelToWorldVisual (_x selectionPosition 'Spine3'))} else {((objectParent _x) modelToWorldVisual [0,0,0])}),
 						0.7,
 						0.7,

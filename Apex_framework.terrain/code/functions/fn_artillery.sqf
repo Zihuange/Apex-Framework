@@ -14,7 +14,7 @@ Description:
 __________________________________________________/*/
 
 private ['_type','_pos','_dir','_v','_va','_dn','_ammo'];
-_type = _this select 0;
+_type = _this # 0;
 _ammo = [
 	[0.3,0.50],
 	[0.60,0.50],
@@ -26,7 +26,7 @@ _va = [
 ] select (worldName in ['Tanoa','Enoch']);
 if (_type isEqualTo 0) exitWith {
 	if ((!isNil {missionNamespace getVariable 'QS_arty'}) && (!isNull (missionNamespace getVariable 'QS_arty'))) exitWith {};
-	if (!((missionNamespace getVariable ['QS_missionConfig_arty',0]) isEqualTo 0)) then {
+	if ((missionNamespace getVariable ['QS_missionConfig_arty',0]) isNotEqualTo 0) then {
 		_pos = markerPos 'QS_marker_airbaseArtillery';
 		if ((missionNamespace getVariable ['QS_missionConfig_baseLayout',0]) isEqualTo 0) then {
 			if (worldName isEqualTo 'Altis') then {
@@ -48,11 +48,6 @@ if (_type isEqualTo 0) exitWith {
 			'QS_arty',
 			(createVehicle [(selectRandom _va),[0,0,1000],[],0,'NONE']),
 			TRUE
-		];
-		missionNamespace setVariable [
-			'QS_analytics_entities_created',
-			((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
-			FALSE
 		];
 		_arty = missionNamespace getVariable 'QS_arty';
 		_arty allowDamage FALSE;
@@ -114,7 +109,7 @@ if (_type isEqualTo 0) exitWith {
 						((missionNamespace getVariable 'QS_analytics_entities_deleted') + 1),
 						FALSE
 					];
-					deleteVehicle (_this select 6);
+					deleteVehicle (_this # 6);
 					if (local (missionNamespace getVariable 'QS_arty')) then {
 						(missionNamespace getVariable 'QS_arty') lockTurret [[0],TRUE];
 						['lockTurret',(missionNamespace getVariable 'QS_arty'),[[0],TRUE]] remoteExec ['QS_fnc_remoteExecCmd',0,FALSE];
@@ -129,7 +124,7 @@ if (_type isEqualTo 0) exitWith {
 						{
 							_unit = _x;
 							if (alive _unit) then {
-								[[],{50 cutText [(localize 'STR_QS_Arty_outOfAmmo'),'PLAIN DOWN',1];}] remoteExec ['call',_unit,FALSE];
+								[[],{50 cutText [localize 'STR_QS_Text_026','PLAIN DOWN',1];}] remoteExec ['call',_unit,FALSE];
 							};
 							moveOut _unit;
 						} count (crew (missionNamespace getVariable 'QS_arty'));
@@ -150,21 +145,21 @@ if (_type isEqualTo 0) exitWith {
 	};
 };
 if (_type isEqualTo 1) exitWith {
-	if (!((missionNamespace getVariable ['QS_missionConfig_arty',0]) isEqualTo 0)) then {
+	if ((missionNamespace getVariable ['QS_missionConfig_arty',0]) isNotEqualTo 0) then {
 		if (!isNull (missionNamespace getVariable 'QS_arty')) then {
 			if (alive (missionNamespace getVariable 'QS_arty')) then {
 				['lock',(missionNamespace getVariable 'QS_arty'),FALSE] remoteExec ['QS_fnc_remoteExecCmd',0,FALSE];
 				_dn = getText (configFile >> 'CfgVehicles' >> (typeOf (missionNamespace getVariable 'QS_arty')) >> 'displayName');
-				['sideChat',[WEST,'HQ'],(format [(localize 'STR_QS_Arty_rearmed'),_dn])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+				['sideChat',[WEST,'HQ'],(format ['%1 %2',_dn,localize 'STR_QS_Chat_024'])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 				if ((missionNamespace getVariable 'QS_arty') isKindOf 'B_MBT_01_arty_F') then {
 					[
 						[(missionNamespace getVariable 'QS_arty')],
 						{
 							for '_x' from 0 to 3 step 1 do {
-								(_this select 0) removeMagazineTurret ['2Rnd_155mm_Mo_guided_O',[0]];
+								(_this # 0) removeMagazineTurret ['2Rnd_155mm_Mo_guided_O',[0]];
 							};
 							for '_x' from 0 to 3 step 1 do {
-								(_this select 0) addMagazineTurret ['2Rnd_155mm_Mo_guided_O',[0]];
+								(_this # 0) addMagazineTurret ['2Rnd_155mm_Mo_guided_O',[0]];
 							};
 						}
 					] remoteExec ['call',(missionNamespace getVariable 'QS_arty'),FALSE];
@@ -197,10 +192,10 @@ if (_type isEqualTo 1) exitWith {
 		[24,(missionNamespace getVariable 'QS_arty'),1] remoteExec ['QS_fnc_remoteExec',0,FALSE];
 		missionNamespace setVariable ['QS_artyDepleted',[1],TRUE];
 	};
-	if (!((missionNamespace getVariable ['QS_missionConfig_destroyerEnabled',0]) isEqualTo 0)) then {
-		if (!((missionNamespace getVariable ['QS_missionConfig_destroyerArtillery',0]) isEqualTo 0)) then {
+	if ((missionNamespace getVariable ['QS_missionConfig_destroyerEnabled',0]) isNotEqualTo 0) then {
+		if ((missionNamespace getVariable ['QS_missionConfig_destroyerArtillery',0]) isNotEqualTo 0) then {
 			_turrets = (missionNamespace getVariable 'QS_destroyerObject') getVariable ['QS_destroyer_turrets',[]];
-			if (!(_turrets isEqualTo [])) then {
+			if (_turrets isNotEqualTo []) then {
 				private _turret = objNull;
 				{
 					_turret = _x;

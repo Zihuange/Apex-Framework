@@ -6,7 +6,7 @@ Author:
 	
 Last modified:
 
-	13/03/2018 A3 1.80 by Quiksilver
+	4/09/2022 A3 2.10 by Quiksilver
 	
 Description:
 
@@ -15,30 +15,39 @@ __________________________________________________/*/
 
 params ['_module','_object'];
 _type = typeOf _object;
-_typeL = toLower _type;
+_typeL = toLowerANSI _type;
+if ((missionNamespace getVariable ['QS_server_fps',100]) < 15) then {
+	50 cutText [format ["%2 %1",missionNamespace getVariable ['QS_server_fps',100],localize 'STR_QS_Text_006'],'PLAIN DOWN',0.25,TRUE,TRUE];
+};
 if (_object isKindOf 'Man') exitWith {
 	_side = side (group _object);
 	if ((_side getFriend EAST) < 0.6) then {
 		[_object] call (missionNamespace getVariable 'QS_fnc_setCollectible');
 	};
-	_object disableAI 'AUTOCOMBAT';
-	_object disableAI 'COVER';
+	//_object enableAIFeature ['AUTOCOMBAT',FALSE];
+	_object enableAIFeature ['COVER',FALSE];
 	(group _object) setSpeedMode 'FULL';
 	if (_side isEqualTo CIVILIAN) then {
 		if (_typeL in [
 			'c_man_p_fugitive_f','c_man_p_shorts_1_f','c_man_p_fugitive_f_afro','c_man_p_shorts_1_f_afro',
 			'c_man_p_fugitive_f_asia','c_man_p_shorts_1_f_asia','c_man_p_fugitive_f_euro','c_man_p_shorts_1_f_euro'
 		]) then {
-			[_object] call (missionNamespace getVariable 'QS_fnc_setCollectible');
-			(group _object) setBehaviour 'CARELESS';
-			_object disableAI 'COVER';
+			if (diag_tickTime > (_module getVariable ['QS_zeusMission_execCooldown',-1])) then {
+				_module setVariable ['QS_zeusMission_execCooldown',diag_tickTime + 3,FALSE];
+				['CAPTURE_MAN',_object] call (missionNamespace getVariable 'QS_fnc_zeusMission');
+			};
+			for '_i' from 0 to 2 step 1 do {
+				_object setVariable ['QS_surrenderable',TRUE,TRUE];
+			};
+			(group _object) setBehaviourStrong 'CARELESS';
+			_object enableAIFeature ['COVER',FALSE];
 			_object addEventHandler [
 				'Killed',
 				{
-					_killer = _this select 1;
+					_killer = _this # 1;
 					if (!isNull _killer) then {
 						if (isPlayer _killer) then {
-							_text = format ['Fugitive killed by %1!',(name _killer)];
+							_text = format [localize 'STR_QS_Chat_028',(name _killer)];
 							['sideChat',[EAST,'HQ'],_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 						};
 					};
@@ -52,20 +61,19 @@ if (_object isKindOf 'Man') exitWith {
 			if ((_object distance (markerPos 'QS_marker_gitmo')) < 20) then {
 				_object forceAddUniform 'U_C_WorkerCoveralls';
 				removeHeadgear _object;
-				0 = [_object] spawn {
+				[_object] spawn {
 					uiSleep 1; 
-					(_this select 0) setObjectTextureGlobal [0,'#(rgb,8,8,3)color(1,0.1,0,1)'];
+					(_this # 0) setObjectTextureGlobal [0,'#(rgb,8,8,3)color(1,0.1,0,1)'];
 				};
-				_object setVariable ['QS_unit_isPrisoner',TRUE,TRUE];
 			};
 		} else {
 			_object addEventHandler [
 				'Killed',
 				{
-					_killer = _this select 1;
+					_killer = _this # 1;
 					if (!isNull _killer) then {
 						if (isPlayer _killer) then {
-							_text = format [(localize 'STR_QS_Civilian_murdered'),(name _killer)];
+							_text = format ['%1 %2',(name _killer),localize 'STR_QS_Chat_088'];
 							['systemChat',_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 						};
 					};
@@ -75,7 +83,7 @@ if (_object isKindOf 'Man') exitWith {
 		_object setSkill 0;
 		_object allowFleeing 0;
 		{
-			_object disableAI _x;
+			_object enableAIFeature [_x,FALSE];
 		} forEach [
 			'TARGET',
 			'AUTOTARGET',
@@ -86,6 +94,37 @@ if (_object isKindOf 'Man') exitWith {
 		if (_side in [WEST,EAST,RESISTANCE]) then {
 			if (_side in [WEST,RESISTANCE]) then {
 				_object call (missionNamespace getVariable 'QS_fnc_unitSetup');
+			};
+			if ((side _object) in [WEST]) then {
+				if (_typeL  in [
+					'b_soldier_ar_f','b_patrol_soldier_ar_f','b_patrol_heavygunner_f','b_patrol_soldier_mg_f','b_t_soldier_ar_f','b_w_soldier_ar_f'
+				]) then {
+					_weapons = [
+						'lmg_03_f',0.3,
+						'lmg_mk200_f',0.3,
+						'lmg_mk200_black_f',0.3,
+						'lmg_zafir_f',0.3,
+						'mmg_01_hex_f',0,
+						'mmg_02_black_f',0.1
+					];
+					if ((backpack _object) isEqualTo '') then {
+						_object addBackpack 'b_kitbag_rgr';
+					};
+					_object removeWeapon (handgunWeapon _object);
+					_object removeWeapon (primaryWeapon _object);
+					{
+						_object removeMagazine _x;
+					} forEach (magazines _object);
+					[_object,(selectRandomWeighted _weapons),8] call (missionNamespace getVariable 'QS_fnc_addWeapon');
+					_object addPrimaryWeaponItem (selectRandom ['optic_ams','optic_ams_khk','optic_ams_snd','optic_dms','optic_dms_ghex_f','optic_dms_weathered_f','optic_khs_blk','optic_khs_hex','optic_khs_old','optic_khs_tan','optic_lrps','optic_lrps_ghex_f','optic_lrps_tna_f','optic_sos','optic_sos_khk_f']);
+				} else {
+					_object addPrimaryWeaponItem (selectRandom [
+						'optic_ams','optic_ams_khk','optic_ams_snd','optic_dms','optic_dms_ghex_f','optic_dms_weathered_f','optic_khs_blk','optic_khs_hex','optic_khs_old','optic_khs_tan','optic_lrps',
+						'optic_lrps_ghex_f','optic_lrps_tna_f','optic_sos','optic_sos_khk_f',
+						'optic_arco','optic_arco_arid_f','optic_arco_blk_f','optic_arco_ghex_f','optic_arco_lush_f','optic_arco_ak_arid_f','optic_arco_ak_blk_f',
+						'optic_arco_ak_lush_f','optic_erco_blk_f','optic_erco_khk_f','optic_erco_snd_f','optic_mrco','optic_hamr','optic_hamr_khk_f'
+					]);
+				};
 			};
 			[[_object],1] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
 			_QS_unit_side = side _object;
@@ -111,8 +150,8 @@ if (_object isKindOf 'Man') exitWith {
 			};
 		};
 	};
-	if (false) then {
-		50 cutText [(format ['Object %1 not configured for this scenario',(getText (configFile >> 'CfgVehicles' >> _type >> 'displayName'))]),'PLAIN'];
+	if (_typeL in ['c_soldier_vr_f','b_soldier_vr_f','o_soldier_vr_f','i_soldier_vr_f','b_protagonist_vr_f','o_protagonist_vr_f','i_protagonist_vr_f']) then {
+		50 cutText [(format ['%1 - %2',(getText (configFile >> 'CfgVehicles' >> _type >> 'displayName')),localize 'STR_QS_Text_007']),'PLAIN'];
 		[17,_object] remoteExec ['QS_fnc_remoteExec',2,FALSE];
 	};
 };
@@ -162,7 +201,7 @@ if ((_object isKindOf 'LandVehicle') || {(_object isKindOf 'Air')} || {(_object 
 	_object setFuel (0.4 + (random 0.45));
 	_object setUnloadInCombat [FALSE,FALSE];
 	if ((random 1) > 0.333) then {
-		_object allowCrewInImmobile TRUE;
+		_object allowCrewInImmobile [TRUE,TRUE];
 	};
 	if ((_object isKindOf 'LandVehicle') || {(_object isKindOf 'Ship')}) then {
 		if (_object isKindOf 'LandVehicle') then {
@@ -176,7 +215,7 @@ if ((_object isKindOf 'LandVehicle') || {(_object isKindOf 'Air')} || {(_object 
 	if (_object isKindOf 'Helicopter') then {
 		if (_typeL in ['b_heli_light_01_armed_f','b_heli_attack_01_f','o_heli_light_02_f','o_heli_light_02_v2_f','i_heli_light_03_f','o_heli_attack_02_f','o_heli_attack_02_black_f','o_heli_light_02_dynamicloadout_f','o_heli_attack_02_dynamicloadout_black_f','o_heli_attack_02_dynamicloadout_black_f','i_heli_light_03_dynamicloadout_f','i_e_heli_light_03_dynamicloadout_f','b_heli_attack_01_dynamicloadout_f','b_heli_light_01_dynamicloadout_f']) then {
 			if (!(missionNamespace getVariable 'QS_armedAirEnabled')) then {
-				50 cutText ['Armed aircraft currently disabled','PLAIN DOWN',1];
+				50 cutText [localize 'STR_QS_Text_008','PLAIN DOWN',1];
 				[17,_object] remoteExec ['QS_fnc_remoteExec',2,FALSE];
 			};
 		};
@@ -205,7 +244,7 @@ if ((_object isKindOf 'LandVehicle') || {(_object isKindOf 'Air')} || {(_object 
 			];
 		};
 		if (!(missionNamespace getVariable 'QS_armedAirEnabled')) then {
-			50 cutText ['Armed aircraft currently disabled','PLAIN DOWN',1];
+			50 cutText [localize 'STR_QS_Text_008','PLAIN DOWN',1];
 			[17,_object] remoteExec ['QS_fnc_remoteExec',2,FALSE];
 		};
 	};
@@ -215,7 +254,7 @@ if ((_object isKindOf 'LandVehicle') || {(_object isKindOf 'Air')} || {(_object 
 		_object setFuelCargo 0;
 	};
 	if (alive _object) then {
-		if (((crew _object) isEqualTo []) || {(!(((crew _object) findIf {((side _x) in [EAST])}) isEqualTo -1))}) then {
+		if (((crew _object) isEqualTo []) || {(((crew _object) findIf {((side _x) in [EAST])}) isNotEqualTo -1)}) then {
 			[_object] call (missionNamespace getVariable 'QS_fnc_vSetup');
 			[47,_object] remoteExec ['QS_fnc_remoteExec',2,FALSE];
 		};
@@ -226,7 +265,7 @@ if (['Module',_type,FALSE] call (missionNamespace getVariable 'QS_fnc_inString')
 	if (false) then {
 		[17,_object] remoteExec ['QS_fnc_remoteExec',2,FALSE];
 		closeDialog 0;
-		50 cutText [format ['Module %1 not configured for this scenario',(getText (configFile >> 'CfgVehicles' >> _type >> 'displayName'))],'PLAIN'];
+		50 cutText [format ['%1 - %2',(getText (configFile >> 'CfgVehicles' >> _type >> 'displayName')),localize 'STR_QS_Text_009'],'PLAIN'];
 	} else {
 		_module setVariable [
 			'QS_curator_modules',

@@ -65,7 +65,7 @@ if (_type isEqualTo 'PROPAGATE') exitWith {
 	} forEach (missionNamespace getVariable 'QS_unit_roles');
 	if (_propagate) then {
 		missionNamespace setVariable ['QS_RSS_public',(missionNamespace getVariable 'QS_RSS_public'),TRUE];
-		missionNamespace setVariable ['QS_RSS_refreshUI',TRUE,TRUE];
+		missionNamespace setVariable ['QS_RSS_refreshUI',TRUE,-2];
 	};
 };
 if (_type isEqualTo 'GET_ROLE_COUNT') exitWith {
@@ -133,8 +133,8 @@ if (_type isEqualTo 'UPDATE_UI') exitWith {
 		{
 			_unit setVariable _x;
 		} forEach [
-			['QS_unit_role_icon',(['GET_ROLE_ICONMAP',(_unit getVariable ['QS_unit_role','rifleman'])] call (missionNamespace getVariable 'QS_fnc_roles')),FALSE],
-			['QS_unit_role_displayName',(['GET_ROLE_DISPLAYNAME',(_unit getVariable ['QS_unit_role','rifleman'])] call (missionNamespace getVariable 'QS_fnc_roles')),FALSE],
+			['QS_unit_role_icon',(['GET_ROLE_ICONMAP',(_unit getVariable ['QS_unit_role','rifleman']),_unit,TRUE] call (missionNamespace getVariable 'QS_fnc_roles')),FALSE],
+			['QS_unit_role_displayName',(['GET_ROLE_DISPLAYNAME',(_unit getVariable ['QS_unit_role','rifleman']),_unit,TRUE] call (missionNamespace getVariable 'QS_fnc_roles')),FALSE],
 			['QS_unit_role_netUpdate',FALSE,FALSE]
 		];
 	};
@@ -143,7 +143,8 @@ if (_type isEqualTo 'GET_ROLE_DISPLAYNAME') exitWith {
 	params [
 		'',
 		['_role',''],
-		['_unit',objNull]
+		['_unit',objNull],
+		['_update',FALSE]
 	];
 	private _return = 'Rifleman';
 	if (_role isEqualTo '') then {
@@ -154,6 +155,11 @@ if (_type isEqualTo 'GET_ROLE_DISPLAYNAME') exitWith {
 	_table_index = (missionNamespace getVariable 'QS_roles_UI_info') findIf {((_x # 0) isEqualTo _role)};
 	if (_table_index isNotEqualTo -1) then {
 		_return = ((missionNamespace getVariable 'QS_roles_UI_info') # _table_index) # 1;
+		if (!isNull _unit) then {
+			if (_update || {((_unit getVariable ['QS_unit_role_displayName',-1]) isEqualTo -1)}) then {
+				_unit setVariable ['QS_unit_role_displayName',_return,FALSE];
+			};
+		};
 	};
 	_return;
 };
@@ -175,24 +181,8 @@ if (_type isEqualTo 'GET_ROLE_DISPLAYNAME2') exitWith {
 	};
 	private _exit = FALSE;
 	private _roles_side = [];
-	/*/
-	{
-		_roles_side = _x;
-		if (_roles_side isNotEqualTo []) then {
-			{
-				_role2 = _x # 0;
-				if (_role isEqualTo _role2) then {
-					_exit = TRUE;
-					_role_whitelisted = (_x # 5) > 0;
-				};
-				if (_exit) exitWith {};
-			} forEach _roles_side;
-		};
-		if (_exit) exitWith {};
-	} forEach (missionNamespace getVariable 'QS_roles_data');
-	/*/
 	if (['_WL',_role,FALSE] call (missionNamespace getVariable 'QS_fnc_inString')) then {
-		_return = '[白名单保留] ' + _return;
+		_return = (format ['[%1] ',localize 'STR_QS_Role_028']) + _return;
 	};
 	_return;
 };
@@ -218,7 +208,8 @@ if (_type isEqualTo 'GET_ROLE_ICONMAP') exitWith {
 	params [
 		'',
 		['_role',''],
-		['_unit',objNull]
+		['_unit',objNull],
+		['_update',FALSE]
 	];
 	private _return = 'a3\ui_f\data\map\vehicleicons\iconMan_ca.paa';
 	if (_role isEqualTo '') then {
@@ -229,6 +220,11 @@ if (_type isEqualTo 'GET_ROLE_ICONMAP') exitWith {
 	_table_index = (missionNamespace getVariable 'QS_roles_UI_info') findIf {((_x # 0) isEqualTo _role)};
 	if (_table_index isNotEqualTo -1) then {
 		_return = ((missionNamespace getVariable 'QS_roles_UI_info') # _table_index) # 3;
+		if (!isNull _unit) then {
+			if (_update || {((_unit getVariable ['QS_unit_role_icon',-1]) isEqualTo -1)}) then {
+				_unit setVariable ['QS_unit_role_icon',_return,FALSE];
+			};
+		};
 	};
 	_return;
 };
@@ -299,28 +295,18 @@ if (_type isEqualTo 'REQUEST_ROLE') exitWith {
 	private _roles_side = [];
 	private _role_data = [];
 	private _whitelisted = _uid in (['S3'] call (missionNamespace getVariable 'QS_fnc_whitelist'));
-	private _roleCount = [0,0];
-	private _whitelist_value = 0;
-	/*/
-	{
-		_roles_side = _x;
-		if (_roles_side isNotEqualTo []) then {
-			{
-				_role2 = _x # 0;
-				if ((_x # 1) isEqualTo _side) then {
-					if (_role isEqualTo _role2) then {
-						_exit = TRUE;
-						_whitelist_value = _x # 5;
-						_role_whitelisted = _whitelist_value > 0;
-					};
-				};
-				if (_exit) exitWith {};
-			} forEach _roles_side;
+	if (!(_whitelisted)) then {
+		if ((toLowerANSI _role) isEqualTo 'pilot_heli_wl') then {
+			_whitelisted = _uid in (call (missionNamespace getVariable ['QS_pilot_whitelist',{[]}]));
 		};
-		if (_exit) exitWith {};
-	} forEach (missionNamespace getVariable 'QS_roles_data');
-	/*/
-	
+		if ((toLowerANSI _role) isEqualTo 'sniper_wl') then {
+			_whitelisted = _uid in (call (missionNamespace getVariable ['QS_sniper_whitelist',{[]}]));
+		};
+		if ((toLowerANSI _role) isEqualTo 'medic_wl') then {
+			_whitelisted = _uid in (call (missionNamespace getVariable ['QS_cls_whitelist',{[]}]));
+		};
+	};
+	private _roleCount = [0,0];
 	if (diag_tickTime >= (uiNamespace getVariable ['QS_RSS_requestCooldown',-1])) then {
 		uiNamespace setVariable ['QS_RSS_requestCooldown',(diag_tickTime + 3)];
 		private _allowRequest = TRUE;
@@ -332,50 +318,45 @@ if (_type isEqualTo 'REQUEST_ROLE') exitWith {
 					
 				} else {
 					_allowRequest = FALSE;
-					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'已经是所选兵种',[],-1,TRUE,'兵种选择系统',FALSE];
+					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,localize 'STR_QS_Role_002',[],-1,TRUE,localize 'STR_QS_Role_001',FALSE];
 				};
 			} else {
 				_allowRequest = FALSE;
-				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'所选兵种数量已达上限',[],-1,TRUE,'兵种选择系统',FALSE];
+				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,localize 'STR_QS_Role_003',[],-1,TRUE,localize 'STR_QS_Role_001',FALSE];
 			};
 		} else {
 			if ((_side isNotEqualTo (player getVariable ['QS_unit_side',EAST])) && (!(missionNamespace getVariable ['QS_RSS_client_canSideSwitch',FALSE]))) then {
 				_allowRequest = FALSE;
-				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'无法变更派系',[],-1,TRUE,'兵种选择系统',FALSE];
+				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,localize 'STR_QS_Role_004',[],-1,TRUE,localize 'STR_QS_Role_001',FALSE];
 			} else {
 				_allowRequest = FALSE;
-				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'无法选择此兵种',[],-1,TRUE,'兵种选择系统',FALSE];
+				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,localize 'STR_QS_Role_005',[],-1,TRUE,localize 'STR_QS_Role_001',FALSE];
 			};
 		};
 		if (_role in ['pilot_plane','pilot_cas']) then {
 			_isCAS = TRUE;
 			if ((missionNamespace getVariable ['QS_missionConfig_CAS',2]) isEqualTo 0) then {
 				_allowRequest = FALSE;
-				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'服务器设定已关闭固定翼飞行员位置',[],-1,TRUE,'兵种选择系统',FALSE];
+				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,localize 'STR_QS_Role_006',[],-1,TRUE,localize 'STR_QS_Role_001',FALSE];
 			};
 			if ((missionNamespace getVariable ['QS_missionConfig_CAS',2]) in [1,3]) then {
 				if (!(_uid in (['CAS'] call (missionNamespace getVariable 'QS_fnc_whitelist')))) then {
-					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'未拥有固定翼白名单 (加入QQ群：813940305申请)',[],-1,TRUE,'兵种选择系统',FALSE];
+					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,localize 'STR_QS_Role_007',[],-1,TRUE,localize 'STR_QS_Role_001',FALSE];
 					_allowRequest = FALSE;
 				};
 			};
 			if ((missionNamespace getVariable ['QS_missionConfig_CAS',2]) isEqualTo 3) then {
 				if ((player getVariable ['QS_client_casAllowance',0]) >= (missionNamespace getVariable ['QS_CAS_jetAllowance_value',3])) then {
-					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,(format ['已突破固定翼飞行员上限 ( %1 )',(missionNamespace getVariable ['QS_CAS_jetAllowance_value',3])]),[],-1,TRUE,'兵种选择系统',FALSE];
+					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,(format ['%2 ( %1 )',(missionNamespace getVariable ['QS_CAS_jetAllowance_value',3]),localize 'STR_QS_Role_008']),[],-1,TRUE,localize 'STR_QS_Role_001',FALSE];
 					_allowRequest = FALSE;
 				};
 			};
 		};
 		if (!(_isCAS)) then {
-		
 			// Whitelisting
 			if ((['_WL',_role,FALSE] call (missionNamespace getVariable 'QS_fnc_inString')) && (!(_whitelisted))) then {
-				//_roleCount = ['GET_ROLE_COUNT',_role,_side,FALSE] call (missionNamespace getVariable 'QS_fnc_roles');
-				//_roleCount set [1,((_roleCount # 1) - _whitelist_value)];
-				//if ((_roleCount # 0) >= (_roleCount # 1)) then {
-					_allowRequest = FALSE;
-					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,10,-1,'白名单兵种或保留给白名单的普通兵种<br/><br/>(加入QQ群：813940305申请)',[],-1,TRUE,'兵种选择系统',FALSE];
-				//};
+				_allowRequest = FALSE;
+				(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,10,-1,format ['%1<br/><br/>(%2)',localize 'STR_QS_Role_009',localize 'STR_QS_Role_010'],[],-1,TRUE,localize 'STR_QS_Role_001',FALSE];
 			};
 		};
 		if (_allowRequest) then {
@@ -383,6 +364,10 @@ if (_type isEqualTo 'REQUEST_ROLE') exitWith {
 		};
 	};
 };
+
+//['HANDLE',['HANDLE_REQUEST_ROLE','',(_casPilot getVariable ['QS_unit_side',WEST]),'rifleman',_casPilot]] call (missionNamespace getVariable 'QS_fnc_roles');
+
+
 if (_type isEqualTo 'HANDLE_REQUEST_ROLE') exitWith {
 	params [
 		'',
@@ -457,7 +442,7 @@ if (_type isEqualTo 'HANDLE_REQUEST_ROLE') exitWith {
 	_roles_side set [_role_data_index,[_role_data,_role_units,_role_queue]];
 	(missionNamespace getVariable 'QS_unit_roles') set [_side_ID,_roles_side];
 	['PROPAGATE'] call (missionNamespace getVariable 'QS_fnc_roles');
-	missionNamespace setVariable ['QS_RSS_refreshUI',TRUE,TRUE];
+	missionNamespace setVariable ['QS_RSS_refreshUI',TRUE,-2];
 	if ((side (group _unit)) isNotEqualTo _side) then {
 		if ((count (allGroups select {((side _x) isEqualTo _side)})) >= 100) then {
 			{
@@ -472,7 +457,7 @@ if (_type isEqualTo 'HANDLE_REQUEST_ROLE') exitWith {
 		};
 		[_unit] joinSilent (createGroup [_side,TRUE]);
 		if (_side isNotEqualTo (_unit getVariable ['QS_unit_side',EAST])) then {
-			_txt = format ['有玩家从 %2阵营更换到了 %3阵营',(name _unit),(_unit getVariable ['QS_unit_side',EAST]),_side];
+			_txt = format ['%1 %4 %2 %5 %3',(name _unit),(_unit getVariable ['QS_unit_side',EAST]),_side,localize 'STR_QS_Chat_151',localize 'STR_QS_Chat_152'];
 			_txt remoteExec ['systemChat',-2,FALSE];
 			remoteExec ['QS_fnc_clientEventRespawn',_unit,FALSE];
 		};
@@ -489,10 +474,11 @@ if (_type isEqualTo 'HANDLE_REQUEST_ROLE') exitWith {
 };
 if (_type isEqualTo 'INIT_ROLE') exitWith {
 	params ['','_role'];
-	playSound 'orange_choice_select';
+	playSoundUI ['AddItemOK',1,0.75,FALSE];
 	player setVariable ['QS_unit_role',_role,FALSE];
+	private _medic = (getMissionConfigValue ['ReviveRequiredTrait',1]) isEqualTo 0;
 	private _traitsData = [
-		[['medic',FALSE,FALSE]],
+		[['medic',_medic,FALSE]],
 		[['uavhacker',FALSE,FALSE]],
 		[['engineer',FALSE,FALSE]],
 		[['explosiveSpecialist',FALSE,FALSE]],
@@ -513,7 +499,7 @@ if (_type isEqualTo 'INIT_ROLE') exitWith {
 	];
 	if (_role in ['autorifleman','b_autorifleman','autorifleman_WL']) then {
 		_traitsData = [
-			[['medic',FALSE,FALSE]],
+			[['medic',_medic,FALSE]],
 			[['uavhacker',FALSE,FALSE]],
 			[['engineer',FALSE,FALSE]],
 			[['explosiveSpecialist',FALSE,FALSE]],
@@ -535,7 +521,7 @@ if (_type isEqualTo 'INIT_ROLE') exitWith {
 	};
 	if (_role in ['machine_gunner','machine_gunner_WL']) then {
 		_traitsData = [
-			[['medic',FALSE,FALSE]],
+			[['medic',_medic,FALSE]],
 			[['uavhacker',FALSE,FALSE]],
 			[['engineer',FALSE,FALSE]],
 			[['explosiveSpecialist',FALSE,FALSE]],
@@ -557,7 +543,7 @@ if (_type isEqualTo 'INIT_ROLE') exitWith {
 	};
 	if (_role in ['rifleman_lat','rifleman_hat','rifleman_aa','rifleman_missile','rifleman_hat_WL']) then {
 		_traitsData = [
-			[['medic',FALSE,FALSE]],
+			[['medic',_medic,FALSE]],
 			[['uavhacker',FALSE,FALSE]],
 			[['engineer',FALSE,FALSE]],
 			[['explosiveSpecialist',FALSE,FALSE]],
@@ -601,7 +587,7 @@ if (_type isEqualTo 'INIT_ROLE') exitWith {
 	};
 	if (_role isEqualTo 'engineer') then {
 		_traitsData = [
-			[['medic',FALSE,FALSE]],
+			[['medic',_medic,FALSE]],
 			[['uavhacker',FALSE,FALSE]],
 			[['engineer',TRUE,FALSE]],
 			[['explosiveSpecialist',TRUE,FALSE]],
@@ -623,7 +609,7 @@ if (_type isEqualTo 'INIT_ROLE') exitWith {
 	};
 	if (_role in ['sniper','sniper_WL']) then {
 		_traitsData = [
-			[['medic',FALSE,FALSE]],
+			[['medic',_medic,FALSE]],
 			[['uavhacker',FALSE,FALSE]],
 			[['engineer',FALSE,FALSE]],
 			[['explosiveSpecialist',FALSE,FALSE]],
@@ -645,7 +631,7 @@ if (_type isEqualTo 'INIT_ROLE') exitWith {
 	};
 	if (_role in ['jtac','jtac_WL']) then {
 		_traitsData = [
-			[['medic',FALSE,FALSE]],
+			[['medic',_medic,FALSE]],
 			[['uavhacker',FALSE,FALSE]],
 			[['engineer',FALSE,FALSE]],
 			[['explosiveSpecialist',FALSE,FALSE]],
@@ -667,7 +653,7 @@ if (_type isEqualTo 'INIT_ROLE') exitWith {
 	};
 	if (_role isEqualTo 'mortar_gunner') then {
 		_traitsData = [
-			[['medic',FALSE,FALSE]],
+			[['medic',_medic,FALSE]],
 			[['uavhacker',FALSE,FALSE]],
 			[['engineer',FALSE,FALSE]],
 			[['explosiveSpecialist',TRUE,FALSE]],
@@ -689,7 +675,7 @@ if (_type isEqualTo 'INIT_ROLE') exitWith {
 	};
 	if (_role isEqualTo 'uav') then {
 		_traitsData = [
-			[['medic',FALSE,FALSE]],
+			[['medic',_medic,FALSE]],
 			[['uavhacker',TRUE,FALSE]],
 			[['engineer',FALSE,FALSE]],
 			[['explosiveSpecialist',FALSE,FALSE]],
@@ -711,7 +697,7 @@ if (_type isEqualTo 'INIT_ROLE') exitWith {
 	};
 	if (_role in ['pilot_heli','pilot_heli_WL']) then {
 		_traitsData = [
-			[['medic',FALSE,FALSE]],
+			[['medic',_medic,FALSE]],
 			[['uavhacker',FALSE,FALSE]],
 			[['engineer',FALSE,FALSE]],
 			[['explosiveSpecialist',FALSE,FALSE]],
@@ -733,7 +719,7 @@ if (_type isEqualTo 'INIT_ROLE') exitWith {
 	};
 	if (_role isEqualTo 'pilot_plane') then {
 		_traitsData = [
-			[['medic',FALSE,FALSE]],
+			[['medic',_medic,FALSE]],
 			[['uavhacker',FALSE,FALSE]],
 			[['engineer',FALSE,FALSE]],
 			[['explosiveSpecialist',FALSE,FALSE]],
@@ -755,7 +741,7 @@ if (_type isEqualTo 'INIT_ROLE') exitWith {
 	};
 	if (_role isEqualTo 'commander') then {
 		_traitsData = [
-			[['medic',FALSE,FALSE]],
+			[['medic',_medic,FALSE]],
 			[['uavhacker',FALSE,FALSE]],
 			[['engineer',FALSE,FALSE]],
 			[['explosiveSpecialist',FALSE,FALSE]],
@@ -814,7 +800,7 @@ if (_type isEqualTo 'INIT_ROLE') exitWith {
 	['SET_SAVED_LOADOUT',_role] call (missionNamespace getVariable 'QS_fnc_roles');
 	call (missionNamespace getVariable 'QS_fnc_respawnPilot');
 	uiNamespace setVariable ['QS_client_respawnCooldown',diag_tickTime + 30];
-	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,(format ['兵种已变更为：%1',(['GET_ROLE_DISPLAYNAME',_role] call (missionNamespace getVariable 'QS_fnc_roles'))]),[],-1,TRUE,'兵种选择系统',FALSE];
+	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,(format ['%2 %1',(['GET_ROLE_DISPLAYNAME',_role] call (missionNamespace getVariable 'QS_fnc_roles')),localize 'STR_QS_Role_011']),[],-1,TRUE,localize 'STR_QS_Role_001',FALSE];
 };
 if (_type isEqualTo 'SET_DEFAULT_LOADOUT') exitWith {
 	params ['','_role',['_save',FALSE]];
@@ -824,19 +810,19 @@ if (_type isEqualTo 'SET_DEFAULT_LOADOUT') exitWith {
 		if ((getUnitLoadout player) isNotEqualTo (((missionNamespace getVariable 'QS_roles_defaultLoadouts') # 0) # 1)) then {
 			player setUnitLoadout [(((missionNamespace getVariable 'QS_roles_defaultLoadouts') # 0) # 1),TRUE];
 		} else {
-			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'装备已读取',[],-1,TRUE,'兵种选择系统',FALSE];
+			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,localize 'STR_QS_Role_012',[],-1,TRUE,localize 'STR_QS_Role_001',FALSE];
 		};
 	} else {
 		if ((getUnitLoadout player) isNotEqualTo (((missionNamespace getVariable 'QS_roles_defaultLoadouts') # _loadout_index) # 1)) then {
 			player setUnitLoadout [(((missionNamespace getVariable 'QS_roles_defaultLoadouts') # _loadout_index) # 1),TRUE];
 		} else {
-			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,'装备已读取',[],-1,TRUE,'兵种选择系统',FALSE];
+			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,TRUE,5,-1,localize 'STR_QS_Role_012',[],-1,TRUE,localize 'STR_QS_Role_001',FALSE];
 		};
 	};
 	if (_save) then {
 		_QS_playerRole = player getVariable ['QS_unit_role','rifleman'];
 		missionNamespace setVariable ['QS_revive_arsenalInventory',(getUnitLoadout player),FALSE];
-		private _QS_savedLoadouts = profileNamespace getVariable [(format ['QS_RSS_loadouts_%1',(['arid','tropic'] select (worldName in ['Tanoa','Enoch']))]),[]];
+		private _QS_savedLoadouts = missionProfileNamespace getVariable [(format ['QS_RSS_loadouts_%1',(['arid','tropic'] select (worldName in ['Tanoa','Enoch']))]),[]];
 		_QS_loadoutIndex = (_QS_savedLoadouts findIf {((_x # 0) isEqualTo _QS_playerRole)});
 		_a = [_QS_playerRole,(getUnitLoadout player)];
 		if (_QS_loadoutIndex isEqualTo -1) then {
@@ -844,30 +830,30 @@ if (_type isEqualTo 'SET_DEFAULT_LOADOUT') exitWith {
 		} else {
 			_QS_savedLoadouts set [_QS_loadoutIndex,_a];
 		};
-		profileNamespace setVariable [(format ['QS_RSS_loadouts_%1',(['arid','tropic'] select (worldName in ['Tanoa','Enoch']))]),_QS_savedLoadouts];
-		saveProfileNamespace;
+		missionProfileNamespace setVariable [(format ['QS_RSS_loadouts_%1',(['arid','tropic'] select (worldName in ['Tanoa','Enoch']))]),_QS_savedLoadouts];
+		saveMissionProfileNamespace;
 	};
 };
 if (_type isEqualTo 'SET_SAVED_LOADOUT') exitWith {
 	params ['',['_role','rifleman']];
 	private _customLoadout = FALSE;
 	if ((((missionNamespace getVariable ['QS_missionConfig_aoType','CLASSIC']) in ['CLASSIC','SC','GRID']) && ((player getVariable ['QS_unit_side',EAST]) isEqualTo EAST)) || {(!((missionNamespace getVariable ['QS_missionConfig_aoType','CLASSIC']) in ['CLASSIC','SC','GRID']))}) then {
-		if (!isNil {profileNamespace getVariable (format ['QS_RSS_loadouts_%1',(['arid','tropic'] select (worldName in ['Tanoa','Enoch']))])}) then {
-			if ((profileNamespace getVariable (format ['QS_RSS_loadouts_%1',(['arid','tropic'] select (worldName in ['Tanoa','Enoch']))])) isEqualType []) then {
-				if ((profileNamespace getVariable (format ['QS_RSS_loadouts_%1',(['arid','tropic'] select (worldName in ['Tanoa','Enoch']))])) isNotEqualTo []) then {
-					_QS_loadoutIndex = (profileNamespace getVariable (format ['QS_RSS_loadouts_%1',(['arid','tropic'] select (worldName in ['Tanoa','Enoch']))])) findIf {((_x # 0) isEqualTo _role)};
+		if (!isNil {missionProfileNamespace getVariable (format ['QS_RSS_loadouts_%1',(['arid','tropic'] select (worldName in ['Tanoa','Enoch']))])}) then {
+			if ((missionProfileNamespace getVariable (format ['QS_RSS_loadouts_%1',(['arid','tropic'] select (worldName in ['Tanoa','Enoch']))])) isEqualType []) then {
+				if ((missionProfileNamespace getVariable (format ['QS_RSS_loadouts_%1',(['arid','tropic'] select (worldName in ['Tanoa','Enoch']))])) isNotEqualTo []) then {
+					_QS_loadoutIndex = (missionProfileNamespace getVariable (format ['QS_RSS_loadouts_%1',(['arid','tropic'] select (worldName in ['Tanoa','Enoch']))])) findIf {((_x # 0) isEqualTo _role)};
 					if (_QS_loadoutIndex isNotEqualTo -1) then {
-						player setUnitLoadout [(((profileNamespace getVariable (format ['QS_RSS_loadouts_%1',(['arid','tropic'] select (worldName in ['Tanoa','Enoch']))])) # _QS_loadoutIndex) # 1),TRUE];
+						player setUnitLoadout [(((missionProfileNamespace getVariable (format ['QS_RSS_loadouts_%1',(['arid','tropic'] select (worldName in ['Tanoa','Enoch']))])) # _QS_loadoutIndex) # 1),TRUE];
 						_customLoadout = TRUE;
 					};
 				};
 			} else {
-				profileNamespace setVariable [(format ['QS_RSS_loadouts_%1',(['arid','tropic'] select (worldName in ['Tanoa','Enoch']))]),[]];
-				saveProfileNamespace;
+				missionProfileNamespace setVariable [(format ['QS_RSS_loadouts_%1',(['arid','tropic'] select (worldName in ['Tanoa','Enoch']))]),[]];
+				saveMissionProfileNamespace;
 			};
 		} else {
-			profileNamespace setVariable [(format ['QS_RSS_loadouts_%1',(['arid','tropic'] select (worldName in ['Tanoa','Enoch']))]),[]];
-			saveProfileNamespace;
+			missionProfileNamespace setVariable [(format ['QS_RSS_loadouts_%1',(['arid','tropic'] select (worldName in ['Tanoa','Enoch']))]),[]];
+			saveMissionProfileNamespace;
 		};
 	};
 	if (!(_customLoadout)) then {

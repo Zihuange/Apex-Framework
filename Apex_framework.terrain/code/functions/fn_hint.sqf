@@ -6,7 +6,7 @@ Author:
 	
 Last Modified:
 
-	10/06/2018 A3 1.82 by Quiksilver
+	13/09/2022 A3 2.10 by Quiksilver
 	
 Description:
 
@@ -41,13 +41,13 @@ if ((_adv) && (_text isEqualType '')) then {
 	if (_keyColor isEqualTo -1) then {
 		_keyColor = ['GUI','BCG_RGB'] call (missionNamespace getVariable 'BIS_fnc_displayColorGet');
 		_keyColor resize 3;
-		_keyColor = _keyColor vectorMultiply (1 / ((_keyColor select 0) max (_keyColor select 1) max (_keyColor select 2)));
+		_keyColor = _keyColor vectorMultiply (1 / ((_keyColor # 0) max (_keyColor # 1) max (_keyColor # 2)));
 		_keyColor = (_keyColor + [1]) call (missionNamespace getVariable 'BIS_fnc_colorRGBtoHTML');
 		uiNamespace setVariable ['QS_hint_recallKeyColor',_keyColor];
 	};
 	_helpArray = actionKeysNamesArray 'help';
 	private _keyString = if (_helpArray isNotEqualTo []) then {
-		format ["[<t color = '%1'>%2</t>]",_keyColor,_helpArray select 0];
+		format ["[<t color = '%1'>%2</t>]",_keyColor,_helpArray # 0];
 	} else {
 		format ["[<t color = '#FF0000'>%1</t>]",(toUpper (localize 'STR_A3_Hints_unmapped'))];
 	};

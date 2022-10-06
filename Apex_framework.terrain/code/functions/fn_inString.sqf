@@ -10,9 +10,9 @@ Description:
 	
 Parameter(s): 	
 	
-	_this select 0: <string> string to be found 	
-	_this select 1: <string> string to search from 	
-	_this select 2 (Optional): <boolean> search is case sensitive (default: false) 	 	
+	_this # 0: <string> string to be found 	
+	_this # 1: <string> string to search from 	
+	_this # 2 (Optional): <boolean> search is case sensitive (default: false) 	 	
 	
 Returns: 	
 

@@ -23,11 +23,10 @@ private [
 	"_flatPos","_accepted","_position","_enemiesArray","_fuzzyPos","_x","_briefing",
 	"_unitsArray","_object","_SMveh","_SMaa","_tower1","_tower2","_tower3","_c4Message",'_c4Messages','_objectTypes','_objectType'
 ];
-
 _c4Messages = [
-	"敌军武器装备已确认。 炸药已安放！ 15秒后引爆，所有人迅速远离目标！",
-	"敌军武器装备已确认。 炸药已安放！ 15秒后引爆，所有人迅速远离目标！",
-	"敌军武器装备已确认。 炸药已安放！ 15秒后引爆，所有人迅速远离目标！"
+	localize 'STR_QS_Chat_061',
+	localize 'STR_QS_Chat_062',
+	localize 'STR_QS_Chat_063'
 ];
 _c4Message = selectRandom _c4Messages;
 
@@ -59,26 +58,16 @@ while {!_accepted} do {
 
 missionNamespace setVariable [
 	'QS_sideObj',
-	(createVehicle ['Land_Cargo_HQ_V2_F',[(_flatPos select 0),(_flatPos select 1),0],[],0,'NONE']),
+	(createVehicle ['Land_Cargo_HQ_V2_F',[(_flatPos # 0),(_flatPos # 1),0],[],0,'NONE']),
 	FALSE
 ];
-missionNamespace setVariable [
-	'QS_analytics_entities_created',
-	((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
-	FALSE
-];
-(missionNamespace getVariable 'QS_sideObj') setPosWorld [((getPosWorld (missionNamespace getVariable 'QS_sideObj')) select 0), ((getPosWorld (missionNamespace getVariable 'QS_sideObj')) select 1),((getPosWorld (missionNamespace getVariable 'QS_sideObj')) select 2)];
+(missionNamespace getVariable 'QS_sideObj') setPosWorld [((getPosWorld (missionNamespace getVariable 'QS_sideObj')) # 0), ((getPosWorld (missionNamespace getVariable 'QS_sideObj')) # 1),((getPosWorld (missionNamespace getVariable 'QS_sideObj')) # 2)];
 (missionNamespace getVariable 'QS_sideObj') setVectorUp [0,0,1];
 
 _objectTypes = ['Land_CargoBox_V1_F','CargoNet_01_barrels_F'];
 _objectType = selectRandom _objectTypes;
 _object = createVehicle [_objectType,[0,0,0],[],0,'NONE'];
-missionNamespace setVariable [
-	'QS_analytics_entities_created',
-	((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
-	FALSE
-];
-_object setPosWorld [((getPosWorld (missionNamespace getVariable 'QS_sideObj')) select 0),((getPosWorld (missionNamespace getVariable 'QS_sideObj')) select 1),(((getPosWorld (missionNamespace getVariable 'QS_sideObj')) select 2) + 2)];
+_object setPosWorld [((getPosWorld (missionNamespace getVariable 'QS_sideObj')) # 0),((getPosWorld (missionNamespace getVariable 'QS_sideObj')) # 1),(((getPosWorld (missionNamespace getVariable 'QS_sideObj')) # 2) + 2)];
 _object enableRopeAttach FALSE;
 _object enableSimulationGlobal TRUE;
 
@@ -87,17 +76,12 @@ for '_x' from 0 to 2 step 1 do {
 	_object setVariable ['QS_isExplosion',TRUE,TRUE];
 };
 
-_tower1Pos = [_flatPos select 0,_flatPos select 1,0] getPos [50,0];
-_tower2Pos = [_flatPos select 0,_flatPos select 1,0] getPos [50,120];
-_tower3Pos = [_flatPos select 0,_flatPos select 1,0] getPos [50,240];
-_tower1 = createVehicle ['Land_Cargo_Patrol_V2_F',[_tower1Pos select 0,_tower1Pos select 1,0],[],0,'NONE'];
-_tower2 = createVehicle ['Land_Cargo_Patrol_V2_F',[_tower2Pos select 0,_tower2Pos select 1,0],[],0,'NONE'];
-_tower3 = createVehicle ['Land_Cargo_Patrol_V2_F',[_tower3Pos select 0,_tower3Pos select 1,0],[],0,'NONE'];
-missionNamespace setVariable [
-	'QS_analytics_entities_created',
-	((missionNamespace getVariable 'QS_analytics_entities_created') + 3),
-	FALSE
-];
+_tower1Pos = [_flatPos # 0,_flatPos # 1,0] getPos [50,0];
+_tower2Pos = [_flatPos # 0,_flatPos # 1,0] getPos [50,120];
+_tower3Pos = [_flatPos # 0,_flatPos # 1,0] getPos [50,240];
+_tower1 = createVehicle ['Land_Cargo_Patrol_V2_F',[_tower1Pos # 0,_tower1Pos # 1,0],[],0,'NONE'];
+_tower2 = createVehicle ['Land_Cargo_Patrol_V2_F',[_tower2Pos # 0,_tower2Pos # 1,0],[],0,'NONE'];
+_tower3 = createVehicle ['Land_Cargo_Patrol_V2_F',[_tower3Pos # 0,_tower3Pos # 1,0],[],0,'NONE'];
 _tower1 setDir 180;
 _tower2 setDir 300;
 _tower3 setDir 60;
@@ -109,20 +93,25 @@ _enemiesArray = [(missionNamespace getVariable 'QS_sideObj')] call (missionNames
 
 /*/-------------------- SPAWN BRIEFING/*/
 
-_fuzzyPos = [((_flatPos select 0) - 300) + (random 600),((_flatPos select 1) - 300) + (random 600),0];
+_fuzzyPos = [((_flatPos # 0) - 300) + (random 600),((_flatPos # 1) - 300) + (random 600),0];
 {
-	_x setMarkerPos _fuzzyPos;
+	_x setMarkerPosLocal _fuzzyPos;
 	_x setMarkerAlpha 1;
 } count ['QS_marker_sideMarker','QS_marker_sideCircle'];
-'QS_marker_sideMarker' setMarkerText (format ['%1销毁敌军物资',(toString [32,32,32])]);
+'QS_marker_sideMarker' setMarkerText (format ['%1 %2',(toString [32,32,32]),localize 'STR_QS_Marker_031']);
 
 [
 	'QS_IA_TASK_SM_0',
 	TRUE,
 	[
-		(format ['敌军一直在向 %1 的叛军提供武器装备，我们截获到他们新一批物资到达的情报，即刻前往作战地区。 找到敌军物资，确认物资数量后将其销毁。 目标在区域内的某处。',worldName]),
-		'销毁敌军物资',
-		'销毁敌军物资'
+		(format [
+			'%2 %1, %3',
+			worldName,
+			localize 'STR_QS_Task_077',
+			localize 'STR_QS_Task_078'
+		]),
+		localize 'STR_QS_Task_079',
+		localize 'STR_QS_Task_079'
 	],
 	(markerPos 'QS_marker_sideMarker'),
 	'CREATED',
@@ -132,10 +121,7 @@ _fuzzyPos = [((_flatPos select 0) - 300) + (random 600),((_flatPos select 1) - 3
 	'download',
 	TRUE
 ] call (missionNamespace getVariable 'BIS_fnc_setTask');
-
-_briefing = parseText format ["<t align='center'><t size='2.2'>支线任务</t><br/><t size='1.5' color='#00B2EE'>销毁敌军物资</t><br/>____________________<br/>>敌军一直在向 %1 的叛军提供武器装备，我们截获到他们新一批物资到达的情报，即刻前往作战地区。<br/><br/>找到敌军物资，确认物资数量后将其销毁。</t>",worldName];
-//['hint',_briefing] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
-['NewSideMission',['销毁敌军物资']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+['NewSideMission',[localize 'STR_QS_Notif_085']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 
 /*/-------------------- [ CORE LOOPS ] ------------------------ [ CORE LOOPS ]/*/
 
@@ -149,14 +135,14 @@ for '_x' from 0 to 1 step 0 do {
 	if (!alive (missionNamespace getVariable 'QS_sideObj')) exitWith {
 	
 		{
-			_x setMarkerPos [-5000,-5000,0];
+			_x setMarkerPosLocal [-5000,-5000,0];
 			_x setMarkerAlpha 0;
 		} count ['QS_marker_sideMarker','QS_marker_sideCircle'];
 		
 		/*/-------------------- DE-BRIEFING/*/
 
 		missionNamespace setVariable ['QS_sideMissionUp',FALSE,TRUE];
-		['sideChat',[EAST,'HQ'],'目标被提前破坏， 任务失败！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['sideChat',[EAST,'HQ'],localize 'STR_QS_Chat_060'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		[0,_flatPos] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
 
 		/*/-------------------- DELETE/*/
@@ -196,12 +182,7 @@ for '_x' from 0 to 1 step 0 do {
 		/*/-------------------- BOOM!/*/
 	
 		uiSleep 14;											/*/ ghetto bomb timer/*/
-		'Bo_Mk82' createVehicle (getPos _object); 			/*/ default "Bo_Mk82"/*/
-		missionNamespace setVariable [
-			'QS_analytics_entities_created',
-			((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
-			FALSE
-		];
+		'Bo_Mk82' createVehicle (getPosATL _object); 			/*/ default "Bo_Mk82"/*/
 		uiSleep 0.1;
 		missionNamespace setVariable [
 			'QS_analytics_entities_deleted',

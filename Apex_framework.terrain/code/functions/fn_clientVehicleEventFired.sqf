@@ -16,7 +16,7 @@ __________________________________________________________*/
 params ['_vehicle','_weapon','_muzzle','_mode','_ammo','_magazine','_projectile','_gunner'];
 if (_vehicle isKindOf 'LandVehicle') then {
 	if (player isEqualTo (_vehicle turretUnit [0])) then {
-		_vehicleType = toLower (typeOf _vehicle);
+		_vehicleType = toLowerANSI (typeOf _vehicle);
 		if (_vehicleType in [
 			"b_apc_wheeled_01_cannon_f","b_apc_tracked_01_crv_f","b_apc_tracked_01_rcws_f","b_mrap_01_gmg_f","b_mrap_01_hmg_f","b_mbt_01_cannon_f","b_mbt_01_tusk_f","b_t_mbt_01_tusk_f","b_apc_tracked_01_aa_f","b_hmg_01_high_f","b_hmg_01_f","b_gmg_01_f","b_gmg_01_high_f","b_t_mrap_01_hmg_f","b_t_mrap_01_gmg_f","b_t_apc_tracked_01_aa_f","b_t_apc_wheeled_01_cannon_f","b_t_apc_tracked_01_crv_f","b_t_apc_tracked_01_rcws_f","b_t_mbt_01_cannon_f","b_t_gmg_01_f","b_t_hmg_01_f","b_g_offroad_01_armed_f",
 			"i_apc_tracked_03_cannon_f","i_apc_wheeled_03_cannon_f","i_mrap_03_gmg_f","i_mrap_03_hmg_f","i_g_offroad_01_armed_f","i_hmg_01_f","i_hmg_01_high_f","i_gmg_01_f","i_gmg_01_high_f",
@@ -31,7 +31,7 @@ if (_vehicle isKindOf 'LandVehicle') then {
 						if ((player getVariable 'QS_tto') > 0) then {
 							if ((_vehicle distance2D (markerPos 'QS_marker_base_marker')) < 1000) then {
 								[17,_vehicle] remoteExec ['QS_fnc_remoteExec',2,FALSE];
-								50 cutText ['Your vehicle was a threat to friendly soldiers and has been removed.','PLAIN'];
+								50 cutText [localize 'STR_QS_Text_199','PLAIN'];
 							};
 						};
 					};
@@ -52,7 +52,7 @@ if (_vehicle isKindOf 'LandVehicle') then {
 						if ((player getVariable 'QS_tto') > 0) then {
 							if ((_vehicle distance2D (markerPos 'QS_marker_base_marker')) < 1000) then {
 								deleteVehicle _vehicle;
-								50 cutText ['Your vehicle was a threat to friendly soldiers and has been removed.','PLAIN'];
+								50 cutText [localize 'STR_QS_Text_199','PLAIN'];
 							};
 						};
 					};

@@ -36,18 +36,18 @@ if (missionNamespace getVariable ['QS_customAO_GT_active',FALSE]) then {
 								};
 								player setVehiclePosition [(markerPos 'QS_marker_GT_TP'),[],15,'NONE'];
 								openMap FALSE;
-								50 cutText [(format [(localize 'STR_QS_MapClick_welcome'),(['Kavala','Georgetown'] select (worldName isEqualTo 'Tanoa'))]),'PLAIN DOWN',0.5];
+								50 cutText [(format ['%2 %1',(['Kavala','Georgetown'] select (worldName isEqualTo 'Tanoa')),localize 'STR_QS_Text_043']),'PLAIN DOWN',0.5];
 							} else {
-								50 cutText [(localize 'STR_QS_MapClick_incapacitated'),'PLAIN DOWN',0.5];
+								50 cutText [localize 'STR_QS_Text_044','PLAIN DOWN',0.5];
 							};
 						} else {
-							50 cutText [(localize 'STR_QS_MapClick_encumbered'),'PLAIN DOWN',0.5];
+							50 cutText [localize 'STR_QS_Text_045','PLAIN DOWN',0.5];
 						};
 					} else {
-						50 cutText [(localize 'STR_QS_MapClick_mustBeFoot'),'PLAIN DOWN',0.5];
+						50 cutText [localize 'STR_QS_Text_046','PLAIN DOWN',0.5];
 					};
 				} else {
-					50 cutText [(localize 'STR_QS_MapClick_tooClose'),'PLAIN DOWN',0.5];
+					50 cutText [localize 'STR_QS_Text_047','PLAIN DOWN',0.5];
 				};
 			};
 		};

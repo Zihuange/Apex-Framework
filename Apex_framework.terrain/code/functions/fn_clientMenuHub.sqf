@@ -18,25 +18,25 @@ if (_type isEqualTo 'onLoad') exitWith {
 	disableSerialization;
 	params ['','_display'];
 	_title = _display displayCtrl 1802;
-	_title ctrlSetText 'Comm-Link';
+	_title ctrlSetText (localize 'STR_QS_Menu_027');
 	setMousePosition (uiNamespace getVariable ['QS_ui_mousePosition',getMousePosition]);
 	
 	/*/======================= EDIT BELOW =======================/*/ 
 	_ctrlB1 = _display displayCtrl 1804;
-	_ctrlB1 ctrlSetStructuredText (parseText (format ["<a href=%1>%2</a>",((call (missionNamespace getVariable ['QS_missionConfig_commURL',{}])) select 0),((call (missionNamespace getVariable ['QS_missionConfig_commURL',{}])) select 1)]));
-	_ctrlB1 ctrlSetToolTip ((call (missionNamespace getVariable ['QS_missionConfig_commURL',{}])) select 2);
-	_ctrlB1 ctrlEnable TRUE;	//(!(((call (missionNamespace getVariable ['QS_missionConfig_commURL',{}])) select 0) isEqualTo ''));	
+	_ctrlB1 ctrlSetStructuredText (parseText (format ["<a href=%1>%2</a>",((call (missionNamespace getVariable ['QS_missionConfig_commURL',{}])) # 0),((call (missionNamespace getVariable ['QS_missionConfig_commURL',{}])) # 1)]));
+	_ctrlB1 ctrlSetToolTip ((call (missionNamespace getVariable ['QS_missionConfig_commURL',{}])) # 2);
+	_ctrlB1 ctrlEnable TRUE;	//(((call (missionNamespace getVariable ['QS_missionConfig_commURL',{}])) # 0) isNotEqualTo '');	
 	_ctrlB2 = _display displayCtrl 1805;
-	_ctrlB2 ctrlSetStructuredText (parseText (format ["<a href=%1>%2</a>",((call (missionNamespace getVariable ['QS_missionConfig_commDS',{}])) select 0),((call (missionNamespace getVariable ['QS_missionConfig_commDS',{}])) select 1)]));
-	_ctrlB2 ctrlSetToolTip ((call (missionNamespace getVariable ['QS_missionConfig_commDS',{}])) select 2);
+	_ctrlB2 ctrlSetStructuredText (parseText (format ["<a href=%1>%2</a>",((call (missionNamespace getVariable ['QS_missionConfig_commDS',{}])) # 0),((call (missionNamespace getVariable ['QS_missionConfig_commDS',{}])) # 1)]));
+	_ctrlB2 ctrlSetToolTip ((call (missionNamespace getVariable ['QS_missionConfig_commDS',{}])) # 2);
 	_ctrlB2 ctrlEnable TRUE;
 	_ctrlB3 = _display displayCtrl 1809;
-	_ctrlB3 ctrlSetStructuredText (parseText (format ["<a href=%1>%2</a>",((call (missionNamespace getVariable ['QS_missionConfig_commA3U',{}])) select 0),((call (missionNamespace getVariable ['QS_missionConfig_commA3U',{}])) select 1)]));
-	_ctrlB3 ctrlSetToolTip ((call (missionNamespace getVariable ['QS_missionConfig_commA3U',{}])) select 2);
+	_ctrlB3 ctrlSetStructuredText (parseText (format ["<a href=%1>%2</a>",((call (missionNamespace getVariable ['QS_missionConfig_commA3U',{}])) # 0),((call (missionNamespace getVariable ['QS_missionConfig_commA3U',{}])) # 1)]));
+	_ctrlB3 ctrlSetToolTip ((call (missionNamespace getVariable ['QS_missionConfig_commA3U',{}])) # 2);
 	_ctrlB3 ctrlEnable TRUE;
 	_ctrlB4 = _display displayCtrl 1812;
-	_ctrlB4 ctrlSetStructuredText (parseText (format ["<a href=%1>%2</a>",((call (missionNamespace getVariable ['QS_missionConfig_monetizeURL',{}])) select 0),((call (missionNamespace getVariable ['QS_missionConfig_monetizeURL',{}])) select 1)]));
-	_ctrlB4 ctrlSetToolTip ((call (missionNamespace getVariable ['QS_missionConfig_monetizeURL',{}])) select 2);
+	_ctrlB4 ctrlSetStructuredText (parseText (format ["<a href=%1>%2</a>",((call (missionNamespace getVariable ['QS_missionConfig_monetizeURL',{}])) # 0),((call (missionNamespace getVariable ['QS_missionConfig_monetizeURL',{}])) # 1)]));
+	_ctrlB4 ctrlSetToolTip ((call (missionNamespace getVariable ['QS_missionConfig_monetizeURL',{}])) # 2);
 	_ctrlB4 ctrlEnable TRUE;	
 	/*/======================= EDIT ABOVE =======================/*/ 
 	
@@ -52,9 +52,9 @@ if (_type isEqualTo 'onLoad') exitWith {
 	
 	
 	
-	(_display displayCtrl 1806) ctrlSetText '无线电管理';
+	(_display displayCtrl 1806) ctrlSetText (localize 'STR_QS_Menu_028');
 	(_display displayCtrl 1806) ctrlEnable TRUE;
-	(_display displayCtrl 1807) ctrlSetText '班组管理';
+	(_display displayCtrl 1807) ctrlSetText (localize 'STR_QS_Menu_029');
 	(_display displayCtrl 1807) ctrlEnable TRUE;
 	(_display displayCtrl 1808) ctrlEnable FALSE;
 	(_display displayCtrl 1810) ctrlEnable TRUE;
@@ -104,7 +104,7 @@ if (_type isEqualTo 'B4') exitWith {
 			(!dialog)
 		};
 		(findDisplay 46) createDisplay 'RscDisplayDynamicGroups';
-		50 cutText ['按 [Page Up] / [Page Down] 来滚动小队菜单','PLAIN'];
+		50 cutText [localize 'STR_QS_Text_168','PLAIN'];
 	};
 };
 if (_type isEqualTo 'B5') exitWith {

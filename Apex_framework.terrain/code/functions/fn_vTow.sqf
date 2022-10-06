@@ -18,7 +18,7 @@ private [
 ];
 _vehicle = vehicle player;
 _isUAV = FALSE;
-if ((unitIsUAV cameraOn) && ((toLower (typeOf cameraOn)) in [
+if ((unitIsUAV cameraOn) && ((toLowerANSI (typeOf cameraOn)) in [
 	'b_ugv_01_f',
 	'b_t_ugv_01_olive_f',
 	'o_ugv_01_f',
@@ -34,7 +34,7 @@ _pos = getPosATL _vehicle;
 _dir = getDir _vehicle;
 _vt = typeOf _vehicle;
 _vName = getText (configFile >> 'CfgVehicles' >> _vt >> 'displayName');
-_halfLength = ((boundingBoxReal _vehicle) select 1) select 1;
+_halfLength = ((boundingBoxReal _vehicle) # 1) # 1;
 _disAllowed = ["b_mbt_01_arty_f","b_t_mbt_01_arty_f","b_mbt_01_mlrs_f","b_t_mbt_01_mlrs_f"];
 _towVs = [
 	"b_apc_tracked_01_crv_f","b_truck_01_mover_f","b_t_apc_tracked_01_crv_f","b_t_truck_01_mover_f","c_offroad_01_f","c_offroad_01_repair_f",
@@ -60,16 +60,16 @@ _towMed = ["b_truck_01_repair_f","b_t_truck_01_repair_f","o_truck_03_repair_f","
 _towHeavy = ["b_apc_tracked_01_crv_f","b_truck_01_mover_f","b_t_apc_tracked_01_crv_f","b_t_truck_01_mover_f"];
 _towSHeavy = ["b_apc_tracked_01_crv_f","b_truck_01_mover_f","b_t_apc_tracked_01_crv_f","b_t_truck_01_mover_f"];
 _towMaxMass = 5100;
-if ((toLower _vt) in _towLite) then {
+if ((toLowerANSI _vt) in _towLite) then {
 	_towMaxMass = 5100;
 };
-if ((toLower _vt) in _towMed) then {
+if ((toLowerANSI _vt) in _towMed) then {
 	_towMaxMass = 12000;
 };
-if ((toLower _vt) in _towHeavy) then {
+if ((toLowerANSI _vt) in _towHeavy) then {
 	_towMaxMass = 30000;
 };
-if ((toLower _vt) in _towSHeavy) then {
+if ((toLowerANSI _vt) in _towSHeavy) then {
 	_towMaxMass = 80000;
 };
 _towableCargoObjects = [
@@ -97,78 +97,78 @@ _foundVehicles = [];
 _findCount = 0;
 _findIncrementX = 2 * _halfLength * sin _dir;
 _findIncrementY = 2 * _halfLength * cos _dir;
-_findPos = [(_pos select 0) - _findIncrementX, (_pos select 1) - _findIncrementY, _pos select 2];
+_findPos = [(_pos # 0) - _findIncrementX, (_pos # 1) - _findIncrementY, _pos # 2];
 while {(_foundVehicles isEqualTo []) && (_findCount < 3)} do {
 	_foundVehicles = ((_findPos nearEntities [_towableCargoObjects,(1.2 * _halfLength)]) + (nearestObjects [_findPos,_towableCargoObjects,(1.2 * _halfLength),TRUE]));
-	_findPos = [((_findPos select 0) - _findIncrementX),((_findPos select 1) - _findIncrementY),(_findPos select 2)];
+	_findPos = [((_findPos # 0) - _findIncrementX),((_findPos # 1) - _findIncrementY),(_findPos # 2)];
 	_findCount = _findCount + 1;
 };
-if (_foundVehicles isEqualTo []) exitWith {50 cutText ['没有发现可牵引物品','PLAIN DOWN',0.5];};
-_found = _foundVehicles select 0;
+if (_foundVehicles isEqualTo []) exitWith {50 cutText [localize 'STR_QS_Text_249','PLAIN DOWN',0.5];};
+_found = _foundVehicles # 0;
 _ft = typeOf _found;
 _foundMass = getMass _found;
 _foundName = getText (configFile >> 'CfgVehicles' >> _ft >> 'displayName');
 if (!(simulationEnabled _found)) exitWith {
-	_text = format ['这个 %1 也许根本无法被拖拽，尝试拖拽之前先试试能不能进入其中！',_foundName];
+	_text = format ['%1 %2',_foundName,localize 'STR_QS_Hints_132'];
 	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,7,-1,_text,[],-1];
 };
-if (!isNull (isVehicleCargo _found)) exitWith {(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,(format ['Cannot Tow the %1',_foundName]),[],-1];};
-if (!isNull (isVehicleCargo _vehicle)) exitWith {(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'Cannot Tow at this time',[],-1];};
-if (!(ropeAttachEnabled _found)) exitWith {(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'This vehicle is not towable',[],-1];};
-if (!isNull (attachedTo _found)) exitWith {(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'This vehicle is not towable',[],-1];};
-if (!isNull (attachedTo _vehicle)) exitWith {(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'Cannot Tow at this time',[],-1];};
-if (!isNull (ropeAttachedTo _vehicle)) exitWith {(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'Cannot Tow at this time',[],-1];};
-if (!isNull (ropeAttachedTo _found)) exitWith {(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,(format ['Cannot Tow the %1',_foundName]),[],-1];};
+if (!isNull (isVehicleCargo _found)) exitWith {(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,(format ['%2 %1',_foundName,localize 'STR_QS_Hints_133']),[],-1];};
+if (!isNull (isVehicleCargo _vehicle)) exitWith {(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,localize 'STR_QS_Hints_134',[],-1];};
+if (!(ropeAttachEnabled _found)) exitWith {(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,localize 'STR_QS_Hints_135',[],-1];};
+if (!isNull (attachedTo _found)) exitWith {(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,localize 'STR_QS_Hints_135',[],-1];};
+if (!isNull (attachedTo _vehicle)) exitWith {(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,localize 'STR_QS_Hints_134',[],-1];};
+if (!isNull (ropeAttachedTo _vehicle)) exitWith {(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,localize 'STR_QS_Hints_134',[],-1];};
+if (!isNull (ropeAttachedTo _found)) exitWith {(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,(format ['%2 %1',_foundName,localize 'STR_QS_Hints_133']),[],-1];};
 if (_foundMass > _towMaxMass) exitWith {
-	_text = format ['The %1 is too heavy for the %2 to tow!',_foundName,_vName];
+	_text = format ['%1 %3 %2',_foundName,_vName,localize 'STR_QS_Hints_136'];
 	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,_text,[],-1];
 };
-if ((toLower _ft) in _disAllowed) exitWith {50 cutText [format ['%1 无法被拖拽',_foundName],'PLAIN DOWN',0.5];};
-if (isNil {_found getVariable 'QS_ropeAttached'}) exitWith {50 cutText ['这个载具无法被拖拽','PLAIN DOWN',0.5];};
-if (!(((crew _found) findIf {(alive _x)}) isEqualTo -1)) then {
+if ((toLowerANSI _ft) in _disAllowed) exitWith {50 cutText [format ['%1 %2',_foundName,localize 'STR_QS_Text_250'],'PLAIN DOWN',0.5];};
+if (isNil {_found getVariable 'QS_ropeAttached'}) exitWith {50 cutText [localize 'STR_QS_Text_251','PLAIN DOWN',0.5];};
+if (((crew _found) findIf {(alive _x)}) isNotEqualTo -1) then {
 	if (!(unitIsUAV _found)) then {
 		_crewInVehicle = TRUE;
 	};
 };
-if (_crewInVehicle) exitWith {50 cutText [format ['%1 目前被其他玩家占用，无法进行拖拽！',_foundName],'PLAIN DOWN',0.5];};
-if (((vectorUp _found) select 2) < 0) exitWith {
-	_text = format ['必须先翻正 %1 才能拖拽它！',_foundName];
+if (_crewInVehicle) exitWith {50 cutText [format ['%1 %2',_foundName,localize 'STR_QS_Text_252'],'PLAIN DOWN',0.5];};
+if (((vectorUp _found) # 2) < 0) exitWith {
+	_text = format ['%1 %2',_foundName,localize 'STR_QS_Hints_137'];
 	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,_text,[],-1];
 };
 if (_vehicle getVariable 'QS_ropeAttached') exitWith {
-	_text = format ['%1 正在拖拽别的物件！',_vName];
+	_text = format ['%1 %2',_vName,localize 'STR_QS_Hints_138'];
 	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,_text,[],-1];
 };
 if (_found getVariable 'QS_ropeAttached') exitWith {
-	_text = format ['这个 %1 已经被拖拽了！',_foundName];
+	_text = format ['%1 %2',_foundName,localize 'STR_QS_Hints_139'];
 	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,_text,[],-1];
 };
-if (((toLower _ft) in ['b_sam_system_01_f','b_sam_system_02_f','b_aaa_system_01_f']) && (!((toLower _vt) in ['b_truck_01_mover_f','b_t_truck_01_mover_f']))) exitWith {
+if (((toLowerANSI _ft) in ['b_sam_system_01_f','b_sam_system_02_f','b_aaa_system_01_f']) && (!((toLowerANSI _vt) in ['b_truck_01_mover_f','b_t_truck_01_mover_f']))) exitWith {
 	_image = "A3\EditorPreviews_F\Data\CfgVehicles\B_Truck_01_Mover_F.jpg";
-	50 cutText [(format ['这个 %1 只能被HEMTT拖拽<br/><br/><img size="5" image="%2"/>',_foundName,_image]),'PLAIN DOWN',0.75,FALSE,TRUE];
+	50 cutText [(format ['%1 %3<br/><br/><img size="5" image="%2"/>',_foundName,_image,localize 'STR_QS_Text_253']),'PLAIN DOWN',0.75,FALSE,TRUE];
 };
-if (((toLower _ft) in [
+if (((toLowerANSI _ft) in [
 	"b_hmg_01_high_f","b_gmg_01_high_f","o_hmg_01_high_f","o_gmg_01_high_f","i_hmg_01_high_f","i_gmg_01_high_f",
 	"b_static_aa_f","b_static_at_f","o_static_aa_f","o_static_at_f","i_static_aa_f","i_static_at_f","b_t_static_aa_f","b_t_static_at_f",
 	"b_g_mortar_01_f","b_mortar_01_f","b_t_mortar_01_f","o_mortar_01_f","o_g_mortar_01_f","i_mortar_01_f","i_g_mortar_01_f",
 	'b_g_hmg_02_high_f', 'o_g_hmg_02_high_f', 'i_hmg_02_high_f', 'i_g_hmg_02_high_f', 'i_e_hmg_02_high_f', 'i_c_hmg_02_high_f'
-]) && (!((toLower _vt) in [
+]) && (!((toLowerANSI _vt) in [
 	"b_g_van_01_transport_f","o_g_van_01_transport_f","i_g_van_01_transport_f","i_c_van_01_transport_f","i_c_van_01_transport_brown_f",
 	"i_c_van_01_transport_olive_f","c_van_01_transport_f","c_van_01_transport_red_f","c_van_01_transport_white_f"
 ]))) exitWith {
 	_image = "A3\EditorPreviews_F\Data\CfgVehicles\B_G_Van_01_transport_F.jpg";
-	50 cutText [(format ['这个 %1 只能被卡车拖拽<br/><br/><img size="5" image="%2"/>',_foundName,_image]),'PLAIN DOWN',0.75,FALSE,TRUE];
+	50 cutText [(format ['%1 %3(<br/><br/><img size="5" image="%2"/>',_foundName,_image,localize 'STR_QS_Text_253']),'PLAIN DOWN',0.75,FALSE,TRUE];
 };
-if (((toLower _vt) in [
+if (((toLowerANSI _vt) in [
 	"b_g_van_01_transport_f","o_g_van_01_transport_f","i_g_van_01_transport_f","i_c_van_01_transport_f","i_c_van_01_transport_brown_f",
 	"i_c_van_01_transport_olive_f","c_van_01_transport_f","c_van_01_transport_red_f","c_van_01_transport_white_f"
-]) && (!((toLower _ft) in [
+]) && (!((toLowerANSI _ft) in [
 	"b_hmg_01_high_f","b_gmg_01_high_f","o_hmg_01_high_f","o_gmg_01_high_f","i_hmg_01_high_f","i_gmg_01_high_f",
 	"b_static_aa_f","b_static_at_f","o_static_aa_f","o_static_at_f","i_static_aa_f","i_static_at_f","b_t_static_aa_f","b_t_static_at_f",
 	"b_g_mortar_01_f","b_mortar_01_f","b_t_mortar_01_f","o_mortar_01_f","o_g_mortar_01_f","i_mortar_01_f","i_g_mortar_01_f",
 	'b_g_hmg_02_high_f', 'o_g_hmg_02_high_f', 'i_hmg_02_high_f', 'i_g_hmg_02_high_f', 'i_e_hmg_02_high_f', 'i_c_hmg_02_high_f'
 ]))) exitWith {
-	50 cutText ['这个载具目前只能拖拽固定武器或迫击炮','PLAIN DOWN',0.5];
+	50 cutText [localize 'STR_QS_Text_254','PLAIN DOWN',0.5];
 };
 0 spawn {
 	disableUserInput TRUE;

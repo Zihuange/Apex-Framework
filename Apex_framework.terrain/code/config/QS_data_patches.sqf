@@ -6,11 +6,12 @@ Author:
 	
 Last modified:
 
-	28/04/2022 A3 2.08 by Quiksilver
+	26/08/2022 A3 2.10 by Quiksilver
 	
 Description:
 
-	CfgPatches for A3 2.08
+	CfgPatches for A3 2.10
+	
 		- Includes certain mods:
 
 			- Blastcore

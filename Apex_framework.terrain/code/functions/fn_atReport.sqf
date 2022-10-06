@@ -13,8 +13,10 @@ Description:
 	-
 __________________________________________________*/
 
-if (isDedicated) exitWith {};
-if (time < 60) exitWith {};
+if (
+	isDedicated ||
+	(time < 60)
+) exitWith {};
 _array = _this # 3;
 _array params [
 	'_type',
@@ -35,11 +37,11 @@ if (((_playerPos distance (markerPos 'QS_marker_aoMarker')) < 1000) || {((_playe
 } count (missionNamespace getVariable 'QS_sub_actions');
 missionNamespace setVariable ['QS_sub_actions',[],FALSE];
 if (_type isEqualTo 2) then {
-	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,7.5,-1,(localize 'STR_QS_report_noReport'),[],(serverTime + 15),TRUE,'ROBOCOP',FALSE];
+	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,7.5,-1,localize 'STR_QS_Hints_001',[],(serverTime + 15),TRUE,localize 'STR_QS_Utility_002',FALSE];
 	[41,[0,_uid,_causedBy,_nameCausedBy,player,_val,TRUE]] remoteExec ['QS_fnc_remoteExec',2,FALSE];
 };
 if (_type isEqualTo 1) then {
-	_text = format [(localize 'STR_QS_report_reportFiled'),serverName];
-	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,10,-1,_text,[],(serverTime + 20),TRUE,'ROBOCOP',TRUE];
+	_text = localize 'STR_QS_Hints_002';
+	(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,10,-1,_text,[],(serverTime + 20),TRUE,localize 'STR_QS_Utility_002',TRUE];
 	[41,[1,_uid,_causedBy,_nameCausedBy,player,_val,TRUE]] remoteExec ['QS_fnc_remoteExec',2,FALSE];
 };

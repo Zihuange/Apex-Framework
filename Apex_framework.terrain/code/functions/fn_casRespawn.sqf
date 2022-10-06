@@ -6,7 +6,7 @@ Author:
 	
 Last modified:
 
-	8/04/2018 A3 1.82 by Quiksilver
+	2/09/2022 A3 2.10 by Quiksilver
 
 Description: 
 
@@ -54,32 +54,33 @@ private _pos = [0,0,0];
 private _dir = 0;
 private _typeOverride = '';
 private _aircraftPool = 0;
+private _jetsDLC = missionNamespace getVariable ['QS_cas_JetsDLCEnabled',TRUE];
 if (_missionConfig_CAS isEqualTo 1) then {
 	_pool = [
 		'O_Plane_CAS_02_dynamicLoadout_F',1,
-		'O_Plane_Fighter_02_F',1,
-		'B_Plane_Fighter_01_F',2,
+		'O_Plane_Fighter_02_F',([0,1] select _jetsDLC),
+		'B_Plane_Fighter_01_F',([0,2] select _jetsDLC),
 		'B_Plane_CAS_01_dynamicLoadout_F',2,
-		'I_Plane_Fighter_04_F',1
+		'I_Plane_Fighter_04_F',([0,1] select _jetsDLC)
 	];
 };
 if (_missionConfig_CAS isEqualTo 2) then {
 	_pool = [
 		'O_Plane_CAS_02_dynamicLoadout_F',1,
-		'O_Plane_Fighter_02_F',1,
-		'B_Plane_Fighter_01_F',2,
+		'O_Plane_Fighter_02_F',([0,1] select _jetsDLC),
+		'B_Plane_Fighter_01_F',([0,2] select _jetsDLC),
 		'B_Plane_CAS_01_dynamicLoadout_F',2,
-		'I_Plane_Fighter_04_F',1
+		'I_Plane_Fighter_04_F',([0,1] select _jetsDLC)
 	];
 };
 if (_missionConfig_CAS isEqualTo 3) then {
 	private _pilot = missionNamespace getVariable ['QS_fighterPilot',objNull];
 	_uid = getPlayerUID _pilot;
 	if (_uid isEqualTo '') exitWith {_exit = TRUE;};
-	private _airIndex = ((missionNamespace getVariable 'QS_CAS_jetAllowance') findIf {((_x select 0) isEqualTo _uid)});
+	private _airIndex = ((missionNamespace getVariable 'QS_CAS_jetAllowance') findIf {((_x # 0) isEqualTo _uid)});
 	if (_airIndex isEqualTo -1) exitWith {_exit = TRUE;};
-	diag_log format ['***** CAS RESPAWN ***** SPAWNING JET FOR %1 * %2 *****',(name _pilot),((missionNamespace getVariable 'QS_CAS_jetAllowance') select _airIndex)];
-	private _aircraftPool = ((missionNamespace getVariable 'QS_CAS_jetAllowance') select _airIndex) select 1;
+	diag_log format ['***** CAS RESPAWN ***** SPAWNING JET FOR %1 * %2 *****',(name _pilot),((missionNamespace getVariable 'QS_CAS_jetAllowance') # _airIndex)];
+	private _aircraftPool = ((missionNamespace getVariable 'QS_CAS_jetAllowance') # _airIndex) # 1;
 	if (_aircraftPool >= (missionNamespace getVariable ['QS_CAS_jetAllowance_value',3])) exitWith {
 		if (isPlayer _pilot) then {
 			if (_pilot getUnitTrait 'QS_trait_fighterPilot') then {
@@ -96,7 +97,7 @@ if (_missionConfig_CAS isEqualTo 3) then {
 	if (!(missionNamespace getVariable ['QS_casJet_destroyedAtBase',FALSE])) then {
 		_aircraftPool = _aircraftPool + 1;
 	};	
-	if (!((missionNamespace getVariable ['QS_casJet_destroyedAtBase_type','']) isEqualTo '')) then {
+	if ((missionNamespace getVariable ['QS_casJet_destroyedAtBase_type','']) isNotEqualTo '') then {
 		_typeOverride = missionNamespace getVariable ['QS_casJet_destroyedAtBase_type',''];
 		missionNamespace setVariable ['QS_casJet_destroyedAtBase_type','',FALSE];
 	};
@@ -104,7 +105,7 @@ if (_missionConfig_CAS isEqualTo 3) then {
 	(missionNamespace getVariable 'QS_CAS_jetAllowance') set [_airIndex,[_uid,_aircraftPool]];
 	missionNamespace setVariable ['QS_CAS_jetAllowance_current',_aircraftPool,FALSE];
 	missionNamespace setVariable ['QS_casJet_destroyedAtBase',FALSE,FALSE];
-	['sideChat',[EAST,'AirBase'],(format ['Friendly CAS respawning ( %1 / %2 ) ...',_aircraftPool,(missionNamespace getVariable ['QS_CAS_jetAllowance_value',3])])] remoteExec ['QS_fnc_remoteExecCmd',_pilot,FALSE];
+	['sideChat',[EAST,'AirBase'],(format ['%3 ( %1 / %2 ) ...',_aircraftPool,(missionNamespace getVariable ['QS_CAS_jetAllowance_value',3]),localize 'STR_QS_Chat_025'])] remoteExec ['QS_fnc_remoteExecCmd',_pilot,FALSE];
 	private ['_newCasType','_dir','_obstructions','_obstructionArray'];
 	//comment 'Now lets decide what will spawn';
 	private [
@@ -120,67 +121,93 @@ if (_missionConfig_CAS isEqualTo 3) then {
 	};
 	_pool0 = [
 		'O_Plane_CAS_02_dynamicLoadout_F',0,
-		'O_Plane_Fighter_02_F',0,
-		'O_Plane_Fighter_02_Stealth_F',0,
-		'B_Plane_Fighter_01_F',0,
-		'B_Plane_Fighter_01_Stealth_F',0,
+		'O_Plane_Fighter_02_F',([0,0] select _jetsDLC),
+		'O_Plane_Fighter_02_Stealth_F',([0,0] select _jetsDLC),
+		'B_Plane_Fighter_01_F',([0,0] select _jetsDLC),
+		'B_Plane_Fighter_01_Stealth_F',([0,0] select _jetsDLC),
 		'B_Plane_CAS_01_dynamicLoadout_F',0,
 		'I_Plane_Fighter_03_dynamicLoadout_F',1,
-		'I_Plane_Fighter_04_F',0,
+		'I_Plane_Fighter_04_F',([0,0] select _jetsDLC),
 		'i_c_plane_civil_01_f',0
 	];
 	_pool1 = [
 		'O_Plane_CAS_02_dynamicLoadout_F',1,
-		'O_Plane_Fighter_02_F',1,
-		'O_Plane_Fighter_02_Stealth_F',1,
-		'B_Plane_Fighter_01_F',1,
-		'B_Plane_Fighter_01_Stealth_F',1,
+		'O_Plane_Fighter_02_F',([0,1] select _jetsDLC),
+		'O_Plane_Fighter_02_Stealth_F',([0,1] select _jetsDLC),
+		'B_Plane_Fighter_01_F',([0,1] select _jetsDLC),
+		'B_Plane_Fighter_01_Stealth_F',([0,1] select _jetsDLC),
 		'B_Plane_CAS_01_dynamicLoadout_F',1,
 		'I_Plane_Fighter_03_dynamicLoadout_F',5,
-		'I_Plane_Fighter_04_F',5,
+		'I_Plane_Fighter_04_F',([0,5] select _jetsDLC),
 		'i_c_plane_civil_01_f',0
 	];
 	_pool2 = [
 		'O_Plane_CAS_02_dynamicLoadout_F',1,
-		'O_Plane_Fighter_02_F',1,
-		'O_Plane_Fighter_02_Stealth_F',1,
-		'B_Plane_Fighter_01_F',1,
-		'B_Plane_Fighter_01_Stealth_F',1,
+		'O_Plane_Fighter_02_F',([0,1] select _jetsDLC),
+		'O_Plane_Fighter_02_Stealth_F',([0,1] select _jetsDLC),
+		'B_Plane_Fighter_01_F',([0,1] select _jetsDLC),
+		'B_Plane_Fighter_01_Stealth_F',([0,1] select _jetsDLC),
 		'B_Plane_CAS_01_dynamicLoadout_F',1,
 		'I_Plane_Fighter_03_dynamicLoadout_F',1,
-		'I_Plane_Fighter_04_F',1,
+		'I_Plane_Fighter_04_F',([0,1] select _jetsDLC),
 		'i_c_plane_civil_01_f',0
 	];
 	_pool3 = [
 		'O_Plane_CAS_02_dynamicLoadout_F',3,
-		'O_Plane_Fighter_02_F',3,
-		'O_Plane_Fighter_02_Stealth_F',1,
-		'B_Plane_Fighter_01_F',3,
-		'B_Plane_Fighter_01_Stealth_F',1,
+		'O_Plane_Fighter_02_F',([0,3] select _jetsDLC),
+		'O_Plane_Fighter_02_Stealth_F',([0,1] select _jetsDLC),
+		'B_Plane_Fighter_01_F',([0,3] select _jetsDLC),
+		'B_Plane_Fighter_01_Stealth_F',([0,1] select _jetsDLC),
 		'B_Plane_CAS_01_dynamicLoadout_F',3,
 		'I_Plane_Fighter_03_dynamicLoadout_F',0,
-		'I_Plane_Fighter_04_F',2,
+		'I_Plane_Fighter_04_F',([0,2] select _jetsDLC),
 		'i_c_plane_civil_01_f',0
 	];
 	_pool4 = [
 		'O_Plane_CAS_02_dynamicLoadout_F',5,
-		'O_Plane_Fighter_02_F',5,
-		'O_Plane_Fighter_02_Stealth_F',1,
-		'B_Plane_Fighter_01_F',5,
-		'B_Plane_Fighter_01_Stealth_F',1,
+		'O_Plane_Fighter_02_F',([0,5] select _jetsDLC),
+		'O_Plane_Fighter_02_Stealth_F',([0,1] select _jetsDLC),
+		'B_Plane_Fighter_01_F',([0,5] select _jetsDLC),
+		'B_Plane_Fighter_01_Stealth_F',([0,1] select _jetsDLC),
 		'B_Plane_CAS_01_dynamicLoadout_F',5,
 		'I_Plane_Fighter_03_dynamicLoadout_F',0,
-		'I_Plane_Fighter_04_F',1,
+		'I_Plane_Fighter_04_F',([0,1] select _jetsDLC),
 		'i_c_plane_civil_01_f',0
 	];
-	_pilotLeaderboards = (missionNamespace getVariable ['QS_leaderboards',[[],[],[]]]) select 1;
-	_pilotLeaderboards select {((_x select 0) >= 10)};
+	
+	if (QS_leaderboards3 isNotEqualTo []) then {
+		private _key = '';
+		private _val = -1;
+		private _val2 = -1;
+		private _element1 = 0;
+		private _element2 = 0;
+		{
+			_key = _x;
+			_val = _y;
+			_val2 = QS_leaderboards3 getOrDefault [_key,-1,FALSE];
+			if (_val2 isNotEqualTo -1) then {
+				_element1 = _val # _leaderboardID;
+				_element2 = _val2 # _leaderboardID;
+				_val set [_leaderboardID,_element1 + _element2];
+				QS_leaderboards2 set [_key,_val];
+			};
+		} forEach QS_leaderboards2;
+	};
+	private _pilotLeaderboards = QS_leaderboards2 toArray FALSE;
+	_pilotLeaderboards = _pilotLeaderboards apply {
+		[
+			(_x # 1) # 1,			// getting transport pilot list
+			(_x # 0),
+			(_x # 1) # 0
+		]
+	};
+	_pilotLeaderboards = _pilotLeaderboards select {((_x # 0) >= 10)};
 	_pilotLeaderboards sort FALSE;
 	_countLeaderboard = count _pilotLeaderboards;
-	_pilotLeaderboardIndex = (_pilotLeaderboards findIf {((_x select 1) isEqualTo _uid)});
-	if (!(_pilotLeaderboardIndex isEqualTo -1)) then {
+	_pilotLeaderboardIndex = (_pilotLeaderboards findIf {((_x # 1) isEqualTo _uid)});
+	if (_pilotLeaderboardIndex isNotEqualTo -1) then {
 		_pilotTransportRank = _pilotLeaderboardIndex + 1;
-		_pilotScore = (_pilotLeaderboards select _pilotLeaderboardIndex) select 0;
+		_pilotScore = (_pilotLeaderboards # _pilotLeaderboardIndex) # 0;
 		_pilotRankCoef = 1 - (_pilotTransportRank / _countLeaderboard);
 		if (_pilotScore >= 10) then {
 			if (_pilotRankCoef > 0.5) then {
@@ -205,7 +232,7 @@ if (_missionConfig_CAS isEqualTo 3) then {
 };
 if (_exit) exitWith {};
 _newCasType = selectRandomWeighted _pool;
-if (!(_typeOverride isEqualTo '')) then {
+if (_typeOverride isNotEqualTo '') then {
 	_newCasType = _typeOverride;
 };
 if ((missionNamespace getVariable ['QS_missionConfig_carrierEnabled',0]) isEqualTo 0) then {
@@ -245,7 +272,6 @@ if ((missionNamespace getVariable ['QS_missionConfig_carrierEnabled',0]) isEqual
 		(createVehicle [_newCasType,[-500,-500,100],[],0,'CAN_COLLIDE']),
 		TRUE
 	];
-	missionNamespace setVariable ['QS_analytics_entities_created',((missionNamespace getVariable 'QS_analytics_entities_created') + 1),FALSE];
 	private _casJet = missionNamespace getVariable 'QS_casJet';
 	_casJet setDir _dir;
 	if (_isCarrier) then {
@@ -264,32 +290,23 @@ if ((missionNamespace getVariable ['QS_missionConfig_carrierEnabled',0]) isEqual
 	_casJet setVehicleReceiveRemoteTargets (!(missionNamespace getVariable ['QS_virtualSectors_sub_1_active',FALSE]));
 	_casJet setVehicleReportOwnPosition (!(missionNamespace getVariable ['QS_virtualSectors_sub_1_active',FALSE]));
 	[_casJet,1,[]] call (missionNamespace getVariable 'QS_fnc_vehicleLoadouts');
-	_casJet addMPEventHandler [
-		'MPKilled',
+	_casJet addEventHandler [
+		'Killed',
 		{
-			params ['_jet','_killer','_instigator','_useEffects'];
-			private _text = '';
-			if (((getPosATL _jet) select 2) > 20) then {
-				_text = (localize 'STR_QS_CAS_shotDown');
+			params ['_jet'];
+			_text = [localize 'STR_QS_Chat_026',localize 'STR_QS_Chat_027'] select (((getPosATL _jet) # 2) > 20);
+			[[EAST,'AirBase'],_text] remoteExec ['sideChat',-2,FALSE];
+			if ((_jet distance2D (markerPos 'QS_marker_base_marker')) < 600) then {
+				missionNamespace setVariable ['QS_casJet_destroyedAtBase',TRUE,FALSE];
+				missionNamespace setVariable ['QS_casJet_destroyedAtBase_type',(typeOf _jet),FALSE];
 			} else {
-				_text = (localize 'STR_QS_CAS_destroyed');
-			};
-			if (!isDedicated) then {
-				[EAST,'AirBase'] sideChat _text;
-			};
-			if (isDedicated) then {
-				if ((_jet distance2D (markerPos 'QS_marker_base_marker')) < 600) then {
-					missionNamespace setVariable ['QS_casJet_destroyedAtBase',TRUE,FALSE];
-					missionNamespace setVariable ['QS_casJet_destroyedAtBase_type',(typeOf _jet),FALSE];
-				} else {
-					if ((missionNamespace getVariable ['QS_missionConfig_CAS',2]) isEqualTo 3) then {
-						if ((missionNamespace getVariable ['QS_CAS_jetAllowance_current',0]) >= (missionNamespace getVariable ['QS_CAS_jetAllowance_value',3])) then {
-							missionNamespace setVariable ['QS_CAS_jetAllowance_gameover',TRUE,FALSE];
-						};
+				if ((missionNamespace getVariable ['QS_missionConfig_CAS',2]) isEqualTo 3) then {
+					if ((missionNamespace getVariable ['QS_CAS_jetAllowance_current',0]) >= (missionNamespace getVariable ['QS_CAS_jetAllowance_value',3])) then {
+						missionNamespace setVariable ['QS_CAS_jetAllowance_gameover',TRUE,FALSE];
 					};
 				};
-				(missionNamespace getVariable 'QS_garbageCollector') pushBack [_jet,'NOW_DISCREET',0];
 			};
+			(missionNamespace getVariable 'QS_garbageCollector') pushBack [_jet,'NOW_DISCREET',0];
 		}
 	];
 	_casJet addEventHandler [
@@ -306,15 +323,15 @@ if ((missionNamespace getVariable ['QS_missionConfig_carrierEnabled',0]) isEqual
 	_casJet addEventHandler [
 		'GetIn',
 		{
-			(_this select 0) removeEventHandler ['GetIn',_thisEventHandler];
-			if (!simulationEnabled (_this select 0)) then {
-				(_this select 0) enableSimulationGlobal TRUE;
+			(_this # 0) removeEventHandler ['GetIn',_thisEventHandler];
+			if (!simulationEnabled (_this # 0)) then {
+				(_this # 0) enableSimulationGlobal TRUE;
 			};
-			(_this select 0) allowDamage TRUE;
+			(_this # 0) allowDamage TRUE;
 		}
 	];
 	['setFeatureType',_casJet,2] remoteExec ['QS_fnc_remoteExecCmd',-2,_casJet];
-	if ((toLower (typeOf _casJet)) in ['c_plane_civil_01_racing_f','c_plane_civil_01_f','i_c_plane_civil_01_f']) then {
+	if ((toLowerANSI (typeOf _casJet)) in ['c_plane_civil_01_racing_f','c_plane_civil_01_f','i_c_plane_civil_01_f']) then {
 		[_casJet] call (missionNamespace getVariable 'QS_fnc_Q51');
 	};
 	if (_casJet isKindOf 'I_Plane_Fighter_03_dynamicLoadout_F') then {
@@ -326,7 +343,7 @@ if ((missionNamespace getVariable ['QS_missionConfig_carrierEnabled',0]) isEqual
 	if (_casJet isKindOf 'O_Plane_CAS_02_dynamicLoadout_F') then {
 		_casJet removeWeapon 'Missile_AGM_01_Plane_CAS_02_F';
 	};
-	if ((toLower _newCasType) in ['o_plane_fighter_02_f','o_plane_fighter_02_stealth_f']) then {
+	if ((toLowerANSI _newCasType) in ['o_plane_fighter_02_f','o_plane_fighter_02_stealth_f']) then {
 		{
 			_casJet setObjectTextureGlobal _x;
 		} forEach [
@@ -338,7 +355,7 @@ if ((missionNamespace getVariable ['QS_missionConfig_carrierEnabled',0]) isEqual
 			[5,"a3\air_f_jets\plane_fighter_02\data\Numbers\Fighter_02_number_01_co.paa"]
 		];
 	};
-	if ((toLower _newCasType) in ['i_plane_fighter_04_f']) then {
+	if ((toLowerANSI _newCasType) in ['i_plane_fighter_04_f']) then {
 		{
 			_casJet setObjectTextureGlobal _x;
 		} forEach [

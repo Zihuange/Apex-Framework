@@ -16,12 +16,12 @@ __________________________________________________________*/
 disableSerialization;
 private ['_type','_display'];
 
-_type = _this select 0;
+_type = _this # 0;
 
 if (_type isEqualTo 'onLoad') exitWith {
 	(findDisplay 2000) closeDisplay 1;
 	(findDisplay 3000) closeDisplay 1;
-	_display = _this select 1;
+	_display = _this # 1;
 	setMousePosition (uiNamespace getVariable ['QS_ui_mousePosition',getMousePosition]);
 	(_display displayCtrl 1804) ctrlEnable FALSE;
 	(_display displayCtrl 1807) ctrlEnable TRUE;
@@ -74,7 +74,7 @@ if (_type isEqualTo 'B5') exitWith {
 
 };
 if (_type isEqualTo 'B6') exitWith {
-	50 cutText ['Soon','PLAIN',0.25];
+	50 cutText [localize 'STR_QS_Text_111','PLAIN',0.25];
 };
 if (_type isEqualTo 'Back') exitWith {
 	closeDialog 2;

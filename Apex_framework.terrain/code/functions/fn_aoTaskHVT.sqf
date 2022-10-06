@@ -18,8 +18,8 @@ private _return = -1;
 if (_state isEqualTo 0) then {
 	//comment 'Clean up mission';
 	//comment 'Return empty array';
-	_agent = _data select 0;
-	_enemyArray = _data select 1;
+	_agent = _data # 0;
+	_enemyArray = _data # 1;
 	if (!isNull _agent) then {
 		QS_garbageCollector pushBack [_agent,'NOW_DISCREET',0];
 	};
@@ -164,7 +164,7 @@ if (_state isEqualTo 1) then {
 		if (_buildingList isEqualTo []) then {
 			_buildingList = _aoPos nearObjects ['House',((missionNamespace getVariable 'QS_aoSize') * 1.1)];
 		};
-		if (!(_buildingList isEqualTo [])) then {
+		if (_buildingList isNotEqualTo []) then {
 			_buildingList = _buildingList call (missionNamespace getVariable 'QS_fnc_arrayShuffle');
 			_allPlayers = allPlayers;
 			{
@@ -181,11 +181,6 @@ if (_state isEqualTo 1) then {
 				_buildingPositions = _building buildingPos -1;
 				/*/_agent = createAgent [_unitType,[0,0,0],[],0,'NONE'];/*/
 				_agent = (createGroup [CIVILIAN,TRUE]) createUnit [_unitType,[0,0,0],[],0,'NONE'];
-				missionNamespace setVariable [
-					'QS_analytics_entities_created',
-					((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
-					FALSE
-				];
 				_agent setUnitLoadout [[[],[],[],["U_Marshal",[]],[],[],"H_Beret_blk","G_Shades_Black",[],["ItemMap","","","ItemCompass","ItemWatch",""]],FALSE];
 				_agent setDir (random 360);
 				_buildingPosition = selectRandom _buildingPositions;
@@ -194,13 +189,13 @@ if (_state isEqualTo 1) then {
 				for '_x' from 0 to 2 step 1 do {
 					_agent setVariable ['QS_surrenderable',TRUE,TRUE];
 				};
-				_agent disableAI 'PATH';
+				_agent enableAIFeature ['PATH',FALSE];
 				_agent addEventHandler [
 					'Hit',
 					{
-						(_this select 0) removeEventHandler ['Hit',_thisEventHandler];
-						(_this select 0) enableAI 'PATH';
-						(_this select 0) setUnitPosWeak 'MIDDLE';
+						(_this # 0) removeEventHandler ['Hit',_thisEventHandler];
+						(_this # 0) enableAIFeature ['PATH',TRUE];
+						(_this # 0) setUnitPos 'MIDDLE';
 					}
 				];
 				_agent addEventHandler [
@@ -210,7 +205,7 @@ if (_state isEqualTo 1) then {
 						if (!isNull _killed) then {
 							if (!isNull _killer) then {
 								if (isPlayer _killer) then {
-									_text = format [(localize 'STR_QS_aoSM_HVTKIA'),(name _killer)];
+									_text = format [localize 'STR_QS_Chat_021',(name _killer)];
 									['sideChat',[EAST,'HQ'],_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 								};
 							};
@@ -226,14 +221,14 @@ if (_state isEqualTo 1) then {
 				];
 				missionNamespace setVariable ['QS_arrest_target',_agent,TRUE];
 				missionNamespace setVariable ['QS_aoSmallTask_Arrested',FALSE,TRUE];
-				['ST_HVT',[(localize 'STR_QS_aoSM_HVT'),(localize 'STR_QS_aoSM_arrestHVT')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+				['ST_HVT',[localize 'STR_QS_Notif_014',localize 'STR_QS_Notif_015']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 				[
 					'QS_IA_TASK_AO_3',
 					TRUE,
 					[
-						(localize 'STR_QS_aoSM_taskHVTDesc'),
-						(localize 'STR_QS_aoSM_taskHVTTitle'),
-						(localize 'STR_QS_aoSM_taskHVTMarker')
+						localize 'STR_QS_Task_014',
+						localize 'STR_QS_Task_015',
+						localize 'STR_QS_Task_015'
 					],
 					[_agent,TRUE],
 					'CREATED',
@@ -255,27 +250,23 @@ if (_state isEqualTo 1) then {
 				_enemyUnit = objNull;
 				for '_x' from 0 to _enemyCount step 1 do {
 					_enemyUnit = _enemyGroup createUnit [(selectRandom _enemyTypes),[0,0,0],[],0,'NONE'];
-					missionNamespace setVariable [
-						'QS_analytics_entities_created',
-						((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
-						FALSE
-					];
 					_enemyUnit = _enemyUnit call (missionNamespace getVariable 'QS_fnc_unitSetup');
 					_enemyUnit setPos (selectRandom _buildingPositions);
 					_enemyUnit setUnitPos (selectRandom ['UP','MIDDLE']);
-					_enemyUnit disableAI 'PATH';
+					_enemyUnit enableAIFeature ['PATH',FALSE];
 					if ((random 1) > 0.5) then {
 						_enemyUnit addEventHandler [
 							'Hit',
 							{
-								(_this select 0) removeEventHandler ['Hit',_thisEventHandler];
-								(_this select 0) enableAI 'PATH';
-								(_this select 0) setUnitPosWeak 'MIDDLE';
+								(_this # 0) removeEventHandler ['Hit',_thisEventHandler];
+								(_this # 0) enableAIFeature ['PATH',TRUE];
+								(_this # 0) setUnitPos 'MIDDLE';
 							}
 						];
 					};
 					_enemyArray pushBack _enemyUnit;
 				};
+				_enemyGroup setVariable ['QS_AI_GRP_HC',[0,-1],QS_system_AI_owners];
 				[_enemyArray,1] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
 				_return = [
 					_case,
@@ -292,20 +283,20 @@ if (_state isEqualTo 1) then {
 if (_state isEqualTo 2) then {
 	//comment 'Check mission state';
 	//comment 'Return -1 unless state changes';
-	_agent = _data select 0;
-	_enemyArray = _data select 1;
+	_agent = _data # 0;
+	_enemyArray = _data # 1;
 	if (missionNamespace getVariable ['QS_aoSmallTask_Arrested',FALSE]) then {
 		//comment 'Mission success';
-		['ST_HVT',[(localize 'STR_QS_aoSM_HVT'),(localize 'STR_QS_aoSM_HVTarrested')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
-		['sideChat',[EAST,'HQ'],(localize 'STR_QS_aoSM_bringHVT')] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['ST_HVT',[localize 'STR_QS_Notif_014',localize 'STR_QS_Notif_016']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['sideChat',[EAST,'HQ'],localize 'STR_QS_Chat_022'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		['QS_IA_TASK_AO_3'] call (missionNamespace getVariable 'BIS_fnc_deleteTask');
 		if (missionNamespace getVariable ['QS_virtualSectors_active',FALSE]) then {
 			private ['_QS_virtualSectors_scoreSides','_scoreEast','_scoreToRemove'];
 			_QS_virtualSectors_scoreSides = missionNamespace getVariable ['QS_virtualSectors_scoreSides',[0,0,0,0,0]];
-			_scoreEast = _QS_virtualSectors_scoreSides select 0;
+			_scoreEast = _QS_virtualSectors_scoreSides # 0;
 			if (_scoreEast > ((missionNamespace getVariable ['QS_virtualSectors_scoreWin',300]) * 0.1)) then {
 				_scoreToRemove = (missionNamespace getVariable ['QS_virtualSectors_scoreWin',300]) * (missionNamespace getVariable ['QS_virtualSectors_bonusCoef_smallTask',0.05]);
-				_QS_virtualSectors_scoreSides set [0,((_QS_virtualSectors_scoreSides select 0) - _scoreToRemove)];
+				_QS_virtualSectors_scoreSides set [0,((_QS_virtualSectors_scoreSides # 0) - _scoreToRemove)];
 				missionNamespace setVariable ['QS_virtualSectors_scoreSides',_QS_virtualSectors_scoreSides,FALSE];
 			};
 		};
@@ -320,7 +311,7 @@ if (_state isEqualTo 2) then {
 	} else {
 		if (!alive _agent) then {
 			//comment 'Mission failure';
-			['ST_HVT',[(localize 'STR_QS_aoSM_HVT'),(localize 'STR_QS_aoSM_HVTfailed')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+			['ST_HVT',[localize 'STR_QS_Notif_014',localize 'STR_QS_Notif_017']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 			['QS_IA_TASK_AO_3'] call (missionNamespace getVariable 'BIS_fnc_deleteTask');
 			_return = [
 				_case,

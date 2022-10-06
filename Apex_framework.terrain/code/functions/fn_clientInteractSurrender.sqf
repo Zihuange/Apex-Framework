@@ -19,7 +19,7 @@ if (
 	{(!isNull (objectParent _t))} ||
 	{(captive _t)} ||
 	{(!(_t getVariable ['QS_surrenderable',FALSE]))} ||
-	{(!((lineIntersectsSurfaces [(eyePos player),(aimPos _t),player,_t,TRUE,-1,'GEOM','VIEW',TRUE]) isEqualTo []))} ||
+	{((lineIntersectsSurfaces [(eyePos player),(aimPos _t),player,_t,TRUE,-1,'GEOM','VIEW',TRUE]) isNotEqualTo [])} ||
 	{(uiNamespace getVariable ['QS_client_progressVisualization_active',FALSE])}
 ) exitWith {};
 playSound 'click';
@@ -43,7 +43,7 @@ _onCancelled = {
 	if (weaponLowered player) then {_c = TRUE;};
 	if (!((stance player) in ['STAND','CROUCH'])) then {_c = TRUE;};
 	if (!(_entity getVariable ['QS_surrenderable',FALSE])) then {_c = TRUE;};
-	if (!((lineIntersectsSurfaces [(eyePos player),(aimPos _entity),player,_entity,TRUE,-1,'GEOM','VIEW',TRUE]) isEqualTo [])) then {_c = TRUE;};
+	if ((lineIntersectsSurfaces [(eyePos player),(aimPos _entity),player,_entity,TRUE,-1,'GEOM','VIEW',TRUE]) isNotEqualTo []) then {_c = TRUE;};
 	if (_c) then {
 		playSound 'click';
 	};
@@ -59,19 +59,21 @@ _onCompleted = {
 		missionNamespace setVariable ['HE_SURRENDERS',TRUE,TRUE];
 	};
 	playSound 'click';
+	private _isCmdr = FALSE;
 	if (_entity isEqualTo (missionNamespace getVariable 'QS_westCommander')) then {
+		_isCmdr = TRUE;
 		[58,[profileName]] remoteExec ['QS_fnc_remoteExec',2,FALSE];
 	};
 	if (_entity isEqualTo (missionNamespace getVariable 'QS_arrest_target')) then {
-		['sideChat',[EAST,'HQ'],(format ['%1 arrested the HVT!',profileName])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['sideChat',[EAST,'HQ'],(format ['%1 %2',profileName,localize 'STR_QS_Chat_038'])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		for '_x' from 0 to 1 step 1 do {
 			missionNamespace setVariable ['QS_aoSmallTask_Arrested',TRUE,TRUE];
 		};
 	};
 	if (local _entity) then {
-		[21,_entity,(getPlayerUID player),profileName] call (missionNamespace getVariable 'QS_fnc_remoteExec');
+		[21,_entity,(getPlayerUID player),profileName,_isCmdr] call (missionNamespace getVariable 'QS_fnc_remoteExec');
 	} else {
-		[21,_entity,(getPlayerUID player),profileName] remoteExecCall ['QS_fnc_remoteExec',_entity,FALSE];
+		[21,_entity,(getPlayerUID player),profileName,_isCmdr] remoteExecCall ['QS_fnc_remoteExec',_entity,FALSE];
 	};
 	{
 		_entity setVariable _x;
@@ -82,9 +84,9 @@ _onCompleted = {
 		['QS_RD_loadable',TRUE,TRUE],
 		['QS_surrender_captor',[profileName,(getPlayerUID player)],TRUE]
 	];
-	_text = format ['%1 在 %2 位置俘虏了一名敌军',profileName,(mapGridPosition player)];
+	_text = format [localize 'STR_QS_Chat_094',profileName,(mapGridPosition player)];
 	['systemChat',_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
-	50 cutText ['已俘虏','PLAIN DOWN',0.75];
+	50 cutText [localize 'STR_QS_Text_154','PLAIN DOWN',0.75];
 };
 /*/ 
 How hard should it be to capture the unit?
@@ -94,7 +96,7 @@ private _timerRange = [1.5,2.1,2.35];
 private _timerMin = 0.5;
 private _duration = ((random _timerRange) + (morale _t) - (damage _t) - (needReload _t)) max _timerMin;
 [
-	'俘虏单位',
+	localize 'STR_QS_Menu_172',
 	_duration,
 	0,
 	[[_t],{FALSE}],

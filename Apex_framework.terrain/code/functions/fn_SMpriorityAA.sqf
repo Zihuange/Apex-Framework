@@ -16,7 +16,7 @@ ______________________________________________/*/
 scriptName 'QS - SM - AA';
 //comment 'Get any data we need';
 private _spawnPosition = [0,0,0];
-private _aaTypes = ['b_apc_tracked_01_aa_f','b_t_apc_tracked_01_aa_f','b_t_apc_tracked_01_aa_f','b_t_apc_tracked_01_aa_f','b_sam_system_03_f'];
+private _aaTypes = ['o_apc_tracked_02_aa_f','o_t_apc_tracked_02_aa_ghex_f','o_t_apc_tracked_02_aa_ghex_f','o_t_apc_tracked_02_aa_ghex_f'];
 private _aaHulls = [];
 private _aaTurrets = [];
 private _aaTurretObjects = [];
@@ -39,8 +39,8 @@ private _entitiesParams = [['Air'],['UAV_01_base_F','UAV_06_base_F','ParachuteBa
 private _rearmInterval = _time + (240 + (random 80));
 private _rearming = FALSE;
 private _rearmDelay = [15,20,30];
-_rearmingText = '敌军防空阵地正在重新装填！';
-_finishedRearmText = '敌军防空阵地已完成弹药装填！';
+_rearmingText = localize 'STR_QS_Task_096';
+_finishedRearmText = localize 'STR_QS_Task_097';
 private _turretParams = [];
 private _targetListEnemy = [];
 private _targetType = '';
@@ -58,7 +58,7 @@ for '_x' from 0 to 1 step 0 do {
 	if ((_spawnPosition distance2D _basepos) > 2000) then {
 		if ((_spawnPosition distance2D _fobpos) > 250) then {
 			if ((_spawnPosition distance2D (missionNamespace getVariable 'QS_AOpos')) > 500) then {
-				if (((((_spawnPosition select [0,2]) nearRoads 25) select {((_x isEqualType objNull) && (!((roadsConnectedTo _x) isEqualTo [])))}) isEqualTo []) && (!((toLower(surfaceType _spawnPosition)) in ['#gdtasphalt'])) && (!([_spawnPosition,30,8] call (missionNamespace getVariable 'QS_fnc_waterInRadius')))) then {
+				if (((((_spawnPosition select [0,2]) nearRoads 25) select {((_x isEqualType objNull) && ((roadsConnectedTo _x) isNotEqualTo []))}) isEqualTo []) && (!((toLowerANSI(surfaceType _spawnPosition)) in ['#gdtasphalt'])) && (!([_spawnPosition,30,8] call (missionNamespace getVariable 'QS_fnc_waterInRadius')))) then {
 					_accepted = TRUE;
 				};
 			};
@@ -70,8 +70,8 @@ private _watchPosition = _spawnPosition vectorAdd [0,0,1000];
 //comment 'Generate composition and assets';
 private _compositionData = [
 	[
-		["b_sam_system_03_f",[0.230469,-6.17627,0.0173378],179.236,[],TRUE,TRUE,FALSE,{(_this select 0)}], 			// b_sam_system_03_f   B_APC_Tracked_01_AA_F
-		["b_sam_system_03_f",[-0.212402,9.61426,0.0157723],359.523,[],TRUE,TRUE,FALSE,{(_this select 0)}], 			//	b_sam_system_03_f   B_APC_Tracked_01_AA_F
+		["O_APC_Tracked_02_AA_F",[0.230469,-6.17627,0.0173378],179.236,[],TRUE,TRUE,FALSE,{(_this # 0)}], 			// o_sam_system_04_f   O_APC_Tracked_02_AA_F
+		["O_APC_Tracked_02_AA_F",[-0.212402,9.61426,0.0157723],359.523,[],TRUE,TRUE,FALSE,{(_this # 0)}], 			//	o_sam_system_04_f   O_APC_Tracked_02_AA_F
 		["Land_HBarrier_5_F",[-0.302979,1.63086,1.72132],0,[],FALSE,FALSE,TRUE,{}], 
 		["Land_HBarrier_Big_F",[-0.20874,1.77246,0],0,[],FALSE,FALSE,TRUE,{}], 
 		["Land_HBarrier_Big_F",[5.12134,-1.37109,0],271.094,[],FALSE,FALSE,TRUE,{}], 
@@ -98,8 +98,8 @@ private _compositionData = [
 		["Land_HBarrierWall_corner_F",[11.0156,14.7471,0],0,[],FALSE,FALSE,TRUE,{}]
 	],
 	[
-		["b_sam_system_03_f",[-0.0292969,-6.354,0.0168018],178.855,[],TRUE,TRUE,FALSE,{(_this select 0)}], 		// b_sam_system_03_f    B_T_APC_Tracked_01_AA_F
-		["b_sam_system_03_f",[-0.321777,8.54443,0.0163908],359.998,[],TRUE,TRUE,FALSE,{(_this select 0)}], 		// b_sam_system_03_f   B_T_APC_Tracked_01_AA_F
+		["O_T_APC_Tracked_02_AA_ghex_F",[-0.0292969,-6.354,0.0168018],178.855,[],TRUE,TRUE,FALSE,{(_this # 0)}], 		// o_sam_system_04_f    O_T_APC_Tracked_02_AA_ghex_F
+		["O_T_APC_Tracked_02_AA_ghex_F",[-0.321777,8.54443,0.0163908],359.998,[],TRUE,TRUE,FALSE,{(_this # 0)}], 		// o_sam_system_04_f   O_T_APC_Tracked_02_AA_ghex_F
 		["Land_HBarrier_01_big_4_green_F",[-0.081543,1.03174,0],0,[],FALSE,FALSE,TRUE,{}], 
 		["Land_HBarrier_01_line_5_green_F",[-0.195801,1.05566,1.74458],0,[],FALSE,FALSE,TRUE,{}], 
 		["Land_HBarrier_01_line_5_green_F",[5.23779,0.97168,1.69463],90,[],FALSE,FALSE,TRUE,{}], 
@@ -131,7 +131,7 @@ _compositionData = nil;
 //comment 'Configure assets';
 {
 	if (!(isSimpleObject _x)) then {
-		if ((toLower (typeOf _x)) in _aaTypes) then {
+		if ((toLowerANSI (typeOf _x)) in _aaTypes) then {
 			_aaHulls pushBack _x;
 		};
 	};
@@ -147,7 +147,7 @@ _compositionData = nil;
 		if (unitIsUav _aaHull) then {
 			_aaHull setVariable ['QS_uav_protected',TRUE,FALSE];
 		};
-		if ((toLower (typeOf _aaHull)) in ['b_sam_system_03_f','o_radar_system_02_f']) then {
+		if ((toLowerANSI (typeOf _aaHull)) in ['b_sam_system_03_f','o_radar_system_02_f']) then {
 			{
 				_aaHull setObjectTextureGlobal [_forEachIndex,_x];
 			} forEach (getArray (configFile >> 'CfgVehicles' >> (typeOf _aaHull) >> 'TextureSources' >> (['AridHex','JungleHex'] select (worldName in ['Tanoa','Lingor3'])) >> 'textures'));
@@ -166,7 +166,7 @@ _compositionData = nil;
 		clearMagazineCargoGlobal _aaHull;
 		_aaHull setVariable ['QS_client_canAttachExp',TRUE,TRUE];
 		_aaHull setVariable ['QS_RD_noRepair',TRUE,TRUE];
-		if ((toLower (typeOf _aaHull)) in ['b_sam_system_03_f','o_radar_system_02_f']) then {
+		if ((toLowerANSI (typeOf _aaHull)) in ['b_sam_system_03_f','o_radar_system_02_f']) then {
 			_aaHull addEventHandler [
 				'HandleDamage',
 				{
@@ -191,7 +191,7 @@ _compositionData = nil;
 			'Deleted',
 			{
 				params ['_entity'];
-				if (!( (attachedObjects _entity) isEqualTo [])) then {
+				if ((attachedObjects _entity) isNotEqualTo []) then {
 					{
 						deleteVehicle _x;
 					} forEach (attachedObjects _entity);
@@ -202,7 +202,7 @@ _compositionData = nil;
 			'Killed',
 			{
 				params ['_killed','_killer','_instigator',''];
-				if (!((attachedObjects _killed) isEqualTo [])) then {
+				if ((attachedObjects _killed) isNotEqualTo []) then {
 					{
 						detach _x;
 						deleteVehicle _x;
@@ -210,13 +210,13 @@ _compositionData = nil;
 				};
 				if (!isNull _instigator) then {
 					if (isPlayer _instigator) then {
-						_text = format ['%1 ( %2 ) 摧毁了一台防空设备！',(name _instigator),(groupID (group _instigator))];
+						_text = format ['%1 ( %2 ) %3',(name _instigator),(groupID (group _instigator)),localize 'STR_QS_Chat_066'];
 						[[EAST,'OPF'],_text] remoteExec ['sideChat',-2,FALSE];
 					} else {
-						[[EAST,'OPF'],'防空设备被摧毁！'] remoteExec ['sideChat',-2,FALSE];
+						[[EAST,'OPF'],localize 'STR_QS_Chat_067'] remoteExec ['sideChat',-2,FALSE];
 					};
 				} else {
-					[[EAST,'OPF'],'防空设备被摧毁！'] remoteExec ['sideChat',-2,FALSE];
+					[[EAST,'OPF'],localize 'STR_QS_Chat_067'] remoteExec ['sideChat',-2,FALSE];
 				};
 			}
 		];
@@ -226,7 +226,7 @@ _compositionData = nil;
 			_x setVariable ['QS_hidden',TRUE,TRUE];
 		} forEach (crew _aaHull);
 		//_aaHull doWatch _watchPosition;
-		_aaTurrets pushBack [_aaHull,(gunner _aaHull),(group (gunner _aaHull)),(typeOf _aaHull),((weapons _aaHull) select ([0,1] select (_aaHull isKindOf 'Tank'))),0,0,0];
+		_aaTurrets pushBack [_aaHull,(gunner _aaHull),_aaGroup,(typeOf _aaHull),((weapons _aaHull) select ([0,1] select (_aaHull isKindOf 'Tank'))),0,0,0];
 	};
 } forEach _aaHulls;
 //comment 'Generate force protection';
@@ -235,21 +235,21 @@ _compositionData = nil;
 	if (!isNull (group _x)) then {
 		(group _x) addVehicle (selectRandom _aaHulls);
 	};
-} forEach ([(_composition select 0)] call (missionNamespace getVariable 'QS_fnc_smEnemyWest'));
+} forEach ([(_composition # 0)] call (missionNamespace getVariable 'QS_fnc_smEnemyWest'));
 //comment 'Brief players';
-_fuzzyPos = [((_spawnPosition select 0) - 300) + (random 600),((_spawnPosition select 1) - 300) + (random 600),0];
+_fuzzyPos = [((_spawnPosition # 0) - 300) + (random 600),((_spawnPosition # 1) - 300) + (random 600),0];
+'QS_marker_sideMarker' setMarkerTextLocal (format ['%1 %2',(toString [32,32,32]),localize 'STR_QS_Marker_037']);
 {
 	_x setMarkerPosLocal _fuzzyPos;
 	_x setMarkerAlpha 1;
 } count ['QS_marker_sideMarker','QS_marker_sideCircle'];
-'QS_marker_sideMarker' setMarkerText (format ['%1优先目标：敌军大型防空阵地',(toString [32,32,32])]);
 [
 	'QS_IA_TASK_SM_0',
 	TRUE,
 	[
-		'敌方在我方基地附近建立了一个大型防空阵地。该阵地为最优先目标！ 防空阵地射程很远，对我方所有空中单位都造成了严重威胁，立即前往其所在区域不惜一切代价摧毁阵地。 防空阵地装填完毕后会一直处于攻击状态，建议暂时停止空中运输。 在重新装填(30秒)时，敌军防空设备无法攻击。 建议携带炸药将其摧毁。',
-		'敌方防空阵地',
-		'敌方防空阵地'
+		localize 'STR_QS_Task_094',
+		localize 'STR_QS_Task_095',
+		localize 'STR_QS_Task_095'
 	],
 	(markerPos 'QS_marker_sideMarker'),
 	'CREATED',
@@ -259,14 +259,12 @@ _fuzzyPos = [((_spawnPosition select 0) - 300) + (random 600),((_spawnPosition s
 	'destroy',
 	TRUE
 ] call (missionNamespace getVariable 'BIS_fnc_setTask');
-_briefing = parseText "<t align='center' size='2.2'>优先目标</t><br/><t size='1.5' color='#b60000'>敌军大型防空阵地</t><br/>____________________<br/>敌军部署了一个大型防空阵地，正在痛击我们的空中单位！ 我们通过热成像扫描找到了敌军防空阵地的大概位置，并标记在了地图上。<br/><br/>这是一个优先目标，请尽快处理！";
-//['hint',_briefing] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
-['NewPriorityTarget',['敌军大型防空阵地']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+['NewPriorityTarget',[localize 'STR_QS_Notif_096']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 //comment 'Loop';
 missionNamespace setVariable ['QS_smSuccess',FALSE,TRUE];
 for '_x' from 0 to 1 step 0 do {
 	if (((_aaHulls findIf {(alive _x)}) isEqualTo -1) || {(missionNamespace getVariable ['QS_smSuccess',FALSE])}) exitWith {
-		['CompletedPriorityTarget',['敌军大型防空阵地已被摧毁']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['CompletedPriorityTarget',[localize 'STR_QS_Notif_097']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		[1,_spawnPosition] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
 		{
 			_x setMarkerAlpha 0;
@@ -285,15 +283,15 @@ for '_x' from 0 to 1 step 0 do {
 			if (surfaceIsWater _aircraftPosition) then {
 				_aircraftPosition = ATLToASL _aircraftPosition;
 			};
-			(((_x distance2D _spawnPosition) < _targetingRange_max) && ((_aircraftPosition select 2) > _targetingAltitudeMin))
+			(((_x distance2D _spawnPosition) < _targetingRange_max) && ((_aircraftPosition # 2) > _targetingAltitudeMin))
 		};
 		_targetListEnemy = [];
-		if (!(_allAircraft isEqualTo [])) then {
+		if (_allAircraft isNotEqualTo []) then {
 			{
 				_targetCandidate = _x;
 				if ((side _targetCandidate) isEqualTo EAST) then {
-					if (!(((crew _targetCandidate) findIf {(alive _x)}) isEqualTo -1)) then {
-						_targetType = toLower (typeOf _targetCandidate);
+					if (((crew _targetCandidate) findIf {(alive _x)}) isNotEqualTo -1) then {
+						_targetType = toLowerANSI (typeOf _targetCandidate);
 						if (_targetCandidate isKindOf 'Plane') then {
 							if ((_targetType in _stealthAircraft) && (!(isVehicleRadarOn _targetCandidate)) && (!(isLaserOn _targetCandidate))) then {
 								if ((_targetCandidate distance2D _spawnPosition) < (_targetingRange_max * _targetingRange_stealthCoef)) then {
@@ -339,7 +337,7 @@ for '_x' from 0 to 1 step 0 do {
 			];
 			if (alive _aaTurret) then {
 				if ((_aaTurret ammo _aaTurretWeapon) > 0) then {
-					if (!(_targetListEnemy isEqualTo [])) then {
+					if (_targetListEnemy isNotEqualTo []) then {
 						_targetCandidate = selectRandom _targetListEnemy;
 						_aaGunner reveal [_targetCandidate,4];
 						_aaTurret doTarget _targetCandidate;

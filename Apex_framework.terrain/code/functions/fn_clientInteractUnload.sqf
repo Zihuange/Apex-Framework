@@ -24,7 +24,7 @@ if (((vectorMagnitude (velocity _t)) * 3.6) < 2) then {
 	};
 };
 if (!(_approved)) exitWith {
-	50 cutText ['Vehicle is moving','PLAIN DOWN',0.3];
+	50 cutText [localize 'STR_QS_Text_163','PLAIN DOWN',0.3];
 };
 _exit = FALSE;
 {
@@ -47,13 +47,13 @@ _exit = FALSE;
 			if (local _unit) then {
 				unassignVehicle _unit;
 				moveOut _unit;
-				_unit disableAI 'MOVE';
-				_unit disableAI 'FSM';
-				_unit disableAI 'PATH';
+				_unit enableAIFeature ['MOVE',FALSE];
+				_unit enableAIFeature ['FSM',FALSE];
+				_unit enableAIFeature ['PATH',FALSE];
 			} else {
 				0 = [90,_unit,1] remoteExec ['QS_fnc_remoteExec',0,FALSE];
 			};
-			50 cutText [(format ['%1 unloaded',(name _unit)]),'PLAIN DOWN',0.3];
+			50 cutText [(format [localize 'STR_QS_Text_164',(name _unit)]),'PLAIN DOWN',0.3];
 			_unit setVariable ['QS_RD_loaded',FALSE,TRUE];
 			waitUntil {
 				(isNull (objectParent _unit))
@@ -80,7 +80,7 @@ _exit = FALSE;
 		};
 	};
 	if (_exit) exitWith {
-		50 cutText [(format ['%1 unloaded',(name _unit)]),'PLAIN DOWN',0.5];
+		50 cutText [(format [localize 'STR_QS_Text_164',(name _unit)]),'PLAIN DOWN',0.5];
 	};
 } count ((crew _t) + (attachedObjects _t));
 TRUE;

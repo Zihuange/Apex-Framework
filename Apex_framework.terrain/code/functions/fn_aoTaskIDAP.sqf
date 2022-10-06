@@ -31,8 +31,8 @@ for '_x' from 0 to 1 step 0 do {
 	_testPos = _centerPos getPos [(_distanceFixed + (random _distanceRandom)),_incrementDir];
 	_incrementDir = _incrementDir + _increment;
 	if ((_testPos distance2D _baseMarker) > 700) then {
-		_nearRoads = ([_testPos select 0,_testPos select 1] nearRoads _nearRoadsRadius) select {((_x isEqualType objNull) && (!((roadsConnectedTo _x) isEqualTo [])))};
-		if (!(_nearRoads isEqualTo [])) then {
+		_nearRoads = ([_testPos # 0,_testPos # 1] nearRoads _nearRoadsRadius) select {((_x isEqualType objNull) && ((roadsConnectedTo _x) isNotEqualTo []))};
+		if (_nearRoads isNotEqualTo []) then {
 			_roadSegment = selectRandom _nearRoads;
 			_roadSegmentPosition = position _roadSegment;
 			if (!([_centerPos,_roadSegmentPosition,25] call (missionNamespace getVariable 'QS_fnc_waterIntersect'))) then {
@@ -55,7 +55,7 @@ private _objectiveCode = {};
 private _onCompleted = {};
 private _onFailed = {};
 _connectedRoads = roadsConnectedTo _roadSegment;
-_connectedRoad = _connectedRoads select 0;
+_connectedRoad = _connectedRoads # 0;
 _connectedRoadPos = position _connectedRoad;
 _dirToConnectedRoad = _roadSegment getDir _connectedRoad;
 _dirToOffset = if ((random 1) > 0.5) then {(_dirToConnectedRoad + (20 + (random 45)))} else {(_dirToConnectedRoad - (20 - (random 45)))};
@@ -129,7 +129,7 @@ if (isTouchingGround _vehicle) then {
 	_objectiveCode = {
 		params ['_boxes','_centerPos'];
 		private _return = 0;
-		if ((_boxes findIf {(((_x distance _centerPos) > 15) || (!isNull (attachedTo _x)) || (!isNull (objectParent _x)))}) isEqualTo -1) then {
+		if ((_boxes findIf {(((_x distance2D _centerPos) > 15) || (!isNull (attachedTo _x)) || (!isNull (objectParent _x)))}) isEqualTo -1) then {
 			_return = 1;
 		};
 		_return;
@@ -166,8 +166,8 @@ if (isTouchingGround _vehicle) then {
 	{
 		_junkSpawnPos = _rearPos getPos [_junkDist,_junkDir];
 		_junkSpawnPos = AGLToASL _junkSpawnPos;
-		_junkSpawnPos set [2,((_junkSpawnPos select 2) + (_x select 1))];
-		_junk = createSimpleObject [(_x select 0),_junkSpawnPos];
+		_junkSpawnPos set [2,((_junkSpawnPos # 2) + (_x # 1))];
+		_junk = createSimpleObject [(_x # 0),_junkSpawnPos];
 		_junk setDir (random 360);
 		_junk setVectorUp (surfaceNormal _junkSpawnPos);
 		_junks pushBack _junk;
@@ -192,7 +192,7 @@ if ((random 1) > 0.666) then {
 	];
 	_unit = createAgent [(selectRandom _unitTypes),_roadSegmentPosition,[],5,'NONE'];
 	_unit allowDamage FALSE;
-	_unit disableAI 'ALL';
+	_unit enableAIFeature ['ALL',FALSE];
 	_unit setUnconscious TRUE;
 	_unit setDamage [0.6,TRUE];
 	if ((random 1) > 0.666) then {
@@ -247,8 +247,8 @@ if ((random 1) > 0) then {
 	_enemyVehicle addEventHandler [
 		'GetIn',
 		{
-			(_this select 0) removeEventHandler ['GetIn',_thisEventHandler];
-			(missionNamespace getVariable 'QS_garbageCollector') pushBack [(_this select 0),'DELAYED_DISCREET',300];
+			(_this # 0) removeEventHandler ['GetIn',_thisEventHandler];
+			(missionNamespace getVariable 'QS_garbageCollector') pushBack [(_this # 0),'DELAYED_DISCREET',300];
 		}
 	];
 	_enemyVehicle addEventHandler [
@@ -256,7 +256,7 @@ if ((random 1) > 0) then {
 		{
 			{
 				deleteVehicle _x;
-			} forEach (attachedObjects (_this select 0));
+			} forEach (attachedObjects (_this # 0));
 		}
 	];
 	_enemyVehicle addEventHandler [
@@ -264,7 +264,7 @@ if ((random 1) > 0) then {
 		{
 			{
 				deleteVehicle _x;
-			} forEach (attachedObjects (_this select 0));
+			} forEach (attachedObjects (_this # 0));
 		}
 	];
 	_enemyArray pushBack _enemyVehicle;
@@ -292,22 +292,23 @@ for '_x' from 0 to (2 + (round (random 2))) step 1 do {
 			'FiredMan',
 			{
 				missionNamespace setVariable ['QS_sm_enemy_reinforce',TRUE,FALSE];
-				(_this select 0) removeEventHandler ['FiredMan',_thisEventHandler];
+				(_this # 0) removeEventHandler ['FiredMan',_thisEventHandler];
 				{
 					_x removeEventHandler ['FiredMan',(_x getVariable ['QS_unit_customEvent_fired',-1])];
-				} forEach ((_this select 0) getVariable ['QS_unit_assocUnits',[]]);
+				} forEach ((_this # 0) getVariable ['QS_unit_assocUnits',[]]);
 			}
 		]
 	),FALSE
 	];
 } forEach (units _enemyGrp);
 [(units _enemyGrp),1] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
-_enemyGrp setVariable ['QS_AI_GRP_disableBldgPtl',TRUE,(call (missionNamespace getVariable 'QS_fnc_AIOwners'))];
-_enemyGrp setVariable ['QS_AI_GRP_TASK',['PATROL',[_connectedRoadPos,_roadSegmentPosition],diag_tickTime,-1],(call (missionNamespace getVariable 'QS_fnc_AIOwners'))];
-_enemyGrp setVariable ['QS_AI_GRP_PATROLINDEX',0,(call (missionNamespace getVariable 'QS_fnc_AIOwners'))];
-_enemyGrp setVariable ['QS_AI_GRP_CONFIG',['GENERAL','INFANTRY',(count (units _enemyGrp))],(call (missionNamespace getVariable 'QS_fnc_AIOwners'))];
-_enemyGrp setVariable ['QS_AI_GRP_DATA',[TRUE,diag_tickTime],(call (missionNamespace getVariable 'QS_fnc_AIOwners'))];
-_enemyGrp setVariable ['QS_AI_GRP',TRUE,(call (missionNamespace getVariable 'QS_fnc_AIOwners'))];
+_enemyGrp setVariable ['QS_AI_GRP_disableBldgPtl',TRUE,QS_system_AI_owners];
+_enemyGrp setVariable ['QS_AI_GRP_TASK',['PATROL',[_connectedRoadPos,_roadSegmentPosition],serverTime,-1],QS_system_AI_owners];
+_enemyGrp setVariable ['QS_AI_GRP_PATROLINDEX',0,QS_system_AI_owners];
+_enemyGrp setVariable ['QS_AI_GRP_CONFIG',['GENERAL','INFANTRY',(count (units _enemyGrp))],QS_system_AI_owners];
+_enemyGrp setVariable ['QS_AI_GRP_DATA',[TRUE,serverTime],QS_system_AI_owners];
+_enemyGrp setVariable ['QS_AI_GRP',TRUE,QS_system_AI_owners];
+_enemyGrp setVariable ['QS_AI_GRP_HC',[0,-1],QS_system_AI_owners];
 private _serverTime = serverTime;
 private _missionTimeout = _serverTime + 2100;
 private _cargoAccessed = FALSE;
@@ -327,14 +328,22 @@ private _qrfGroup = grpNull;
 missionNamespace setVariable ['QS_sm_enemy_reinforce',FALSE,FALSE];
 
 private _taskID = 'QS_GRID_TASK_IDAP_1';
-private _taskDescription = (localize 'STR_QS_aoSM_taskIDAPdesc');
+private _taskDescription = format [
+	'<br/>- %1<br/>- %2<br/>- %3<br/>- %4<br/><br/>%5<br/><br/>%6',
+	localize 'STR_QS_Task_017',
+	localize 'STR_QS_Task_018',
+	localize 'STR_QS_Task_019',
+	localize 'STR_QS_Task_020',
+	localize 'STR_QS_Task_021',
+	localize 'STR_QS_Task_022'
+];
 [
 	_taskID,
 	TRUE,
 	[
 		_taskDescription,
-		(localize 'STR_QS_aoSM_taskIDAPtitle'),
-		(localize 'STR_QS_aoSM_taskIDAPmarker')
+		localize 'STR_QS_Task_016',
+		localize 'STR_QS_Task_016'
 	],
 	_roadSegmentPosition,
 	'CREATED',
@@ -345,7 +354,7 @@ private _taskDescription = (localize 'STR_QS_aoSM_taskIDAPdesc');
 	TRUE
 ] call (missionNamespace getVariable 'BIS_fnc_setTask');
 [_taskID,TRUE,_missionTimeout] call (missionNamespace getVariable 'QS_fnc_taskSetTimer');
-['GRID_IDAP_UPDATE',[(localize 'STR_QS_aoSM_task'),(localize 'STR_QS_aoSM_IDAPsupplies')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+['GRID_IDAP_UPDATE',[localize 'STR_QS_Notif_018',localize 'STR_QS_Notif_019']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 for '_x' from 0 to 1 step 0 do {
 	_serverTime = serverTime;
 	{
@@ -368,10 +377,10 @@ for '_x' from 0 to 1 step 0 do {
 				_objective set [1,_objectiveReturn];
 				if (_objectiveType isEqualTo 'LOGISTICS_RECOVER') then {
 					_objectiveArguments call _objectiveOnCompleted;
-					['GRID_IDAP_UPDATE',[(localize 'STR_QS_aoSM_taskUpdate'),(localize 'STR_QS_aoSM_IDAPrecovered')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+					['GRID_IDAP_UPDATE',[localize 'STR_QS_Notif_020',localize 'STR_QS_Notif_021']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 				};
 				if (_objectiveType isEqualTo 'MEDEVAC') then {
-					['GRID_IDAP_UPDATE',[(localize 'STR_QS_aoSM_taskUpdate'),(localize 'STR_QS_aoSM_IDAPcomplete')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+					['GRID_IDAP_UPDATE',[localize 'STR_QS_Notif_020',localize 'STR_QS_Notif_022']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 				};
 			};
 		};
@@ -383,7 +392,7 @@ for '_x' from 0 to 1 step 0 do {
 		_evaluateObjectiveCompletion = FALSE;
 		_objectivesCompleted = TRUE;
 		{
-			if ((_x select 1) isEqualTo 0) exitWith {
+			if ((_x # 1) isEqualTo 0) exitWith {
 				_objectivesCompleted = FALSE;
 			};
 		} forEach _objectives;
@@ -391,8 +400,8 @@ for '_x' from 0 to 1 step 0 do {
 	if ((_objectivesCompleted) || {(_serverTime > _missionTimeout)}) exitWith {
 		private _text = '';
 		if (_serverTime > _missionTimeout) then {
-			_text = (localize 'STR_QS_aoSM_taskExpired');
-			['GRID_IDAP_UPDATE',[(localize 'STR_QS_aoSM_taskComplete'),_text]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+			_text = localize 'STR_QS_Notif_024';
+			['GRID_IDAP_UPDATE',[localize 'STR_QS_Notif_023',_text]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		} else {
 			{
 				_objective = _x;
@@ -404,23 +413,23 @@ for '_x' from 0 to 1 step 0 do {
 				];
 				if (_objectiveState isEqualTo 1) then {
 					if (_objectiveType isEqualTo 'LOGISTICS_RECOVER') then {
-						_text = _text + (localize 'STR_QS_aoSM_logTaskSucceeded');
+						_text = _text + (localize 'STR_QS_Notif_025');
 					};
 					if (_objectiveType isEqualTo 'MEDEVAC') then {
-						_text = _text + (localize 'STR_QS_aoSM_aidTaskSucceeded');
+						_text = _text + (localize 'STR_QS_Notif_026');
 					};
 				} else {
 					if (_objectiveState isEqualTo 2) then {
 						if (_objectiveType isEqualTo 'LOGISTICS_RECOVER') then {
-							_text = _text + (localize 'STR_QS_aoSM_logTaskFailed');
+							_text = _text + (localize 'STR_QS_Notif_027');
 						};
 						if (_objectiveType isEqualTo 'MEDEVAC') then {
-							_text = _text + (localize 'STR_QS_aoSM_aidTaskFailed');
+							_text = _text + (localize 'STR_QS_Notif_028');
 						};
 					};
 				};
 			} forEach _objectives;
-			['GRID_IDAP_UPDATE',[(localize 'STR_QS_aoSM_taskComplete'),_text]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+			['GRID_IDAP_UPDATE',[localize 'STR_QS_Notif_023',_text]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		};
 	};
 	if (!(_enemyReinforceInit)) then {
@@ -444,8 +453,8 @@ for '_x' from 0 to 1 step 0 do {
 				_x call (missionNamespace getVariable 'QS_fnc_unitSetup');
 				_x enableStamina FALSE;
 				_x enableFatigue FALSE;
-				_x disableAI 'COVER';
-				_x disableAI 'AUTOCOMBAT';
+				_x enableAIFeature ['COVER',FALSE];
+				//_x enableAIFeature ['AUTOCOMBAT',FALSE];
 				_enemyArray pushBack _x;
 				_entities pushBack _x;
 			} forEach (units _qrfGroup);
@@ -453,15 +462,15 @@ for '_x' from 0 to 1 step 0 do {
 			_qrfGroup setBehaviour 'AWARE';
 			_qrfGroup setSpeedMode 'FULL';
 			[(units _qrfGroup),2] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
-			_qrfGroup setVariable ['QS_AI_GRP_TASK',['PATROL',[_connectedRoadPos,_roadSegmentPosition],diag_tickTime,-1],(call (missionNamespace getVariable 'QS_fnc_AIOwners'))];
-			_qrfGroup setVariable ['QS_AI_GRP_PATROLINDEX',0,(call (missionNamespace getVariable 'QS_fnc_AIOwners'))];
-			_qrfGroup setVariable ['QS_AI_GRP_CONFIG',['GENERAL','INFANTRY',(count (units _qrfGroup))],(call (missionNamespace getVariable 'QS_fnc_AIOwners'))];
-			_qrfGroup setVariable ['QS_AI_GRP_DATA',[TRUE,diag_tickTime],(call (missionNamespace getVariable 'QS_fnc_AIOwners'))];
-			_qrfGroup setVariable ['QS_AI_GRP',TRUE,(call (missionNamespace getVariable 'QS_fnc_AIOwners'))];
-			{
-				doStop _x;
-				_x doMove _connectedRoadPos;
-			} forEach (units _grpGroup);
+			_qrfGroup setVariable ['QS_AI_GRP_TASK',['PATROL',[_connectedRoadPos,_roadSegmentPosition],serverTime,-1],QS_system_AI_owners];
+			_qrfGroup setVariable ['QS_AI_GRP_PATROLINDEX',0,QS_system_AI_owners];
+			_qrfGroup setVariable ['QS_AI_GRP_CONFIG',['GENERAL','INFANTRY',(count (units _qrfGroup))],QS_system_AI_owners];
+			_qrfGroup setVariable ['QS_AI_GRP_DATA',[TRUE,serverTime],QS_system_AI_owners];
+			_qrfGroup setVariable ['QS_AI_GRP',TRUE,QS_system_AI_owners];
+			_qrfGroup setVariable ['QS_AI_GRP_HC',[0,-1],QS_system_AI_owners];
+			doStop (units _grpGroup);
+			sleep 0.1;
+			(units _grpGroup) doMove _connectedRoadPos;
 		};
 	};
 	uiSleep 3;
@@ -489,7 +498,7 @@ private _toDelete = objNull;
 	};
 } forEach _entities;
 missionNamespace setVariable ['QS_grid_IDAPcomposition',_composition,FALSE];
-if (!((missionNamespace getVariable ['QS_grid_IDAPcomposition',[]]) isEqualTo [])) then {
+if ((missionNamespace getVariable ['QS_grid_IDAPcomposition',[]]) isNotEqualTo []) then {
 	{
 		(missionNamespace getVariable 'QS_garbageCollector') pushBack [_x,'NOW_DISCREET',0];
 	} forEach (missionNamespace getVariable ['QS_grid_IDAPcomposition',[]]);

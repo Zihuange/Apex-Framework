@@ -53,7 +53,7 @@ if (!((uiNamespace getVariable ['BIS_shownChat',TRUE]) isEqualType TRUE)) exitWi
 				disableUserInput TRUE;
 			};
 			/*/
-			50 cutText ['Initializing ...','BLACK OUT',0.1,TRUE];
+			50 cutText [localize 'STR_QS_Text_213','BLACK OUT',0.1,TRUE];
 		};
 	};
 	private _count = 1;
@@ -75,7 +75,7 @@ if (!((uiNamespace getVariable ['BIS_shownChat',TRUE]) isEqualType TRUE)) exitWi
 			endMission 'QS_RD_end_2';
 		};
 		if (_hasInterface) then {
-			if (!((getOxygenRemaining player) isEqualTo 1)) then {
+			if ((getOxygenRemaining player) isNotEqualTo 1) then {
 				player setOxygenRemaining 1;
 			};
 		};

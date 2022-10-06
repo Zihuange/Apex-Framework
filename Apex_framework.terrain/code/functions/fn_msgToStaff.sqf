@@ -17,10 +17,10 @@ if (!((getPlayerUID player) in (['ALL'] call (missionNamespace getVariable 'QS_f
 private [
 	'_array','_element1','_element2','_element3','_element4','_object'
 ];
-_array = _this select 1;
-_message = _array select 0;
-_object = _array select 1;
-_type = _array select 2;
+_array = _this # 1;
+_message = _array # 0;
+_object = _array # 1;
+_type = _array # 2;
 systemChat str _message;
 [str _message] call (missionNamespace getVariable 'QS_fnc_hint');
 if (isNull _object) exitWith {};
@@ -29,23 +29,23 @@ if (_type isEqualTo 1) then {
 		missionNamespace setVariable ['QS_kiddieActions',[],FALSE];
 	};
 	QS_kiddieAction2 = player addAction [
-		format ['(ROBOCOP) Kick %1',(name _object)],
+		format ['(%2) %3 %1',(name _object),localize 'STR_QS_Utility_002',localize 'STR_QS_Interact_092'],
 		(missionNamespace getVariable 'QS_fnc_actionEjectSuspect'),
 		[_object,'KICK'],
 		99
 	];
-	player setUserActionText [QS_kiddieAction2,((player actionParams QS_kiddieAction2) select 0),(format ["<t size='3'>%1</t>",((player actionParams QS_kiddieAction2) select 0)])];
+	player setUserActionText [QS_kiddieAction2,((player actionParams QS_kiddieAction2) # 0),(format ["<t size='3'>%1</t>",((player actionParams QS_kiddieAction2) # 0)])];
 	QS_kiddieAction3 = player addAction [
-		'(ROBOCOP)手动执行(什么都不做)',
+		format ['(%1)手动执行(什么都不做)',localize 'STR_QS_Utility_002',localize 'STR_QS_Interact_093'],
 		{
 			{player removeAction _x;} count (missionNamespace getVariable 'QS_kiddieActions');
-			systemChat 'No action taken.';
-			(missionNamespace getVariable 'QS_managed_hints') pushBack [3,FALSE,5,-1,'No action taken.',[],-1];
+			systemChat (localize 'STR_QS_Chat_143');
+			(missionNamespace getVariable 'QS_managed_hints') pushBack [3,FALSE,5,-1,localize 'STR_QS_Hints_126',[],-1];
 		},
 		[],
 		98
 	];
-	player setUserActionText [QS_kiddieAction3,((player actionParams QS_kiddieAction3) select 0),(format ["<t size='3'>%1</t>",((player actionParams QS_kiddieAction3) select 0)])];
+	player setUserActionText [QS_kiddieAction3,((player actionParams QS_kiddieAction3) # 0),(format ["<t size='3'>%1</t>",((player actionParams QS_kiddieAction3) # 0)])];
 	/*/0 = QS_kiddieActions pushBack QS_kiddieAction1;/*/
 	0 = QS_kiddieActions pushBack QS_kiddieAction2;
 	0 = QS_kiddieActions pushBack QS_kiddieAction3;

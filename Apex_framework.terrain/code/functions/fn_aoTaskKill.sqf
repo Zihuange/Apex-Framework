@@ -53,14 +53,14 @@ _enemyUnit spawn {
 	uiSleep 5;
 	_this allowDamage TRUE;
 };
-_enemyGrp enableAttack TRUE;
+_enemyGrp enableAttack FALSE;
 _enemyUnit setAnimSpeedCoef 1.15;
 _enemyUnit enableFatigue FALSE;
 _enemyUnit enableStamina FALSE;
 _enemyUnit addEventHandler [
 	'FiredMan',
 	{
-		(_this select 0) setVehicleAmmo 1;
+		(_this # 0) setVehicleAmmo 1;
 	}
 ];
 private _primaryWeapon = '';
@@ -100,17 +100,17 @@ for '_x' from 0 to 2 step 1 do {
 		_radialPatrolPositions pushBack _patrolPosition;
 	};
 };
-_enemyGrp setBehaviourStrong 'AWARE';
+_enemyGrp setBehaviour 'AWARE';
 _enemyGrp setCombatMode 'RED';
 if ((random 1) > 0.333) then {
 	_enemyGrp setVariable ['QS_AI_GRP',TRUE,FALSE];
 	_enemyGrp setVariable ['QS_AI_GRP_CONFIG',['GENERAL','INFANTRY',(count (units _enemyGrp))],FALSE];
 	_enemyGrp setVariable ['QS_AI_GRP_DATA',[],FALSE];
-	_enemyGrp setVariable ['QS_AI_GRP_TASK',['PATROL',_radialPatrolPositions,diag_tickTime,-1],FALSE];
+	_enemyGrp setVariable ['QS_AI_GRP_TASK',['PATROL',_radialPatrolPositions,serverTime,-1],FALSE];
 	_enemyGrp setVariable ['QS_AI_GRP_PATROLINDEX',0,FALSE];
 };
 _taskPosition = _testPosition getPos [(50 + (random 100)),(random 360)];
-_description = format [(localize 'STR_QS_aoSM_taskKillDesc'),_worldName];
+_description = format ['猎杀敌军狙击手<br/><br/>IDAP工作人员在 %1 区域工作时，遭到敌方狙击手攻击。 前往现场并消灭敌方狙击手！<br/><br/>我们只有20分钟执行这项任务。<br/><br/>敌军狙击手十分隐蔽，我们无法标记具体位置。',_worldName];
 _taskType = 'kill';
 _taskID = format ['QS_DYNTASK_%1_%2',_taskType,(round (random 10000))];
 _taskTimeout = diag_tickTime + 1200;
@@ -130,8 +130,8 @@ _array = [
 				TRUE,
 				[
 					_description,
-					(localize 'STR_QS_aoSM_taskKillTitle'),
-					(localize 'STR_QS_aoSM_taskKillMarker')
+					'击杀',
+					'击杀'
 				],
 				_taskPosition,
 				'CREATED',

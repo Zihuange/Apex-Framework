@@ -23,7 +23,7 @@ params ['_case','_state','_data'];
 private _return = -1;
 if (_state isEqualTo 0) then {
 	//comment 'Clean up mission';
-	_vehicle = _data select 0;
+	_vehicle = _data # 0;
 	if (!isNull _vehicle) then {
 		/*/
 		missionNamespace setVariable [
@@ -59,7 +59,7 @@ if (_state isEqualTo 1) then {
 						if ((!(_testVehicle isKindOf 'StaticWeapon')) && (!(_testVehicle isKindOf 'Air'))) then {
 							if (alive _testVehicle) then {
 								if (canMove _testVehicle) then {
-									if (!(((crew _testVehicle) findIf {(alive _x)}) isEqualTo -1)) then {
+									if (((crew _testVehicle) findIf {(alive _x)}) isNotEqualTo -1) then {
 										if ((side (effectiveCommander _testVehicle)) in [WEST,RESISTANCE]) then {
 											_vehicle = _x;
 										};
@@ -78,19 +78,19 @@ if (_state isEqualTo 1) then {
 					params ['_killed','_killer','_instigator'];
 					if (!isNull _instigator) then {
 						if (isPlayer _instigator) then {
-							['sideChat',[EAST,'HQ'],(format [(localize 'STR_QS_aoSM_destoryed'),(name _instigator)])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+							['sideChat',[EAST,'HQ'],(format [localize 'STR_QS_Chat_020',(name _instigator)])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 						};
 					};
 				}
 			];
-			['ST_DESTROY_VEHICLE',[(localize 'STR_QS_aoSM_destory'),(localize 'STR_QS_aoSM_destoryVeh')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+			['ST_DESTROY_VEHICLE',[localize 'STR_QS_Notif_011',localize 'STR_QS_Notif_012']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 			[
 				'QS_IA_TASK_AO_3',
 				TRUE,
 				[
-					(localize 'STR_QS_aoSM_taskVehDesc'),
-					(localize 'STR_QS_aoSM_taskVehTitle'),
-					(localize 'STR_QS_aoSM_taskVehMarker')
+					(localize 'STR_QS_Task_012'),
+					(localize 'STR_QS_Task_013'),
+					(localize 'STR_QS_Task_013')
 				],
 				[_vehicle,TRUE],
 				'CREATED',
@@ -113,18 +113,18 @@ if (_state isEqualTo 1) then {
 };
 if (_state isEqualTo 2) then {
 	//comment 'Check mission state';
-	_vehicle = _data select 0;
+	_vehicle = _data # 0;
 	if ((!alive _vehicle) || {(isNull _vehicle)}) exitWith {
 		//comment 'Mission success';
-		['ST_DESTROY_VEHICLE',[(localize 'STR_QS_aoSM_destory'),(localize 'STR_QS_aoSM_vehDestoryed')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['ST_DESTROY_VEHICLE',[localize 'STR_QS_Notif_011',localize 'STR_QS_Notif_013']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		['QS_IA_TASK_AO_3'] call (missionNamespace getVariable 'BIS_fnc_deleteTask');
 		if (missionNamespace getVariable ['QS_virtualSectors_active',FALSE]) then {
 			private ['_QS_virtualSectors_scoreSides','_scoreEast','_scoreToRemove'];
 			_QS_virtualSectors_scoreSides = missionNamespace getVariable ['QS_virtualSectors_scoreSides',[0,0,0,0,0]];
-			_scoreEast = _QS_virtualSectors_scoreSides select 0;
+			_scoreEast = _QS_virtualSectors_scoreSides # 0;
 			if (_scoreEast > ((missionNamespace getVariable ['QS_virtualSectors_scoreWin',300]) * 0.1)) then {
 				_scoreToRemove = (missionNamespace getVariable ['QS_virtualSectors_scoreWin',300]) * (missionNamespace getVariable ['QS_virtualSectors_bonusCoef_smallTask',0.05]);
-				_QS_virtualSectors_scoreSides set [0,((_QS_virtualSectors_scoreSides select 0) - _scoreToRemove)];
+				_QS_virtualSectors_scoreSides set [0,((_QS_virtualSectors_scoreSides # 0) - _scoreToRemove)];
 				missionNamespace setVariable ['QS_virtualSectors_scoreSides',_QS_virtualSectors_scoreSides,FALSE];
 			};
 		};

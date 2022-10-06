@@ -30,7 +30,7 @@ _onCancelled = {
 	if (!alive player) then {_c = TRUE;};
 	if ((player distance2D _position) > 5.1) then {_c = TRUE;};
 	if (!((lifeState player) in ['HEALTHY','INJURED'])) then {_c = TRUE;};
-	if ((!(_entity isEqualTo cursorObject)) && (!(_entity isEqualTo cursorTarget))) then {_c = TRUE;};
+	if ((_entity isNotEqualTo cursorObject) && (_entity isNotEqualTo cursorTarget)) then {_c = TRUE;};
 	if (!isNull (objectParent player)) then {_c = TRUE;};
 	if (_entity getVariable ['QS_entity_examined',FALSE]) then {_c = TRUE;};
 	if (_c) then {
@@ -44,14 +44,14 @@ _onCompleted = {
 	_entity setVariable ['QS_entity_examined',TRUE,TRUE];
 	_result = _entity getVariable ['QS_entity_examine_intel',-1];
 	[_entity,_result] call (missionNamespace getVariable 'QS_fnc_clientExamineResult');
-	50 cutText ['已检查','PLAIN DOWN',0.3];
+	50 cutText [localize 'STR_QS_Text_107','PLAIN DOWN',0.3];
 };
 _onFailed = {
 	player setVariable ['QS_client_examining',FALSE,FALSE];
 	FALSE
 };
 [
-	'Examining ...',
+	localize 'STR_QS_Menu_168',
 	(random [2,3.5,5.5]),
 	0,
 	[[_t],{FALSE}],

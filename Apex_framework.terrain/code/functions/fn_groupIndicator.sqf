@@ -42,18 +42,18 @@ if ((_this # 0) isEqualType controlNull) exitWith {
 	_viewVector2 = -_viewVector;
 	_lc2 = [68,65];
 	_toDrawLines = [];
-	if ((toLower (ctrlText ((uiNamespace getVariable 'QS_RD_client_dialog_hud') displayCtrl 1002))) isNotEqualTo 'media\images\icons\squadback.paa') then {
+	if ((toLowerANSI (ctrlText ((uiNamespace getVariable 'QS_RD_client_dialog_hud') displayCtrl 1002))) isNotEqualTo 'media\images\icons\squadback.paa') then {
 		((uiNamespace getVariable 'QS_RD_client_dialog_hud') displayCtrl 1002) ctrlSetText 'media\images\icons\squadback.paa';
 	};
 	if ('ItemCompass' in (assignedItems _player)) then {
-		if ((toLower (ctrlText ((uiNamespace getVariable 'QS_RD_client_dialog_hud') displayCtrl 1003))) isNotEqualTo 'media\images\icons\squadradarcompassbackgroundtexture_ca.paa') then {
+		if ((toLowerANSI (ctrlText ((uiNamespace getVariable 'QS_RD_client_dialog_hud') displayCtrl 1003))) isNotEqualTo 'media\images\icons\squadradarcompassbackgroundtexture_ca.paa') then {
 			((uiNamespace getVariable 'QS_RD_client_dialog_hud') displayCtrl 1003) ctrlSetText 'media\images\icons\SquadRadarCompassBackgroundTexture_ca.paa';
 		};
 		if ((ctrlAngle ((uiNamespace getVariable 'QS_RD_client_dialog_hud') displayCtrl 1003)) isNotEqualTo [_viewVector2,0.5,0.5]) then {
 			((uiNamespace getVariable 'QS_RD_client_dialog_hud') displayCtrl 1003) ctrlSetAngle [_viewVector2,0.5,0.5];
 		};
 	} else {
-		if ((toLower (ctrlText ((uiNamespace getVariable 'QS_RD_client_dialog_hud') displayCtrl 1003))) isNotEqualTo 'media\images\icons\squadradarbackgroundtexture_ca.paa') then {
+		if ((toLowerANSI (ctrlText ((uiNamespace getVariable 'QS_RD_client_dialog_hud') displayCtrl 1003))) isNotEqualTo 'media\images\icons\squadradarbackgroundtexture_ca.paa') then {
 			((uiNamespace getVariable 'QS_RD_client_dialog_hud') displayCtrl 1003) ctrlSetText 'media\images\icons\squadradarbackgroundtexture_ca.paa';
 		};
 		if ((ctrlAngle ((uiNamespace getVariable 'QS_RD_client_dialog_hud') displayCtrl 1003)) isNotEqualTo [0,0.5,0.5]) then {
@@ -108,11 +108,8 @@ if ((_this # 0) isEqualType controlNull) exitWith {
 						};
 					};
 				};
-				_teamID = 0;
-				if (!isNil {assignedTeam _unit}) then {
-					_teamID = (['MAIN','RED','GREEN','BLUE','YELLOW'] find (assignedTeam _unit)) max 0;
-				};
-				_colorTeam = [[1,1,1,1],[1,0,0,1],[0,1,0.5,1],[0,0.5,1,1],[1,1,0,1]] # _teamID;
+				_teamID = (['','MAIN','RED','GREEN','BLUE','YELLOW'] find (assignedTeam _unit)) max 1;
+				_colorTeam = [[1,1,1,1],[1,1,1,1],[1,0,0,1],[0,1,0.5,1],[0,0.5,1,1],[1,1,0,1]] # _teamID;
 				if (isNull (objectParent _unit)) then {
 					if (_unit isNotEqualTo _grpLeader) then {
 						if ((((units _grp) - [_unit]) findIf {((_unit distance2D _x) < 3)}) isNotEqualTo -1) then {
@@ -129,7 +126,7 @@ if ((_this # 0) isEqualType controlNull) exitWith {
 					_unitType = typeOf _unitVehicle;
 					if ((isPlayer _unit) && {(_unitType isKindOf 'CAManBase')}) then {
 						if ((_unit getVariable ['QS_unit_role_icon',-1]) isEqualTo -1) then {
-							_icon = ['GET_ROLE_ICONMAP',(_unit getVariable ['QS_unit_role','rifleman'])] call (missionNamespace getVariable ['QS_fnc_roles',{'a3\ui_f\data\map\vehicleicons\iconMan_ca.paa'}]);
+							_icon = ['GET_ROLE_ICONMAP',(_unit getVariable ['QS_unit_role','rifleman']),_unit] call (missionNamespace getVariable 'QS_fnc_roles');
 						} else {
 							_icon = _unit getVariable ['QS_unit_role_icon','a3\ui_f\data\map\vehicleicons\iconMan_ca.paa'];
 						};

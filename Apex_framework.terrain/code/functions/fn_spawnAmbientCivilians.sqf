@@ -24,8 +24,8 @@ params [
 private _entities = [];
 if (_type isEqualTo 'FOOT') then {
 	//comment 'Get area building positions';
-	private _buildings = nearestObjects [_centerPos,['House','Building'],_centerRad,TRUE];
-	_buildings = _buildings + ((allSimpleObjects []) select {((_x distance2D _centerPos) <= _centerRad)});
+	private _buildings = (nearestObjects [_centerPos,['House','Building'],_centerRad,TRUE]) select {!isObjectHidden _x};
+	_buildings = _buildings + ((allSimpleObjects []) inAreaArray [_centerPos,_centerRad,_centerRad,0,FALSE]);
 	_buildings = _buildings call (missionNamespace getVariable 'QS_fnc_arrayShuffle');
 	private _building = objNull;
 	private _buildingPositions = [];
@@ -37,16 +37,16 @@ if (_type isEqualTo 'FOOT') then {
 		_building = _x;
 		_buildingPositions = _building buildingPos -1;
 		_buildingPositions = [_building,_buildingPositions] call (missionNamespace getVariable 'QS_fnc_customBuildingPositions');
-		if (!(_buildingPositions isEqualTo [])) then {
+		if (_buildingPositions isNotEqualTo []) then {
 			{
 				0 = _arrayBuildingPositions pushBack _x;
 			} forEach _buildingPositions;
 		};
 	} forEach _buildings;
-	if (!(_arrayBuildingPositions isEqualTo [])) then {
-		_arrayBuildingPositions = _arrayBuildingPositions apply {[(_x select 0),(_x select 1),((_x select 2) + 1)]};
+	if (_arrayBuildingPositions isNotEqualTo []) then {
+		_arrayBuildingPositions = _arrayBuildingPositions apply {[(_x # 0),(_x # 1),((_x # 2) + 1)]};
 	};
-	if (!(_arrayBuildingPositions isEqualTo [])) then {
+	if (_arrayBuildingPositions isNotEqualTo []) then {
 		if (((count _arrayBuildingPositions) > 20) || (_forced)) then {
 			_arrayBuildingPositions = _arrayBuildingPositions call (missionNamespace getVariable 'QS_fnc_arrayShuffle');
 			//comment 'Spawn agents';
@@ -159,7 +159,7 @@ if (_type isEqualTo 'FOOT') then {
 				_agent setVariable ['QS_AI_ENTITY_TASK',['CIRCUIT',[_spawnPos,(selectRandom _arrayBuildingPositionsProxy),(selectRandom _arrayBuildingPositionsProxy)],-1],FALSE];
 				_agent setVariable ['QS_AI_ENTITY_DATA',[],FALSE];
 				_agent setVariable ['QS_AI_ENTITY',TRUE,FALSE];
-				_agent setVariable ['QS_ENTITY_HC',TRUE,FALSE];
+				_agent setVariable ['QS_AI_ENTITY_HC',[0,-1],QS_system_AI_owners];
 				if (_isGrid) then {
 					_agent addEventHandler [
 						'Killed',
@@ -170,8 +170,8 @@ if (_type isEqualTo 'FOOT') then {
 									if (!(missionNamespace getVariable ['QS_grid_civCasualties',FALSE])) then {
 										missionNamespace setVariable ['QS_grid_civCasualties',TRUE,TRUE];
 										if (isDedicated) then {
-											['GRID_IDAP_UPDATE',['作战区域','目标失败<br/>我们造成了平民伤亡！']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
-											'QS_marker_grid_civState' setMarkerText (format ['%1无平民伤亡目标失败',(toString [32,32,32])]);
+											['GRID_IDAP_UPDATE',[localize 'STR_QS_Notif_008',format ['%1<br/>%2',localize 'STR_QS_Notif_071',localize 'STR_QS_Notif_072']]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+											'QS_marker_grid_civState' setMarkerTextLocal (format ['%1 %2 (%3)',(toString [32,32,32]),localize 'STR_QS_Marker_011',localize 'STR_QS_Marker_024']);
 											'QS_marker_grid_civState' setMarkerColor 'ColorRED';
 										} else {
 											[85] remoteExec ['QS_fnc_remoteExec',2,FALSE];
@@ -201,7 +201,16 @@ if (_type isEqualTo 'FOOT') then {
 						if (!isNull _instigator) then {
 							if (isPlayer _instigator) then {
 								_name = name _instigator;
-								_text = format ['%1 %2 了一个平民！',_name,(selectRandom ['杀死','谋害','屠杀','杀害'])];
+								_text = format [
+									'%1 %2 a civilian!',
+									_name,
+									(selectRandom [
+										localize 'STR_QS_Chat_158',
+										localize 'STR_QS_Chat_159',
+										localize 'STR_QS_Chat_160',
+										localize 'STR_QS_Chat_161'
+									])
+								];
 								['systemChat',_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 							};
 						};

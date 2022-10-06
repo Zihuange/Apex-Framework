@@ -32,8 +32,8 @@ _position = [];
 _accepted = FALSE;
 for '_x' from 0 to 1 step 0 do {
 	_flatPos = ['WORLD',-1,-1,'LAND',[2,0,0.3,1,1,TRUE,objNull],TRUE,[],[],TRUE] call (missionNamespace getVariable 'QS_fnc_findRandomPos');
-	if (!(_flatPos isEqualTo [])) then {
-		if (!(_flatPos isEqualTo [100,100,0])) then {
+	if (_flatPos isNotEqualTo []) then {
+		if (_flatPos isNotEqualTo [100,100,0]) then {
 			if (missionNamespace getVariable 'QS_module_fob_enabled') then {
 				if ((_flatPos distance (markerPos 'QS_marker_module_fob')) < 5000) then {
 					if ((_flatPos distance (markerPos 'QS_marker_module_fob')) > 1000) then {
@@ -54,30 +54,20 @@ _hqType = ['Land_Cargo_HQ_V2_F','Land_Cargo_HQ_V4_F'] select (worldName isEqualT
 _randomDir = random 360;
 missionNamespace setVariable [
 	'QS_sideObj',
-	(createVehicle [_hqType,[(_flatPos select 0),(_flatPos select 1),0],[],0,'NONE']),
-	FALSE
-];
-missionNamespace setVariable [
-	'QS_analytics_entities_created',
-	((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
+	(createVehicle [_hqType,[(_flatPos # 0),(_flatPos # 1),0],[],0,'NONE']),
 	FALSE
 ];
 (missionNamespace getVariable 'QS_sideObj') setDir _randomDir;
-(missionNamespace getVariable 'QS_sideObj') setPosWorld [((getPosWorld (missionNamespace getVariable 'QS_sideObj')) select 0),((getPosWorld (missionNamespace getVariable 'QS_sideObj')) select 1),((getPosWorld (missionNamespace getVariable 'QS_sideObj')) select 2)];
+(missionNamespace getVariable 'QS_sideObj') setPosWorld [((getPosWorld (missionNamespace getVariable 'QS_sideObj')) # 0),((getPosWorld (missionNamespace getVariable 'QS_sideObj')) # 1),((getPosWorld (missionNamespace getVariable 'QS_sideObj')) # 2)];
 (missionNamespace getVariable 'QS_sideObj') setVectorUp [0,0,1];
 _objectTypes = ['Land_CargoBox_V1_F','CargoNet_01_barrels_F'];
 _objectType = selectRandom _objectTypes;
 _object = createVehicle [_objectType,[0,0,0],[],0,'NONE'];
-missionNamespace setVariable [
-	'QS_analytics_entities_created',
-	((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
-	FALSE
-];
 _object allowDamage FALSE;
 _object enableRopeAttach FALSE;
 _object enableSimulationGlobal TRUE;
 _object enableVehicleCargo FALSE;
-_object setPosWorld [((getPosWorld (missionNamespace getVariable 'QS_sideObj')) select 0), ((getPosWorld (missionNamespace getVariable 'QS_sideObj')) select 1), (((getPosWorld (missionNamespace getVariable 'QS_sideObj')) select 2) + 5)];
+_object setPosWorld [((getPosWorld (missionNamespace getVariable 'QS_sideObj')) # 0), ((getPosWorld (missionNamespace getVariable 'QS_sideObj')) # 1), (((getPosWorld (missionNamespace getVariable 'QS_sideObj')) # 2) + 5)];
 
 for '_x' from 0 to 2 step 1 do {
 	_object setVariable ['QS_secureable',TRUE,TRUE];
@@ -93,11 +83,6 @@ _assault_boatPos = [_flatPos,15,25,10,0,1,0] call (missionNamespace getVariable 
 /*/--------- ENEMY HMG _boat (SEEMS RIGHT SINCE ITS BY THE COAST)/*/
 _boatType = ['B_boat_Armed_01_minigun_F','B_T_Boat_Armed_01_minigun_F'] select (worldName isEqualTo 'Tanoa');
 _boat = createVehicle [_boatType,_boatPos,[],0,'NONE'];
-missionNamespace setVariable [
-	'QS_analytics_entities_created',
-	((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
-	FALSE
-];
 _boat setDir (random 360);
 _smuggleGroup = createGroup [WEST,TRUE];
 _diverType = ['B_diver_F','B_T_Diver_F'] select (worldName isEqualTo 'Tanoa');
@@ -105,54 +90,40 @@ _diverType = ['B_diver_F','B_T_Diver_F'] select (worldName isEqualTo 'Tanoa');
 for '_x' from 0 to 4 step 1 do {
 	_smuggleGroup createUnit [_diverType,_boatPos,[],0,'NONE'];
 };
-missionNamespace setVariable [
-	'QS_analytics_entities_created',
-	((missionNamespace getVariable 'QS_analytics_entities_created') + 5),
-	FALSE
-];
+_smuggleGroup setVariable ['QS_AI_GRP_HC',[0,-1],QS_system_AI_owners];
 {
 	_x = _x call (missionNamespace getVariable 'QS_fnc_unitSetup');
 } count (units _smuggleGroup);
-((units _smuggleGroup) select 0) assignAsCommander _boat; 
-((units _smuggleGroup) select 0) moveInCommander _boat; 
-((units _smuggleGroup) select 1) assignAsDriver _boat; 
-((units _smuggleGroup) select 1) moveInDriver _boat; 
-((units _smuggleGroup) select 2) assignAsGunner _boat; 
-((units _smuggleGroup) select 2) moveInGunner _boat; 
-((units _smuggleGroup) select 3) assignAsCargo _boat; 
-((units _smuggleGroup) select 3) moveInCargo _boat; 
-((units _smuggleGroup) select 4) assignAsCargo _boat; 
-((units _smuggleGroup) select 4) moveInCargo _boat;
+((units _smuggleGroup) # 0) assignAsCommander _boat; 
+((units _smuggleGroup) # 0) moveInCommander _boat; 
+((units _smuggleGroup) # 1) assignAsDriver _boat; 
+((units _smuggleGroup) # 1) moveInDriver _boat; 
+((units _smuggleGroup) # 2) assignAsGunner _boat; 
+((units _smuggleGroup) # 2) moveInGunner _boat; 
+((units _smuggleGroup) # 3) assignAsCargo _boat; 
+((units _smuggleGroup) # 3) moveInCargo _boat; 
+((units _smuggleGroup) # 4) assignAsCargo _boat; 
+((units _smuggleGroup) # 4) moveInCargo _boat;
 [(units _smuggleGroup),2] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
 
 /*/---------- SHIPPING _trawler AND INFLATABLE _boat FOR AMBIENCE/*/
 
 _trawler = createVehicle ['C_boat_Civil_04_F',_trawlerPos,[],0,'NONE'];
-missionNamespace setVariable [
-	'QS_analytics_entities_created',
-	((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
-	FALSE
-];
 _trawler setDir (random 360);
 _trawler allowDamage FALSE;
 
 _assault_boat = createVehicle ['O_boat_Transport_01_F',_assault_boatPos,[],0,'NONE'];
-missionNamespace setVariable [
-	'QS_analytics_entities_created',
-	((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
-	FALSE
-];
 _assault_boat setDir (random 360);
 _assault_boat allowDamage FALSE;
 {_x lock 3;} count [_boat,_assault_boat];
 
 /*/------- POS FOR SECONDARY EXPLOSIONS, create a function for this?/*/
 
-_secondary1 = [_flatPos select 0,_flatPos select 1,0] getPos [(random 30),(random 360)];
-_secondary2 = [_flatPos select 0,_flatPos select 1,0] getPos [(random 30),(random 360)];
-_secondary3 = [_flatPos select 0,_flatPos select 1,0] getPos [(random 30),(random 360)];
-_secondary4 = [_flatPos select 0,_flatPos select 1,0] getPos [(random 50),(random 360)];
-_secondary5 = [_flatPos select 0,_flatPos select 1,0] getPos [(random 70),(random 360)];
+_secondary1 = [_flatPos # 0,_flatPos # 1,0] getPos [(random 30),(random 360)];
+_secondary2 = [_flatPos # 0,_flatPos # 1,0] getPos [(random 30),(random 360)];
+_secondary3 = [_flatPos # 0,_flatPos # 1,0] getPos [(random 30),(random 360)];
+_secondary4 = [_flatPos # 0,_flatPos # 1,0] getPos [(random 50),(random 360)];
+_secondary5 = [_flatPos # 0,_flatPos # 1,0] getPos [(random 70),(random 360)];
 
 /*/-------------------- SPAWN FORCE PROTECTION/*/
 
@@ -163,20 +134,25 @@ _enemiesArray = [(missionNamespace getVariable 'QS_sideObj')] call (missionNames
 
 /*/-------------------- BRIEFING/*/
 
-_fuzzyPos = [((_flatPos select 0) - 300) + (random 600),((_flatPos select 1) - 300) + (random 600),0];
+_fuzzyPos = [((_flatPos # 0) - 300) + (random 600),((_flatPos # 1) - 300) + (random 600),0];
 {
-	_x setMarkerPos _fuzzyPos;
+	_x setMarkerPosLocal _fuzzyPos;
 	_x setMarkerAlpha 1;
 } count ['QS_marker_sideMarker','QS_marker_sideCircle'];
-'QS_marker_sideMarker' setMarkerText (format ['%1缉查爆炸物',(toString [32,32,32])]);
+'QS_marker_sideMarker' setMarkerText (format ['%1 %2',(toString [32,32,32]),localize 'STR_QS_Marker_030']);
 
 [
 	'QS_IA_TASK_SM_0',
 	TRUE,
 	[
-		(format ['缉查爆炸物！ 在 %1 的海岸线附近有敌军走私的爆炸物。找到爆炸物品，清点数量确认与情报符合后引爆他们。 目标在区域内某一位置。',worldName]),
-		'缉查爆炸物',
-		'缉查爆炸物'
+		(format [
+			'%2 %1 %3',
+			worldName,
+			localize 'STR_QS_Task_074',
+			localize 'STR_QS_Task_075'
+		]),
+		localize 'STR_QS_Task_076',
+		localize 'STR_QS_Task_076'
 	],
 	(markerPos 'QS_marker_sideMarker'),
 	'CREATED',
@@ -186,16 +162,13 @@ _fuzzyPos = [((_flatPos select 0) - 300) + (random 600),((_flatPos select 1) - 3
 	'download',
 	TRUE
 ] call (missionNamespace getVariable 'BIS_fnc_setTask');
-
 _c4Messages = [
-	'爆炸物品确认！已设置炸药！ 15 秒后引爆，所有人迅速远离。',
-	'爆炸物品确认！已设置炸药！ 15 秒后引爆，所有人迅速远离。',
-	'爆炸物品确认！已设置炸药！ 15 秒后引爆，所有人迅速远离。'
+	localize 'STR_QS_Chat_061',
+	localize 'STR_QS_Chat_062',
+	localize 'STR_QS_Chat_063'
 ];
 _c4Message = selectRandom _c4Messages;
-_briefing = parseText "<t align='center'><t size='2.2'>New Side Mission</t><br/><t size='1.5' color='#00B2EE'>Secure Smuggled Explosives</t><br/>____________________<br/>The OPFOR have been smuggling explosives onto the island and hiding them in a Mobile HQ on the coastline.<br/><br/>We've marked the building on your map; head over there and secure the current shipment. Keep well back when you blow it; there's a lot of stuff in that building.</t>";
-//['hint',_briefing] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
-['NewSideMission',['缉查爆炸物']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+['NewSideMission',[localize 'STR_QS_Notif_084']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 	
 /*/-------------------- [ CORE LOOPS ]----------------------- [CORE LOOPS]/*/
 
@@ -208,14 +181,14 @@ for '_x' from 0 to 1 step 0 do {
 		
 	if (!alive (missionNamespace getVariable 'QS_sideObj')) exitWith {
 		{
-			_x setMarkerPos [-5000,-5000,0];
+			_x setMarkerPosLocal [-5000,-5000,0];
 			_x setMarkerAlpha 0;
 		} count ['QS_marker_sideMarker','QS_marker_sideCircle'];
 		
 		/*/-------------------- DE-BRIEFING/*/
 
 		missionNamespace setVariable ['QS_sideMissionUp',FALSE,TRUE];
-		['sideChat',[EAST,'HQ'],'目标被提前破坏，任务失败！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+		['sideChat',[EAST,'HQ'],localize 'STR_QS_Chat_060'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		[0,_flatPos] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
 		
 		/*/-------------------- DELETE/*/
@@ -246,7 +219,7 @@ for '_x' from 0 to 1 step 0 do {
 
 	if (missionNamespace getVariable 'QS_smSuccess') exitWith {
 		{
-			_x setMarkerPos [-5000,-5000,0];
+			_x setMarkerPosLocal [-5000,-5000,0];
 			_x setMarkerAlpha 0;
 		} count ['QS_marker_sideMarker','QS_marker_sideCircle'];
 	
@@ -254,12 +227,7 @@ for '_x' from 0 to 1 step 0 do {
 		
 		['sideChat',[EAST,'HQ'],_c4Message] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		uiSleep 14;											/*/ghetto bomb timer/*/
-		'Bo_GBU12_LGB' createVehicle (getPos _object); 		/*/ default "Bo_Mk82"/*/
-		missionNamespace setVariable [
-			'QS_analytics_entities_created',
-			((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
-			FALSE
-		];
+		'Bo_GBU12_LGB' createVehicle (getPosATL _object); 		/*/ default "Bo_Mk82"/*/
 		uiSleep 0.1;
 		missionNamespace setVariable [
 			'QS_analytics_entities_deleted',
@@ -283,17 +251,12 @@ for '_x' from 0 to 1 step 0 do {
 		sleep 2 + (random 2);
 		'SmallSecondary' createVehicle _secondary4;
 		'SmallSecondary' createVehicle _secondary5;
-		missionNamespace setVariable [
-			'QS_analytics_entities_created',
-			((missionNamespace getVariable 'QS_analytics_entities_created') + 5),
-			FALSE
-		];
 		if ((random 1) > 0.333) then {
-			_secondary1 = [_flatPos select 0,_flatPos select 1,0] getPos [(random 50),(random 360)];
-			_secondary2 = [_flatPos select 0,_flatPos select 1,0] getPos [(random 50),(random 360)];
-			_secondary3 = [_flatPos select 0,_flatPos select 1,0] getPos [(random 50),(random 360)];
-			_secondary4 = [_flatPos select 0,_flatPos select 1,0] getPos [(random 50),(random 360)];
-			_secondary5 = [_flatPos select 0,_flatPos select 1,0] getPos [(random 80),(random 360)];
+			_secondary1 = [_flatPos # 0,_flatPos # 1,0] getPos [(random 50),(random 360)];
+			_secondary2 = [_flatPos # 0,_flatPos # 1,0] getPos [(random 50),(random 360)];
+			_secondary3 = [_flatPos # 0,_flatPos # 1,0] getPos [(random 50),(random 360)];
+			_secondary4 = [_flatPos # 0,_flatPos # 1,0] getPos [(random 50),(random 360)];
+			_secondary5 = [_flatPos # 0,_flatPos # 1,0] getPos [(random 80),(random 360)];
 			sleep 10 + (random 10);
 			'SmallSecondary' createVehicle _secondary1;
 			'SmallSecondary' createVehicle _secondary2;
@@ -302,11 +265,6 @@ for '_x' from 0 to 1 step 0 do {
 			sleep 2 + (random 2);
 			'SmallSecondary' createVehicle _secondary4;
 			'SmallSecondary' createVehicle _secondary5;
-			missionNamespace setVariable [
-				'QS_analytics_entities_created',
-				((missionNamespace getVariable 'QS_analytics_entities_created') + 5),
-				FALSE
-			];
 		};
 	
 		/*/--------------------- DELETE, DESPAWN, HIDE and RESET/*/

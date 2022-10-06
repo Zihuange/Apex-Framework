@@ -237,9 +237,9 @@ _fobPosition = markerPos 'QS_marker_module_fob';
 _fobRadius = 150;
 for '_x' from 0 to 1 step 0 do {
 	_idapScenePosition = ['WORLD',-1,-1,'LAND',[10,-1,0.2,20,0,FALSE,objNull],TRUE,[],[],FALSE] call (missionNamespace getVariable 'QS_fnc_findRandomPos');
-	if ((([(_idapScenePosition select 0),(_idapScenePosition select 1)] nearRoads 25) select {((_x isEqualType objNull) && (!((roadsConnectedTo _x) isEqualTo [])))}) isEqualTo []) then {
-		if (!((([(_idapScenePosition select 0),(_idapScenePosition select 1)] nearRoads 100) select {((_x isEqualType objNull) && (!((roadsConnectedTo _x) isEqualTo [])))}) isEqualTo [])) then {
-			if ((_allPlayers findIf {((_x distance2D _idapScenePosition) < 300)}) isEqualTo -1) then {
+	if ((([(_idapScenePosition # 0),(_idapScenePosition # 1)] nearRoads 25) select {((_x isEqualType objNull) && ((roadsConnectedTo _x) isNotEqualTo []))}) isEqualTo []) then {
+		if ((([(_idapScenePosition # 0),(_idapScenePosition # 1)] nearRoads 100) select {((_x isEqualType objNull) && ((roadsConnectedTo _x) isNotEqualTo []))}) isNotEqualTo []) then {
+			if ((_allPlayers inAreaArray [_idapScenePosition,300,300,0,FALSE]) isEqualTo []) then {
 				if (!([_idapScenePosition,50,8] call (missionNamespace getVariable 'QS_fnc_waterInRadius'))) then {
 					if ((_idapScenePosition distance2D _basePosition) > _baseRadius) then {
 						if ((_idapScenePosition distance2D _fobPosition) > _fobRadius) then {
@@ -262,7 +262,7 @@ _composition = [
 	["Land_PaperBox_01_small_closed_white_IDAP_F",[1.38965,-0.00366211,0.0239992],225.339,[],false,false,TRUE,{}],
 	["Land_PaperBox_01_small_closed_white_med_F",[1.34375,-0.788818,0.0240002],269.84,[],false,false,TRUE,{}],
 	["Land_Garbage_square3_F",[-0.829102,1.52588,0],216.529,[],false,false,TRUE,{}],
-	["Box_IDAP_Equip_F",[1.1167,1.4668,0.0240002],359.998,[],false,false,false,{(_this select 0) setVariable ['QS_interaction_disabled',TRUE,TRUE];(_this select 0) setVariable ['QS_curator_disableEditability',TRUE,FALSE];(_this select 0);}],
+	["Box_IDAP_Equip_F",[1.1167,1.4668,0.0240002],359.998,[],false,false,false,{(_this # 0) setVariable ['QS_interaction_disabled',TRUE,TRUE];(_this # 0) setVariable ['QS_curator_disableEditability',TRUE,FALSE];(_this # 0);}],
 	["Land_MedicalTent_01_floor_light_F",[-2.0957,0.205566,0],0,[],false,false,TRUE,{}],
 	["Land_PaperBox_01_small_closed_brown_IDAP_F",[0.925781,-2.00195,0.0239997],175.629,[],false,false,TRUE,{}],
 	["Land_MedicalTent_01_white_IDAP_open_F",[-1.87842,0.0510254,0],0,[],false,false,false,{}],
@@ -281,15 +281,15 @@ _composition = [
 	["Land_Stretcher_01_folded_F",[-4.4917,-0.55957,0.0240002],267.445,[],false,false,TRUE,{}],
 	["Land_Stretcher_01_folded_F",[-4.51221,-0.902344,0.0240002],267.445,[],false,false,TRUE,{}],
 	["Land_Stretcher_01_folded_F",[-4.53955,-1.23242,0.0240002],267.445,[],false,false,TRUE,{}],
-	["Land_PlasticCase_01_large_idap_F",[-4.84863,0.563477,0.0240006],141.195,[],false,false,false,{(_this select 0) setVariable ['QS_interaction_disabled',TRUE,TRUE];(_this select 0);}],
+	["Land_PlasticCase_01_large_idap_F",[-4.84863,0.563477,0.0240006],141.195,[],false,false,false,{(_this # 0) setVariable ['QS_interaction_disabled',TRUE,TRUE];(_this # 0);}],
 	["Land_PaperBox_01_small_closed_brown_IDAP_F",[-4.59521,-1.92725,0.0240002],116.207,[],false,false,TRUE,{}],
 	["Land_PlasticCase_01_large_idap_F",[-4.93799,2.09912,0.0239997],183.922,[],false,false,TRUE,{}],
 	["Land_FoodSacks_01_small_white_idap_F",[-4.17383,-3.59814,0.0240002],269.781,[],false,false,TRUE,{}],
 	["Land_FoodContainer_01_White_F",[-3.53418,4.25049,0.0240068],359.991,[],false,false,TRUE,{}],
 	["Land_EmergencyBlanket_02_stack_F",[-5.3833,-1.68066,0.0240002],0.00218866,[],false,false,TRUE,{}],
 	["Land_EmergencyBlanket_02_stack_F",[-5.4165,-2.10913,0.0240002],0.00218866,[],false,false,TRUE,{}],
-	["Land_PlasticCase_01_large_idap_F",[-4.47754,3.7168,0.0240006],240.538,[],false,false,false,{(_this select 0) setVariable ['QS_interaction_disabled',TRUE,TRUE];(_this select 0);}],
-	["C_IDAP_Truck_02_F",[5.73877,1.8125,0.0442343],0.00148999,[],false,false,false,{(_this select 0) lock 2;(_this select 0) enableVehicleCargo FALSE;(_this select 0) enableRopeAttach FALSE;(_this select 0) setVariable ['QS_curator_disableEditability',TRUE,FALSE];(_this select 0);}],
+	["Land_PlasticCase_01_large_idap_F",[-4.47754,3.7168,0.0240006],240.538,[],false,false,false,{(_this # 0) setVariable ['QS_interaction_disabled',TRUE,TRUE];(_this # 0);}],
+	["C_IDAP_Truck_02_F",[5.73877,1.8125,0.0442343],0.00148999,[],false,false,false,{(_this # 0) lock 2;(_this # 0) enableVehicleCargo FALSE;(_this # 0) enableRopeAttach FALSE;(_this # 0) setVariable ['QS_curator_disableEditability',TRUE,FALSE];(_this # 0);}],
 	["Land_PaperBox_01_small_closed_brown_F",[-5.32422,-4.05298,0.023973],68.5451,[],false,false,TRUE,{}],
 	["Land_Net_FenceD_8m_F",[4.28027,7.11304,0],0,[],false,false,false,{}],
 	["Land_WheelieBin_01_F",[0.111816,-8.37134,0.0240202],178.618,[],false,false,false,{}],
@@ -298,7 +298,7 @@ _composition = [
 	["Land_PaperBox_01_small_stacked_F",[-9.0957,-1.04272,0.0240006],179.618,[],false,false,TRUE,{}],
 	["Land_Net_Fence_8m_F",[2.37012,7.05811,0],180.311,[],false,false,false,{}],
 	["Land_Net_Fence_8m_F",[-2.43213,6.95508,0],0.492948,[],false,false,false,{}],
-	["C_IDAP_Van_02_vehicle_F",[9.3125,2.05249,0.0848665],0.000515136,[],false,false,false,{(_this select 0) lock 2;(_this select 0) enableVehicleCargo FALSE;(_this select 0) enableRopeAttach FALSE;(_this select 0) setVariable ['QS_curator_disableEditability',TRUE,FALSE];(_this select 0);}], 
+	["C_IDAP_Van_02_vehicle_F",[9.3125,2.05249,0.0848665],0.000515136,[],false,false,false,{(_this # 0) lock 2;(_this # 0) enableVehicleCargo FALSE;(_this # 0) enableRopeAttach FALSE;(_this # 0) setVariable ['QS_curator_disableEditability',TRUE,FALSE];(_this # 0);}], 
 	["Land_Sign_WarningNoWeapon_F",[3.12988,-9.2605,0],0,[],false,false,false,{}],
 	["Flag_IDAP_F",[3.50391,-8.65796,0],0,[],false,true,false,{}], 
 	["Land_FieldToilet_F",[-8.99414,-5.93384,0.0240054],269.987,[],false,false,TRUE,{}],
@@ -321,7 +321,7 @@ _composition = [
 	["Land_FoodSacks_01_cargo_white_idap_F",[16.292,1.1416,0.0240002],2.45896e-005,[],false,false,TRUE,{}],
 	["Land_FoodSacks_01_cargo_white_idap_F",[16.4629,-0.996094,0.0240002],0.000610713,[],false,false,TRUE,{}],
 	["Land_Net_Fence_8m_F",[18.2134,-8.94385,0],359.416,[],false,false,false,{}],
-	["C_IDAP_supplyCrate_F",[16.7422,-2.97461,0.0240006],270.295,[],false,false,false,{(_this select 0) enableVehicleCargo FALSE;(_this select 0) enableRopeAttach FALSE;(_this select 0) setVariable ['QS_curator_disableEditability',TRUE,FALSE];(_this select 0);}],
+	["C_IDAP_supplyCrate_F",[16.7422,-2.97461,0.0240006],270.295,[],false,false,false,{(_this # 0) enableVehicleCargo FALSE;(_this # 0) enableRopeAttach FALSE;(_this # 0) setVariable ['QS_curator_disableEditability',TRUE,FALSE];(_this # 0);}],
 	["Land_PaperBox_01_small_stacked_F",[15.8887,-7.61987,0.0240002],179.616,[],false,false,TRUE,{}],
 	["Land_Net_Fence_8m_F",[18.1089,-0.992432,0],90.6397,[],false,false,false,{}],
 	["Land_Net_Fence_8m_F",[18.1104,-0.993164,0],269.266,[],false,false,false,{}],
@@ -359,8 +359,8 @@ for '_x' from 0 to (4 + (round (random 3))) step 1 do {
 		[],
 		[]
 	];
-	_agent disableAI 'ANIM';
-	_agent disableAI 'ALL';
+	_agent enableAIFeature ['ANIM',FALSE];
+	_agent enableAIFeature ['ALL',FALSE];
 	{
 		_agent unlinkItem _x;
 	} forEach (assignedItems _agent);
@@ -401,11 +401,11 @@ if (_enableDocumentTask) then {
 		private _documentTables = [];
 		private _documentTable = objNull;
 		{
-			if ( (toLower ((getModelInfo _x) select 1)) in ['a3\structures_f\civ\camping\campingtable_small_f.p3d','a3\structures_f\civ\camping\campingtable_f.p3d']) then {
+			if ( (toLowerANSI ((getModelInfo _x) # 1)) in ['a3\structures_f\civ\camping\campingtable_small_f.p3d','a3\structures_f\civ\camping\campingtable_f.p3d']) then {
 				_documentTables pushBack _x;
 			};
 		} forEach _idapComposition;
-		if (!(_documentTables isEqualTo [])) then {
+		if (_documentTables isNotEqualTo []) then {
 			_documentTask = TRUE;
 			_documentTable = selectRandom _documentTables;
 			_intelDocument = createSimpleObject ['Land_File1_F',(getPosASL _documentTable)];
@@ -441,8 +441,8 @@ _recoverableUnit = createAgent [(selectRandom _idapTypes),[-50,-50,0],[],0,'CAN_
 _recoverableUnit setDir (random 360);
 _recoverableUnit setDamage 0.75;
 _recoverableUnit allowDamage FALSE;
-_recoverableUnit disableAI 'ANIM';
-_recoverableUnit disableAI 'MOVE';
+_recoverableUnit enableAIFeature ['ANIM',FALSE];
+_recoverableUnit enableAIFeature ['MOVE',FALSE];
 {
 	_recoverableUnit unlinkItem _x;
 } forEach (assignedItems _recoverableUnit);
@@ -487,11 +487,11 @@ _enemyArray1 = [_idapScenePosition,0,0] call _fn_smIDAP;
 //comment 'Wait for intel found';
 
 private _uncertainPosition = [
-	((_idapScenePosition select 0) + 300 - (random 600)),
-	((_idapScenePosition select 1) + 250 - (random 600)),
+	((_idapScenePosition # 0) + 300 - (random 600)),
+	((_idapScenePosition # 1) + 250 - (random 600)),
 	0
 ];
-'QS_marker_sideMarker' setMarkerText (format ['%1营救IDAP工作人员',(toString [32,32,32])]);
+'QS_marker_sideMarker' setMarkerTextLocal (format ['%1 %2',(toString [32,32,32]),localize 'STR_QS_Marker_034']);
 {
 	_x setMarkerPosLocal _uncertainPosition;
 	_x setMarkerAlpha 1;
@@ -500,9 +500,19 @@ private _uncertainPosition = [
 	'QS_TASK_SM_IDAP_1',
 	TRUE,
 	[
-		(format ['<br/>1. 搜索现场。<br/>2. 找到受伤的IDAP人员并寻找线索。<br/>3. 找到医疗物资。<br/>4. 将医疗物资给受伤人员使用。<br/>5. 将受伤的IDAP人员带回基地医疗站。<br/><br/><br/>一个IDAP补给站被叛军攻击，平民报告说有一名IDAP工作人员似乎还活着。我们的任务是赶到那里找到并想办法救治伤员，叛军已经离开补给站，并且带走了重要的医疗物资。我们需要追查他们的行踪以成功找回被抢走的医疗物资。<br/><br/>在现场检查尸体，寻找叛军的线索。']),
-		'营救IDAP工作人员',
-		'营救IDAP工作人员'
+		(format [
+			'<br/>%1<br/>%2<br/>%3<br/>%4<br/>%5<br/><br/><br/>%6<br/><br/>%7<br/><br/>%8',
+			localize 'STR_QS_Task_085',
+			localize 'STR_QS_Task_086',
+			localize 'STR_QS_Task_087',
+			localize 'STR_QS_Task_088',
+			localize 'STR_QS_Task_089',
+			localize 'STR_QS_Task_090',
+			localize 'STR_QS_Task_091',
+			localize 'STR_QS_Task_092'
+		]),
+		localize 'STR_QS_Task_084',
+		localize 'STR_QS_Task_084'
 	],
 	_uncertainPosition,
 	'CREATED',
@@ -512,7 +522,7 @@ private _uncertainPosition = [
 	'Help',
 	TRUE
 ] call (missionNamespace getVariable 'BIS_fnc_setTask');
-['SM_IDAP_BRIEF',['支线任务','营救IDAP工作人员']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+['SM_IDAP_BRIEF',[localize 'STR_QS_Notif_081',localize 'STR_QS_Notif_088']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 for '_x' from 0 to 1 step 0 do {
 	sleep 3;
 	if (
@@ -533,9 +543,9 @@ _sceneChance pushBack 1;
 _findHouse = {
 	params ['_centerPos','_minRadius','_maxRadius','_validHouseTypes','_usedPositions'];
 	private _house = objNull;
-	private _list = [(_centerPos select 0),(_centerPos select 1)] nearObjects ['House',_maxRadius];
-	_list = _list select {(((typeOf _x) in _validHouseTypes) && ((_x distance2D _centerPos) > _minRadius) && (!((_x buildingPos -1) isEqualTo [])))};
-	if (!(_list isEqualTo [])) then {
+	private _list = [(_centerPos # 0),(_centerPos # 1)] nearObjects ['House',_maxRadius];
+	_list = _list select {(((typeOf _x) in _validHouseTypes) && ((_x distance2D _centerPos) > _minRadius) && ((_x buildingPos -1) isNotEqualTo []))};
+	if (_list isNotEqualTo []) then {
 		_house = selectRandom _list;
 	};
 	_house;
@@ -621,7 +631,7 @@ private _sounds = [
 private _unitStabilised = FALSE;
 private _aidMarker = '';
 _aidMarker = createMarker [(format ['QS_marker_aid_%1',(str (random 10e3))]),[0,0,0]];
-_aidMarker setMarkerTextLocal (format ['%1 %2',(toString [32,32,32]),'营救IDAP工作人员']);
+_aidMarker setMarkerTextLocal (format ['%1 %2',(toString [32,32,32]),localize 'STR_QS_Marker_035']);
 _aidMarker setMarkerPosLocal (getPosATL _recoverableUnit);
 _aidMarker setMarkerShapeLocal 'ICON';
 _aidMarker setMarkerSizeLocal [0.5,0.5];
@@ -639,12 +649,12 @@ for '_x' from 0 to 1 step 0 do {
 		};
 	};
 	if (_taskState isEqualTo 'SUCCEEDED') exitWith {
-		['SM_IDAP_BRIEF',['支线任务','任务成功！']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['SM_IDAP_BRIEF',[localize 'STR_QS_Notif_081',localize 'STR_QS_Notif_089']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		sleep 5;
 		[1,[0,0,0]] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
 	};
 	if (_taskState isEqualTo 'FAILED') exitWith {
-		['SM_IDAP_BRIEF',['支线任务','任务失败！']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['SM_IDAP_BRIEF',[localize 'STR_QS_Notif_081',localize 'STR_QS_Notif_090']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		sleep 5;
 		[0,[0,0,0]] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
 	};	
@@ -657,8 +667,8 @@ for '_x' from 0 to 1 step 0 do {
 			if (!isNull _house) then {
 				_house allowDamage FALSE;
 				_housePosition = position _house;
-				if ((_usedPositions findIf {((_housePosition distance2D _x) < 300)}) isEqualTo -1) then {
-					if ((_allPlayers findIf {((_housePosition distance2D _x) < 300)}) isEqualTo -1) then {
+				if ((_usedPositions inAreaArray [_housePosition,300,300,0,FALSE]) isEqualTo []) then {
+					if ((_allPlayers inAreaArray [_housePosition,300,300,0,FALSE]) isEqualTo []) then {
 						if ((_housePosition distance2D _basePosition) > 500) then {
 							_houseFound = TRUE;
 							_findNewLocation = FALSE;
@@ -682,7 +692,7 @@ for '_x' from 0 to 1 step 0 do {
 			missionNamespace setVariable ['QS_sidemission_building',_house,FALSE];
 			_housePosition = position _house;
 			_houseMarker = createMarker [(format ['QS_marker_house_%1',(str (random 10e3))]),[0,0,0]];
-			_houseMarker setMarkerTextLocal (format ['%1 %2',(toString [32,32,32]),'追查医疗物资']);
+			_houseMarker setMarkerTextLocal (format ['%1 %2',(toString [32,32,32]),localize 'STR_QS_Marker_036']);
 			_houseMarker setMarkerAlphaLocal 0;
 			_houseMarker setMarkerPosLocal _housePosition;
 			_houseMarker setMarkerShapeLocal 'ICON';
@@ -691,7 +701,7 @@ for '_x' from 0 to 1 step 0 do {
 			_houseMarker setMarkerTypeLocal 'mil_triangle';
 			_houseMarker setMarkerAlpha 1;
 			
-			['SM_IDAP_UPDATE',['支线任务更新','追查医疗物资']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+			['SM_IDAP_UPDATE',[localize 'STR_QS_Notif_091',localize 'STR_QS_Notif_092']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 
 			_truckPos = [_housePosition,10,25,5,0,0.5,0] call _fn_findSafePos;
 			if ((_truckPos distance2D _housePosition) < 30) then {
@@ -710,8 +720,8 @@ for '_x' from 0 to 1 step 0 do {
 			};
 			_usedPositions pushBack _housePosition;
 			_houseBuildingPositions = _house buildingPos -1;
-			_houseBuildingPositions = _houseBuildingPositions apply { [(_x select 0),(_x select 1),((_x select 2) + 0.5)] };
-			_currentSceneChance = _sceneChance select 0;
+			_houseBuildingPositions = _houseBuildingPositions apply { [(_x # 0),(_x # 1),((_x # 2) + 0.5)] };
+			_currentSceneChance = _sceneChance # 0;
 			_sceneChance deleteAt 0;
 			if (_currentSceneChance isEqualTo 1) then {
 				//comment 'Create intel object';
@@ -732,13 +742,13 @@ for '_x' from 0 to 1 step 0 do {
 			};
 			//comment 'Spawn house guards';
 			//comment 'Spawn civilians?';
-			if (!(_houseMines isEqualTo [])) then {
+			if (_houseMines isNotEqualTo []) then {
 				{
 					deleteVehicle _x;
 				} forEach _houseMines;
 				_houseMines = [];
 			};
-			if (!(_enemyArray2 isEqualTo [])) then {
+			if (_enemyArray2 isNotEqualTo []) then {
 				{
 					_x setDamage [1,FALSE];
 				} forEach _enemyArray2;
@@ -759,15 +769,15 @@ for '_x' from 0 to 1 step 0 do {
 	if (_monitorScene) then {
 		if (_sceneType isEqualTo 0) then {
 			if (_currentSceneChance isEqualTo 0) then {
-				if (([_housePosition,15,[EAST],allPlayers,1] call _fn_serverDetector) > 0) then {
-					if (([_housePosition,15,[WEST,RESISTANCE],allUnits,1] call _fn_serverDetector) isEqualTo 0) then {
+				if ((((units WEST) inAreaArray [_housePosition,15,15,0,FALSE,-1])) isNotEqualTo []) then {
+					if (((((units EAST) + (units RESISTANCE)) inAreaArray [_housePosition,15,15,0,FALSE,-1])) isEqualTo []) then {
 						[
 							[],
 							{
-								50 cutText ['没有找到医疗物资。继续搜索！','PLAIN DOWN',0.75];
+								50 cutText [localize 'STR_QS_Text_247','PLAIN DOWN',0.75];
 							}
-						] remoteExec ['call',(allPlayers select {((_x distance2D _housePosition) < 300)}),FALSE];
-						['SM_IDAP_UPDATE',['支线任务更新','没有发现医疗物资']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+						] remoteExec ['call',(allPlayers inAreaArray [_housePosition,300,300,0,FALSE]),FALSE];
+						['SM_IDAP_UPDATE',[localize 'STR_QS_Notif_091',localize 'STR_QS_Notif_093']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 						
 						_findNewLocation = TRUE;
 						_monitorScene = FALSE;
@@ -786,13 +796,13 @@ for '_x' from 0 to 1 step 0 do {
 						
 							if (!(_suppliesFound)) then {
 								_suppliesFound = TRUE;
-								['SM_IDAP_UPDATE',['支线任务更新','已找到医疗物资！']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+								['SM_IDAP_UPDATE',[localize 'STR_QS_Notif_091',localize 'STR_QS_Notif_094']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 								[
 									[],
 									{
-										50 cutText ['已找到医疗物资！','PLAIN DOWN',0.75];
+										50 cutText [localize 'STR_QS_Text_248','PLAIN DOWN',0.75];
 									}
-								] remoteExec ['call',(allPlayers select {((_x distance2D _housePosition) < 300)}),FALSE];
+								] remoteExec ['call',(allPlayers inAreaArray [_housePosition,300,300,0,FALSE]),FALSE];
 							};
 							_crateAttachedTo = attachedTo _crate;
 							_crateState = 'ATTACHED';
@@ -817,7 +827,7 @@ for '_x' from 0 to 1 step 0 do {
 						};
 					} else {
 						if (_crateState isEqualTo 'ATTACHED') then {
-							if ((isNull (attachedTo _crate)) || {((!isNull (attachedTo _crate)) && (!((attachedTo _crate) isEqualTo _crateAttachedTo)))}) then {
+							if ((isNull (attachedTo _crate)) || {((!isNull (attachedTo _crate)) && ((attachedTo _crate) isNotEqualTo _crateAttachedTo))}) then {
 								_crateState = 'DETACHED';
 								_iconData = [
 									_iconID,
@@ -854,7 +864,7 @@ for '_x' from 0 to 1 step 0 do {
 								_x setMarkerAlpha 0;
 							} count ['QS_marker_sideMarker','QS_marker_sideCircle'];
 							['QS_TASK_SM_IDAP_1'] call (missionNamespace getVariable 'BIS_fnc_deleteTask');
-							['SM_IDAP_UPDATE',['支线任务更新','稳定IDPA工作人员伤情并立即送往基地医疗设施']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+							['SM_IDAP_UPDATE',[localize 'STR_QS_Notif_091',localize 'STR_QS_Notif_095']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 							_sceneType = 1;
 							deleteMarker _aidMarker;
 							deleteVehicle _crate;
@@ -866,9 +876,9 @@ for '_x' from 0 to 1 step 0 do {
 								_medevacTaskID,
 								TRUE,
 								[
-									'IDPA工作人员已经得到紧急治疗，情况暂时稳定， 立即将伤员带回到基地医疗站！',
-									'医疗救助',
-									'医疗救助'
+									localize 'STR_QS_Task_093',
+									localize 'STR_QS_Task_029',
+									localize 'STR_QS_Task_029'
 								],
 								[_recoverableUnit,TRUE],
 								'CREATED',
@@ -879,12 +889,12 @@ for '_x' from 0 to 1 step 0 do {
 								TRUE
 							] call (missionNamespace getVariable 'BIS_fnc_setTask');
 							[_medevacTaskID,TRUE,_medevacTimeout] call (missionNamespace getVariable 'QS_fnc_taskSetTimer');
-							if (!(_enemyArray2 isEqualTo [])) then {
+							if (_enemyArray2 isNotEqualTo []) then {
 								{
 									_x setDamage [1,FALSE];
 								} forEach _enemyArray2;
 							};
-							if (!(_houseMines isEqualTo [])) then {
+							if (_houseMines isNotEqualTo []) then {
 								{
 									deleteVehicle _x;
 								} forEach _houseMines;
@@ -957,17 +967,13 @@ for '_x' from 0 to 1 step 0 do {
 					};
 				};
 			} else {
-				if (!(_enemyArray2 isEqualTo [])) then {
-					{
-						if (alive _x) then {
-							if (_x isKindOf 'Man') then {
-								if (alive _crate) then {	
-									doStop _x;
-									_x doMove (getPosATL _crate);
-								};
-							};
-						};
-					} forEach _enemyArray2;
+				_enemyArray2 = _enemyArray2 select {((alive _x) && (_x isKindOf 'Man'))};
+				
+				if (_enemyArray2 isNotEqualTo []) then {
+				
+				
+					doStop _enemyArray2;
+					_enemyArray2 doMove ((getPosATL _crate) vectorAdd [0,0,1]);
 				};
 			};
 			_enemyCheckDelay = time + _enemyDelay;
@@ -981,12 +987,15 @@ for '_x' from 0 to 1 step 0 do {
 		};
 	};
 	if (_crateSpawned) then {
-		if (!alive _crate) then {
-			[[EAST,'OPF'],'医疗物资被损坏， 任务失败！'] remoteExec ['sideChat',-2,FALSE];
+		if (
+			(!alive _crate) ||
+			{((((getPosASL _crate) # 2) < -0.5) && (isNull (attachedTo _crate)))}
+		) then {
+			[[EAST,'OPF'],localize 'STR_QS_Chat_064'] remoteExec ['sideChat',-2,FALSE];
 			_taskState = 'FAILED';
 		};
 		if (serverTime > _timeoutFailsafe) then {
-			[[EAST,'OPF'],'任务失败， 我们浪费了太多时间！'] remoteExec ['sideChat',-2,FALSE];
+			[[EAST,'OPF'],localize 'STR_QS_Chat_065'] remoteExec ['sideChat',-2,FALSE];
 			_taskState = 'FAILED';
 		};
 	};
@@ -1006,7 +1015,7 @@ for '_x' from 0 to 1 step 0 do {
 	_crate
 ];
 private _toDelete = objNull;
-if (!(_allArray isEqualTo [])) then {
+if (_allArray isNotEqualTo []) then {
 	{
 		_toDelete = _x;
 		if (_toDelete isKindOf 'LandVehicle') then {
@@ -1037,7 +1046,7 @@ if (!(_allArray isEqualTo [])) then {
 {
 	(missionNamespace getVariable 'QS_garbageCollector') pushBack [_x,'NOW_DISCREET',0];
 } forEach _idapComposition;
-if (!(_houseMines isEqualTo [])) then {
+if (_houseMines isNotEqualTo []) then {
 	{
 		deleteVehicle _x;
 	} forEach _houseMines;

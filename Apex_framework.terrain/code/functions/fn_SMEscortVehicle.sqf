@@ -125,7 +125,6 @@ if (_worldName isEqualTo 'Enoch') then {
 };
 _vehicleType = selectRandom _vehicleTypes;
 _vehicle = createVehicle [_vehicleType,_startPosition,[],0,'NONE'];
-missionNamespace setVariable ['QS_analytics_entities_created',((missionNamespace getVariable 'QS_analytics_entities_created') + 1),FALSE];
 _enabled_IED = FALSE;
 _enabled_mech = FALSE;
 _enabled_RPG = FALSE;
@@ -168,8 +167,8 @@ _vehicleAlive = alive _vehicle;
 _vehicleDriver = driver _vehicle;
 _vehicleDriverGroup = grpNull;
 _vehicle forceFlagTexture '\A3\Data_F\Flags\Flag_red_CO.paa';
-_roadsInFront = ((_vehiclePosInFront select [0,2]) nearRoads 25) select {((_x isEqualType objNull) && (!((roadsConnectedTo _x) isEqualTo [])))};
-_roadsToDestination = ((_vehiclePosToDest select [0,2]) nearRoads 25) select {((_x isEqualType objNull) && (!((roadsConnectedTo _x) isEqualTo [])))};
+_roadsInFront = ((_vehiclePosInFront select [0,2]) nearRoads 25) select {((_x isEqualType objNull) && ((roadsConnectedTo _x) isNotEqualTo []))};
+_roadsToDestination = ((_vehiclePosToDest select [0,2]) nearRoads 25) select {((_x isEqualType objNull) && ((roadsConnectedTo _x) isNotEqualTo []))};
 _timeOffRoad = 0;
 _dmgCount = 0;
 _count = 0;
@@ -177,7 +176,7 @@ private _roadblockEntities = [];
 private _roadblockPosition = [0,0,0];
 private _roadblockData = [];
 _vehicle setUnloadInCombat [FALSE,FALSE];
-_vehicle allowCrewInImmobile TRUE;
+_vehicle allowCrewInImmobile [TRUE,TRUE];
 _vehicle enableRopeAttach FALSE;
 _vehicle enableVehicleCargo FALSE;
 _vehicle setConvoySeparation 50;
@@ -260,11 +259,14 @@ _enemySpawnPos = [0,0,0];
 _enemyTurretType = '';
 _enemyTurret = objNull;
 _enemyFiredEvent = {
-	_unit = _this select 0;
-	_unit removeEventHandler ['Fired',_thisEventHandler];
-	_unit suppressFor 5;
-	if (alive (getAttackTarget _unit)) then {
-		_unit doSuppressiveFire (aimPos (getAttackTarget _unit));
+	_unit = _this # 0;
+	_unit removeEventHandler [_thisEvent,_thisEventHandler];
+	private _target = getAttackTarget _unit;
+	if (!alive _target) then {
+		_target = [_unit,500] call (missionNamespace getVariable 'QS_fnc_AIGetAttackTarget');
+	};
+	if (alive _target) then {
+		[_unit,_target,1,TRUE,FALSE,FALSE,-1] call (missionNamespace getVariable 'QS_fnc_AIDoSuppressiveFire');
 	};
 };
 _veh = objNull;
@@ -298,14 +300,14 @@ _bto = [
 //comment '[_position,_bto] call _nearbySpawnPos';
 _spawnPos = [0,0,0];
 _nearbySpawnPos = {
-	_position = _this select 0;
-	_bto = _this select 1;
+	_position = _this # 0;
+	_bto = _this # 1;
 	private _position2 = [0,0,0];
 	for '_x' from 0 to 49 step 1 do {
 		_position2 = _position getPos [(10 + (random 15)),(random 360)];
-		if (((((_position select [0,2]) nearRoads 15) select {((_x isEqualType objNull) && (!((roadsConnectedTo _x) isEqualTo [])))}) isEqualTo []) && ((nearestTerrainObjects [_position2,_bto,2,FALSE,TRUE]) isEqualTo [])) exitWith {};
+		if (((((_position select [0,2]) nearRoads 15) select {((_x isEqualType objNull) && ((roadsConnectedTo _x) isNotEqualTo []))}) isEqualTo []) && ((nearestTerrainObjects [_position2,_bto,2,FALSE,TRUE]) isEqualTo [])) exitWith {};
 	};
-	if (!(_position2 isEqualTo [0,0,0])) exitWith {_position2;};
+	if (_position2 isNotEqualTo [0,0,0]) exitWith {_position2;};
 	_position;
 };
 _QS_manage_group = TRUE;
@@ -318,7 +320,7 @@ _marker0 setMarkerShapeLocal 'Icon';
 _marker0 setMarkerTypeLocal 'mil_dot';
 _marker0 setMarkerColorLocal 'ColorGreen';
 _marker0 setMarkerAlphaLocal 1;
-_marker0 setMarkerTextLocal (format ['%1支线任务：载具护送',(toString [32,32,32])]);
+_marker0 setMarkerTextLocal (format ['%1 %2',(toString [32,32,32]),localize 'STR_QS_Marker_028']);
 _marker0 setMarkerPos _destination;
 _distanceInFront_fixed = 250;
 _distanceInFront_random = 500;
@@ -333,11 +335,6 @@ _suppressTarget_checkDelay = time + 30;
 _suppressTarget_var = 'QS_vehicle_suppressTarget';
 _suppressTarget_type = 'SuppressTarget';
 _suppressTarget = createVehicle [_suppressTarget_type,[0,0,0],[],0,'NONE'];
-missionNamespace setVariable [
-	'QS_analytics_entities_created',
-	((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
-	FALSE
-];
 _suppressTarget attachTo [_vehicle,[0,(random 2),(random 1)]];
 _vehicle setVariable [_suppressTarget_var,_suppressTarget,FALSE];
 _suppressTargets pushBack _suppressTarget;
@@ -346,9 +343,15 @@ _suppressTargets pushBack _suppressTarget;
 	'QS_IA_TASK_SM_ESCORT',
 	TRUE,
 	[
-		(format ['将车辆送到 %1 (已在地图上标记)。 强烈建议始终保持在道路上行驶，不要使用装甲载具护送， 因为会触发道路上的IED。 建议在交火时尽量保持移动或者第一时间寻找掩体，防止被敌军侧翼包围。祝你好运！',_nearestVillage]),
-		'支线任务: 护送车辆',
-		'支线任务: 护送车辆'
+		(format [
+			'%2 %1 (%3). %4',
+			_nearestVillage,
+			localize 'STR_QS_Task_071',
+			localize 'STR_QS_Task_072',
+			localize 'STR_QS_Task_073'
+		]),
+		localize 'STR_QS_Task_070',
+		localize 'STR_QS_Task_070'
 	],
 	[_vehicle,TRUE],
 	'CREATED',
@@ -358,8 +361,8 @@ _suppressTargets pushBack _suppressTarget;
 	'Truck',
 	TRUE
 ] call (missionNamespace getVariable 'BIS_fnc_setTask');
-['NewSideMission',['护送载具']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
-'QS_marker_sideMarker' setMarkerText (format ['%1护送载具',(toString [32,32,32])]);
+['NewSideMission',[localize 'STR_QS_Notif_078']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+'QS_marker_sideMarker' setMarkerText (format ['%1 %2',(toString [32,32,32]),localize 'STR_QS_Marker_029']);
 waitUntil {
 	sleep 3;
 	(!alive _vehicle) ||
@@ -369,7 +372,7 @@ if (!alive _vehicle) exitWith {
 	//comment 'Mission fail';
 	deleteMarker _marker0;
 	['QS_IA_TASK_SM_ESCORT'] call (missionNamespace getVariable 'BIS_fnc_deleteTask');
-	['TaskFailed',['','护送目标被摧毁！']] remoteExec [_fuctionNotification,-2,FALSE];
+	['TaskFailed',['',localize 'STR_QS_Notif_079']] remoteExec [_fuctionNotification,-2,FALSE];
 	sleep 5;
 	[0,_destination] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
 };
@@ -384,12 +387,12 @@ for '_x' from 0 to 1 step 0 do {
 		if (_vehicleAlive) then {
 			if (_vehicleCanMove) then {
 				if (!(_vehicleIsOnRoad)) then {
-					if ( (((_vehiclePos select [0,2]) nearRoads 25) select {((_x isEqualType objNull) && (!((roadsConnectedTo _x) isEqualTo [])))}) isEqualTo []) then {
+					if ( (((_vehiclePos select [0,2]) nearRoads 25) select {((_x isEqualType objNull) && ((roadsConnectedTo _x) isNotEqualTo []))}) isEqualTo []) then {
 						if ((_vehiclePos distance2D (getPosATL _vehicle)) > 5) then {
 							if ((_vehiclePos distance2D _startPosition) > _safezone_radius) then {
 								_timeOffRoad = _timeOffRoad + 1;
 								if (_timeOffRoad > 7) then {
-									['sideChat',[EAST,'OPF'],'支线任务 - 载具遇到了地雷！'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+									['sideChat',[EAST,'OPF'],localize 'STR_QS_Chat_059'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 									_hasHitLandmine = TRUE;
 								};
 							};
@@ -426,11 +429,11 @@ for '_x' from 0 to 1 step 0 do {
 		//comment 'AMBUSH NOT IN PROGRESS, PREPARE IT';
 		_ambushPos_candidates = [];
 		//comment 'Clean up old ambush';
-		if (!(_enemyArray isEqualTo [])) then {
+		if (_enemyArray isNotEqualTo []) then {
 			{
 				if (!isNull _x) then {
 					if (_x isKindOf 'Man') then {
-						if (([(getPosATL _x),100,[EAST],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
+						if (((units EAST) inAreaArray [getPosATL _x,300,300,0,FALSE]) isEqualTo []) then {
 							missionNamespace setVariable [
 								'QS_analytics_entities_deleted',
 								((missionNamespace getVariable 'QS_analytics_entities_deleted') + 1),
@@ -441,7 +444,7 @@ for '_x' from 0 to 1 step 0 do {
 							_x setDamage 1;
 						};
 					} else {
-						if (([(getPosATL _x),200,[EAST],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
+						if (((units EAST) inAreaArray [getPosATL _x,300,300,0,FALSE]) isEqualTo []) then {
 							missionNamespace setVariable [
 								'QS_analytics_entities_deleted',
 								((missionNamespace getVariable 'QS_analytics_entities_deleted') + 1),
@@ -455,7 +458,7 @@ for '_x' from 0 to 1 step 0 do {
 				};
 			} count _enemyArray;
 		};
-		if (!(_enemyGroupArray isEqualTo [])) then {
+		if (_enemyGroupArray isNotEqualTo []) then {
 			{
 				if (!isNull _x) then {
 					deleteGroup _x;
@@ -477,8 +480,8 @@ for '_x' from 0 to 1 step 0 do {
 				_ambushPos_candidates pushBack _vehiclePosToDest;
 			};
 		};
-		_roadsInFront = ((_vehiclePosInFront select [0,2]) nearRoads 200) select {((_x isEqualType objNull) && (!((roadsConnectedTo _x) isEqualTo [])))};
-		if (!(_roadsInFront isEqualTo [])) then {
+		_roadsInFront = ((_vehiclePosInFront select [0,2]) nearRoads 200) select {((_x isEqualType objNull) && ((roadsConnectedTo _x) isNotEqualTo []))};
+		if (_roadsInFront isNotEqualTo []) then {
 			for '_x' from 0 to 9 step 1 do {
 				_randomRoadSegment = selectRandom _roadsInFront;
 				if (isOnRoad _randomRoadSegment) exitWith {};
@@ -487,8 +490,8 @@ for '_x' from 0 to 1 step 0 do {
 				_ambushPos_candidates pushBack (getPosATL _randomRoadSegment);
 			};
 		};
-		_roadsToDestination = ((_vehiclePosToDest select [0,2]) nearRoads 200) select {((_x isEqualType objNull) && (!((roadsConnectedTo _x) isEqualTo [])))};
-		if (!(_roadsToDestination isEqualTo [])) then {
+		_roadsToDestination = ((_vehiclePosToDest select [0,2]) nearRoads 200) select {((_x isEqualType objNull) && ((roadsConnectedTo _x) isNotEqualTo []))};
+		if (_roadsToDestination isNotEqualTo []) then {
 			for '_x' from 0 to 9 step 1 do {
 				_randomRoadSegment = selectRandom _roadsToDestination;
 				if (isOnRoad _randomRoadSegment) exitWith {};
@@ -497,13 +500,11 @@ for '_x' from 0 to 1 step 0 do {
 				_ambushPos_candidates pushBack (getPosATL _randomRoadSegment);
 			};
 		};
-		//comment 'If position finding failed, exit';
 		if (_ambushPos_candidates isEqualTo []) exitWith {};
 		_ambushInProgress = TRUE;
 		_ambushPos = selectRandom _ambushPos_candidates;
 		_distanceToAmbush = _vehiclePos distance2D _ambushPos;
-		//comment 'Prepare force protection';
-		_nearbyPlayers = [_vehiclePos,500,[EAST],allUnits,1] call (missionNamespace getVariable 'QS_fnc_serverDetector');
+		_nearbyPlayers = count ((units EAST) inAreaArray [_vehiclePos,500,500,0,FALSE,-1]);
 		_intensity = 1;
 		if (_nearbyPlayers > 0) then {
 			_intensity = 1;
@@ -534,20 +535,21 @@ for '_x' from 0 to 1 step 0 do {
 		_spawnDoubleChance = 0;
 		{
 			_enemyGroupType = selectRandom _enemyGroupTypes;
-			_spawnPos = [(_ambushPos_candidates select _forEachIndex),_bto] call _nearbySpawnPos;
+			_spawnPos = [(_ambushPos_candidates # _forEachIndex),_bto] call _nearbySpawnPos;
 			_grp = [_spawnPos,(_spawnPos getDir _vehiclePos),_groupSide,_enemyGroupType,TRUE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 			[(units _grp),1] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
 			_enemyGroupArray pushBack _grp;
 			_grp setSpeedMode 'FULL';
+			_grp setVariable ['QS_AI_GRP_HC',[0,-1],QS_system_AI_owners];
 			{
 				0 = _enemyArray pushBack _x;
 				if ((random 1) > 0.5) then {
 					_x addEventHandler ['Fired',_enemyFiredEvent];
 				};
 				if ((random 1) > 0.5) then {
-					_x disableAI 'AUTOCOMBAT';
+					_x enableAIFeature ['AUTOCOMBAT',FALSE];
 				};
-				_x disableAI 'COVER';
+				_x enableAIFeature ['COVER',FALSE];
 				if ((random 1) > 0.9) then {
 					_x addBackpack (['b_carryall_ocamo','b_carryall_ghex_f'] select (worldName in ['Tanoa','Lingor3']));
 					[_x,(['launch_b_titan_f','launch_b_titan_tna_f'] select (worldName in ['Tanoa','Lingor3'])),4] call (missionNamespace getVariable 'QS_fnc_addWeapon');
@@ -561,20 +563,21 @@ for '_x' from 0 to 1 step 0 do {
 				if (_spawnDoubleChance isEqualTo 0) then {
 					_spawnDoubleChance = 1;
 					_enemyGroupType = selectRandom _enemyGroupTypes_small;
-					_spawnPos = [(_ambushPos_candidates select _forEachIndex),_bto] call _nearbySpawnPos;
+					_spawnPos = [(_ambushPos_candidates # _forEachIndex),_bto] call _nearbySpawnPos;
 					_grp = [_spawnPos,(_spawnPos getDir _vehiclePos),_groupSide,_enemyGroupType,TRUE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 					[(units _grp),1] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
 					_enemyGroupArray pushBack _grp;
 					_grp setSpeedMode 'FULL';
+					_grp setVariable ['QS_AI_GRP_HC',[0,-1],QS_system_AI_owners];
 					{
 						0 = _enemyArray pushBack _x;
 						if ((random 1) > 0.5) then {
 							_x addEventHandler ['Fired',_enemyFiredEvent];
 						};
 						if ((random 1) > 0.5) then {
-							_x disableAI 'AUTOCOMBAT';
+							_x enableAIFeature ['AUTOCOMBAT',FALSE];
 						};
-						_x disableAI 'COVER';
+						_x enableAIFeature ['COVER',FALSE];
 						if ((random 1) > 0.9) then {
 							_x addBackpack (['b_carryall_ocamo','b_carryall_ghex_f'] select (worldName in ['Tanoa','Lingor3']));
 							[_x,(['launch_b_titan_f','launch_b_titan_tna_f'] select (worldName in ['Tanoa','Lingor3'])),4] call (missionNamespace getVariable 'QS_fnc_addWeapon');
@@ -587,7 +590,7 @@ for '_x' from 0 to 1 step 0 do {
 				};
 			};
 			if (_intensity > 1) then {
-				if ((_ambushPos_candidates select _forEachIndex) isEqualTo _ambushPos) then {
+				if ((_ambushPos_candidates # _forEachIndex) isEqualTo _ambushPos) then {
 					if (_intensity > 2) then {
 						_enemyGroupType = selectRandom _enemyGroupTypes_big;
 					} else {
@@ -595,6 +598,7 @@ for '_x' from 0 to 1 step 0 do {
 					};
 					_spawnPos = [_ambushPos,_bto] call _nearbySpawnPos;
 					_grp = [_spawnPos,(_spawnPos getDir _vehiclePos),_groupSide,_enemyGroupType,TRUE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
+					_grp setVariable ['QS_AI_GRP_HC',[0,-1],QS_system_AI_owners];
 					[(units _grp),1] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
 					_enemyGroupArray pushBack _grp;
 					_grp setSpeedMode 'FULL';
@@ -604,13 +608,13 @@ for '_x' from 0 to 1 step 0 do {
 							_x addEventHandler ['Fired',_enemyFiredEvent];
 						};
 						if ((random 1) > 0.5) then {
-							_x disableAI 'AUTOCOMBAT';
+							_x enableAIFeature ['AUTOCOMBAT',FALSE];
 						};
 						if ((random 1) > 0.9) then {
 							_x addBackpack (['b_carryall_ocamo','b_carryall_ghex_f'] select (worldName in ['Tanoa','Lingor3']));
 							[_x,(['launch_b_titan_f','launch_b_titan_tna_f'] select (worldName in ['Tanoa','Lingor3'])),4] call (missionNamespace getVariable 'QS_fnc_addWeapon');
 						};
-						_x disableAI 'COVER';
+						_x enableAIFeature ['COVER',FALSE];
 						_x enableStamina FALSE;
 						_x enableFatigue FALSE;
 						_x setUnitPosWeak (selectRandom ['UP','MIDDLE']);
@@ -623,32 +627,22 @@ for '_x' from 0 to 1 step 0 do {
 			_ambushCount = 0;
 			_vehSpawnPos = [(getPosATL _vehicle),300,800,2.5,0,0.4,0] call (missionNamespace getVariable 'QS_fnc_findSafePos');
 			if ((_vehSpawnPos distance2D _base) > 1500) then {
-				_nearRoadsPositions = (((_vehSpawnPos select [0,2]) nearRoads 300) select {((_x isEqualType objNull) && (!((roadsConnectedTo _x) isEqualTo [])))}) apply {(getPosATL _x)};
-				if (!(_nearRoadsPositions isEqualTo [])) then {
-					_nearRoadsPositions = _nearRoadsPositions select {((_x distance2D _vehiclePos) > 300)};
-					if (!(_nearRoadsPositions isEqualTo [])) then {
+				_nearRoadsPositions = (((_vehSpawnPos select [0,2]) nearRoads 300) select {((_x isEqualType objNull) && ((roadsConnectedTo _x) isNotEqualTo []))}) apply {(getPosATL _x)};
+				if (_nearRoadsPositions isNotEqualTo []) then {
+					_nearRoadsPositions = _nearRoadsPositions inAreaArray [_vehiclePos,300,300,0,FALSE];
+					if (_nearRoadsPositions isNotEqualTo []) then {
 						_vehSpawnPos = selectRandom _nearRoadsPositions;
 					};
 				};
 				_veh = createVehicle [(selectRandomWeighted _technicalTypes),_vehSpawnPos,[],0,'NONE'];
-				missionNamespace setVariable [
-					'QS_analytics_entities_created',
-					((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
-					FALSE
-				];
 				_veh lock 3;
 				_veh setUnloadInCombat [FALSE,FALSE];
-				_veh allowCrewInImmobile TRUE;
+				_veh allowCrewInImmobile [TRUE,TRUE];
 				_veh enableRopeAttach FALSE;
 				_veh enableVehicleCargo FALSE;
 				_veh setConvoySeparation 50;
 				_veh addEventHandler ['Killed',(missionNamespace getVariable 'QS_fnc_vKilled2')];
 				_grp = createVehicleCrew _veh;
-				missionNamespace setVariable [
-					'QS_analytics_entities_created',
-					((missionNamespace getVariable 'QS_analytics_entities_created') + (count (crew _veh))),
-					FALSE
-				];
 				[(units _grp),(selectRandom [1,2])] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
 				_enemyGroupArray pushBack _grp;
 				_enemyArray pushBack _veh;
@@ -663,7 +657,7 @@ for '_x' from 0 to 1 step 0 do {
 		//comment 'Configure force protection';
 	} else {
 		//comment 'AMBUSH IN PROGRESS, CHECK STATE';
-		if (!(_enemyArray isEqualTo [])) then {
+		if (_enemyArray isNotEqualTo []) then {
 			if (({(alive _x)} count _enemyArray) < 6) then {
 				for '_x' from 0 to 49 step 1 do {
 					_spawnPos = [_vehiclePos,200,400,3,0,0.7,0] call (missionNamespace getVariable 'QS_fnc_findSafePos');
@@ -676,6 +670,7 @@ for '_x' from 0 to 1 step 0 do {
 						_enemyGroupType = selectRandom _enemyGroupTypes_reinf_big;
 					};
 					_grp = [_spawnPos,(_spawnPos getDir _vehiclePos),_groupSide,_enemyGroupType,TRUE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
+					_grp setVariable ['QS_AI_GRP_HC',[0,-1],QS_system_AI_owners];
 					[(units _grp),2] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
 					_enemyGroupArray pushBack _grp;
 					_grp setSpeedMode 'FULL';
@@ -685,9 +680,9 @@ for '_x' from 0 to 1 step 0 do {
 							_x addEventHandler ['Fired',_enemyFiredEvent];
 						};
 						if ((random 1) > 0.5) then {
-							_x disableAI 'AUTOCOMBAT';
+							_x enableAIFeature ['AUTOCOMBAT',FALSE];
 						};
-						_x disableAI 'COVER';
+						_x enableAIFeature ['COVER',FALSE];
 						_x setAnimSpeedCoef 1.1;
 						_x setUnitPosWeak (selectRandom ['UP','MIDDLE']);
 						_x setVehiclePosition [(getPosWorld _x),[],0,'NONE'];
@@ -696,11 +691,11 @@ for '_x' from 0 to 1 step 0 do {
 			};
 		};
 		if (_timeNow > _updateAttackPos_checkDelay) then {
-			if (!(_enemyGroupArray isEqualTo [])) then {
+			if (_enemyGroupArray isNotEqualTo []) then {
 				{
 					_grp = _x;
 					if (!isNull _grp) then {
-						if (!(((units _grp) findIf {(alive _x)}) isEqualTo -1)) then {
+						if (((units _grp) findIf {(alive _x)}) isNotEqualTo -1) then {
 							_grpLeader = leader _grp;
 							if ((_grpLeader distance2D _vehiclePos) > 100) then {
 								//comment 'move ahead of vic';
@@ -709,13 +704,9 @@ for '_x' from 0 to 1 step 0 do {
 								//comment 'move right to vic';
 								_posToMove = _vehiclePos;
 							};
-							_grp move _posToMove;
-							{
-								if (alive _x) then {
-									doStop _x;
-									_x doMove _posToMove;
-								};
-							} forEach (units _grp);
+							//_grp move _posToMove;
+							doStop (units _grp);
+							(units _grp) doMove _posToMove;
 						};
 					};
 				} count _enemyGroupArray;
@@ -729,24 +720,14 @@ for '_x' from 0 to 1 step 0 do {
 			_hasHitLandmine = FALSE;
 			if ((random 1) > 0.5) then {
 				_landMine = createMine ['ATMine',(getPosATL _vehicle),[],0];
-				missionNamespace setVariable [
-					'QS_analytics_entities_created',
-					((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
-					FALSE
-				];
 				_landMine setDamage [1,TRUE];
 				// good place to use the new addForce/addTorque functions
-				[35,_vehicle,[((velocity _vehicle) select 0) + (sin (getDir _vehicle) * 4), ((velocity _vehicle) select 1) + (cos (getDir _vehicle) * 4), ((velocity _vehicle) select 2) + 5 + random 10]] remoteExec ['QS_fnc_remoteExec',_vehicle,FALSE];
+				[35,_vehicle,[((velocity _vehicle) # 0) + (sin (getDir _vehicle) * 4), ((velocity _vehicle) # 1) + (cos (getDir _vehicle) * 4), ((velocity _vehicle) # 2) + 5 + random 10]] remoteExec ['QS_fnc_remoteExec',_vehicle,FALSE];
 			} else {
 				_landMine = createMine ['APERSMine',(getPosATL _vehicle),[],0];
-				missionNamespace setVariable [
-					'QS_analytics_entities_created',
-					((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
-					FALSE
-				];
 				_landMine setDamage 1;
 				// good place to use the new addForce/addTorque functions
-				[35,_vehicle,[((velocity _vehicle) select 0) + (sin (getDir _vehicle) * 4), ((velocity _vehicle) select 1) + (cos (getDir _vehicle) * 4), ((velocity _vehicle) select 2) + 3 + random 6]] remoteExec ['QS_fnc_remoteExec',_vehicle,FALSE];
+				[35,_vehicle,[((velocity _vehicle) # 0) + (sin (getDir _vehicle) * 4), ((velocity _vehicle) # 1) + (cos (getDir _vehicle) * 4), ((velocity _vehicle) # 2) + 3 + random 6]] remoteExec ['QS_fnc_remoteExec',_vehicle,FALSE];
 				_dmgCount = ceil (random 3);
 				_count = 0;
 				//comment 'Set some wheels as fully damaged';
@@ -758,11 +739,11 @@ for '_x' from 0 to 1 step 0 do {
 						};
 					};
 					if (_count >= _dmgCount) exitWith {};
-				} count ((getAllHitPointsDamage _vehicle) select 1);
+				} count ((getAllHitPointsDamage _vehicle) # 1);
 			};
 			_timeOffRoad = 0;
 		};
-		if (!(_enemyArray isEqualTo [])) then {
+		if (_enemyArray isNotEqualTo []) then {
 			{
 				_unit = _x;
 				if (!isNull _unit) then {
@@ -790,13 +771,9 @@ for '_x' from 0 to 1 step 0 do {
 								//comment 'move right to vic';
 								_posToMove = _vehiclePos;
 							};
-							_grp move _posToMove;
-							{
-								if (alive _x) then {
-									doStop _x;
-									_x doMove _posToMove;
-								};
-							} forEach (units _grp);
+							//_grp move _posToMove;
+							doStop (units _grp);
+							(units _grp) doMove _posToMove;
 						};
 					};
 				} count _enemyArray;
@@ -804,7 +781,7 @@ for '_x' from 0 to 1 step 0 do {
 			};
 		};
 		if ((_vehiclePos distance2D _startPosition) > 600) then {
-			if (([(getPosATL _vehicle),500,[EAST],allUnits,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
+			if (((units EAST) inAreaArray [getPosATL _vehicle,500,500,0,FALSE,-1]) isEqualTo []) then {
 				_vehicle setDamage [1,TRUE];
 			};
 		};
@@ -813,12 +790,12 @@ for '_x' from 0 to 1 step 0 do {
 	if (_QS_manage_convoy) then {
 		if (_timeNow > _QS_manage_convoy_checkDelay) then {
 			_QS_manage_convoy_vehicles = _vehiclePos nearEntities ['LandVehicle',_QS_manage_convoy_radius];
-			if (!(_QS_manage_convoy_vehicles isEqualTo [])) then {
+			if (_QS_manage_convoy_vehicles isNotEqualTo []) then {
 				_QS_manage_convoy_armor = [];
 				{
 					_convoyVehicle = _x;
-					_convoyVehicleType = toLower (typeOf _convoyVehicle);
-					if ((_convoyVehicleType in _QS_manage_convoy_armorTypes) || {(_convoyVehicle isKindOf 'Tank')} || {(_convoyVehicle isKindOf 'Wheeled_APC_F')} || {(_QS_manage_convoy_vehicleClass isEqualTo (toLower (getText (configFile >> 'CfgVehicles' >> _convoyVehicleType >> 'vehicleClass'))))})  then {
+					_convoyVehicleType = toLowerANSI (typeOf _convoyVehicle);
+					if ((_convoyVehicleType in _QS_manage_convoy_armorTypes) || {(_convoyVehicle isKindOf 'Tank')} || {(_convoyVehicle isKindOf 'Wheeled_APC_F')} || {(_QS_manage_convoy_vehicleClass isEqualTo (toLowerANSI (getText (configFile >> 'CfgVehicles' >> _convoyVehicleType >> 'vehicleClass'))))})  then {
 						if (alive _convoyVehicle) then {
 							if (canMove _convoyVehicle) then {
 								0 = _QS_manage_convoy_armor pushBack _convoyVehicle;
@@ -828,18 +805,13 @@ for '_x' from 0 to 1 step 0 do {
 					if (isNil {_convoyVehicle getVariable _suppressTarget_var}) then {
 						if (alive _convoyVehicle) then {
 							_suppressTarget = createVehicle [_suppressTarget_type,[0,0,0],[],0,'NONE'];
-							missionNamespace setVariable [
-								'QS_analytics_entities_created',
-								((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
-								FALSE
-							];
 							_suppressTarget attachTo [_convoyVehicle,[0,(random 2),(random 1)]];
 							_convoyVehicle setVariable [_suppressTarget_var,_suppressTarget,FALSE];
 							0 = _suppressTargets pushBack _suppressTarget;
 						};	
 					};
 				} count _QS_manage_convoy_vehicles;
-				if (!(_QS_manage_convoy_armor isEqualTo [])) then {
+				if (_QS_manage_convoy_armor isNotEqualTo []) then {
 					{
 						_launch = TRUE;
 						_armoredVehicle = _x;
@@ -847,10 +819,10 @@ for '_x' from 0 to 1 step 0 do {
 							0 = _armorTokenVehicle pushBackUnique _armoredVehicle;
 							_armoredVehicle setVariable [_QS_manage_convoy_var,[0,(getPosATL _armoredVehicle),(500 + (random 500))],FALSE];
 						} else {
-							if (((_armoredVehicle getVariable _QS_manage_convoy_var) select 0) >= 3) then {
+							if (((_armoredVehicle getVariable _QS_manage_convoy_var) # 0) >= 3) then {
 								_armoredVehicleVelocity = velocity _armoredVehicle;
 								_armoredVehicleDir = getDir _armoredVehicle;
-								if ((toLower (typeOf _armoredVehicle)) in ['b_apc_tracked_01_crv_f','b_t_apc_tracked_01_crv_f']) then {
+								if ((toLowerANSI (typeOf _armoredVehicle)) in ['b_apc_tracked_01_crv_f','b_t_apc_tracked_01_crv_f']) then {
 									if ((_armoredVehicle animationSourcePhase 'MovePlow') isEqualTo 1) then {
 										_launch = FALSE;
 										_landMine = createMine [_IEDtype,(_armoredVehicle getRelPos [15,0]),[],0];
@@ -863,24 +835,19 @@ for '_x' from 0 to 1 step 0 do {
 									_landMine = createMine [_IEDtype,(getPosATL _armoredVehicle),[],0];
 									_landMine2 = createMine [_IEDtype,(getPosATL _armoredVehicle),[],3];
 								};
-								missionNamespace setVariable [
-									'QS_analytics_entities_created',
-									((missionNamespace getVariable 'QS_analytics_entities_created') + 2),
-									FALSE
-								];
 								_landMine setDamage [1,TRUE];
 								_landMine2 setDamage [1,TRUE];
 								if (_launch) then {
 									// good place to use the new addForce/addTorque functions
-									[35,_armoredVehicle,[(_armoredVehicleVelocity select 0) + (sin _armoredVehicleDir * 4), (_armoredVehicleVelocity select 1) + (cos _armoredVehicleDir * 4), (_armoredVehicleVelocity select 2) + 4 + random 8]] remoteExec ['QS_fnc_remoteExec',_armoredVehicle,FALSE];
+									[35,_armoredVehicle,[(_armoredVehicleVelocity # 0) + (sin _armoredVehicleDir * 4), (_armoredVehicleVelocity # 1) + (cos _armoredVehicleDir * 4), (_armoredVehicleVelocity # 2) + 4 + random 8]] remoteExec ['QS_fnc_remoteExec',_armoredVehicle,FALSE];
 								};
 								_armoredVehicle setVariable [_QS_manage_convoy_var,[0,(getPosATL _armoredVehicle),(350 + (random 250))],FALSE];
 							} else {
-								if ((((_armoredVehicle getVariable _QS_manage_convoy_var) select 1) distance2D (getPosATL _armoredVehicle)) > ((_armoredVehicle getVariable _QS_manage_convoy_var) select 2)) then {
+								if ((((_armoredVehicle getVariable _QS_manage_convoy_var) # 1) distance2D (getPosATL _armoredVehicle)) > ((_armoredVehicle getVariable _QS_manage_convoy_var) # 2)) then {
 									_armoredVehicle setVariable [
 										_QS_manage_convoy_var,
 										[
-											(((_armoredVehicle getVariable _QS_manage_convoy_var) select 0) + 1),
+											(((_armoredVehicle getVariable _QS_manage_convoy_var) # 0) + 1),
 											(getPosATL _armoredVehicle),
 											(500 + (random 500))
 										],
@@ -907,7 +874,7 @@ for '_x' from 0 to 1 step 0 do {
 								if (!(captive _player)) then {
 									if ((_player distance2D _vehicle) < 150) then {
 										if (((units (group _player)) findIf {(!isPlayer _x)}) isEqualTo -1) then {
-											if (!((group _player) isEqualTo _vehicleDriverGroup)) then {
+											if ((group _player) isNotEqualTo _vehicleDriverGroup) then {
 												[_player] joinSilent _vehicleDriverGroup;
 											};
 										};
@@ -923,13 +890,13 @@ for '_x' from 0 to 1 step 0 do {
 	};
 	if (!alive _vehicle) exitWith {
 		//comment 'Mission fail';
-		['SM_TRUCK',['Side mission','Truck mission failed!<br/>Truck destroyed']] remoteExec [_fuctionNotification,-2,FALSE];
+		['SM_TRUCK',[localize 'STR_QS_Notif_081',format ['%1<br/>%2',localize 'STR_QS_Notif_080',localize 'STR_QS_Notif_079']]] remoteExec [_fuctionNotification,-2,FALSE];
 		sleep 5;
 		[0,_destination] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
 	};
 	if ((_vehicle distance2D _destination) < 50) exitWith {
 		//comment 'Mission success';
-		['SM_TRUCK',['Side mission','Truck mission complete!<br/>Truck at destination']] remoteExec [_fuctionNotification,-2,FALSE];
+		['SM_TRUCK',[localize 'STR_QS_Notif_081',format ['%1<br/>%2',localize 'STR_QS_Notif_082',localize 'STR_QS_Notif_083']]] remoteExec [_fuctionNotification,-2,FALSE];
 		sleep 5;
 		[1,_destination] spawn (missionNamespace getVariable 'QS_fnc_smDebrief');
 	};
@@ -937,7 +904,7 @@ for '_x' from 0 to 1 step 0 do {
 };
 //comment 'Cleanup';
 ['QS_IA_TASK_SM_ESCORT'] call (missionNamespace getVariable 'BIS_fnc_deleteTask');
-if (!(_suppressTargets isEqualTo [])) then {
+if (_suppressTargets isNotEqualTo []) then {
 	{
 		if (!isNull _x) then {
 			missionNamespace setVariable [
@@ -949,7 +916,7 @@ if (!(_suppressTargets isEqualTo [])) then {
 		};
 	} count _suppressTargets;
 };
-if (!(_enemyArray isEqualTo [])) then {
+if (_enemyArray isNotEqualTo []) then {
 	{
 		if (!isNull _x) then {
 			missionNamespace setVariable [
@@ -961,7 +928,7 @@ if (!(_enemyArray isEqualTo [])) then {
 		};
 	} count _enemyArray;
 };
-if (!(_armorTokenVehicle isEqualTo [])) then {
+if (_armorTokenVehicle isNotEqualTo []) then {
 	{
 		if (!isNull _x) then {
 			if (alive _x) then {

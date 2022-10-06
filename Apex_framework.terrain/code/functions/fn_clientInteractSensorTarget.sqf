@@ -16,28 +16,25 @@ _____________________________________________________________/*/
 _cursorObject = cursorObject;
 if (isNull _cursorObject) exitWith {};
 if (!alive _cursorObject) exitWith {
-	50 cutText ['目标已消灭','PLAIN DOWN',0.25];
+	50 cutText [localize 'STR_QS_Text_138','PLAIN DOWN',0.25];
 };
 if ((!(_cursorObject isKindOf 'LandVehicle')) && (!(_cursorObject isKindOf 'Air')) && (!(_cursorObject isKindOf 'Ship')) && (!(_cursorObject isKindOf 'StaticWeapon'))) exitWith {
-	50 cutText ['无效目标','PLAIN DOWN',0.25];
+	50 cutText [localize 'STR_QS_Text_139','PLAIN DOWN',0.25];
 };
 if (((crew _cursorObject) findIf {(alive _x)}) isEqualTo -1) exitWith {
-	50 cutText ['目标未被占用','PLAIN DOWN',0.25];
+	50 cutText [localize 'STR_QS_Text_140','PLAIN DOWN',0.25];
 };
 if (_cursorObject isSensorTargetConfirmed (player getVariable ['QS_unit_side',EAST])) exitWith {
-	50 cutText ['目标已被标记过','PLAIN DOWN',0.45];
+	50 cutText [localize 'STR_QS_Text_141','PLAIN DOWN',0.45];
 };
 if (_cursorObject in ([(listRemoteTargets (player getVariable ['QS_unit_side',EAST])),0] call (missionNamespace getVariable 'QS_fnc_listRemoteTargets'))) exitWith {
-	50 cutText ['目标已被标记过','PLAIN DOWN',0.45];
+	50 cutText [localize 'STR_QS_Text_142','PLAIN DOWN',0.45];
 };
 if (_cursorObject getVariable ['QS_remoteTarget_reported',FALSE]) exitWith {
-	50 cutText ['目标已被标记过','PLAIN DOWN',0.45];
-};
-if ((_cursorObject animationSourcePhase 'showcamonethull') isEqualTo 1) exitWith {
-	50 cutText ['因伪装网无法标记目标','PLAIN DOWN',0.45];
+	50 cutText [localize 'STR_QS_Text_142','PLAIN DOWN',0.45];
 };
 if (_cursorObject getVariable ['QS_reportTarget_disable',FALSE]) exitWith {
-	50 cutText ['无法标记此目标','PLAIN DOWN',0.45];
+	50 cutText [localize 'STR_QS_Text_143','PLAIN DOWN',0.45];
 };
 if (uiNamespace getVariable ['QS_client_progressVisualization_active',FALSE]) exitWith {};
 _onCancelled = {
@@ -49,7 +46,7 @@ _onCancelled = {
 	if (!((lifeState player) in ['HEALTHY','INJURED'])) then {
 		_c = TRUE;
 	};
-	if (!(cursorObject isEqualTo _cursorObject)) then {
+	if (cursorObject isNotEqualTo _cursorObject) then {
 		_c = TRUE;
 	};
 	if (!alive _cursorObject) then {
@@ -75,24 +72,22 @@ _onCompleted = {
 			['reportRemoteTarget',(player getVariable ['QS_unit_side',EAST]),[_cursorObject,360]] remoteExec ['QS_fnc_remoteExecCmd',(player getVariable ['QS_unit_side',EAST]),FALSE];
 			(player getVariable ['QS_unit_side',EAST]) reportRemoteTarget [_cursorObject,360];
 			player setVariable ['QS_client_jtac_sensorTarget',_cursorObject,FALSE];
-			50 cutText ['目标已标记','PLAIN DOWN',0.3];
+			50 cutText [localize 'STR_QS_Text_144','PLAIN DOWN',0.3];
 			playSound 'beep_target';
-			['sideChat',[EAST,'OPF'],(format ['%1 (JTAC) 标记了一个位于 %3 的 %2 并请求火力打击将其摧毁。',profileName,(getText (configFile >> 'CfgVehicles' >> (typeOf _cursorObject) >> 'displayName')),(mapGridPosition _cursorObject)])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+			['sideChat',[EAST,'OPF'],(format ['%1 %4 %2 %5 %3 %6',profileName,(getText (configFile >> 'CfgVehicles' >> (typeOf _cursorObject) >> 'displayName')),(mapGridPosition _cursorObject),localize 'STR_QS_Chat_036',localize 'STR_QS_Hints_060',localize 'STR_QS_Chat_037'])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 			[77,'FIRE_SUPPORT',[_cursorObject,profileName],FALSE] remoteExec ['QS_fnc_remoteExec',2];
 		} else {
-			50 cutText ['目标已被标记过','PLAIN DOWN',0.3];
+			50 cutText [localize 'STR_QS_Text_142','PLAIN DOWN',0.3];
 		};
 	} else {
 		if ((!(_cursorObject in ([(listRemoteTargets (player getVariable ['QS_unit_side',EAST])),0] call (missionNamespace getVariable 'QS_fnc_listRemoteTargets')))) && (!(_cursorObject getVariable ['QS_remoteTarget_reported',FALSE]))) then {
 			['reportRemoteTarget',(player getVariable ['QS_unit_side',EAST]),[_cursorObject,180]] remoteExec ['QS_fnc_remoteExecCmd',(player getVariable ['QS_unit_side',EAST]),FALSE];
 			(player getVariable ['QS_unit_side',EAST]) reportRemoteTarget [_cursorObject,180];
 			_cursorObject setVariable ['QS_remoteTarget_reported',TRUE,TRUE];
-			50 cutText ['目标已标记','PLAIN DOWN',0.3];
+			50 cutText [localize 'STR_QS_Text_144','PLAIN DOWN',0.3];
 			playSound 'beep_target';
-			['sideChat',[EAST,'OPF'],(format ['%1 (JTAC) 标记了一个位于 %3 的 %2 并请求火力打击将其摧毁。',profileName,(groupID (group player)),(getText (configFile >> 'CfgVehicles' >> (typeOf _cursorObject) >> 'displayName')),(mapGridPosition _cursorObject)])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
-			[77,'FIRE_SUPPORT',[_cursorObject,profileName],FALSE] remoteExec ['QS_fnc_remoteExec',2];
 		} else {
-			50 cutText ['目标已被标记过','PLAIN DOWN',0.3];
+			50 cutText [localize 'STR_QS_Text_142','PLAIN DOWN',0.3];
 		};	
 	};
 };
@@ -100,8 +95,8 @@ private _time = [6,3] select (player getUnitTrait 'QS_trait_JTAC');
 _time = _time + ([2,3] select ((_cursorObject animationSourcePhase 'showcamonethull') isEqualTo 1));
 playSound 'clickSoft';
 [
-	'正在标记目标……',
-	([7.5,3.75] select (player getUnitTrait 'QS_trait_JTAC')),
+	localize 'STR_QS_Menu_169',
+	_time,
 	0,
 	[[],{FALSE}],
 	[[_cursorObject],_onCancelled],

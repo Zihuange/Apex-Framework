@@ -26,10 +26,10 @@ if (_type isEqualTo 'onLoad') then {
 	(findDisplay 3000) closeDisplay 1;
 	setMousePosition (uiNamespace getVariable ['QS_ui_mousePosition',getMousePosition]);
 	{
-		_supporterAccess = _x select 0;
-		_displayName = _x select 1;
-		_texture = _x select 2;
-		_toolTip = _x select 3;
+		_supporterAccess = _x # 0;
+		_displayName = _x # 1;
+		_texture = _x # 2;
+		_toolTip = _x # 3;
 		lbAdd [1804,_displayName];
 		lbSetPicture [1804,_forEachIndex,_texture];
 		lbSetTooltip [1804,_forEachIndex,_toolTip];
@@ -44,16 +44,16 @@ if (_type isEqualTo 'onLoad') then {
 private _text = '';
 if (_type isEqualTo 'Select') then {
 	_index = lbCurSel 1804;
-	if (!(_index isEqualTo -1)) then {
-		_supporterAccess = (_list select _index) select 0;
-		_displayName = (_list select _index) select 1;
-		_texture = (_list select _index) select 2;
-		_tooltip = (_list select _index) select 3;
-		_validUniforms = (_list select _index) select 4;
-		_author = (_list select _index) select 5;
+	if (_index isNotEqualTo -1) then {
+		_supporterAccess = (_list # _index) # 0;
+		_displayName = (_list # _index) # 1;
+		_texture = (_list # _index) # 2;
+		_tooltip = (_list # _index) # 3;
+		_validUniforms = (_list # _index) # 4;
+		_author = (_list # _index) # 5;
 		_patch = '';
-		if ((count (_list select _index)) > 6) then {
-			_patch = (_list select _index) select 6;
+		if ((count (_list # _index)) > 6) then {
+			_patch = (_list # _index) # 6;
 		};
 		if (_supporterAccess <= _supporterLevel) then {
 			if ((uniform player) in _validUniforms) then {
@@ -61,39 +61,39 @@ if (_type isEqualTo 'Select') then {
 					player setObjectTextureGlobal [0,_texture];
 					player setVariable ['QS_ClientUTexture2',_texture,FALSE];
 					player setVariable ['QS_ClientUTexture2_Uniforms2',_validUniforms,FALSE];
-					profileNamespace setVariable ['QS_ClientUTexture2',_texture];
-					profileNamespace setVariable ['QS_ClientUTexture2_Uniforms2',_validUniforms];
-					if (!(_patch isEqualTo '')) then {
-						if (!((vest player) isEqualTo '')) then {
+					missionProfileNamespace setVariable ['QS_ClientUTexture2',_texture];
+					missionProfileNamespace setVariable ['QS_ClientUTexture2_Uniforms2',_validUniforms];
+					if (_patch isNotEqualTo '') then {
+						if ((vest player) isNotEqualTo '') then {
 						
 						};
 						/*/
-						if (!((backpack player) isEqualTo '')) then {
+						if ((backpack player) isNotEqualTo '') then {
 							(backpackContainer player) setObjectTextureGlobal [0,_patch];
 						};
 						/*/
 					};
-					saveProfileNamespace;
-					_text = parseText format ['制服皮肤已设置为：%1<br/>作者：%2',_displayName,_author];
+					saveMissionProfileNamespace;
+					_text = parseText format ['%3 %1<br/>by %2',_displayName,_author,localize 'STR_QS_Hints_074'];
 					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,_text,[],-1];
 				} else {
-					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'你必须在基地才能选择制服皮肤',[],-1];
+					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,localize 'STR_QS_Hints_075',[],-1];
 				};
 			} else {
 				if (_index isEqualTo 0) then {
 					player forceAddUniform (uniform player);
 					player setVariable ['QS_ClientUTexture2','',FALSE];
 					player setVariable ['QS_ClientUTexture2_Uniforms2',[],FALSE];
-					profileNamespace setVariable ['QS_ClientUTexture2',''];
-					profileNamespace setVariable ['QS_ClientUTexture2_Uniforms2',[]];
-					saveProfileNamespace;
-					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,'制服皮肤已重置',[],-1];
+					missionProfileNamespace setVariable ['QS_ClientUTexture2',''];
+					missionProfileNamespace setVariable ['QS_ClientUTexture2_Uniforms2',[]];
+					saveMissionProfileNamespace;
+					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,5,-1,localize 'STR_QS_Hints_076',[],-1];
 				} else {
-					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,8,-1,'所选制服版型与皮肤不匹配，请选择对应的制服',[],-1];
+					(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,8,-1,localize 'STR_QS_Hints_077',[],-1];
 				};
 			};
 		} else {
-			_text = parseText format ['Supporter level required: %1<br/>Your supporter level: %2<br/>Uniform Texture not set.',_supporterAccess,_supporterLevel];
+			_text = parseText format ['%3 %1<br/>%4 %2<br/>%5',_supporterAccess,_supporterLevel,localize 'STR_QS_Hints_078',localize 'STR_QS_Hints_079',localize 'STR_QS_Hints_080'];
 			(missionNamespace getVariable 'QS_managed_hints') pushBack [5,FALSE,10,-1,_text,[],-1];
 		};
 	};

@@ -17,7 +17,7 @@ params ['_type','','_profileName',''];
 if (_type isEqualTo 0) then {
 	params ['','_command','','_hcSelected'];
 	_localGroups = _hcSelected select {((!isNull _x) && (local _x))};
-	if (!(_localGroups isEqualTo [])) then {
+	if (_localGroups isNotEqualTo []) then {
 		{
 			[1,_command,_profileName,_x] call (missionNamespace getVariable 'QS_fnc_hCommMenu');
 		} forEach _localGroups;
@@ -31,7 +31,7 @@ if (_type isEqualTo 1) then {
 		if ((!isDedicated) && (hasInterface)) then {
 			if (player isEqualTo (leader _group)) then {
 				playSound 'TacticalPing4';
-				50 cutText [(format ['[Commander] %1 requested a SITREP for %2',_profileName,_groupID]),'PLAIN DOWN',0.5,TRUE,FALSE];
+				50 cutText [(format ['%3 %2',_profileName,_groupID,localize 'STR_QS_Text_208']),'PLAIN DOWN',0.5,TRUE,FALSE];
 			};
 		};
 	};
@@ -61,7 +61,7 @@ if (_type isEqualTo 1) then {
 			};
 		};
 		if (isNull _vehicle) then {
-			50 cutText ['No suitable vehicle found for GET IN waypoint',0.5,TRUE,FALSE];
+			50 cutText [localize 'STR_QS_Text_209','PLAIN DOWN',0.5,TRUE,FALSE];
 		} else {
 			_waypoint waypointAttachVehicle _vehicle;
 		};
@@ -115,14 +115,17 @@ if (_type isEqualTo 1) then {
 	};
 
 	if (_command isEqualTo 'OPENFIRE') then {
+		private _target = objNull;
 		_group setCombatMode 'RED';
 		{
 			if (!isPlayer _x) then {
-				if (alive (getAttackTarget _x)) then {
-					if (local _x) then {
-						_x doSuppressiveFire (aimPos (getAttackTarget _x));
-					} else {
-						['doSuppressiveFire',_x,(aimPos (getAttackTarget _x))] remoteExec ['QS_fnc_remoteExecCmd',_x,FALSE];
+				if (local _x) then {
+					_target = getAttackTarget _x;
+					if (!alive _target) then {
+						_target = [_x,500] call (missionNamespace getVariable 'QS_fnc_AIGetAttackTarget');
+					};
+					if (alive _target) then {
+						[_x,_target,1,TRUE,FALSE,FALSE,-1] call (missionNamespace getVariable 'QS_fnc_AIDoSuppressiveFire');
 					};
 				};
 			};

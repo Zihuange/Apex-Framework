@@ -25,15 +25,15 @@ if (_armor_vAnims isEqualTo []) then {
 	private _i = 0;
 	for '_i' from 0 to ((count _armorAnimationSources) - 1) step 1 do {
 		_animationSource = _armorAnimationSources select _i;
-		if (((toLower (configName _animationSource)) in _armor_anims) || {(['showslat',(configName _animationSource),FALSE] call (missionNamespace getVariable 'QS_fnc_inString'))}) then {
-			0 = _array pushBack (toLower (configName _animationSource));
+		if (((toLowerANSI (configName _animationSource)) in _armor_anims) || {(['showslat',(configName _animationSource),FALSE] call (missionNamespace getVariable 'QS_fnc_inString'))}) then {
+			0 = _array pushBack (toLowerANSI (configName _animationSource));
 		};
 	};
 	{
 		if (_x isEqualType '') then {
-			if (!((toLower _x) in _array)) then {
-				if (((toLower _x) in _armor_anims) || {(['showslat',_x,FALSE] call (missionNamespace getVariable 'QS_fnc_inString'))}) then {
-					_array pushBack (toLower _x);
+			if (!((toLowerANSI _x) in _array)) then {
+				if (((toLowerANSI _x) in _armor_anims) || {(['showslat',_x,FALSE] call (missionNamespace getVariable 'QS_fnc_inString'))}) then {
+					_array pushBack (toLowerANSI _x);
 				};
 			};
 		};
@@ -41,20 +41,19 @@ if (_armor_vAnims isEqualTo []) then {
 	_vehicle setVariable ['QS_vehicle_slatarmorAnims',_array,FALSE];
 	_armor_vAnims = _array;
 };
-if (!(_armor_vAnims isEqualTo [])) then {
-	if (!((_armor_vAnims findIf {((_vehicle animationSourcePhase _x) isEqualTo 1)}) isEqualTo -1)) then {
+if (_armor_vAnims isNotEqualTo []) then {
+	if ((_armor_vAnims findIf {((_vehicle animationSourcePhase _x) isEqualTo 1)}) isNotEqualTo -1) then {
 		_exitArmor = TRUE;
 	};
 };
 if (_exitArmor) exitWith {
-	50 cutText ['先卸下格栅装甲才能部署伪装网','PLAIN DOWN',0.5];
+	50 cutText [localize 'STR_QS_Text_082','PLAIN DOWN',0.5];
 };
 _onCancelled = {
 	params ['_t','_position'];
 	private _c = FALSE;
 	if (!alive player) then {_c = TRUE;};
-	if (!(player isEqualTo (vehicle player))) then {_c = TRUE;};
-	if (!(player isEqualTo player)) then {_c = TRUE;};
+	if (player isNotEqualTo (vehicle player)) then {_c = TRUE;};
 	if (!alive _t) then {_c = TRUE;};
 	if (!((vehicle player) isKindOf 'Man')) then {_c = TRUE;};
 	if (!(_t in [cursorObject,cursorTarget])) then {_c = TRUE;};
@@ -77,15 +76,15 @@ _onCompleted = {
 		private _i = 0;
 		for '_i' from 0 to ((count _armorAnimationSources) - 1) step 1 do {
 			_animationSource = _armorAnimationSources select _i;
-			if (((toLower (configName _animationSource)) in _armor_anims) || {(['showslat',(configName _animationSource),FALSE] call (missionNamespace getVariable 'QS_fnc_inString'))}) then {
-				0 = _array pushBack (toLower (configName _animationSource));
+			if (((toLowerANSI (configName _animationSource)) in _armor_anims) || {(['showslat',(configName _animationSource),FALSE] call (missionNamespace getVariable 'QS_fnc_inString'))}) then {
+				0 = _array pushBack (toLowerANSI (configName _animationSource));
 			};
 		};
 		{
 			if (_x isEqualType '') then {
-				if (!((toLower _x) in _array)) then {
-					if (((toLower _x) in _armor_anims) || {(['showslat',_x,FALSE] call (missionNamespace getVariable 'QS_fnc_inString'))}) then {
-						_array pushBack (toLower _x);
+				if (!((toLowerANSI _x) in _array)) then {
+					if (((toLowerANSI _x) in _armor_anims) || {(['showslat',_x,FALSE] call (missionNamespace getVariable 'QS_fnc_inString'))}) then {
+						_array pushBack (toLowerANSI _x);
 					};
 				};
 			};
@@ -93,30 +92,30 @@ _onCompleted = {
 		_vehicle setVariable ['QS_vehicle_slatarmorAnims',_array,FALSE];
 		_armor_vAnims = _array;
 	};
-	if (!(_armor_vAnims isEqualTo [])) then {
-		if (!((_armor_vAnims findIf {((_vehicle animationSourcePhase _x) isEqualTo 1)}) isEqualTo -1)) then {
+	if (_armor_vAnims isNotEqualTo []) then {
+		if ((_armor_vAnims findIf {((_vehicle animationSourcePhase _x) isEqualTo 1)}) isNotEqualTo -1) then {
 			_exitArmor = TRUE;
 		};
 	};
 	if (_exitArmor) exitWith {
-		50 cutText ['先卸下格栅装甲才能部署伪装网','PLAIN DOWN',0.5];
+		50 cutText [localize 'STR_QS_Text_082','PLAIN DOWN',0.5];
 	};
 	{
 		_vehicle animateSource [_x,_newPhase,TRUE];
 	} forEach _animationSources;
 	if (_newPhase isEqualTo 1) then {
-		50 cutText ['已部署伪装网','PLAIN DOWN',0.333];
+		50 cutText [localize 'STR_QS_Text_083','PLAIN DOWN',0.333];
 	} else {
-		50 cutText ['伪装网已移除','PLAIN DOWN',0.333];
+		50 cutText [localize 'STR_QS_Text_084','PLAIN DOWN',0.333];
 	};
 	missionNamespace setVariable ['QS_repairing_vehicle',FALSE,FALSE];
 };
 missionNamespace setVariable ['QS_repairing_vehicle',TRUE,FALSE];
 private _text = '';
 if (_newPhase isEqualTo 1) then {
-	_text = '正在部署伪装网';
+	_text = localize 'STR_QS_Menu_165';
 } else {
-	_text = '正在移除伪装网';
+	_text = localize 'STR_QS_Menu_166';
 };
 private _duration = 5;
 [

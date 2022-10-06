@@ -25,19 +25,19 @@ if ((_entity getVariable ['QS_entity_sumDmg',0]) >= (_entity getVariable ['QS_en
 	_surfaceNormal = surfaceNormal _position;
 	{
 		deleteVehicle _x;
-	} forEach ((_this select 0) getVariable ['QS_entity_assocObjects',[]]);
-	deleteVehicle (_this select 0);
+	} forEach ((_this # 0) getVariable ['QS_entity_assocObjects',[]]);
+	deleteVehicle (_this # 0);
 	_craterType = selectRandomWeighted ['CraterLong',0.666,'CraterLong_small',0.333];
 	_configClass = configFile >> 'CfgVehicles' >> _craterType;
 	_model = getText (_configClass >> 'model');
 	if ((_model select [0,1]) isEqualTo '\') then {
 		_model = _model select [1];
 	};
-	if (!((_model select [((count _model) - 4),4]) isEqualTo '.p3d')) then {
+	if ((_model select [((count _model) - 4),4]) isNotEqualTo '.p3d') then {
 		_model = _model + '.p3d';
 	};
 	_position = AGLToASL _position;
-	_position set [2,((_position select 2) + ((getNumber (_configClass >> 'SimpleObject' >> 'verticalOffset')) - (random [0,0.05,0.1])))];
+	_position set [2,((_position # 2) + ((getNumber (_configClass >> 'SimpleObject' >> 'verticalOffset')) - (random [0,0.05,0.1])))];
 	_crater = createSimpleObject [_model,_position];
 	_crater setDir (random 360);
 	_crater setVectorUp _surfaceNormal;
@@ -50,11 +50,11 @@ if ((_entity getVariable ['QS_entity_sumDmg',0]) >= (_entity getVariable ['QS_en
 	(missionNamespace getVariable 'QS_garbageCollector') pushBack [_smoke,'DELAYED_FORCED',(time + 600)];
 	deleteVehicle _entity;
 	missionNamespace setVariable ['QS_grid_AIRspDestroyed',((missionNamespace getVariable 'QS_grid_AIRspDestroyed') + 1),FALSE];
-	['GRID_IG_UPDATE',['作战区域','敌军地道被摧毁']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+	['GRID_IG_UPDATE',[localize 'STR_QS_Notif_008',localize 'STR_QS_Notif_116']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 	if (!isNull _instigator) then {
 		if (isPlayer _instigator) then {
 			_instigator addScore 1;
-			_text = format ['%1 (%2) 摧毁了一个敌方地道入口',(name _instigator),(groupID (group _instigator))];
+			_text = format ['%1 (%2) %3',(name _instigator),(groupID (group _instigator)),localize 'STR_QS_Chat_163'];
 			_text remoteExec ['systemChat',-2,FALSE];
 		};
 	};

@@ -17,9 +17,9 @@ params ['_case','_state','_data'];
 private _return = -1;
 if (_state isEqualTo 0) then {
 	//comment 'Clean up mission';
-	_unit = _data select 0;
-	_missionDuration = _data select 1;
-	_missionDestination = _data select 2;
+	_unit = _data # 0;
+	_missionDuration = _data # 1;
+	_missionDestination = _data # 2;
 	if (!isNull _unit) then {
 		QS_garbageCollector pushBack [_unit,'NOW_FORCED',0];
 	};
@@ -42,7 +42,7 @@ if (_state isEqualTo 1) then {
 		private ['_unitType','_position'];
 		for '_x' from 0 to 49 step 1 do {
 			_position = ['RADIUS',_aoPos,((missionNamespace getVariable 'QS_aoSize') * 0.75),'LAND',[2,0,0.5,3,0,FALSE,objNull],TRUE,[],[],TRUE] call (missionNamespace getVariable 'QS_fnc_findRandomPos');
-			if ((([(_position select 0),(_position select 1)] nearRoads 15) select {((_x isEqualType objNull) && (!((roadsConnectedTo _x) isEqualTo [])))}) isEqualTo []) exitWith {};
+			if ((([(_position # 0),(_position # 1)] nearRoads 15) select {((_x isEqualType objNull) && ((roadsConnectedTo _x) isNotEqualTo []))}) isEqualTo []) exitWith {};
 		};
 		if (worldName isEqualTo 'Tanoa') then {
 			_unitType = selectRandom ['O_T_Recon_TL_F','O_T_Recon_M_F','O_T_Recon_Medic_F','O_T_Recon_LAT_F','O_T_Recon_JTAC_F','O_T_Recon_Exp_F'];
@@ -50,11 +50,6 @@ if (_state isEqualTo 1) then {
 			_unitType = selectRandom ['O_recon_TL_F','O_recon_M_F','O_recon_medic_F','O_recon_F','O_recon_LAT_F','O_recon_JTAC_F','O_recon_exp_F','O_Sharpshooter_F'];
 		};
 		_unit = createAgent [_unitType,_position,[],0,'NONE'];
-		missionNamespace setVariable [
-			'QS_analytics_entities_created',
-			((missionNamespace getVariable 'QS_analytics_entities_created') + 1),
-			FALSE
-		];
 		_unit setDir (random 360);
 		_unit setSkill 0;
 		_unit allowDamage FALSE;
@@ -69,7 +64,7 @@ if (_state isEqualTo 1) then {
 		};
 		_unit setCaptive TRUE;
 		{
-			_unit disableAI _x;
+			_unit enableAIFeature [_x,FALSE];
 		} forEach [
 			'FSM',
 			'MOVE',
@@ -95,7 +90,7 @@ if (_state isEqualTo 1) then {
 			{
 				params ['_killed','_killer'];
 				detach _killed;
-				['sideChat',[EAST,'OPF'],(localize 'STR_QS_aoSM_WoundedKIA')] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+				['sideChat',[EAST,'OPF'],localize 'STR_QS_Chat_023'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 			}
 		];
 		for '_x' from 0 to 1 step 1 do {
@@ -121,14 +116,14 @@ if (_state isEqualTo 1) then {
 				['QS_revive_disable',TRUE,TRUE]
 			];
 		};
-		['ST_MEDEVAC',[(localize 'STR_QS_aoSM_medevac'),(localize 'STR_QS_aoSM_medevacWounded')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['ST_MEDEVAC',[localize 'STR_QS_Notif_034',localize 'STR_QS_Notif_035']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		[
 			'QS_IA_TASK_AO_3',
 			TRUE,
 			[
-				(localize 'STR_QS_aoSM_taskMedDesc'),
-				(localize 'STR_QS_aoSM_taskMedTitle'),
-				(localize 'STR_QS_aoSM_taskMedMarker')
+				localize 'STR_QS_Task_028',
+				localize 'STR_QS_Task_029',
+				localize 'STR_QS_Task_029'
 			],
 			[_unit,TRUE],
 			'CREATED',
@@ -153,17 +148,17 @@ if (_state isEqualTo 1) then {
 };
 if (_state isEqualTo 2) then {
 	//comment 'Check mission state';
-	_unit = _data select 0;
-	_missionDuration = _data select 1;
-	_missionDestination = _data select 2;
+	_unit = _data # 0;
+	_missionDuration = _data # 1;
+	_missionDestination = _data # 2;
 	if (!isNull _unit) then {
-		if (((getPosASL _unit) select 2) < -1) then {
+		if (((getPosASL _unit) # 2) < -1) then {
 			_unit setDamage [1,TRUE];
 		};
 	};
 	if (serverTime > _missionDuration) exitWith {
 		//comment 'Mission failure';
-		['ST_MEDEVAC',[(localize 'STR_QS_aoSM_medevac'),(localize 'STR_QS_aoSM_medevacFailed')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['ST_MEDEVAC',[localize 'STR_QS_Notif_034',localize 'STR_QS_Notif_036']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		['QS_IA_TASK_AO_3'] call (missionNamespace getVariable 'BIS_fnc_deleteTask');
 		_return = [
 			_case,
@@ -177,15 +172,15 @@ if (_state isEqualTo 2) then {
 	};	
 	if ((((_unit distance _missionDestination) < 3.5) && (isNull (attachedTo _unit))) || (([0,_unit] call (missionNamespace getVariable 'QS_fnc_isNearFieldHospital')) && (isNull (attachedTo _unit)) && (isNull (objectParent _unit)))) exitWith {
 		//comment 'Mission success';
-		['ST_MEDEVAC',[(localize 'STR_QS_aoSM_medevac'),(localize 'STR_QS_aoSM_medevacComleted')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['ST_MEDEVAC',[localize 'STR_QS_Notif_034',localize 'STR_QS_Notif_037']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		['QS_IA_TASK_AO_3'] call (missionNamespace getVariable 'BIS_fnc_deleteTask');
 		if (missionNamespace getVariable ['QS_virtualSectors_active',FALSE]) then {
 			private ['_QS_virtualSectors_scoreSides','_scoreEast','_scoreToRemove'];
 			_QS_virtualSectors_scoreSides = missionNamespace getVariable ['QS_virtualSectors_scoreSides',[0,0,0,0,0]];
-			_scoreEast = _QS_virtualSectors_scoreSides select 0;
+			_scoreEast = _QS_virtualSectors_scoreSides # 0;
 			if (_scoreEast > ((missionNamespace getVariable ['QS_virtualSectors_scoreWin',300]) * 0.1)) then {
 				_scoreToRemove = (missionNamespace getVariable ['QS_virtualSectors_scoreWin',300]) * (missionNamespace getVariable ['QS_virtualSectors_bonusCoef_smallTask',0.05]);
-				_QS_virtualSectors_scoreSides set [0,((_QS_virtualSectors_scoreSides select 0) - _scoreToRemove)];
+				_QS_virtualSectors_scoreSides set [0,((_QS_virtualSectors_scoreSides # 0) - _scoreToRemove)];
 				missionNamespace setVariable ['QS_virtualSectors_scoreSides',_QS_virtualSectors_scoreSides,FALSE];
 			};
 		};
@@ -201,7 +196,7 @@ if (_state isEqualTo 2) then {
 	};
 	if (!alive _unit) exitWith {
 		//comment 'Mission failure';
-		['ST_MEDEVAC',[(localize 'STR_QS_aoSM_medevac'),(localize 'STR_QS_aoSM_medevacKIA')]] remoteExec ['QS_fnc_showNotification',-2,FALSE];
+		['ST_MEDEVAC',[localize 'STR_QS_Notif_034',localize 'STR_QS_Notif_038']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		['QS_IA_TASK_AO_3'] call (missionNamespace getVariable 'BIS_fnc_deleteTask');
 		_return = [
 			_case,
