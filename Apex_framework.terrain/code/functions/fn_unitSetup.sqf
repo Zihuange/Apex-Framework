@@ -411,7 +411,7 @@ if (FALSE) then {		//(side _unit) in [EAST,RESISTANCE]
 		_unit setUnitTrait ['audibleCoef',0.5];
 	};
 } else {
-	if ((side _unit) in [WEST]) then {
+	if (FALSE) then {
 		if (_unitType in [
 			'b_soldier_ar_f','b_patrol_soldier_ar_f','b_patrol_heavygunner_f','b_patrol_soldier_mg_f','b_t_soldier_ar_f','b_w_soldier_ar_f'
 		]) then {

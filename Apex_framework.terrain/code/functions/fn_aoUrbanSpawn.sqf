@@ -122,28 +122,28 @@ if (_type isEqualTo 'REINFORCE') exitWith {
 		_buildingPositions = _buildingPositions call (missionNamespace getVariable 'QS_fnc_arrayShuffle');
 		private _infTypes = [
 			[
-				'OIA_InfSquad',2,
-				'OIA_InfTeam',2,
-				'OI_reconPatrol',1,
-				'OIA_InfAssault',2,
-				'OG_InfSquad',1,
-				'OG_InfAssaultTeam',1,
-				'OIA_ARTeam',2,
-				'OIA_InfTeam_HAT',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 2),
-				'OIA_InfTeam_AA',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_air',0]) min 3),
-				'OIA_InfTeam_AT',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 2)
+				'BUS_InfSquad',2,
+				'BUS_InfTeam',2,
+				'BUS_reconPatrol',1,
+				'BUS_InfAssault',2,
+				'IRG_InfSquad',1,
+				'IRG_InfAssaultTeam',1,
+				'BUS_ARTeam',2,
+				'BUS_InfTeam_HAT',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 2),
+				'BUS_InfTeam_AA',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_air',0]) min 3),
+				'BUS_InfTeam_AT',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 2)
 			],
 			[
-				'OIA_InfSquad',2,
-				'OIA_InfTeam',2,
-				'OI_reconPatrol',1,
-				'OIA_InfAssault',2,
-				'OG_InfSquad',1,
-				'OG_InfAssaultTeam',1,
-				'OIA_ARTeam',2,
-				'OIA_InfTeam_HAT',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 2),
-				'OIA_InfTeam_AA',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_air',0]) min 3),
-				'OIA_InfTeam_AT',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 2)
+				'BUS_InfSquad',2,
+				'BUS_InfTeam',2,
+				'BUS_reconPatrol',1,
+				'BUS_InfAssault',2,
+				'IRG_InfSquad',1,
+				'IRG_InfAssaultTeam',1,
+				'BUS_ARTeam',2,
+				'BUS_InfTeam_HAT',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 2),
+				'BUS_InfTeam_AA',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_air',0]) min 3),
+				'BUS_InfTeam_AT',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 2)
 			]
 		] select (_worldName isEqualTo 'Altis');
 		_groupComposition = ([EAST,selectRandomWeighted _infTypes] call (missionNamespace getVariable 'QS_fnc_returnGroupComposition')) apply { _x # 0 };
@@ -228,20 +228,20 @@ if (_type isEqualTo 'HQ') exitWith {
 			_buildingPositions = _buildingPositions call (missionNamespace getVariable 'QS_fnc_arrayShuffle');
 			private _infTypes = [
 				[
-					(['OIA_InfSquad','OIA_GuardSquad2'] select _isGarrisonLow),([2,4] select _isGarrisonLow),
-					'OIA_InfSquad',2,
-					'OIA_ARTeam',2,
-					'OIA_InfTeam_HAT',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 2),
-					'OIA_InfTeam_AA',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_air',0]) min 3),
-					'OIA_InfTeam_AT',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 2)
+					(['BUS_InfSquad','BUS_GuardSquad2'] select _isGarrisonLow),([2,4] select _isGarrisonLow),
+					'BUS_InfSquad',2,
+					'BUS_ARTeam',2,
+					'BUS_InfTeam_HAT',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 2),
+					'BUS_InfTeam_AA',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_air',0]) min 3),
+					'BUS_InfTeam_AT',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 2)
 				],
 				[
-					(['OIA_InfSquad','OIA_GuardSquad2'] select _isGarrisonLow),([2,4] select _isGarrisonLow),
-					'OIA_InfSquad',2,
-					'OIA_ARTeam',2,
-					'OIA_InfTeam_HAT',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 2),
-					'OIA_InfTeam_AA',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_air',0]) min 3),
-					'OIA_InfTeam_AT',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 2)
+					(['BUS_InfSquad','BUS_GuardSquad2'] select _isGarrisonLow),([2,4] select _isGarrisonLow),
+					'BUS_InfSquad',2,
+					'BUS_ARTeam',2,
+					'BUS_InfTeam_HAT',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 2),
+					'BUS_InfTeam_AA',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_air',0]) min 3),
+					'BUS_InfTeam_AT',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 2)
 				]
 			] select (worldName in ['Altis','Malden']);
 			_groupComposition = ([EAST,selectRandomWeighted _infTypes] call (missionNamespace getVariable 'QS_fnc_returnGroupComposition')) apply { _x # 0 };

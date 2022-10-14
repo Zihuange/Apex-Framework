@@ -27,9 +27,9 @@ _infTeams = ["HAF_InfTeam","HAF_InfTeam_AA","HAF_InfTeam_AT","HAF_InfSentry","HA
 _vehTypes = ["I_APC_Wheeled_03_cannon_F","I_APC_tracked_03_cannon_F","I_MBT_03_cannon_F","I_MRAP_03_gmg_F","I_MRAP_03_hmg_F"];
 
 if (worldName isEqualTo 'Tanoa') then {
-	_aaType = 'O_T_APC_Tracked_02_AA_ghex_F';
+	_aaType = 'B_T_APC_Tracked_01_AA_F';
 } else {
-	_aaType = 'O_APC_Tracked_02_AA_F';
+	_aaType = 'B_APC_Tracked_01_AA_F';
 };
 
 

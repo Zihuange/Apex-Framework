@@ -213,10 +213,10 @@ if (!_usedSettlementPosition) then {
 _list = [
 	["Land_Mil_WallBig_4m_F",[-0.354004,-0.0078125,11.045],0,270.632],
 	["Land_Mil_WallBig_4m_F",[-0.0952148,0.0634766,11.082],0,0],
-	["O_HMG_02_high_F",[-2.18506,-2.04688,10.4124],0,234.27],
-	["O_HMG_02_high_F",[-1.84229,2.15332,10.4124],0,309.028],
-	["O_HMG_02_high_F",[2.16064,1.62402,10.4124],0,42.212],
-	["O_HMG_02_high_F",[1.96973,-2.24854,10.4124],0,139.225]
+	["B_HMG_02_high_F",[-2.18506,-2.04688,10.4124],0,234.27],
+	["B_HMG_02_high_F",[-1.84229,2.15332,10.4124],0,309.028],
+	["B_HMG_02_high_F",[2.16064,1.62402,10.4124],0,42.212],
+	["B_HMG_02_high_F",[1.96973,-2.24854,10.4124],0,139.225]
 ];
 _tower = createVehicle ['CargoPlaftorm_01_green_F',[0,0,0]];
 if (_usedSettlementPosition) then {
@@ -327,10 +327,10 @@ _towerGrp = createGroup [WEST,TRUE];
 			{
 				_object addMagazineTurret _x;
 			} forEach [
-				['5000Rnd_762x51_Yellow_Belt',[0]],
-				['5000Rnd_762x51_Yellow_Belt',[0]],
-				['5000Rnd_762x51_Yellow_Belt',[0]],
-				['5000Rnd_762x51_Yellow_Belt',[0]]
+				['5000Rnd_762x51_Belt',[0]],
+				['5000Rnd_762x51_Belt',[0]],
+				['5000Rnd_762x51_Belt',[0]],
+				['5000Rnd_762x51_Belt',[0]]
 			];
 		};
 		_enemiesArray pushBack (gunner _object);
@@ -339,7 +339,7 @@ _towerGrp = createGroup [WEST,TRUE];
 		(gunner _object) enableAIFeature ['COVER',FALSE];
 		
 		if (worldName in ['Tanoa','Enoch']) then {
-			(gunner _object) setUnitLoadout 'o_t_soldier_f';
+			(gunner _object) setUnitLoadout 'b_t_soldier_f';
 		};
 		_object enableDynamicSimulation TRUE;
 		(gunner _object) enableDynamicSimulation TRUE;
@@ -679,7 +679,7 @@ _hqGroup2 setVariable ['QS_AI_GRP_HC',[0,-1],QS_system_AI_owners];
 	_x call (missionNamespace getVariable 'QS_fnc_unitSetup');
 	0 = _enemiesArray pushBack _x;
 } forEach (units _hqGroup2);
-private _commandGrp = createGroup [EAST,TRUE];
+private _commandGrp = createGroup [WEST,TRUE];
 _commandGrp setGroupIdGlobal ['Command'];
 _commandGrp setVariable ['QS_dynSim_ignore',TRUE,QS_system_AI_owners];
 _commandGrp enableDynamicSimulation FALSE;
@@ -696,21 +696,21 @@ _commander allowDamage FALSE;
 _commander enableStamina FALSE;
 _commander enableFatigue FALSE;
 _commander setVariable ['QS_dynSim_ignore',TRUE,QS_system_AI_owners];
-private _headgear = ['H_Beret_blk','H_Beret_CSAT_01_F'] select ((random 1) > 0.9);
+private _headgear = ['H_Beret_blk','H_Beret_02'] select ((random 1) > 0.9);
 private _loadouts = [
 	[
-		[["sgun_HunterShotgun_01_sawedoff_F","","","",["2Rnd_12Gauge_Pellets",2],[],""],[],[],["U_O_OfficerUniform_ocamo",[["FirstAidKit",1],["Chemlight_red",1,1],["2Rnd_12Gauge_Pellets",4,2]]],["V_LegStrapBag_coyote_F",[["FirstAidKit",1],["2Rnd_12Gauge_Slug",5,2],["2Rnd_12Gauge_Pellets",5,2]]],["B_RadioBag_01_hex_F",[["2Rnd_12Gauge_Pellets",7,2],["2Rnd_12Gauge_Slug",5,2]]],_headgear,"G_Aviator",[],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch",""]],
-		[["arifle_AKS_F","","","",["30Rnd_545x39_Mag_F",30],[],""],[],[],["U_O_OfficerUniform_ocamo",[["FirstAidKit",1],["Chemlight_red",1,1],["30Rnd_545x39_Mag_Tracer_F",3,30]]],["V_LegStrapBag_coyote_F",[["FirstAidKit",1],["30Rnd_545x39_Mag_Tracer_F",9,30]]],["B_RadioBag_01_hex_F",[["30Rnd_545x39_Mag_Tracer_F",8,30],["SmokeShellRed",3,1]]],_headgear,"G_Aviator",[],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch",""]],
-		[["SMG_03C_TR_black","muzzle_snds_570","","optic_Nightstalker",["50Rnd_570x28_SMG_03",50],[],""],[],[],["U_O_OfficerUniform_ocamo",[["FirstAidKit",1],["Chemlight_red",1,1],["50Rnd_570x28_SMG_03",2,50]]],["V_LegStrapBag_coyote_F",[["FirstAidKit",1],["50Rnd_570x28_SMG_03",5,50]]],["B_RadioBag_01_hex_F",[["SmokeShellRed",3,1],["50Rnd_570x28_SMG_03",5,50]]],_headgear,"G_Aviator",[],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch",""]],
-		[["SMG_05_F","muzzle_snds_L","","optic_Nightstalker",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],[],["U_O_OfficerUniform_ocamo",[["FirstAidKit",1],["Chemlight_red",1,1],["30Rnd_9x21_Mag_SMG_02_Tracer_Yellow",3,30]]],["V_LegStrapBag_coyote_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02_Tracer_Yellow",7,30]]],["B_RadioBag_01_hex_F",[["SmokeShellRed",3,1],["30Rnd_9x21_Mag_SMG_02_Tracer_Yellow",6,30]]],_headgear,"G_Aviator",[],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch",""]],
-		[["MMG_01_hex_F","muzzle_snds_93mmg_tan","","optic_Nightstalker",["150Rnd_93x64_Mag",150],[],"bipod_02_F_hex"],[],["hgun_Pistol_heavy_02_Yorris_F","","","optic_Yorris",["6Rnd_45ACP_Cylinder",6],[],""],["U_O_OfficerUniform_ocamo",[["FirstAidKit",1],["SmokeShellRed",3,1]]],["V_LegStrapBag_coyote_F",[["SmokeShell",1,1],["SmokeShellRed",1,1],["150Rnd_93x64_Mag",1,150]]],["B_RadioBag_01_hex_F",[["150Rnd_93x64_Mag",1,150],["SmokeShell",1,1],["SmokeShellRed",1,1]]],_headgear,"G_Aviator",[],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch",""]]
+		[["sgun_HunterShotgun_01_sawedoff_F","","","",["2Rnd_12Gauge_Pellets",2],[],""],[],[],["U_B_CombatUniform_mcam",[["FirstAidKit",1],["Chemlight_red",1,1],["2Rnd_12Gauge_Pellets",4,2]]],["V_LegStrapBag_coyote_F",[["FirstAidKit",1],["2Rnd_12Gauge_Slug",5,2],["2Rnd_12Gauge_Pellets",5,2]]],["B_RadioBag_01_mtp_F",[["2Rnd_12Gauge_Pellets",7,2],["2Rnd_12Gauge_Slug",5,2]]],_headgear,"G_Aviator",[],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch",""]],
+		[["arifle_Mk20C_plain_F","","","",["30Rnd_556x45_Stanag_Sand_Tracer_Red",30],[],""],[],[],["U_B_CombatUniform_mcam",[["FirstAidKit",1],["Chemlight_red",1,1],["30Rnd_556x45_Stanag_Sand_Tracer_Red",3,30]]],["V_LegStrapBag_coyote_F",[["FirstAidKit",1],["30Rnd_556x45_Stanag_Sand_Tracer_Red",9,30]]],["B_RadioBag_01_mtp_F",[["30Rnd_556x45_Stanag_Sand_Tracer_Red",8,30],["SmokeShellRed",3,1]]],_headgear,"G_Aviator",[],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch",""]],
+		[["SMG_03C_TR_black","muzzle_snds_570","","optic_Nightstalker",["50Rnd_570x28_SMG_03",50],[],""],[],[],["U_B_CombatUniform_mcam",[["FirstAidKit",1],["Chemlight_red",1,1],["50Rnd_570x28_SMG_03",2,50]]],["V_LegStrapBag_coyote_F",[["FirstAidKit",1],["50Rnd_570x28_SMG_03",5,50]]],["B_RadioBag_01_mtp_F",[["SmokeShellRed",3,1],["50Rnd_570x28_SMG_03",5,50]]],_headgear,"G_Aviator",[],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch",""]],
+		[["SMG_05_F","muzzle_snds_L","","optic_Nightstalker",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],[],["U_B_CombatUniform_mcam",[["FirstAidKit",1],["Chemlight_red",1,1],["30Rnd_9x21_Mag_SMG_02_Tracer_Yellow",3,30]]],["V_LegStrapBag_coyote_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02_Tracer_Yellow",7,30]]],["B_RadioBag_01_mtp_F",[["SmokeShellRed",3,1],["30Rnd_9x21_Mag_SMG_02_Tracer_Yellow",6,30]]],_headgear,"G_Aviator",[],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch",""]],
+		[["MMG_02_sand_F","muzzle_snds_338_sand","","optic_Nightstalker",["130Rnd_338_Mag",150],[],"bipod_01_F_snd"],[],["hgun_Pistol_heavy_02_Yorris_F","","","optic_Yorris",["6Rnd_45ACP_Cylinder",6],[],""],["U_B_CombatUniform_mcam",[["FirstAidKit",1],["SmokeShellRed",3,1]]],["V_LegStrapBag_coyote_F",[["SmokeShell",1,1],["SmokeShellRed",1,1],["130Rnd_338_Mag",1,150]]],["B_RadioBag_01_mtp_F",[["130Rnd_338_Mag",1,150],["SmokeShell",1,1],["SmokeShellRed",1,1]]],_headgear,"G_Aviator",[],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch",""]]
 	],
 	[
-		[["sgun_HunterShotgun_01_sawedoff_F","","","",["2Rnd_12Gauge_Pellets",2],[],""],[],[],["U_O_T_Officer_F",[["FirstAidKit",1],["Chemlight_red",1,1],["2Rnd_12Gauge_Pellets",4,2]]],["V_LegStrapBag_black_F",[["FirstAidKit",1],["2Rnd_12Gauge_Slug",5,2],["2Rnd_12Gauge_Pellets",5,2]]],["B_RadioBag_01_ghex_F",[["2Rnd_12Gauge_Pellets",7,2],["2Rnd_12Gauge_Slug",5,2]]],_headgear,"G_Aviator",[],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch",""]],
-		[["arifle_AKS_F","","","",["30Rnd_545x39_Mag_F",30],[],""],[],[],["U_O_T_Officer_F",[["FirstAidKit",1],["Chemlight_red",1,1],["30Rnd_545x39_Mag_Tracer_F",3,30]]],["V_LegStrapBag_black_F",[["FirstAidKit",1],["30Rnd_545x39_Mag_Tracer_F",9,30]]],["B_RadioBag_01_ghex_F",[["30Rnd_545x39_Mag_Tracer_F",8,30],["SmokeShellRed",3,1]]],_headgear,"G_Aviator",[],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch",""]],
-		[["SMG_03C_TR_black","muzzle_snds_570","","optic_Nightstalker",["50Rnd_570x28_SMG_03",50],[],""],[],[],["U_O_T_Officer_F",[["FirstAidKit",1],["Chemlight_red",1,1],["50Rnd_570x28_SMG_03",2,50]]],["V_LegStrapBag_black_F",[["FirstAidKit",1],["50Rnd_570x28_SMG_03",5,50]]],["B_RadioBag_01_ghex_F",[["SmokeShellRed",3,1],["50Rnd_570x28_SMG_03",5,50]]],_headgear,"G_Aviator",[],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch",""]],
-		[["SMG_05_F","muzzle_snds_L","","optic_Nightstalker",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],[],["U_O_T_Officer_F",[["FirstAidKit",1],["Chemlight_red",1,1],["30Rnd_9x21_Mag_SMG_02_Tracer_Yellow",3,30]]],["V_LegStrapBag_black_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02_Tracer_Yellow",7,30]]],["B_RadioBag_01_ghex_F",[["SmokeShellRed",3,1],["30Rnd_9x21_Mag_SMG_02_Tracer_Yellow",6,30]]],_headgear,"G_Aviator",[],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch",""]],
-		[["MMG_01_tan_F","muzzle_snds_93mmg","","optic_Nightstalker",["150Rnd_93x64_Mag",150],[],"bipod_02_F_blk"],[],["hgun_Pistol_heavy_02_Yorris_F","","","optic_Yorris",["6Rnd_45ACP_Cylinder",6],[],""],["U_O_T_Officer_F",[["FirstAidKit",1],["SmokeShellRed",3,1]]],["V_LegStrapBag_coyote_F",[["SmokeShell",1,1],["SmokeShellRed",1,1],["150Rnd_93x64_Mag",1,150]]],["B_RadioBag_01_ghex_F",[["SmokeShell",1,1],["SmokeShellRed",1,1],["150Rnd_93x64_Mag",1,150]]],_headgear,"G_Aviator",[],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch",""]]
+		[["sgun_HunterShotgun_01_sawedoff_F","","","",["2Rnd_12Gauge_Pellets",2],[],""],[],[],["U_B_T_Soldier_F",[["FirstAidKit",1],["Chemlight_red",1,1],["2Rnd_12Gauge_Pellets",4,2]]],["V_LegStrapBag_black_F",[["FirstAidKit",1],["2Rnd_12Gauge_Slug",5,2],["2Rnd_12Gauge_Pellets",5,2]]],["B_RadioBag_01_tropic_F",[["2Rnd_12Gauge_Pellets",7,2],["2Rnd_12Gauge_Slug",5,2]]],_headgear,"G_Aviator",[],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch",""]],
+		[["arifle_Mk20C_plain_F","","","",["30Rnd_556x45_Stanag_Sand_Tracer_Red",30],[],""],[],[],["U_B_T_Soldier_F",[["FirstAidKit",1],["Chemlight_red",1,1],["30Rnd_556x45_Stanag_Sand_Tracer_Red",3,30]]],["V_LegStrapBag_black_F",[["FirstAidKit",1],["30Rnd_556x45_Stanag_Sand_Tracer_Red",9,30]]],["B_RadioBag_01_tropic_F",[["30Rnd_556x45_Stanag_Sand_Tracer_Red",8,30],["SmokeShellRed",3,1]]],_headgear,"G_Aviator",[],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch",""]],
+		[["SMG_03C_TR_black","muzzle_snds_570","","optic_Nightstalker",["50Rnd_570x28_SMG_03",50],[],""],[],[],["U_B_T_Soldier_F",[["FirstAidKit",1],["Chemlight_red",1,1],["50Rnd_570x28_SMG_03",2,50]]],["V_LegStrapBag_black_F",[["FirstAidKit",1],["50Rnd_570x28_SMG_03",5,50]]],["B_RadioBag_01_tropic_F",[["SmokeShellRed",3,1],["50Rnd_570x28_SMG_03",5,50]]],_headgear,"G_Aviator",[],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch",""]],
+		[["SMG_05_F","muzzle_snds_L","","optic_Nightstalker",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],[],["U_B_T_Soldier_F",[["FirstAidKit",1],["Chemlight_red",1,1],["30Rnd_9x21_Mag_SMG_02_Tracer_Yellow",3,30]]],["V_LegStrapBag_black_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02_Tracer_Yellow",7,30]]],["B_RadioBag_01_tropic_F",[["SmokeShellRed",3,1],["30Rnd_9x21_Mag_SMG_02_Tracer_Yellow",6,30]]],_headgear,"G_Aviator",[],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch",""]],
+		[["MMG_02_black_F","muzzle_snds_338_black","","optic_Nightstalker",["130Rnd_338_Mag",150],[],"bipod_01_F_blk"],[],["hgun_Pistol_heavy_02_Yorris_F","","","optic_Yorris",["6Rnd_45ACP_Cylinder",6],[],""],["U_B_T_Soldier_F",[["FirstAidKit",1],["SmokeShellRed",3,1]]],["V_LegStrapBag_coyote_F",[["SmokeShell",1,1],["SmokeShellRed",1,1],["130Rnd_338_Mag",1,150]]],["B_RadioBag_01_tropic_F",[["SmokeShell",1,1],["SmokeShellRed",1,1],["130Rnd_338_Mag",1,150]]],_headgear,"G_Aviator",[],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch",""]]
 	]
 ] select (worldName in ['Tanoa','Enoch']);
 _commander setUnitLoadout (selectRandom _loadouts);

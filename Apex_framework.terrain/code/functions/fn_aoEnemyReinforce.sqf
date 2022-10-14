@@ -26,7 +26,7 @@ __________________________________________________/*/
 
 params ['_pos'];
 private _allPlayers = allPlayers;
-private _unitsEast = units EAST;
+private _unitsWEST = units WEST;
 private _QS_array = [];
 private _aoPos = _pos;
 private _hqPos = missionNamespace getVariable 'QS_HQpos';
@@ -70,7 +70,7 @@ if (
 			(alive (_x # 0)) && 
 			{(alive (_x # 1))} &&
 			{((_allPlayers inAreaArray [(getPosATL (_x # 0)),75,75,0,FALSE]) isEqualTo [])} &&
-			{((count (_unitsEast inAreaArray [(getPosATL (_x # 0)),25,25,0,FALSE])) <= 8)}
+			{((count (_unitsWEST inAreaArray [(getPosATL (_x # 0)),25,25,0,FALSE])) <= 8)}
 		});
 		(_validData isNotEqualTo [])
 	}
@@ -90,7 +90,7 @@ if (_urbanUnits isNotEqualTo []) exitWith {
 
 private _spawnedAtHQ = FALSE;
 private _hqUnits = [];
-_hqEnemies = _unitsEast inAreaArray [(missionNamespace getVariable 'QS_hqPos'),50,50,0,FALSE];
+_hqEnemies = _unitsWEST inAreaArray [(missionNamespace getVariable 'QS_hqPos'),50,50,0,FALSE];
 if (
 	((random 1) > 0.666) &&
 	{((count _hqEnemies) > 1)} &&
@@ -127,12 +127,12 @@ if (
 	_heliInsert = TRUE;
 	[
 		_hqPos,
-		EAST,
-		(['O_Heli_Transport_04_covered_F','O_Heli_Transport_04_covered_black_F'] select (_worldName isEqualTo 'Tanoa')),
+		WEST,
+		(['B_Heli_Transport_03_F','B_Heli_Transport_03_black_F'] select (_worldName isEqualTo 'Tanoa')),
 		0.75,
 		[],
 		(((random 1) > 0.85) && ((count _allPlayers) > 10)),
-		(['O_Heli_Attack_02_dynamicLoadout_F','O_Heli_Attack_02_dynamicLoadout_black_F'] select (_worldName isEqualTo 'Tanoa')),
+		(['B_Heli_Attack_01_dynamicLoadout_F','B_Heli_Attack_01_dynamicLoadout_F'] select (_worldName isEqualTo 'Tanoa')),
 		[],
 		FALSE
 	] spawn (missionNamespace getVariable 'QS_fnc_AIXHeliInsert');

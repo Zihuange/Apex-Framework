@@ -167,12 +167,12 @@ if (
 	missionNamespace setVariable ['QS_AI_insertHeli_lastEvent',diag_tickTime,FALSE];
 	_v enableRopeAttach TRUE;
 	_v enableVehicleCargo TRUE;
-	private _insertHeliType = ['O_Heli_Transport_04_F','O_Heli_Transport_04_black_F'] select (_worldName in ['Tanoa','Enoch']);
+	private _insertHeliType = ['B_Heli_Transport_01_F','B_Heli_Transport_01_camo_F'] select (_worldName in ['Tanoa','Enoch']);
 	[
 		_pos,
 		_v,
 		_insertHeliType,
-		EAST
+		WEST
 	] spawn (missionNamespace getVariable 'QS_fnc_AIXHeliInsertVehicle');
 };
 _QS_array;

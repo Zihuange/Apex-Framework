@@ -16,7 +16,7 @@ ______________________________________________/*/
 scriptName 'QS - SM - AA';
 //comment 'Get any data we need';
 private _spawnPosition = [0,0,0];
-private _aaTypes = ['o_apc_tracked_02_aa_f','o_t_apc_tracked_02_aa_ghex_f','o_t_apc_tracked_02_aa_ghex_f','o_t_apc_tracked_02_aa_ghex_f'];
+private _aaTypes = ['b_apc_tracked_01_aa_f','b_t_apc_tracked_01_aa_f','b_t_apc_tracked_01_aa_f','b_t_apc_tracked_01_aa_f'];
 private _aaHulls = [];
 private _aaTurrets = [];
 private _aaTurretObjects = [];
@@ -70,8 +70,8 @@ private _watchPosition = _spawnPosition vectorAdd [0,0,1000];
 //comment 'Generate composition and assets';
 private _compositionData = [
 	[
-		["O_APC_Tracked_02_AA_F",[0.230469,-6.17627,0.0173378],179.236,[],TRUE,TRUE,FALSE,{(_this # 0)}], 			// o_sam_system_04_f   O_APC_Tracked_02_AA_F
-		["O_APC_Tracked_02_AA_F",[-0.212402,9.61426,0.0157723],359.523,[],TRUE,TRUE,FALSE,{(_this # 0)}], 			//	o_sam_system_04_f   O_APC_Tracked_02_AA_F
+		["B_APC_Tracked_01_AA_F",[0.230469,-6.17627,0.0173378],179.236,[],TRUE,TRUE,FALSE,{(_this # 0)}], 			// o_sam_system_04_f   B_APC_Tracked_01_AA_F
+		["B_APC_Tracked_01_AA_F",[-0.212402,9.61426,0.0157723],359.523,[],TRUE,TRUE,FALSE,{(_this # 0)}], 			//	o_sam_system_04_f   B_APC_Tracked_01_AA_F
 		["Land_HBarrier_5_F",[-0.302979,1.63086,1.72132],0,[],FALSE,FALSE,TRUE,{}], 
 		["Land_HBarrier_Big_F",[-0.20874,1.77246,0],0,[],FALSE,FALSE,TRUE,{}], 
 		["Land_HBarrier_Big_F",[5.12134,-1.37109,0],271.094,[],FALSE,FALSE,TRUE,{}], 
@@ -98,8 +98,8 @@ private _compositionData = [
 		["Land_HBarrierWall_corner_F",[11.0156,14.7471,0],0,[],FALSE,FALSE,TRUE,{}]
 	],
 	[
-		["O_T_APC_Tracked_02_AA_ghex_F",[-0.0292969,-6.354,0.0168018],178.855,[],TRUE,TRUE,FALSE,{(_this # 0)}], 		// o_sam_system_04_f    O_T_APC_Tracked_02_AA_ghex_F
-		["O_T_APC_Tracked_02_AA_ghex_F",[-0.321777,8.54443,0.0163908],359.998,[],TRUE,TRUE,FALSE,{(_this # 0)}], 		// o_sam_system_04_f   O_T_APC_Tracked_02_AA_ghex_F
+		["B_T_APC_Tracked_01_AA_F",[-0.0292969,-6.354,0.0168018],178.855,[],TRUE,TRUE,FALSE,{(_this # 0)}], 		// o_sam_system_04_f    B_T_APC_Tracked_01_AA_F
+		["B_T_APC_Tracked_01_AA_F",[-0.321777,8.54443,0.0163908],359.998,[],TRUE,TRUE,FALSE,{(_this # 0)}], 		// o_sam_system_04_f   B_T_APC_Tracked_01_AA_F
 		["Land_HBarrier_01_big_4_green_F",[-0.081543,1.03174,0],0,[],FALSE,FALSE,TRUE,{}], 
 		["Land_HBarrier_01_line_5_green_F",[-0.195801,1.05566,1.74458],0,[],FALSE,FALSE,TRUE,{}], 
 		["Land_HBarrier_01_line_5_green_F",[5.23779,0.97168,1.69463],90,[],FALSE,FALSE,TRUE,{}], 

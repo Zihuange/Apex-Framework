@@ -21,10 +21,10 @@ if (
 	{((player distance _hitEntity) <= (getObjectViewDistance # 0))}
 ) then {
 	if (_hitEntity isKindOf 'Man') then {
-		if (((side (group _hitEntity)) in [player getVariable ['QS_unit_side',WEST],CIVILIAN,sideFriendly]) || ((side _hitEntity) in [CIVILIAN])) then {
+		if (((side (group _hitEntity)) in [player getVariable ['QS_unit_side',EAST],CIVILIAN,sideFriendly]) || ((side _hitEntity) in [CIVILIAN])) then {
 			50 cutText [localize 'STR_QS_Text_185','PLAIN',0.25,TRUE,TRUE];
 		} else {
-			if ((side (group _hitEntity)) in ((player getVariable ['QS_unit_side',WEST]) call (missionNamespace getVariable 'QS_fnc_enemySides'))) then {
+			if ((side (group _hitEntity)) in ((player getVariable ['QS_unit_side',EAST]) call (missionNamespace getVariable 'QS_fnc_enemySides'))) then {
 				_projectile removeEventHandler [_thisEvent,_thisEventHandler];
 				if (
 					((missionNamespace getVariable ['QS_missionConfig_hitMarker',1]) isNotEqualTo 0) && (missionNamespace getVariable ['QS_HUD_toggleHitMarker',FALSE])
@@ -45,10 +45,10 @@ if (
 	} else {
 		if (_hitEntity in vehicles) then {
 			if (alive (effectiveCommander _hitEntity)) then {
-				if ((side (group (effectiveCommander _hitEntity))) in [player getVariable ['QS_unit_side',WEST],CIVILIAN,sideFriendly]) then {
+				if ((side (group (effectiveCommander _hitEntity))) in [player getVariable ['QS_unit_side',EAST],CIVILIAN,sideFriendly]) then {
 					50 cutText [localize 'STR_QS_Text_185','PLAIN',0.25,TRUE,TRUE];
 				} else {
-					if ((side (group (effectiveCommander _hitEntity))) in ((player getVariable ['QS_unit_side',WEST]) call (missionNamespace getVariable 'QS_fnc_enemySides'))) then {
+					if ((side (group (effectiveCommander _hitEntity))) in ((player getVariable ['QS_unit_side',EAST]) call (missionNamespace getVariable 'QS_fnc_enemySides'))) then {
 						_projectile removeEventHandler [_thisEvent,_thisEventHandler];
 						if (
 							((missionNamespace getVariable ['QS_missionConfig_hitMarker',1]) isNotEqualTo 0) && (missionNamespace getVariable ['QS_HUD_toggleHitMarker',FALSE])

@@ -405,8 +405,8 @@ if (_fps > 10) then {
 		{(!(_isSuppressing))} &&
 		{(!(_objectParent isKindOf 'Air'))} &&
 		{(!(_objectParent isKindOf 'StaticMortar'))} &&
-		{(!(_objectParent isKindOf 'O_APC_Tracked_02_AA_F'))} &&
-		{(!(_objectParent isKindOf 'O_T_APC_Tracked_02_AA_ghex_F'))} &&
+		{(!(_objectParent isKindOf 'B_APC_Tracked_01_AA_F'))} &&
+		{(!(_objectParent isKindOf 'B_T_APC_Tracked_01_AA_F'))} &&
 		{(!(_unit getVariable ['QS_AI_disableSuppFire',FALSE]))}
 	) then {
 		if (_uiTime > (_unit getVariable ['QS_AI_UNIT_lastSuppressiveFire',-1])) then {

@@ -1174,7 +1174,7 @@ if (_case < 70) exitWith {
 			_array params ['_object','_puid','_pname','_target'];
 			_headgear = headgear _target;
 			if (_headgear isNotEqualTo '') then {
-				_score = [1,3] select ((toLowerANSI _headgear) isEqualTo 'h_beret_csat_01_f');
+				_score = [1,3] select ((toLowerANSI _headgear) isEqualTo 'H_Beret_02');
 				_object addItem _headgear;
 				removeHeadgear _target;
 				(missionNamespace getVariable 'QS_leaderboards_session_queue') pushBack ['BERET',_puid,_pname,_score];

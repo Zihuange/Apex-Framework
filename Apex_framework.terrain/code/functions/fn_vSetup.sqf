@@ -326,16 +326,15 @@ if (_t2 in _pawnee) then {
 };
 if (_t2 in _vtol_east) then {
 	if (worldName in ['Tanoa','Lingor3']) then {
-		_camo = 'GreenHex';
+		{ 
+			_u setObjectTextureGlobal [_forEachIndex,_x]; 
+		} forEach (getArray (configFile >> 'CfgVehicles' >> _t2 >> 'TextureSources' >> 'GreenHex' >> 'textures'));
 	} else {
-		_camo = selectRandomWeighted [
-			'Grey',0.334,
-			'Hex',0.666
-		];
+		{ 
+			_u setObjectTextureGlobal [_forEachIndex,_x]; 
+		} forEach (getArray (configFile >> 'CfgVehicles' >> _t2 >> 'TextureSources' >> 'Hex' >> 'textures'));
 	};
-	{ 
-		_u setObjectTextureGlobal [_forEachIndex,_x]; 
-	} forEach (getArray (configFile >> 'CfgVehicles' >> _t2 >> 'TextureSources' >> _camo >> 'textures'));
+	
 };
 if (_t2 in _taru_default) then {
 	{ 
