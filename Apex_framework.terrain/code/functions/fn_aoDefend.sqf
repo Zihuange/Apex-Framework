@@ -6,7 +6,7 @@ Author:
 	
 Last modified:
 
-	6/07/2018 A3 1.82 by Quiksilver
+	27/10/2022 A3 2.10 by Quiksilver
 	
 Description:
 
@@ -49,7 +49,6 @@ if ((missionNamespace getVariable 'QS_forceDefend') isEqualTo -1) exitWith {miss
 if ((missionNamespace getVariable 'QS_forceDefend') isEqualTo -2) exitWith {missionNamespace setVariable ['QS_defendActive',FALSE,TRUE];};
 if ((_allPlayersCount > 60) && ((missionNamespace getVariable 'QS_defendCount') > 3) && ((missionNamespace getVariable 'QS_forceDefend') isEqualTo 0)) exitWith {missionNamespace setVariable ['QS_defendActive',FALSE,TRUE];};
 diag_log 'Defend AO 0.5';
-
 {
 	missionNamespace setVariable _x;
 } forEach [
@@ -64,10 +63,14 @@ _defendMessages = [
 ];
 ['DEFEND_HQ',[localize 'STR_QS_Notif_003',localize 'STR_QS_Notif_004']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 {
-	_x setMarkerAlpha 0.75;
+	_x setMarkerAlphaLocal 0.75;
 	_x setMarkerPos (missionNamespace getVariable 'QS_HQpos');
 } forEach ['QS_marker_aoCircle','QS_marker_aoMarker'];
 'QS_marker_aoMarker' setMarkerText format['%1 %3 %2 %4',(toString [32,32,32]),(missionNamespace getVariable 'QS_aoDisplayName'),localize 'STR_QS_Marker_002',localize 'STR_QS_Marker_003'];
+
+if (worldName in ['Stratis']) then {
+	missionNamespace setVariable ['QS_hqPos',missionNamespace getVariable 'QS_aoPos'];
+};
 _centerPos = missionNamespace getVariable 'QS_HQpos';
 _centerPos params ['_centerPosX','_centerPosY','_centerPosZ'];
 private _allPlayers = allPlayers;
@@ -98,6 +101,8 @@ _moveToPos = [0,0,0];
 _validRoadSurfaces = ['#gdtreddirt','#gdtasphalt','#gdtsoil','#gdtconcrete'];
 _grp2 = grpNull;
 _updateMoveDelay = time + 30;
+_hqFlag = missionNamespace getVariable ['QS_AO_HQ_flag',objNull];
+[_hqFlag,WEST,'',FALSE,objNull,1] call (missionNamespace getVariable 'QS_fnc_setFlag');
 if (_QS_worldName isEqualTo 'Tanoa') then {
 	_fn_blacklist = {
 		private _c = TRUE;
@@ -150,14 +155,20 @@ if (_allPlayersCount > 50) then {_infantryMaxSpawned = _infantryLimit_5;};
 _infantryArray = [];
 _infantryCheckDelay = _tickTimeNow + 10;
 _infantrySpawnDelay = time + 10;
+
+_infantrySpawnDistanceFixed = 800;
+_infantrySpawnDistanceRandom = 1000;
+_infantrySpawnDistanceFromPlayer = 400;
+
 if (worldName isEqualTo 'Tanoa') then {
 	_infantrySpawnDistanceFixed = 700;
 	_infantrySpawnDistanceRandom = 800;
 	_infantrySpawnDistanceFromPlayer = 350;
-} else {
-	_infantrySpawnDistanceFixed = 800;
-	_infantrySpawnDistanceRandom = 1000;
-	_infantrySpawnDistanceFromPlayer = 400;
+};
+if (worldName isEqualTo 'Stratis') then {
+	_infantrySpawnDistanceFixed = 400;
+	_infantrySpawnDistanceRandom = 500;
+	_infantrySpawnDistanceFromPlayer = 250;
 };
 _infTypes = [
 	'OIA_InfTeam_AA',0.25,
@@ -167,6 +178,16 @@ _infTypes = [
 	'OIA_InfAssault',0.25,
 	'OIA_InfSquad_L',0.333
 ];
+if (worldName isEqualTo 'Stratis') then {
+	_infTypes = [
+		'OIA_InfTeam_AA',0.25,
+		'OIA_InfTeam_LAT',0.084,
+		'OIA_InfSquad',1,
+		'OIA_InfSquad_Weapons',0.2,
+		'OIA_InfAssault',1,
+		'OIA_InfSquad_L',0
+	];
+};
 _infType = '';
 _QS_armor = TRUE;
 _armorInitialSpawnDelay = time + 60 + (random 60);
@@ -185,58 +206,9 @@ _armorArray = [];
 _armorCheckDelay = time + 5;
 _armorSpawnDelay = time + 5;
 private _isArmedAirEnabled = missionNamespace getVariable ['QS_armedAirEnabled',TRUE];
-if (_isArmedAirEnabled) then {
-	if ((random 1) > 0.333) then {
-		if (worldName isEqualTo 'Tanoa') then {
-			_armorTypes = [
-				'O_T_APC_Tracked_02_cannon_ghex_F','O_T_APC_Wheeled_02_rcws_v2_ghex_F','O_T_MBT_02_cannon_ghex_F','O_T_APC_Tracked_02_AA_ghex_F','I_APC_Wheeled_03_cannon_F',
-				'O_T_MRAP_02_gmg_ghex_F','O_T_MRAP_02_hmg_ghex_F','I_MRAP_03_gmg_F','I_MRAP_03_hmg_F','O_T_LSV_02_armed_ghex_F'
-			];	
-		} else {
-			_armorTypes = [
-				'O_APC_Tracked_02_cannon_F','O_APC_Wheeled_02_rcws_v2_F','O_MBT_02_cannon_F','O_APC_Tracked_02_AA_F','I_APC_Wheeled_03_cannon_F',
-				'I_APC_tracked_03_cannon_F','I_MBT_03_cannon_F','O_MRAP_02_gmg_F','O_MRAP_02_hmg_F','I_MRAP_03_gmg_F','I_MRAP_03_hmg_F','O_APC_Tracked_02_AA_F'
-			];
-		};
-	} else {
-		if (worldName isEqualTo 'Tanoa') then {
-			_armorTypes = [
-				'O_T_APC_Tracked_02_cannon_ghex_F','O_T_APC_Wheeled_02_rcws_v2_ghex_F','O_T_MBT_02_cannon_ghex_F','O_T_APC_Tracked_02_AA_ghex_F','I_APC_Wheeled_03_cannon_F',
-				'O_T_MRAP_02_gmg_ghex_F','O_T_MRAP_02_hmg_ghex_F','I_MRAP_03_gmg_F','I_MRAP_03_hmg_F','O_T_LSV_02_armed_ghex_F'
-			];
-		} else {
-			_armorTypes = [
-				'O_APC_Tracked_02_cannon_F','O_APC_Wheeled_02_rcws_v2_F','O_MBT_02_cannon_F','O_APC_Tracked_02_AA_F','I_APC_Wheeled_03_cannon_F',
-				'I_APC_tracked_03_cannon_F','I_MBT_03_cannon_F','O_MRAP_02_gmg_F','O_MRAP_02_hmg_F','I_MRAP_03_gmg_F','I_MRAP_03_hmg_F','O_APC_Tracked_02_AA_F'
-			];
-		};
-	};
-} else {
-	if ((random 1) > 0.333) then {
-		if (worldName isEqualTo 'Tanoa') then {
-			_armorTypes = [
-				'O_T_APC_Tracked_02_cannon_ghex_F','O_T_APC_Wheeled_02_rcws_v2_ghex_F','O_T_APC_Tracked_02_AA_ghex_F','I_APC_Wheeled_03_cannon_F',
-				'O_T_MRAP_02_gmg_ghex_F','O_T_MRAP_02_hmg_ghex_F','I_MRAP_03_gmg_F','I_MRAP_03_hmg_F','O_T_LSV_02_armed_ghex_F'
-			];	
-		} else {
-			_armorTypes = [
-				'O_APC_Tracked_02_cannon_F','O_APC_Wheeled_02_rcws_v2_F','O_APC_Tracked_02_AA_F','I_APC_Wheeled_03_cannon_F',
-				'I_APC_tracked_03_cannon_F','O_MRAP_02_gmg_F','O_MRAP_02_hmg_F','I_MRAP_03_gmg_F','I_MRAP_03_hmg_F','O_APC_Tracked_02_AA_F'
-			];
-		};
-	} else {
-		if (worldName isEqualTo 'Tanoa') then {
-			_armorTypes = [
-				'O_T_APC_Tracked_02_cannon_ghex_F','O_T_APC_Wheeled_02_rcws_v2_ghex_F','O_T_APC_Tracked_02_AA_ghex_F','I_APC_Wheeled_03_cannon_F',
-				'O_T_MRAP_02_gmg_ghex_F','O_T_MRAP_02_hmg_ghex_F','I_MRAP_03_gmg_F','I_MRAP_03_hmg_F','O_T_LSV_02_armed_ghex_F'
-			];
-		} else {
-			_armorTypes = [
-				'O_APC_Tracked_02_cannon_F','O_APC_Wheeled_02_rcws_v2_F','O_APC_Tracked_02_AA_F','I_APC_Wheeled_03_cannon_F',
-				'I_APC_tracked_03_cannon_F','O_MRAP_02_gmg_F','O_MRAP_02_hmg_F','I_MRAP_03_gmg_F','I_MRAP_03_hmg_F','O_APC_Tracked_02_AA_F'
-			];
-		};
-	};
+private _motorPool = 0;
+if (worldName in ['Stratis']) then {
+	_motorPool = 8;
 };
 _armorType = '';
 _QS_groundTransport = FALSE;
@@ -281,7 +253,7 @@ _foundSpawnPos = FALSE;
 _spawnPos = [0,0,0];
 _index = 0;
 _grp = grpNull;
-_QS_airSuperiority = TRUE;
+_QS_airSuperiority = TRUE && (!(worldName in ['Stratis']));
 if (_allPlayersCount > 0) then {_jetsToSpawn = 0;};
 if (_allPlayersCount > 10) then {_jetsToSpawn = 0;};
 if (_allPlayersCount > 20) then {_jetsToSpawn = 1;};
@@ -305,7 +277,7 @@ if (_allPlayersCount > 30) then {_helicoptersToSpawn = 1;};
 if (_allPlayersCount > 40) then {_helicoptersToSpawn = 2;};
 if (_allPlayersCount > 50) then {_helicoptersToSpawn = 2;};
 if (_allPlayersCount > 20) then {
-	if (worldName in ['Tanoa','Enoch']) then {
+	if (worldName in ['Tanoa','Enoch','Stratis']) then {
 		_helicopterTypes = [
 			'o_heli_light_02_dynamicloadout_f','i_e_heli_light_03_dynamicloadout_f','o_heli_light_02_dynamicloadout_f','i_e_heli_light_03_dynamicloadout_f'
 		];
@@ -451,7 +423,7 @@ if (_hqBuildingPositions isNotEqualTo []) then {
 	_hqBuildingPositions = _hqBuildingPositions apply {[(_x # 0),(_x # 1),((_x # 2) + 1)]};
 };
 _sectorControlTicker = 0;
-_sectorControlThreshold = 6;
+_sectorControlThreshold = 7;
 _enemyInHQCount = 0;
 _playersInHQCount = 0;
 _defendMessage = selectRandom _defendMessages;
@@ -482,7 +454,7 @@ if (isNil {missionProfileNamespace getVariable 'QS_defend_stat_2'}) then {
 		saveMissionProfileNamespace;
 	};
 };
-_currentStats = [_allPlayersCount,([(missionNamespace getVariable 'QS_HQpos'),300,[WEST],allPlayers,1] call (missionNamespace getVariable 'QS_fnc_serverDetector')),0,0,_exitSuccess];
+_currentStats = [_allPlayersCount,(count (allPlayers inAreaArray [(missionNamespace getVariable 'QS_hqPos'),300,300,0,FALSE])),0,0,_exitSuccess];
 private _unitGroup = grpNull;
 private _groupLeader = objNull;
 missionNamespace setVariable ['QS_defend_blockTimeout',FALSE,FALSE]; //missionNamespace setVariable ['QS_defend_blockTimeout',((random 1) > 0.95),FALSE];
@@ -502,6 +474,9 @@ _fn_spawnGroup = missionNamespace getVariable 'QS_fnc_spawnGroup';
 _fn_downgradeVehicleWeapons = missionNamespace getVariable 'QS_fnc_downgradeVehicleWeapons';
 _fn_unitSetup = missionNamespace getVariable 'QS_fnc_unitSetup';
 _fn_taskSetProgress = missionNamespace getVariable 'QS_fnc_taskSetProgress';
+_fn_setFlag = missionNamespace getVariable 'QS_fnc_setFlag';
+_fn_getAIMotorPool = missionNamespace getVariable 'QS_fnc_getAIMotorPool';
+
 diag_log 'Defend AO 1';
 for '_x' from 0 to 1 step 0 do {
 	_timeNow = time;
@@ -536,7 +511,7 @@ for '_x' from 0 to 1 step 0 do {
 					clearWeaponCargoGlobal _uav;
 					clearItemCargoGlobal _uav;
 					clearBackpackCargoGlobal _uav;
-					_uav setVariable ['QS_uav_protected',TRUE,(!isServer)];
+					_uav setVariable ['QS_uav_protected',TRUE,FALSE];
 					['setFeatureType',_uav,2] remoteExec ['QS_fnc_remoteExecCmd',-2,_uav];
 					0 = _uavArray pushBack _uav;
 					0 = _allArray pushBack _uav;
@@ -582,21 +557,15 @@ for '_x' from 0 to 1 step 0 do {
 		_infantryArray = _infantryArray select {(alive _x)};
 		if ((count _infantryArray) < _infantryMaxSpawned) then {
 			_index = 0;
-			_foundSpawnPos = FALSE;
 			for '_x' from 0 to 49 step 1 do {
 				_spawnPos = ([[_centerPos,250,500,5,0,0.5,0],[_centerPos,300,550,5,0,0.5,0]] select ((random 1) > 0.666)) call _fn_findSafePos;
-				if (_spawnPos isNotEqualTo []) then {
-					if ((_allPlayers inAreaArray [_spawnPos,300,300,0,FALSE]) isEqualTo []) then {
-						if ((_spawnPos distance2D _centerPos) < 1001) then {
-							if (_spawnPos call _fn_blacklist) then {
-								if (!([_spawnPos,_centerPos,25] call _fn_waterIntersect)) then {
-									_foundSpawnPos = TRUE;
-								};
-							};
-						};
-					};
-				};
-				if (_foundSpawnPos) exitWith {};
+				if (
+					(_spawnPos isNotEqualTo []) &&
+					{((_allPlayers inAreaArray [_spawnPos,300,300,0,FALSE]) isEqualTo [])} &&
+					{((_spawnPos distance2D _centerPos) < 1001)} &&
+					{(_spawnPos call _fn_blacklist)} &&
+					{(!([_spawnPos,_centerPos,25] call _fn_waterIntersect))}
+				) exitWith {};
 			};
 			_infType = selectRandomWeighted _infTypes;
 			_direction = _spawnPos getDir _centerPos;
@@ -652,7 +621,7 @@ for '_x' from 0 to 1 step 0 do {
 					_x addEventHandler [
 						'Hit',
 						{
-							(_this # 0) removeEventHandler ['Hit',_thisEventHandler];
+							(_this # 0) removeEventHandler [_thisEvent,_thisEventHandler];
 							(_this # 0) enableAIFeature ['TARGET',TRUE];
 							(_this # 0) enableAIFeature ['AUTOTARGET',TRUE];
 						}
@@ -704,32 +673,30 @@ for '_x' from 0 to 1 step 0 do {
 				_nearRoads = [];
 				for '_x' from 0 to 49 step 1 do {
 					_spawnPos = [_centerPos,600,1000,10,0,0.5,0] call _fn_findSafePos;
-					if (_spawnPos isNotEqualTo []) then {
-						if ((_allPlayers inAreaArray [_spawnPos,400,400,0,FALSE]) isEqualTo []) then {
-							if ((_spawnPos distance2D _centerPos) < 1201) then {
-								if (_spawnPos call _fn_blacklist) then {
-									if (!([_spawnPos,_centerPos,25] call _fn_waterIntersect)) then {
-										_nearRoads = ((_spawnPos select [0,2]) nearRoads 150) select {((_x isEqualType objNull) && ((roadsConnectedTo _x) isNotEqualTo []))};
-										if (_nearRoads isNotEqualTo []) then {
-											{
-												if ((toLowerANSI (surfaceType (getPosATL _x))) in _validRoadSurfaces) then {
-													0 = _roadsValid pushBack (getPosATL _x);
-												};
-											} count _nearRoads;
-											if (_roadsValid isNotEqualTo []) then {
-												_foundSpawnPos = TRUE;
-												_spawnPos = selectRandom _roadsValid;
-											};
-										};
-									};
+					
+					if (
+						(_spawnPos isNotEqualTo []) &&
+						{((_allPlayers inAreaArray [_spawnPos,400,400,0,FALSE]) isEqualTo [])} &&
+						{((_spawnPos distance2D _centerPos) < 1201)} &&
+						{(_spawnPos call _fn_blacklist)} &&
+						{(!([_spawnPos,_centerPos,25] call _fn_waterIntersect))}
+					) then {
+						_nearRoads = ((_spawnPos select [0,2]) nearRoads 150) select {((_x isEqualType objNull) && ((roadsConnectedTo _x) isNotEqualTo []))};
+						if (_nearRoads isNotEqualTo []) then {
+							{
+								if ((toLowerANSI (surfaceType (getPosATL _x))) in _validRoadSurfaces) then {
+									0 = _roadsValid pushBack (getPosATL _x);
 								};
+							} count _nearRoads;
+							if (_roadsValid isNotEqualTo []) then {
+								_foundSpawnPos = TRUE;
+								_spawnPos = selectRandom _roadsValid;
 							};
 						};
 					};
 					if (_foundSpawnPos) exitWith {};
 				};
-				_armorType = selectRandom _armorTypes;
-				_av = createVehicle [(selectRandomWeighted ([0] call (missionNamespace getVariable 'QS_fnc_getAIMotorPool'))),_spawnPos,[],0,'NONE'];
+				_av = createVehicle [(selectRandomWeighted ([_motorPool] call _fn_getAIMotorPool)),_spawnPos,[],0,'NONE'];
 				_av setVariable ['QS_dynSim_ignore',TRUE,FALSE];
 				_av enableDynamicSimulation FALSE;
 				0 = _armorArray pushBack _av;
@@ -859,7 +826,7 @@ for '_x' from 0 to 1 step 0 do {
 							'HandleDamage',
 							{
 								params ['_vehicle','_selection','_damage','_source','_ammo','',''];
-								if (((crew _vehicle) findIf {(alive _x)}) isEqualTo -1) then {_vehicle removeEventHandler ['HandleDamage',_thisEventHandler];};
+								if (((crew _vehicle) findIf {(alive _x)}) isEqualTo -1) then {_vehicle removeEventHandler [_thisEvent,_thisEventHandler];};
 								if (_selection isNotEqualTo '?') then {
 									_oldDamage = if (_selection isEqualTo '') then [{(damage _vehicle)},{(_vehicle getHit _selection)}];
 									if (!isNull _source) then {
@@ -984,7 +951,7 @@ for '_x' from 0 to 1 step 0 do {
 					_vParaType = selectRandom _vParaTypes;
 					_vParaV = createVehicle [_vParaType,[0,0,(100 + (random 1000))],[],0,'NONE'];
 					0 = _allArray pushBack _vParaV;
-					_vParaV setVariable ['QS_uav_protected',TRUE,(!isServer)];
+					_vParaV setVariable ['QS_uav_protected',TRUE,FALSE];
 					_vParaV setPos _spawnPos;
 					_vParaV enableRopeAttach FALSE;
 					_vParaV enableVehicleCargo FALSE;
@@ -1496,12 +1463,14 @@ for '_x' from 0 to 1 step 0 do {
 					};
 				};
 			};
+			[_hqFlag,WEST,'',FALSE,objNull,(0 max (1 - (_sectorControlTicker / _sectorControlThreshold)) min 1)] call _fn_setFlag;
 			[_taskID,TRUE,(0 max (1 - (_sectorControlTicker / _sectorControlThreshold)) min 1)] call _fn_taskSetProgress;
 			_checkHeldDelay = time + 15;
 		};
 	};
 	
 	if (_exitSuccess) exitWith {
+		[_hqFlag,WEST,'',FALSE,objNull,1] call _fn_setFlag;
 		['sideChat',[WEST,'HQ'],localize 'STR_QS_Chat_017'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		['DEFEND_SUCCESS',[localize 'STR_QS_Notif_003',localize 'STR_QS_Notif_005']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		['QS_IA_TASK_DEFENDHQ','SUCCEEDED',FALSE] call (missionNamespace getVariable 'BIS_fnc_taskSetState');
@@ -1514,6 +1483,7 @@ for '_x' from 0 to 1 step 0 do {
 		];
 	};
 	if (_exitFail) exitWith {
+		[_hqFlag,EAST,'',FALSE,objNull,1] call _fn_setFlag;
 		['sideChat',[WEST,'HQ'],localize 'STR_QS_Chat_018'] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 		['DEFEND_FAIL',[localize 'STR_QS_Notif_003',localize 'STR_QS_Notif_006']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 		['QS_IA_TASK_DEFENDHQ','FAILED',FALSE] call (missionNamespace getVariable 'BIS_fnc_taskSetState');

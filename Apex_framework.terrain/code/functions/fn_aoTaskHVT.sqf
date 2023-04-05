@@ -193,7 +193,7 @@ if (_state isEqualTo 1) then {
 				_agent addEventHandler [
 					'Hit',
 					{
-						(_this # 0) removeEventHandler ['Hit',_thisEventHandler];
+						(_this # 0) removeEventHandler [_thisEvent,_thisEventHandler];
 						(_this # 0) enableAIFeature ['PATH',TRUE];
 						(_this # 0) setUnitPos 'MIDDLE';
 					}
@@ -258,7 +258,7 @@ if (_state isEqualTo 1) then {
 						_enemyUnit addEventHandler [
 							'Hit',
 							{
-								(_this # 0) removeEventHandler ['Hit',_thisEventHandler];
+								(_this # 0) removeEventHandler [_thisEvent,_thisEventHandler];
 								(_this # 0) enableAIFeature ['PATH',TRUE];
 								(_this # 0) setUnitPos 'MIDDLE';
 							}

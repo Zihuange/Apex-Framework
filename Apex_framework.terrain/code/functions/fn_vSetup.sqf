@@ -346,6 +346,15 @@ if (_t2 in ['o_sam_system_04_f','o_radar_system_02_f']) then {
 	} forEach (getArray (configFile >> 'CfgVehicles' >> _t2 >> 'TextureSources' >> (['AridHex','JungleHex'] select (worldName in ['Tanoa','Lingor3'])) >> 'textures'));
 };
 if (!(_isSimpleObject)) then {
+	if ((getAmmoCargo _u) > 0) then {
+		_u setAmmoCargo 0;
+	};
+	if ((getFuelCargo _u) > 0) then {
+		_u setFuelCargo 0;
+	};
+	if ((getRepairCargo _u) > 0) then {
+		_u setRepairCargo 0;
+	};
 	_u lock 0;
 	_u setVariable ['QS_ropeAttached',FALSE,TRUE];
 	if (_t2 in _startLocked) then {
@@ -424,7 +433,7 @@ if (!(_isSimpleObject)) then {
 		'i_supplycrate_f','o_supplycrate_f','c_t_supplycrate_f','c_supplycrate_f','ig_supplycrate_f','b_supplycrate_f',
 		'b_cargonet_01_ammo_f','i_cargonet_01_ammo_f','o_cargonet_01_ammo_f','i_e_cargonet_01_ammo_f'
 	]) then {
-		[_u,1,nil] call (missionNamespace getVariable 'QS_fnc_customInventory');
+		//[_u,1,nil] call (missionNamespace getVariable 'QS_fnc_customInventory');
 	};
 	if (_t2 in _towVs) then {
 		_u setVariable ['QS_tow_veh',1,TRUE];
@@ -544,15 +553,6 @@ if (!(_isSimpleObject)) then {
 		_stretcher2 = createSimpleObject ['a3\props_f_orange\humanitarian\camps\stretcher_01_f.p3d',[0,0,0]];
 		_stretcher2 attachTo [_u,[0.85,-0.75,-0.7]];
 	};
-	if (_t2 in _fuelCargo) then {
-		_u setFuelCargo 1;
-	};
-	if (_t2 in _ammoCargo) then {
-		_u setAmmoCargo 1;
-	};
-	if (_t2 in _repairCargo) then {
-		_u setRepairCargo 1;
-	};
 	if (_u isKindOf 'Helicopter') then {
 		if (
 			isDedicated &&
@@ -616,7 +616,10 @@ if (!(_isSimpleObject)) then {
 			];
 		};
 	};
-	_u setVehicleReportRemoteTargets ((_u isKindOf 'i_lt_01_scout_f') || (_t2 in ['b_radar_system_01_f','o_radar_system_02_f']));
+	if (!(_u isKindOf 'Air')) then {
+		_u setVehicleReportRemoteTargets TRUE;
+	};
+	//_u setVehicleReportRemoteTargets ((_u isKindOf 'i_lt_01_scout_f') || (_t2 in ['b_radar_system_01_f','o_radar_system_02_f']));
 	if (_u isKindOf 'Air') then {
 		_u setVehicleReceiveRemoteTargets TRUE;
 		_u setVehicleReportOwnPosition TRUE;
@@ -743,9 +746,6 @@ if (!(_isSimpleObject)) then {
 	_u addEventHandler ['Local',{}];
 	if (_u isKindOf 'LandVehicle') then {
 		//_u setPlateNumber 'abc123';
-		if ((!(['medical',_t2,FALSE] call (missionNamespace getVariable 'QS_fnc_inString'))) && (!(['medevac',_t2,FALSE] call (missionNamespace getVariable 'QS_fnc_inString')))) then {
-			[_u,1,nil] call (missionNamespace getVariable 'QS_fnc_customInventory');
-		};
 		_u setConvoySeparation 50;
 		_u forceFollowRoad TRUE;
 	};

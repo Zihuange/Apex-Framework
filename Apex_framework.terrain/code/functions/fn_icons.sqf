@@ -623,16 +623,16 @@ _QS_fnc_iconText = {
 				if (_ms < 0.75) then {
 					if (_ms > 0.25) then {
 						if (_showMOS) then {
-							_t = format ['[AUTO] [%1]',_vt];
+							_t = format ['[%2] [%1]',_vt,localize 'STR_QS_Text_273'];
 						} else {
-							_t = '[AUTO]';
+							_t = format ['[%1]',localize 'STR_QS_Text_273'];
 						};
 					} else {
 						if (_ms < 0.006) then {
 							if (_showMOS) then {
-								_t = format ['[AUTO] [%1]',_vt];
+								_t = format ['[%2] [%1]',_vt,localize 'STR_QS_Text_273'];
 							} else {
-								_t = '[AUTO]';
+								_t = format ['[%1]',localize 'STR_QS_Text_273'];
 							};
 						} else {
 							_t = '';
@@ -870,27 +870,14 @@ _QS_fnc_onMapSingleClick = {
 			};
 		};
 		_QS_ST_X = call (missionNamespace getVariable 'QS_ST_X');
-		if (alive _vehicle) then {
-			if ((count (crew _vehicle)) > 1) then {
-				if ((side (effectiveCommander _vehicle)) isEqualTo (player getVariable ['QS_unit_side',WEST])) then {
-					if (_vehicle isNotEqualTo (player getVariable ['QS_ST_map_vehicleShowCrew',objNull])) then {
-						player setVariable ['QS_ST_map_vehicleShowCrew',_vehicle,FALSE];
-						_vehicle setVariable ['QS_ST_mapClickShowCrew',TRUE,FALSE];
-					} else {
-						(player getVariable ['QS_ST_map_vehicleShowCrew',objNull]) setVariable ['QS_ST_mapClickShowCrew',FALSE,FALSE];
-						player setVariable ['QS_ST_map_vehicleShowCrew',objNull,FALSE];
-						player setVariable ['QS_ST_mapSingleClick',FALSE,FALSE];
-					};
-				} else {
-					(player getVariable ['QS_ST_map_vehicleShowCrew',objNull]) setVariable ['QS_ST_mapClickShowCrew',FALSE,FALSE];
-					player setVariable ['QS_ST_map_vehicleShowCrew',objNull,FALSE];
-					player setVariable ['QS_ST_mapSingleClick',FALSE,FALSE];
-				};
-			} else {
-				(player getVariable ['QS_ST_map_vehicleShowCrew',objNull]) setVariable ['QS_ST_mapClickShowCrew',FALSE,FALSE];
-				player setVariable ['QS_ST_map_vehicleShowCrew',objNull,FALSE];
-				player setVariable ['QS_ST_mapSingleClick',FALSE,FALSE];
-			};
+		if (
+			(alive _vehicle) &&
+			{((count (crew _vehicle)) > 1)} &&
+			{((side (effectiveCommander _vehicle)) isEqualTo (player getVariable ['QS_unit_side',WEST]))} &&
+			{(_vehicle isNotEqualTo (player getVariable ['QS_ST_map_vehicleShowCrew',objNull]))}
+		) then {
+			player setVariable ['QS_ST_map_vehicleShowCrew',_vehicle,FALSE];
+			_vehicle setVariable ['QS_ST_mapClickShowCrew',TRUE,FALSE];
 		} else {
 			(player getVariable ['QS_ST_map_vehicleShowCrew',objNull]) setVariable ['QS_ST_mapClickShowCrew',FALSE,FALSE];
 			player setVariable ['QS_ST_map_vehicleShowCrew',objNull,FALSE];
@@ -954,13 +941,17 @@ _QS_fnc_iconDrawMap = {
 	private _ve = objNull;
 	private _po = [[0,0,0],0];
 	private _is = 0;
+	_inJammerArea = missionNamespace getVariable ['QS_module_gpsJammer_inArea',FALSE];
 	if ((missionNamespace getVariable 'QS_ST_drawArray_map') isNotEqualTo []) then {
 		{
 			if (!isNull _x) then {
 				_ve = vehicle _x;
 				if (alive _ve) then {
 					if (!(_ve getVariable ['QS_hidden',FALSE])) then {
-						if ((_gpsJammers isEqualTo []) || {((_gpsJammers isNotEqualTo []) && {(!([0,_ve] call _fn_jammer))})}) then {
+						if (
+							(_gpsJammers isEqualTo []) || 
+							{!_inJammerArea}
+						) then {
 							_po = [_ve,1,_de] call _fn_po;
 							_is = [_ve,1,_QS_ST_X] call _fn_is;
 							if (_ve isEqualTo (vehicle _player)) then {
@@ -1050,17 +1041,19 @@ _QS_fnc_iconDrawMap = {
 			'right'
 		];
 	};
-	if (_player isEqualTo _grpLeader) then {
-		if ((groupSelectedUnits _player) isNotEqualTo []) then {
-			{
-				_m drawLine [(getPosWorldVisual _player),(getPosWorldVisual (vehicle _x)),[0,1,1,0.5]];
-			} count (groupSelectedUnits _player);
-		};
-	} else {
-		if (isNull (objectParent _player)) then {
-			if (isNull (objectParent _grpLeader)) then {
-				if ((_grpLeader distance2D _player) < (_QS_ST_X # 27)) then {
-					_m drawLine [(getPosWorldVisual _player),(getPosWorldVisual _grpLeader),[0,1,1,0.5]];
+	if (!_inJammerArea) then {
+		if (_player isEqualTo _grpLeader) then {
+			if ((groupSelectedUnits _player) isNotEqualTo []) then {
+				{
+					_m drawLine [(getPosWorldVisual _player),(getPosWorldVisual (vehicle _x)),[0,1,1,0.5]];
+				} count (groupSelectedUnits _player);
+			};
+		} else {
+			if (isNull (objectParent _player)) then {
+				if (isNull (objectParent _grpLeader)) then {
+					if ((_grpLeader distance2D _player) < (_QS_ST_X # 27)) then {
+						_m drawLine [(getPosWorldVisual _player),(getPosWorldVisual _grpLeader),[0,1,1,0.5]];
+					};
 				};
 			};
 		};
@@ -1123,13 +1116,15 @@ _QS_fnc_iconDrawMap = {
 		} forEach (missionNamespace getVariable 'QS_client_customDraw2D');
 	};
 	if (_gpsJammers isNotEqualTo []) then {
+		if (_inJammerArea) then {
+			{
+				if (_x # 6) then {
+					_m drawEllipse [(_x # 2),(_x # 3),(_x # 3),0,[0.1,0.1,0.1,1],'#(rgb,8,8,3)color(0.6,0.6,0.6,1)'];
+				};
+			} forEach _gpsJammers;
+		};
 		{
-			if (_x # 6) then {
-				_m drawEllipse [(_x # 2),(_x # 3),(_x # 3),0,[0.1,0.1,0.1,1],'#(rgb,8,8,3)color(0.6,0.6,0.6,1)'];
-			};
-		} forEach _gpsJammers;
-		{
-			_m drawIcon ['iconMan',[1,1,1,1],(_x # 2),0,0,0,'GPS Jammer   ',2,0.04,'TahomaB','left'];
+			_m drawIcon ['iconMan',[1,1,1,1],(_x # 2),0,0,0,(format ['%1   ',localize 'STR_QS_Task_031']),2,0.04,'TahomaB','left'];
 		} forEach _gpsJammers;
 	};
 };
@@ -1147,6 +1142,7 @@ _QS_fnc_iconDrawGPS = {
 		missionNamespace setVariable ['QS_ST_updateDraw_gps',(diag_tickTime + 3),FALSE];
 		missionNamespace setVariable ['QS_ST_drawArray_gps',([2,_QS_ST_X] call (_QS_ST_X # 46)),FALSE];
 	};
+	_inJammerArea = missionNamespace getVariable ['QS_module_gpsJammer_inArea',FALSE];
 	if ((missionNamespace getVariable 'QS_ST_drawArray_gps') isNotEqualTo []) then {
 		_sh = _QS_ST_X # 18;
 		_ts = _QS_ST_X # 20;
@@ -1166,7 +1162,10 @@ _QS_fnc_iconDrawGPS = {
 				_ve = vehicle _x;
 				if (alive _ve) then {
 					if (!(_ve getVariable ['QS_hidden',FALSE])) then {
-						if ((_gpsJammers isEqualTo []) || {((_gpsJammers isNotEqualTo []) && {(!([0,_ve] call _fn_jammer))})}) then {
+						if (
+							(_gpsJammers isEqualTo []) || 
+							{!_inJammerArea}
+						) then {
 							_po = [_ve,2,_de] call _fn_po;
 							_is = [_ve,2,_QS_ST_X] call _fn_is;
 							_m drawIcon [
@@ -1188,27 +1187,31 @@ _QS_fnc_iconDrawGPS = {
 			};
 		} count (missionNamespace getVariable ['QS_ST_drawArray_gps',[]]);
 	};
-	if (player isEqualTo (leader (group player))) then {
-		if ((groupSelectedUnits player) isNotEqualTo []) then {
-			{
-				_m drawLine [(getPosWorldVisual player),(getPosWorldVisual (vehicle _x)),[0,1,1,0.5]];
-			} count (groupSelectedUnits player);
-		};
-	} else {
-		if (isNull (objectParent player)) then {
-			if (isNull (objectParent (leader (group player)))) then {
-				if (((leader (group player)) distance2D player) < (_QS_ST_X # 27)) then {
-					_m drawLine [(getPosWorldVisual player),(getPosWorldVisual (leader (group player))),[0,1,1,0.5]];
+	if (!_inJammerArea) then {
+		if (player isEqualTo (leader (group player))) then {
+			if ((groupSelectedUnits player) isNotEqualTo []) then {
+				{
+					_m drawLine [(getPosWorldVisual player),(getPosWorldVisual (vehicle _x)),[0,1,1,0.5]];
+				} count (groupSelectedUnits player);
+			};
+		} else {
+			if (isNull (objectParent player)) then {
+				if (isNull (objectParent (leader (group player)))) then {
+					if (((leader (group player)) distance2D player) < (_QS_ST_X # 27)) then {
+						_m drawLine [(getPosWorldVisual player),(getPosWorldVisual (leader (group player))),[0,1,1,0.5]];
+					};
 				};
 			};
 		};
 	};
 	if (_gpsJammers isNotEqualTo []) then {
-		{
-			if (_x # 6) then {
-				_m drawEllipse [(_x # 2),(_x # 3),(_x # 3),0,[0.1,0.1,0.1,1],'#(rgb,8,8,3)color(0.6,0.6,0.6,1)'];
-			};
-		} forEach _gpsJammers;
+		if (_inJammerArea) then {
+			{
+				if (_x # 6) then {
+					_m drawEllipse [(_x # 2),(_x # 3),(_x # 3),0,[0.1,0.1,0.1,1],'#(rgb,8,8,3)color(0.6,0.6,0.6,1)'];
+				};
+			} forEach _gpsJammers;
+		};
 	};
 };
 _QS_fnc_groupIconText = {

@@ -45,7 +45,10 @@ if (_type isEqualTo 'INPOLYGON') exitWith {
 if (_type isEqualTo 'MOVE') exitWith {
 	// Not capable of moving without more development, for instance respawning vehicles would not follow
 };
-if (_type isEqualTo 'INIT') exitWith {
+if (
+	(_type isEqualTo 'INIT') && 
+	{(worldName in ['Altis','Stratis','Tanoa','Malden','stozec'])}
+) exitWith {
 	if (isDedicated) then {
 		diag_log 'Spawning destroyer';
 		private ['_marker','_positionsData','_positionData'];
@@ -62,7 +65,9 @@ if (_type isEqualTo 'INIT') exitWith {
 		if (_worldName isEqualTo 'Stratis') then {
 			_positionsData = [
 				[[5143.174,1457.258,0],32.905],
-				[[2319.417,7321.986,0],247.668]
+				[[2319.417,7321.986,0],247.668],
+				[[5770.66,153.873,0],random 360],
+				[[7972.38,2145.92,0],random 360]
 			];
 		};
 		if (_worldName isEqualTo 'Malden') then {
@@ -78,6 +83,12 @@ if (_type isEqualTo 'INIT') exitWith {
 				[[14140.768,6005.042,0],181.037],
 				[[13881.917,13057.585,0],283.858],
 				[[5384.38,13784.24,0],203.315]
+			];
+		};
+		if (_worldName isEqualTo 'stozec') then {
+			_positionData = [
+				[[15201,859.724,0],132.394],
+				[[15201,859.724,0],132.394]
 			];
 		};
 		_positionData = selectRandom _positionsData;
@@ -186,6 +197,7 @@ if (_type isEqualTo 'INIT') exitWith {
 			_prop allowDamage FALSE;
 			if ((toLowerANSI (_x # 0)) in ['land_destroyer_01_boat_rack_01_f']) then {
 				[_prop,_logic,TRUE] call (missionNamespace getVariable 'BIS_fnc_attachToRelative');
+				_prop enableSimulationGlobal TRUE;
 			};
 			if ((_x # 3) isNotEqualTo {}) then {
 				_prop call (_x # 3);
@@ -474,7 +486,7 @@ if (_type isEqualTo 'VEHICLES') exitWith {
 						{
 							params ['_v','','',''];
 							_v enableSimulationGlobal TRUE;
-							_v removeEventHandler ['GetIn',_thisEventHandler];
+							_v removeEventHandler [_thisEvent,_thisEventHandler];
 						}
 					];
 					_this enableSimulationGlobal FALSE;
@@ -501,7 +513,7 @@ if (_type isEqualTo 'VEHICLES') exitWith {
 						{
 							params ['_v','','',''];
 							_v enableSimulationGlobal TRUE;
-							_v removeEventHandler ['GetIn',_thisEventHandler];
+							_v removeEventHandler [_thisEvent,_thisEventHandler];
 						}
 					];
 					_this enableSimulationGlobal FALSE;
@@ -526,7 +538,7 @@ if (_type isEqualTo 'VEHICLES') exitWith {
 						{
 							params ['_v','','',''];
 							_v enableSimulationGlobal TRUE;
-							_v removeEventHandler ['GetIn',_thisEventHandler];
+							_v removeEventHandler [_thisEvent,_thisEventHandler];
 						}
 					];
 					_this enableSimulationGlobal FALSE;

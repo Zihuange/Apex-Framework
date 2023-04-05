@@ -6,16 +6,16 @@ Author:
 
 Last modified:
 
-	14/09/2022 A3 2.10 by Quiksilver
+	25/11/2022 A3 2.10 by Quiksilver
 	
 Description:
 
 	https://community.bistudio.com/wiki/Description.ext
 ____________________________________________/*/
 
-missionProductVersion = "1.3.2";
+missionProductVersion = "1.3.5";
 missionProductStatus = "Stable";											// "Stable" // "Dev"
-author = "Quiksilver & 波西米亚旅游协会";																															/*/ Visible when loading mission/*/
+author = "Quiksilver";																															/*/ Visible when loading mission/*/
 onLoadName = __EVAL(format ["%1 %2 %3",localize "STR_QS_Utility_011","&",localize "STR_QS_Utility_012"]);			// Invade & Annex			/*/ Visible when loading mission/*/
 onLoadMission = "感谢您游玩我们的任务，如有遇到bug和未汉化文本请联系管理员。若长时间卡在加载任务请退出大厅重进!";
 loadScreen = __EVAL(selectRandom ["media\images\loadScreens\loading_0.jpg","media\images\loadScreens\loading_1.paa","media\images\loadScreens\loading_2.paa","media\images\loadScreens\loading_3.paa","media\images\loadScreens\loading_4.paa","media\images\loadScreens\loading_5.paa","media\images\loadScreens\loading_6.paa","media\images\loadScreens\loading_7.paa","media\images\loadScreens\loading_8.paa","media\images\loadScreens\loading_9.paa"]);
@@ -59,203 +59,22 @@ allowProfileGlasses = 0;								// When set to 0 will stop glasses set in player
 overrideFeedback = 1; 									// 0: force default handling, 1+: allow custom handling.
 unsafeCVL=1;											// Setting to 0 will disable nighttime AO illumination (ambient fire).  https://community.bistudio.com/wiki/createVehicleLocal
 
-ReviveMode = 0;						// Apex Framework Notes: Keep this as 0.																	//0: disabled, 1: enabled, 2: controlled by player attributes
-ReviveUnconsciousStateMode = 0;		// Apex Framework Notes: Not used																			//0: basic, 1: advanced, 2: realistic
-ReviveRequiredTrait = 1;			// Apex Framework Notes: If set as 0, any role can revive													//0: none, 1: medic trait is required
-ReviveRequiredItems = 2;			// Apex Framework Notes: If set as 0, no items required. If 1, medikit. If 2, medikit + first aid kit.	 	//0: none, 1: medkit, 2: medkit or first aid kit
-ReviveRequiredItemsFakConsumed = 1;	// Apex Framework Notes: If set as 0, First Aid Kit not used on revive. If 1, First Aid Kit consumed.		//0: first aid kit is not consumed upon revive, 1: first aid kit is consumed
-ReviveDelay = 6;					// Apex Framework Notes: Not used (we link to animation speed instead)										//time needed to revive someone (in secs)
-ReviveMedicSpeedMultiplier = 2;		// Apex Framework Notes: Not used																			//speed multiplier for revive performed by medic
-ReviveForceRespawnDelay = 3;		// Apex Framework Notes: Not used																			//time needed to perform force respawn (in secs)
-ReviveBleedOutDelay = 600;			// Apex Framework Notes: General bleedout time. default: 600 seconds (10 minutes)							//unconscious state duration (in secs)
+ReviveMode = 0;											// Apex Framework Notes: Keep this as 0.																	//0: disabled, 1: enabled, 2: controlled by player attributes
+ReviveUnconsciousStateMode = 0;							// Apex Framework Notes: Not used																			//0: basic, 1: advanced, 2: realistic
+ReviveRequiredTrait = 1;								// Apex Framework Notes: If set as 0, any role can revive													//0: none, 1: medic trait is required
+ReviveRequiredItems = 2;								// Apex Framework Notes: If set as 0, no items required. If 1, medikit. If 2, medikit + first aid kit.	 	//0: none, 1: medkit, 2: medkit or first aid kit
+ReviveRequiredItemsFakConsumed = 1;						// Apex Framework Notes: If set as 0, First Aid Kit not used on revive. If 1, First Aid Kit consumed.		//0: first aid kit is not consumed upon revive, 1: first aid kit is consumed
+ReviveDelay = 6;										// Apex Framework Notes: Not used (we link to animation speed instead)										//time needed to revive someone (in secs)
+ReviveMedicSpeedMultiplier = 2;							// Apex Framework Notes: Not used																			//speed multiplier for revive performed by medic
+ReviveForceRespawnDelay = 3;							// Apex Framework Notes: Not used																			//time needed to perform force respawn (in secs)
+ReviveBleedOutDelay = 600;								// Apex Framework Notes: General bleedout time. default: 600 seconds (10 minutes)							//unconscious state duration (in secs)
 
 respawn = 3;											/*/ 0 = none. 1 = bird. 2 = instant where died. 3 = base or respawn_west marker. 4 = respawn with team, or bird. 5 = into AI or bird./*/
 respawnDelay = 5;										/*/ Delay prior to respawn/*/
 respawnDialog = 0;										/*/ default = 1. show respawn timer and scoreboard when killed./*/
 respawnOnStart = 0;
 
-/*/ REMOVE THE BELOW SECTIONS IF YOU ARE HAVING TROUBLE ADDING MODS. NOTE: THIS WILL SEVERELY WEAKEN ANTICHEAT SECURITY /*/
-
-/*
-class CfgDisabledCommands {
-    class CREATEUNIT
-    {
-        class SYNTAX1
-        {
-            targets[] = {0,0,0};
-            args[] = {{"STRING"},{"ARRAY"}};
-        };
-
-        class SYNTAX2
-        {
-            targets[] = {1,1,1};
-            args[] = {{"GROUP"},{"ARRAY"}};
-        };
-    };
-	
-	
-Zeus map markers.    RE-ENABLE THIS SECTION TO STRENGTHEN ANTICHEAT SECURITY. DISABLED FOR ZEUS MARKER FUNCTIONALITY.
-    class SETMARKERTEXT
-    {
-        class SYNTAX1
-        {
-            targets[] = {1,0,0};
-            args[] = {{"STRING"},{"STRING"}};
-        };
-    };
-	
-
-
-    class ADDMPEVENTHANDLER
-    {
-        class SYNTAX1
-        {
-            targets[] = {1,0,0};
-            args[] = {{"OBJECT"},{"ARRAY"}};
-        };
-    };
-	
-	
-	
-    class SETWAYPOINTSTATEMENTS
-    {
-        class SYNTAX1
-        {
-            targets[] = {1,0,1};
-            args[] = {{"ARRAY"},{"ARRAY"}};
-        };
-    };
-	
-	
-	
-    class PUBLICVARIABLE
-    {
-        class SYNTAX1
-        {
-            targets[] = {1,0,1};
-            args[] = {{},{"STRING"}};
-        };
-    };
-    class ONMAPSINGLECLICK
-    {
-        class SYNTAX1
-        {
-            targets[] = {0,0,0};
-            args[] = {{"ANY"},{"STRING","CODE"}};
-        };
-
-        class SYNTAX2
-        {
-            targets[] = {0,0,0};
-            args[] = {{},{"STRING","CODE"}};
-        };
-    };
-    class ALLVARIABLES
-    {
-        class SYNTAX1
-        {
-            targets[] = {1,1,1};
-            args[] = {{},{"CONTROL"}};
-        };
-
-        class SYNTAX2
-        {
-            targets[] = {1,1,1};
-            args[] = {{},{"TEAM_MEMBER"}};
-        };
-
-        class SYNTAX3
-        {
-            targets[] = {0,0,0};
-            args[] = {{},{"NAMESPACE"}};
-        };
-
-        class SYNTAX4
-        {
-            targets[] = {1,1,1};
-            args[] = {{},{"OBJECT"}};
-        };
-
-        class SYNTAX5
-        {
-            targets[] = {1,1,1};
-            args[] = {{},{"GROUP"}};
-        };
-
-        class SYNTAX6
-        {
-            targets[] = {1,1,1};
-            args[] = {{},{"TASK"}};
-        };
-
-        class SYNTAX7
-        {
-            targets[] = {1,1,1};
-            args[] = {{},{"LOCATION"}};
-        };
-    };
-    class HINT
-    {
-        class SYNTAX1
-        {
-            targets[] = {0,0,0};
-            args[] = {{},{"STRING","TEXT"}};
-        };
-    };
-    class HINTSILENT
-    {
-        class SYNTAX1
-        {
-            targets[] = {0,0,0};
-            args[] = {{},{"STRING","TEXT"}};
-        };
-    };
-    class ONEACHFRAME
-    {
-        class SYNTAX1
-        {
-            targets[] = {0,0,0};
-            args[] = {{},{"STRING","CODE"}};
-        };
-    };
-
-};
-*/
-class CfgRemoteExec {
-	class Commands {
-		mode = 2;
-		class lock {};			// zeus
-		class setFuel {};		// zeus
-	};
-	class Functions {
-		mode = 2;
-		jip = 0;
-		allowedTargets = 0;
-		class BIS_fnc_callScriptedEventHandler {};
-		class BIS_fnc_curatorRespawn {};
-		class BIS_fnc_deleteTask {jip = 1;}; 
-		class BIS_fnc_dynamicGroups {};
-		class BIS_fnc_effectKilled {};
-		class BIS_fnc_effectKilledSecondaries {};
-		class BIS_fnc_effectKilledAirDestruction {};
-		class BIS_fnc_effectKilledAirDestructionStage2 {};
-		class BIS_fnc_error {};
-		class BIS_fnc_initIntelObject {jip = 1;};
-		class BIS_fnc_objectVar {};
-		class BIS_fnc_playSound {allowedTargets = 1;};
-		class BIS_fnc_sayMessage {allowedTargets = 1;};
-		class BIS_fnc_setCustomSoundController {};
-		class BIS_fnc_setIdentity {};
-		class BIS_fnc_setTask {jip = 1;};
-		class BIS_fnc_setTaskLocal {jip = 1;};
-		class BIS_fnc_sharedObjectives {};
-		class BIS_fnc_showNotification {allowedTargets = 1;};
-		class QS_fnc_remoteExec {allowedTargets = 0;};
-		class QS_fnc_remoteExecCmd {allowedTargets = 0;};
-	};
-};
-
-/*/ REMOVE THE ABOVE SECTIONS IF YOU ARE HAVING TROUBLE ADDING MODS. NOTE: THIS WILL SEVERELY WEAKEN ANTICHEAT SECURITY /*/
+#include "code\config\security.hpp"						// Delete this line if you are having issues with Mod/DLC compatibility. This file contains CfgRemoteExec + CfgDisabledCommands
 
 debriefing = 1;
 class CfgFunctions {
@@ -278,6 +97,8 @@ class CfgFunctions {
 			class AIHandleUnit {file = "code\functions\fn_AIHandleUnit.sqf";};
 			class AIOwners {file = "code\functions\fn_AIOwners.sqf";};
 			class airbaseDefense {file = "code\functions\fn_airbaseDefense.sqf";};
+			class AISetRockets {file = "code\functions\fn_AISetRockets.sqf";};
+			class AISetTracers {file = "code\functions\fn_AISetTracers.sqf";};
 			class AIXCivPanic {file = "code\functions\fn_AIXCivPanic.sqf";};
 			class AIXDelayedInstruction {file = "code\functions\fn_AIXDelayedInstruction.sqf";};
 			class AIXDismountDisabled {file = "code\functions\fn_AIXDismountDisabled.sqf";};
@@ -472,6 +293,7 @@ class CfgFunctions {
 			class clientMenuHub {file = "code\functions\fn_clientMenuHub.sqf";};
 			class clientMenuInsignia {file = "code\functions\fn_clientMenuInsignia.sqf";};
 			class clientMenuLeaderboard {file = "code\functions\fn_clientMenuLeaderboard.sqf";};
+			class clientMenuLoadout {file = "code\functions\fn_clientMenuLoadout.sqf";};
 			class clientMenuMain {file = "code\functions\fn_clientMenuMain.sqf";};
 			class clientMenuOptions {file = "code\functions\fn_clientMenuOptions.sqf";};
 			class clientMenuRadio {file = "code\functions\fn_clientMenuRadio.sqf";};
@@ -488,6 +310,7 @@ class CfgFunctions {
 			class clientRadio {file = "code\functions\fn_clientRadio.sqf";};
 			class clientRepackMagazines {file = "code\functions\fn_clientRepackMagazines.sqf";};
 			class clientRequestMedevac {file = "code\functions\fn_clientRequestMedevac.sqf";};
+			class clientRespawnPosition {file = "code\functions\fn_clientRespawnPosition.sqf";};
 			class clientServiceVehicle {file = "code\functions\fn_clientServiceVehicle.sqf";};
 			class clientSetUnitInsignia {file = "code\functions\fn_clientSetUnitInsignia.sqf";};
 			class clientSimulationManager {file = "code\functions\fn_clientSimulationManager.sqf";};
@@ -510,6 +333,7 @@ class CfgFunctions {
 			class clientVehicleEventRopeBreak {file = "code\functions\fn_clientVehicleEventRopeBreak.sqf";};
 			class clientVehicleEventTurnIn {file = "code\functions\fn_clientVehicleEventTurnIn.sqf";};
 			class clientVehicleEventTurnOut {file = "code\functions\fn_clientVehicleEventTurnOut.sqf";};
+			class clientVehicleService {file = "code\functions\fn_clientVehicleService.sqf";};
 			class clientViewOptions {file = "code\functions\fn_clientViewOptions.sqf";};
 			class clientWeatherSync {file = "code\functions\fn_clientWeatherSync.sqf";};
 			class commonMultiplyMatrix {file = "code\functions\fn_commonMultiplyMatrix.sqf";};
@@ -546,10 +370,13 @@ class CfgFunctions {
 			class eventEntityCreated {file = "code\functions\fn_eventEntityCreated.sqf";};
 			class eventEntityKilled {file = "code\functions\fn_eventEntityKilled.sqf";};
 			class eventEntityRespawned {file = "code\functions\fn_eventEntityRespawned.sqf";};
+			class eventGroupCreated {file = "code\functions\fn_eventGroupCreated.sqf";};
+			class eventGroupDeleted {file = "code\functions\fn_eventGroupDeleted.sqf";};
 			class eventHandleDisconnect {file = "code\functions\fn_eventHandleDisconnect.sqf";};
 			class eventMissionEnded {file = "code\functions\fn_eventMissionEnded.sqf";};
 			class eventOnPlayerConnected {file = "code\functions\fn_eventOnPlayerConnected.sqf";};
 			class eventOnPlayerDisconnected {file = "code\functions\fn_eventOnPlayerDisconnected.sqf";};
+			class eventProjectileCreated {file = "code\functions\fn_eventProjectileCreated.sqf";};
 			class eventRTKilled {file = "code\functions\fn_eventRTKilled.sqf";};
 			class explosiveVestMP {file = "code\functions\fn_explosiveVestMP.sqf";};
 			class feedback {file = "code\functions\fn_feedback.sqf";};
@@ -568,6 +395,7 @@ class CfgFunctions {
 			class findOverwatchPos {file = "code\functions\fn_findOverwatchPos.sqf";};
 			class findRandomPos {file = "code\functions\fn_findRandomPos.sqf";};
 			class findSafePos {file = "code\functions\fn_findSafePos.sqf";};
+			class fire {file = "code\functions\fn_fire.sqf";};
 			class fobAssets {file = "code\functions\fn_fobAssets.sqf";};
 			class fobEnable {file = "code\functions\fn_fobEnable.sqf";};
 			class fobEnemyAssault {file = "code\functions\fn_fobEnemyAssault.sqf";};
@@ -585,7 +413,9 @@ class CfgFunctions {
 			class getKnownEnemies {file = "code\functions\fn_getKnownEnemies.sqf";};
 			class getNearbyIncapacitated {file = "code\functions\fn_getNearbyIncapacitated.sqf";};
 			class getNearestBuilding {file = "code\functions\fn_getNearestBuilding.sqf";};
+			class getRadialPositions {file = "code\functions\fn_getRadialPositions.sqf";};
 			class getSolarHorizon {file = "code\functions\fn_getSolarHorizon.sqf";};
+			class getVehicleGunEnd {file = "code\functions\fn_getVehicleGunEnd.sqf";};
 			class getVehicleStealth {file = "code\functions\fn_getVehicleStealth.sqf";};
 			class getWeekday {file = "code\functions\fn_getWeekday.sqf";};
 			class gpsJammer {file = "code\functions\fn_gpsJammer.sqf";};
@@ -616,12 +446,15 @@ class CfgFunctions {
 			class inString {file = "code\functions\fn_inString.sqf";};
 			class isBoundingBoxIntersected {file = "code\functions\fn_isBoundingBoxIntersected.sqf";};
 			class isNearFieldHospital {file = "code\functions\fn_isNearFieldHospital.sqf";};
+			class isNearServiceCargo {file = "code\functions\fn_isNearServiceCargo.sqf";};
 			class isNearRepairDepot {file = "code\functions\fn_isNearRepairDepot.sqf";};
 			class isPosVisible {file = "code\functions\fn_isPosVisible.sqf";};
+			class isUnderRock {file = "code\functions\fn_isUnderRock.sqf";};
 			class isValidCargoV {file = "code\functions\fn_isValidCargoV.sqf";};
 			class leaderboardAddToWhitelist {file = "code\functions\fn_leaderboardAddToWhitelist.sqf";};
 			class leaderboardNotifyWhitelist {file = "code\functions\fn_leaderboardNotifyWhitelist.sqf";};
 			class listRemoteTargets {file = "code\functions\fn_listRemoteTargets.sqf";};
+			class localObjects {file = "code\functions\fn_localObjects.sqf";};
 			class logEvent {file = "code\functions\fn_logEvent.sqf";};
 			class mapGetNearestWaypoint {file = "code\functions\fn_mapGetNearestWaypoint.sqf";};
 			class missionGeorgetown {file = "code\functions\fn_missionGeorgetown.sqf";};
@@ -635,6 +468,7 @@ class CfgFunctions {
 			class patrolNearbyBuilding {file = "code\functions\fn_patrolNearbyBuilding.sqf";};
 			class pulsate {file = "code\functions\fn_pulsate.sqf";};
 			class Q51 {file = "code\functions\fn_Q51.sqf";};
+			class ragdoll {file = "code\functions\fn_ragdoll.sqf";};
 			class rcAIRevive {file = "code\functions\fn_rcAIRevive.sqf";};
 			class registerUnit {file = "code\functions\fn_registerUnit.sqf";};
 			class registerVehicle {file = "code\functions\fn_registerVehicle.sqf";};
@@ -669,7 +503,6 @@ class CfgFunctions {
 			class serverObjectsMapper {file = "code\functions\fn_serverObjectsMapper.sqf";};
 			class serverObjectsRecycler {file = "code\functions\fn_serverObjectsRecycler.sqf";};
 			class serverSetAISkill {file = "code\functions\fn_serverSetAISkill.sqf";};
-			class serverTracers {file = "code\functions\fn_serverTracers.sqf";};
 			class serverUnitConfigure {file = "code\functions\fn_serverUnitConfigure.sqf";};
 			class setCollectible {file = "code\functions\fn_setCollectible.sqf";};
 			class setCruiseControl {file = "code\functions\fn_setCruiseControl.sqf";};
@@ -5231,6 +5064,408 @@ class QS_RD_client_dialog_menu_radio {
 		};
 	};
 };
+
+class QS_RD_client_dialog_menu_inventory1 {
+	idd = 19000;
+	movingEnable = 1;
+	enableSimulation = 1;
+	onLoad = "['onLoad',(_this # 0)] spawn (missionNamespace getVariable 'QS_fnc_clientMenuLoadout');";
+	onUnload = "['onUnload',(_this # 0)] spawn (missionNamespace getVariable 'QS_fnc_clientMenuLoadout');";
+	class controls {
+		class QS_RD_client_dialog_menu_inventory1_frame_1: QS_RD_dialog_RscFrame {
+			moving = 1;
+			idc = 1800;
+			//x = 0.372583 * safezoneW + safezoneX;
+			x = 0.672583 * safezoneW + safezoneX;
+			y = 0.52 * safezoneH + safezoneY;
+			w = 0.145 * safezoneW;
+			h = 0.47 * safezoneH;
+			shadow = 0;
+			colorBackground[] = {0,0,0,0.7};
+			colorDisabled[] = {1,1,1,0.25};
+		};
+		class QS_RD_client_dialog_menu_inventory1_box_1: QS_RD_dialog_Box {
+			moving = 1;
+			idc = 1801;
+			//x = 0.372583 * safezoneW + safezoneX;
+			x = 0.672583 * safezoneW + safezoneX;
+			y = 0.52 * safezoneH + safezoneY;
+			w = 0.145 * safezoneW;
+			h = 0.47 * safezoneH;
+		};
+		class QS_RD_client_dialog_menu_inventory1_text_1: QS_RD_dialog_RscText {
+			moving = 1;
+			idc = 1802;
+			text = "$STR_QS_Dialogs_076";
+			//x = 0.374500 * safezoneW + safezoneX;
+			x = 0.674500 * safezoneW + safezoneX;
+			y = 0.525 * safezoneH + safezoneY;
+			w = 0.139 * safezoneW;
+			h = 0.044 * safezoneH;
+			sizeEx = 0.04;
+			shadow = 0;
+			colorText[] = {1,1,1,1};
+		};
+		class QS_RD_client_dialog_menu_inventory1_button_1: QS_RD_dialog_RscButton {
+			moving = 1;
+			idc = 1812;
+			text = "Save";
+			//x = 0.38 * safezoneW + safezoneX;
+			x = 0.68 * safezoneW + safezoneX;
+			y = 0.78 * safezoneH + safezoneY;
+			w = 0.13 * safezoneW;
+			h = 0.0340016 * safezoneH;
+			sizeEx = 0.03;
+			onButtonClick = "['Save',(_this # 0)] call (missionNamespace getVariable 'QS_fnc_clientMenuLoadout');";
+			shadow = 0;
+			colorText[] = {1,1,1,1};
+		};
+		class QS_RD_client_dialog_menu_inventory1_button_2: QS_RD_dialog_RscButton {
+			moving = 1;
+			idc = 1810;
+			text = "$STR_QS_Dialogs_066";
+			//x = 0.38 * safezoneW + safezoneX;
+			x = 0.68 * safezoneW + safezoneX;
+			y = 0.825 * safezoneH + safezoneY;
+			w = 0.13 * safezoneW;
+			h = 0.0340016 * safezoneH;
+			sizeEx = 0.03;
+			onButtonClick = "['Load',(_this # 0)] call (missionNamespace getVariable 'QS_fnc_clientMenuLoadout');";
+			shadow = 0;
+			colorText[] = {1,1,1,1};
+		};
+		class QS_RD_client_dialog_menu_inventory1_button_3: QS_RD_dialog_RscButton {
+			moving = 1;
+			idc = 1811;
+			text = "$STR_QS_Dialogs_032";
+			//x = 0.38 * safezoneW + safezoneX;
+			x = 0.68 * safezoneW + safezoneX;
+			y = 0.87 * safezoneH + safezoneY;
+			w = 0.13 * safezoneW;
+			h = 0.0340016 * safezoneH;
+			sizeEx = 0.03;
+			onButtonClick = "['Delete',(_this # 0)] call (missionNamespace getVariable 'QS_fnc_clientMenuLoadout');";
+			shadow = 0;
+			colorText[] = {1,1,1,1};
+		};
+		class QS_RD_client_dialog_menu_inventory1_button_4: QS_RD_dialog_RscButton {
+			moving = 1;
+			idc = 1815;
+			text = "Edit";
+			//x = 0.38 * safezoneW + safezoneX;
+			x = 0.68 * safezoneW + safezoneX;
+			y = 0.915 * safezoneH + safezoneY;
+			w = 0.13 * safezoneW;
+			h = 0.0340016 * safezoneH;
+			sizeEx = 0.03;
+			onButtonClick = "['Edit',(_this # 0)] call (missionNamespace getVariable 'QS_fnc_clientMenuLoadout');";
+			shadow = 0;
+			colorText[] = {1,1,1,1};
+		};
+
+		class listboxA : QS_RD_dialog_RscListBox {
+			moving = 1;
+			idc = 1804;
+			//x = 0.38 * safezoneW + safezoneX;
+			x = 0.68 * safezoneW + safezoneX;
+			y = 0.58 * safezoneH + safezoneY;
+			w = 0.13 * safezoneW;
+			h = 0.14 * safezoneH;
+			sizeEx = 0.03;
+			colorBackground[] = {0,0,0,0.5};
+		};
+		class QS_RD_client_dialog_menu_inventory1_box_2: QS_RD_dialog_Box {
+			moving = 1;
+			idc = 1814;
+			//x = 0.38 * safezoneW + safezoneX;
+			x = 0.68 * safezoneW + safezoneX;
+			y = 0.735 * safezoneH + safezoneY;
+			w = 0.13 * safezoneW;
+			h = 0.0340016 * safezoneH;
+		};
+		class QS_RD_client_dialog_menu_inventory1_edit_1: QS_RD_dialog_RscEdit {
+			idc = 1813;
+			moving = 1;
+			//access = 0;
+			autocomplete = "";
+			text = "";
+			canModify = 1;
+			colorBackground[] = {0,0,0,0};
+			colorDisabled[] = {1,1,1,0.25};
+			colorSelection[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.77])","(profilenamespace getvariable ['GUI_BCG_RGB_G',0.51])","(profilenamespace getvariable ['GUI_BCG_RGB_B',0.08])",1};
+			colorText[] = {0.95,0.95,0.95,1};
+			deletable = 0;
+			fade = 0;
+			size = 0.3;
+			sizeEx = "0.8 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+			style = 16;
+			//x = 0.38 * safezoneW + safezoneX;
+			x = 0.68 * safezoneW + safezoneX;
+			y = 0.735 * safezoneH + safezoneY;
+			w = 0.13 * safezoneW;
+			h = 0.0340016 * safezoneH;
+		};
+
+		class QS_RD_client_dialog_menu_inventory1_frame_2: QS_RD_dialog_RscFrame {
+			moving = 1;
+			idc = 1817;
+			x = 0.68 * safezoneW + safezoneX;
+			y = 0.965 * safezoneH + safezoneY;
+			w = 0.13 * safezoneW;
+			h = 0.015 * safezoneH;
+			shadow = 0;
+			colorBackground[] = {0,0,0,0.7};
+			colorDisabled[] = {1,1,1,0.25};
+		};
+		class QS_RD_client_dialog_menu_inventory1_progress_1: RscProgress {
+			moving = 1;
+			idc = 1816;
+			text = "My ammobox (800/1000)";
+			x = 0.68 * safezoneW + safezoneX;
+			y = 0.965 * safezoneH + safezoneY;
+			w = 0.13 * safezoneW;
+			h = 0.015 * safezoneH;
+			sizeEx = 0.03;
+			shadow = 2;
+			texture = "#(argb,8,8,3)color(1,1,1,0.5)";
+			colorText[] = {1,1,1,1};
+			colorFrame[] = {0,0,0,0};
+			//colorBar[] = {1,1,1,0.5};
+		};
+		class QS_RD_client_dialog_menu_inventory1_text_2: QS_RD_dialog_RscText {
+			moving = 1;
+			idc = 1818;
+			text = "";
+			x = 0.68 * safezoneW + safezoneX;
+			y = 0.967 * safezoneH + safezoneY;
+			w = 0.13 * safezoneW;
+			h = 0.011 * safezoneH;
+			sizeEx = 0.025;
+			size = 0.025;
+			shadow = 0;
+			colorText[] = {1,1,1,1};
+			colorBackground[] = {0,0,0,0};
+		};
+	};
+};
+
+class QS_RD_client_dialog_menu_hangar {
+	idd = 20000;
+	movingEnable = 1;
+	enableSimulation = 1;
+	onLoad = "['onLoad',(_this # 0)] spawn (missionNamespace getVariable 'QS_fnc_clientMenuHangar');";
+	onUnload = "['onUnload',(_this # 0)] spawn (missionNamespace getVariable 'QS_fnc_clientMenuHangar');";
+	class controls {
+		class QS_RD_client_dialog_menu_hangar_frame_1: QS_RD_dialog_RscFrame {
+			moving = 1;
+			idc = 1800;
+			//x = 0.372583 * safezoneW + safezoneX;
+			x = 0.672583 * safezoneW + safezoneX;
+			y = 0.52 * safezoneH + safezoneY;
+			w = 0.145 * safezoneW;
+			h = 0.47 * safezoneH;
+			shadow = 0;
+			colorBackground[] = {0,0,0,0.7};
+			colorDisabled[] = {1,1,1,0.25};
+		};
+		class QS_RD_client_dialog_menu_hangar_box_1: QS_RD_dialog_Box {
+			moving = 1;
+			idc = 1801;
+			//x = 0.372583 * safezoneW + safezoneX;
+			x = 0.672583 * safezoneW + safezoneX;
+			y = 0.52 * safezoneH + safezoneY;
+			w = 0.145 * safezoneW;
+			h = 0.47 * safezoneH;
+		};
+		class QS_RD_client_dialog_menu_hangar_text_1: QS_RD_dialog_RscText {
+			moving = 1;
+			idc = 1802;
+			text = "Hangar";
+			//x = 0.374500 * safezoneW + safezoneX;
+			x = 0.674500 * safezoneW + safezoneX;
+			y = 0.525 * safezoneH + safezoneY;
+			w = 0.139 * safezoneW;
+			h = 0.044 * safezoneH;
+			sizeEx = 0.04;
+			shadow = 0;
+			colorText[] = {1,1,1,1};
+		};
+		class QS_RD_client_dialog_menu_hangar_button_1: QS_RD_dialog_RscButton {
+			moving = 1;
+			idc = 1812;
+			text = "Save";
+			//x = 0.38 * safezoneW + safezoneX;
+			x = 0.68 * safezoneW + safezoneX;
+			y = 0.78 * safezoneH + safezoneY;
+			w = 0.13 * safezoneW;
+			h = 0.0340016 * safezoneH;
+			sizeEx = 0.03;
+			onButtonClick = "['Save',(_this # 0)] call (missionNamespace getVariable 'QS_fnc_clientMenuLoadout');";
+			shadow = 0;
+			colorText[] = {1,1,1,1};
+		};
+		class QS_RD_client_dialog_menu_hangar_button_2: QS_RD_dialog_RscButton {
+			moving = 1;
+			idc = 1810;
+			text = "$STR_QS_Dialogs_066";
+			//x = 0.38 * safezoneW + safezoneX;
+			x = 0.68 * safezoneW + safezoneX;
+			y = 0.825 * safezoneH + safezoneY;
+			w = 0.13 * safezoneW;
+			h = 0.0340016 * safezoneH;
+			sizeEx = 0.03;
+			onButtonClick = "['Load',(_this # 0)] call (missionNamespace getVariable 'QS_fnc_clientMenuLoadout');";
+			shadow = 0;
+			colorText[] = {1,1,1,1};
+		};
+		class QS_RD_client_dialog_menu_hangar_button_3: QS_RD_dialog_RscButton {
+			moving = 1;
+			idc = 1811;
+			text = "$STR_QS_Dialogs_032";
+			//x = 0.38 * safezoneW + safezoneX;
+			x = 0.68 * safezoneW + safezoneX;
+			y = 0.87 * safezoneH + safezoneY;
+			w = 0.13 * safezoneW;
+			h = 0.0340016 * safezoneH;
+			sizeEx = 0.03;
+			onButtonClick = "['Delete',(_this # 0)] call (missionNamespace getVariable 'QS_fnc_clientMenuLoadout');";
+			shadow = 0;
+			colorText[] = {1,1,1,1};
+		};
+		class QS_RD_client_dialog_menu_hangar_button_4: QS_RD_dialog_RscButton {
+			moving = 1;
+			idc = 1815;
+			text = "Edit";
+			//x = 0.38 * safezoneW + safezoneX;
+			x = 0.68 * safezoneW + safezoneX;
+			y = 0.915 * safezoneH + safezoneY;
+			w = 0.13 * safezoneW;
+			h = 0.0340016 * safezoneH;
+			sizeEx = 0.03;
+			onButtonClick = "['Edit',(_this # 0)] call (missionNamespace getVariable 'QS_fnc_clientMenuLoadout');";
+			shadow = 0;
+			colorText[] = {1,1,1,1};
+		};
+
+		class listboxA : QS_RD_dialog_RscListBox {
+			moving = 1;
+			idc = 1804;
+			//x = 0.38 * safezoneW + safezoneX;
+			x = 0.68 * safezoneW + safezoneX;
+			y = 0.58 * safezoneH + safezoneY;
+			w = 0.13 * safezoneW;
+			h = 0.14 * safezoneH;
+			sizeEx = 0.03;
+			colorBackground[] = {0,0,0,0.5};
+		};
+		class QS_RD_client_dialog_menu_hangar_box_2: QS_RD_dialog_Box {
+			moving = 1;
+			idc = 1814;
+			//x = 0.38 * safezoneW + safezoneX;
+			x = 0.68 * safezoneW + safezoneX;
+			y = 0.735 * safezoneH + safezoneY;
+			w = 0.13 * safezoneW;
+			h = 0.0340016 * safezoneH;
+		};
+		class QS_RD_client_dialog_menu_hangar_edit_1: QS_RD_dialog_RscEdit {
+			idc = 1813;
+			moving = 1;
+			//access = 0;
+			autocomplete = "";
+			text = "";
+			canModify = 1;
+			colorBackground[] = {0,0,0,0};
+			colorDisabled[] = {1,1,1,0.25};
+			colorSelection[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.77])","(profilenamespace getvariable ['GUI_BCG_RGB_G',0.51])","(profilenamespace getvariable ['GUI_BCG_RGB_B',0.08])",1};
+			colorText[] = {0.95,0.95,0.95,1};
+			deletable = 0;
+			fade = 0;
+			size = 0.3;
+			sizeEx = "0.8 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+			style = 16;
+			//x = 0.38 * safezoneW + safezoneX;
+			x = 0.68 * safezoneW + safezoneX;
+			y = 0.735 * safezoneH + safezoneY;
+			w = 0.13 * safezoneW;
+			h = 0.0340016 * safezoneH;
+		};
+
+		class QS_RD_client_dialog_menu_hangar_frame_2: QS_RD_dialog_RscFrame {
+			moving = 1;
+			idc = 1817;
+			x = 0.68 * safezoneW + safezoneX;
+			y = 0.965 * safezoneH + safezoneY;
+			w = 0.13 * safezoneW;
+			h = 0.015 * safezoneH;
+			shadow = 0;
+			colorBackground[] = {0,0,0,0.7};
+			colorDisabled[] = {1,1,1,0.25};
+		};
+		class QS_RD_client_dialog_menu_hangar_progress_1: RscProgress {
+			moving = 1;
+			idc = 1816;
+			text = "My ammobox (800/1000)";
+			x = 0.68 * safezoneW + safezoneX;
+			y = 0.965 * safezoneH + safezoneY;
+			w = 0.13 * safezoneW;
+			h = 0.015 * safezoneH;
+			sizeEx = 0.03;
+			shadow = 2;
+			texture = "#(argb,8,8,3)color(1,1,1,0.5)";
+			colorText[] = {1,1,1,1};
+			colorFrame[] = {0,0,0,0};
+			//colorBar[] = {1,1,1,0.5};
+		};
+		class QS_RD_client_dialog_menu_hangar_text_2: QS_RD_dialog_RscText {
+			moving = 1;
+			idc = 1818;
+			text = "";
+			x = 0.68 * safezoneW + safezoneX;
+			y = 0.967 * safezoneH + safezoneY;
+			w = 0.13 * safezoneW;
+			h = 0.011 * safezoneH;
+			sizeEx = 0.025;
+			size = 0.025;
+			shadow = 0;
+			colorText[] = {1,1,1,1};
+			colorBackground[] = {0,0,0,0};
+		};
+	};
+};
+
+/*/
+class RscProgress
+{
+	deletable = 0;
+	fade = 0;
+	//access = 0;
+	type = CT_PROGRESS;
+	style = ST_HORIZONTAL;
+	colorFrame[] = {0,0,0,0};
+	colorBar[] =
+	{
+		"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.13])",
+		"(profilenamespace getvariable ['GUI_BCG_RGB_G',0.54])",
+		"(profilenamespace getvariable ['GUI_BCG_RGB_B',0.21])",
+		"(profilenamespace getvariable ['GUI_BCG_RGB_A',0.8])"
+	};
+	x = 0.344;
+	y = 0.619;
+	w = 0.313726;
+	h = 0.0261438;
+	shadow = 2;
+	texture = "#(argb,8,8,3)color(1,1,1,1)";
+};
+/*/
+
+
+
+
+
+
+
+
+
 class RscTitles {
 	class QS_RD_dialog_crewIndicator {
 		idd = 6000;

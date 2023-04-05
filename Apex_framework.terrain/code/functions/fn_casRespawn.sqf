@@ -174,25 +174,6 @@ if (_missionConfig_CAS isEqualTo 3) then {
 		'I_Plane_Fighter_04_F',([0,1] select _jetsDLC),
 		'i_c_plane_civil_01_f',0
 	];
-	
-	if (QS_leaderboards3 isNotEqualTo []) then {
-		private _key = '';
-		private _val = -1;
-		private _val2 = -1;
-		private _element1 = 0;
-		private _element2 = 0;
-		{
-			_key = _x;
-			_val = _y;
-			_val2 = QS_leaderboards3 getOrDefault [_key,-1,FALSE];
-			if (_val2 isNotEqualTo -1) then {
-				_element1 = _val # _leaderboardID;
-				_element2 = _val2 # _leaderboardID;
-				_val set [_leaderboardID,_element1 + _element2];
-				QS_leaderboards2 set [_key,_val];
-			};
-		} forEach QS_leaderboards2;
-	};
 	private _pilotLeaderboards = QS_leaderboards2 toArray FALSE;
 	_pilotLeaderboards = _pilotLeaderboards apply {
 		[
@@ -253,8 +234,12 @@ if ((missionNamespace getVariable ['QS_missionConfig_carrierEnabled',0]) isEqual
 			_pos = [4321.49,10505,0.3];
 			_dir = 314.899;		
 		};
+		if (worldName isEqualTo 'Stratis') then {
+			_pos = [1913.38,5955.01,0.1];
+			_dir = 237.56;
+		};
 	} else {
-		_pos = markerPos 'QS_marker_casJet_spawn';
+		_pos = markerPos ['QS_marker_casJet_spawn',TRUE];
 		_dir = markerDir 'QS_marker_casJet_spawn';
 	};
 	[_pos,15,20,50] call (missionNamespace getVariable 'QS_fnc_clearPosition');
@@ -267,11 +252,7 @@ if ((missionNamespace getVariable ['QS_missionConfig_carrierEnabled',0]) isEqual
 [_pos,_dir,_newCasType,_isCarrier] spawn {
 	params ['_pos','_dir','_newCasType','_isCarrier'];
 	uiSleep 0.01;
-	missionNamespace setVariable [
-		'QS_casJet',
-		(createVehicle [_newCasType,[-500,-500,100],[],0,'CAN_COLLIDE']),
-		TRUE
-	];
+	missionNamespace setVariable ['QS_casJet',(createVehicle [_newCasType,[-500,-500,100],[],0,'CAN_COLLIDE']),TRUE];
 	private _casJet = missionNamespace getVariable 'QS_casJet';
 	_casJet setDir _dir;
 	if (_isCarrier) then {
@@ -323,7 +304,7 @@ if ((missionNamespace getVariable ['QS_missionConfig_carrierEnabled',0]) isEqual
 	_casJet addEventHandler [
 		'GetIn',
 		{
-			(_this # 0) removeEventHandler ['GetIn',_thisEventHandler];
+			(_this # 0) removeEventHandler [_thisEvent,_thisEventHandler];
 			if (!simulationEnabled (_this # 0)) then {
 				(_this # 0) enableSimulationGlobal TRUE;
 			};

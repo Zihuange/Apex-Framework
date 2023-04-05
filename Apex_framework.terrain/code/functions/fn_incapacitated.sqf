@@ -217,13 +217,13 @@ private _QS_buttonCtrl = controlNull;
 private _buttonRespawnFOB = controlNull;
 private _QS_buttonMedevac = controlNull;
 private _QS_buttonAction = '';
-private _playerClassDName = getText (configFile >> 'CfgVehicles' >> (typeOf _unit) >> 'displayName');
+private _playerClassDName = ['GET_ROLE_DISPLAYNAME',(_unit getVariable ['QS_unit_role','rifleman'])] call (missionNamespace getVariable 'QS_fnc_roles');
 _QS_ctrlCreateArray = ['RscStructuredText',12345];
 _display = findDisplay 46;
 private _ctrlIncapacitated = _display ctrlCreate _QS_ctrlCreateArray;
 _ctrlIncapacitated ctrlSetPosition [((0.0075 * safezoneW) + safezoneX),((0.01 * safezoneH) + safezoneY),1,1];
 private _string1 = actionKeysNames ['InGamePause',1];
-private _text1 = parseText format ['<t size="1.5" align="left">重伤昏迷<t/><br/><t size="1" align="left">请耐心等待医疗兵救助！如果没有救援，可以按[%1]选择复活或呼叫医疗撤离-慎重呼叫<br/>正在失血 (%2)<br/>%3</t>',(_string1 select [1,((count _string1) - 2)]),([(_medicalTimer - _tickTimeNow),'MM:SS'] call (missionNamespace getVariable 'BIS_fnc_secondsToString')),([] call (missionNamespace getVariable 'QS_fnc_clientMFindHealer'))];
+private _text1 = parseText format ['<t size="1.5" align="left">%7<t/><br/><t size="1" align="left">%5 [%1] %6<br/>%4 (%2)<br/>%3</t>',(_string1 select [1,((count _string1) - 2)]),([(_medicalTimer - _tickTimeNow),'MM:SS'] call (missionNamespace getVariable 'BIS_fnc_secondsToString')),(call (missionNamespace getVariable 'QS_fnc_clientMFindHealer')),localize 'STR_QS_Text_270',localize 'STR_QS_Menu_092',localize 'STR_QS_Text_271',localize 'STR_QS_Text_272'];
 _ctrlIncapacitated ctrlSetStructuredText _text1;
 _ctrlIncapacitated ctrlCommit 0;
 if (isNil 'bis_revive_ppColor') then {
@@ -589,7 +589,8 @@ for '_x' from 0 to 1 step 0 do {
 			(_d49 displayCtrl 1010) ctrlCommit 0;
 			(_d49 displayCtrl 1005) ctrlSetText (format ['%1 - A3 %2',_QS_missionVersion,(format ['%1.%2',(_QS_productVersion # 2),(_QS_productVersion # 3)])]);
 			(_d49 displayCtrl 1005) ctrlCommit 0;
-			_QS_buttonMedevac ctrlEnable ((!(missionNamespace getVariable ['QS_dynTask_medevac_inProgress',TRUE])) && (_tickTimeNow > (_unit getVariable ['QS_client_lastMedevacRequest',-1])) && ((lifeState _unit) isEqualTo 'INCAPACITATED') && (isNull (objectParent _unit)) && (isNull (attachedTo _unit)));
+			//_QS_buttonMedevac ctrlEnable ((!(missionNamespace getVariable ['QS_dynTask_medevac_inProgress',TRUE])) && (_tickTimeNow > (_unit getVariable ['QS_client_lastMedevacRequest',-1])) && ((lifeState _unit) isEqualTo 'INCAPACITATED') && (isNull (objectParent _unit)) && (isNull (attachedTo _unit)));
+			_QS_buttonMedevac ctrlEnable FALSE;		// Some players (not all) seem to be too dumb to read the warning about unable to respawn for 10 minutes, and they end up [alt]+[f4]
 			if (_tickTimeNow > (_unit getVariable ['QS_respawn_disable',-1])) then {
 				_QS_buttonMedevac ctrlSetText (localize 'STR_QS_Menu_100');
 			} else {

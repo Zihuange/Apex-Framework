@@ -58,6 +58,12 @@ if (_type isEqualTo 'lockTurret') exitWith {
 if (_type isEqualTo 'setAmmoCargo') exitWith {
 	_1 setAmmoCargo _2;
 };
+if (_type isEqualTo 'setRepairCargo') exitWith {
+	_1 setRepairCargo _2;
+};
+if (_type isEqualTo 'setFuelCargo') exitWith {
+	_1 setFuelCargo _2;
+};
 if (_type isEqualTo 'setDir') exitWith {
 	_1 setDir _2;
 };
@@ -191,4 +197,17 @@ if (_type isEqualTo 'setMissileTargetPos') exitWith {
 };
 if (_type isEqualTo 'triggerAmmo') exitWith {
 	triggerAmmo _1;
+};
+if (_type isEqualTo 'awake') exitWith {
+	_1 awake _2;
+};
+if (_type isEqualTo 'action') exitWith {
+	if (_rxID <= 2) then {
+		_1 action _2;
+	};
+};
+if (_type isEqualTo 'forceWeaponFire') exitWith {
+	if (_rxID <= 2) then {
+		_1 forceWeaponFire _2;
+	};
 };

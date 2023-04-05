@@ -6,19 +6,24 @@ Author:
 	
 Last modified:
 
-	26/04/2022 A3 2.08 by Quiksilver
+	23/09/2022 A3 2.10 by Quiksilver
 	
 Description:
 
 	Client vehicle service
 __________________________________________________/*/
 
-private ['_v','_t','_c','_rt','_nearestServiceSite','_fuel'];
-_t = cursorTarget;
-_v = vehicle player;
-if (_t getVariable 'under_service') exitWith {50 cutText [localize 'STR_QS_Text_191','PLAIN DOWN',0.5];};
-if (_v getVariable 'under_service') exitWith {50 cutText [localize 'STR_QS_Text_191','PLAIN DOWN',0.5];};
-if (missionNamespace getVariable 'QS_repairing_vehicle') exitWith {50 cutText [localize 'STR_QS_Text_191','PLAIN DOWN',0.5];};
+private _t = cursorTarget;
+private _v = vehicle player;
+private _rt = 1;
+private _fuel = 1;
+if (
+	(_t getVariable ['under_service',FALSE]) ||
+	{(_v getVariable ['under_service',FALSE])}
+) exitWith {
+	50 cutText [localize 'STR_QS_Text_191','PLAIN DOWN',0.5];
+};
+if (missionNamespace getVariable ['QS_repairing_vehicle',FALSE]) exitWith {50 cutText [localize 'STR_QS_Text_191','PLAIN DOWN',0.5];};
 private _isUAV = unitIsUav cameraOn;
 if (_isUAV) then {
 	_v = cameraOn;
@@ -116,9 +121,9 @@ if ((_baseService) || (_isDepot)) then {
 		};
 		missionNamespace setVariable ['QS_repairing_vehicle',FALSE,FALSE];
 		_v allowDamage TRUE;
-		_v setFuelCargo 1;
-		_v setRepairCargo 1;
-		_v setAmmoCargo 1;
+		_v setFuelCargo 0;
+		_v setRepairCargo 0;
+		_v setAmmoCargo 0;
 		if (_v isKindOf 'LandVehicle') then {
 			[_v] call (missionNamespace getVariable 'QS_fnc_vehicleAPSParams');
 		};
@@ -181,7 +186,7 @@ if ((_baseService) || (_isDepot)) then {
 				if (diag_tickTime > (uiNamespace getVariable ['QS_fighterPilot_lastMsg',(diag_tickTime - 1)])) then {
 					uiNamespace setVariable ['QS_fighterPilot_lastMsg',(diag_tickTime + 300)];
 					[63,[4,['CAS_1',['','Close Air Support online!']]]] remoteExec ['QS_fnc_remoteExec',-2,FALSE];
-					['sideChat',[WEST,'AirBase'],(format ['%3 %2 (%1)',(getText (configFile >> 'CfgVehicles' >> (typeOf _this) >> 'displayName')),profileName,localize 'STR_QS_Chat_029'])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
+					['sideChat',[WEST,'AirBase'],(format ['%3 %2 (%1)',(getText (configFile >> 'CfgVehicles' >> (typeOf _v) >> 'displayName')),profileName,localize 'STR_QS_Chat_029'])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 				};
 			};
 		};

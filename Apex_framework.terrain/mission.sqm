@@ -12,7 +12,7 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=1033;
+		nextID=334;
 	};
 	class LayerIndexProvider
 	{
@@ -20,14 +20,14 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={14651.635,25.739899,16792.219};
-		dir[]={0.87575853,-0.24073464,-0.41851911};
-		up[]={0.21723931,0.9705795,-0.10381775};
-		aside[]={-0.43120143,-6.2875915e-007,-0.90229225};
+		pos[]={6940.2524,12.600668,7356.1729};
+		dir[]={0.73609149,-0.25017184,0.62897319};
+		up[]={0.19020087,0.96819818,0.16252217};
+		aside[]={0.6496312,1.1731754e-007,-0.76026624};
 	};
 };
 binarizationWanted=0;
-sourceName="Apex_framework_132_BTA";
+sourceName="Apex_framework_131";
 addons[]=
 {
 	"A3_Props_F_Enoch_Military_Equipment",
@@ -2329,7 +2329,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={8459.5107,105.23543,25120.701};
+						position[]={7615.2939,3.5881519,14922.531};
+						angles[]={0,2.5232923,0};
 					};
 					side="West";
 					flags=5;
@@ -2338,63 +2339,9 @@ class Mission
 						description="进入游戏后选择兵种";
 						isPlayable=1;
 					};
-					id=82;
-					type="B_Soldier_F";
-					atlOffset=7.6293945e-006;
-				};
-				class Item53
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={8450.7803,105.36471,25120.85};
-					};
-					side="West";
-					flags=5;
-					class Attributes
-					{
-						description="进入游戏后选择兵种";
-						isPlayable=1;
-					};
-					id=83;
-					type="B_Soldier_F";
-					atlOffset=-7.6293945e-006;
-				};
-				class Item54
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={8455.6289,105.61599,25117.49};
-					};
-					side="West";
-					flags=5;
-					class Attributes
-					{
-						description="进入游戏后选择兵种";
-						isPlayable=1;
-					};
-					id=84;
-					type="B_Soldier_F";
-					atlOffset=0.20040131;
-				};
-				class Item55
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={8472.0273,107.47356,25118.598};
-					};
-					side="West";
-					flags=5;
-					class Attributes
-					{
-						description="进入游戏后选择兵种";
-						isPlayable=1;
-					};
-					id=85;
-					type="B_Soldier_F";
-					atlOffset=0.12857056;
+					id=161;
+					type="B_T_Soldier_F";
+					atlOffset=-7.1525574e-007;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -2426,43 +2373,21 @@ class Mission
 						nAttributes=2;
 					};
 				};
-				class Item56
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={8468.1221,106.65395,25118.463};
-					};
-					side="West";
-					flags=5;
-					class Attributes
-					{
-						description="进入游戏后选择兵种";
-						isPlayable=1;
-					};
-					id=86;
-					type="B_Soldier_F";
-					atlOffset=0.016777039;
-				};
-				class Item57
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={8463.8896,106.25439,25117.945};
-					};
-					side="West";
-					flags=5;
-					class Attributes
-					{
-						description="进入游戏后选择兵种";
-						isPlayable=1;
-					};
-					id=87;
-					type="B_Soldier_F";
-					atlOffset=0.21944427;
-				};
-				class Item58
+			};
+			class Attributes
+			{
+			};
+			id=160;
+			atlOffset=-7.1525574e-007;
+		};
+		class Item38
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
 				{
 					dataType="Object";
 					class PositionInfo
