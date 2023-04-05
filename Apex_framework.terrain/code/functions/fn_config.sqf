@@ -129,7 +129,7 @@ private _difficultyInvalid = FALSE;
 		];
 	};
 } forEach [
-	['mapContent',0],
+	//['mapContent',0],
 	['mapContentEnemy',0],
 	['mapContentFriendly',0],
 	['deathMessages',0],
