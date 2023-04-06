@@ -74,7 +74,7 @@ if ((_this # 0) isEqualType '') exitWith {
 	_return;
 };
 params ['_vehicle'];
-_designation = ['Афганит','Trophy'] select ((getNumber (configFile >> 'CfgVehicles' >> (typeOf _vehicle) >> 'side')) in [1,2]);
+_designation = ['Афганит',localize 'STR_QS_Dialogs_075'] select ((getNumber (configFile >> 'CfgVehicles' >> (typeOf _vehicle) >> 'side')) in [1,2]);
 private _list = [
 	FALSE,												// QS_aps_enabled		- Is the system enabled for these vehicle types
 	(_vehicle selectionPosition 'commander_gun'),		// QS_aps_sensorPos		- Where on the vehicle is the projectile sensor
@@ -167,6 +167,6 @@ if ((['mbt_04_base_f'] findIf {(_vehicle isKindOf _x)}) isNotEqualTo -1) then {
 } forEach [
 	['QS_aps_params',_list,TRUE],
 	['QS_aps_ammo',(_list # 2),TRUE],
-	['QS_aps_reloadDelay',-1,TRUE]
+	['QS_aps_reloadDelay',serverTime + 14,TRUE]
 ];
 _list;

@@ -40,28 +40,6 @@ if (_case < 10) exitWith {
 			};
 		};
 	};
-	/*/===== HC/*/
-	if (_case isEqualTo 0.5) then {
-		/*/[0.5,'AO_INIT'] remoteExec ['QS_fnc_remoteExec',-999];/*/
-		_instruction = _this # 1;
-		if (_instruction isEqualTo 'AO_INIT') then {
-		
-		};
-		if (_instruction isEqualTo 'AO_EXIT') then {
-		
-		};
-		if (_instruction isEqualTo 'SM_INIT') then {
-		
-		};
-		if (_instruction isEqualTo 'SM_EXIT') then {
-		
-		};
-	};
-	/*/===== Task Update/*/
-	if (_case isEqualTo 0.6) then {
-		params ['',''];
-	
-	};
 	/*/pow/*/
 	if (_case isEqualTo 1) then {
 		private _POW = _this # 1;
@@ -646,7 +624,7 @@ if (_case < 30) exitWith {
 						private ['_center','_vehicle','_position','_posToSet'];
 						if (_isLocal) then {
 							[26,_towedVehicle,TRUE] remoteExec ['QS_fnc_remoteExec',-2,FALSE];
-							_towedVehicle removeEventHandler ['Local',_thisEventHandler];
+							_towedVehicle removeEventHandler [_thisEvent,_thisEventHandler];
 						};
 						if (!isNull (attachedTo _towedVehicle)) then {
 							_vehicle = attachedTo _towedVehicle;
@@ -720,6 +698,7 @@ if (_case < 40) exitWith {
 		private _target = objNull;
 		private _inHouse = [FALSE,objNull];
 		if (_units isNotEqualTo []) then {
+			private _result = FALSE;
 			{
 				_unit = _x;
 				_target = [_unit,1000,TRUE] call (missionNamespace getVariable 'QS_fnc_AIGetAttackTarget');
@@ -728,7 +707,22 @@ if (_case < 40) exitWith {
 					if (_inHouse # 0) then {
 						_target = _inHouse # 1;
 					};
-					[_unit,_target,selectRandomWeighted [1,0.5,2,0.5],TRUE,FALSE,FALSE,-1] call (missionNamespace getVariable 'QS_fnc_AIDoSuppressiveFire');
+					_result = [_unit,_target,selectRandomWeighted [1,0.5,2,0.5],TRUE,FALSE,FALSE,-1] call (missionNamespace getVariable 'QS_fnc_AIDoSuppressiveFire');
+					if (!(_result)) then {
+						if (
+							(!isNull (objectParent _unit)) ||
+							(!weaponLowered _unit)
+						) then {
+							[_unit,_target,0] call (missionNamespace getVariable 'QS_fnc_AIDoSuppressiveFire');
+						};
+					};
+				} else {
+					if (
+						(!isNull (objectParent _unit)) ||
+						(!weaponLowered _unit)
+					) then {
+						[_unit,_target,0] call (missionNamespace getVariable 'QS_fnc_AIDoSuppressiveFire');
+					};
 				};
 			} forEach _units;
 		};
@@ -1774,6 +1768,16 @@ if (_case < 90) exitWith {
 			};
 		};
 	};
+	if (_case isEqualTo 88.1) then {
+		params ['',['_vehicle',objNull]];
+		if (!isNull _vehicle) then {
+			if (local _vehicle) then {
+				if ((getAmmoCargo _vehicle) > 0) then {
+					_vehicle setAmmoCargo 0;
+				};
+			};
+		};
+	};
 	if (_case isEqualTo 89) then {
 		params ['','_command','_profileName','_hcSelected'];
 		[0,_command,_profileName,_hcSelected] call (missionNamespace getVariable 'QS_fnc_hCommMenu');
@@ -1805,7 +1809,9 @@ if (_case < 100) exitWith {
 			sleep 3;
 			{
 				if (local _x) then {
-					deleteVehicle _x;
+					if (!(_x getVariable ['QS_missionObject_protected',FALSE])) then {
+						deleteVehicle _x;
+					};
 				};
 			} forEach (allMissionObjects 'EmptyDetector');
 		};
@@ -2163,5 +2169,9 @@ if (_case < 110) exitWith {
 				};
 			};
 		};
+	};
+	if (_case isEqualTo 104) then {
+		params ['','_args'];
+		_args call (missionNamespace getVariable 'QS_fnc_fire');
 	};
 };

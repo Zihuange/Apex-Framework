@@ -6,24 +6,25 @@ Author:
 	
 Last Modified:
 
-	6/08/2022 A3 2.10 by Quiksilver
+	17/10/2022 A3 2.10 by Quiksilver
 
 Description:
 
 	Common pre-init
 _______________________________________________/*/
 
-private _environment = 'mediterranean';
-if (worldName in ['Tanoa','Lingor3']) then {
+missionNamespace setVariable ['QS_terrain_worldName',(getText (configFile >> 'CfgWorlds' >> worldName >> 'description')),FALSE];
+private _environment = 'arid';		// Altis, Stratis, Malden, Sefrou-Ramal
+if (worldName in ['Tanoa','Cam_Lao_Nam','vn_khe_sanh','vn_the_bra']) then {
 	_environment = 'tropic';
 };
-if (worldName in ['Enoch']) then {
+if (worldName in ['Enoch','stozec','gm_weferlingen_summer','gm_weferlingen_winter']) then {
 	_environment = 'temperate';
 };
-rscmissionstatus_buttonclick = compileFinal 'TRUE';
 uiNamespace setVariable ['rscmissionstatus_buttonclick',compileFinal 'TRUE'];
-bis_fnc_missiontaskslocal = compileFinal 'TRUE';
-bis_fnc_missionconversationslocal = compileFinal 'TRUE';
+missionNamespace setVariable ['rscmissionstatus_buttonclick',compileFinal 'TRUE'];
+missionNamespace setVariable ['bis_fnc_missiontaskslocal',compileFinal 'TRUE'];
+missionNamespace setVariable ['bis_fnc_missionconversationslocal',compileFinal 'TRUE'];
 private _code = {};
 {
 	missionNamespace setVariable [_x # 0,(compileScript [_x # 1,TRUE]),FALSE];
@@ -80,6 +81,7 @@ private _code = {};
 	['QS_site_radar','code\config\smCompositions\QS_data_siteRadar.sqf'],
 	['QS_RSC_weatherData','code\config\QS_data_weather.sqf'],
 	['QS_data_vehicles','code\config\QS_data_vehicles.sqf'],
+	['QS_data_recruitableAI','code\config\QS_data_recruitableAI.sqf'],
 	['QS_data_carrierLaunch','code\config\QS_data_carrierLaunch.sqf'],
 	['QS_data_fobs','code\config\QS_data_fobs.sqf'],
 	['QS_data_forestCamp','code\config\QS_data_forestCamp.sqf'],
@@ -90,5 +92,8 @@ private _code = {};
 	['QS_data_smallBuildingTypes','code\config\QS_data_smallBuildingTypes.sqf'],
 	['QS_data_siteHP1','code\config\QS_data_siteHP1.sqf'],
 	['QS_data_siteDatalink1','code\config\QS_data_siteDatalink1.sqf'],
+	['QS_data_tracers','code\config\QS_data_tracers.sqf'],
+	['QS_data_rockets','code\config\QS_data_rocketTypes.sqf'],
+	['QS_data_restrictedGear','code\config\QS_data_restrictedGear.sqf'],
 	['BIS_HC_path_menu','code\functions\fn_menuHCPath.sqf']
 ];

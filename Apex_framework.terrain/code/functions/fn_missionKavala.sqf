@@ -1046,7 +1046,7 @@ for '_x' from 0 to 1 step 0 do {
 								if ((random 1) > 0.666) then {
 									_text = format [localize 'STR_QS_Chat_141',(name _instigator)];
 								} else {
-									_text = format [localize 'STR_QS_Chat_142',(name _instigator),l];
+									_text = format [localize 'STR_QS_Chat_142',(name _instigator)];
 								};
 								['systemChat',_text] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 							};

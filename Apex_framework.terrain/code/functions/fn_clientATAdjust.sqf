@@ -10,6 +10,7 @@ Last Modified:
 
 Description:
 
+	Adjust players robocop value
 __________________________________________________________*/
 
 _t = _this # 0;

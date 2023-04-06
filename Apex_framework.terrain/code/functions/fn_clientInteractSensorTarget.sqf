@@ -60,10 +60,11 @@ _onCancelled = {
 _onCompleted = {
 	params ['_cursorObject'];
 	if (player getUnitTrait 'QS_trait_JTAC') then {
-		if (!isNil {player getVariable 'QS_client_jtac_sensorTarget'}) then {
-			if (!alive (player getVariable 'QS_client_jtac_sensorTarget')) then {
-				(player getVariable 'QS_client_jtac_sensorTarget') confirmSensorTarget [(player getVariable ['QS_unit_side',EAST]),FALSE];
-			};
+		if (alive (player getVariable ['QS_client_jtac_sensorTarget',objNull])) then {
+			['confirmSensorTarget',(player getVariable ['QS_client_jtac_sensorTarget',objNull]),[(player getVariable ['QS_unit_side',EAST]),TRUE]] remoteExec ['QS_fnc_remoteExecCmd',(player getVariable ['QS_unit_side',EAST]),FALSE];
+			(player getVariable 'QS_client_jtac_sensorTarget') confirmSensorTarget [(player getVariable ['QS_unit_side',EAST]),FALSE];
+			['reportRemoteTarget',(player getVariable ['QS_unit_side',EAST]),[(player getVariable 'QS_client_jtac_sensorTarget'),360]] remoteExec ['QS_fnc_remoteExecCmd',(player getVariable ['QS_unit_side',EAST]),FALSE];
+			(player getVariable ['QS_unit_side',EAST]) reportRemoteTarget [(player getVariable 'QS_client_jtac_sensorTarget'),360];
 		};
 		if ((!(_cursorObject in ([(listRemoteTargets (player getVariable ['QS_unit_side',EAST])),0] call (missionNamespace getVariable 'QS_fnc_listRemoteTargets')))) && (!(_cursorObject getVariable ['QS_remoteTarget_reported',FALSE]))) then {
 			['confirmSensorTarget',_cursorObject,[(player getVariable ['QS_unit_side',EAST]),TRUE]] remoteExec ['QS_fnc_remoteExecCmd',(player getVariable ['QS_unit_side',EAST]),FALSE];

@@ -14,7 +14,6 @@ Description:
 ______________________________________________/*/
 
 scriptName 'QS - SM - AA';
-//comment 'Get any data we need';
 private _spawnPosition = [0,0,0];
 private _aaTypes = ['b_apc_tracked_01_aa_f','b_t_apc_tracked_01_aa_f','b_t_apc_tracked_01_aa_f','b_t_apc_tracked_01_aa_f'];
 private _aaHulls = [];
@@ -30,7 +29,7 @@ private _stealthAircraft = ['b_ctrg_heli_transport_01_sand_f','b_ctrg_heli_trans
 private _time = diag_tickTime;
 private _delay = 5;
 private _checkDelay = _time + _delay;
-private _targetingRange_max = [7500,3500] select (worldName in ['Tanoa','Malden']);
+private _targetingRange_max = [7500,5000] select (worldName in ['Tanoa','Malden']);
 private _targetingRange_heli = [4500,3000] select (worldName in ['Tanoa','Malden']);
 private _targetingRange_stealthCoef = 0.666;
 private _targetingRange_stealthCoef2 = 0.8;
@@ -48,26 +47,23 @@ private _targetCandidate = objNull;
 private _targetPosition = [0,0,0];
 private _targetDir = 0;
 private _aircraftPosition = [0,0,0];
-//comment 'Find position';
 _basepos = markerPos 'QS_marker_base_marker';
 _fobpos = markerPos 'QS_marker_module_fob';
 private _spawnPosition = [0,0,0];
-private _accepted = FALSE;
-for '_x' from 0 to 1 step 0 do {
+for '_x' from 0 to 499 step 1 do {
 	_spawnPosition = ['RADIUS',_basepos,4500,'LAND',[5,0,0.2,5,0,FALSE,objNull],TRUE,[],[],TRUE] call (missionNamespace getVariable 'QS_fnc_findRandomPos');
-	if ((_spawnPosition distance2D _basepos) > 2000) then {
-		if ((_spawnPosition distance2D _fobpos) > 250) then {
-			if ((_spawnPosition distance2D (missionNamespace getVariable 'QS_AOpos')) > 500) then {
-				if (((((_spawnPosition select [0,2]) nearRoads 25) select {((_x isEqualType objNull) && ((roadsConnectedTo _x) isNotEqualTo []))}) isEqualTo []) && (!((toLowerANSI(surfaceType _spawnPosition)) in ['#gdtasphalt'])) && (!([_spawnPosition,30,8] call (missionNamespace getVariable 'QS_fnc_waterInRadius')))) then {
-					_accepted = TRUE;
-				};
-			};
-		};
-	};
-	if (_accepted) exitWith {};
+	if (
+		((_spawnPosition distance2D _basepos) > 2000) &&
+		{((_spawnPosition distance2D _fobpos) > 250)} &&
+		{((_spawnPosition distance2D (missionNamespace getVariable 'QS_AOpos')) > 500)} &&
+		{(
+			((((_spawnPosition select [0,2]) nearRoads 25) select {((_x isEqualType objNull) && ((roadsConnectedTo _x) isNotEqualTo []))}) isEqualTo []) && 
+			{(!((toLowerANSI(surfaceType _spawnPosition)) in ['#gdtasphalt']))} && 
+			{(!([_spawnPosition,30,8] call (missionNamespace getVariable 'QS_fnc_waterInRadius')))}
+		)}
+	) exitWith {};
 };
 private _watchPosition = _spawnPosition vectorAdd [0,0,1000];
-//comment 'Generate composition and assets';
 private _compositionData = [
 	[
 		["B_APC_Tracked_01_AA_F",[0.230469,-6.17627,0.0173378],179.236,[],TRUE,TRUE,FALSE,{(_this # 0)}], 			// o_sam_system_04_f   B_APC_Tracked_01_AA_F
@@ -128,7 +124,6 @@ private _compositionData = [
 ] select (worldName in ['Tanoa','Lingor3']);
 _composition = [_spawnPosition,(random 360),_compositionData,FALSE] call (missionNamespace getVariable 'QS_fnc_serverObjectsMapper');
 _compositionData = nil;
-//comment 'Configure assets';
 {
 	if (!(isSimpleObject _x)) then {
 		if ((toLowerANSI (typeOf _x)) in _aaTypes) then {
@@ -158,7 +153,9 @@ _compositionData = nil;
 		_aaHull lockTurret [[0],TRUE];
 		_aaHull lockTurret [[0,0],TRUE];
 		_aaHull lock 2;
+		_aaHull setVariable ['QS_dynSim_ignore',TRUE,TRUE];
 		_aaHull enableDynamicSimulation FALSE;
+		_aaHull enableSimulationGlobal TRUE;
 		(missionNamespace getVariable 'QS_AI_vehicles') pushBack _aaHull;
 		clearItemCargoGlobal _aaHull;
 		clearBackpackCargoGlobal _aaHull;
@@ -181,11 +178,13 @@ _compositionData = nil;
 				'HandleDamage',
 				{
 					params ['_vehicle','','_damage','','','_hitPartIndex','',''];
+					_vehicle setHit ['hit_main_turret_point',0];
+					_vehicle setHit ['hit_main_gun_point',0];
 					_oldDamage = if (_hitPartIndex isEqualTo -1) then {(damage _vehicle)} else {(_vehicle getHitIndex _hitPartIndex)};
-					_damage = _oldDamage + (_damage - _oldDamage) * 0.67;
+					_damage = _oldDamage + (_damage - _oldDamage) * 0.5;
 					_damage;
 				}
-			];		
+			];
 		};
 		_aaHull addEventHandler [
 			'Deleted',
@@ -220,23 +219,22 @@ _compositionData = nil;
 				};
 			}
 		];
-		createVehicleCrew _aaHull;
-		(crew _aaHull) joinSilent (createGroup [WEST,TRUE]);
+		_aaGroup = createVehicleCrew _aaHull;
+		_aaGroup setBehaviourStrong 'STEALTH';
+		_aaGroup setCombatMode 'BLUE';
 		{
 			_x setVariable ['QS_hidden',TRUE,TRUE];
+			_enemyAssets pushBack _x;
 		} forEach (crew _aaHull);
-		//_aaHull doWatch _watchPosition;
 		_aaTurrets pushBack [_aaHull,(gunner _aaHull),_aaGroup,(typeOf _aaHull),((weapons _aaHull) select ([0,1] select (_aaHull isKindOf 'Tank'))),0,0,0];
 	};
 } forEach _aaHulls;
-//comment 'Generate force protection';
 {
 	_enemyAssets pushBack _x;
 	if (!isNull (group _x)) then {
 		(group _x) addVehicle (selectRandom _aaHulls);
 	};
 } forEach ([(_composition # 0)] call (missionNamespace getVariable 'QS_fnc_smEnemyWest'));
-//comment 'Brief players';
 _fuzzyPos = [((_spawnPosition # 0) - 300) + (random 600),((_spawnPosition # 1) - 300) + (random 600),0];
 'QS_marker_sideMarker' setMarkerTextLocal (format ['%1 %2',(toString [32,32,32]),localize 'STR_QS_Marker_037']);
 {
@@ -260,7 +258,6 @@ _fuzzyPos = [((_spawnPosition # 0) - 300) + (random 600),((_spawnPosition # 1) -
 	TRUE
 ] call (missionNamespace getVariable 'BIS_fnc_setTask');
 ['NewPriorityTarget',[localize 'STR_QS_Notif_096']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
-//comment 'Loop';
 missionNamespace setVariable ['QS_smSuccess',FALSE,TRUE];
 for '_x' from 0 to 1 step 0 do {
 	if (((_aaHulls findIf {(alive _x)}) isEqualTo -1) || {(missionNamespace getVariable ['QS_smSuccess',FALSE])}) exitWith {
@@ -273,11 +270,6 @@ for '_x' from 0 to 1 step 0 do {
 	uiSleep 1;
 	_time = diag_tickTime;
 	if (_time > _checkDelay) then {
-		{
-			if (alive _x) then {
-				//_x doWatch _watchPosition;
-			};
-		} forEach _aaHulls;
 		_allAircraft = (entities _entitiesParams) select {
 			_aircraftPosition = getPosATL _x;
 			if (surfaceIsWater _aircraftPosition) then {
@@ -306,15 +298,13 @@ for '_x' from 0 to 1 step 0 do {
 							};
 						} else {
 							if (_targetCandidate isKindOf 'Helicopter') then {
-								if ((_targetType in _stealthAircraft) && (!(isLaserOn _targetCandidate))) then {
+								if (_targetType in _stealthAircraft) then {
 									if ((_targetCandidate distance2D _spawnPosition) < (_targetingRange_heli * _targetingRange_stealthCoef)) then {
 										_targetListEnemy pushBack _targetCandidate;
 									};
 								} else {
-									if ((!(isVehicleRadarOn _targetCandidate)) && (!(isLaserOn _targetCandidate))) then {
-										if ((_targetCandidate distance2D _spawnPosition) < (_targetingRange_heli * _targetingRange_stealthCoef2)) then {
-											_targetListEnemy pushBack _targetCandidate;
-										};
+									if ((_targetCandidate distance2D _spawnPosition) < (_targetingRange_heli * _targetingRange_stealthCoef2)) then {
+										_targetListEnemy pushBack _targetCandidate;
 									};
 								};
 							};
@@ -336,12 +326,11 @@ for '_x' from 0 to 1 step 0 do {
 				''
 			];
 			if (alive _aaTurret) then {
+				_aaTurret doWatch _watchPosition;
 				if ((_aaTurret ammo _aaTurretWeapon) > 0) then {
 					if (_targetListEnemy isNotEqualTo []) then {
 						_targetCandidate = selectRandom _targetListEnemy;
 						_aaGunner reveal [_targetCandidate,4];
-						_aaTurret doTarget _targetCandidate;
-						_aaTurret doWatch _targetCandidate;
 						uiSleep 2;
 						_aaTurret fireAtTarget [_targetCandidate,_aaTurretWeapon];
 					};
@@ -355,6 +344,8 @@ for '_x' from 0 to 1 step 0 do {
 					} else {
 						if (_time > _aaReloadTimeout) then {
 							_aaTurret setVehicleAmmo 1;
+							_aaTurret setHit ['hit_main_turret_point',0];
+							_aaTurret setHit ['hit_main_gun_point',0];
 							_aaNeedReload = 0;
 							_turretParams set [5,_aaNeedReload];
 							_turretParams set [6,_aaReloadTimeout];

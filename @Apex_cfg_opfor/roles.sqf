@@ -6,7 +6,7 @@ Author:
 	
 Last Modified:
 
-	17/04/2022 A3 2.08 by Quiksilver
+	4/11/2022 A3 2.10 by Quiksilver
 	
 Description:
 
@@ -18,6 +18,7 @@ Notes:
 	
 		"documentation\role selection system.txt"
 _______________________________________________________/*/
+
 _tropical = worldName in ['Tanoa'];
 QS_roles_data = [
 	[

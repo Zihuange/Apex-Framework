@@ -6,7 +6,7 @@ Author:
 	
 Last Modified:
 
-	30/08/2022 A3 2.10 by Quiksilver
+	11/11/2022 A3 2.10 by Quiksilver
 	
 Description:
 
@@ -44,7 +44,6 @@ if (_type isEqualTo 0) exitWith {
 		};
 	};
 	_fn_isStealthy = missionNamespace getVariable 'QS_fnc_getVehicleStealth';
-	
 	if (
 		(_isVehicle) &&
 		{(_threat in [3,4])} &&
@@ -84,7 +83,10 @@ if (_type isEqualTo 0) exitWith {
 		'I_C_Soldier_Para_1_F',1,
 		'I_C_Soldier_Para_5_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4)
 	];
-	_vehicleTypes = [([5,6] select (_knowsAbout >= 2))] call (missionNamespace getVariable 'QS_fnc_getAIMotorPool');
+	private _vehicleTypes = [([5,6] select (_knowsAbout >= 2))] call (missionNamespace getVariable 'QS_fnc_getAIMotorPool');
+	if ((missionNamespace getVariable ['QS_missionConfig_aoType','ZEUS']) isEqualTo 'GRID') then {
+		_vehicleTypes = [4] call (missionNamespace getVariable 'QS_fnc_getAIMotorPool');
+	};
 	// find position
 	private _targetPosition = _targetVehicle getRelPos [500,0];
 	if (_isVehicle) then {

@@ -45,7 +45,10 @@ if ((_this # 0) isEqualType controlNull) exitWith {
 	if ((toLowerANSI (ctrlText ((uiNamespace getVariable 'QS_RD_client_dialog_hud') displayCtrl 1002))) isNotEqualTo 'media\images\icons\squadback.paa') then {
 		((uiNamespace getVariable 'QS_RD_client_dialog_hud') displayCtrl 1002) ctrlSetText 'media\images\icons\squadback.paa';
 	};
-	if ('ItemCompass' in (assignedItems _player)) then {
+	if (
+		('ItemCompass' in (assignedItems _player)) &&
+		(!(missionNamespace getVariable ['QS_module_gpsJammer_inArea',FALSE]))
+	) then {
 		if ((toLowerANSI (ctrlText ((uiNamespace getVariable 'QS_RD_client_dialog_hud') displayCtrl 1003))) isNotEqualTo 'media\images\icons\squadradarcompassbackgroundtexture_ca.paa') then {
 			((uiNamespace getVariable 'QS_RD_client_dialog_hud') displayCtrl 1003) ctrlSetText 'media\images\icons\SquadRadarCompassBackgroundTexture_ca.paa';
 		};
@@ -70,7 +73,6 @@ if ((_this # 0) isEqualType controlNull) exitWith {
 		private _posLeader = [0,0,0];
 		private _pos = [0,0,0];
 		private _icon = '';
-		private _teamID = 0;
 		private _colorTeam = [0,0,0,0];
 		{
 			_unit = _x;
@@ -90,32 +92,27 @@ if ((_this # 0) isEqualType controlNull) exitWith {
 							{
 								_selectedUnit = _x;
 								_distToSelectedUnit = _player distance2D _selectedUnit;
-								if (_distToSelectedUnit < 46) then {
-									if (_distToSelectedUnit > 2) then {
-										_posSelectedUnit = _lc2 getPos [(_distToSelectedUnit / 15),((_player getDir _selectedUnit) - _viewVector)];
-										0 = _toDrawLines pushBack [_pos,_posSelectedUnit,[0,1,1,0.5]];
-									};
+								if ((_distToSelectedUnit < 46) && (_distToSelectedUnit > 2)) then {
+									_posSelectedUnit = _lc2 getPos [(_distToSelectedUnit / 15),((_player getDir _selectedUnit) - _viewVector)];
+									0 = _toDrawLines pushBack [_pos,_posSelectedUnit,[0,1,1,0.5]];
 								};
 							} count (groupSelectedUnits _player);
 						};
 					} else {
 						_distToLeader = _player distance2D _grpLeader;
-						if (_distToLeader < 46) then {
-							if (_distToLeader > 2) then {
-								_posLeader = _lc2 getPos [(_distToLeader / 15),((_player getDir _grpLeader) - _viewVector)];
-								0 = _toDrawLines pushBack [_pos,_posLeader,[0,1,1,0.5]];
-							};
+						if ((_distToLeader < 46) && (_distToLeader > 2)) then {
+							_posLeader = _lc2 getPos [(_distToLeader / 15),((_player getDir _grpLeader) - _viewVector)];
+							0 = _toDrawLines pushBack [_pos,_posLeader,[0,1,1,0.5]];
 						};
 					};
 				};
-				_teamID = (['','MAIN','RED','GREEN','BLUE','YELLOW'] find (assignedTeam _unit)) max 1;
-				_colorTeam = [[1,1,1,1],[1,1,1,1],[1,0,0,1],[0,1,0.5,1],[0,0.5,1,1],[1,1,0,1]] # _teamID;
-				if (isNull (objectParent _unit)) then {
-					if (_unit isNotEqualTo _grpLeader) then {
-						if ((((units _grp) - [_unit]) findIf {((_unit distance2D _x) < 3)}) isNotEqualTo -1) then {
-							_colorTeam = [1,0.68,0.64,1];
-						};
-					};
+				_colorTeam = [[1,1,1,1],[1,1,1,1],[1,0,0,1],[0,1,0.5,1],[0,0.5,1,1],[1,1,0,1]] # ((['','MAIN','RED','GREEN','BLUE','YELLOW'] find (assignedTeam _unit)) max 1);
+				if (
+					(isNull (objectParent _unit)) &&
+					{(_unit isNotEqualTo _grpLeader)} &&
+					{((((units _grp) - [_unit]) findIf {((_unit distance2D _x) < 3)}) isNotEqualTo -1)}
+				) then {
+					_colorTeam = [1,0.68,0.64,1];
 				};
 				if ((lifeState _unit) isEqualTo 'INCAPACITATED') then {
 					_colorTeam = [1,(([0.41,(0.41 * ((((_unit getVariable ['QS_revive_downtime',serverTime]) + 600) - serverTime) / 600))] select (isPlayer _unit)) max 0),0,1];
@@ -125,10 +122,9 @@ if ((_this # 0) isEqualType controlNull) exitWith {
 				} else {
 					_unitType = typeOf _unitVehicle;
 					if ((isPlayer _unit) && {(_unitType isKindOf 'CAManBase')}) then {
-						if ((_unit getVariable ['QS_unit_role_icon',-1]) isEqualTo -1) then {
+						_icon = _unit getVariable ['QS_unit_role_icon',-1];
+						if (_icon isEqualTo -1) then {
 							_icon = ['GET_ROLE_ICONMAP',(_unit getVariable ['QS_unit_role','rifleman']),_unit] call (missionNamespace getVariable 'QS_fnc_roles');
-						} else {
-							_icon = _unit getVariable ['QS_unit_role_icon','a3\ui_f\data\map\vehicleicons\iconMan_ca.paa'];
 						};
 					} else {
 						_icon = missionNamespace getVariable [format ['QS_ST_iconType#%1',_unitType],''];
@@ -138,10 +134,11 @@ if ((_this # 0) isEqualType controlNull) exitWith {
 						};
 					};
 				};
-				if (alive _unit) then {
-					if (_unit isEqualTo (effectiveCommander _unitVehicle)) then {
-						_map drawIcon [_icon,_colorTeam,_pos,15,15,((getDirVisual _unit) - _viewVector),'',1,0,'RobotoCondensed','right'];
-					};
+				if (
+					(alive _unit) &&
+					{(_unit isEqualTo (effectiveCommander _unitVehicle))}
+				) then {
+					_map drawIcon [_icon,_colorTeam,_pos,15,15,((getDirVisual _unit) - _viewVector),'',1,0,'RobotoCondensed','right'];
 				};
 			};
 		} count _groupedUnits;
