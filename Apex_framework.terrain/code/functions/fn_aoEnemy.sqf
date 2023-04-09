@@ -141,7 +141,7 @@ if (worldName in ['Tanoa']) then {
 if (worldName isEqualTo 'Malden') then {
 	if (_playerCount > 10) then {_grpCount = [10,8] select _allowVehicles;};
 	if (_playerCount > 20) then {_grpCount = [10,8] select _allowVehicles;};
-	if (_ > 30) then {_grpCount = [13,11] select _allowVehicles;};
+	if (_playerCount > 30) then {_grpCount = [13,11] select _allowVehicles;};
 	if (_playerCount > 40) then {_grpCount = [13,11] select _allowVehicles;};
 	if (_playerCount > 50) then {_grpCount = [13,11] select _allowVehicles;};
 };

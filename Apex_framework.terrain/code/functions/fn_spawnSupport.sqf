@@ -25,11 +25,11 @@ if (_type isEqualTo 'REPAIR') then {
 		_vTypes = [
 			[
 				'b_truck_01_repair_f',0.666,
-				'o_truck_03_repair_f',0.666//'b_apc_tracked_01_crv_f',0.333
+				'b_truck_01_repair_f',0.666//'b_apc_tracked_01_crv_f',0.333
 			],
 			[
 				'b_t_truck_01_repair_f',0.666,
-				'o_t_truck_03_repair_ghex_f',0.666//'b_t_apc_tracked_01_crv_f',0.333
+				'b_t_truck_01_repair_f',0.666//'b_t_apc_tracked_01_crv_f',0.333
 			]
 		] select (worldName in ['Tanoa','Lingor3','Enoch']);
 		_roads = _roads call (missionNamespace getVariable 'QS_fnc_arrayShuffle');

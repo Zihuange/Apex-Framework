@@ -49,7 +49,7 @@ if (_type isEqualTo 'BRIEF') then {
 	];
 	if (!(worldName in ['Stratis'])) then {
 		{
-			_x setMarkerColorLocal 'ColorOPFOR';
+			_x setMarkerColorLocal 'ColorWEST';
 			_x setMarkerAlpha 0.8;	
 		} forEach [
 			'QS_marker_hqCircle',

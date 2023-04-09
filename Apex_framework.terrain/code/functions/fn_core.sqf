@@ -1839,7 +1839,7 @@ for '_x' from 0 to 1 step 0 do {
 								if ((((units _east) inAreaArray [(missionNamespace getVariable 'QS_HQpos'),100,100,0,_false,-1])) isEqualTo []) then {
 									if ((count (((units _west) + (units _resistance)) inAreaArray [(missionNamespace getVariable 'QS_HQpos'),50,50,0,_false,-1])) isNotEqualTo []) then {
 										['sideChat',[_east,'OPF'],localize 'STR_QS_Chat_039'] remoteExec ['QS_fnc_remoteExecCmd',-2,_false];
-										[(missionNamespace getVariable 'QS_AO_HQ_flag'),_west,'',_false,objNull,1] call _fn_setFlag;
+										[(missionNamespace getVariable 'QS_AO_HQ_flag'),_east,'',_false,objNull,1] call _fn_setFlag;
 										{
 											_x setMarkerColor 'ColorBLUFOR';
 										} forEach [
@@ -1852,7 +1852,7 @@ for '_x' from 0 to 1 step 0 do {
 								if ((markerColor 'QS_marker_hqMarker') isEqualTo 'ColorBLUFOR') then {
 									if ((((units _east) inAreaArray [(missionNamespace getVariable 'QS_HQpos'),100,100,0,_false,-1])) isNotEqualTo []) then {
 										if (((((units _west) + (units _resistance)) inAreaArray [(missionNamespace getVariable 'QS_HQpos'),100,100,0,_false,-1])) isEqualTo []) then {
-											[(missionNamespace getVariable 'QS_AO_HQ_flag'),_east,'',_false,objNull,1] call _fn_setFlag;
+											[(missionNamespace getVariable 'QS_AO_HQ_flag'),_west,'',_false,objNull,1] call _fn_setFlag;
 											{
 												_x setMarkerColor 'ColorWEST';
 											} forEach [
