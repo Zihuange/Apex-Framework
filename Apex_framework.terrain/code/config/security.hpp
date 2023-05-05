@@ -13,7 +13,7 @@ Description:
 	CfgDisabledCommands
 	CfgRemoteExec
 _____________________________________________________________/*/
-
+/*
 class CfgDisabledCommands {
     class CREATEUNIT
     {
@@ -30,7 +30,7 @@ class CfgDisabledCommands {
         };
     };
 	
-	
+*/	
 	/*/ Required for Zeus map markers.    RE-ENABLE THIS SECTION TO STRENGTHEN ANTICHEAT SECURITY. DISABLED FOR ZEUS MARKER FUNCTIONALITY.
     class SETMARKERTEXT
     {
@@ -42,7 +42,7 @@ class CfgDisabledCommands {
     };
 	/*/
 
-
+/*
     class ADDMPEVENTHANDLER
     {
         class SYNTAX1
@@ -52,7 +52,7 @@ class CfgDisabledCommands {
         };
     };
 	
-	
+*/
 	/*/ Enabling this will cause some issues with vanilla UAV logic
     class SETWAYPOINTSTATEMENTS
     {
@@ -64,7 +64,7 @@ class CfgDisabledCommands {
     };
 	/*/
 	
-	
+/*	
     class PUBLICVARIABLE
     {
         class SYNTAX1
@@ -157,15 +157,17 @@ class CfgDisabledCommands {
     };
 
 };
+
+*/
 class CfgRemoteExec {
 	class Commands {
-		mode = 1;
+		mode = 2;
 		class lock {};			// required for zeus
 		class setFuel {};		// required for zeus
 		class lockturret {};		// required for "Global Mobilization" DLC
 	};
 	class Functions {
-		mode = 1;
+		mode = 2;
 		jip = 0;
 		allowedTargets = 0;
 		class BIS_fnc_callScriptedEventHandler {};

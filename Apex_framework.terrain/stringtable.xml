@@ -2180,296 +2180,393 @@ _____________________________________________________________-->
        <Key ID="STR_QS_Text_308">
             <Original>Zeus AI Onload - %1 onloaded to Zeus: %2</Original>
 		</Key>
-       <Key ID="STR_QS_Text_309">
-            <Original>Hangar unavailable for this vehicle type</Original>
-		</Key>	
-       <Key ID="STR_QS_Text_310">
-            <Original>USS Liberty (Destroyer)</Original>
-		</Key>
-       <Key ID="STR_QS_Text_311">
-            <Original>USS Freedom (Aircraft Carrier)</Original>
-		</Key>
-       <Key ID="STR_QS_Text_312">
-            <Original>No Toolkit</Original>
-		</Key>
-       <Key ID="STR_QS_Text_313">
-            <Original>Ropes Cut</Original>
-		</Key>
-       <Key ID="STR_QS_Text_314">
-            <Original>Already assembled a(n) Mortar (Lite)</Original>
-		</Key>
-       <Key ID="STR_QS_Text_315">
-            <Original>Hangar unavailable on this vehicle</Original>
-		</Key>
-       <Key ID="STR_QS_Text_316">
-            <Original>Unable</Original>
-		</Key>
-       <Key ID="STR_QS_Text_317">
-            <Original>%1 stowed for transport</Original>
-		</Key>
-       <Key ID="STR_QS_Text_318">
-            <Original>Target Altitude - %1 m</Original>
-		</Key>
-       <Key ID="STR_QS_Text_319">
-            <Original>Ramp disabled by pilot</Original>
-		</Key>
-       <Key ID="STR_QS_Text_320">
-            <Original>Pulling</Original>
-		</Key>
-       <Key ID="STR_QS_Text_321">
-            <Original>Brakes</Original>
-		</Key>
-       <Key ID="STR_QS_Text_322">
-            <Original>ON</Original>
-		</Key>
-       <Key ID="STR_QS_Text_323">
-            <Original>OFF</Original>
-		</Key>
-       <Key ID="STR_QS_Text_324">
-            <Original>Convoy Mode</Original>
-		</Key>
-       <Key ID="STR_QS_Text_325">
-            <Original>Convoy Separation</Original>
-		</Key>
-       <Key ID="STR_QS_Text_326">
-            <Original>Driver Optional</Original>
-		</Key>
-       <Key ID="STR_QS_Text_327">
-            <Original>Max Length</Original>
-		</Key>
-       <Key ID="STR_QS_Text_328">
-            <Original>Slot available</Original>
-		</Key>
-       <Key ID="STR_QS_Text_329">
-            <Original>Unloaded</Original>
-		</Key>
-       <Key ID="STR_QS_Text_330">
-            <Original>EMPTY</Original>
-		</Key>
-       <Key ID="STR_QS_Text_331">
-            <Original>Cannot hook an active vehicle</Original>
-		</Key>
-       <Key ID="STR_QS_Text_332">
-            <Original>Some men just want to watch the world burn</Original>
-		</Key>
-       <Key ID="STR_QS_Text_333">
-            <Original>Surface too damaged</Original>
-		</Key>
-       <Key ID="STR_QS_Text_334">
-            <Original>You must take network ownership of this vehicle before using the winch</Original>
-		</Key>
-       <Key ID="STR_QS_Text_335">
-            <Original>Failed</Original>
-		</Key>
-       <Key ID="STR_QS_Text_336">
-            <Original>Convoy Mode with %1 (%2). Convoy top speed: %3 km/h</Original>
-		</Key>
-       <Key ID="STR_QS_Text_337">
-            <Original>Convoy Mode already active</Original>
-		</Key>
-       <Key ID="STR_QS_Text_338">
-            <Original>%1 (%2) has entered Convoy Mode. Convoy top speed: %3 km/h</Original>
-		</Key>
-       <Key ID="STR_QS_Text_339">
-            <Original>Exiting Convoy Mode (Overspeed)</Original>
-		</Key>
-       <Key ID="STR_QS_Text_340">
-            <Original>Exiting Convoy Mode</Original>
-		</Key>
-       <Key ID="STR_QS_Text_341">
-            <Original>Convoy Separation: %1 m</Original>
-		</Key>
-       <Key ID="STR_QS_Text_342">
-            <Original>Convoy Mode active</Original>
-		</Key>
-       <Key ID="STR_QS_Text_343">
-            <Original>Tow Mode</Original>
-		</Key>
-       <Key ID="STR_QS_Text_344">
-            <Original>Rope Cut</Original>
-		</Key>
-       <Key ID="STR_QS_Text_345">
-            <Original>Stealth OFF</Original>
-		</Key>
-       <Key ID="STR_QS_Text_346">
-            <Original>Stealth ON</Original>
-		</Key>
-       <Key ID="STR_QS_Text_347">
-            <Original>Bench seat occupied</Original>
-		</Key>
-       <Key ID="STR_QS_Text_348">
-            <Original>%1 does not fit into %2</Original>
-		</Key>
-       <Key ID="STR_QS_Text_349">
-            <Original>No cargo space in current configuration</Original>
-		</Key>
-       <Key ID="STR_QS_Text_350">
-            <Original>Custom1</Original>
-		</Key>
-       <Key ID="STR_QS_Text_351">
-            <Original>Custom2</Original>
-		</Key>
-       <Key ID="STR_QS_Text_352">
-            <Original>Custom3</Original>
-		</Key>
-       <Key ID="STR_QS_Text_353">
-            <Original>Custom4</Original>
-		</Key>
-       <Key ID="STR_QS_Text_354">
-            <Original>Custom5</Original>
-		</Key>
-       <Key ID="STR_QS_Text_355">
-            <Original>Custom6</Original>
-		</Key>
-       <Key ID="STR_QS_Text_356">
-            <Original>Custom7</Original>
-		</Key>
-       <Key ID="STR_QS_Text_357">
-            <Original>Custom8</Original>
-		</Key>
-       <Key ID="STR_QS_Text_358">
-            <Original>Custom9</Original>
-		</Key>
-       <Key ID="STR_QS_Text_359">
-            <Original>Custom10</Original>
-		</Key>
-       <Key ID="STR_QS_Text_360">
-            <Original>Custom11</Original>
-		</Key>
-       <Key ID="STR_QS_Text_361">
-            <Original>Custom12</Original>
-		</Key>
-       <Key ID="STR_QS_Text_362">
-            <Original>Custom13</Original>
-		</Key>
-       <Key ID="STR_QS_Text_363">
-            <Original>Custom14</Original>
-		</Key>
-       <Key ID="STR_QS_Text_364">
-            <Original>Custom15</Original>
-		</Key>
-       <Key ID="STR_QS_Text_365">
-            <Original>Custom16</Original>
-		</Key>
-       <Key ID="STR_QS_Text_366">
-            <Original>Custom17</Original>
-		</Key>
-       <Key ID="STR_QS_Text_367">
-            <Original>Custom18</Original>
-		</Key>
-       <Key ID="STR_QS_Text_368">
-            <Original>Custom19</Original>
-		</Key>
-       <Key ID="STR_QS_Text_369">
-            <Original>Custom20</Original>
-		</Key>
-       <Key ID="STR_QS_Text_370">
-            <Original>Rope mode changed</Original>
-		</Key>
-       <Key ID="STR_QS_Text_371">
-            <Original>Cooldown</Original>
-		</Key>
-       <Key ID="STR_QS_Text_372">
-            <Original>Unload failed</Original>
-		</Key>
-       <Key ID="STR_QS_Text_373">
-            <Original>Overspeed ( 60 km/h )</Original>
-		</Key>
-       <Key ID="STR_QS_Text_374">
-            <Original>Invalid cargo</Original>
-		</Key>
-       <Key ID="STR_QS_Text_375">
-            <Original>Cannot unload over water</Original>
-		</Key>
-       <Key ID="STR_QS_Text_376">
-            <Original>Medic</Original>
-		</Key>
-       <Key ID="STR_QS_Text_377">
-            <Original>Cannot use hatch from outside</Original>
-		</Key>
-       <Key ID="STR_QS_Text_378">
-            <Original>Cannot move this with players nearby</Original>
-		</Key>
-       <Key ID="STR_QS_Text_379">
-            <Original>Cargo locked</Original>
-		</Key>
-       <Key ID="STR_QS_Text_380">
-            <Original>locked</Original>
-		</Key>
-       <Key ID="STR_QS_Text_381">
-            <Original>Loaded in (%1)</Original>
-		</Key>
-       <Key ID="STR_QS_Text_382">
-            <Original>Dismounted (%1)</Original>
-		</Key>
-       <Key ID="STR_QS_Text_383">
-            <Original>Defeated (Passive Stealth)</Original>
-		</Key>
-       <Key ID="STR_QS_Text_384">
-            <Original>Wreck</Original>
-		</Key>
-       <Key ID="STR_QS_Text_385">
-            <Original>Cruise control already active</Original>
-		</Key>
-       <Key ID="STR_QS_Text_386">
-            <Original>Unload disallowed</Original>
-		</Key>
-       <Key ID="STR_QS_Text_387">
-            <Original>Object placement mode</Original>
-		</Key>
-       <Key ID="STR_QS_Text_388">
-            <Original>Logistics administrative blacklist</Original>
-		</Key>
-       <Key ID="STR_QS_Text_389">
-            <Original>Delete ([Ctrl] + [Right Mouse Button])</Original>
-		</Key>
-       <Key ID="STR_QS_Text_390">
-            <Original>Lock driver seat</Original>
-		</Key>
-       <Key ID="STR_QS_Text_391">
-            <Original>Unlock driver seat</Original>
-		</Key>
-       <Key ID="STR_QS_Text_392">
-            <Original>Driver seat occupied</Original>
-		</Key>
-       <Key ID="STR_QS_Text_393">
-            <Original>Driver seat unlocked</Original>
-		</Key>
-       <Key ID="STR_QS_Text_394">
-            <Original>Driver seat locked</Original>
-		</Key>
-       <Key ID="STR_QS_Text_395">
-            <Original>Lock logistics</Original>
-		</Key>
-       <Key ID="STR_QS_Text_396">
-            <Original>Unlock logistics</Original>
-		</Key>	
-       <Key ID="STR_QS_Text_397">
-            <Original>Logistics unlocked</Original>
-		</Key>	
-       <Key ID="STR_QS_Text_398">
-            <Original>Logistics locked</Original>
-		</Key>
-       <Key ID="STR_QS_Text_399">
-            <Original>Delete failed - players too close (30m) for disassembly</Original>
-		</Key>
-       <Key ID="STR_QS_Text_400">
-            <Original>Delete failed - players too close (100m) for map removal</Original>
-		</Key>
-       <Key ID="STR_QS_Text_401">
-            <Original>%1 deleted your %2 at grid %3</Original>
-		</Key>
-       <Key ID="STR_QS_Text_402">
-            <Original>Cannot move this with players nearby</Original>
-		</Key>
-       <Key ID="STR_QS_Text_403">
-            <Original>Cannot build in this area</Original>
-		</Key>
-       <Key ID="STR_QS_Text_404">
-            <Original>Already have a locked vehicle ( %1 )</Original>
-		</Key>
-       <Key ID="STR_QS_Text_405">
-            <Original>Already have a locked cargo ( %1 )</Original>
+		<Key ID="STR_QS_Text_309">
+			<Original>挂架不适用于此类载具</Original>
+			<Japanese>Hangar unavailable for this vehicle type</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_310">
+			<Original>USS 解放者号（驱逐舰）</Original>
+			<Japanese>USS Liberty (Destroyer)</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_311">
+			<Original>USS 自由号（航空母舰）</Original>
+			<Japanese>USS Freedom (Aircraft Carrier)</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_312">
+			<Original>需要一个工具包</Original>
+			<Japanese>No Toolkit</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_313">
+			<Original>割断绳索</Original>
+			<Japanese>Ropes Cut</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_314">
+			<Original>已组装一个迫击炮（轻型）</Original>
+			<Japanese>Already assembled a(n) Mortar (Lite)</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_315">
+			<Original>此挂架在这辆载具上不适用</Original>
+			<Japanese>Hangar unavailable on this vehicle</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_316">
+			<Original>无法装载</Original>
+			<Japanese>Unable</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_317">
+			<Original>将%1装载到运输载具中</Original>
+			<Japanese>%1 stowed for transport</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_318">
+			<Original>目标高度 - %1 米</Original>
+			<Japanese>Target Altitude - %1 m</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_319">
+			<Original>舷梯被飞行员禁用</Original>
+			<Japanese>Ramp disabled by pilot</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_320">
+			<Original>拖拽</Original>
+			<Japanese>Pulling</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_321">
+			<Original>刹车</Original>
+			<Japanese>Brakes</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_322">
+			<Original>开启</Original>
+			<Japanese>ON</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_323">
+			<Original>关闭</Original>
+			<Japanese>OFF</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_324">
+			<Original>车队模式</Original>
+			<Japanese>Convoy Mode</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_325">
+			<Original>车队间隔</Original>
+			<Japanese>Convoy Separation</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_326">
+			<Original>驾驶员选项</Original>
+			<Japanese>Driver Optional</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_327">
+			<Original>最大长度</Original>
+			<Japanese>Max Length</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_328">
+			<Original>插槽可用</Original>
+			<Japanese>Slot available</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_329">
+			<Original>卸载</Original>
+			<Japanese>Unloaded</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_330">
+			<Original>空的</Original>
+			<Japanese>EMPTY</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_331">
+			<Original>不能勾住一个活动中的载具</Original>
+			<Japanese>Cannot hook an active vehicle</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_332">
+			<Original>某人只想看着这个世界熊熊燃烧</Original>
+			<Japanese>Some men just want to watch the world burn</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_333">
+			<Original>表面损坏严重</Original>
+			<Japanese>Surface too damaged</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_334">
+			<Original>在使用绞车之前，您必须取得这辆车的网络所有权</Original>
+			<Japanese>You must take network ownership of this vehicle before using the winch</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_335">
+			<Original>失败</Original>
+			<Japanese>Failed</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_336">
+			<Original>车队模式：%1(%2)  车队最高速度：%3km/h</Original>
+			<Japanese>Convoy Mode with %1 (%2). Convoy top speed: %3 km/h</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_337">
+			<Original>车队模式已经启用</Original>
+			<Japanese>Convoy Mode already active</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_338">
+			<Original>%1 (%2) 已进入车队模式，车队最高速度：%3 km/h</Original>
+			<Japanese>%1 (%2) has entered Convoy Mode. Convoy top speed: %3 km/h</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_339">
+			<Original>退出车队模式（超速）</Original>
+			<Japanese>Exiting Convoy Mode (Overspeed)</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_340">
+			<Original>退出车队模式</Original>
+			<Japanese>Exiting Convoy Mode</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_341">
+			<Original>车队间隔：%1 米</Original>
+			<Japanese>Convoy Separation: %1 m</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_342">
+			<Original>车队模式启用</Original>
+			<Japanese>Convoy Mode active</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_343">
+			<Original>牵引模式</Original>
+			<Japanese>Tow Mode</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_344">
+			<Original>切断绳索</Original>
+			<Japanese>Rope Cut</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_345">
+			<Original>隐形模式关闭</Original>
+			<Japanese>Stealth OFF</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_346">
+			<Original>隐形模式启动</Original>
+			<Japanese>Stealth ON</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_347">
+			<Original>Bench seat occupied</Original>
+			<Japanese>Bench seat occupied</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_348">
+			<Original>%1 does not fit into %2</Original>
+			<Japanese>%1 does not fit into %2</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_349">
+			<Original>No cargo space in current configuration</Original>
+			<Japanese>No cargo space in current configuration</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_350">
+			<Original>自定义1</Original>
+			<Japanese>Custom1</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_351">
+			<Original>自定义2</Original>
+			<Japanese>Custom2</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_352">
+			<Original>自定义3</Original>
+			<Japanese>Custom3</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_353">
+			<Original>自定义4</Original>
+			<Japanese>Custom4</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_354">
+			<Original>自定义5</Original>
+			<Japanese>Custom5</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_355">
+			<Original>自定义6</Original>
+			<Japanese>Custom6</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_356">
+			<Original>自定义7</Original>
+			<Japanese>Custom7</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_357">
+			<Original>自定义8</Original>
+			<Japanese>Custom8</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_358">
+			<Original>自定义9</Original>
+			<Japanese>Custom9</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_359">
+			<Original>自定义10</Original>
+			<Japanese>Custom10</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_360">
+			<Original>自定义11</Original>
+			<Japanese>Custom11</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_361">
+			<Original>自定义12</Original>
+			<Japanese>Custom12</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_362">
+			<Original>自定义13</Original>
+			<Japanese>Custom13</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_363">
+			<Original>自定义14</Original>
+			<Japanese>Custom14</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_364">
+			<Original>自定义15</Original>
+			<Japanese>Custom15</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_365">
+			<Original>自定义16</Original>
+			<Japanese>Custom16</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_366">
+			<Original>自定义17</Original>
+			<Japanese>Custom17</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_367">
+			<Original>自定义18</Original>
+			<Japanese>Custom18</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_368">
+			<Original>自定义19</Original>
+			<Japanese>Custom19</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_369">
+			<Original>自定义20</Original>
+			<Japanese>Custom20</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_370">
+			<Original>更改绳索模式</Original>
+			<Japanese>Rope mode changed</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_371">
+			<Original>冷却</Original>
+			<Japanese>Cooldown</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_372">
+			<Original>卸载失败</Original>
+			<Japanese>Unload failed</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_373">
+			<Original>超速（60千米/小时）</Original>
+			<Japanese>Overspeed ( 60 km/h )</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_374">
+			<Original>无效的库存</Original>
+			<Japanese>Invalid cargo</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_375">
+			<Original>无法在水面上卸载</Original>
+			<Japanese>Cannot unload over water</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_376">
+			<Original>医疗</Original>
+			<Japanese>Medic</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_377">
+			<Original>不能在外面使用舱门</Original>
+			<Japanese>Cannot use hatch from outside</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_378">
+			<Original>不能在有玩家在附近的情况下移动这个物体</Original>
+			<Japanese>Cannot move this with players nearby</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_379">
+			<Original>货仓锁定</Original>
+			<Japanese>Cargo locked</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_380">
+			<Original>锁定</Original>
+			<Japanese>locked</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_381">
+			<Original>装载到（%1）</Original>
+			<Japanese>Loaded in (%1)</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_382">
+			<Original>卸载到（%1）</Original>
+			<Japanese>Dismounted (%1)</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_383">
+			<Original>Defeated (Passive Stealth)</Original>
+			<Japanese>Defeated (Passive Stealth)</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_384">
+			<Original>Wreck</Original>
+			<Japanese>Wreck</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_385">
+			<Original>巡航控制已启用</Original>
+			<Japanese>Cruise control already active</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_386">
+			<Original>不可卸载</Original>
+			<Japanese>Unload disallowed</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_387">
+			<Original>对象放置模式</Original>
+			<Japanese>Object placement mode</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_388">
+			<Original>物流管理黑名单</Original>
+			<Japanese>Logistics administrative blacklist</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_389">
+			<Original>删除（[Ctrl] + [鼠标右键]）</Original>
+			<Japanese>Delete ([Ctrl] + [Right Mouse Button])</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_390">
+			<Original>锁定驾驶位</Original>
+			<Japanese>Lock driver seat</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_391">
+			<Original>解锁驾驶位</Original>
+			<Japanese>Unlock driver seat</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_392">
+			<Original>驾驶位被占用</Original>
+			<Japanese>Driver seat occupied</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_393">
+			<Original>驾驶位解锁</Original>
+			<Japanese>Driver seat unlocked</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_394">
+			<Original>解锁位锁定</Original>
+			<Japanese>Driver seat locked</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_395">
+			<Original>锁定物流</Original>
+			<Japanese>Lock logistics</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_396">
+			<Original>解锁物流</Original>
+			<Japanese>Unlock logistics</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_397">
+			<Original>物流解锁</Original>
+			<Japanese>Logistics unlocked</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_398">
+			<Original>物流锁定</Original>
+			<Japanese>Logistics locked</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_399">
+			<Original>删除失败 - 玩家距离太近 (30m) 无法拆卸</Original>
+			<Japanese>Delete failed - players too close (30m) for disassembly</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_400">
+			<Original>删除失败 - 玩家距离太近 (100m) 无法清理</Original>
+			<Japanese>Delete failed - players too close (100m) for map removal</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_401">
+			<Original>%1 在网格 %3 上删除了你的 %2</Original>
+			<Japanese>%1 deleted your %2 at grid %3</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_402">
+			<Original>Cannot move this with players nearby</Original>
+			<Japanese>Cannot move this with players nearby</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_403">
+			<Original>不能在这个区域建造</Original>
+			<Japanese>Cannot build in this area</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_404">
+			<Original>已经有一辆上锁的车辆 ( %1 )</Original>
+			<Japanese>Already have a locked vehicle ( %1 )</Japanese>
+		</Key>
+		<Key ID="STR_QS_Text_405">
+			<Original>已经有一个上锁的货物 ( %1 )</Original>
+			<Japanese>Already have a locked cargo ( %1 )</Japanese>
 		</Key>
        <Key ID="STR_QS_Text_406">
             <Original>No deployments available</Original>

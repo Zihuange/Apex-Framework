@@ -557,6 +557,13 @@ class AddonsMetaData
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item55
+		{
+			className="A3_Characters_F_Mark";
+			name="Arma 3 Marksmen - Characters and Clothing";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
 	};
 };
 dlcs[]=
@@ -704,7 +711,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={14614.938,18.927422,16801.279};
-				angles[]={0,2.3503842,0};
+				angles[]={0,2.3503826,0};
 			};
 			side="Empty";
 			flags=4;
@@ -8422,7 +8429,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="[""AmmoboxInit"",[this,true]] call BIS_fnc_arsenal;";
+				init="this setVariable ['QS_arsenal_object',TRUE,FALSE];if (isNil {missionNamespace getVariable ""QS_arsenals""}) then { " \n " missionNamespace setVariable ['QS_arsenals',((missionNamespace getVariable 'QS_arsenals') + [this]),FALSE]; " \n "};";
 				disableSimulation=1;
 			};
 			id=453;
@@ -8470,7 +8477,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="[""AmmoboxInit"",[this,true]] call BIS_fnc_arsenal;";
+				init="this setVariable ['QS_arsenal_object',TRUE,FALSE];if (isNil {missionNamespace getVariable ""QS_arsenals""}) then { " \n " missionNamespace setVariable ['QS_arsenals',((missionNamespace getVariable 'QS_arsenals') + [this]),FALSE]; " \n "};";
 				disableSimulation=1;
 			};
 			id=454;
@@ -8550,7 +8557,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="[""AmmoboxInit"",[this,true]] call BIS_fnc_arsenal;";
+				init="this setVariable ['QS_arsenal_object',TRUE,FALSE];if (isNil {missionNamespace getVariable ""QS_arsenals""}) then { " \n " missionNamespace setVariable ['QS_arsenals',((missionNamespace getVariable 'QS_arsenals') + [this]),FALSE]; " \n "};";
 				disableSimulation=1;
 			};
 			id=456;
@@ -8662,7 +8669,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="[""AmmoboxInit"",[this,true]] call BIS_fnc_arsenal;";
+				init="this setVariable ['QS_arsenal_object',TRUE,FALSE];if (isNil {missionNamespace getVariable ""QS_arsenals""}) then { " \n " missionNamespace setVariable ['QS_arsenals',((missionNamespace getVariable 'QS_arsenals') + [this]),FALSE]; " \n "};";
 				disableSimulation=1;
 			};
 			id=459;
@@ -29924,6 +29931,486 @@ class Mission
 			a=0.5;
 			b=0.5;
 			id=366;
+		};
+		class Item357
+		{
+			dataType="Group";
+			side="East";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14691.396,17.911438,16791.518};
+						angles[]={0,2.3561945,-0};
+					};
+					side="East";
+					flags=7;
+					class Attributes
+					{
+						init="0 = [ " \n "  this, " \n "  30, " \n "  false, " \n "  {}, " \n "  -1, " \n "  FALSE " \n " ] call QS_fnc_registerUnit;";
+					};
+					id=1290;
+					type="O_medic_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Male03PER";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=0.98000002;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=1289;
+		};
+		class Item358
+		{
+			dataType="Group";
+			side="East";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14692.774,17.911438,16792.99};
+						angles[]={0,2.3561945,-0};
+					};
+					side="East";
+					flags=7;
+					class Attributes
+					{
+						init="0 = [ " \n "  this, " \n "  30, " \n "  false, " \n "  {}, " \n "  -1, " \n "  FALSE " \n " ] call QS_fnc_registerUnit;";
+					};
+					id=1292;
+					type="O_medic_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Male03PER";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=0.98000002;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=1291;
+		};
+		class Item359
+		{
+			dataType="Group";
+			side="East";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14694.137,17.911438,16794.58};
+						angles[]={0,2.3561945,-0};
+					};
+					side="East";
+					flags=7;
+					class Attributes
+					{
+						init="0 = [ " \n "  this, " \n "  30, " \n "  false, " \n "  {}, " \n "  -1, " \n "  FALSE " \n " ] call QS_fnc_registerUnit;";
+					};
+					id=1294;
+					type="O_medic_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Male03PER";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=0.98000002;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=1293;
+		};
+		class Item360
+		{
+			dataType="Group";
+			side="East";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14696.363,17.911438,16796.555};
+						angles[]={0,2.3561945,-0};
+					};
+					side="East";
+					flags=7;
+					class Attributes
+					{
+						init="0 = [ " \n "  this, " \n "  30, " \n "  false, " \n "  {}, " \n "  -1, " \n "  FALSE " \n " ] call QS_fnc_registerUnit;";
+					};
+					id=1296;
+					type="O_engineer_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Male02PER";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=0.99000001;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=1295;
+		};
+		class Item361
+		{
+			dataType="Group";
+			side="East";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14697.905,17.911438,16798.441};
+						angles[]={0,2.3561945,-0};
+					};
+					side="East";
+					flags=7;
+					class Attributes
+					{
+						init="0 = [ " \n "  this, " \n "  30, " \n "  false, " \n "  {}, " \n "  -1, " \n "  FALSE " \n " ] call QS_fnc_registerUnit;";
+					};
+					id=1298;
+					type="O_engineer_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Male02PER";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=0.99000001;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=1297;
+		};
+		class Item362
+		{
+			dataType="Group";
+			side="East";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14699.339,17.911438,16800.055};
+						angles[]={0,2.3561945,-0};
+					};
+					side="East";
+					flags=7;
+					class Attributes
+					{
+						init="0 = [ " \n "  this, " \n "  30, " \n "  false, " \n "  {}, " \n "  -1, " \n "  FALSE " \n " ] call QS_fnc_registerUnit;";
+					};
+					id=1300;
+					type="O_engineer_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Male02PER";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=0.99000001;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=1299;
+		};
+		class Item363
+		{
+			dataType="Group";
+			side="East";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14701.014,17.911438,16801.639};
+						angles[]={0,2.3561945,-0};
+					};
+					side="East";
+					flags=7;
+					class Attributes
+					{
+						init="0 = [ " \n "  this, " \n "  30, " \n "  false, " \n "  {}, " \n "  -1, " \n "  FALSE " \n " ] call QS_fnc_registerUnit;";
+					};
+					id=1302;
+					type="O_HeavyGunner_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Male03PER";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=0.94999999;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=1301;
+		};
+		class Item364
+		{
+			dataType="Group";
+			side="East";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14702.754,17.911438,16803.35};
+						angles[]={0,2.3561945,-0};
+					};
+					side="East";
+					flags=7;
+					class Attributes
+					{
+						init="0 = [ " \n "  this, " \n "  30, " \n "  false, " \n "  {}, " \n "  -1, " \n "  FALSE " \n " ] call QS_fnc_registerUnit;";
+					};
+					id=1304;
+					type="O_Sharpshooter_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Male03PER";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=1.01;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=1303;
 		};
 	};
 };

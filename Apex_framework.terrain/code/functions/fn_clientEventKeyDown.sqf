@@ -148,6 +148,15 @@ if (_key in (actionKeys 'AutoHover')) then {
 		_c = TRUE;
 	};
 };
+if (
+	_key isEqualTo 59 &&
+	{((lifeState player) in ['HEALTHY','INJURED'])}
+) then {
+	if ((isNull (findDisplay 2035))) then {
+		missionnamespace setvariable ["RscDisplayRead_data",'media\images\whiteboards\ARMA3keyboard_CO.paa'];
+		findDisplay 46 createdisplay "RscDisplayRead";
+	};
+};
 // Admin menu
 if (
 	((actionKeys 'User11') isEqualTo []) &&
