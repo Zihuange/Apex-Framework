@@ -41,7 +41,7 @@ if (_type isEqualTo 1) then {
 		};
 	};
 	private _isArmedAirEnabled = missionNamespace getVariable ['QS_armedAirEnabled',FALSE];
-	if ((random 1) < 0.25) exitWith {
+	if ((random 1) < 0.05) exitWith {
 		['Reward',[localize 'STR_QS_Notif_076']] remoteExec ['QS_fnc_showNotification',-2,FALSE];
 	};
 	_rewardVeh = objNull;

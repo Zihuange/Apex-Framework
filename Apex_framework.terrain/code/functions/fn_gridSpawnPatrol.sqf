@@ -96,7 +96,7 @@ if (_type isEqualTo 0) exitWith {
 			_c;
 		};
 		if ((_usedPositions findIf {(((_pos distance2D _x) < _radius) && ([_pos,_x,25] call (missionNamespace getVariable 'QS_fnc_waterIntersect')))}) isEqualTo -1) then {
-			if (([_pos,300,[WEST,CIVILIAN],_allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
+			if (([_pos,300,[EAST,CIVILIAN],_allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
 				_c = TRUE;
 			};
 		};
@@ -171,7 +171,7 @@ if (_type isEqualTo 1) exitWith {
 			_c;
 		};
 		if ((_usedPositions findIf {(((_pos distance2D _x) < _radius) && ([_pos,_x,25] call (missionNamespace getVariable 'QS_fnc_waterIntersect')))}) isEqualTo -1) then {
-			if (([_pos,300,[WEST,CIVILIAN],_allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
+			if (([_pos,300,[EAST,CIVILIAN],_allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) then {
 				_c = TRUE;
 			};
 		};

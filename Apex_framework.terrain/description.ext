@@ -15,7 +15,7 @@ ____________________________________________/*/
 
 missionProductVersion = "1.3.5";
 missionProductStatus = "Stable";											// "Stable" // "Dev"
-author = "Quiksilver";																															/*/ Visible when loading mission/*/
+author = "Quiksilver & 波西米亚旅游协会";																															/*/ Visible when loading mission/*/
 onLoadName = __EVAL(format ["%1 %2 %3",localize "STR_QS_Utility_011","&",localize "STR_QS_Utility_012"]);			// Invade & Annex			/*/ Visible when loading mission/*/
 onLoadMission = "感谢您游玩我们的任务，如有遇到bug和未汉化文本请联系管理员。若长时间卡在加载任务请退出大厅重进!";
 loadScreen = __EVAL(selectRandom ["media\images\loadScreens\loading_0.jpg","media\images\loadScreens\loading_1.paa","media\images\loadScreens\loading_2.paa","media\images\loadScreens\loading_3.paa","media\images\loadScreens\loading_4.paa","media\images\loadScreens\loading_5.paa","media\images\loadScreens\loading_6.paa","media\images\loadScreens\loading_7.paa","media\images\loadScreens\loading_8.paa","media\images\loadScreens\loading_9.paa"]);

@@ -242,7 +242,7 @@ if (!isNull curatorCamera) exitWith {};
 		_ctrlButtonOK = _display displayCtrl 1;
 		_ctrlButtonOK ctrlRemoveAllEventHandlers 'ButtonClick';
 		_ctrlButtonOK ctrlAddEventHandler ['ButtonClick',{['Confirm'] call (missionNamespace getVariable 'QS_fnc_clientMenuLoadout')}];
-		_display displayRemoveAllEventHandlers 'Unload';
+		//_display displayRemoveAllEventHandlers 'Unload';
 		private _objectPosition = getPosWorld _entity;
 		private _cameraOn = cameraOn;
 		_cancel = {

@@ -461,7 +461,7 @@ if (_case < 30) exitWith {
 				_unitDir = getDir _unit;
 				_unitPos = getPosWorld _unit;
 				/*/_unitType = typeOf _unit;/*/					/*/cant load side enemy agents into vehicle and then get in yourself, and cant switch their side. so we use unarmed friendly-side agent/*/
-				_unitType = 'b_soldier_unarmed_f';
+				_unitType = 'O_soldier_unarmed_f';
 				_unitDamage = damage _unit;
 				_unitUniform = uniform _unit;
 				_unitVest = vest _unit;

@@ -49,7 +49,7 @@ waitUntil {
 };
 _v removeAllEventHandlers 'GetOut';
 private _spawnUnits = alive _v && ((((getPosATL _v) # 2) < 10) || (isTouchingGround _v));
-_side = EAST;
+_side = WEST;
 if (_spawnUnits) then {
 	private _unitTypes = [
 		'o_soldier_f',1,
@@ -85,8 +85,24 @@ if (_spawnUnits) then {
 	};
 	if (_side isEqualTo WEST) then {
 		_unitTypes = [
-			['b_soldier_f',1],
-			['b_t_soldier_f',1]
+			[
+				'b_soldier_f',1,
+				'b_soldier_ar_f',3,
+				'b_soldier_gl_f',3,
+				'b_soldier_lite_f',1,
+				'b_sharpshooter_f',1,
+				'b_soldier_m_f',2,
+				'b_soldier_lat_f',3,
+				'b_medic_f',1
+			],
+			[
+				'b_t_soldier_ar_f',2,
+				'b_t_soldier_gl_f',2,
+				'b_t_soldier_m_f',1,
+				'b_t_soldier_f',2,
+				'b_t_soldier_lat_f',1,
+				'b_t_medic_f',1
+			]
 		] select (worldName in ['Tanoa','Enoch']);
 	};
 	if (_side isEqualTo RESISTANCE) then {

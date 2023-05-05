@@ -16,7 +16,7 @@ ____________________________________________________/*/
 missionNamespace setVariable ['QS_system_devBuild_text',(format ['Apex Framework %1 (%2)',getMissionConfigValue ['missionProductVersion',''],getMissionConfigValue ['missionProductStatus','']]),TRUE];
 private [
 	'_year','_month','_day','_hour','_minute','_n','_QS_currentWeatherData','_spawnPoint_1',
-	'_aoSize','_flagTextureFriendly','_flagTextureEast','_flagTextureWest','_flagTextureResistance','_flagTextureCivilian',
+	'_aoSize','_flagTextureFriendly','_flagTextureWest','_flagTextureEast','_flagTextureResistance','_flagTextureCivilian',
 	'_flagTextureUnknown','_teamspeak','_website','_ah','_markers','_environment','_simple','_worldName','_result'
 ];
 {
@@ -264,14 +264,14 @@ if (_worldName isEqualTo 'Altis') then {_aoSize = 800;};
 if (_worldName isEqualTo 'Tanoa') then {_aoSize = 600;};
 if (_worldName isEqualTo 'Malden') then {_aoSize = 300;};
 if (_worldName isEqualTo 'Enoch') then {_aoSize = 500;};
-_flagTextureEast = 'a3\data_f\flags\flag_csat_co.paa';
-_flagTextureWest = (missionNamespace getVariable ['QS_missionConfig_textures_defaultFlag','a3\data_f\flags\flag_nato_co.paa']);
+_flagTextureWest = 'a3\data_f\flags\flag_nato_co.paa';
+_flagTextureEast = (missionNamespace getVariable ['QS_missionConfig_textures_defaultFlag','a3\data_f\flags\flag_csat_co.paa']);
 _flagTextureResistance = 'a3\data_f\flags\flag_aaf_co.paa';
 _flagTextureCivilian = 'a3\data_f\flags\flag_altis_co.paa';
 _flagTextureUnknown = 'a3\data_f\flags\flag_uno_co.paa';
 if (_worldName in ['Altis','Tanoa','Malden','Enoch']) then {
-	_flagTextureEast = 'a3\data_f\flags\flag_csat_co.paa';
-	_flagTextureWest = (missionNamespace getVariable ['QS_missionConfig_textures_defaultFlag','a3\data_f\flags\flag_nato_co.paa']);
+	_flagTextureWest = 'a3\data_f\flags\flag_nato_co.paa';
+	_flagTextureEast = (missionNamespace getVariable ['QS_missionConfig_textures_defaultFlag','a3\data_f\flags\flag_csat_co.paa']);
 	_flagTextureResistance = 'a3\data_f\flags\flag_aaf_co.paa';
 	_flagTextureCivilian = 'a3\data_f\flags\flag_altis_co.paa';
 	_flagTextureUnknown = 'a3\data_f\flags\flag_uno_co.paa';
@@ -281,7 +281,7 @@ _sidesFlagsTextures = [
 	[_flagTextureEast,_flagTextureWest,'\a3\Data_F_Exp\Flags\flag_SYND_CO.paa','a3\data_f_exp\flags\flag_tanoa_co.paa',_flagTextureUnknown]
 ] select (_worldName isEqualTo 'Tanoa');
 _ah = TRUE;
-_flagTextureFriendly = (missionNamespace getVariable ['QS_missionConfig_textures_defaultFlag','a3\data_f\flags\flag_nato_co.paa']);
+_flagTextureFriendly = (missionNamespace getVariable ['QS_missionConfig_textures_defaultFlag','a3\data_f\flags\flag_csat_co.paa']);
 _teamspeak = '-teamspeak address-    Password:   -teamspeak password-';
 _website = '-website-';
 private _sectorAreaObjects = [];

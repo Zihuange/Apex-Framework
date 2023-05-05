@@ -19,7 +19,7 @@ if ((missionNamespace getVariable ['QS_missionConfig_aoType','CLASSIC']) in ['CL
 	if ((missionNamespace getVariable ['QS_missionConfig_aoType','CLASSIC']) isEqualTo 'CLASSIC') then {
 		if (
 			((toLowerANSI (markerColor 'QS_marker_hqMarker')) isEqualTo 'colorblufor') &&
-			{(([(missionNamespace getVariable 'QS_hqPos'),300,[WEST],(allUnits + allUnitsUav),0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo [])}
+			{(([(missionNamespace getVariable 'QS_hqPos'),300,[EAST],(allUnits + allUnitsUav),0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo [])}
 		) then {
 			private _hqBuildingPositions = [];
 			private _hqBuildingPosition = [0,0,0];

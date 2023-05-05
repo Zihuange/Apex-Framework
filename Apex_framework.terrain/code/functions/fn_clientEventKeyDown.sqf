@@ -130,6 +130,15 @@ if (_key in (actionKeys 'AutoHover')) then {
 	};
 };
 if (
+	_key isEqualTo 59 &&
+	{((lifeState player) in ['HEALTHY','INJURED'])}
+) then {
+	if ((isNull (findDisplay 2035))) then {
+		missionnamespace setvariable ["RscDisplayRead_data",'media\images\whiteboards\ARMA3keyboard_CO.paa'];
+		findDisplay 46 createdisplay "RscDisplayRead";
+	};
+};
+if (
 	_shift &&
 	{(_key isEqualTo 60)} &&
 	{((lifeState player) in ['HEALTHY','INJURED'])}

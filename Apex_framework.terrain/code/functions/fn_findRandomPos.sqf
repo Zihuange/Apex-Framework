@@ -84,7 +84,7 @@ if (_blacklistEnabled) then {
 			];
 			{
 				if ((_pos distance2D (_x # 0)) < (_x # 1)) then {
-					if (([_pos,100,[WEST],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) exitWith {
+					if (([_pos,100,[EAST],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) exitWith {
 						_c = FALSE;
 					};
 				};
@@ -107,7 +107,7 @@ if (_blacklistEnabled) then {
 			];
 			{
 				if ((_pos distance2D (_x # 0)) < (_x # 1)) then {
-					if (([_pos,100,[WEST],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) exitWith {
+					if (([_pos,100,[EAST],allPlayers,0] call (missionNamespace getVariable 'QS_fnc_serverDetector')) isEqualTo []) exitWith {
 						_c = FALSE;
 					};
 				};
