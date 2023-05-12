@@ -14,26 +14,7 @@ Description:
 _____________________________________________________________________/*/
 
 params ['_type','_quantity','_total',['_viperGroup',grpNull]];
-_unitTypes = [
-	[
-		'b_ctrg_soldier_ar_a_f',0.1,
-		'b_recon_jtac_f',0.1,
-		'b_ctrg_sharphooter_f',0.3,
-		'b_ctrg_soldier_ar_a_f',0.3,
-		'b_ctrg_soldier_gl_lat_f',0.3,
-		'b_ctrg_soldier_m_medic_f',0.2,
-		'b_ctrg_soldier_engineer_exp_f',0.6
-	],
-	[
-		'b_ctrg_soldier_tl_tna_f',0.1,
-		'b_ctrg_soldier_jtac_tna_f',0.1,
-		'b_ctrg_soldier_m_tna_f',0.3,
-		'b_ctrg_soldier_exp_tna_f',0.3,
-		'b_ctrg_soldier_lat_tna_f',0.3,
-		'b_ctrg_soldier_medic_tna_f',0.2,
-		'b_ctrg_soldier_tna_f',0.6
-	]
-] select (worldName in ['Tanoa','Enoch']);
+_unitTypes = ['viper_types_2'] call QS_data_listUnits;
 if (_type in ['CLASSIC','SC']) exitWith {
 	private _centerPos = missionNamespace getVariable ['QS_aoPos',[0,0,0]];
 	private _aoSize = missionNamespace getVariable ['QS_aoSize',[0,0,0]];
@@ -61,8 +42,10 @@ if (_type in ['CLASSIC','SC']) exitWith {
 	if (isNull _grp) then {
 		_grp = createGroup [WEST,TRUE];
 	};
+	private _unitType = '';
 	for '_x' from 0 to ((_total - _quantity) - 1) step 1 do {
-		_unit = _grp createUnit [(selectRandomWeighted _unitTypes),_position1,[],0,'NONE'];
+		_unitType = selectRandomWeighted _unitTypes;
+		_unit = _grp createUnit [QS_core_units_map getOrDefault [toLowerANSI _unitType,_unitType],_position1,[],0,'NONE'];
 		_unit = _unit call (missionNamespace getVariable 'QS_fnc_unitSetup');
 		_unit setVehiclePosition [(getPosWorld _unit),[],0,'NONE'];
 		_unit setAnimSpeedCoef 1.15;
@@ -82,18 +65,16 @@ if (_type in ['CLASSIC','SC']) exitWith {
 			{
 				if ((random 1) > 0.5) then {
 					params ['_u','','','_i'];
-					if (local _u) then {
-						if (((vectorMagnitude (velocity _u)) * 3.6) < 0.5) then {
-							if (alive _i) then {
-								if ((side _i) isEqualTo EAST) then {
-									if ((stance _u) in ['CROUCH','STAND']) then {
-										_u playAction (selectRandom ['TactLB','TactRB','TactL','TactR','TactLF','TactRf']);
-										if ((random 1) > 0.5) then {
-											_u playAction (selectRandom ['TactLB','TactRB','TactL','TactR','TactLF','TactRf']);
-										};
-									};
-								};
-							};
+					if (
+						(local _u) &&
+						{(((vectorMagnitude (velocity _u)) * 3.6) < 0.5)} &&
+						{(alive _i)} &&
+						{((side _i) isEqualTo EAST)} &&
+						{((stance _u) in ['CROUCH','STAND'])}
+					) then {
+						_u playAction (selectRandom ['TactLB','TactRB','TactL','TactR','TactLF','TactRf']);
+						if ((random 1) > 0.5) then {
+							_u playAction (selectRandom ['TactLB','TactRB','TactL','TactR','TactLF','TactRf']);
 						};
 					};
 				};

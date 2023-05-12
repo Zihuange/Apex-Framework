@@ -41,12 +41,10 @@ for '_x' from 0 to 1 step 0 do {
 };
 if (diag_tickTime > _timeout) exitWith {};
 _testPosition set [2,0];
-_unitTypes = [
-	['B_CTRG_Soldier_M_medic_F','B_CTRG_soldier_engineer_exp_F'],
-	['B_CTRG_Soldier_tna_F','B_CTRG_Soldier_M_tna_F']
-] select (_worldName isEqualTo 'Tanoa');
+_unitTypes = ['ao_taskkill_enemies_1'] call QS_data_listUnits;
 _enemyGrp = createGroup [WEST,TRUE];
-_enemyUnit = _enemyGrp createUnit [(selectRandom _unitTypes),_testPosition,[],0,'CAN_COLLIDE'];
+private _unitType = selectRandom _unitTypes;
+_enemyUnit = _enemyGrp createUnit [QS_core_units_map getOrDefault [toLowerANSI _unitType,_unitType],_testPosition,[],0,'CAN_COLLIDE'];
 _enemyUnit setVehiclePosition [(getPosWorld _enemyUnit),[],0,'NONE'];
 _enemyUnit allowDamage FALSE;
 _enemyUnit spawn {

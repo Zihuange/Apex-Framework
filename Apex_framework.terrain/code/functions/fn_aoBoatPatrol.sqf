@@ -20,7 +20,8 @@ ____________________________________________________________________________*/
 params ['_pos'];
 private ['_return','_position','_boat','_grp','_count','_boatTypes'];
 _return = [];
-_boatTypes = [['B_Boat_Armed_01_minigun_F'],['B_T_Boat_Armed_01_minigun_F']] select (worldName in ['Tanoa','Lingor3']);
+_boatTypes = ['B_Boat_Armed_01_minigun_F'];
+private _boatType = '';
 _boat = objNull;
 _count = [1,2] select (worldName in ['Tanoa','Lingor3']);
 for '_i' from 0 to 1 step 1 do {
@@ -28,7 +29,8 @@ for '_i' from 0 to 1 step 1 do {
 	if (!(_position in [[worldSize,worldSize,0],[]])) then {
 		if ((getTerrainHeightASL _position) < -5) then {
 			_position set [2,0];
-			_boat = createVehicle [(selectRandom _boatTypes),_position,[],0,'NONE'];
+			_boatType = selectRandom _boatTypes;
+			_boat = createVehicle [QS_core_vehicles_map getOrDefault [toLowerANSI _boatType,_boatType],_position,[],0,'NONE'];
 			_boat setDir (random 360);
 			_boat allowCrewInImmobile [TRUE,TRUE];
 			_boat enableRopeAttach FALSE;

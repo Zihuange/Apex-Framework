@@ -33798,5 +33798,18 @@ class Mission
 				nAttributes=2;
 			};
 		};
+		class Item116
+		{
+			dataType="Marker";
+			position[]={14798.063,17.91,16790.709};
+			name="QS_marker_wreck_service_01";
+			text="   Wreck Recovery";
+			type="b_maint";
+			colorName="ColorWEST";
+			alpha=0.49576423;
+			a=0.5;
+			b=0.5;
+			id=304;
+		};
 	};
 };

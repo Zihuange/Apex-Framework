@@ -394,19 +394,11 @@ _QS_approvedBuildingTypes = [
 	'Land_Shed_14_F',
 	'Land_Shed_10_F'
 ];
-if (worldName isEqualTo 'Altis') then {
-	_QS_urbanEnemyUnits = [
-		'B_Soldier_A_F','B_soldier_AAR_F','B_soldier_AR_F','B_medic_F','B_engineer_F','B_soldier_exp_F','B_Soldier_GL_F',
-		'B_HeavyGunner_F','B_soldier_M_F','B_soldier_AA_F','B_soldier_AT_F','B_soldier_F','B_soldier_LAT_F','B_Sharpshooter_F',
-		'B_Soldier_SL_F','B_Soldier_TL_F'
-	];
-} else {
-	_QS_urbanEnemyUnits = [
-		"I_C_Soldier_Bandit_7_F","I_C_Soldier_Bandit_3_F","I_C_Soldier_Bandit_2_F","I_C_Soldier_Bandit_5_F","I_C_Soldier_Bandit_6_F",
-		"I_C_Soldier_Bandit_1_F","I_C_Soldier_Bandit_8_F","I_C_Soldier_Bandit_4_F","I_C_Soldier_Para_7_F","I_C_Soldier_Para_2_F","I_C_Soldier_Para_3_F",
-		"I_C_Soldier_Para_4_F","I_C_Soldier_Para_6_F","I_C_Soldier_Para_8_F","I_C_Soldier_Para_1_F","I_C_Soldier_Para_5_F",'O_T_Soldier_AA_F','O_T_Soldier_AT_F'
-	];
-};
+_QS_urbanEnemyUnits = [
+	'B_Soldier_A_F','B_soldier_AAR_F','B_soldier_AR_F','B_medic_F','B_engineer_F','B_soldier_exp_F','B_Soldier_GL_F',
+	'B_HeavyGunner_F','B_soldier_M_F','B_soldier_AA_F','B_soldier_AT_F','B_soldier_F','B_soldier_LAT_F','B_Sharpshooter_F',
+	'B_Soldier_SL_F','B_Soldier_TL_F'
+];
 
 /*/ hatchback cars dont do well with createsimpleobject alt syntax/*/
 if (worldName isEqualTo 'Altis') then {
@@ -440,6 +432,7 @@ if (worldName isEqualTo 'Altis') then {
 		"C_Offroad_01_F","C_Offroad_01_F","C_SUV_01_F","C_SUV_01_F","C_SUV_01_F","C_Offroad_02_unarmed_F","C_Offroad_02_unarmed_F","C_Offroad_02_unarmed_F","C_Offroad_02_unarmed_F"
 	];
 };
+_QS_civilianTypes = missionNamespace getVariable ['QS_core_civilians_list',['C_man_1']];
 _QS_medics = [
 	'B_medic_F','B_recon_medic_F','B_G_medic_F','O_medic_F','I_medic_F','O_recon_medic_f','O_G_medic_F','I_G_medic_F','O_soldierU_medic_F'
 ];
@@ -483,18 +476,10 @@ _QS_pow_explosivesVest = {
 	[_QS_unit,_QS_exp1,_QS_exp2,_QS_exp3] remoteExec ['QS_fnc_explosiveVestMP',0,FALSE];
 	_QS_expArr;
 };
-if (worldName isEqualTo 'Tanoa') then {
-	_QS_bluforTruckTypes = ["B_T_MRAP_01_F","B_T_LSV_01_unarmed_F","B_T_Truck_01_transport_F","B_T_Truck_01_covered_F"];
-	_QS_bluforOnlyTruckTypes = ["B_T_MRAP_01_F","B_T_LSV_01_unarmed_F","B_T_Truck_01_transport_F","B_T_Truck_01_covered_F"];
-} else {
-	_QS_bluforTruckTypes = ['B_Truck_01_transport_F','B_Truck_01_covered_F','B_MRAP_01_F'];
-	_QS_bluforOnlyTruckTypes = ['B_Truck_01_transport_F','B_Truck_01_covered_F'];
-};
-_QS_powTypes = ['I_Story_Colonel_F','O_Survivor_F'];
-_QS_badGuyTypes = [
-	["B_Soldier_TL_F","B_Recon_TL_F","B_Officer_F","B_Soldier_SL_F"],
-	["B_CTRG_Soldier_TL_tna_F","B_T_Recon_TL_F","B_T_Officer_F","B_T_Soldier_SL_F"]
-] select (worldName isEqualTo 'Tanoa');
+_QS_bluforTruckTypes = ['B_Truck_01_transport_F','B_Truck_01_covered_F','B_MRAP_01_F'];
+_QS_bluforOnlyTruckTypes = ["B_T_MRAP_01_F","B_T_LSV_01_unarmed_F","B_T_Truck_01_transport_F","B_T_Truck_01_covered_F"];
+_QS_powTypes = ['B_Story_Protagonist_F','b_survivor_F'];
+_QS_badGuyTypes = ["B_Soldier_TL_F","B_Recon_TL_F","B_Officer_F","B_Soldier_SL_F"];
 
 _QS_bluforTruckType = selectRandom _QS_bluforTruckTypes;
 _QS_powType = selectRandom _QS_powTypes;
@@ -548,7 +533,7 @@ if ((count _QS_nearRoadsList) > 0) then {
 	_QS_connectedRoad = _QS_roadConnectedTo # 0;
 	_QS_connectedRoadDir = _QS_nearestRoadPos getDir _QS_connectedRoad;
 	_QS_truckType = selectRandom _QS_bluforTruckTypes;
-	_QS_truck = createVehicle [_QS_truckType,_QS_nearestRoadPos,[],0,'NONE'];
+	_QS_truck = createVehicle [QS_core_vehicles_map getOrDefault [toLowerANSI _QS_truckType,_QS_truckType],_QS_nearestRoadPos,[],0,'NONE'];
 	_QS_truck allowDamage FALSE;
 	0 = _QS_allArray pushBack _QS_truck;
 	_QS_truck setDir (_QS_connectedRoadDir + 5 - (random 10));
@@ -558,7 +543,7 @@ if ((count _QS_nearRoadsList) > 0) then {
 	_QS_truck2_safePos = (_QS_truck modelToWorld [0,12,0]) findEmptyPosition [0,5,_QS_bluforTruckType];
 	if ((count _QS_truck2_safePos) > 0) then {
 		_QS_truck2Type = selectRandom _QS_bluforOnlyTruckTypes;
-		_QS_truck2 = createVehicle [_QS_bluforTruckType,_QS_truck2_safePos,[],0,'NONE'];
+		_QS_truck2 = createVehicle [QS_core_vehicles_map getOrDefault [toLowerANSI _QS_bluforTruckType,_QS_opforTruckType],_QS_truck2_safePos,[],0,'NONE'];
 		_QS_truck2 allowDamage FALSE;
 		0 = _QS_allArray pushBack _QS_truck2;
 		_QS_truck2 setDir _QS_connectedRoadDir;
@@ -569,7 +554,7 @@ if ((count _QS_nearRoadsList) > 0) then {
 	_QS_truck3_safePos = (_QS_truck modelToWorld [0,-12,0]) findEmptyPosition [0,5,_QS_bluforTruckType];
 	if ((count _QS_truck3_safePos) > 0) then {
 		_QS_truck3Type = selectRandom _QS_bluforTruckTypes;
-		_QS_truck3 = createVehicle [_QS_truck3Type,_QS_truck3_safePos,[],0,'NONE'];
+		_QS_truck3 = createVehicle [QS_core_vehicles_map getOrDefault [toLowerANSI _QS_truck3Type,_QS_truck3Type],_QS_truck3_safePos,[],0,'NONE'];
 		_QS_truck3 allowDamage FALSE;
 		0 = _QS_allArray pushBack _QS_truck3;
 		_QS_truck3 setDir (_QS_connectedRoadDir + 5 - (random 10));
@@ -589,7 +574,7 @@ if ((count _QS_nearRoadsList) > 0) then {
 		_QS_connectedRoadDir = _QS_nearestRoadPos getDir _QS_connectedRoad;
 		
 		_QS_truckType = selectRandom _QS_bluforTruckTypes;
-		_QS_truck = createVehicle [_QS_truckType,_QS_nearestRoadPos,[],0,'NONE'];
+		_QS_truck = createVehicle [QS_core_vehicles_map getOrDefault [toLowerANSI _QS_truckType,_QS_truckType],_QS_nearestRoadPos,[],0,'NONE'];
 		_QS_truck allowDamage FALSE;
 		0 = _QS_allArray pushBack _QS_truck;
 		_QS_truck setDir (_QS_connectedRoadDir + 5 - (random 10));
@@ -600,7 +585,7 @@ if ((count _QS_nearRoadsList) > 0) then {
 		_QS_truck2_safePos = (_QS_truck modelToWorld [0,12,0]) findEmptyPosition [0,5,_QS_bluforTruckType];
 		if ((count _QS_truck2_safePos) > 0) then {
 			_QS_truck2Type = selectRandom _QS_bluforOnlyTruckTypes;
-			_QS_truck2 = createVehicle [_QS_bluforTruckType,_QS_truck2_safePos,[],0,'NONE'];
+			_QS_truck2 = createVehicle [QS_core_vehicles_map getOrDefault [toLowerANSI _QS_bluforTruckType,_QS_opforTruckType],_QS_truck2_safePos,[],0,'NONE'];
 			_QS_truck2 allowDamage FALSE;
 			0 = _QS_allArray pushBack _QS_truck2;
 			_QS_truck2 setDir _QS_connectedRoadDir;
@@ -612,7 +597,7 @@ if ((count _QS_nearRoadsList) > 0) then {
 		_QS_truck3_safePos = (_QS_truck modelToWorld [0,-12,0]) findEmptyPosition [0,5,_QS_bluforTruckType];
 		if ((count _QS_truck3_safePos) > 0) then {
 			_QS_truck3Type = selectRandom _QS_bluforTruckTypes;
-			_QS_truck3 = createVehicle [_QS_truck3Type,_QS_truck3_safePos,[],0,'NONE'];
+			_QS_truck3 = createVehicle [QS_core_vehicles_map getOrDefault [toLowerANSI _QS_truck3Type,_QS_truck3Type],_QS_truck3_safePos,[],0,'NONE'];
 			_QS_truck3 allowDamage FALSE;
 			0 = _QS_allArray pushBack _QS_truck3;
 			_QS_truck3 setDir (_QS_connectedRoadDir + 5 - (random 10));
@@ -633,7 +618,7 @@ if ((count _QS_nearRoadsList) > 0) then {
 			_QS_connectedRoadDir = _QS_nearestRoadPos getDir _QS_connectedRoad;
 			
 			_QS_truckType = selectRandom _QS_bluforTruckTypes;
-			_QS_truck = createVehicle [_QS_truckType,_QS_nearestRoadPos,[],0,'NONE'];
+			_QS_truck = createVehicle [QS_core_vehicles_map getOrDefault [toLowerANSI _QS_truckType,_QS_truckType],_QS_nearestRoadPos,[],0,'NONE'];
 			_QS_truck allowDamage FALSE;
 			0 = _QS_allArray pushBack _QS_truck;
 			_QS_truck setDir (_QS_connectedRoadDir + 5 - (random 10));
@@ -643,7 +628,7 @@ if ((count _QS_nearRoadsList) > 0) then {
 			_QS_truck2_safePos = (_QS_truck modelToWorld [0,12,0]) findEmptyPosition [0,5,_QS_bluforTruckType];
 			if ((count _QS_truck2_safePos) > 0) then {
 				_QS_truck2Type = selectRandom _QS_bluforOnlyTruckTypes;
-				_QS_truck2 = createVehicle [_QS_bluforTruckType,_QS_truck2_safePos,[],0,'NONE'];
+				_QS_truck2 = createVehicle [QS_core_vehicles_map getOrDefault [toLowerANSI _QS_bluforTruckType,_QS_opforTruckType],_QS_truck2_safePos,[],0,'NONE'];
 				_QS_truck2 allowDamage FALSE;
 				0 = _QS_allArray pushBack _QS_truck2;
 				_QS_truck2 setDir _QS_connectedRoadDir;
@@ -654,7 +639,7 @@ if ((count _QS_nearRoadsList) > 0) then {
 			_QS_truck3_safePos = (_QS_truck modelToWorld [0,-12,0]) findEmptyPosition [0,5,_QS_bluforTruckType];
 			if ((count _QS_truck3_safePos) > 0) then {
 				_QS_truck3Type = selectRandom _QS_bluforTruckTypes;
-				_QS_truck3 = createVehicle [_QS_truck3Type,_QS_truck3_safePos,[],0,'NONE'];
+				_QS_truck3 = createVehicle [QS_core_vehicles_map getOrDefault [toLowerANSI _QS_truck3Type,_QS_truck3Type],_QS_truck3_safePos,[],0,'NONE'];
 				_QS_truck3 allowDamage FALSE;
 				0 = _QS_allArray pushBack _QS_truck3;
 				_QS_truck3 setDir (_QS_connectedRoadDir + 5 - (random 10));
@@ -673,7 +658,7 @@ if ((count _QS_nearRoadsList) > 0) then {
 				_QS_connectedRoad = _QS_roadConnectedTo # 0;
 				_QS_connectedRoadDir = _QS_nearestRoadPos getDir _QS_connectedRoad;
 				
-				_QS_truck = createVehicle [_QS_bluforTruckType,_QS_nearestRoadPos,[],0,'NONE'];
+				_QS_truck = createVehicle [QS_core_vehicles_map getOrDefault [toLowerANSI _QS_bluforTruckType,_QS_opforTruckType],_QS_nearestRoadPos,[],0,'NONE'];
 				_QS_truck allowDamage FALSE;
 				0 = _QS_allArray pushBack _QS_truck;
 				_QS_truck setDir (_QS_connectedRoadDir + 5 - (random 10));
@@ -681,7 +666,7 @@ if ((count _QS_nearRoadsList) > 0) then {
 				_QS_truck setFuel 0;
 				_QS_truck enableRopeAttach FALSE;
 				
-				_QS_truck2 = createVehicle [_QS_bluforTruckType,((_QS_truck modelToWorld [0,12,0]) findEmptyPosition [0,5,_QS_bluforTruckType]),[],0,'NONE'];
+				_QS_truck2 = createVehicle [QS_core_vehicles_map getOrDefault [toLowerANSI _QS_bluforTruckType,_QS_opforTruckType],((_QS_truck modelToWorld [0,12,0]) findEmptyPosition [0,5,_QS_bluforTruckType]),[],0,'NONE'];
 				_QS_truck2 allowDamage FALSE;
 				0 = _QS_allArray pushBack _QS_truck2;
 				_QS_truck2 setDir _QS_connectedRoadDir;
@@ -689,7 +674,7 @@ if ((count _QS_nearRoadsList) > 0) then {
 				_QS_truck2 setFuel 0;
 				_QS_truck2 enableRopeAttach FALSE;
 
-				_QS_truck3 = createVehicle [_QS_bluforTruckType,((_QS_truck modelToWorld [0,-12,0]) findEmptyPosition [0,5,_QS_bluforTruckType]),[],0,'NONE'];
+				_QS_truck3 = createVehicle [QS_core_vehicles_map getOrDefault [toLowerANSI _QS_bluforTruckType,_QS_opforTruckType],((_QS_truck modelToWorld [0,-12,0]) findEmptyPosition [0,5,_QS_bluforTruckType]),[],0,'NONE'];
 				_QS_truck3 allowDamage FALSE;
 				0 = _QS_allArray pushBack _QS_truck3;
 				_QS_truck3 setDir (_QS_connectedRoadDir + 5 - (random 10));
@@ -773,7 +758,7 @@ _QS_sidemission_pow addEventHandler [
 ];
 missionNamespace setVariable [
 	'QS_sideMission_BadGuy',
-	((createGroup [WEST,TRUE]) createUnit [_QS_badGuyType,[worldSize,worldSize,worldSize],[],0,'NONE']),
+	((createGroup [WEST,TRUE]) createUnit [QS_core_units_map getOrDefault [toLowerANSI _QS_badGuyType,_QS_badGuyType],[worldSize,worldSize,worldSize],[],0,'NONE']),
 	TRUE
 ];
 (missionNamespace getVariable 'QS_sideMission_BadGuy') enableStamina FALSE;
@@ -790,7 +775,7 @@ _dirToPow = (getPosWorld (missionNamespace getVariable 'QS_sideMission_BadGuy'))
 (missionNamespace getVariable 'QS_sideMission_BadGuy') setFormDir _dirToPow;
 removeAllItems (missionNamespace getVariable 'QS_sideMission_BadGuy');
 {
-	if (_x in ['HandGrenade','MiniGrenade']) then {
+	if ((toLowerANSI _x) in QS_core_classNames_grenades) then {
 		(missionNamespace getVariable 'QS_sideMission_BadGuy') removeMagazine _x;
 	};
 } forEach (magazines (missionNamespace getVariable 'QS_sideMission_BadGuy'));
@@ -801,13 +786,13 @@ _QS_index = 0;
 for '_x' from 1 to _QS_inBuildingCount step 1 do {
 	_QS_toSpawn = [];
 	_QS_randomUnitType = selectRandom _QS_urbanEnemyUnits;
-	_QS_randomUnit = _QS_westGarrisonGroup createUnit [_QS_randomUnitType,(_QS_buildingPositions # _QS_index),[],0,'NONE'];
+	_QS_randomUnit = _QS_westGarrisonGroup createUnit [QS_core_units_map getOrDefault [toLowerANSI _QS_randomUnitType,_QS_randomUnitType],(_QS_buildingPositions # _QS_index),[],0,'NONE'];
 	_QS_randomUnit = _QS_randomUnit call (missionNamespace getVariable 'QS_fnc_unitSetup');
 	_QS_randomUnit allowDamage FALSE;
 	_QS_randomUnit setUnitPos 'UP';
 	_QS_randomUnit enableAIFeature ['PATH',FALSE];
 	{
-		if (_x in ['HandGrenade','MiniGrenade']) then {
+		if ((toLowerANSI _x) in QS_core_classNames_grenades) then {
 			_QS_randomUnit removeMagazine _x;
 		};
 	} forEach (magazines _QS_randomUnit);
@@ -828,7 +813,7 @@ for '_x' from 0 to 11 step 1 do {
 _QS_nearHousesGroup = createGroup [WEST,TRUE];
 for '_x' from 0 to 13 step 1 do {
 	_QS_randomUnitType = selectRandom _QS_urbanEnemyUnits;
-	_QS_randomUnit = _QS_nearHousesGroup createUnit [_QS_randomUnitType,[-100,-100,0],[],0,'NONE'];
+	_QS_randomUnit = _QS_nearHousesGroup createUnit [QS_core_units_map getOrDefault [toLowerANSI _QS_randomUnitType,_QS_randomUnitType],[-100,-100,0],[],0,'NONE'];
 	_QS_randomUnit = _QS_randomUnit call (missionNamespace getVariable 'QS_fnc_unitSetup');
 	_QS_randomUnit allowDamage FALSE;
 	0 = _QS_allArray pushBack _QS_randomUnit;
@@ -866,7 +851,7 @@ if ((count _QS_nearRoadsList) > 50) then {
 			for '_x' from 0 to 1 step 1 do {
 				diag_log 'QS spawning road patrol unit';
 				_QS_randomUnitType = selectRandom _QS_urbanEnemyUnits;
-				_QS_randomUnit = _QS_group createUnit [_QS_randomUnitType,_QS_groupSpawnPos,[],5,'NONE'];
+				_QS_randomUnit = _QS_group createUnit [QS_core_units_map getOrDefault [toLowerANSI _QS_randomUnitType,_QS_randomUnitType],_QS_groupSpawnPos,[],5,'NONE'];
 				_QS_randomUnit allowDamage FALSE;
 				_QS_randomUnit = _QS_randomUnit call (missionNamespace getVariable 'QS_fnc_unitSetup');
 				0 = _QS_allArray pushBack _QS_randomUnit;
@@ -918,7 +903,7 @@ if ((count _arrayPositions) > 50) then {
 			for '_x' from 0 to 1 step 1 do {
 				diag_log 'QS spawning building patrol unit';
 				_QS_randomUnitType = selectRandom _QS_urbanEnemyUnits;
-				_QS_randomUnit = _QS_group createUnit [_QS_randomUnitType,_QS_groupSpawnPos,[],5,'NONE'];
+				_QS_randomUnit = _QS_group createUnit [QS_core_units_map getOrDefault [toLowerANSI _QS_randomUnitType,_QS_randomUnitType],_QS_groupSpawnPos,[],5,'NONE'];
 				_QS_randomUnit allowDamage FALSE;
 				_QS_randomUnit = _QS_randomUnit call (missionNamespace getVariable 'QS_fnc_unitSetup');
 				0 = _QS_allArray pushBack _QS_randomUnit;

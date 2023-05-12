@@ -164,6 +164,7 @@ class CfgRemoteExec {
 		mode = 2;
 		class lock {};			// required for zeus
 		class setFuel {};		// required for zeus
+		class lockturret {};		// required for "Global Mobilization" DLC
 	};
 	class Functions {
 		mode = 2;
