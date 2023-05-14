@@ -408,7 +408,7 @@ if ((call (missionNamespace getVariable 'QS_fnc_clientGetSupporterLevel')) > 0) 
 	['QS_client_shots_sniper',0,FALSE],
 	['QS_client_hits_sniper',0,FALSE],
 	['QS_client_lastCombatDamageTime',-1,FALSE],
-	['QS_unit_side',WEST,TRUE]
+	['QS_unit_side',EAST,TRUE]
 ];
 // Remove BIS Zeus stuff
 if (!isNil {player getVariable 'BIS_fnc_addCuratorPlayer_handler'}) then {

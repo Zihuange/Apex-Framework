@@ -31,26 +31,35 @@ if (_type isEqualTo 'o_heli_insert_1') exitWith {
 	]
 };
 if (_type isEqualTo 'b_heli_insert_1') exitWith {
-	['b_soldier_f',1]
+	[
+		'b_soldier_f',1,
+		'b_soldier_ar_f',3,
+		'b_soldier_gl_f',3,
+		'b_soldier_lite_f',1,
+		'b_sharpshooter_f',1,
+		'b_soldier_m_f',2,
+		'b_soldier_lat_f',3,
+		'b_medic_f',1
+	]
 };
 if (_type isEqualTo 'i_heli_insert_1') exitWith {
 	['i_soldier_f',1]
 };
 if (_type isEqualTo 'ambient_hostility_1') exitWith {
 	[
-		'O_G_Soldier_A_F',1,
-		'O_G_Soldier_AR_F',3,
-		'O_G_medic_F',1,
-		'O_G_engineer_F',1,
-		'O_G_Soldier_exp_F',1,
-		'O_G_Soldier_GL_F',1,
-		'O_G_Soldier_M_F',1,
-		'O_G_Soldier_F',1,
-		'O_G_Soldier_LAT_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
-		'O_G_Soldier_LAT2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
-		'O_G_Soldier_lite_F',1,
-		'O_G_Sharpshooter_F',3,
-		'O_G_Soldier_TL_F',1,
+		'B_G_Soldier_A_F',1,
+		'B_G_Soldier_AR_F',3,
+		'B_G_medic_F',1,
+		'B_G_engineer_F',1,
+		'B_G_Soldier_exp_F',1,
+		'B_G_Soldier_GL_F',1,
+		'B_G_Soldier_M_F',1,
+		'B_G_Soldier_F',1,
+		'B_G_Soldier_LAT_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
+		'B_G_Soldier_LAT2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
+		'B_G_Soldier_lite_F',1,
+		'B_G_Sharpshooter_F',3,
+		'B_G_Soldier_TL_F',1,
 		'I_C_Soldier_Bandit_7_F',1,
 		'I_C_Soldier_Bandit_3_F',3,
 		'I_C_Soldier_Bandit_2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
@@ -71,85 +80,87 @@ if (_type isEqualTo 'ambient_hostility_1') exitWith {
 };
 if (_type isEqualTo 'defend_grptypes_1') exitWith {
 	[
-		'OIA_InfTeam_AA',0.25,
-		'OIA_InfTeam_AT',0.084,
-		'OIA_InfSquad',0.25,
-		'OIA_InfSquad_Weapons',0.2,
-		'OIA_InfAssault',0.25,
-		'OIA_InfSquad_L',0.333
+		'BUS_InfTeam_AA',0.25,
+		'BUS_InfTeam_AT',0.084,
+		'BUS_InfTeam_LAT',0.1,
+		'BUS_InfSquad',0.25,
+		'BUS_InfSquad_Weapons',0.2,
+		'BUS_InfAssault',0.25,
+		'BUS_InfSquad_L',0.333
 	]
 };
 if (_type isEqualTo 'defend_grptypes_2') exitWith {
 	// STRATIS terrain
 	[
-		'OIA_InfTeam_AA',0.25,
-		'OIA_InfTeam_AT',0.084,
-		'OIA_InfSquad',0.25,
-		'OIA_InfSquad_Weapons',0.2,
-		'OIA_InfAssault',0.25,
-		'OIA_InfSquad_L',0.333
+		'BUS_InfTeam_AA',0.25,
+		'BUS_InfTeam_AT',0.084,
+		'BUS_InfSquad',0.25,
+		'BUS_InfSquad_Weapons',0.2,
+		'BUS_InfAssault',0.25,
+		'BUS_InfSquad_L',0.333
 	]
 };
 if (_type isEqualTo 'defend_unittypes_1') exitWith {
 	[
-		'O_Soldier_SL_F','O_Soldier_F','O_Soldier_LAT_F','O_Soldier_M_F','O_Soldier_AR_F',
-		'O_Soldier_A_F','O_medic_F'
+		'B_Soldier_SL_F','B_Soldier_F','B_Soldier_LAT_F','B_Soldier_M_F','B_Soldier_AR_F',
+		'B_Soldier_A_F','B_medic_F'
 	]
 };
 if (_type isEqualTo 'defend_paratypes_1') exitWith {
-	['o_soldier_pg_f']
+	['B_soldier_PG_F']
 };
 if (_type isEqualTo 'classic_enemyinftypes_1') exitWith {
 	// Main groups list to spawn for classic AO
 	[
-		'OIA_InfSquad',4,
-		'OIA_InfTeam',2,
-		'OIA_InfAssault',2,
-		'OIA_InfTeam_AA',3,
-		'OIA_InfTeam_AT',0.5,
-		'OIA_InfTeam_HAT',1,
-		'OI_reconPatrol',1,
-		'OIA_ReconSquad',1,
-		'OIA_InfTeam_LAT',2,
-		'OIA_ARTeam',2
+		'BUS_InfSentry',1,
+		'BUS_InfSquad',4,
+		'BUS_InfTeam',2,
+		'BUS_InfAssault',2,
+		'BUS_InfTeam_AA',3,
+		'BUS_InfTeam_AT',0.5,
+		'BUS_InfTeam_LAT',1,
+		'BUS_ReconPatrol',1,
+		'BUS_ReconSquad',1,
+		'BUS_InfTeam_LAT',2,
+		'BUS_ARTeam',2
 	]
 };
 if (_type isEqualTo 'classic_enemyinftypes_stratis_1') exitWith {
 	[
-		'OIA_InfSquad',5,
-		'OIA_InfAssault',1,
-		'OIA_InfTeam_AA',1,
-		'OI_reconPatrol',0.5,
-		'OIA_InfTeam_LAT',0.25,
-		'OIA_ARTeam',4
+		'BUS_InfSquad',5,
+		'BUS_InfAssault',1,
+		'BUS_InfTeam_AA',1,
+		'BUS_ReconPatrol',0.5,
+		'BUS_InfTeam_LAT',0.25,
+		'BUS_ARTeam',4
 	]
 };
 if (_type isEqualTo 'classic_enemygarrisontypes_1') exitWith {
 	// Main ao garrisoned group types (at HQ, etc)
 	[
-		'OIA_ARTeam',2,
-		'OIA_InfTeam_AT',1,
-		'OIA_InfTeam_LAT',1
+		'BUS_ARTeam',2,
+		'BUS_InfTeam_AT',1,
+		'BUS_InfTeam_LAT',1
 	]
 };
 if (_type isEqualTo 'classic_enemygarrisontypes_stratis_1') exitWith {
 	[
-		'OIA_ARTeam',2,
-		//'OIA_InfTeam_AT',1,
-		'OIA_InfTeam_LAT',1
+		'BUS_ARTeam',2,
+		//'BUS_InfTeam_AT',1,
+		'BUS_InfTeam_LAT',1
 	]
 };
 if (_type isEqualTo 'classic_enemyofficertype_1') exitWith {
-	'O_officer_F'
+	'B_officer_F'
 };
 if (_type isEqualTo 'classic_garrisonindarray_1') exitWith {
 	// Garrisoned enemies on most terrains
 	[
-		'o_soldieru_a_f','o_soldieru_aar_f','o_soldieru_ar_f','o_soldieru_medic_f','o_engineer_u_f','o_soldieru_exp_f','o_soldieru_gl_f',
-		'o_urban_heavygunner_f','o_soldieru_m_f','o_soldieru_at_f','o_soldieru_f','o_soldieru_lat_f','o_urban_sharpshooter_f',
-		'o_soldieru_sl_f','o_soldieru_tl_f','o_g_engineer_f','o_g_medic_f','o_g_soldier_a_f','o_g_soldier_ar_f','o_g_soldier_exp_f','o_g_soldier_f','o_g_soldier_f',
-		'o_g_soldier_gl_f','o_g_soldier_lat_f','o_g_soldier_lite_f','o_g_soldier_m_f','o_g_soldier_sl_f','o_g_soldier_tl_f',
-		'o_g_sharpshooter_f','o_g_soldier_ar_f'
+		"b_soldier_a_f","b_soldier_aar_f","b_soldier_ar_f","b_medic_f","b_engineer_f","b_soldier_exp_f","b_soldier_gl_f",
+		"b_heavygunner_f","b_soldier_m_f","b_soldier_at_f","b_soldier_f","b_soldier_lat_f","b_sharpshooter_f",
+		"b_soldier_sl_f","b_soldier_tl_f","b_g_engineer_f","b_g_medic_f","b_g_soldier_a_f","b_g_soldier_ar_f","b_g_soldier_exp_f","b_g_soldier_f","b_g_soldier_f",
+		"b_g_soldier_gl_f","b_g_soldier_lat_f","b_g_soldier_lite_f","b_g_soldier_m_f","b_g_soldier_sl_f","b_g_soldier_tl_f",
+		"b_g_sharpshooter_f","b_g_soldier_ar_f"
 	]
 };
 if (_type isEqualTo 'classic_garrisonindarray_2') exitWith {
@@ -163,31 +174,32 @@ if (_type isEqualTo 'classic_garrisonindarray_2') exitWith {
 if (_type isEqualTo 'classic_garrisonindarray_3') exitWith {
 	// HQ guards
 	[
-		'o_soldieru_ar_f','o_soldieru_medic_f','o_engineer_u_f','o_soldieru_exp_f','o_soldieru_gl_f',
-		'o_urban_heavygunner_f','o_soldieru_m_f','o_soldieru_aa_f','o_soldieru_at_f','o_soldieru_lat_f','o_urban_sharpshooter_f'
+		'b_soldier_ar_f','b_medic_f','b_engineer_f','b_soldier_exp_f','b_soldier_gl_f',
+		'b_heavygunner_f','b_soldier_m_f','b_soldier_aa_f','b_soldier_at_f','b_soldier_lat_f','b_sharpshooter_f'
 	]
 };
 if (_type isEqualTo 'classic_reinforcearray_1') exitWith {
 	[
-		'OIA_InfSquad',2,
-		'OIA_InfTeam',2,
-		'OI_reconPatrol',1,
-		'OIA_InfAssault',2,
-		'OG_InfSquad',1,
-		'OG_InfAssaultTeam',1,
-		'OIA_ARTeam',2,
-		'OIA_InfTeam_HAT',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 2),
-		'OIA_InfTeam_AA',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_air',0]) min 3),
-		'OIA_InfTeam_AT',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 2)
+		'BUS_InfSquad',2,
+		'BUS_InfTeam',2,
+		'BUS_reconPatrol',1,
+		'BUS_InfAssault',2,
+		'IRG_InfSquad',1,
+		'IR_InfAssaultTeam',1,
+		'BUS_ARTeam',2,
+		'BUS_InfTeam_LAT',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 2),
+		'BUS_InfTeam_AA',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_air',0]) min 3),
+		'BUS_InfTeam_AT',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 2)
 	]
 };
 if (_type isEqualTo 'classic_reinforcearray_stratis') exitWith {
 	[
-		'OIA_InfSquad',5,
-		'OIA_InfAssault',2,
-		'OIA_InfTeam_AA',(0.5 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_air',0]) min 2),
-		'OI_reconPatrol',0.5,
-		'OIA_ARTeam',4
+		'BUS_InfSquad',5,
+		'BUS_InfAssault',2,
+		'BUS_InfTeam_AA',(0.5 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_air',0]) min 2),
+		'BUS_reconPatrol',0.5,
+		//'BUS_InfTeam_LAT',(0.25 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 1),
+		'BUS_ARTeam',4
 	]
 };
 if (_type isEqualTo 'forest_camp_1') exitWith {
@@ -236,18 +248,18 @@ if (_type isEqualTo 'ao_idap_enemies_1') exitWith {
 	]
 };
 if (_type isEqualto 'ao_taskkill_enemies_1') exitWith {
-	['O_V_Soldier_M_hex_F','O_V_Soldier_hex_F']
+	['B_CTRG_Soldier_M_medic_F','B_CTRG_soldier_engineer_exp_F']
 };
 if (_type isEqualTo 'ao_taskmedevac_units_1') exitwith {
-	['B_recon_TL_F','B_recon_M_F','B_recon_medic_F','B_recon_F','B_recon_LAT_F','B_recon_JTAC_F','B_recon_exp_F','B_Recon_Sharpshooter_F']
+	['O_recon_TL_F','O_recon_M_F','O_recon_medic_F','O_recon_F','O_recon_LAT_F','O_recon_JTAC_F','O_recon_exp_F','O_Sharpshooter_F']
 };
 if (_type isEqualTo 'urbanspawn_units_1') exitWith {
 	[
-		'o_soldieru_a_f','o_soldieru_aar_f','o_soldieru_ar_f','o_soldieru_medic_f','o_engineer_u_f','o_soldieru_exp_f','o_soldieru_gl_f',
-		'o_urban_heavygunner_f','o_soldieru_m_f','o_soldieru_at_f','o_soldieru_f','o_soldieru_lat_f','o_urban_sharpshooter_f',
-		'o_soldieru_sl_f','o_soldieru_tl_f','o_g_engineer_f','o_g_medic_f','o_g_soldier_a_f','o_g_soldier_ar_f','o_g_soldier_exp_f','o_g_soldier_f','o_g_soldier_f',
-		'o_g_soldier_gl_f','o_g_soldier_lat_f','o_g_soldier_lite_f','o_g_soldier_m_f','o_g_soldier_sl_f','o_g_soldier_tl_f',
-		'o_g_sharpshooter_f','o_g_soldier_ar_f'
+		"b_soldier_a_f","b_soldier_aar_f","b_soldier_ar_f","b_medic_f","b_engineer_f","b_soldier_exp_f","b_soldier_gl_f",
+		"b_heavygunner_f","b_soldier_m_f","b_soldier_at_f","b_soldier_f","b_soldier_lat_f","b_sharpshooter_f",
+		"b_soldier_sl_f","b_soldier_tl_f","b_g_engineer_f","b_g_medic_f","b_g_soldier_a_f","b_g_soldier_ar_f","b_g_soldier_exp_f","b_g_soldier_f","b_g_soldier_f",
+		"b_g_soldier_gl_f","b_g_soldier_lat_f","b_g_soldier_lite_f","b_g_soldier_m_f","b_g_soldier_sl_f","b_g_soldier_tl_f",
+		"b_g_sharpshooter_f","b_g_soldier_ar_f"
 	]
 };
 if (_type isEqualTo 'urbanspawn_nodes_1') exitWith {
@@ -259,37 +271,37 @@ if (_type isEqualTo 'urbanspawn_nodes_1') exitWith {
 };
 if (_type isEqualTo 'urbanspawn_groups_1') exitWith {
 	[
-		'OIA_InfSquad',2,
-		'OIA_InfTeam',2,
-		'OI_reconPatrol',1,
-		'OIA_InfAssault',2,
-		'OG_InfSquad',1,
-		'OG_InfAssaultTeam',1,
-		'OIA_ARTeam',2,
-		'OIA_InfTeam_HAT',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 2),
-		'OIA_InfTeam_AA',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_air',0]) min 3),
-		'OIA_InfTeam_AT',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 2)
+		'BUS_InfSquad',2,
+		'BUS_InfTeam',2,
+		'BUS_reconPatrol',1,
+		'BUS_InfAssault',2,
+		'IRG_InfSquad',1,
+		'IRG_InfAssaultTeam',1,
+		'BUS_ARTeam',2,
+		'BUS_InfTeam_HAT',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 2),
+		'BUS_InfTeam_AA',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_air',0]) min 3),
+		'BUS_InfTeam_AT',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 2)
 	]
 };
 if (_type isEqualTo 'urbanspawn_groups_stratis_1') exitWith {
 	[
-		'OIA_InfSquad',2,
-		'OIA_InfTeam',2,
-		'OI_reconPatrol',1,
-		'OIA_InfAssault',2,
-		'OG_InfSquad',1,
-		'OG_InfAssaultTeam',1,
-		'OIA_ARTeam',2,
-		//'OIA_InfTeam_HAT',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 2),
-		'OIA_InfTeam_AA',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_air',0]) min 3)//,
-		//'OIA_InfTeam_AT',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 2)
+		'BUS_InfSquad',2,
+		'BUS_InfTeam',2,
+		'BUS_reconPatrol',1,
+		'BUS_InfAssault',2,
+		'IRG_InfSquad',1,
+		'IRG_InfAssaultTeam',1,
+		'BUS_ARTeam',2,
+		//'BUS_InfTeam_HAT',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 2),
+		'BUS_InfTeam_AA',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_air',0]) min 3)//,
+		//'BUS_InfTeam_AT',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 2)
 	]
 };
 if (_type isEqualTo 'urbanspawn_groups_2') exitWith {
 	[
-		'OIA_InfSquad',4,
-		'OIA_ARTeam',2,
-		'OIA_InfTeam_AA',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_air',0]) min 3)
+		'BUS_InfSquad',4,
+		'BUS_ARTeam',2,
+		'BUS_InfTeam_AA',(1 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_air',0]) min 3)
 	]
 };
 if (_type isEqualTo 'civilians_fugitives') exitWith {
@@ -307,14 +319,14 @@ if (_type isEqualTo 'vr_entities_1') exitWith {
 	['c_soldier_vr_f','b_soldier_vr_f','o_soldier_vr_f','i_soldier_vr_f','b_protagonist_vr_f','o_protagonist_vr_f','i_protagonist_vr_f']
 };
 if (_type isEqualTo 'enemy_sniper_types_1') exitWith {
-	['o_sniper_f','o_ghillie_ard_f','o_ghillie_lsh_f','o_ghillie_sard_f','o_t_sniper_f','o_t_ghillie_tna_f']
+	['b_sniper_f','b_ghillie_ard_f','b_ghillie_lsh_f','b_ghillie_sard_f','b_t_sniper_f','b_t_ghillie_tna_f']
 };
 if (_type isEqualTo 'fob_assault_1') exitWith {
 	[
-		'OG_ReconSentry',2,
-		'OG_InfAssaultTeam',2,
-		'OG_SniperTeam_M',2,
-		'OG_InfTeam',2
+		'IRG_ReconSentry',2,
+		'IRG_InfAssaultTeam',2,
+		'IRG_SniperTeam_M',2,
+		'IRG_InfTeam',2
 	]
 };
 if (_type isEqualTo 'hidden_enemy_types_1') exitWith {
@@ -338,18 +350,18 @@ if (_type isEqualTo 'hidden_enemy_types_1') exitWith {
 };
 if (_type isEqualTo 'grid_units_1') exitWith {
 	[
-		'O_G_Soldier_A_F',0.2,
-		'O_G_Soldier_AR_F',0.4,
-		'O_G_medic_F',0.2,
-		'O_G_engineer_F',0.2,
-		'O_G_Soldier_exp_F',0.2,
-		'O_G_Soldier_GL_F',0.2,
-		'O_G_Soldier_M_F',0.2,
-		'O_G_Soldier_F',0.2,
-		'O_G_Soldier_LAT_F',0.2,
-		'O_G_Soldier_lite_F',0.2,
-		'O_G_Sharpshooter_F',0.2,
-		'O_G_Soldier_TL_F',0.2,
+		'B_G_Soldier_A_F',0.2,
+		'B_G_Soldier_AR_F',0.4,
+		'B_G_medic_F',0.2,
+		'B_G_engineer_F',0.2,
+		'B_G_Soldier_exp_F',0.2,
+		'B_G_Soldier_GL_F',0.2,
+		'B_G_Soldier_M_F',0.2,
+		'B_G_Soldier_F',0.2,
+		'B_G_Soldier_LAT_F',0.2,
+		'B_G_Soldier_lite_F',0.2,
+		'B_G_Sharpshooter_F',0.2,
+		'B_G_Soldier_TL_F',0.2,
 		'I_C_Soldier_Bandit_7_F',0.2,
 		'I_C_Soldier_Bandit_3_F',0.4,
 		'I_C_Soldier_Bandit_2_F',0.2,
@@ -370,19 +382,19 @@ if (_type isEqualTo 'grid_units_1') exitWith {
 };
 if (_type isEqualTo 'grid_units_2') exitWith {
 	[
-		'O_G_Soldier_A_F',1,
-		'O_G_Soldier_AR_F',4,
-		'O_G_medic_F',1,
-		'O_G_engineer_F',1,
-		'O_G_Soldier_exp_F',1,
-		'O_G_Soldier_GL_F',1,
-		'O_G_Soldier_M_F',1,
-		'O_G_Soldier_F',1,
-		'O_G_Soldier_LAT_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
-		'O_G_Soldier_LAT2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
-		'O_G_Soldier_lite_F',1,
-		'O_G_Sharpshooter_F',3,
-		'O_G_Soldier_TL_F',1,
+		'B_G_Soldier_A_F',1,
+		'B_G_Soldier_AR_F',4,
+		'B_G_medic_F',1,
+		'B_G_engineer_F',1,
+		'B_G_Soldier_exp_F',1,
+		'B_G_Soldier_GL_F',1,
+		'B_G_Soldier_M_F',1,
+		'B_G_Soldier_F',1,
+		'B_G_Soldier_LAT_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
+		'B_G_Soldier_LAT2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
+		'B_G_Soldier_lite_F',1,
+		'B_G_Sharpshooter_F',3,
+		'B_G_Soldier_TL_F',1,
 		'I_C_Soldier_Bandit_7_F',1,
 		'I_C_Soldier_Bandit_3_F',3,
 		'I_C_Soldier_Bandit_2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
@@ -403,19 +415,19 @@ if (_type isEqualTo 'grid_units_2') exitWith {
 };
 if (_type isEqualTo 'grid_units_3') exitWith {
 	[
-		'O_G_Soldier_A_F',1,
-		'O_G_Soldier_AR_F',3,
-		'O_G_medic_F',1,
-		'O_G_engineer_F',1,
-		'O_G_Soldier_exp_F',1,
-		'O_G_Soldier_GL_F',1,
-		'O_G_Soldier_M_F',1,
-		'O_G_Soldier_F',1,
-		'O_G_Soldier_LAT_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
-		'O_G_Soldier_LAT2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
-		'O_G_Soldier_lite_F',1,
-		'O_G_Sharpshooter_F',3,
-		'O_G_Soldier_TL_F',1,
+		'B_G_Soldier_A_F',1,
+		'B_G_Soldier_AR_F',3,
+		'B_G_medic_F',1,
+		'B_G_engineer_F',1,
+		'B_G_Soldier_exp_F',1,
+		'B_G_Soldier_GL_F',1,
+		'B_G_Soldier_M_F',1,
+		'B_G_Soldier_F',1,
+		'B_G_Soldier_LAT_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
+		'B_G_Soldier_LAT2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
+		'B_G_Soldier_lite_F',1,
+		'B_G_Sharpshooter_F',3,
+		'B_G_Soldier_TL_F',1,
 		'I_C_Soldier_Bandit_7_F',1,
 		'I_C_Soldier_Bandit_3_F',3,
 		'I_C_Soldier_Bandit_2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
@@ -464,23 +476,23 @@ if (_type isEqualTo 'georgetown_civilians_2') exitWith {
 	]
 };
 if (_type isEqualTo 'georgetown_aa_types') exitWith {
-	['O_soldier_AA_F']
+	['B_soldier_AA_F']
 };
 if (_type isEqualTo 'georgetown_sniper_types') exitWith {
-	['O_G_Sharpshooter_F','O_Recon_F','O_Recon_M_F','O_Recon_LAT_F']
+	['B_Sharpshooter_F','B_recon_F','B_recon_M_F','B_recon_LAT_F']
 };
 if (_type isEqualTo 'georgetown_at_types') exitWith {
-	['O_Soldier_LAT_F']
+	['B_soldier_LAT_F']
 };
 if (_type isEqualTo 'viper_types_2') exitWith {
 	[
-		'o_v_soldier_tl_hex_f',0.1,
-		'o_v_soldier_jtac_hex_f',0.1,
-		'o_v_soldier_m_hex_f',0.3,
-		'o_v_soldier_exp_hex_f',0.3,
-		'o_v_soldier_lat_hex_f',0.3,
-		'o_v_soldier_medic_hex_f',0.2,
-		'o_v_soldier_hex_f',0.6
+		'b_ctrg_soldier_ar_a_f',0.1,
+		'b_recon_jtac_f',0.1,
+		'b_ctrg_sharphooter_f',0.3,
+		'b_ctrg_soldier_ar_a_f',0.3,
+		'b_ctrg_soldier_gl_lat_f',0.3,
+		'b_ctrg_soldier_m_medic_f',0.2,
+		'b_ctrg_soldier_engineer_exp_f',0.6
 	]
 };
 _return;

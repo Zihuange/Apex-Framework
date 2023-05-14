@@ -25,7 +25,7 @@ if (worldName isEqualTo 'Tanoa') then {
 if (worldName isEqualTo 'Enoch') then {
 	_boxArray = (['hq_cache_list_3'] call QS_data_listVehicles) call (missionNamespace getVariable 'QS_fnc_arrayShuffle');
 };
-private _undraggableHQBoxes = ['hq_cache_draggable_1'] call QS_data_listVehicles;
+private _undraggableHQBoxes = ['hq_cache_undraggable_1'] call QS_data_listVehicles;
 for '_x' from 0 to (2 + (round(random 2))) do {
 	_boxSelect = selectRandom _boxArray;
 	_spawnPos = _pos findEmptyPosition [0,40,_boxSelect];

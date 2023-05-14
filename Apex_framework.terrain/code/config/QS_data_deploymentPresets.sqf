@@ -23,7 +23,7 @@ ________________________________________/*/
 		'QS_marker_base_marker',
 		300,
 		[],
-		[WEST],
+		[EAST],
 		{
 			QS_player setPosASL (AGLToASL (markerPos ['QS_marker_base_marker',TRUE]));
 		},
@@ -46,7 +46,7 @@ ________________________________________/*/
 		'QS_marker_destroyer_1',
 		300,
 		[],
-		[WEST],
+		[EAST],
 		{
 			['RESPAWN_PLAYER',QS_player] spawn QS_fnc_destroyer
 		},
@@ -66,14 +66,14 @@ ________________________________________/*/
 		{TRUE},
 		{'Zeus'},
 		'MARKER',
-		'respawn_west',
+		'respawn_east',
 		300,
 		[],
-		[WEST],
-		{QS_player setPosASL (AGLToASL (markerPos ['respawn_west',TRUE]));},
+		[EAST],
+		{QS_player setPosASL (AGLToASL (markerPos ['respawn_east',TRUE]));},
 		{TRUE},
 		{
-			((findDisplay 12) displayCtrl 51) ctrlMapAnimAdd [0.25,0.8,markerPos 'respawn_west'];
+			((findDisplay 12) displayCtrl 51) ctrlMapAnimAdd [0.25,0.8,markerPos 'respawn_east'];
 			ctrlMapAnimCommit ((findDisplay 12) displayCtrl 51);
 			0 spawn {uiSleep 0.5;ctrlMapAnimClear ((findDisplay 12) displayCtrl 51);};
 		},

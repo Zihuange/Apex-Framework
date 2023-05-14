@@ -20,12 +20,8 @@ private ["_infTypes","_infType","_vehTypes","_vehType","_pos","_flatPos","_rando
 _pos = _this # 0;
 _enemiesArray = [];
 _x = 0;
-_infTypes = ["BUS_InfTeam","BUS_InfTeam_AT","BUS_InfTeam_AA","BUS_reconPatrol",'IRG_InfAssault'];
-if (worldName isEqualTo 'Tanoa') then {
-	_vehTypes = ["B_T_MRAP_01_gmg_F","B_T_MRAP_01_hmg_F","B_T_LSV_01_armed_F","I_MRAP_03_hmg_F","I_MRAP_03_gmg_F",'B_T_AFV_Wheeled_01_cannon_F'];
-} else {
-	_vehTypes = ['B_MRAP_01_gmg_F','B_MRAP_01_hmg_F','I_MRAP_03_gmg_F','I_MRAP_03_hmg_F','B_G_Offroad_01_armed_F','B_AFV_Wheeled_01_cannon_F'];
-};
+_infTypes = ['BUS_InfTeam','BUS_InfTeam_AT','BUS_InfTeam_AA','BUS_reconPatrol','IRG_InfAssault'];
+_vehTypes = ['B_MRAP_01_gmg_F','B_MRAP_01_hmg_F','I_MRAP_03_gmg_F','I_MRAP_03_hmg_F','B_G_Offroad_01_armed_F','B_AFV_Wheeled_01_cannon_F'];
 
 /*/---------- INFANTRY/*/
 
@@ -49,7 +45,7 @@ for "_x" from 0 to (1 + (random 1)) step 1 do {
 
 _randomPos = ['RADIUS',_pos,300,'LAND',[],FALSE,[],[],TRUE] call (missionNamespace getVariable 'QS_fnc_findRandomPos');
 _vehType = selectRandom _vehTypes;
-_SMveh = createVehicle [_vehType,_randomPos,[],0,'NONE'];
+_SMveh = createVehicle [QS_core_vehicles_map getOrDefault [toLowerANSI _vehType,_vehType],_randomPos,[],0,'NONE'];
 _SMveh lock 3;
 [0,_SMveh,WEST,1] call (missionNamespace getVariable 'QS_fnc_vSetup2');
 _SMveh addEventHandler ['GetOut',(missionNamespace getVariable 'QS_fnc_AIXDismountDisabled')];

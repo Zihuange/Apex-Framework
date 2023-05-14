@@ -84,7 +84,7 @@ _assault_boatPos = [_flatPos,15,25,10,0,1,0] call (missionNamespace getVariable 
 _boatType = 'B_boat_Armed_01_minigun_F';
 _boat = createVehicle [QS_core_vehicles_map getOrDefault [toLowerANSI _boatType,_boatType],_boatPos,[],0,'NONE'];
 _boat setDir (random 360);
-_smuggleGroup = createGroup [EAST,TRUE];
+_smuggleGroup = createGroup [WEST,TRUE];
 _diverType = 'B_diver_F';
 
 for '_x' from 0 to 4 step 1 do {

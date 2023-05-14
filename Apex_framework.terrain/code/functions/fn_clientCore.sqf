@@ -4175,7 +4175,7 @@ for 'x' from 0 to 1 step 0 do {
 		};
 		_localProps = QS_list_playerBuildables select {local _x};
 		if (_localProps isNotEqualTo []) then {
-			_listUnits = (units EAST) + (units RESISTANCE);    // not ideal
+			_listUnits = (units WEST) + (units RESISTANCE);    // not ideal
 			{
 				_localProp = _x;
 				if (!isNull _localProp) then {

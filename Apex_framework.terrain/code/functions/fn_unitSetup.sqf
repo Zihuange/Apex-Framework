@@ -27,7 +27,7 @@ private _optics = [];
 private _backpacks = [];
 private _weaponHandled = FALSE;
 // Randomize primary weapon
-if (FALSE) then {		//(side _unit) in [EAST,RESISTANCE]
+if ((side _unit) in [WEST,RESISTANCE]) then {
 	_excluded = [
 		'o_v_soldier_exp_hex_f','o_v_soldier_jtac_hex_f','o_v_soldier_m_hex_f','o_v_soldier_hex_f','o_v_soldier_medic_hex_f','o_v_soldier_lat_hex_f',
 		'o_v_soldier_tl_hex_f','o_v_soldier_exp_ghex_f','o_v_soldier_jtac_ghex_f','o_v_soldier_m_ghex_f','o_v_soldier_ghex_f','o_v_soldier_medic_ghex_f',
@@ -455,7 +455,7 @@ if (FALSE) then {		//(side _unit) in [EAST,RESISTANCE]
 		};
 	};
 } else {
-	if (FALSE) then {
+	if ((side _unit) in [WEST]) then {
 		if (_unitType in [
 			'b_soldier_ar_f','b_patrol_soldier_ar_f','b_patrol_heavygunner_f','b_patrol_soldier_mg_f','b_t_soldier_ar_f','b_w_soldier_ar_f'
 		]) then {

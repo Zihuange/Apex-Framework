@@ -15,7 +15,7 @@ ______________________________________________/*/
 
 _unit = objNull;
 _player = QS_player;
-_units = ((units (_player getVariable ['QS_unit_side',WEST])) inAreaArray [positionCameraToWorld [0,0,0],localNamespace getVariable ['QS_laser_maxVD',300],localNamespace getVariable ['QS_laser_maxVD',300],0,FALSE,-1]) apply { [_x distance _player,_x] };
+_units = ((units (_player getVariable ['QS_unit_side',EAST])) inAreaArray [positionCameraToWorld [0,0,0],localNamespace getVariable ['QS_laser_maxVD',300],localNamespace getVariable ['QS_laser_maxVD',300],0,FALSE,-1]) apply { [_x distance _player,_x] };
 _units sort TRUE;
 if ((count _units) > (localNamespace getVariable ['QS_laser_maxRays',24])) then {
 	_units = _units select [0,(localNamespace getVariable ['QS_laser_maxRays',24])];

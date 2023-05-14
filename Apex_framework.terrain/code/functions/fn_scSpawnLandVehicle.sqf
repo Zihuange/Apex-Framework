@@ -111,7 +111,7 @@ clearItemCargoGlobal _vehicle;
 clearBackpackCargoGlobal _vehicle;
 if ((toLowerANSI _vehicleType) in ['b_apc_tracked_01_rcws_f','b_t_apc_tracked_01_rcws_f']) then {
 	_engineerType = 'B_engineer_F';
-	_grp = createGroup [EAST,TRUE];
+	_grp = createGroup [WEST,TRUE];
 	_unit = _grp createUnit [QS_core_units_map getOrDefault [toLowerANSI _engineerType,_engineerType],_randomRoadPosition,[],0,'NONE'];
 	_unit = _unit call (missionNamespace getVariable 'QS_fnc_unitSetup');
 	_unit assignAsDriver _vehicle;

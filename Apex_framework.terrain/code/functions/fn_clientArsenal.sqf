@@ -239,7 +239,7 @@ private _QS_restrictedBackpacks = [
 	'i_ugv_02_demining_backpack_f',
 	'b_ugv_02_demining_backpack_f'
 ];
-if ((_unit getVariable ['QS_unit_side',WEST]) in [EAST,RESISTANCE]) then {
+if ((_unit getVariable ['QS_unit_side',WEST]) in [WEST,RESISTANCE]) then {
 	_QS_restrictedItems = _QS_restrictedItems -	[
 		'','u_i_c_soldier_bandit_4_f','u_i_c_soldier_bandit_1_f','u_i_c_soldier_bandit_2_f','u_i_c_soldier_bandit_5_f','u_i_c_soldier_bandit_3_f','u_b_t_soldier_f','u_b_t_soldier_ar_f',
 		'u_b_combatuniform_mcam','u_b_combatuniform_mcam','u_b_ctrg_1','u_b_ctrg_2','u_b_ctrg_3','u_b_fullghillie_ard','u_b_t_fullghillie_tna_f','u_b_fullghillie_lsh','u_b_fullghillie_sard','u_b_t_sniper_f',

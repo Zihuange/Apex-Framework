@@ -97,7 +97,7 @@ private _array = [];
 _heli = createVehicle [QS_core_vehicles_map getOrDefault [toLowerANSI _heliType,_heliType],_mapEdgePosition,[],500,'FLY'];
 _heli setVariable ['QS_dynSim_ignore',TRUE,TRUE];
 _heli enableDynamicSimulation FALSE;
-_heliGroup = createGroup [EAST,TRUE];
+_heliGroup = createGroup [WEST,TRUE];
 _heliPilot = _heliGroup createUnit [(QS_core_units_map getOrDefault ['b_helipilot_f','b_helipilot_f']),(getPosWorld _heli),[],0,'NONE'];
 _heliGroup addVehicle _heli;
 _heliPilot assignAsDriver _heli;

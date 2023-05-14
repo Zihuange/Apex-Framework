@@ -51,7 +51,7 @@ if (_mode isEqualTo 'INIT_PLAYER') exitWith {
 			['_deploymentLocationData','respawn'],
 			['_deploymentMinRadius',300],
 			['_arrayDestinationData',[]],
-			['_arrayfactions',[WEST]],
+			['_arrayfactions',[EAST]],
 			['_codeOnDeploy',{TRUE}],
 			['_codeConditionDeploy',{TRUE}],
 			['_codeOnMenuSelect',{TRUE}],
@@ -149,7 +149,7 @@ if (_mode isEqualTo 'PRESET') exitWith {
 			'QS_marker_base_marker',
 			0,
 			[],
-			[WEST],
+			[EAST],
 			{
 				_spawnpos = (markerPos ['QS_marker_base_marker',TRUE]) vectorAdd [-5 + (random 10),-5 + (random 10),0];
 				QS_player setDir (random 360);
@@ -183,7 +183,7 @@ if (_mode isEqualTo 'PRESET') exitWith {
 			'QS_marker_destroyer_1',
 			0,
 			[],
-			[WEST],
+			[EAST],
 			{
 				['RESPAWN_PLAYER',QS_player] spawn QS_fnc_destroyer
 			},
@@ -215,7 +215,7 @@ if (_mode isEqualTo 'PRESET') exitWith {
 			'QS_marker_carrier_1',
 			0,
 			[],
-			[WEST],
+			[EAST],
 			{
 				['RESPAWN_PLAYER',QS_player] spawn QS_fnc_carrier
 			},
@@ -247,7 +247,7 @@ if (_mode isEqualTo 'PRESET') exitWith {
 			'QS_marker_heli_spawn',
 			50,
 			[],
-			[WEST],
+			[EAST],
 			{
 				_spawnpos = (markerPos ['QS_marker_heli_spawn',TRUE]) vectorAdd [-5 + (random 10),-5 + (random 10),0];
 				QS_player setDir (random 360);
@@ -278,7 +278,7 @@ if (_mode isEqualTo 'PRESET') exitWith {
 			'QS_marker_respawn_uavoperator',
 			50,
 			[],
-			[WEST],
+			[EAST],
 			{
 				_spawnpos = (markerPos ['QS_marker_respawn_uavoperator',TRUE]);
 				QS_player setDir (markerDir 'QS_marker_respawn_uavoperator');
@@ -309,7 +309,7 @@ if (_mode isEqualTo 'PRESET') exitWith {
 			'QS_marker_respawn_jetpilot',
 			50,
 			[],
-			[WEST],
+			[EAST],
 			{
 				_spawnpos = (markerPos ['QS_marker_respawn_jetpilot',TRUE]);
 				QS_player setDir (markerDir 'QS_marker_respawn_jetpilot');
@@ -330,7 +330,7 @@ if (_mode isEqualTo 'PRESET') exitWith {
 		['ADD',_data] call QS_fnc_deployment;
 	};
 	if (_preset isEqualto 6) then {
-		params ['','','',['_sides',[WEST]]];
+		params ['','','',['_sides',[EAST]]];
 		// FOB
 		_data = [
 			91,
@@ -360,7 +360,7 @@ if (_mode isEqualTo 'PRESET') exitWith {
 				_deploymentPosition = [_deploymentType,_deploymentLocationData] call QS_fnc_getDeploymentPosition;
 				_enemySides = QS_player call QS_fnc_enemySides;
 				(
-					((missionNamespace getVariable ['QS_module_fob_side',WEST]) isEqualTo (QS_player getVariable ['QS_unit_side',WEST])) &&
+					((missionNamespace getVariable ['QS_module_fob_side',EAST]) isEqualTo (QS_player getVariable ['QS_unit_side',EAST])) &&
 					(((flatten (_enemySides apply {units _x})) inAreaArray [_deploymentPosition,100,100,0,FALSE,-1]) isEqualTo [])
 				)
 			},

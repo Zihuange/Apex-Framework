@@ -27,13 +27,13 @@ if (_type isEqualTo -1) exitWith {
 };
 if (_type isEqualTo 1) exitWith {
 	params ['','_newUnit'];
-	// EAST respawn
-	if ((_newUnit getVariable ['QS_unit_side',WEST]) isEqualTo EAST) exitWith {
-		if ((missionNamespace getVariable ['QS_missionConfig_playableOPFOR',0]) isNotEqualTo 0) then {
+	// WEST respawn
+	if ((_newUnit getVariable ['QS_unit_side',EAST]) isEqualTo WEST) exitWith {
+		if ((missionNamespace getVariable ['QS_missionConfig_playableBLUFOR',0]) isNotEqualTo 0) then {
 			if ((missionNamespace getVariable ['QS_missionConfig_aoType','CLASSIC']) in ['CLASSIC','SC','GRID']) then {
 				setPlayerRespawnTime 15;
 				['SET_DEFAULT_LOADOUT',(_newUnit getVariable ['QS_unit_role','rifleman'])] call (missionNamespace getVariable 'QS_fnc_roles');
-				[_newUnit,(missionNamespace getVariable 'QS_aoPos')] call (missionNamespace getVariable 'QS_fnc_respawnOPFOR');
+				[_newUnit,(missionNamespace getVariable 'QS_aoPos')] call (missionNamespace getVariable 'QS_fnc_respawnBLUFOR');
 			} else {
 				0 spawn {
 					preloadCamera (markerPos ['respawn_east',TRUE]);
@@ -45,12 +45,12 @@ if (_type isEqualTo 1) exitWith {
 		0 spawn {uiSleep 1;createDialog 'QS_client_dialog_menu_roles';};
 	};
 	// RESISTANCE respawn
-	if ((_newUnit getVariable ['QS_unit_side',WEST]) isEqualTo RESISTANCE) exitWith {
-		if ((missionNamespace getVariable ['QS_missionConfig_playableOPFOR',0]) isNotEqualTo 0) then {
+	if ((_newUnit getVariable ['QS_unit_side',EAST]) isEqualTo RESISTANCE) exitWith {
+		if ((missionNamespace getVariable ['QS_missionConfig_playableBLUFOR',0]) isNotEqualTo 0) then {
 			if ((missionNamespace getVariable ['QS_missionConfig_aoType','CLASSIC']) in ['CLASSIC','SC','GRID']) then {
 				setPlayerRespawnTime 15;
 				['SET_DEFAULT_LOADOUT',(_newUnit getVariable ['QS_unit_role','rifleman'])] call (missionNamespace getVariable 'QS_fnc_roles');
-				[_newUnit,(missionNamespace getVariable 'QS_aoPos')] call (missionNamespace getVariable 'QS_fnc_respawnOPFOR');
+				[_newUnit,(missionNamespace getVariable 'QS_aoPos')] call (missionNamespace getVariable 'QS_fnc_respawnBLUFOR');
 			} else {
 				0 spawn {
 					preloadCamera (markerPos ['respawn_resistance',TRUE]);
@@ -63,7 +63,7 @@ if (_type isEqualTo 1) exitWith {
 	};
 	// CIVILIAN respawn
 	if ((_newUnit getVariable ['QS_unit_side',WEST]) isEqualTo CIVILIAN) exitWith {
-		if ((missionNamespace getVariable ['QS_missionConfig_playableOPFOR',0]) isNotEqualTo 0) then {
+		if ((missionNamespace getVariable ['QS_missionConfig_playableBLUFOR',0]) isNotEqualTo 0) then {
 			0 spawn {
 				preloadCamera (markerPos ['respawn_civilian',TRUE]);
 				uiSleep 0.25;

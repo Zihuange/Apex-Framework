@@ -171,80 +171,78 @@ if (_type isEqualTo 'base_aa_1') exitWith {
 };
 if (_type isEqualTo 'defend_transporttypes_1') exitWith {
 	[
-		'O_Truck_03_transport_F','O_Truck_03_covered_F',
-		'O_Truck_02_transport_F','O_Truck_02_covered_F',
-		'I_Truck_02_transport_F','I_Truck_02_covered_F',
-		'O_MRAP_02_F','O_LSV_02_unarmed_F'
+		'B_T_Truck_01_transport_F','B_T_Truck_01_covered_F',
+		'B_T_Truck_01_transport_F','B_T_Truck_01_covered_F',
+		'B_T_MRAP_01_F','B_T_LSV_01_unarmed_F'
 	]
 };
 if (_type isEqualTo 'defend_jettypes_1') exitWith {
 	[
 		'i_plane_fighter_03_dynamicloadout_f',0.5,
 		'i_plane_fighter_04_f',0.4,
-		'o_plane_fighter_02_f',0.1
+		'b_plane_fighter_01_f',0.1
 	]
 };
 if (_type isEqualTo 'defend_helitypes_1') exitWith {
 	// Stratis and Small Terrain enemy helis
 	[
-		'o_heli_light_02_dynamicloadout_f','i_e_heli_light_03_dynamicloadout_f','o_heli_light_02_dynamicloadout_f',
+		'b_heli_light_01_dynamicloadout_f','i_e_heli_light_03_dynamicloadout_f','b_heli_light_01_dynamicloadout_f',
 		'i_e_heli_light_03_dynamicloadout_f'
 	]
 };
 if (_type isEqualTo 'defend_helitypes_2') exitWith {
 	// Higher intensity
 	[
-		'o_heli_light_02_dynamicloadout_f','i_heli_light_03_dynamicloadout_f',
-		'o_heli_light_02_dynamicloadout_f','i_heli_light_03_dynamicloadout_f',
-		'O_Heli_Attack_02_dynamicLoadout_black_F','O_Heli_Attack_02_dynamicLoadout_F','O_VTOL_02_infantry_dynamicLoadout_F'
+		'b_heli_light_01_dynamicloadout_f','i_heli_light_03_dynamicloadout_f',
+		'b_heli_light_01_dynamicloadout_f','i_heli_light_03_dynamicloadout_f',
+		'b_heli_attack_01_dynamicloadout_f','b_heli_attack_01_dynamicloadout_f','b_t_vtol_01_infantry_f'
 	]
 };
 if (_type isEqualTo 'defend_helitypes_3') exitWith {
 	// Lower intensity
 	[
-		'o_heli_light_02_dynamicloadout_f','i_heli_light_03_dynamicloadout_f'
+		'b_heli_light_01_dynamicloadout_f','i_heli_light_03_dynamicloadout_f'
 	]
 };
 if (_type isEqualTo 'defend_paravtypes_1') exitWith {
 	[
-		'O_MRAP_02_hmg_F','O_MRAP_02_gmg_F','O_G_Offroad_01_armed_F','O_G_Offroad_01_armed_F',
+		'B_MRAP_01_hmg_F','B_MRAP_01_gmg_F','B_G_Offroad_01_armed_F','B_G_Offroad_01_armed_F',
 		'I_MRAP_03_gmg_F','I_MRAP_03_hmg_F','Land_Pod_Heli_Transport_04_covered_F','Land_Pod_Heli_Transport_04_bench_F','Land_Pod_Heli_Transport_04_bench_F',
 		'Land_Pod_Heli_Transport_04_covered_F'
 	]
 };
 if (_type isEqualTo 'defend_flybytypes_1') exitWith {
 	[
-		'O_T_VTOL_02_infantry_dynamicLoadout_F',0.333,
-		'O_Plane_CAS_02_dynamicLoadout_F',0.333,
-		'o_plane_fighter_02_f',0.333
+		'B_T_VTOL_01_infantry_F',0.333,
+		'B_Plane_CAS_01_dynamicLoadout_F',0.333,
+		'b_plane_fighter_01_f',0.333
 	]
 };
 if (_type isEqualTo 'defend_uavtypes_1') exitWith {
-	['O_UAV_02_dynamicLoadout_F','I_UAV_02_dynamicLoadout_F','O_T_UAV_04_CAS_F']
+	['B_UAV_02_dynamicLoadout_F','I_UAV_02_dynamicLoadout_F','B_UAV_05_F']
 };
 if (_type isEqualTo 'classic_reinforcehelitransport_1') exitWith {
-	'O_Heli_Transport_04_covered_F'
+	'B_Heli_Transport_03_F'
 };
 if (_type isEqualTo 'classic_reinforceheliescort_1') exitWith {
-	'O_Heli_Attack_02_dynamicLoadout_F'
+	'B_Heli_Attack_01_dynamicLoadout_F'
 };
 if (_type isEqualTo 'classic_reinforcevslingable_1') exitWith {
 	[
-		'o_mrap_02_f','o_mrap_02_gmg_f','o_mrap_02_hmg_f','o_lsv_02_armed_f','o_lsv_02_unarmed_f','o_t_mrap_02_ghex_f','o_t_mrap_02_gmg_ghex_f',
-		'o_t_mrap_02_hmg_ghex_f','o_t_lsv_02_armed_f','o_t_lsv_02_unarmed_f',
-		'i_mrap_03_f','i_mrap_03_gmg_f','i_mrap_03_hmg_f','o_g_offroad_01_armed_f','o_g_offroad_01_f','i_g_offroad_01_armed_f','i_g_offroad_01_f',
-		'i_truck_02_transport_f','i_truck_02_covered_f','o_truck_02_transport_f','o_truck_02_covered_f',
-		'o_ugv_01_f','o_ugv_01_rcws_f','o_t_ugv_01_rcws_ghex_f','o_t_ugv_01_ghex_f','i_ugv_01_f','i_ugv_01_rcws_f',
-		'o_lsv_02_at_f','o_g_offroad_01_at_f','i_c_offroad_02_at_f','i_c_offroad_02_lmg_f','i_g_offroad_01_at_f','o_t_lsv_02_at_f'
+	'b_mrap_01_f','b_mrap_01_gmg_f','b_mrap_01_hmg_f','b_lsv_01_armed_f','b_lsv_01_unarmed_f','b_t_mrap_01_f','b_t_mrap_01_gmg_f','b_t_mrap_01_hmg_f','b_t_lsv_01_armed_f','b_t_lsv_01_unarmed_f',
+	'i_mrap_03_f','i_mrap_03_gmg_f','i_mrap_03_hmg_f','b_g_offroad_01_armed_f','b_g_offroad_01_f','i_g_offroad_01_armed_f','i_g_offroad_01_f',
+	'i_truck_02_transport_f','i_truck_02_covered_f','b_truck_01_transport_f','b_truck_01_covered_f',
+	'b_uav_01_f','b_ugv_01_rcws_f','b_t_ugv_01_rcws_olive_f','b_uav_01_f','i_ugv_01_f','i_ugv_01_rcws_f',
+	'b_lsv_01_at_f','b_g_offroad_01_at_f','i_c_offroad_02_at_f','i_c_offroad_02_lmg_f','i_g_offroad_01_at_f'
 	]
 };
 if (_type isEqualTo 'classic_reinforcevslinger_1') exitWith {
 	// Default enemy sling heli
-	'O_Heli_Transport_04_F'
+	'B_Heli_Transport_01_F'
 };
 if (_type isEqualTo 'classic_reinforcevslinger_2') exitWith {
 	// Enemy sling helis
-	['i_heli_transport_02_f','o_heli_transport_04_f']
+	['i_heli_transport_02_f','B_Heli_Transport_01_F']
 };
 if (_type isEqualTo 'fires_wrecktypes_1') exitWith {
 	// Night illumination fire wrecks
@@ -269,16 +267,16 @@ if (_type isEqualTo 'fires_wrecktypes_1') exitWith {
 if (_type isEqualto 'hq_cache_list_1') exitWith {
 	// Crates default
 	[
-		'Box_East_Ammo_F',
-		'Box_East_Wps_F',
-		'O_CargoNet_01_ammo_F',
-		'Box_East_AmmoOrd_F',
-		'Box_East_Grenades_F',
-		'Box_East_WpsLaunch_F',
-		'Box_East_WpsSpecial_F',
-		'O_supplyCrate_F',
-		'Box_East_Support_F',
-		'Box_East_AmmoVeh_F',
+		'Box_Nato_Ammo_F',
+		'Box_Nato_Wps_F',
+		'B_CargoNet_01_ammo_F',
+		'Box_Nato_AmmoOrd_F',
+		'Box_Nato_Grenades_F',
+		'Box_Nato_WpsLaunch_F',
+		'Box_Nato_WpsSpecial_F',
+		'B_supplyCrate_F',
+		'Box_Nato_Support_F',
+		'Box_Nato_AmmoVeh_F',
 		'Box_NATO_Ammo_F',
 		'Box_IND_Ammo_F'
 	]
@@ -286,16 +284,16 @@ if (_type isEqualto 'hq_cache_list_1') exitWith {
 if (_type isEqualto 'hq_cache_list_2') exitWith {
 	// Crates Tanoa
 	[
-		'Box_East_Ammo_F',
-		'Box_East_Wps_F',
-		'O_CargoNet_01_ammo_F',
-		'Box_East_AmmoOrd_F',
-		'Box_East_Grenades_F',
-		'Box_East_WpsLaunch_F',
-		'Box_East_WpsSpecial_F',
-		'O_supplyCrate_F',
-		'Box_East_Support_F',
-		'Box_East_AmmoVeh_F',
+		'Box_Nato_Ammo_F',
+		'Box_Nato_Wps_F',
+		'B_CargoNet_01_ammo_F',
+		'Box_Nato_AmmoOrd_F',
+		'Box_Nato_Grenades_F',
+		'Box_Nato_WpsLaunch_F',
+		'Box_Nato_WpsSpecial_F',
+		'B_supplyCrate_F',
+		'Box_Nato_Support_F',
+		'Box_Nato_AmmoVeh_F',
 		'Box_NATO_Ammo_F',
 		'Box_IND_Ammo_F'
 	]
@@ -303,22 +301,22 @@ if (_type isEqualto 'hq_cache_list_2') exitWith {
 if (_type isEqualto 'hq_cache_list_3') exitWith {
 	// Crates Livonia
 	[
-		'Box_East_Ammo_F',
-		'Box_East_Wps_F',
-		'O_CargoNet_01_ammo_F',
-		'Box_East_AmmoOrd_F',
-		'Box_East_Grenades_F',
-		'Box_East_WpsLaunch_F',
-		'Box_East_WpsSpecial_F',
-		'O_supplyCrate_F',
-		'Box_East_Support_F',
-		'Box_East_AmmoVeh_F',
+		'Box_Nato_Ammo_F',
+		'Box_Nato_Wps_F',
+		'B_CargoNet_01_ammo_F',
+		'Box_Nato_AmmoOrd_F',
+		'Box_Nato_Grenades_F',
+		'Box_Nato_WpsLaunch_F',
+		'Box_Nato_WpsSpecial_F',
+		'B_supplyCrate_F',
+		'Box_Nato_Support_F',
+		'Box_Nato_AmmoVeh_F',
 		'Box_NATO_Ammo_F',
 		'Box_IND_Ammo_F'
 	]
 };
 if (_type isEqualTo 'hq_cache_undraggable_1') exitWith {
-	['o_supplycrate_f','o_cargonet_01_ammo_f','box_east_ammoveh_f','i_e_cargonet_01_ammo_f']
+	['b_supplycrate_f','b_cargonet_01_ammo_f','box_nato_ammoveh_f','i_e_cargonet_01_ammo_f']
 };
 if (_type isEqualTo 'classic_aorandomvehicles_1') exitWith {
 	[
@@ -449,8 +447,8 @@ if (_type isEqualTo 'ao_idap_enemyvehicles_1') exitWith {
 };
 if (_type isEqualTo 'mortarsite_trucktypes_1') exitWith {
 	[
-		'O_G_Offroad_01_F',
-		'O_G_Van_01_transport_F',
+		'B_G_Offroad_01_F',
+		'B_G_Van_01_transport_F',
 		'I_C_Van_01_transport_F',
 		'C_Truck_02_transport_F'
 	]
@@ -459,10 +457,10 @@ if (_type isEqualTo 'ao_radiotower_types_1') exitWith {
 	['Land_TTowerBig_2_F']
 };
 if (_type isEqualTo 'base_artillery_1') exitWith {
-	['B_MBT_01_arty_F','B_MBT_01_mlrs_F']
+	['O_MBT_02_arty_F','I_TRUCK_02_mrl_F']
 };
 if (_type isEqualTo 'player_mortarlite_01') exitWith {
-	'B_Mortar_01_F'
+	'O_Mortar_01_F'
 };
 if (_type isEqualTo 'draggable_boxes_1') exitWith {
 	[
@@ -827,30 +825,30 @@ if (_type isEqualTo 'loadable_cargo_objects_1') exitWith {
 };
 if (_type isEqualTo 'grid_vehicles_1') exitWith {
 	[
-		'O_G_Van_01_transport_F',
+		'B_G_Van_01_transport_F',
 		'I_C_Van_01_transport_F',
 		'I_C_Offroad_02_unarmed_F',
-		'O_G_Offroad_01_F'
+		'B_G_Offroad_01_F'
 	]
 };
 if (_type isEqualTo 'grid_vehicles_2') exitWith {
 	[
-		'O_G_Offroad_01_armed_F',0.3,
-		'O_LSV_02_armed_F',0.2,
-		'O_G_Van_01_transport_F',0.1,
-		'O_G_Offroad_01_AT_F',0.2,
+		'B_G_Offroad_01_armed_F',0.3,
+		'B_LSV_01_armed_F',0.2,
+		'B_G_Van_01_transport_F',0.1,
+		'B_G_Offroad_01_AT_F',0.2,
 		'I_C_Offroad_02_AT_F',0.2,
 		'I_C_Offroad_02_LMG_F',0.2
 	]
 };
 if (_type isEqualTo 'grid_statics_1') exitWith {
-	['o_hmg_02_high_f','o_gmg_01_high_f']
+	['b_hmg_01_high_f','b_gmg_01_high_f']
 };
 if (_type isEqualTo 'tropical_truck_types_1') exitWith {
-	['O_T_Truck_03_repair_ghex_F','O_T_Truck_03_repair_ghex_F']
+	["B_T_Truck_01_Repair_F","B_T_Truck_01_Repair_F"]
 };
 if (_type isEqualTo 'arid_truck_types_1') exitWith {
-	['O_Truck_03_repair_F','O_Truck_03_repair_F']
+	["B_Truck_01_Repair_F","B_Truck_01_Repair_F"]
 };
 if (_type isEqualTo 'georgetown_supplies_types_1') exitWith {
 	[

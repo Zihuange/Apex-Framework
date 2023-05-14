@@ -360,7 +360,7 @@ private _weaponsList = configFile >> 'CfgWeapons';
 	['QS_HC_Active',FALSE,FALSE],
 	['QS_terrain_worldArea',[[(worldSize / 2),(worldSize / 2),0],(worldSize / 2),(worldSize / 2),0,TRUE,-1],TRUE],
 	['QS_RSS_enabled',TRUE,TRUE],
-	['QS_RSS_client_canSideSwitch',((missionNamespace getVariable ['QS_missionConfig_playableOPFOR',0]) isNotEqualTo 0),TRUE],
+	['QS_RSS_client_canSideSwitch',((missionNamespace getVariable ['QS_missionConfig_playableBLUFOR',0]) isNotEqualTo 0),TRUE],
 	['QS_missionConfig_restartHours',(missionNamespace getVariable ['QS_missionConfig_restartHours',[0,6,12,18]]),FALSE],
 	['QS_mission_aoType',(missionNamespace getVariable ['QS_missionConfig_aoType','CLASSIC']),TRUE],
 	['QS_system_realTimeStart',systemTime,TRUE],

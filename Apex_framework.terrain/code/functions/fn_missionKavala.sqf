@@ -392,7 +392,7 @@ if (!isNil 'minEnemiesPatrolThreshold_override') then {
 };
 
 comment 'Spawn convoy for mission stuff';
-_opforTruckTypes = ['arid_truck_types_1'] call QS_data_listVehicles;
+_bluforTruckTypes = ['arid_truck_types_1'] call QS_data_listVehicles;
 private _truck = objNull;
 private _truckType = '';
 private _truckRoadAt = objNull;

@@ -470,7 +470,7 @@ if (_type isEqualTo 11) exitWith {
 						_validGroups pushBack _grp;
 					};
 				};
-			} forEach ((groups EAST) + (groups RESISTANCE));
+			} forEach ((groups WEST) + (groups RESISTANCE));
 			if (_validGroups isNotEqualTo []) then {
 				_grp = grpNull;
 				private _dist = 999999;

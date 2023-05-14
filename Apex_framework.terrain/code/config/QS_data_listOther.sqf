@@ -204,7 +204,10 @@ if (_type isEqualTo 'intro_music_custom') exitWith {
 		'Intro3',0.1,
 		'Intro4',0.1,
 		'Intro5',0.1,
-		'Intro6',0.1
+		'Intro6',0.1,
+		'Intro7',0.1,
+		'Intro8',0.1,
+		'DangerZone_sound',0.1
 	]
 };
 if (_type isEqualTo 'soundplayed_volumes_1') exitWith {

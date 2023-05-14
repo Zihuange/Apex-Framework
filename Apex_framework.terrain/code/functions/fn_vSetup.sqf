@@ -21,10 +21,7 @@ _u setVariable ['QS_vehicle',TRUE,(!isDedicated)];
 if (_t2 isKindOf 'Heli_Light_01_base_F') then {
 	for '_i' from 0 to 9 do {_u setObjectTextureGlobal [_i,'#(argb,8,8,3)color(0,0,0,0.6)'];};
 };
-if (_t2 isKindOf 'Plane_Fighter_03_base_F') then {
-		for '_i' from 0 to 9 do {_u setObjectTextureGlobal [_i,'#(argb,8,8,3)color(0,0,0,0.6)'];};
-};
-if (_t2 in _bobcat) then {
+if (_t2 isKindOf 'b_apc_tracked_01_crv_f') then {
 	if (_isSimpleObject || {(isNull (driver _u))}) then {
 		{
 			_u setObjectTextureGlobal _x;
@@ -39,7 +36,7 @@ if (_t2 in _bobcat) then {
 	/*/_u lockTurret [[0],TRUE];/*/
 	/*/_u animateSource ['hideturret',1];/*/
 };
-if (_t2 in _buzzard) then {
+if (_t2 isKindOf 'Plane_Fighter_03_base_F') then {
 	if (_isSimpleObject || {(isNull (driver _u))}) then {
 		_defaultTextures = QS_hashmap_configfile getOrDefaultCall [
 			format ['cfgvehicles_%1_texturedefault',_t2],
@@ -129,7 +126,7 @@ if (_t2 isKindOf 'APC_Wheeled_02_base_F') then {
 		// ];
 	};
 };
-if (_t2 in _marshell) then {
+if (_t2 isKindOf '_marshellb_apc_wheeled_01_cannon_f') then {
 	if (_isSimpleObject || {(isNull (driver _u))}) then {
 		if ((random 1) > 0.8) then {
 			{
@@ -153,7 +150,7 @@ if (_t2 isKindOf 'MBT_02_base_F') then {
 		// ];
 	};
 };
-if (_t2 in _hellcat) then {
+if (_t2 isKindOf 'i_heli_light_03_f') then {
 	if (_isSimpleObject || {(isNull (driver _u))}) then {
 		{ 
 			_u setObjectTextureGlobal [_forEachIndex,_x]; 
@@ -163,7 +160,7 @@ if (_t2 in _hellcat) then {
 		};
 	};
 };
-if (_t2 in _pawnee) then {
+if (_t2 isKindOf 'b_heli_light_01_f') then {
 	if (_isSimpleObject || {(isNull (driver _u))}) then {
 		{ 
 			_u setObjectTextureGlobal _x; 

@@ -325,7 +325,7 @@ _sideMissionList = [
 	'QS_fnc_SMHQind',0.625,
 	'QS_fnc_SMHQresearch',0.625,
 	'QS_fnc_SMsecureChopper',0.625,
-	'QS_fnc_SMsecureRadar'0.625
+	'QS_fnc_SMsecureRadar',0.625
 ];
 _sideMissionRefreshAt = 2;
 _sideMissionListProxy = _sideMissionList;
@@ -858,7 +858,7 @@ if (_QS_module_recruitableAI) then {
 	_QS_module_recruitableAI_array = _QS_module_recruitableAI_data;
 	_QS_module_recruitableAI_side = EAST;
 	_QS_module_recruitableAI_unitTypes = [	
-		'B_soldier_AR_F','B_Soldier_GL_F','B_soldier_M_F','B_Sharpshooter_F','B_G_Sharpshooter_F'
+		'O_soldier_AR_F','O_Soldier_GL_F','O_soldier_M_F','O_Sharpshooter_F','O_G_Sharpshooter_F'
 	];
 	if (_QS_worldName isEqualTo 'Tanoa') then {
 		_QS_module_recruitableAI_unitTypes = [	
@@ -1244,23 +1244,23 @@ if (_QS_module_zeusRespawn) then {
 		_QS_module_zeusRespawn = FALSE;
 	};
 } else {
-	if ((missionNamespace getVariable ['QS_missionConfig_playableOPFOR',0]) > 0) then {
+	if ((missionNamespace getVariable ['QS_missionConfig_playableBLUFOR',0]) > 0) then {
 		[
 			'ADD',
 			[
 				3,
 				'ID_ZEUS_0',
 				{TRUE},
-				{localize 'STR_QS_Menu_207'},
+				{localize 'STR_QS_Menu_208'},
 				'MARKER',
 				'respawn_east',
 				300,
 				[],
-				[EAST],
+				[WEST],
 				{
 					_spawnpos = (markerPos ['respawn_east',TRUE]) vectorAdd [-3 + (random 6),-3 + (random 6),0];
 					QS_player setPosASL _spawnpos;
-					[QS_player,markerPos 'respawn_east'] call QS_fnc_respawnOPFOR;
+					[QS_player,markerPos 'respawn_east'] call QS_fnc_respawnBLUFOR;
 				},
 				{TRUE},
 				{
@@ -3063,7 +3063,7 @@ for '_x' from 0 to 1 step 0 do {
 							)} &&
 							{(isTouchingGround _QS_v)} &&
 							{(canMove _QS_v)} &&
-							{((_east knowsAbout _QS_v) > 1)} &&
+							{((_west knowsAbout _QS_v) > 1)} &&
 							{((_QS_v distance2D _baseMarker) > 1000)} &&
 							{(_allPlayersCount >= _HVT_targetingThreshold)} &&
 							{(!([_QS_v] call _HVT_fn_isStealthy))}
@@ -3099,7 +3099,7 @@ for '_x' from 0 to 1 step 0 do {
 					} else {
 						if (
 							((_QS_v distance2D _baseMarker) < 1000) ||
-							{((_east knowsAbout _QS_v) < 1)} ||
+							{((_west knowsAbout _QS_v) < 1)} ||
 							{(((attachedObjects _QS_v) findIf {(_x isKindOf 'LaserTargetE')}) isEqualTo -1)} ||
 							{(!isTouchingGround _QS_v)} ||
 							{(!canMove _QS_v)} ||
@@ -3121,7 +3121,7 @@ for '_x' from 0 to 1 step 0 do {
 						_QS_v = _x;
 						if (
 							((_QS_v distance2D _baseMarker) < 1000) ||
-							{((_east knowsAbout _QS_v) < 1)} ||
+							{((_west knowsAbout _QS_v) < 1)} ||
 							{(((attachedObjects _QS_v) findIf {(_x isKindOf 'LaserTargetE')}) isEqualTo -1)} ||
 							{(!isTouchingGround _QS_v)} ||
 							{(!canMove _QS_v)} ||
@@ -3603,7 +3603,7 @@ for '_x' from 0 to 1 step 0 do {
 									};
 								};
 								if (
-									((((units _east) + (units _resistance)) inAreaArray [getPos _v,30,30]) isNotEqualTo []) && 					//(((flatten (_deploymentEnemySides apply {units _x})) inAreaArray [getPos _v,30,30]) isNotEqualTo []) 		// Use this code if you do TvT stuff with OPFOR deployments. Its less efficient so we dont use it unless we need it. For now we just assume EAST/RESISTANCE are enemies
+									((((units _west) + (units _resistance)) inAreaArray [getPos _v,30,30]) isNotEqualTo []) && 					//(((flatten (_deploymentEnemySides apply {units _x})) inAreaArray [getPos _v,30,30]) isNotEqualTo []) 		// Use this code if you do TvT stuff with OPFOR deployments. Its less efficient so we dont use it unless we need it. For now we just assume EAST/RESISTANCE are enemies
 									(((units (_v getVariable ['QS_deploy_side',sideUnknown])) inAreaArray [getPos _v,100,100]) isEqualTo [])
 								) then {
 									// Enemies in radius AND no friendlies in radius

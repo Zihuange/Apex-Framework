@@ -133,7 +133,7 @@ if (_type isEqualTo 'REINFORCE') exitWith {
 		_groupComposition = _groupComposition apply {_x # 0};
 		_maxGrpSize = (count _groupComposition) - 1;
 		private _newUnit = objNull;
-		private _newGrp = createGroup [EAST,TRUE];
+		private _newGrp = createGroup [WEST,TRUE];
 		_serverTime = serverTime;
 		private _i = 0;
 		private _unitType = '';
@@ -227,7 +227,7 @@ if (_type isEqualTo 'HQ') exitWith {
 			_groupComposition = _groupComposition apply {_x # 0};
 			_maxGrpSize = (count _groupComposition) - 1;
 			private _newUnit = objNull;
-			private _newGrp = createGroup [EAST,TRUE];
+			private _newGrp = createGroup [WEST,TRUE];
 			private _unitType = '';
 			_serverTime = serverTime;
 			private _i = 0;
