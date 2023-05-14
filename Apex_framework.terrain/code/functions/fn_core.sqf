@@ -314,16 +314,22 @@ _currentSideMission = '';
 		QS_fnc_SMsecureRadar
 /*/
 _sideMissionList = [
-	'QS_fnc_SMRescuePOW',0.2,			// Side mission function name + weighted probability of spawning ( https://community.bistudio.com/wiki/selectRandomWeighted )
-	'QS_fnc_SMsecureUrban',0.2,
-	'QS_fnc_SMEscortVehicle',0.3,
-	'QS_fnc_SMPriorityAA',0.4,
-	'QS_fnc_SMPriorityARTY',0.4,
-	'QS_fnc_SMsecureIntelUAV',0.2,
-	'QS_fnc_SMsecureIntelUnit',0.2,
-	'QS_fnc_SMsecureIntelVehicle',0.2,
-	'QS_fnc_SMidapRecover',0.3,
-	'QS_fnc_SMregenerator',0.3
+	'QS_fnc_SMRescuePOW',0.625,			// Side mission function name + weighted probability of spawning ( https://community.bistudio.com/wiki/selectRandomWeighted )
+	'QS_fnc_SMsecureUrban',0.625,
+	'QS_fnc_SMEscortVehicle',0.625,
+	'QS_fnc_SMPriorityAA',0.625,
+	'QS_fnc_SMPriorityARTY',0.625,
+	'QS_fnc_SMsecureIntelUAV',0.625,
+	'QS_fnc_SMsecureIntelUnit',0.625,
+	'QS_fnc_SMsecureIntelVehicle',0.625,
+	'QS_fnc_SMidapRecover',0.625,
+	'QS_fnc_SMregenerator',0.625,
+	'QS_fnc_SMHQcoast',0.625,
+	'QS_fnc_SMHQfia',0.625,
+	'QS_fnc_SMHQind',0.625,
+	'QS_fnc_SMHQresearch',0.625,
+	'QS_fnc_SMsecureChopper',0.625,
+	'QS_fnc_SMsecureRadar',0.625
 ];
 _sideMissionRefreshAt = 2;
 _sideMissionListProxy = _sideMissionList;

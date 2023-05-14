@@ -668,7 +668,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=365;
+		items=369;
 		class Item0
 		{
 			dataType="Object";
@@ -1122,13 +1122,14 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={8495.002,106.39884,25124.461};
-				angles[]={0.066569164,0,6.127131};
+				position[]={8495.002,106.39883,25124.461};
+				angles[]={0.066566855,0,6.1271353};
 			};
-			name="headlessclient";
+			name="headlessclient1";
 			isPlayable=1;
 			id=28;
 			type="HeadlessClient_F";
+			atlOffset=-7.6293945e-006;
 		};
 		class Item28
 		{
@@ -10407,7 +10408,7 @@ class Mission
 					flags=4;
 					class Attributes
 					{
-						init="missionNamespace setVariable ['QS_Billboard_02',this,FALSE];";
+						init="missionNamespace setVariable ['QS_Billboard_02',this,TRUE];";
 						disableSimulation=1;
 					};
 					id=570;
@@ -29945,7 +29946,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={14691.396,17.911438,16791.518};
-						angles[]={0,2.3561945,-0};
+						angles[]={0,2.3561945,0};
 					};
 					side="East";
 					flags=7;
@@ -30005,7 +30006,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={14692.774,17.911438,16792.99};
-						angles[]={0,2.3561945,-0};
+						angles[]={0,2.3561945,0};
 					};
 					side="East";
 					flags=7;
@@ -30065,7 +30066,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={14694.137,17.911438,16794.58};
-						angles[]={0,2.3561945,-0};
+						angles[]={0,2.3561945,0};
 					};
 					side="East";
 					flags=7;
@@ -30125,7 +30126,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={14696.363,17.911438,16796.555};
-						angles[]={0,2.3561945,-0};
+						angles[]={0,2.3561945,0};
 					};
 					side="East";
 					flags=7;
@@ -30185,7 +30186,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={14697.905,17.911438,16798.441};
-						angles[]={0,2.3561945,-0};
+						angles[]={0,2.3561945,0};
 					};
 					side="East";
 					flags=7;
@@ -30245,7 +30246,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={14699.339,17.911438,16800.055};
-						angles[]={0,2.3561945,-0};
+						angles[]={0,2.3561945,0};
 					};
 					side="East";
 					flags=7;
@@ -30305,7 +30306,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={14701.014,17.911438,16801.639};
-						angles[]={0,2.3561945,-0};
+						angles[]={0,2.3561945,0};
 					};
 					side="East";
 					flags=7;
@@ -30365,7 +30366,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={14702.754,17.911438,16803.35};
-						angles[]={0,2.3561945,-0};
+						angles[]={0,2.3561945,0};
 					};
 					side="East";
 					flags=7;
@@ -30411,6 +30412,59 @@ class Mission
 			{
 			};
 			id=1303;
+		};
+		class Item365
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={8499.5059,105.95078,25125.393};
+				angles[]={0.066566855,0,6.1271353};
+			};
+			name="headlessclient3";
+			isPlayable=1;
+			id=1305;
+			type="HeadlessClient_F";
+		};
+		class Item366
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={8504.1895,105.85571,25125.559};
+				angles[]={0.066566855,0,6.1271353};
+			};
+			name="headlessclient1_2";
+			isPlayable=1;
+			id=1306;
+			type="HeadlessClient_F";
+			atlOffset=-7.6293945e-006;
+		};
+		class Item367
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={8510.0771,106.28945,25125.268};
+				angles[]={0.066566855,0,6.1271353};
+			};
+			name="headlessclient4";
+			isPlayable=1;
+			id=1307;
+			type="HeadlessClient_F";
+		};
+		class Item368
+		{
+			dataType="Marker";
+			position[]={14784.406,123.787,16580};
+			name="QS_marker_wreck_service_01";
+			text=" 残骸回收";
+			type="b_maint";
+			colorName="ColorEAST";
+			a=0.5;
+			b=0.5;
+			id=1324;
+			atlOffset=105.927;
 		};
 	};
 };
