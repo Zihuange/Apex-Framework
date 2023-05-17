@@ -79,7 +79,7 @@ if (_type isEqualTo 1) exitWith {
 		_pos = missionNamespace getVariable ['QS_aoPos',[0,0,0]];
 		_aoSize = missionNamespace getVariable ['QS_aoSize',500];
 		_objectiveIsRequired = 1;
-		_objectiveArguments = [_pos,_aoSize,(missionNamespace getVariable 'QS_fnc_serverDetector'),10];
+		_objectiveArguments = [_pos,(_aoSize + 300),(missionNamespace getVariable 'QS_fnc_serverDetector'),10];
 		_objectiveCode = {
 			params ['_aoPos','_aoRadius','_detector','_threshold'];
 			private _return = 0;

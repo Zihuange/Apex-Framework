@@ -4558,7 +4558,7 @@ for 'x' from 0 to 1 step 0 do {
 						) then {
 							_x setVariable [_QS_joinGroup_privateVar,_false,_false];
 						};
-					} forEach (groups (_QS_player getVariable ['QS_unit_side',_west]));
+					} forEach (groups (_QS_player getVariable ['QS_unit_side',_east]));
 				};
 			};
 			if (!(_isLeader)) then {
