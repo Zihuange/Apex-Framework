@@ -21,7 +21,7 @@ if (_case isEqualTo 1) then {
 		_taskAuthor = _params # 1;
 		_taskAuthorClass = _params # 2;
 		_taskID = format ['QS_DYNTASK_%1_%2',_type,(round (random 10000))];
-		private _description = format ['摧毁了一个 %1',(getText (configFile >> 'CfgVehicles' >> (typeOf _entity) >> 'displayName'))];
+		private _description = format ['摧毁了一个 %1',(getText ((configOf _entity) >> 'displayName'))];
 		if (_isRx) then {
 			_description = format ['%2 ( %3 ) 创建了新的目标： %1 ',_description,_taskAuthor,_taskAuthorClass];
 		};
@@ -287,7 +287,7 @@ if (_case isEqualTo 1) then {
 		_taskAuthorName = _params # 1;
 		_taskID = format ['QS_DYNTASK_%1_%2',_type,(round (random 10000))];
 		_timeout = diag_tickTime + 900;
-		private _description = format ['%1 呼叫火力单位打击 %2！ 这项任务在15分钟后会自动取消。',_taskAuthorName,(getText (configFile >> 'CfgVehicles' >> (typeOf _entity) >> 'displayName'))];
+		private _description = format ['%1 呼叫火力单位打击 %2！ 这项任务在15分钟后会自动取消。',_taskAuthorName,(getText ((configOf _entity) >> 'displayName'))];
 		_array = [
 			_taskID,
 			'ADD',

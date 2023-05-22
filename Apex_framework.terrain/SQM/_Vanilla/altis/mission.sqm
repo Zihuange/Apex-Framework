@@ -12,11 +12,15 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
+<<<<<<< HEAD
 		nextID=975;
 	};
 	class LayerIndexProvider
 	{
 		nextID=30;
+=======
+		nextID=305;
+>>>>>>> master
 	};
 	class Camera
 	{
@@ -27,7 +31,11 @@ class EditorData
 	};
 };
 binarizationWanted=0;
+<<<<<<< HEAD
 sourceName="Apex_framework_120_BTA";
+=======
+sourceName="Apex_framework_136";
+>>>>>>> master
 addons[]=
 {
 	"A3_Props_F_Enoch_Military_Equipment",
@@ -690,7 +698,11 @@ class Mission
 	};
 	class Entities
 	{
+<<<<<<< HEAD
 		items=453;
+=======
+		items=117;
+>>>>>>> master
 		class Item0
 		{
 			dataType="Object";
@@ -33797,6 +33809,66 @@ class Mission
 				};
 				nAttributes=2;
 			};
+<<<<<<< HEAD
+=======
+			name="headlessclient";
+			isPlayable=1;
+			id=300;
+			type="HeadlessClient_F";
+		};
+		class Item113
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={8494.8457,106.75903,25119.268};
+				angles[]={0.054611351,0,6.1388636};
+			};
+			name="headlessclient2";
+			isPlayable=1;
+			id=301;
+			type="HeadlessClient_F";
+		};
+		class Item114
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={8494.8457,107.35744,25114.227};
+				angles[]={0.15214035,0,6.1388636};
+			};
+			name="headlessclient3";
+			isPlayable=1;
+			id=302;
+			type="HeadlessClient_F";
+			atlOffset=-1.5258789e-005;
+		};
+		class Item115
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={8494.7646,108.06055,25109.104};
+				angles[]={0.18840829,0,6.1848359};
+			};
+			name="headlessclient4";
+			isPlayable=1;
+			id=303;
+			type="HeadlessClient_F";
+>>>>>>> master
+		};
+		class Item116
+		{
+			dataType="Marker";
+			position[]={14798.063,17.91,16790.709};
+			name="QS_marker_wreck_service_01";
+			text="   Wreck Recovery";
+			type="b_maint";
+			colorName="ColorWEST";
+			alpha=0.49576423;
+			a=0.5;
+			b=0.5;
+			id=304;
 		};
 	};
 };

@@ -41,7 +41,7 @@ private _smallTerrains = ['Tanoa','Stratis'];
 _true = TRUE;
 _false = FALSE;
 _endl = endl;
-_isTropical = _worldName in ['Tanoa','Lingor3'];
+_isTropical = _worldName in ['Tanoa','Enoch'];
 private _QS_unitCap = [140,120] select (_worldName in _smallTerrains);
 private _array = [];
 private _QS_unit = objNull;
@@ -411,26 +411,7 @@ private _QS_module_enemyCas_limitHigh = 2;
 private _QS_module_enemyCas_limitLow = 1;
 private _QS_module_enemyCas_plane = objNull;
 private _playerJetCount = 0;
-private _QS_module_enemyCas_allJetTypes = [
-	'b_plane_cas_01_f',
-	'b_plane_cas_01_dynamicloadout_f',
-	'b_plane_cas_01_cluster_f',
-	'b_plane_fighter_01_f',
-	'b_plane_fighter_01_stealth_f',
-	'b_plane_fighter_01_cluster_f',
-	'o_plane_cas_02_f',
-	'o_plane_cas_02_dynamicloadout_f',
-	'o_plane_cas_02_cluster_f',
-	'o_plane_fighter_02_f',
-	'o_plane_fighter_02_stealth_f',
-	'o_plane_fighter_02_cluster_f',
-	'i_plane_fighter_03_aa_f',
-	'i_plane_fighter_03_cas_f',
-	'i_plane_fighter_03_dynamicloadout_f',
-	'i_plane_fighter_03_cluster_f',
-	'i_plane_fighter_04_f',
-	'i_plane_fighter_04_cluster_f'
-];
+private _QS_module_enemyCas_allJetTypes = ['cas_plane'] call QS_data_listVehicles;
 //comment 'Manage support providers';
 private _QS_module_supportProvision = _true && _isDedicated;
 private _QS_module_supportProvision_delay = 30;
@@ -524,6 +505,7 @@ if (_isHC) then {
 	// SYNC existing group vars to HC
 	[98] remoteExec ['QS_fnc_remoteExec',2,FALSE];
 };
+_groupEventHandlerTypes = ['CombatModeChanged','CommandChanged','FormationChanged','SpeedModeChanged','EnableAttackChanged','LeaderChanged','GroupIdChanged','KnowsAboutChanged','WaypointComplete','Fleeing','EnemyDetected'];
 _groupEventLocalHC = {
 	params ['_grp','_isLocal'];
 	if (_isLocal) then {
@@ -770,8 +752,10 @@ for '_x' from 0 to 1 step 0 do {
 								_x removeAllEventHandlers 'Suppressed';
 							} forEach (units _grp);
 							{
-								_grp removeAllEventHandlers _x;
-							} forEach ['CombatModeChanged','CommandChanged','FormationChanged','SpeedModeChanged','EnableAttackChanged','LeaderChanged','GroupIdChanged','KnowsAboutChanged','WaypointComplete','Fleeing','EnemyDetected'];
+								if (((_grp getEventHandlerInfo [_x,0]) # 2) isNotEqualTo 0) then {
+									_grp removeAllEventHandlers _x;
+								};
+							} forEach _groupEventHandlerTypes;
 							_grp addEventHandler ['Local',_groupEventLocalServer];
 							if (!(_grp setGroupOwner _QS_module_hc_ID)) then {
 								//===== Ownership transfer failed, reset to beginning of process
@@ -783,8 +767,6 @@ for '_x' from 0 to 1 step 0 do {
 						//======================= STEP 0 - 1
 						_QS_module_hc_groups_s0 = _QS_module_groupBehaviors_localGroups select {
 							(((_x getVariable ['QS_AI_GRP_HC',[-1,2]]) # 0) isEqualTo 0)
-							
-							
 							// check alive/count state incase group has been killed off
 						};
 						if (_QS_module_hc_groups_s0 isNotEqualTo []) then {
@@ -1416,6 +1398,7 @@ for '_x' from 0 to 1 step 0 do {
 				_QS_module_virtualSectors_assaultActive = _false;
 				_QS_module_virtualSectors_assaultArray = [];
 				_QS_module_viperTeam_array = [];
+				missionNamespace setVariable ['QS_virtualSectors_AI_triggerDeinit',_false,_false];
 			};
 		};
 	};
@@ -1515,7 +1498,7 @@ for '_x' from 0 to 1 step 0 do {
 								if (_QS_allPlayersCount > 50) then {_QS_module_classic_vehReinforce_cap = _QS_module_classic_vehReinforce_cap_4;};
 								if (_QS_module_classic_vehReinforce_spawned < _QS_module_classic_vehReinforce_cap) then {
 									if (_QS_allPlayersCount < _QS_module_classic_vehReinforce_playerThreshold) then {
-										_QS_module_classic_vehReinforce_limitReal = ceil (_QS_module_classic_vehReinforce_limit / 2);
+										_QS_module_classic_vehReinforce_limitReal = (_QS_module_classic_vehReinforce_limit / 2);
 									} else {
 										_QS_module_classic_vehReinforce_limitReal = _QS_module_classic_vehReinforce_limit;
 									};
@@ -1533,7 +1516,7 @@ for '_x' from 0 to 1 step 0 do {
 									};
 								};
 							};
-							_QS_module_classic_vehReinforce_checkDelay = _QS_uiTime + _QS_module_classic_vehReinforce_delay;
+							_QS_module_classic_vehReinforce_checkDelay = _QS_uiTime + (random [20,30,40]);
 						};
 					};
 				};
@@ -1648,7 +1631,6 @@ for '_x' from 0 to 1 step 0 do {
 			};	
 			if (!(missionNamespace getVariable 'QS_classic_AI_active')) then {
 				if (missionNamespace getVariable 'QS_classic_AI_triggerDeinit') then {
-					missionNamespace setVariable ['QS_classic_AI_triggerDeinit',_false,_false];
 					missionNamespace setVariable ['QS_AI_insertHeli_spawnedAO',0,_false];
 					if (_QS_module_classic_enemy_0 isNotEqualTo []) then {
 						{
@@ -1807,6 +1789,7 @@ for '_x' from 0 to 1 step 0 do {
 						} forEach _QS_module_classic_patrolsHeli;
 						_QS_module_classic_patrolsHeli = [];
 					};
+					missionNamespace setVariable ['QS_classic_AI_triggerDeinit',_false,_false];
 				};
 			};
 			_QS_module_classic_checkDelay = diag_tickTime + _QS_module_classic_delay;
@@ -1817,7 +1800,6 @@ for '_x' from 0 to 1 step 0 do {
 		if (_QS_uiTime > _QS_module_grid_checkDelay) then {
 			if (missionNamespace getVariable ['QS_grid_AI_triggerDeinit',_false]) then {
 				diag_log 'QS AI GRID deinit';
-				missionNamespace setVariable ['QS_grid_AI_triggerDeinit',_false,_true];
 				missionNamespace setVariable ['QS_grid_AI_active',_false,_false];
 				if (_QS_module_grid_enemy isNotEqualTo []) then {
 					{
@@ -1903,6 +1885,7 @@ for '_x' from 0 to 1 step 0 do {
 					} forEach _QS_module_grid_defendUnits;
 					_QS_module_grid_defendUnits = [];
 				};
+				missionNamespace setVariable ['QS_grid_AI_triggerDeinit',_false,_true];
 			};
 			if (missionNamespace getVariable ['QS_grid_AI_triggerInit',_false]) then {
 				diag_log 'QS AI GRID init';
@@ -2062,7 +2045,8 @@ for '_x' from 0 to 1 step 0 do {
 					_QS_module_ambientHostility_cooldown = _QS_uiTime + (random 360);
 				} else {
 					{
-						if ((_x distance2D _basePosition) < 1000) then {
+						([_x,'SAFE'] call QS_fnc_inZone) params ['_inSafezone','_safezoneLevel','_safezoneActive'];
+						if (_inSafezone && _safezoneActive && (_safezoneLevel > 1)) then {
 							_x setDamage [1,_false];
 						};
 					} forEach _QS_module_ambientHostility_entities;
@@ -2103,16 +2087,11 @@ for '_x' from 0 to 1 step 0 do {
 									if (_QS_module_ambientHostility_entities isNotEqualTo []) then {
 										{
 											if (alive _x) then {
-												if (_x isKindOf 'CAManBase') then {
-													if (!isNull (objectParent _x)) then {
-														if ((objectParent _x) isKindOf 'AllVehicles') then {
-															(objectParent _x) deleteVehicleCrew _x;
-														} else {
-															deleteVehicle _x;
-														};
-													} else {
-														deleteVehicle _x;
-													};
+												if (
+													(_x isKindOf 'CAManBase') &&
+													{(!isNull (objectParent _x))}
+												) then {
+													(objectParent _x) deleteVehicleCrew _x;
 												} else {
 													deleteVehicle _x;
 												};
@@ -2180,11 +2159,11 @@ for '_x' from 0 to 1 step 0 do {
 						if (alive _QS_module_enemyCas_plane) then {
 							if (!(_QS_module_enemyCas_plane getVariable ['QS_AI_PLANE_fireMission',_false])) then {
 								if ((_QS_module_enemyCas_plane getVariable ['QS_AI_PLANE_flyInHeight',-1]) > 0) then {
-									_QS_module_enemyCas_speed = _QS_module_enemyCas_plane getVariable ['QS_enemyQS_casJetMaxSpeed',-1];
+									_QS_module_enemyCas_speed = _QS_module_enemyCas_plane getVariable ['QS_enemy_casJetMaxSpeed',-1];
 									if (_QS_module_enemyCas_speed isEqualTo -1) then {
-										_QS_module_enemyCas_plane setVariable ['QS_enemyQS_casJetMaxSpeed',(getNumber (configFile >> 'CfgVehicles' >> (typeOf _QS_module_enemyCas_plane) >> 'maxSpeed')),_false];
+										_QS_module_enemyCas_plane setVariable ['QS_enemy_casJetMaxSpeed',(getNumber ((configOf _QS_module_enemyCas_plane) >> 'maxSpeed')),_false];
 									};
-									_QS_module_enemyCas_plane forceSpeed ((_QS_module_enemyCas_plane getVariable ['QS_enemyQS_casJetMaxSpeed',1000]) * (random [0.7,0.85,1]));
+									_QS_module_enemyCas_plane forceSpeed ((_QS_module_enemyCas_plane getVariable ['QS_enemy_casJetMaxSpeed',1000]) * (random [0.7,0.85,1]));
 									if ((_QS_module_enemyCas_plane getVariable ['QS_AI_PLANE_flyInHeight',-1]) isEqualTo 1) then {
 										_QS_module_enemyCas_plane flyInHeight (500 + (random 1000));
 									};

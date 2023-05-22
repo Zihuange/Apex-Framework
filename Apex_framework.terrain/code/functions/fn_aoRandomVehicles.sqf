@@ -18,22 +18,7 @@ _centerRadius = missionNamespace getVariable 'QS_aoSize';
 private _spawnPosition = [0,0,0];
 private _vehicle = objNull;
 private _vehicleType = '';
-private _vehicleTypesWeighted = [
-	//'C_Hatchback_01_F',0.1,
-	//'C_Offroad_02_unarmed_F',0.5,
-	//'C_Offroad_01_F',0.3,			// bugged by Bohemia, spawns floating above ground. we could do a workaround but, meh ... Re-enable once they fix it
-	//'C_SUV_01_F',0.1,
-	//'C_Van_01_transport_F',0.3,
-	//'C_Van_02_transport_F',0.3,
-	'C_Truck_02_transport_F',0.2,
-	'C_Truck_02_covered_F',0.2,
-	'B_G_Offroad_01_armed_F',0.5,
-	'B_G_Offroad_01_F',0.3,
-	'B_G_Van_02_transport_F',0.3,
-	//'B_G_Offroad_01_AT_F',0.3,		// bugged by Bohemia, spawns floating above ground. we could do a workaround but, meh ... Re-enable once they fix it
-	'I_C_Offroad_02_LMG_F',0.5,
-	'I_C_Offroad_02_AT_F',0.5
-];
+private _vehicleTypesWeighted = ['classic_aorandomvehicles_1'] call QS_data_listVehicles;
 private _max = 3;
 private _count = 0;
 _registeredPositions = missionNamespace getVariable ['QS_registeredPositions',[[0,0,0]]];
@@ -44,7 +29,7 @@ for '_i' from 0 to 14 step 1 do {
 		if (((_spawnPosition select [0,2]) nearRoads 15) isEqualTo []) then {
 			_count = _count + 1;
 			_spawnPosition set [2,0];
-			_vehicle = createSimpleObject [_vehicleType,ATLToASL _spawnPosition];
+			_vehicle = createSimpleObject [QS_core_vehicles_map getOrDefault [toLowerANSI _vehicleType,_vehicleType],ATLToASL _spawnPosition];
 			_vehicle setDir (random 360);
 			_vehicle setVectorUp (surfaceNormal _spawnPosition);
 			_vehicle setVariable ['QS_vehicle_prop',TRUE,TRUE];

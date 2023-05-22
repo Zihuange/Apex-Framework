@@ -6,7 +6,7 @@ Author:
 	
 Last modified:
 
-	2/06/2019 A3 1.94 by Quiksilver
+	17/05/2023 A3 2.12 by Quiksilver
 	
 Description:
 
@@ -15,7 +15,7 @@ ______________________________________________/*/
 
 scriptName 'QS - SM - AA';
 private _spawnPosition = [0,0,0];
-private _aaTypes = ['o_apc_tracked_02_aa_f','o_t_apc_tracked_02_aa_ghex_f','o_t_apc_tracked_02_aa_ghex_f','o_t_apc_tracked_02_aa_ghex_f'];
+private _aaTypes = ['enemy_antiair_types_1'] call QS_data_listVehicles;
 private _aaHulls = [];
 private _aaTurrets = [];
 private _aaTurretObjects = [];
@@ -25,7 +25,7 @@ private _allAircraft = [];
 private _aaHull = objNull;
 private _aaTurret = objNull;
 private _ammoTruck = objNull;
-private _stealthAircraft = ['b_ctrg_heli_transport_01_sand_f','b_ctrg_heli_transport_01_tropic_f','b_heli_attack_01_dynamicloadout_f','b_heli_transport_01_f','b_heli_transport_01_camo_f','b_plane_fighter_01_stealth_f','b_t_uav_03_dynamicloadout_f','o_plane_fighter_02_stealth_f'];
+private _stealthAircraft = ['stealth_aircraft_2'] call QS_data_listVehicles;
 private _time = diag_tickTime;
 private _delay = 5;
 private _checkDelay = _time + _delay;
@@ -94,8 +94,8 @@ private _compositionData = [
 		["Land_HBarrierWall_corner_F",[11.0156,14.7471,0],0,[],FALSE,FALSE,TRUE,{}]
 	],
 	[
-		["O_T_APC_Tracked_02_AA_ghex_F",[-0.0292969,-6.354,0.0168018],178.855,[],TRUE,TRUE,FALSE,{(_this # 0)}],
-		["O_T_APC_Tracked_02_AA_ghex_F",[-0.321777,8.54443,0.0163908],359.998,[],TRUE,TRUE,FALSE,{(_this # 0)}],
+		["O_APC_Tracked_02_AA_F",[-0.0292969,-6.354,0.0168018],178.855,[],TRUE,TRUE,FALSE,{(_this # 0)}],
+		["O_APC_Tracked_02_AA_F",[-0.321777,8.54443,0.0163908],359.998,[],TRUE,TRUE,FALSE,{(_this # 0)}],
 		["Land_HBarrier_01_big_4_green_F",[-0.081543,1.03174,0],0,[],FALSE,FALSE,TRUE,{}], 
 		["Land_HBarrier_01_line_5_green_F",[-0.195801,1.05566,1.74458],0,[],FALSE,FALSE,TRUE,{}], 
 		["Land_HBarrier_01_line_5_green_F",[5.23779,0.97168,1.69463],90,[],FALSE,FALSE,TRUE,{}], 
@@ -121,7 +121,7 @@ private _compositionData = [
 		["Land_HBarrier_01_wall_corner_green_F",[-10.5381,-12.6621,0],183.027,[],FALSE,FALSE,TRUE,{}], 
 		["Land_HBarrier_01_wall_corner_green_F",[11.1887,13.1079,0],4.08422,[],FALSE,FALSE,TRUE,{}]
 	]
-] select (worldName in ['Tanoa','Lingor3']);
+] select (worldName in ['Tanoa','Enoch']);
 _composition = [_spawnPosition,(random 360),_compositionData,FALSE] call (missionNamespace getVariable 'QS_fnc_serverObjectsMapper');
 _compositionData = nil;
 {
@@ -145,7 +145,7 @@ _compositionData = nil;
 		if ((toLowerANSI (typeOf _aaHull)) in ['o_sam_system_04_f','o_radar_system_02_f']) then {
 			{
 				_aaHull setObjectTextureGlobal [_forEachIndex,_x];
-			} forEach (getArray (configFile >> 'CfgVehicles' >> (typeOf _aaHull) >> 'TextureSources' >> (['AridHex','JungleHex'] select (worldName in ['Tanoa','Lingor3'])) >> 'textures'));
+			} forEach (getArray ((configOf _aaHull) >> 'TextureSources' >> (['AridHex','JungleHex'] select (worldName in ['Tanoa','Lingor3'])) >> 'textures'));
 		};
 		_aaHull setVehicleRadar 1;
 		_aaHull setVehicleReceiveRemoteTargets TRUE;
@@ -226,6 +226,9 @@ _compositionData = nil;
 			_x setVariable ['QS_hidden',TRUE,TRUE];
 			_enemyAssets pushBack _x;
 		} forEach (crew _aaHull);
+		if (alive (driver _aaHull)) then {
+			_aaHull deleteVehicleCrew (driver _aaHull);
+		};
 		_aaTurrets pushBack [_aaHull,(gunner _aaHull),_aaGroup,(typeOf _aaHull),((weapons _aaHull) select ([0,1] select (_aaHull isKindOf 'Tank'))),0,0,0];
 	};
 } forEach _aaHulls;

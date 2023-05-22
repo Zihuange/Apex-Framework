@@ -45,6 +45,11 @@ _unit addGoggles "g_airpurifyingrespirator_01_f";
 	'AUTOTARGET',
 	'MOVE'
 ];
+if (_unit getUnitTrait 'medic') then {
+	_unit setVariable ['QS_unit_role','medic',TRUE];
+	_unit setVariable ['QS_ST_customDN',localize 'STR_QS_Text_376',TRUE];
+};
+_unit setName ['AI','AI','AI'];
 _unit addRating (0 - (rating _unit));
 _unit addEventHandler [
 	'Killed',

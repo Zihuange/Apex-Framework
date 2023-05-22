@@ -44,7 +44,7 @@ if (_type isEqualTo 'onLoad') then {
 	};
 	(_display displayCtrl 1813) cbSetChecked (!isNil {player getVariable 'QS_HUD_3'});
 	(_display displayCtrl 1815) cbSetChecked (environmentEnabled # 0);
-	if ((player getUnitTrait 'uavhacker') || {(player getUnitTrait 'QS_trait_fighterPilot')} || {(player getUnitTrait 'QS_trait_pilot')} || {(player getUnitTrait 'QS_trait_CAS')} ||{(player getUnitTrait 'QS_trait_HQ')}) then {
+	if ((['uavhacker','QS_trait_fighterPilot','QS_trait_pilot','QS_trait_CAS','QS_trait_HQ'] findIf { player getUnitTrait _x }) isNotEqualTo -1) then {
 		ctrlEnable [1817,FALSE];
 		(_display displayCtrl 1817) ctrlSetTooltip (localize 'STR_QS_Menu_051');
 	} else {
@@ -129,11 +129,11 @@ if (_type isEqualTo 'AmbientCheckbox') then {
 	_state = _this # 2;
 	if ((_this # 2) isEqualTo 1) then {
 		missionProfileNamespace setVariable ['QS_options_ambientLife',TRUE];
-		enableEnvironment [TRUE,TRUE];
+		enableEnvironment [TRUE,TRUE,getMissionConfigValue ['windyCoef',0.65]];
 		50 cutText [localize 'STR_QS_Text_173','PLAIN DOWN',0.5];
 	} else {
 		missionProfileNamespace setVariable ['QS_options_ambientLife',FALSE];
-		enableEnvironment [FALSE,TRUE];
+		enableEnvironment [FALSE,TRUE,getMissionConfigValue ['windyCoef',0.65]];
 		50 cutText [localize 'STR_QS_Text_174','PLAIN DOWN',0.5];
 	};
 	saveMissionProfileNamespace;

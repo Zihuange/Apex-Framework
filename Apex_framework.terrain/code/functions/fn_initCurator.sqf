@@ -92,8 +92,7 @@ if (_type isEqualTo 0) then {
 			};
 		}
 	];
-	_module removeCuratorAddons [
-	];
+	_module removeCuratorAddons QS_core_classNames_zeusDisabledAddons_lower;
 	diag_log format ['***** CURATOR ***** Module created for %1 ( %2 ) *****',(name _client),_puid];
 };
 if (_type isEqualTo 1) then {
@@ -120,7 +119,7 @@ if (_type isEqualTo 1) then {
 			['curatorFeedbackMessage',{call (missionNamespace getVariable 'BIS_fnc_showCuratorFeedbackMessage');}],
 			/*/['curatorPinged',{call (missionNamespace getVariable 'BIS_fnc_curatorPinged');}],/*/
 			['curatorObjectPlaced',{call (missionNamespace getVariable 'BIS_fnc_curatorObjectPlaced');}],
-			['curatorObjectEdited',{call (missionNamespace getVariable 'BIS_fnc_curatorObjectEdited');}],
+			['curatorObjectEdited',{call (missionNamespace getVariable 'BIS_fnc_curatorObjectEdited'); call (missionNamespace getVariable 'QS_fnc_clientEventCuratorObjectEdited')}],
 			['curatorWaypointPlaced',{call (missionNamespace getVariable 'BIS_fnc_curatorWaypointPlaced');}],
 			['curatorObjectDoubleClicked',{(_this # 1) call (missionNamespace getVariable 'BIS_fnc_showCuratorAttributes');}],
 			['curatorGroupDoubleClicked',{(_this # 1) call (missionNamespace getVariable 'BIS_fnc_showCuratorAttributes');}],
@@ -501,30 +500,6 @@ if (_type isEqualTo 1) then {
 					};
 				};
 			} forEach allUnits;
-			if ((inputAction 'User14') > 0) then {
-				_cameraOn = cameraOn;
-				if (
-					(alive _cameraOn) &&
-					{(local _cameraOn)} &&
-					{(!unitIsUAV _cameraOn)} &&
-					{(
-						(_cameraOn isKindOf 'Plane') ||
-						(_cameraOn isKindOf 'Helicopter') ||
-						(_cameraOn isKindOf 'LandVehicle') ||
-						(_cameraOn isKindOf 'Ship')
-					)}
-				) then {
-					{
-						if (
-							(alive _x) &&
-							{(!(isPlayer _x))} &&
-							{(_x isNotEqualTo (currentPilot _cameraOn))}
-						) then {
-							moveOut _x;
-						};
-					} forEach (crew _cameraOn);
-				};
-			};
 		};
 	};
 };

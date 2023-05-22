@@ -16,7 +16,10 @@ _______________________________________________________/*/
 scriptName 'QS_fnc_AIHandleGroup';
 params ['_grp','_uiTime','_fps'];
 private _grpLeader = leader _grp;
-if (!(simulationEnabled _grpLeader)) exitWith {};
+if (
+	(isNull _grp) ||
+	(!(simulationEnabled _grpLeader))
+) exitWith {};
 if (!(_grp getVariable ['QS_AI_GRP_SETUP',FALSE])) then {
 	_grp setVariable ['QS_AI_GRP_SETUP',TRUE,FALSE];
 	_grp setVariable ['QS_AI_GRP_rv',[(random 1),(random 1),(random 1)],FALSE];
@@ -105,10 +108,10 @@ _grpPath = _grpLeader checkAIFeature 'PATH';
 private _grpIsReady = (((unitReady _grpLeader) && (isNull _grpObjectParent)) || {((_grpDestination # 1) isEqualTo 'DoNotPlan')});
 private _movePos = _grpLeaderPosition;
 _currentCommand = currentCommand _grpLeader;
-_currentConfig = _grp getVariable 'QS_AI_GRP_CONFIG';
+_currentConfig = _grp getVariable ['QS_AI_GRP_CONFIG',['','',0,objNull]];
 _currentConfig params ['_currentConfig_major','_currentConfig_minor','_currentConfig_grpSize',['_currentConfig_vehicle',objNull]];
 _currentData = _grp getVariable 'QS_AI_GRP_DATA';
-_currentTask = _grp getVariable 'QS_AI_GRP_TASK';
+_currentTask = _grp getVariable ['QS_AI_GRP_TASK',['',[0,0,0],0]];
 _currentTask params ['_currentTask_type','_currentTask_position','_currentTask_timeout'];
 private _grpNearTargets = [];
 if (_grp getVariable ['QS_AI_GRP_canNearTargets',TRUE]) then {
@@ -130,7 +133,7 @@ if (_grp getVariable ['QS_AI_GRP_canNearTargets',TRUE]) then {
 				};
 			};
 			if ((random 1) > 0.666) then {
-				_targets = _grpLeader targets [TRUE,600];
+				_targets = _grp targets [TRUE,600];
 				_grp setVariable ['QS_AI_GRP_nearTargets',[_targets,(count _targets)],FALSE];
 			};
 		};
@@ -429,8 +432,7 @@ if (
 							_buildingPositions = (_location getVariable ['QS_virtualSectors_terrainData',[ [],[],[],[],[] ]]) # 3;
 							if (!isNil '_buildingPositions') then {
 								if (_buildingPositions isNotEqualTo []) then {
-									_movePos = selectRandom _buildingPositions;
-									_movePos set [2,((_movePos # 2) + 1)];
+									_movePos = (selectRandom _buildingPositions) vectorAdd [0,0,1];
 									doStop (units _grp);
 									if (canSuspend) then {sleep 0.1;};
 									(units _grp) doMove _movePos;
@@ -928,7 +930,7 @@ if (
 				};
 				if (_defaultMove) then {
 					[7,EAST,_grp,_grpLeader,_grpObjectParent,400] call (missionNamespace getVariable 'QS_fnc_AIGetKnownEnemies');
-					_targets = _grpLeader targets [TRUE,400];
+					_targets = _grp targets [TRUE,400];
 					if (_targets isEqualTo []) then {
 						if ( ((_grp getVariable ['QS_AI_GRP_DATA',[[0,0,0]]]) # 0) isNotEqualTo [0,0,0] ) then {
 							_movePos = (_grp getVariable ['QS_AI_GRP_DATA',[[0,0,0]]]) # 0;
@@ -1067,8 +1069,7 @@ if (
 						private _enemyPos = [0,0,0];
 						{
 							_grpUnit = _x;
-							_unitMovePos = _currentTask_position;
-							_unitMovePos set [2,((_unitMovePos # 2) + 1.5)];
+							_unitMovePos = _currentTask_position vectorAdd [0,0,1.5];
 							if ((random 1) > 0.5) then {
 								_nearestEnemy = _grpUnit findNearestEnemy _grpUnit;
 								if (alive _nearestEnemy) then {
