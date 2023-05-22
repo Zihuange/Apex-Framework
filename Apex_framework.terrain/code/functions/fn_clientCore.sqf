@@ -415,7 +415,7 @@ _QS_action_stabilise_array = [_QS_action_stabilise_text,{_this spawn (missionNam
 _QS_interaction_stabilise = FALSE;
 /*/===== Arsenal/*/
 _QS_action_arsenal = nil;
-_QS_action_arsenal_text = (localize 'STR_A3_Arsenal');
+_QS_action_arsenal_text = localize 'STR_A3_Arsenal';
 _QS_action_arsenal_array = [_QS_action_arsenal_text,{_this spawn (missionNamespace getVariable 'QS_fnc_clientInteractArsenal')},[],90,TRUE,TRUE,'','TRUE',-1,FALSE,''];
 _QS_interaction_arsenal = FALSE;
 _QS_arsenal_model = ['arsenal_model_1'] call (missionNamespace getVariable 'QS_data_listOther');

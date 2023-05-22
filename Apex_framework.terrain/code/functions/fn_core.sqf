@@ -333,8 +333,8 @@ _sideMissionList = [
 ];
 _sideMissionRefreshAt = 2;
 _sideMissionListProxy = _sideMissionList;
-_sideMissionDelayFixed = 200;
-_sideMissionDelayRandom = 200;
+_sideMissionDelayFixed = 300;
+_sideMissionDelayRandom = 300;
 _smDelay = _sideMissionDelayFixed + (random _sideMissionDelayRandom);
 
 /*/============================= Deployment Missions/*/

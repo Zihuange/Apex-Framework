@@ -242,10 +242,8 @@ _monetizeURL = [
 
 //================== DO NOT EDIT BELOW =================== INTERPRETING MISSION PARAMETERS
 
-if (_arsenal isEqualTo 3) then {
-
-};
-if (!(_restart_hours isEqualTo [])) then {
+if (_arsenal isEqualTo 3) then {};
+if (_restart_hours isNotEqualTo []) then {
 	_restart_hours sort TRUE;
 };
 if (
@@ -288,7 +286,7 @@ if ((count _startDate) > 5) then {
 	['QS_missionConfig_hitMarker',_hitMarker_audio,TRUE],
 	['QS_missionConfig_knockdown',_effectKnockdown > 0,TRUE],
 	['QS_missionConfig_craterEffects',_craters,TRUE],
-	['QS_missionConfig_groupLocking',_groupLocking,TRUE],
+	['QS_missionConfig_groupLocking',_groupLocking > 0,TRUE],
 	['QS_missionConfig_groupWaypoint',_groupWaypoint > 0,TRUE],
 	['QS_missionConfig_aoUrbanSpawning',_enemyUrbanSpawning,FALSE],
 	['QS_missionConfig_tracers',_tracers,TRUE],
