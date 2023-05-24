@@ -45,37 +45,91 @@ if (_type isEqualTo 'b_heli_insert_1') exitWith {
 if (_type isEqualTo 'i_heli_insert_1') exitWith {
 	['i_soldier_f',1]
 };
+// List of default units for ambient hostility system
 if (_type isEqualTo 'ambient_hostility_1') exitWith {
 	[
-		'B_G_Soldier_A_F',1,
-		'B_G_Soldier_AR_F',3,
-		'B_G_medic_F',1,
-		'B_G_engineer_F',1,
-		'B_G_Soldier_exp_F',1,
-		'B_G_Soldier_GL_F',1,
-		'B_G_Soldier_M_F',1,
-		'B_G_Soldier_F',1,
-		'B_G_Soldier_LAT_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
-		'B_G_Soldier_LAT2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
-		'B_G_Soldier_lite_F',1,
-		'B_G_Sharpshooter_F',3,
-		'B_G_Soldier_TL_F',1,
-		'I_C_Soldier_Bandit_7_F',1,
-		'I_C_Soldier_Bandit_3_F',3,
-		'I_C_Soldier_Bandit_2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
-		'I_C_Soldier_Bandit_5_F',2,
-		'I_C_Soldier_Bandit_6_F',2,
-		'I_C_Soldier_Bandit_1_F',2,
-		'I_C_Soldier_Bandit_8_F',2,
-		'I_C_Soldier_Bandit_4_F',2,
-		'I_C_Soldier_Para_7_F',1,
-		'I_C_Soldier_Para_2_F',1,
-		'I_C_Soldier_Para_3_F',1,
-		'I_C_Soldier_Para_4_F',3,
-		'I_C_Soldier_Para_6_F',1,
-		'I_C_Soldier_Para_8_F',1,
-		'I_C_Soldier_Para_1_F',1,
-		'I_C_Soldier_Para_5_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4)
+		'b_g_soldier_a_f',1,
+		'b_g_soldier_ar_f',3,
+		'b_g_medic_f',1,
+		'b_g_engineer_f',1,
+		'b_g_soldier_exp_f',1,
+		'b_g_soldier_gl_f',1,
+		'b_g_soldier_m_f',1,
+		'b_g_soldier_f',1,
+		'b_g_soldier_lat_f',(2 max (missionnamespace getvariable ['qs_ai_targetsknowledge_threat_armor',0]) min 4),
+		'b_g_soldier_lat2_f',(2 max (missionnamespace getvariable ['qs_ai_targetsknowledge_threat_armor',0]) min 4),
+		'b_g_soldier_lite_f',1,
+		'b_g_sharpshooter_f',3,
+		'b_g_soldier_tl_f',1,
+		'i_c_soldier_bandit_7_f',1,
+		'i_c_soldier_bandit_3_f',3,
+		'i_c_soldier_bandit_2_f',(2 max (missionnamespace getvariable ['qs_ai_targetsknowledge_threat_armor',0]) min 4),
+		'i_c_soldier_bandit_5_f',2,
+		'i_c_soldier_bandit_6_f',2,
+		'i_c_soldier_bandit_1_f',2,
+		'i_c_soldier_bandit_8_f',2,
+		'i_c_soldier_bandit_4_f',2,
+		'i_c_soldier_para_7_f',1,
+		'i_c_soldier_para_2_f',1,
+		'i_c_soldier_para_3_f',1,
+		'i_c_soldier_para_4_f',3,
+		'i_c_soldier_para_6_f',1,
+		'i_c_soldier_para_8_f',1,
+		'i_c_soldier_para_1_f',1,
+		'i_c_soldier_para_5_f',(2 max (missionnamespace getvariable ['qs_ai_targetsknowledge_threat_armor',0]) min 4)
+	]
+};
+// List of lighter units for deployment assault system
+if (_type isEqualTo 'deploy_assault_1') exitWith {
+	[
+		'b_g_soldier_a_f',1,
+		'b_g_soldier_ar_f',3,
+		'b_g_medic_f',1,
+		'b_g_engineer_f',1,
+		'b_g_soldier_exp_f',1,
+		'b_g_soldier_gl_f',1,
+		'b_g_soldier_m_f',1,
+		'b_g_soldier_f',1,
+		'b_g_soldier_lat_f',(2 max (missionnamespace getvariable ['qs_ai_targetsknowledge_threat_armor',0]) min 4),
+		'b_g_soldier_lat2_f',(2 max (missionnamespace getvariable ['qs_ai_targetsknowledge_threat_armor',0]) min 4),
+		'b_g_soldier_lite_f',1,
+		'b_g_sharpshooter_f',3,
+		'b_g_soldier_tl_f',1,
+		'i_c_soldier_bandit_7_f',1,
+		'i_c_soldier_bandit_3_f',3,
+		'i_c_soldier_bandit_2_f',(2 max (missionnamespace getvariable ['qs_ai_targetsknowledge_threat_armor',0]) min 4),
+		'i_c_soldier_bandit_5_f',2,
+		'i_c_soldier_bandit_6_f',2,
+		'i_c_soldier_bandit_1_f',2,
+		'i_c_soldier_bandit_8_f',2,
+		'i_c_soldier_bandit_4_f',2,
+		'i_c_soldier_para_7_f',1,
+		'i_c_soldier_para_2_f',1,
+		'i_c_soldier_para_3_f',1,
+		'i_c_soldier_para_4_f',3,
+		'i_c_soldier_para_6_f',1,
+		'i_c_soldier_para_8_f',1,
+		'i_c_soldier_para_1_f',1,
+		'i_c_soldier_para_5_f',(2 max (missionnamespace getvariable ['qs_ai_targetsknowledge_threat_armor',0]) min 4),
+		'o_soldier_aa_f',(1 max (missionnamespace getvariable ['qs_ai_targetsknowledge_threat_air',0]) min 4)
+	]
+};
+// List of heavier units for deployment assault system
+if (_type isEqualTo 'deploy_assault_2') exitWith {
+	[
+		'b_soldier_ar_f',3,
+		'b_medic_f',1,
+		'b_soldier_exp_f',1,
+		'b_soldier_gl_f',3,
+		'b_heavygunner_f',1,
+		'b_soldier_m_f',3,
+		'b_soldier_at_f',1,
+		'b_soldier_aa_f',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_air',0]) min 4),
+		'b_soldier_f',5,
+		'b_soldier_lat_f',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
+		'b_soldier_lite_f',1,
+		'b_sharpshooter_f',1,
+		'b_soldier_tl_f',1
 	]
 };
 if (_type isEqualTo 'defend_grptypes_1') exitWith {

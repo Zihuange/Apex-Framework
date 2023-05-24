@@ -294,7 +294,6 @@ if (
 			];
 			QS_interactions_extendedContext pushBack [QS_player,QS_action_cargoManifest];
 		};
-		
 		// AI turret toggle
 		if (
 			(
@@ -335,7 +334,7 @@ if (
 			{((crew _cursorObject) isNotEqualTo [])} &&
 			{(cameraOn isEqualTo player)} &&
 			{ ((!(_cursorObject isKindOf 'Air')) || ((_cursorObject isKindOf 'Air') && (player getUnitTrait 'uavhacker'))) } &&
-			{( (side (effectiveCommander _cursorObject)) isEqualTo (QS_player getVariable ['QS_unit_side',WEST]))}
+			{( (side (effectiveCommander _cursorObject)) isEqualTo (QS_player getVariable ['QS_unit_side',EAST]))}
 		) then {
 			QS_action_turretTakeControl = QS_player addAction [
 				localize '$STR_USERACT_UAV_TAKECONTROLS',
@@ -522,6 +521,7 @@ if (
 			];
 			QS_interactions_extendedContext pushBack [QS_player,QS_action_resupplyTickets];
 		};
+		// Light switch
 		if (
 			(isNull QS_extendedContext_objectParent) &&
 			{(QS_extendedContext_cursorDistance < 4)} &&
