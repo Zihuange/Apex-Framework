@@ -723,7 +723,7 @@ _hqGroup1 setVariable ['QS_AI_GRP_HC',[0,-1],QS_system_AI_owners];
 _infUrbanType = selectRandomWeighted _infUrbanTypes;
 //_randomPos = ['RADIUS',_QS_HQpos,150,'LAND',[],FALSE,[],[],FALSE] call (missionNamespace getVariable 'QS_fnc_findRandomPos');
 _randomPos = [_QS_HQpos,0,150,1,0,0.4,0] call (missionNamespace getVariable 'QS_fnc_findSafePos');
-private _hqGroup2 = [_randomPos,(random 360),EAST,_infUrbanType,FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
+private _hqGroup2 = [_randomPos,(random 360),WEST,_infUrbanType,FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 [_hqGroup2,_QS_HQpos,70,TRUE] call (missionNamespace getVariable 'QS_fnc_taskPatrol');
 [(units _hqGroup2),2] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');
 _hqGroup2 setVariable ['QS_AI_GRP',TRUE,QS_system_AI_owners];
