@@ -30,7 +30,7 @@ if (_mode isEqualTo 'onLoad') exitWith {
 
 	private _ticketsEnabled = FALSE;
 
-	_side = QS_player getVariable ['QS_unit_side',WEST];
+	_side = QS_player getVariable ['QS_unit_side',EAST];
 	comment 'ONLY FACTION DEPLOYMENTS';
 	private _deploymentPositions = (missionNamespace getVariable ['QS_system_deployments',[]]) select {
 		_x params (localNamespace getVariable ['QS_deployment_dataParams',[]]);
