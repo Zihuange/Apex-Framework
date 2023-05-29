@@ -37,7 +37,7 @@ for '_x' from 0 to (round (29 + (random 19))) step 1 do {
 	_mine setVectorUp (surfaceNormal (getPosWorld _mine));
 	{
 		_x revealMine _mine;
-	} forEach [EAST,RESISTANCE];
+	} forEach [WEST,RESISTANCE];
 	if (surfaceIsWater (getPosWorld _mine)) then {
 		deleteVehicle _mine;
 	} else {

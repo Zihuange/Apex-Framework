@@ -233,7 +233,7 @@ if (_key isEqualTo 62) exitWith {
 												_unitData = _x;
 												_unitData params ['_unit','_unitSkill','_unitSkills','_unitAI','_unitPos','_unitAnimCoef','_unitStamina'];
 												if (alive _unit) then {
-													if ((side _grp) in [EAST,RESISTANCE]) then {
+													if ((side _grp) in [WEST,RESISTANCE]) then {
 														_unit setVariable ['QS_AI_UNIT_enabled',TRUE,QS_system_AI_owners];
 													};
 													_unit setSkill _unitSkill;

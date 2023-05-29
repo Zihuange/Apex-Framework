@@ -42,7 +42,7 @@ while {((count _mines) < _quantity)} do {
 		_mine setVectorUp (surfaceNormal (getPosWorld _mine));
 		{
 			_x revealMine _mine;
-		} forEach [EAST,RESISTANCE];
+		} forEach [WEST,RESISTANCE];
 	};
 	if (_attempts > _maxAttempts) exitWith {};
 	_attempts = _attempts + 1;

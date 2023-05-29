@@ -237,7 +237,7 @@ for '_z' from 0 to 1 step 0 do {
 		_conditionDelay = _time + _conditionInterval;
 		if (
 			(!alive _selectedDeployment) ||
-			((count ((flatten ([EAST,RESISTANCE] apply {units _x})) inAreaArray [_referencePos,_radiusEnemy,_radiusEnemy,0,FALSE,-1])) > _enemyThreshold)
+			((count ((flatten ([WEST,RESISTANCE] apply {units _x})) inAreaArray [_referencePos,_radiusEnemy,_radiusEnemy,0,FALSE,-1])) > _enemyThreshold)
 		) then {
 			_fail = TRUE;
 		} else {

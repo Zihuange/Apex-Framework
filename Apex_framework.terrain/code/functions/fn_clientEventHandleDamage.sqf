@@ -25,7 +25,7 @@ _damage = _oldDamage + ((_damage - _oldDamage) * (_this call (missionNamespace g
 	['BIS_hitArray',_this,FALSE],
 	['BIS_wasHit',TRUE,FALSE]
 ];
-_enemySides = _unit getVariable ['QS_unit_enemySides',[EAST,RESISTANCE]];
+_enemySides = _unit getVariable ['QS_unit_enemySides',[WEST,RESISTANCE]];
 if (isNull _source) then {
 	_source = missionNamespace getVariable ['QS_revive_lastSource',objNull];
 } else {
