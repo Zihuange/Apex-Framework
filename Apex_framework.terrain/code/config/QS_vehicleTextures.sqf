@@ -68,14 +68,14 @@ __________________________________________________________________________/*/
 	[0,'黄蜂',[[0,'A3\air_f\heli_light_01\data\skins\heli_light_01_ext_wasp_co.paa']],'MH-9 Hummingbird (Heli)',['B_Heli_Light_01_F','B_Heli_Light_01_armed_F','C_Heli_Light_01_civil_F','B_Heli_Light_01_stripped_F','B_Heli_Light_01_dynamicLoadout_F'],'Bohemia Interactive'],
 	[0,'Indep',[[0,'A3\Air_F\Heli_Light_01\Data\heli_light_01_ext_indp_co.paa']],'MH-9 Hummingbird (Heli)',['B_Heli_Light_01_F','B_Heli_Light_01_armed_F','C_Heli_Light_01_civil_F','B_Heli_Light_01_stripped_F','B_Heli_Light_01_dynamicLoadout_F'],'Bohemia Interactive'],
 	[0,'Ion',[[0,'A3\air_f\Heli_Light_01\Data\heli_light_01_ext_ion_co.paa']],'MH-9 Hummingbird (Heli)',['B_Heli_Light_01_F','B_Heli_Light_01_armed_F','C_Heli_Light_01_civil_F','B_Heli_Light_01_stripped_F','B_Heli_Light_01_dynamicLoadout_F'],'Bohemia Interactive'],
-	[0,'闪电',[[0,'media\images\vskins\m2a4\bluelightning\mbt_01_body_co.paa'],[1,'media\images\vskins\m2a4\bluelightning\mbt_addons_co.paa'],[2,'media\images\vskins\m2a4\bluelightning\mbt_addons_co.paa']],'M2A4 Slammer (Tank)',['B_MBT_01_TUSK_F','B_MBT_01_cannon_F','B_T_MBT_01_TUSK_F','B_T_MBT_01_cannon_F'],'Archimedes'],
-	[0,'医疗鬼鹰',[[0,'media\images\vskins\uh80\medevac\medevacghosthawk.paa'],[1,'media\images\vskins\uh80\medevac\medevacghosthawk1.paa']],'UH-80 Ghosthawk',["B_Heli_Transport_01_camo_F","B_Heli_Transport_01_F","B_CTRG_Heli_Transport_01_sand_F","B_CTRG_Heli_Transport_01_tropic_F"],'Bohemia Interactive'],
+	//[0,'闪电',[[0,'media\images\vskins\m2a4\bluelightning\mbt_01_body_co.paa'],[1,'media\images\vskins\m2a4\bluelightning\mbt_addons_co.paa'],[2,'media\images\vskins\m2a4\bluelightning\mbt_addons_co.paa']],'M2A4 Slammer (Tank)',['B_MBT_01_TUSK_F','B_MBT_01_cannon_F','B_T_MBT_01_TUSK_F','B_T_MBT_01_cannon_F'],'Archimedes'],
+	//[0,'医疗鬼鹰',[[0,'media\images\vskins\uh80\medevac\medevacghosthawk.paa'],[1,'media\images\vskins\uh80\medevac\medevacghosthawk1.paa']],'UH-80 Ghosthawk',["B_Heli_Transport_01_camo_F","B_Heli_Transport_01_F","B_CTRG_Heli_Transport_01_sand_F","B_CTRG_Heli_Transport_01_tropic_F"],'Bohemia Interactive'],
 	[0,'绿色鬼鹰',[[0,'A3\air_f_beta\Heli_Transport_01\Data\Heli_Transport_01_ext01_BLUFOR_CO.paa'],[1,'A3\air_f_beta\Heli_Transport_01\Data\Heli_Transport_01_ext02_BLUFOR_CO.paa']],'UH-80 Ghosthawk',["B_Heli_Transport_01_camo_F","B_Heli_Transport_01_F","B_CTRG_Heli_Transport_01_sand_F","B_CTRG_Heli_Transport_01_tropic_F"],'Bohemia Interactive'],
 	[0,'沙滩鬼鹰',[[0,'A3\air_f_exp\Heli_Transport_01\Data\Heli_Transport_01_ext01_sand_CO.paa'],[1,'A3\air_f_exp\Heli_Transport_01\Data\Heli_Transport_01_ext02_sand_CO.paa']],'UH-80 Ghosthawk',["B_Heli_Transport_01_camo_F","B_Heli_Transport_01_F","B_CTRG_Heli_Transport_01_sand_F","B_CTRG_Heli_Transport_01_tropic_F"],'Bohemia Interactive'],
 	[0,'热带鬼鹰',[[0,'A3\air_f_exp\Heli_Transport_01\Data\Heli_Transport_01_ext01_tropic_CO.paa'],[1,'A3\air_f_exp\Heli_Transport_01\Data\Heli_Transport_01_ext02_tropic_CO.paa']],'UH-80 Ghosthawk',["B_Heli_Transport_01_camo_F","B_Heli_Transport_01_F","B_CTRG_Heli_Transport_01_sand_F","B_CTRG_Heli_Transport_01_tropic_F"],'Bohemia Interactive'],
 	[0,'THPJ',[[0,'media\images\vskins\uh80\th\heli_transport_01_th_01_CO.jpg'],[1,'media\images\vskins\uh80\th\heli_transport_01_th_02_CO.jpg']],'UH-80 Ghosthawk',["B_Heli_Transport_01_camo_F","B_Heli_Transport_01_F","B_CTRG_Heli_Transport_01_sand_F","B_CTRG_Heli_Transport_01_tropic_F"],'天煞'],
-	[0,'数码I',[[0,'media\images\vskins\uh80\digital\heli_transport_01_ext01_blufor_co.paa'],[1,'media\images\vskins\uh80\digital\heli_transport_01_ext02_blufor_co.paa']],'UH-80 Ghosthawk',['B_Heli_Transport_01_F','B_Heli_Transport_01_camo_F','B_CTRG_Heli_Transport_01_sand_F','B_CTRG_Heli_Transport_01_tropic_F'],'Archimedes'],
-	[0,'AU-67',[[0,'media\images\vskins\huron\huron_0_v1.jpg'],[1,'media\images\vskins\huron\huron_1_v1.jpg']],'CH-67 Huron (Heli)',['B_Heli_Transport_03_black_F','B_Heli_Transport_03_F','B_Heli_Transport_03_unarmed_F','B_Heli_Transport_03_unarmed_green_F'],'N/A'],
+	//[0,'数码I',[[0,'media\images\vskins\uh80\digital\heli_transport_01_ext01_blufor_co.paa'],[1,'media\images\vskins\uh80\digital\heli_transport_01_ext02_blufor_co.paa']],'UH-80 Ghosthawk',['B_Heli_Transport_01_F','B_Heli_Transport_01_camo_F','B_CTRG_Heli_Transport_01_sand_F','B_CTRG_Heli_Transport_01_tropic_F'],'Archimedes'],
+	//[0,'AU-67',[[0,'media\images\vskins\huron\huron_0_v1.jpg'],[1,'media\images\vskins\huron\huron_1_v1.jpg']],'CH-67 Huron (Heli)',['B_Heli_Transport_03_black_F','B_Heli_Transport_03_F','B_Heli_Transport_03_unarmed_F','B_Heli_Transport_03_unarmed_green_F'],'N/A'],
 	[0,'USCG',[[0,'media\images\vskins\po30\orcau.paa']],'PO-30 Orca (Heli)',['o_heli_light_02_dynamicloadout_f','O_Heli_Light_02_F','O_Heli_Light_02_v2_F','O_Heli_Light_02_unarmed_F'],'Archimedes'],
 	//[0,'A-10C',[[0,'media\images\vskins\a164\wipeoutfuselage_usaf01_co.paa'],[1,'media\images\vskins\a164\wipeoutwings_usaf01_co.paa']],'A-164 Wipeout (Plane)',['B_Plane_CAS_01_F','B_Plane_CAS_01_dynamicLoadout_F'],'-=D.R.M=- Online1034'],
 	//[0,'美国海航',[[0,'media\images\vskins\fa181\Fighter_01_fuselage_01_co.paa'],[1,'media\images\vskins\fa181\Fighter_01_fuselage_02_co.paa']],'F/A-181 Black Wasp II (Plane)',['B_Plane_Fighter_01_F','B_Plane_Fighter_01_Stealth_F'],'-=D.R.M=- Online1034'],
@@ -116,17 +116,17 @@ __________________________________________________________________________/*/
 			[5,"a3\air_f_jets\plane_fighter_01\data\fighter_01_cockpit_05_co.paa"]
 		],'F/A-181 Black Wasp II (Plane)',['B_Plane_Fighter_01_F','B_Plane_Fighter_01_Stealth_F'],'Bohemia Interactive'
 	],
-	[
-		0,'F/A-182',
-		[
-			[0,"media\images\vskins\fa181\digitalwasp3.paa"],
-			[1,"media\images\vskins\fa181\digitalwing3.paa"],
-			[2,"a3\air_f_jets\plane_fighter_01\data\fighter_01_glass_01_ca.paa"],
-			[3,"a3\air_f_jets\plane_fighter_01\data\fighter_01_cockpit_01_co.paa"],
-			[4,"a3\air_f_jets\plane_fighter_01\data\fighter_01_cockpit_02_co.paa"],
-			[5,"a3\air_f_jets\plane_fighter_01\data\fighter_01_cockpit_05_co.paa"]
-		],'F/A-181 Black Wasp II (Plane)',['B_Plane_Fighter_01_F','B_Plane_Fighter_01_Stealth_F'],'Archimedes'
-	],
+	// [
+	// 	0,'F/A-182',
+	// 	[
+	// 		[0,"media\images\vskins\fa181\digitalwasp3.paa"],
+	// 		[1,"media\images\vskins\fa181\digitalwing3.paa"],
+	// 		[2,"a3\air_f_jets\plane_fighter_01\data\fighter_01_glass_01_ca.paa"],
+	// 		[3,"a3\air_f_jets\plane_fighter_01\data\fighter_01_cockpit_01_co.paa"],
+	// 		[4,"a3\air_f_jets\plane_fighter_01\data\fighter_01_cockpit_02_co.paa"],
+	// 		[5,"a3\air_f_jets\plane_fighter_01\data\fighter_01_cockpit_05_co.paa"]
+	// 	],'F/A-181 Black Wasp II (Plane)',['B_Plane_Fighter_01_F','B_Plane_Fighter_01_Stealth_F'],'Archimedes'
+	// ],
 	[
 		0,'Van-BB',
 		[
