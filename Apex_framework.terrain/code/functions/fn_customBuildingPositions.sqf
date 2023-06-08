@@ -599,4 +599,20 @@ if ((_type in ['land_barn_01_brown_f','land_barn_01_grey_f']) || {(_model in [
 	} count _array;
 	_buildingPositions;	
 };
+if (_type in ['land_vn_hut_06','land_vn_hut_02']) exitWith {
+	//vietnam medium huts
+	_buildingPositions deleteAt 0;
+	_buildingPositions;
+};
+if (_type in ['land_vn_hut_tower_03']) exitWith {
+	//vietnam large watch tower
+	_buildingPositions deleteAt 0;
+	_buildingPositions deleteAt 1;
+	_buildingPositions;
+};
+
+
+
+
+
 _buildingPositions;

@@ -33,6 +33,7 @@
 		{TRUE}
 	] call QS_fnc_registerVehicle;
 
+
 3. Now again, with explanations for what it all means.
 	
 	0 = [

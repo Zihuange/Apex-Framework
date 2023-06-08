@@ -1469,3 +1469,227 @@ if (_worldName isEqualTo 'Stratis') exitWith {
 		["Land_PortableCabinet_01_medical_F","a3\props_f_enoch\military\camps\portablecabinet_01_medical_f.p3d",[4098.88,4587.95,221.646],[[0.448847,-0.888591,0.0945619],[-0.022494,0.0945518,0.995266]],0,0,2,1,[],{}]
 	]
 };
+
+//vn_b_ammobox_supply_05
+
+if (_worldName isEqualTo 'Cam_Lao_Nam') exitWith {
+	[
+		["vn_b_ammobox_supply_05","a3\weapons_f\ammoboxes\supplydrop.p3d",[15729.6,7147.9,15.8724],[[0,1,0],[0,0,1]],0,0,2,0,[],{
+		
+		}],
+		["vn_b_ammobox_supply_05","a3\weapons_f\ammoboxes\supplydrop.p3d",[15729.4,7131.38,15.8724],[[0,1,0],[0,0,1]],0,0,2,0,[],{
+		
+		}],
+		["Land_vn_mil_wiredfence_f","vn\vn_structures_f\walls\vn_mil_wiredfence_f.p3d",[15683.3,7092.17,16.7688],[[-0.0352308,-0.999379,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_mil_wiredfence_f","vn\vn_structures_f\walls\vn_mil_wiredfence_f.p3d",[15691,7091.85,16.7688],[[-0.0352308,-0.999379,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_mil_wiredfence_f","vn\vn_structures_f\walls\vn_mil_wiredfence_f.p3d",[15695.4,7096,16.7688],[[0.999843,-0.017742,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_mil_wiredfence_f","vn\vn_structures_f\walls\vn_mil_wiredfence_f.p3d",[15679.4,7104.32,16.7688],[[-0.999697,0.0246052,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_mil_wiredfence_f","vn\vn_structures_f\walls\vn_mil_wiredfence_f.p3d",[15679.2,7096.6,16.7688],[[-0.999697,0.0246052,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_mil_wiredfence_f","vn\vn_structures_f\walls\vn_mil_wiredfence_f.p3d",[15691.5,7108.86,16.7688],[[-0.0261666,0.999658,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_mil_wiredfence_f","vn\vn_structures_f\walls\vn_mil_wiredfence_f.p3d",[15683.7,7108.7,16.7688],[[-0.0261666,0.999658,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_mil_wiredfence_f","vn\vn_structures_f\walls\vn_mil_wiredfence_f.p3d",[15695.5,7099.87,16.7688],[[0.999843,-0.017742,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_mil_wiredfence_f","vn\vn_structures_f\walls\vn_mil_wiredfence_f.p3d",[15691.7,7100.73,16.7688],[[0.999843,-0.017742,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_mil_wiredfence_f","vn\vn_structures_f\walls\vn_mil_wiredfence_f.p3d",[15691.8,7104.59,16.7688],[[0.999843,-0.017742,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15708.5,7118.18,15.3657],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15711.1,7118.19,15.3657],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15713.6,7118.19,15.3657],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15717.7,7118.16,15.3657],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15720.3,7118.17,15.3657],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15722.8,7118.17,15.3657],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15727.1,7118.12,15.3657],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15729.6,7118.13,15.3657],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15736.5,7118.21,15.3657],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15739,7118.22,15.3657],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15741.6,7118.22,15.3657],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15745.7,7118.21,15.3657],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15748.2,7118.23,15.3657],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15750.8,7118.22,15.3657],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_helipadsquare_f","vn\vn_structures_f\mil\helipads\vn_helipadsquare_f.p3d",[15719.8,7051.72,14.98],[[0.031848,0.999493,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_helipadsquare_f","vn\vn_structures_f\mil\helipads\vn_helipadsquare_f.p3d",[15756.1,7050.2,14.98],[[0.0380977,0.999274,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_helipadcircle_f","vn\vn_structures_f\mil\helipads\vn_helipadcircle_f.p3d",[15856.6,7091.35,14.98],[[-0.781987,-0.623294,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_helipadcircle_f","vn\vn_structures_f\mil\helipads\vn_helipadcircle_f.p3d",[15857.2,7051.83,14.98],[[-0.844559,-0.535463,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_helipadcircle_f","vn\vn_structures_f\mil\helipads\vn_helipadcircle_f.p3d",[15818.5,7090.7,14.98],[[-0.838512,-0.544883,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_helipadcircle_f","vn\vn_structures_f\mil\helipads\vn_helipadcircle_f.p3d",[15819.1,7051.02,14.98],[[-0.841092,-0.540892,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_tent_mash_02_03","vn\structures_f_vietnam_02\usarmy\building\vn_tent_mash_02_03.p3d",[15714.8,7126.88,16.9858],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_tent_01_01","vn\structures_f_vietnam_02\usarmy\building\vn_tent_01_01.p3d",[15715.3,7140.95,16.9858],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_tent_01_02","vn\structures_f_vietnam_02\usarmy\building\vn_tent_01_02.p3d",[15715.1,7155.65,16.9858],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_tent_01_01","vn\structures_f_vietnam_02\usarmy\building\vn_tent_01_01.p3d",[15745.1,7149.26,16.9858],[[0.999559,-0.0296839,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_us_common_table_01","vn\objects_f_vietnam\usarmy\furniture\vn_us_common_table_01.p3d",[15716.2,7126.5,14.9859],[[0,0.999998,-0.00212837],[0.0027402,0.00212836,0.999994]],0,0,2,0,[],{}],
+		["Land_vn_us_common_table_01","vn\objects_f_vietnam\usarmy\furniture\vn_us_common_table_01.p3d",[15713.4,7127.26,14.9853],[[0,1,-0.000345267],[-0.00265204,0.000345266,0.999996]],0,0,2,0,[],{}],
+		["Land_vn_us_common_table_01","vn\objects_f_vietnam\usarmy\furniture\vn_us_common_table_01.p3d",[15715.4,7140.98,14.9889],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_us_common_table_01","vn\objects_f_vietnam\usarmy\furniture\vn_us_common_table_01.p3d",[15715.3,7155.68,14.9889],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_b_prop_barrels_water_01","vn\objects_f_vietnam\usarmy\furniture\vn_b_prop_barrels_water_01.p3d",[15729.5,7138.68,14.98],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["vn_b_prop_riflerack_05","vn\objects_f_vietnam\usarmy\furniture\vn_b_prop_riflerack_05.p3d",[15717.5,7144.28,16.7075],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["vn_b_prop_riflerack_06","vn\objects_f_vietnam\usarmy\furniture\vn_b_prop_riflerack_06.p3d",[15716.1,7144.27,16.7075],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["vn_b_prop_riflerack_01","vn\objects_f_vietnam\usarmy\furniture\vn_b_prop_riflerack_01.p3d",[15717.2,7158.54,14.9889],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["vn_b_prop_riflerack_02","vn\objects_f_vietnam\usarmy\furniture\vn_b_prop_riflerack_02.p3d",[15716.1,7158.56,14.98],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["vn_b_prop_prc77_01","vn\objects_f_vietnam\usarmy\prc77\vn_b_prop_prc77_01.p3d",[15712.9,7127.2,15.7734],[[0.897527,0.440959,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_RepairDepot_01_green_F","a3\structures_f_tank\military\repairdepot\repairdepot_01_green_f.p3d",[15699.9,7190.22,17.398],[[0.999283,-0.0378702,0],[0,0,1]],0,0,2,0,[],{
+		
+		}],
+		["vn_flagpole_f","vn\objects_f_vietnam\flags\vn_mast_civ_white.p3d",[15729.7,7118.76,18.9568],[[0,1,0],[0,0,1]],0,1,0,0,[],{
+			(_this # 0) setFlagTexture (missionNamespace getVariable ['QS_missionConfig_textures_communityFlag','a3\data_f\flags\flag_nato_co.paa']);
+		}],
+		["Land_vn_helipadcircle_f","vn\vn_structures_f\mil\helipads\vn_helipadcircle_f.p3d",[15895.3,7092.8,14.98],[[-0.841092,-0.540892,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_tent_02_04","vn\structures_f_vietnam_02\usarmy\building\vn_tent_02_04.p3d",[15879.9,7069.04,16.9858],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["vn_b_ammobox_supply_05","a3\weapons_f\ammoboxes\supplydrop.p3d",[15879.8,7069.04,15.8724],[[0,1,0],[0,0,1]],0,0,2,0,[],{
+		
+		}],
+		["Land_Bollard_01_F","a3\structures_f_exp\signs\traffic\bollard_01_f.p3d",[15744.6,7165.03,15.5003],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_Bollard_01_F","a3\structures_f_exp\signs\traffic\bollard_01_f.p3d",[15745.8,7165.04,15.5003],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_Bollard_01_F","a3\structures_f_exp\signs\traffic\bollard_01_f.p3d",[15747.1,7165.1,15.5003],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_Bollard_01_F","a3\structures_f_exp\signs\traffic\bollard_01_f.p3d",[15760.5,7142.57,15.5003],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_Bollard_01_F","a3\structures_f_exp\signs\traffic\bollard_01_f.p3d",[15760.5,7141.35,15.5003],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_Bollard_01_F","a3\structures_f_exp\signs\traffic\bollard_01_f.p3d",[15760.5,7140.1,15.5003],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_Bollard_01_F","a3\structures_f_exp\signs\traffic\bollard_01_f.p3d",[15761.7,7148.01,15.5003],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_Bollard_01_F","a3\structures_f_exp\signs\traffic\bollard_01_f.p3d",[15743.6,7118.28,15.5003],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_Bollard_01_F","a3\structures_f_exp\signs\traffic\bollard_01_f.p3d",[15734.2,7118.31,15.5003],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_Bollard_01_F","a3\structures_f_exp\signs\traffic\bollard_01_f.p3d",[15724.9,7118.17,15.5003],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_Bollard_01_F","a3\structures_f_exp\signs\traffic\bollard_01_f.p3d",[15715.7,7118.23,15.5003],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_Bollard_01_F","a3\structures_f_exp\signs\traffic\bollard_01_f.p3d",[15697.8,7119.97,15.5003],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_Bollard_01_F","a3\structures_f_exp\signs\traffic\bollard_01_f.p3d",[15697.8,7148.01,15.5003],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15700.4,7193.21,15.3657],[[0.0332779,0.999446,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15702.8,7192.65,15.3657],[[0.409871,0.912143,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15698.1,7192.68,15.3657],[[-0.476312,0.879276,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15700.7,7199.18,15.3657],[[0.0371491,0.99931,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15698.4,7199.9,15.3657],[[0.526254,0.850328,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15703.1,7199.72,15.3657],[[-0.460024,0.887907,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_airport_02_controltower_f","vn\vn_structures_f_exp_02\infrastructure\airports\vn_airport_02_controltower_f.p3d",[15769.1,7126.53,25.8768],[[-0.0249614,-0.999688,0],[0,0,1]],0,1,0,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15696.2,7187.72,15.3657],[[-0.998945,0.0459166,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15696.1,7185.16,15.3657],[[-0.998945,0.0459166,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15703.2,7187.51,15.3657],[[-0.998945,0.0459166,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15703.1,7184.94,15.3657],[[-0.998945,0.0459166,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15696,7182.58,15.3657],[[-0.998945,0.0459166,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15703,7182.41,15.3657],[[-0.998945,0.0459166,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_FirstAidKit_01_closed_F","a3\props_f_orange\humanitarian\camps\firstaidkit_01_closed_f.p3d",[15714.8,7129.49,15.162],[[0,0.999998,-0.00212837],[0.0027402,0.00212836,0.999994]],0,0,2,0,[],{}],
+		["Land_FirstAidKit_01_open_F","a3\props_f_orange\humanitarian\camps\firstaidkit_01_open_f.p3d",[15716.3,7126.5,15.8246],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_GymBench_01_F","a3\structures_f_bootcamp\civ\sportsgrounds\gymbench_01_f.p3d",[15727.5,7161.97,15.5693],[[0.999345,-0.0361768,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_GymBench_01_F","a3\structures_f_bootcamp\civ\sportsgrounds\gymbench_01_f.p3d",[15730.1,7161.95,15.5693],[[-0.999501,0.0316014,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_GymRack_02_F","a3\structures_f_bootcamp\civ\sportsgrounds\gymrack_02_f.p3d",[15734.1,7163.86,15.6132],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_GymRack_03_F","a3\structures_f_bootcamp\civ\sportsgrounds\gymrack_03_f.p3d",[15728.8,7164.15,15.5627],[[-0.00392469,-0.999992,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_GymRack_01_F","a3\structures_f_bootcamp\civ\sportsgrounds\gymrack_01_f.p3d",[15724,7163.18,16.0742],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_b_prop_mapstand_01","vn\objects_f_vietnam\usarmy\furniture\vn_b_prop_mapstand_01.p3d",[15750.4,7120.69,15.0518],[[0.754456,-0.656351,0],[0,0,1]],0,0,2,0,[],{}],
+		["vn_b_ammobox_sog","vn\objects_f_vietnam\supply\vn_us_pallet_stack_01.p3d",[15755.9,6973.37,15.02],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["vn_b_ammobox_sog","vn\objects_f_vietnam\supply\vn_us_pallet_stack_01.p3d",[15759.8,6973.38,15.02],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["vn_b_ammobox_sog","vn\objects_f_vietnam\supply\vn_us_pallet_stack_01.p3d",[15759.7,6976.91,15.02],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["vn_b_ammobox_supply_05","a3\weapons_f\ammoboxes\supplydrop.p3d",[15704.2,7189.74,15.8724],[[0.9991,-0.0424146,0],[0,0,1]],0,0,2,0,[],{
+		
+		}],
+		["Land_vn_b_gunpit_01","vn\structures_f_vietnam_02\usarmy\fort\vn_b_gunpit_01.p3d",[15718.5,6977.06,14.132],[[0.855726,-0.517429,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_Bollard_01_F","a3\structures_f_exp\signs\traffic\bollard_01_f.p3d",[15708.9,7166.26,15.5003],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_usaf_revetment_low_8","vn\structures_f_vietnam_02\usaf\fort\vn_usaf_revetment_low_8.p3d",[15682.9,7217.51,14.98],[[0.99975,-0.0223577,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_usaf_revetment_low_8","vn\structures_f_vietnam_02\usaf\fort\vn_usaf_revetment_low_8.p3d",[15694.6,7231.86,14.98],[[0.0150646,0.999887,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_usaf_revetment_low_8","vn\structures_f_vietnam_02\usaf\fort\vn_usaf_revetment_low_8.p3d",[15672.1,7232.57,14.98],[[0.0150646,0.999887,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_usaf_revetment_low_3","vn\structures_f_vietnam_02\usaf\fort\vn_usaf_revetment_low_3.p3d",[15655.4,7203.66,14.98],[[-0.0466893,-0.998909,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_usaf_revetment_low_3","vn\structures_f_vietnam_02\usaf\fort\vn_usaf_revetment_low_3.p3d",[15678,7203.14,14.98],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_usaf_revetment_low_8","vn\structures_f_vietnam_02\usaf\fort\vn_usaf_revetment_low_8.p3d",[15650.1,7219.4,14.98],[[-0.99945,0.0331637,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_usaf_revetment_low_3","vn\structures_f_vietnam_02\usaf\fort\vn_usaf_revetment_low_3.p3d",[15649.6,7204.34,14.98],[[0.999032,-0.043989,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_usaf_revetment_low_3","vn\structures_f_vietnam_02\usaf\fort\vn_usaf_revetment_low_3.p3d",[15655.4,7233.05,14.98],[[-0.0466893,-0.998909,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_usaf_revetment_low_3","vn\structures_f_vietnam_02\usaf\fort\vn_usaf_revetment_low_3.p3d",[15649.3,7193.96,14.9758],[[0.999261,-0.0384439,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_CampingChair_V2_F","a3\structures_f\civ\camping\campingchair_v2_f.p3d",[15740.7,7117.24,15.4865],[[0.436518,0.899696,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_CampingChair_V2_F","a3\structures_f\civ\camping\campingchair_v2_f.p3d",[15738.2,7117.25,15.4865],[[-0.376373,0.926468,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_CampingTable_small_F","a3\structures_f\civ\camping\campingtable_small_f.p3d",[15739.5,7117.3,15.3852],[[0.00642239,-0.999979,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_Orange_01_F","a3\props_f_orange\humanitarian\supplies\orange_01_f.p3d",[15739.3,7117.06,15.8342],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_b_prop_messtin_03","vn\objects_f_vietnam\usarmy\messtins\vn_b_prop_messtin_03.p3d",[15739.5,7117.41,15.793],[[0.698796,-0.715321,0],[0,0,1]],0,0,2,0,[],{}],
+		["vn_b_item_mk2_knife_02","vn\characters_f_vietnam\blufor\packs\items\vn_b_item_mk2_knife_02.p3d",[15739.2,7117.07,15.7982],[[0.542221,-0.840236,0],[0,0,1]],0,0,2,0,[],{}],
+		["vn_o_prop_t102e_01","vn\objects_f_vietnam\pavn\t884\vn_o_prop_t102e_01.p3d",[15713.5,7127.21,15.765],[[0.0336259,-0.999434,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_helipadsquare_f","vn\vn_structures_f\mil\helipads\vn_helipadsquare_f.p3d",[15755.9,6878.36,14.98],[[0.998948,-0.0458558,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_helipadsquare_f","vn\vn_structures_f\mil\helipads\vn_helipadsquare_f.p3d",[15970.7,6968.94,14.98],[[-0.0214006,-0.999771,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_CampingTable_small_F","a3\structures_f\civ\camping\campingtable_small_f.p3d",[15945.1,7060.81,15.3852],[[-0.421779,0.906699,0],[0,0,1]],0,0,2,0,[],{
+			if (!((missionNamespace getVariable ['QS_missionConfig_carrierEnabled',0]) isEqualTo 0)) then {
+				(_this # 0) hideObjectGlobal TRUE;
+			};
+		}],
+		["Land_Laptop_03_olive_F","a3\props_f_enoch\military\equipment\laptop_03_f.p3d",[15945.1,7060.85,15.9604],[[0.41746,-0.908695,0],[0,0,1]],0,0,0,0,[],{
+			missionNamespace setVariable ['QS_cas_laptop',(_this # 0),TRUE];
+			if (!((missionNamespace getVariable ['QS_missionConfig_carrierEnabled',0]) isEqualTo 0)) then {
+				(_this # 0) enableDynamicSimulation FALSE;
+				(_this # 0) setVariable ['QS_dynSim_ignore',TRUE,TRUE];
+				(_this # 0) hideObjectGlobal TRUE;
+			};
+		}],
+		["Land_Laptop_03_olive_F","a3\props_f_enoch\military\equipment\laptop_03_f.p3d",[15768.9,7120.02,29.1367],[[-0.0163692,-0.999866,0],[0,0,1]],0,0,0,0,[],{
+			missionNamespace setVariable ['QS_airdefense_laptop',(_this # 0),TRUE];
+		}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15682,7196.05,15.3657],[[0.999789,-0.0205599,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15682.1,7198.61,15.3657],[[0.999789,-0.0205599,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15682.2,7201.2,15.3657],[[0.999789,-0.0205599,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15681.9,7188.4,15.3657],[[0.999789,-0.0205599,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15681.9,7190.97,15.3657],[[0.999789,-0.0205599,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_cncbarrier_stripes_f","vn\vn_structures_f\walls\vn_cncbarrier_stripes_f.p3d",[15682,7193.55,15.3657],[[0.999789,-0.0205599,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_usaf_revetment_low_3","vn\structures_f_vietnam_02\usaf\fort\vn_usaf_revetment_low_3.p3d",[15648.9,7186.98,14.9419],[[0.999032,-0.043989,0],[0,0,1]],0,0,2,0,[],{}],
+		["Reflector_Cone_01_wide_orange_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[15666.5,7232.27,21.242],[[-0.0524117,-0.998626,0],[0,0,1]],0,1,0,0,[],{(missionNamespace getVariable 'QS_lamps') pushBack (_this # 0);}],
+		["Reflector_Cone_01_wide_orange_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[15684.1,7231.13,21.7601],[[0.66687,-0.745174,0],[0,0,1]],0,1,0,0,[],{(missionNamespace getVariable 'QS_lamps') pushBack (_this # 0);}],
+		["Reflector_Cone_01_wide_orange_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[15699.6,7171.01,20.7492],[[0.0400919,0.999196,0],[0,0,1]],0,1,0,0,[],{(missionNamespace getVariable 'QS_lamps') pushBack (_this # 0);}],
+		["Reflector_Cone_01_wide_orange_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[15707.8,7119.3,21.3994],[[0.768195,0.640215,0],[0,0,1]],0,1,0,0,[],{(missionNamespace getVariable 'QS_lamps') pushBack (_this # 0);}],
+		["Reflector_Cone_01_wide_orange_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[15709,7162.32,21.4865],[[0.652032,-0.758191,0],[0,0,1]],0,1,0,0,[],{(missionNamespace getVariable 'QS_lamps') pushBack (_this # 0);}],
+		["Reflector_Cone_01_wide_orange_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[15750.5,7162.59,21.3546],[[-0.674454,-0.738317,0],[0,0,1]],0,1,0,0,[],{(missionNamespace getVariable 'QS_lamps') pushBack (_this # 0);}],
+		["Reflector_Cone_01_wide_orange_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[15750.4,7121.32,21.2544],[[-0.757953,0.65231,0],[0,0,1]],0,1,0,0,[],{(missionNamespace getVariable 'QS_lamps') pushBack (_this # 0);}],
+		["Reflector_Cone_01_wide_orange_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[15885.8,7068.96,21.41],[[-0.999726,0.0234091,0],[0,0,1]],0,1,0,0,[],{(missionNamespace getVariable 'QS_lamps') pushBack (_this # 0);}],
+		["Reflector_Cone_01_wide_orange_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[15943.2,7071.38,22.6188],[[0.644244,-0.76482,0],[0,0,1]],0,1,0,0,[],{(missionNamespace getVariable 'QS_lamps') pushBack (_this # 0);}],
+		["Reflector_Cone_01_wide_orange_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[15745.7,6898.65,21.0752],[[0.458636,-0.888624,0],[0,0,1]],0,1,0,0,[],{(missionNamespace getVariable 'QS_lamps') pushBack (_this # 0);}],
+		["Reflector_Cone_01_wide_orange_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[15953.7,6970.7,22.1422],[[0.996764,-0.0803788,0],[0,0,1]],0,1,0,0,[],{(missionNamespace getVariable 'QS_lamps') pushBack (_this # 0);}],
+		["Reflector_Cone_01_wide_orange_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[15726,6995.08,23.1072],[[-0.433986,-0.90092,0],[0,0,1]],0,1,0,0,[],{(missionNamespace getVariable 'QS_lamps') pushBack (_this # 0);}],
+		["Land_vn_scf_01_chimney_f","vn\vn_structures_f_exp\industrial\sugarcanefactory_01\vn_scf_01_chimney_f.p3d",[15868.2,7148.78,44.1198],[[0,1,0],[0,0,1]],0,0,2,0,[],{
+			_chimney = _this # 0;
+			missionNamespace setVariable [
+				'QS_setFeatureType',
+				((missionNamespace getVariable 'QS_setFeatureType') + [[_chimney,2]]),
+				TRUE
+			];
+			_fire = createVehicle ['test_EmptyObjectForFireBig',[0,0,0],[],0,'NONE'];
+			_fire allowDamage FALSE;
+			missionNamespace setVariable [
+				'QS_setFeatureType',
+				((missionNamespace getVariable 'QS_setFeatureType') + [[_fire,2]]),
+				TRUE
+			];			
+			missionNamespace setVariable ['QS_torch',_fire,TRUE];
+			_fire enableDynamicSimulation FALSE;
+			_fire setVariable ['QS_dynSim_ignore',TRUE,TRUE];
+			_fire attachTo [_chimney,[-2,0,31]];
+			_fire spawn {
+				uiSleep 0.1;
+				detach _this;
+			};		
+		}],
+		["Land_InfoStand_V1_F","a3\structures_f\civ\infoboards\infostand_v1_f.p3d",[15736,7118.54,15.5554],[[-0.0387534,-0.999249,0],[0,0,1]],0,0,0,0,[],{
+			(_this # 0) setObjectTextureGlobal [0,(selectRandom (missionNamespace getVariable ['QS_missionConfig_textures_infostand1',[]]))];
+		}],
+		["Land_InfoStand_V2_F","a3\structures_f\civ\infoboards\infostand_v2_f.p3d",[15730.4,7118.47,15.5683],[[-0.0228949,-0.999738,0],[0,0,1]],0,0,0,0,[],{
+			(_this # 0) setObjectTextureGlobal [0,(selectRandom (missionNamespace getVariable ['QS_missionConfig_textures_infostand2',[]]))];
+		}],
+		["Land_Bollard_01_F","a3\structures_f_exp\signs\traffic\bollard_01_f.p3d",[15733.2,7118.25,15.5003],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_Bollard_01_F","a3\structures_f_exp\signs\traffic\bollard_01_f.p3d",[15732,7118.15,15.5003],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_CampingTable_F","a3\structures_f\civ\camping\campingtable_f.p3d",[15748.1,7123.34,15.3916],[[0.688839,0.724914,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_CampingTable_F","a3\structures_f\civ\camping\campingtable_f.p3d",[15747.6,7122.75,15.3916],[[-0.68532,-0.728242,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_CampingChair_V2_F","a3\structures_f\civ\camping\campingchair_v2_f.p3d",[15749.2,7124.83,15.4865],[[0.136029,0.990705,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_CampingChair_V2_F","a3\structures_f\civ\camping\campingchair_v2_f.p3d",[15747.9,7125.59,15.4865],[[-0.256323,0.966591,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_CampingChair_V2_F","a3\structures_f\civ\camping\campingchair_v2_f.p3d",[15746.7,7125.33,15.4865],[[-0.437392,0.899271,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_CampingChair_V2_F","a3\structures_f\civ\camping\campingchair_v2_f.p3d",[15745.6,7124.25,15.4865],[[-0.90467,0.426113,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_CampingChair_V2_F","a3\structures_f\civ\camping\campingchair_v2_f.p3d",[15745.5,7122.8,15.4865],[[-0.959717,-0.28097,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_CampingChair_V2_F","a3\structures_f\civ\camping\campingchair_v2_f.p3d",[15746.1,7121.57,15.4865],[[-0.773356,-0.633972,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_CampingChair_V2_F","a3\structures_f\civ\camping\campingchair_v2_f.p3d",[15747.1,7120.72,15.4865],[[-0.896144,-0.443764,0],[0,0,1]],0,0,2,0,[],{}],
+		["OmniDirectionalAntenna_01_olive_F","a3\props_f_enoch\military\equipment\omnidirectionalantenna_01_f.p3d",[15753.2,7122.27,17.0215],[[0.513337,0.858187,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_TripodScreen_01_large_F","a3\props_f_exp\military\camps\tripodscreen_01_large_f.p3d",[15751.5,7122.35,16.0232],[[-0.979734,0.200303,0],[0,0,1]],0,0,0,0,[],{
+			missionNamespace setVariable ['QS_Billboard_02',(_this # 0),TRUE];
+			(_this # 0) setObjectTextureGlobal [0,(selectRandom (missionNamespace getVariable ['QS_missionConfig_textures_billboard1',[]]))];		
+		}],
+		["Land_PortableGenerator_01_F","a3\props_f_exp\military\camps\portablegenerator_01_f.p3d",[15752.3,7121.76,15.3557],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_IPPhone_01_olive_F","a3\props_f_enoch\military\equipment\ipphone_01_f.p3d",[15715.9,7140.92,15.7976],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["vn_b_item_mk2_knife_02","vn\characters_f_vietnam\blufor\packs\items\vn_b_item_mk2_knife_02.p3d",[15747.6,7123.78,15.8008],[[-0.624027,-0.781403,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_b_helipad_01","vn\structures_f_vietnam_02\usarmy\fort\vn_b_helipad_01.p3d",[15852.7,6970.74,14.98],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_vn_b_helipad_01","vn\structures_f_vietnam_02\usarmy\fort\vn_b_helipad_01.p3d",[15757.6,6975.15,14.98],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["vn_b_ammobox_sog","vn\objects_f_vietnam\supply\vn_us_pallet_stack_01.p3d",[15756,6976.9,15.02],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Reflector_Cone_01_wide_orange_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[15844.8,6980.08,22.1422],[[0.729855,-0.683602,0],[0,0,1]],0,1,0,0,[],{(missionNamespace getVariable 'QS_lamps') pushBack (_this # 0);}],
+		["Reflector_Cone_01_wide_orange_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[15757.6,6988.03,22.1422],[[-0.0442912,-0.999019,0],[0,0,1]],0,1,0,0,[],{(missionNamespace getVariable 'QS_lamps') pushBack (_this # 0);}],
+		["Reflector_Cone_01_white_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[15720.3,7059.97,15.4561],[[-0.0780975,-0.996946,0],[0,0,1]],0,1,0,0,[],{(missionNamespace getVariable 'QS_lamps') pushBack (_this # 0);}],
+		["Reflector_Cone_01_white_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[15756.9,7057.02,15.6435],[[-0.0811507,-0.996702,0],[0,0,1]],0,1,0,0,[],{(missionNamespace getVariable 'QS_lamps') pushBack (_this # 0);}],
+		["vn_b_ammobox_09","vn\objects_f_vietnam\supply\a2_ammo\macv\vn_us_vehicleammo.p3d",[15739.2,7119.71,14.9687],[[0.998856,-0.0478142,0.000291326],[-0.000294822,-6.60601e-005,1]],0,0,2,0,[],{
+			(_this # 0) setVariable ['QS_arsenal_object',TRUE,TRUE];
+		}],
+		["Land_Billboard_F","a3\structures_f\civ\infoboards\billboard_f.p3d",[15754.1,7128.19,16.7232],[[0.999951,-0.00993884,0],[0,0,1]],0,0,0,0,[],{
+			(_this # 0) setObjectTextureGlobal [0,'media\images\billboards\billboard.jpg'];
+		}]
+	]
+};

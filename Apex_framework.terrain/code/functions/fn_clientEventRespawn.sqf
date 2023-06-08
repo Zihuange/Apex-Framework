@@ -43,8 +43,12 @@ if (isForcedWalk player) then {
 	['QS_event_handleHeal',nil,TRUE],
 	['QS_revive_disable',FALSE,(player getVariable ['QS_revive_disable',FALSE])],
 	['QS_respawn_disable',-1,FALSE],
-	['QS_client_medevacRequested',FALSE,FALSE]
+	['QS_client_medevacRequested',FALSE,FALSE],
+	['QS_client_playerViewChanged',TRUE,FALSE],
+	['vn_drm_toggle',FALSE],
+	['QS_client_inTunnel',FALSE,FALSE]
 ];
+setApertureNew [-1];
 50 cutText ['','BLACK IN',1];
 {
 	inGameUISetEventHandler _x;

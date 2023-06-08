@@ -382,6 +382,7 @@ class CfgFunctions {
 			class clientVehicleEventTurnIn {file = "code\functions\fn_clientVehicleEventTurnIn.sqf";};
 			class clientVehicleEventTurnOut {file = "code\functions\fn_clientVehicleEventTurnOut.sqf";};
 			class clientVehicleService {file = "code\functions\fn_clientVehicleService.sqf";};
+			class clientVAS2VA {file = "code\functions\fn_clientVAS2VA.sqf";};
 			class clientViewOptions {file = "code\functions\fn_clientViewOptions.sqf";};
 			class clientWeatherSync {file = "code\functions\fn_clientWeatherSync.sqf";};
 			class commonMultiplyMatrix {file = "code\functions\fn_commonMultiplyMatrix.sqf";};
@@ -642,6 +643,7 @@ class CfgFunctions {
 			class taskSetSingleWaypoint {file = "code\functions\fn_taskSetSingleWaypoint.sqf";};
 			class taskSetTimer {file = "code\functions\fn_taskSetTimer.sqf";};
 			class terrainGradAngle {file = "code\functions\fn_terrainGradAngle.sqf";};
+			class tunnelAperture {file = "code\functions\fn_tunnelAperture.sqf";};
 			class turret {file = "code\functions\fn_turret.sqf";};
 			class turretActionCancel {file = "code\functions\fn_turretActionCancel.sqf";};
 			class turretActions {file = "code\functions\fn_turretActions.sqf";};
@@ -5660,8 +5662,29 @@ class QS_RD_client_dialog_menu_unloadCargo {
 			sizeEx = 0.03;
 			colorBackground[] = {0,0,0,0.5};
 		};
+		class Objects {
+			class Model_Visual {
+				idc = 1820;
+				onLoad = "";
+				type = 81;
+				model = "";
+				scale = "(1 * 0.675 * (SafeZoneW Min SafeZoneH))";
+				direction[] = {0,-1,0};
+				up[] = {0,0,-1}; 
+				inBack = 1;
+				x = 0.677 * safezoneW + safezoneX;
+				y = 0.78 * safezoneH + safezoneY;
+				z = 0.35;
+				xBack = 0.677 * safezoneW + safezoneX;
+				yBack = 0.78 * safezoneH + safezoneY;
+				zBack = 0.35;
+				enableZoom = 0;
+				zoomDuration = 0.001;
+			};
+		};
 	};
 };
+
 class QS_RD_client_dialog_menu_playerBuild {
 	idd = 22000;
 	movingEnable = 1;

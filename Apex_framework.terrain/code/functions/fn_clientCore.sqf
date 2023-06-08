@@ -303,6 +303,7 @@ if (_revalidate) then {
 /*/=========================== Action manager module/*/
 
 player setVariable ['QS_RD_interacting',FALSE,TRUE];
+player setVariable ['vn_drm_toggle',FALSE];
 uiNamespace setVariable ['QS_RD_canRespawnVehicle',-1];
 _cursorTarget = cursorTarget;
 _cursorObject = cursorObject;
@@ -716,6 +717,70 @@ if (_QS_rappelling) then {
 private _localProps = QS_list_playerBuildables select {local _x};
 private _listPropNearUnits = [];
 private _localProp = objNull;
+
+private _localProps = QS_list_playerBuildables select {local _x};
+private _listPropNearUnits = [];
+private _localProp = objNull;
+/*/============================ Extended Context Actions/*/
+
+
+QS_fnc_testPlayerMenu = {
+	if (isNull (findDisplay 2000)) then {
+		[0] call (missionNamespace getVariable 'QS_fnc_clientMenu');
+	} else {
+		[-1] call (missionNamespace getVariable 'QS_fnc_clientMenu');
+	};
+};
+QS_fnc_testAssembleBarrier = {
+
+};
+
+
+// Player Menu
+private _QS_action_playerMenu = nil;
+private _QS_action_playerMenu_text = 'Player Menu';
+private _QS_action_playerMenu_array = [_QS_action_playerMenu_text,{_this spawn QS_fnc_testPlayerMenu}];
+private _QS_interaction_playerMenu = FALSE;
+// Assemble cover
+private _QS_action_assembleCover = nil;
+private _QS_action_assembleCover_text = 'Assemble barrier';
+private _QS_action_assembleCover_array = [_QS_action_assembleCover_text,{['INIT',_this] spawn QS_fnc_testAssembleBarrier}];
+private _QS_interaction_assembleCover = FALSE;
+
+
+/*/
+if (
+	(_noObjectParent) &&
+	(_noObjectParent) &&
+	{(!isNull _cursorObject)} &&
+	{(_cursorObjectDistance <= 3)} &&
+	{(((getModelInfo _cursorObject) # 1) in _trapDoorModels)} &&
+	{(['ACTION_CONDITION_ENTRY',_cursorObject] call QS_fnc_tunnels)}
+) then {
+	if (!(_QS_interaction_tunnel)) then {
+		_QS_interaction_tunnel = _true;
+		_QS_action_tunnel = player addAction _QS_action_tunnel_array;
+		player setUserActionText [_QS_action_tunnel,((player actionParams _QS_action_tunnel) # 0),(format ["<t size='3'>%1</t>",((player actionParams _QS_action_tunnel) # 0)])];
+	};
+} else {
+	if (_QS_interaction_tunnel) then {
+		_QS_interaction_tunnel = _false;
+		player removeAction _QS_action_tunnel;
+	};
+};
+/*/
+	
+	
+private _QS_interaction_tunnel = FALSE;
+private _QS_action_tunnel = nil;
+private _QS_action_tunnel_text = 'Enter Tunnel';
+private _QS_action_tunnel_array = [_QS_action_tunnel_text,{ 	['ACTION_ENTRY',cursorObject] call (missionNamespace getVariable 'QS_fnc_tunnels'); 	},5,0,TRUE,TRUE,'','TRUE',-1,FALSE,''];
+private _trapDoorModels = [
+	'a3\structures_f_exp\industrial\fields\concretewell_01_f.p3d',
+	'vn\vn_structures_f_exp\industrial\fields\vn_concretewell_01_f.p3d',
+	'vn\structures_f_vietnam\pavn\fort\vn_o_trapdoor_02.p3d',
+	'vn\structures_f_vietnam\pavn\fort\vn_o_trapdoor_01.p3d'
+];
 
 /*/============================ Live feed module/*/
 private _QS_module_liveFeed = TRUE;
@@ -1611,6 +1676,11 @@ if (('land_destroyer_01_boat_rack_01_f' allObjects 1) isNotEqualTo []) then {
 		_simDisabled = nil;
 	};
 };
+
+
+private _QS_inTunnel = FALSE;
+
+
 /*/===== Managed Hints/*/
 _hintsQueue = [];
 _hintDelay = 1;
@@ -1695,7 +1765,7 @@ _fn_updateMass = missionNamespace getVariable 'QS_fnc_updateMass';
 _fn_canRecover = missionNamespace getVariable 'QS_fnc_canRecover';
 _fn_canVehicleCargo = missionNamespace getVariable 'QS_fnc_canVehicleCargo';
 _fn_getObjectVolume = missionNamespace getVariable 'QS_fnc_getObjectVolume';
-
+_fn_tunnelAperture = missionNamespace getVariable 'QS_fnc_tunnelAperture';
 /*/================================================================================================================= LOOP/*/
 for '_z' from 0 to 1 step 0 do {
 	_QS_uiTime = diag_tickTime;
@@ -2794,6 +2864,27 @@ for '_z' from 0 to 1 step 0 do {
 				};
 			};
 
+			/*/===== Tunnel /*/
+			
+			if (
+				(_noObjectParent) &&
+				{(!isNull _cursorObject)} &&
+				{(_cursorObjectDistance <= 3)} &&
+				{(((getModelInfo _cursorObject) # 1) in _trapDoorModels)} &&
+				{(['ACTION_CONDITION_ENTRY',_cursorObject] call (missionNamespace getVariable 'QS_fnc_tunnels'))}
+			) then {
+				if (!(_QS_interaction_tunnel)) then {
+					_QS_interaction_tunnel = _true;
+					_QS_action_tunnel = player addAction _QS_action_tunnel_array;
+					player setUserActionText [_QS_action_tunnel,((player actionParams _QS_action_tunnel) # 0),(format ["<t size='3'>%1</t>",((player actionParams _QS_action_tunnel) # 0)])];
+				};
+			} else {
+				if (_QS_interaction_tunnel) then {
+					_QS_interaction_tunnel = _false;
+					player removeAction _QS_action_tunnel;
+				};
+			};
+			
 			/*/===== Action Secure/*/
 			
 			if (
@@ -3013,7 +3104,68 @@ for '_z' from 0 to 1 step 0 do {
 					_QS_action_crate_array set [2,_objNull];
 				};
 			};
+
+			/*/===== Action Enable Player Respawn/*/
+
+			if (
+				(_noObjectParent) &&
+				{(!isNull _cursorObject)} &&
+				{(_cursorObjectDistance < 3)} &&
+				{(_cursorObject isEqualTo (missionNamespace getVariable 'QS_module_fob_dataTerminal'))} &&
+				{(!(_QS_player getVariable ['QS_module_fob_client_respawnEnabled',_true]))}
+			) then {
+				if (!(_QS_interaction_fob_respawn)) then {
+					_QS_interaction_fob_respawn = _true;
+					_QS_action_fob_respawn = player addAction _QS_action_fob_respawn_array;
+					player setUserActionText [_QS_action_fob_respawn,((player actionParams _QS_action_fob_respawn) # 0),(format ["<t size='3'>%1</t>",((player actionParams _QS_action_fob_respawn) # 0)])];
+				};
+			} else {
+				if (_QS_interaction_fob_respawn) then {
+					_QS_interaction_fob_respawn = _false;
+					player removeAction _QS_action_fob_respawn;
+				};
+			};
 			
+			/*/===== Customize Crates/*/
+			
+			/*/
+			if (
+				(_noObjectParent) &&
+				{(_cursorObjectDistance < 3)} &&
+				{(simulationEnabled _cursorObject)} &&
+				{(alive _cursorObject)} &&
+				{((_cursorObject isKindOf 'LandVehicle') || {(_cursorObject isKindOf 'Air')} || {(_cursorObject isKindOf 'Ship')} || {(_cursorObject isKindOf 'Reammobox_F')})} &&
+				{(!(_cursorObject getVariable ['QS_inventory_disabled',_false]))}
+			) then {
+				_nearInvSite = _false;
+				{
+					if ((_x isEqualTo 'QS_marker_veh_inventoryService_01') && ((_cursorObject distance2D (markerPos _x)) < 5)) exitWith {
+						_nearInvSite = _true;
+					};
+					if ((_x isEqualTo 'QS_marker_crate_area') && ((_cursorObject distance2D (markerPos _x)) < 50)) exitWith {
+						_nearInvSite = _true;
+					};
+				} count (missionNamespace getVariable 'QS_veh_inventory_mkrs');
+				if (_nearInvSite) then {
+					if (!(_QS_interaction_customizeCrate)) then {
+						_QS_interaction_customizeCrate = _true;
+						_QS_action_crate_customize = player addAction _QS_action_crate_array;
+						player setUserActionText [_QS_action_crate_customize,((player actionParams _QS_action_crate_customize) # 0),(format ["<t size='3'>%1</t>",((player actionParams _QS_action_crate_customize) # 0)])];
+					};
+				} else {
+					if (_QS_interaction_customizeCrate) then {
+						_QS_interaction_customizeCrate = _false;
+						player removeAction _QS_action_crate_customize;
+					};
+				};
+			} else {
+				if (_QS_interaction_customizeCrate) then {
+					_QS_interaction_customizeCrate = _false;
+					player removeAction _QS_action_crate_customize;
+				};
+			};
+			/*/			
+
 			/*/===== Action push vehicle/*/
 			
 			if (
@@ -4077,6 +4229,37 @@ for '_z' from 0 to 1 step 0 do {
 				};
 			};
 			
+
+			/*/===== Extended Context Actions/*/
+			
+			
+			if (uiNamespace getVariable ['QS_client_menu_interaction',_true]) then {
+				// Player Menu
+				if (!(_QS_interaction_playerMenu)) then {
+					_QS_interaction_playerMenu = _true;
+					_QS_action_playerMenu = player addAction _QS_action_playerMenu_array;
+					player setUserActionText [_QS_action_playerMenu,((player actionParams _QS_action_playerMenu) # 0),(format ["<t size='3'>%1</t>",((player actionParams _QS_action_playerMenu) # 0)])];
+				};
+				/*/ Assemble Cover
+				if (!(_QS_interaction_assembleCover)) then {
+					_QS_interaction_assembleCover = _true;
+					_QS_action_assembleCover = player addAction _QS_action_assembleCover_array;
+					player setUserActionText [_QS_action_assembleCover,((player actionParams _QS_action_assembleCover) # 0),(format ["<t size='3'>%1</t>",((player actionParams _QS_action_assembleCover) # 0)])];				
+				};
+				/*/
+			} else {
+				if (_QS_interaction_playerMenu) then {
+					_QS_interaction_playerMenu = _false;
+					player removeAction _QS_action_playerMenu;
+				};
+				/*/
+				if (_QS_interaction_assembleCover) then {
+					_QS_interaction_assembleCover = _false;
+					player removeAction _QS_action_assembleCover;
+				};
+				/*/
+			};
+
 			/*/===== Action Release/*/
 			if (
 				((_attachedObjects findIf {
@@ -6115,6 +6298,28 @@ for '_z' from 0 to 1 step 0 do {
 			};
 			_QS_module_playerInArea_checkDelay = _QS_uiTime + _QS_module_playerInArea_delay;
 		};
+		if (!(_QS_inTunnel)) then {
+			if (_QS_player getVariable ['QS_client_inTunnel',_false]) then {
+				[getLighting # 1] call _fn_tunnelAperture;
+				setViewDistance 150;
+				setObjectViewDistance 150;
+				setShadowDistance 75;
+				_QS_inTunnel = _true;
+				uiSleep 0.5;
+			};
+		} else {
+			if (!(_QS_player getVariable ['QS_client_inTunnel',_false])) then {
+				_QS_inTunnel = _false;
+				_QS_player setVariable ['QS_RD_viewSettings_update',_true,_false];
+				[-1] call _fn_tunnelAperture;
+			} else {
+				[getLighting # 1] call _fn_tunnelAperture;
+				if ((_posATLPlayer # 2) < 0.1) then {
+					_QS_player setDir ((missionNamespace getVariable 'vn_tunnel_entry_data') # 1);
+					_QS_player setPosATL ((missionNamespace getVariable 'vn_tunnel_entry_data') # 0);
+				};
+			};
+		};
 	};
 	if (_QS_uiTime > _hintCheckDelay) then {
 		if ((missionNamespace getVariable 'QS_managed_hints') isNotEqualTo []) then {
@@ -6226,9 +6431,11 @@ for '_z' from 0 to 1 step 0 do {
 		if (_QS_uiTime > _QS_module_gpsJammer_checkDelay) then {
 			missionNamespace setVariable ['QS_module_gpsJammer_inArea',([0,_QS_player] call _fn_gpsJammer),_false];
 			if (missionNamespace getVariable ['QS_module_gpsJammer_inArea',_false]) then {
+				if (!(_QS_player getVariable ['QS_client_inTunnel',_false])) then {
 				if (_QS_uiTime > _QS_module_gpsJammer_signalCheck) then {
-					[3,_QS_player,_true] call _fn_gpsJammer;
-					_QS_module_gpsJammer_signalCheck = _QS_uiTime + _QS_module_gpsJammer_signalDelay;
+						[3,_QS_player,_true] call _fn_gpsJammer;
+						_QS_module_gpsJammer_signalCheck = _QS_uiTime + _QS_module_gpsJammer_signalDelay;
+					};
 				};
 				if (ctrlEnabled _QS_module_gpsJammer_ctrlPlayer) then {
 					_QS_module_gpsJammer_ctrlPlayer ctrlEnable _false;

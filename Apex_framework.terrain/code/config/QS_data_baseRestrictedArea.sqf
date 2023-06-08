@@ -71,6 +71,19 @@ if ((missionNamespace getVariable ['QS_missionConfig_baseLayout',0]) isNotEqualT
 			[1908.82,5760.27,0.00143909]
 		];	
 	};
+	if (worldName isEqualTo 'Cam_Lao_Nam') then {
+		// CUSTOM Vehicle Restricted area for VIETNAM
+		_return = [
+			[15699.9,7118.92,0.00143814],
+			[15759.7,7118.66,0.00143814],
+			[15759.6,7151.1,0.00143814],
+			[15752.7,7151.13,0.00143814],
+			[15753,7164.35,-0.475108],
+			[15706.2,7164.43,-0.474298],
+			[15706.1,7151.42,-0.474298],
+			[15699.4,7151.18,-0.474298]
+		];	
+	};
 	_return;
 };
 // EDIT ABOVE, the below is for default base layout
@@ -134,5 +147,18 @@ if (worldName isEqualTo 'Stratis') then {
 		[1934.88,5753.19,0.00144339],
 		[1908.82,5760.27,0.00143909]
 	]
+};
+if (worldName isEqualTo 'Cam_Lao_Nam') exitWith {
+	// CUSTOM Vehicle Restricted area for VIETNAM
+	[
+		[15699.9,7118.92,0.00143814],
+		[15759.7,7118.66,0.00143814],
+		[15759.6,7151.1,0.00143814],
+		[15752.7,7151.13,0.00143814],
+		[15753,7164.35,-0.475108],
+		[15706.2,7164.43,-0.474298],
+		[15706.1,7151.42,-0.474298],
+		[15699.4,7151.18,-0.474298]
+	]	
 };
 [[0,0,0],[1,0,0],[1,1,0],[0,1,0]]						// Do not edit this line

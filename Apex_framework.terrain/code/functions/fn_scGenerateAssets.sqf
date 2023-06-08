@@ -83,6 +83,11 @@ if ((([(_sectorPosition # 0),(_sectorPosition # 1)] nearObjects ['House',(_radiu
 			'land_bunker_01_hq_f','land_shed_14_f','land_shed_13_f','land_camp_house_01_brown_f','land_houseruin_small_01_f','land_houseruin_small_04_f','land_barn_02_f'
 		];
 	};
+	if (worldName in ['Cam_Lao_Nam']) then {
+		_buildingPool = [
+			'Land_vn_hootch_01_11','Land_vn_hut_01','Land_vn_hut_village_01','Land_vn_hut_village_02','Land_vn_hut_tower_03','land_shed_08_grey_f','land_bunker_01_hq_f','Land_Slum_03_F','Land_Slum_01_F','Land_Slum_02_F','Land_House_Small_03_F','Land_House_Native_01_F','Land_House_Native_02_F'
+		];	
+	};
 	if (_buildingPool isEqualTo []) then {
 		_buildingPool = (nearestObjects [_sectorPosition,['House'],_radius,TRUE]) select {(((count (_x buildingPos -1)) > 3) && (!isObjectHidden _x) && ((sizeOf (typeOf _x)) < 35))};
 		_buildingPool = _buildingPool apply {typeOf _x};

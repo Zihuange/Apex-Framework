@@ -537,7 +537,7 @@ _allDeadMenCount = 0;
 _allDeadVehiclesCount = 0;
 _maxPrisoners = 15;
 private _managed_flares = [];
-if (_QS_worldName in ['Tanoa','Lingor3']) then {
+if (_QS_worldName in ['Tanoa','Lingor3','Cam_Lao_Nam']) then {
 	_deadMenLimit = 30;
 	_deadMenLimitMax = 40;
 	_deadMenDistCheck = TRUE;
@@ -1581,6 +1581,9 @@ for '_x' from 0 to 1 step 0 do {
 										if (_QS_worldName isEqualTo 'Enoch') then {
 											_index = selectRandomWeighted [0,0.5,1,0.25,2,0.25];
 										};
+										if (_QS_worldName isEqualTo 'Cam_Lao_Nam') then {
+											_index = selectRandomWeighted [0,0.5,1,0.25,2,0.25];
+										};
 										_mainMissionRegion = _scMasterList # _index;
 										if ((_mainMissionRegion # 0) isNotEqualTo (missionNamespace getVariable 'QS_activeRegion')) then {
 											{
@@ -1634,6 +1637,17 @@ for '_x' from 0 to 1 step 0 do {
 											};
 										};
 										if (_QS_worldName isEqualTo 'Enoch') then {
+											if (_index isEqualTo 0) then {
+												_scAOCount = selectRandom [3,4];
+											};
+											if (_index isEqualTo 1) then {
+												_scAOCount = selectRandom [5,6];
+											};
+											if (_index isEqualTo 2) then {
+												_scAOCount = selectRandom [5,6];
+											};
+										};
+										if (_QS_worldName isEqualTo 'Cam_Lao_Nam') then {
 											if (_index isEqualTo 0) then {
 												_scAOCount = selectRandom [3,4];
 											};

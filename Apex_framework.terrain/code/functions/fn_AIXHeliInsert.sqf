@@ -27,11 +27,11 @@ __________________________________________________/*/
 params [
 	['_position',[0,0,0]],
 	['_side',EAST],
-	['_heliType','O_Heli_Transport_04_covered_black_F'],
+	['_heliType',(selectRandom ['vn_o_air_mi2_01_01','vn_o_air_mi2_01_02','vn_o_air_mi2_01_03'])],
 	['_nUnits',0.5],
-	['_unitTypes',['O_V_Soldier_ghex_F']],
+	['_unitTypes',[	'vn_o_men_nva_marine_14', 	'vn_o_men_nva_marine_07', 	'vn_o_men_nva_marine_11', 	'vn_o_men_nva_marine_10', 	'vn_o_men_nva_marine_08', 	'vn_o_men_nva_marine_06', 	'vn_o_men_nva_marine_03', 	'vn_o_men_nva_marine_02', 	'vn_o_men_nva_marine_05', 	'vn_o_men_nva_marine_04', 	'vn_o_men_nva_marine_13', 	'vn_o_men_nva_marine_09', 	'vn_o_men_nva_marine_12']],
 	['_useSupport',FALSE],
-	['_supportType','O_Heli_Attack_02_dynamicLoadout_black_F'],
+	['_supportType',(selectRandom ['vn_o_air_mi2_03_03','vn_o_air_mi2_03_04','vn_o_air_mi2_04_01','vn_o_air_mi2_04_03','vn_o_air_mi2_05_05'])],
 	['_useUnits',[]],
 	['_manageGroup',FALSE]
 ];

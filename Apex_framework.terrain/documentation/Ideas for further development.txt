@@ -17,3 +17,5 @@ Ideas for further development:
 6. Zeus: build up a large number of potential zeus operators in the community, with a goal of 24/7 coverage of Zeus on the server.
 
 7. More HQ compositions
+
+6. Port to new Global Mobilization DLC terrain.

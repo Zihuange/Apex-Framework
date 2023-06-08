@@ -35,7 +35,7 @@ if (_type isEqualTo 0) exitWith {
 		_roadSegmentsInPolygon = _roadSegments select {((getPosWorld _x) inPolygon _aoPolygon)};
 		_roadIntersections = _roadSegments select {((count (roadsConnectedTo _x)) in [1,3])};
 	};
-	_nearHouses = (nearestObjects [_position,['House'],_radius,TRUE]) select {(!isObjectHidden _x) && (([_x,(_x buildingPos -1)] call (missionNamespace getVariable 'QS_fnc_customBuildingPositions')) isNotEqualTo [])};
+	_nearHouses = (nearestObjects [_position,['House','Land_vn_cave_base'],_radius,TRUE]) select {(([_x,(_x buildingPos -1)] call (missionNamespace getVariable 'QS_fnc_customBuildingPositions')) isNotEqualTo [])};
 	_nearSimpleObjects = (allSimpleObjects []) inAreaArray [_position,_radius,_radius,0,FALSE];
 	if (_nearSimpleObjects isNotEqualTo []) then {
 		_nearSimpleHouses = _nearSimpleObjects select {(([_x,[]] call (missionNamespace getVariable 'QS_fnc_customBuildingPositions')) isNotEqualTo [])};

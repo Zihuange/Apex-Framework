@@ -124,6 +124,13 @@ if (
 				[[1141.3,14536.3,0],236.489]
 			];
 		};
+			if (_worldName isEqualTo 'Cam_Lao_Nam') then {
+				_positionsData = [
+					[[18253.2,678.773,0],218],
+					[[24189.1,16513.9,0],102],
+					[[4514.19,5610.81,0],102]
+				];
+			};
 		_positionData = selectRandom _positionsData;
 		_positionData params ['_pos','_dir'];
 		_dir = _dir + 180;
@@ -296,13 +303,13 @@ if (_type isEqualTo 'DEFENSE') exitWith {
 				_x allowDamage FALSE;
 			} forEach (crew _turret);
 		} forEach [
-			['B_SAM_System_01_F',[25.0508,-114.915,18.2391],-89.5441],
-			['B_AAA_System_01_F',[47.6074,-0.0134888,20.3989],-88.2512],
-			['B_AAA_System_01_F',[-30.0938,-105.529,20.203],-269.183],
-			['B_SAM_System_02_F',[-29.3047,-100.712,21.2492],-269.888],
-			['B_SAM_System_01_F',[-39.4346,178.48,21.7008],-269.263],
-			['B_AAA_System_01_F',[-16.7842,188.944,13.7356],-0.132763],
-			['B_SAM_System_02_F',[30.3721,174.906,21.578],-89.5648]
+			['vn_b_navy_static_l60mk3',[25.0508,-114.915,18.2391],-89.5441],
+			['vn_b_navy_static_l70mk2',[47.6074,-0.0134888,20.3989],-88.2512],
+			['vn_b_navy_static_l70mk2',[-30.0938,-105.529,20.203],-269.183],
+			['vn_b_navy_static_l60mk3',[-29.3047,-100.712,21.2492],-269.888],
+			['vn_b_navy_static_l60mk3',[-39.4346,178.48,21.7008],-269.263],
+			['vn_b_navy_static_l70mk2',[-16.7842,188.944,13.7356],-0.132763],
+			['vn_b_navy_static_l60mk3',[30.3721,174.906,21.578],-89.5648]
 		];
 		_turretGrp setVariable ['QS_AI_GRP_HC',[0,-1],QS_system_AI_owners];
 		(missionNamespace getVariable 'QS_carrierObject') setVariable ['QS_carrier_turrets',_turrets,FALSE];
@@ -338,8 +345,8 @@ if (_type isEqualTo 'VEHICLES') exitWith {
 		[objNull,30,false,{
 			_this setVelocity [0,0,0];
 		},
-		'B_Heli_Light_01_F',
-		((missionNamespace getVariable 'QS_carrierObject') modelToWorldWorld [-34.8799,139.995,25.3029]),((getDir (missionNamespace getVariable 'QS_carrierObject')) - -126.998),false,0,-1,250,250,-1,5,FALSE,1],
+		'vn_b_air_oh6a_01',
+		((missionNamespace getVariable 'QS_carrierObject') modelToWorldWorld [-34.8799,139.995,26.3029]),((getDir (missionNamespace getVariable 'QS_carrierObject')) - -126.998),false,0,-1,250,250,-1,5,FALSE,1],
 		[objNull,30,false,{
 			_this enableSimulationGlobal FALSE;
 			_this addEventHandler [
@@ -365,7 +372,7 @@ if (_type isEqualTo 'VEHICLES') exitWith {
 					_this setVelocity [0,0,0];
 					[_this,1,[]] call (missionNamespace getVariable 'QS_fnc_vehicleLoadouts');
 				},
-				'B_Plane_Fighter_01_F',
+				'vn_b_air_f4b_navy_cas',
 				((missionNamespace getVariable 'QS_carrierObject') modelToWorldWorld [34.4048,125.563,25.6195]),((getDir (missionNamespace getVariable 'QS_carrierObject')) - -181.109),false,0,-1,250,250,-1,5,FALSE,1]
 			];
 		};
@@ -380,22 +387,22 @@ if (_type isEqualTo 'VEHICLES') exitWith {
 				_this animateSource ['wing_fold_l',1,TRUE];
 				_this setVelocity [0,0,0];
 				[_this,1,[]] call (missionNamespace getVariable 'QS_fnc_vehicleLoadouts');
-			},'B_Plane_Fighter_01_F',((missionNamespace getVariable 'QS_carrierObject') modelToWorldWorld [-33.5347,-9.15674,25.8687]),((getDir (missionNamespace getVariable 'QS_carrierObject')) - -127.312),false,0,-1,250,250,-1,5,FALSE,1],
+			},'vn_b_air_f4b_navy_cas',((missionNamespace getVariable 'QS_carrierObject') modelToWorldWorld [-33.5347,-9.15674,25.8687]),((getDir (missionNamespace getVariable 'QS_carrierObject')) - -127.312),false,0,-1,250,250,-1,5,FALSE,1],
 			// Fighter jet 3
 			[objNull,30,false,{
 				_this animateSource ['wing_fold_r',1,TRUE];
 				_this animateSource ['wing_fold_l',1,TRUE];	
 				_this setVelocity [0,0,0];
 				[_this,1,[]] call (missionNamespace getVariable 'QS_fnc_vehicleLoadouts');
-			},'B_Plane_Fighter_01_F',((missionNamespace getVariable 'QS_carrierObject') modelToWorldWorld [-33.5016,6.19629,25.8204]),((getDir (missionNamespace getVariable 'QS_carrierObject')) - -128.053),false,0,-1,250,250,-1,5,FALSE,1],
+			},'vn_b_air_f4b_navy_cas',((missionNamespace getVariable 'QS_carrierObject') modelToWorldWorld [-33.5016,6.19629,25.8204]),((getDir (missionNamespace getVariable 'QS_carrierObject')) - -128.053),false,0,-1,250,250,-1,5,FALSE,1],
 			// Huron Heli 1
 			[objNull,30,false,{
 				_this setVelocity [0,0,0];
-			},'B_Heli_Transport_03_unarmed_F',((missionNamespace getVariable 'QS_carrierObject') modelToWorldWorld [-32.0634,69.3691,27.2326]),((getDir (missionNamespace getVariable 'QS_carrierObject')) - -120.453),false,0,-1,250,250,-1,5,FALSE,1],
+			},'vn_b_air_ch34_03_01',((missionNamespace getVariable 'QS_carrierObject') modelToWorldWorld [-32.0634,69.3691,27.2326]),((getDir (missionNamespace getVariable 'QS_carrierObject')) - -120.453),false,0,-1,250,250,-1,5,FALSE,1],
 			// Huron Heli 2
 			[objNull,30,false,{
 				_this setVelocity [0,0,0];
-			},'B_Heli_Transport_03_unarmed_F',((missionNamespace getVariable 'QS_carrierObject') modelToWorldWorld [-34.8141,160.094,27.1154]),((getDir (missionNamespace getVariable 'QS_carrierObject')) - -139.238),false,0,-1,250,250,-1,5,FALSE,1]		
+			},'vn_b_air_ch34_03_01',((missionNamespace getVariable 'QS_carrierObject') modelToWorldWorld [-34.8141,160.094,27.1154]),((getDir (missionNamespace getVariable 'QS_carrierObject')) - -139.238),false,0,-1,250,250,-1,5,FALSE,1]		
 		];
 	};
 	if (_list isNotEqualTo []) then {

@@ -62,6 +62,14 @@ if ((missionNamespace getVariable ['QS_missionConfig_baseLayout',0]) isNotEqualT
 			]
 		];
 	};
+	if (worldName isEqualTo 'Cam_Lao_Nam') then {
+	// Default base layout, speed limited areas for CAM LAO NAM
+		_return = [
+			[
+				[15706.4,7102.68,1],[15695.6,6866.7,1],[16009.4,6848.11,1],[16009.5,7108.65,1]
+			]
+		];
+	};
 	_return;
 };
 // EDIT ABOVE, below is for default base layout

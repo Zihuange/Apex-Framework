@@ -263,6 +263,7 @@ if (_type isEqualTo 2) exitWith {
 			_supportProvider commandTarget _laserTarget;
 			_targetDelay = _time + 30;
 		};
+		
 		if (_time > _fireDelay) then {
 			if (((_vehicle aimedAtTarget [_laserTarget]) > 0.5) && (!(terrainIntersect [(getPosATL _vehicle),(getPosATL _laserTarget)]))) then {
 				//comment 'Fire';

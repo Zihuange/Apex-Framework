@@ -18,7 +18,7 @@ __________________________________________________/*/
 params [
 	['_position',[0,0,0]],
 	['_vehicle',objNull],
-	['_heliType','O_Heli_Transport_04_F'],
+	['_heliType',(selectRandom ['vn_o_air_mi2_01_01','vn_o_air_mi2_01_02','vn_o_air_mi2_01_03'])],
 	['_side',EAST]
 ];
 missionNamespace setVariable ['QS_AI_insertHeli_helis',((missionNamespace getVariable 'QS_AI_insertHeli_helis') select {(alive _x)}),FALSE];

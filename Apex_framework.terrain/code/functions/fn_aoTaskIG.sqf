@@ -61,7 +61,7 @@ _nearBuilding allowDamage FALSE;
 private _buildingPositions = _nearBuilding buildingPos -1;
 _buildingPosition = selectRandom _buildingPositions;
 _buildingPositions = _buildingPositions apply { [(_x # 0),(_x # 1),((_x # 2) + 1)] };
-private _unitTypes = ['O_G_Soldier_SL_F'];
+private _unitTypes = ['vn_o_men_nva_marine_01'];
 private _grp = createGroup [EAST,TRUE];
 private _unitType = selectRandom _unitTypes;
 private _objUnit = _grp createUnit [QS_core_units_map getOrDefault [toLowerANSI _unitType,_unitType],_buildingPosition,[],0,'NONE'];
@@ -130,43 +130,14 @@ for '_x' from 0 to 2 step 1 do {
 };
 //comment 'spawn sentries';
 _unitTypes = [
-	[
-		'O_G_Soldier_A_F',
-		'O_G_Soldier_AR_F',
-		'O_G_medic_F',
-		'O_G_engineer_F',
-		'O_G_Soldier_exp_F',
-		'O_G_Soldier_GL_F',
-		'O_G_Soldier_M_F',
-		'O_G_officer_F',
-		'O_G_Soldier_F',
-		'O_G_Soldier_LAT_F',
-		'O_G_Soldier_lite_F',
-		'O_G_Soldier_unarmed_F',
-		'O_G_Sharpshooter_F',
-		'O_G_Soldier_SL_F',
-		'O_G_Soldier_TL_F'
-	],
-	[
-		'I_C_Soldier_Bandit_7_F',
-		'I_C_Soldier_Bandit_3_F',
-		'I_C_Soldier_Bandit_2_F',
-		'I_C_Soldier_Bandit_5_F',
-		'I_C_Soldier_Bandit_6_F',
-		'I_C_Soldier_Bandit_1_F',
-		'I_C_Soldier_Bandit_8_F',
-		'I_C_Soldier_Bandit_4_F',
-		'I_C_Soldier_Para_7_F',
-		'I_C_Soldier_Para_2_F',
-		'I_C_Soldier_Para_3_F',
-		'I_C_Soldier_Para_4_F',
-		'I_C_Soldier_Para_6_F',
-		'I_C_Soldier_Para_8_F',
-		'I_C_Soldier_Para_1_F',
-		'I_C_Soldier_Para_5_F',
-		'I_C_Soldier_base_unarmed_F'
-	]		
-] select (worldName isEqualTo 'Tanoa');
+	'vn_o_men_nva_65_28',
+	'vn_o_men_nva_65_21',
+	'vn_o_men_nva_65_25',
+	'vn_o_men_nva_65_24',
+	'vn_o_men_nva_65_22',
+	'vn_o_men_nva_65_16',
+	'vn_o_men_nva_65_18'
+];
 _sentryGrp = createGroup [EAST,TRUE];
 private _sentriesEnabled = FALSE;
 if ((random 1) > 0) then {

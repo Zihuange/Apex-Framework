@@ -250,7 +250,12 @@ if (_worldName isEqualTo 'Enoch') then {
 		_x setAirportSide WEST;
 	} forEach (allAirports # 0);
 };
-_environment = ['mediterranean','tropic'] select (_worldName in ['Tanoa','Lingor3','Enoch']);
+if (_worldName isEqualTo 'Cam_Lao_Nam') then {
+	{
+		_x setAirportSide WEST;
+	} forEach (allAirports # 0);
+};
+_environment = ['mediterranean','tropic'] select (_worldName in ['Tanoa','Lingor3','Enoch','Cam_Lao_Nam']);
 
 /*/==================== MISSION NAMESPACE VARS/*/
 
@@ -265,6 +270,7 @@ if (_worldName isEqualTo 'Altis') then {_aoSize = 800;};
 if (_worldName isEqualTo 'Tanoa') then {_aoSize = 600;};
 if (_worldName isEqualTo 'Malden') then {_aoSize = 300;};
 if (_worldName isEqualTo 'Enoch') then {_aoSize = 500;};
+if (_worldName isEqualTo 'Cam_Lao_Nam') then {_aoSize = 400;};
 _flagTextureEast = 'a3\data_f\flags\flag_csat_co.paa';
 _flagTextureWest = (missionNamespace getVariable ['QS_missionConfig_textures_defaultFlag','a3\data_f\flags\flag_nato_co.paa']);
 _flagTextureResistance = 'a3\data_f\flags\flag_aaf_co.paa';
@@ -940,7 +946,7 @@ if ((missionNamespace getVariable ['QS_missionConfig_baseLayout',0]) isEqualTo 0
 
 /*/===== World config/*/
 
-if (_worldName in ['Altis','Tanoa','Malden','Enoch','Stratis']) then {
+if (_worldName in ['Altis','Tanoa','Malden','Enoch','Stratis','Cam_Lao_Nam']) then {
 	private _subPos = [0,0,0];
 	private _sub = objNull;
 	if ((missionNamespace getVariable ['QS_missionConfig_baseLayout',0]) isEqualTo 0) then {
@@ -961,6 +967,10 @@ if (_worldName in ['Altis','Tanoa','Malden','Enoch','Stratis']) then {
 		if (_worldName isEqualTo 'Stratis') then {
 			_subPos = [1965.819,5248.986,(0 - (random 2))];
 			_dir = 13.8;
+			_spawnSub = TRUE;
+		};
+		if (_worldName isEqualTo 'Cam_Lao_Nam') then {
+			_subPos = [18432.7,2891.61,(0 - (random 2))];
 			_spawnSub = TRUE;
 		};
 		if (_spawnSub) then {
@@ -1288,6 +1298,29 @@ if ((missionNamespace getVariable ['QS_missionConfig_baseLayout',0]) isEqualTo 0
 			[[1958.54,5707.32,0.100458],'Land_MilOffices_V1_F'],
 			[[1910.51,5713.64,0.00755119],'Land_Airport_Tower_F'],
 			[[1906.17,5639.7,0.000470161],'Land_TentHangar_V1_F']
+		];
+	};
+	if (_worldName isEqualTo 'Cam_Lao_Nam') then {
+		{
+			if ((getPosATL _x) inPolygon [[12348.4,10659.1,-0.557632],[12426.8,10746.2,0.00585175],[12514.4,10669.8,0.00656891],[12436.6,10579.6,0.00144196]]) then {
+				_x hideObjectGlobal TRUE;
+			};
+		} forEach (nearestTerrainObjects [[12431.623,10663.896,0],[],100,false,true]);
+		{
+			((_x # 0) nearestObject (_x # 1)) hideObjectGlobal (!isObjectHidden ((_x # 0) nearestObject (_x # 1)));
+		} forEach [
+			[[15747.3,7231.33,0.00143909],'Land_vn_helipadrescue_f'],
+			[[15714.7,7231.03,0.00143909],'Land_vn_helipadrescue_f'],
+			[[15681.4,7234.77,0.00143909],'Land_vn_helipadrescue_f']
+		];
+		missionNamespace setVariable ['QS_prisonPos',[15686.2,7100.32,0.00143909],TRUE];
+		missionNamespace setVariable ['QS_prisonPopulation',0,TRUE];
+		missionNamespace setVariable [
+			'QS_baseProtection_polygons',
+			[
+				[[15706.4,7102.68,0.00143909],[15695.6,6866.7,0.00143909],[16009.4,6848.11,0.00143909],[16009.5,7108.65,0.00143909]]
+			],
+			TRUE
 		];
 	};
 } else {

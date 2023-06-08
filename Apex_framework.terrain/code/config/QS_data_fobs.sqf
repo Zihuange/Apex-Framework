@@ -1867,5 +1867,268 @@ if (_worldName isEqualTo 'Enoch') exitWith {
 	};
 	_return;
 };
+if (_worldName isEqualTo 'Cam_Lao_Nam') exitWith {
+	private _return = [];
+	if (_type isEqualTo 0) then {
+		/*/ South east /*/
+		_return = [
+			[12430.4,10666.7],
+			[
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[12389,10664.2,119.315],[[0.715467,0.698647,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[12432.3,10623,121.127],[[0.662904,0.748704,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[12446.9,10624,121.254],[[-0.706439,0.707774,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[12461,10638.2,121.464],[[-0.706165,0.708047,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[12472,10649.8,120.276],[[-0.738247,0.674531,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[12460.1,10680.3,120.101],[[-0.731326,-0.682028,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[12430.5,10708.7,119.904],[[-0.630687,-0.776037,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[12414.2,10708,118.94],[[0.695559,-0.718469,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[12401.1,10694.1,117.571],[[0.741224,-0.671258,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[12387.8,10679.3,117.393],[[0.745436,-0.666578,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[12420.2,10634.4,121.034],[[0.705671,0.70854,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_bunker_04_01","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_bunker_04_01.p3d",[12398,10663.4,120.476],[[0.768188,-0.640225,0],[0,0,1]],0,1,0,[],{}],
+				["Land_vn_b_tower_01","vn\structures_f_vietnam_02\usarmy\fort\vn_b_tower_01.p3d",[12455.5,10640.6,123.152],[[0.682921,0.730492,0],[0,0,1]],0,0,0,[],{}],
+				["Land_vn_b_tower_01","vn\structures_f_vietnam_02\usarmy\fort\vn_b_tower_01.p3d",[12453,10637.9,123.29],[[-0.694766,-0.719236,0],[0,0,1]],0,0,0,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[12473.1,10665,119.816],[[-0.826148,-0.563453,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_firing_04","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_firing_04.p3d",[12442.8,10702.7,119.732],[[-0.769427,0.638734,0],[0,0,1]],0,0,0,[],{}],
+				["Land_vn_b_trench_firing_04","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_firing_04.p3d",[12473.8,10656.8,120.083],[[0.0528823,0.998601,0],[0,0,1]],0,0,0,[],{}],
+				["Land_vn_b_trench_firing_04","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_firing_04.p3d",[12439.3,10618.7,121.105],[[0.999785,0.020756,0],[0,0,1]],0,0,0,[],{}],
+				["Land_vn_b_trench_firing_04","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_firing_04.p3d",[12387.2,10672.4,119.335],[[-0.520493,-0.853866,0],[0,0,1]],0,0,0,[],{}],
+				["Land_vn_b_trench_firing_04","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_firing_04.p3d",[12422.3,10711.6,120.036],[[-0.999823,0.0187987,0],[0,0,1]],0,0,0,[],{}],
+				["Land_vn_b_trench_firing_05","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_firing_05.p3d",[12454.2,10692.9,119.838],[[-0.706366,0.707847,0],[0,0,1]],0,0,0,[],{}],
+				["Land_vn_b_helipad_01","vn\structures_f_vietnam_02\usarmy\fort\vn_b_helipad_01.p3d",[12420.9,10692.3,119.731],[[-0.722811,0.689389,-0.0478311],[-0.0279894,0.0399528,0.998809]],0,0,2,[],{}],
+				["Land_vn_b_trench_bunker_03_04","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_bunker_03_04.p3d",[12436.1,10636.9,121.499],[[0.706199,-0.708014,0],[0,0,1]],0,1,0,[],{}],
+				["Land_RepairDepot_01_green_F","a3\structures_f_tank\military\repairdepot\repairdepot_01_green_f.p3d",[12407.3,10667.3,121.51],[[-0.675088,-0.737688,-0.00857673],[-0.0279894,0.0139935,0.99951]],0,0,2,[],{
+					missionNamespace setVariable ['QS_module_fob_repairDepot',(_this # 0),FALSE];
+					(_this # 0) hideObjectGlobal TRUE;				
+				}],
+				["FlagPole_F","a3\structures_f\mil\flags\mast_f.p3d",[12436.6,10643.1,126.565],[[0.560457,-0.828183,0],[0,0,1]],0,1,0,[],{
+					missionNamespace setVariable ['QS_module_fob_flag',(_this # 0),TRUE];
+				}],
+				["Land_vn_bagbunker_01_large_green_f","vn\vn_structures_f_exp_03\military\fortifications\vn_bagbunker_01_large_green_f.p3d",[12422.9,10650.9,121.163],[[0.734401,-0.678715,0],[0,0,1]],0,0,0,[],{
+					_building = _this # 0;
+					missionNamespace setVariable ['QS_module_fob_HQ',_building,TRUE];
+					[_building] spawn {
+						_building = _this # 0;
+						_building enableSimulationGlobal TRUE;
+						_dataTerminal = createSimpleObject ['Land_DataTerminal_01_F',(getPosWorld _building)];
+						_dataTerminal attachTo [_building,[1,0,-0.8]];
+						_dataTerminal setDir 90;
+						sleep 0.1;
+						detach _dataTerminal;
+						missionNamespace setVariable ['QS_module_fob_dataTerminal',_dataTerminal,TRUE];
+						_crate = createSimpleObject ['a3\weapons_f\ammoboxes\supplydrop.p3d',(getPosWorld _building)];
+						_crate attachTo [_building,[-0.5,3,0]];
+						sleep 0.1;
+						detach _crate;
+						_crate hideObjectGlobal TRUE;
+						missionNamespace setVariable ['QS_module_fob_supplycrate',_crate,FALSE];
+						sleep 1;
+						_building enableSimulationGlobal FALSE;
+					};
+				}],
+				["Land_vn_b_trench_firing_05","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_firing_05.p3d",[12406.5,10640.5,120.162],[[0.734152,-0.678985,0],[0,0,1]],0,0,0,[],{}],
+				["Land_vn_b_trench_revetment_05_01","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_revetment_05_01.p3d",[12379.4,10671.8,118.416],[[-0.992269,-0.124104,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_revetment_tall_03","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_revetment_tall_03.p3d",[12422.1,10717.3,119.861],[[-0.0215889,0.999767,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_revetment_tall_03","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_revetment_tall_03.p3d",[12480.7,10656.4,119.92],[[0.934585,-0.35574,0],[0,0,1]],0,0,2,[],{}],
+				["Reflector_Cone_01_Long_white_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[12439.2,10618,124.042],[[0.0220383,-0.999757,0],[0,0,1]],0,1,0,[],{}],
+				["Reflector_Cone_01_Long_white_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[12474.5,10656.7,123.543],[[0.999093,-0.0425917,0],[0,0,1]],0,1,0,[],{}],
+				["Reflector_Cone_01_Long_white_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[12422.2,10711,123.179],[[-0.0220046,0.999758,0],[0,0,1]],0,1,0,[],{}],
+				["Reflector_Cone_01_Long_white_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[12383.3,10671.9,123.752],[[-0.994944,0.100434,0],[0,0,1]],0,1,0,[],{}],
+				["Reflector_Cone_01_wide_white_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[12396,10660.3,122.011],[[-0.707043,-0.707171,0],[0,0,1]],0,1,0,[],{}],
+				["Reflector_Cone_01_wide_white_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[12454.9,10693.4,122.874],[[0.721557,0.692356,0],[0,0,1]],0,1,0,[],{}],
+				["Reflector_Cone_01_wide_orange_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[12419.9,10684.9,123.948],[[-0.0481208,0.998842,0],[0,0,1]],0,1,0,[],{}],
+				["Reflector_Cone_01_wide_orange_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[12437.8,10625,123.934],[[-0.0952228,0.995456,0],[0,0,1]],0,1,0,[],{}],
+				["Land_vn_ttowersmall_1_f","vn\vn_structures_f\ind\transmitter_tower\vn_ttowersmall_1_f.p3d",[12444.1,10635.7,127.325],[[0.560457,-0.828183,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_bulldozer_01_wreck_f","vn\vn_props_f_exp\industrial\heavyequipment\vn_bulldozer_01_wreck_f.p3d",[12436.1,10695.2,121.163],[[0,1,0],[0,0,1]],0,0,2,[],{}]
+			],
+			[
+				["vn_b_wheeled_m151_mg_03",[12449.2,10682.3,-0.00634003],230],
+				["vn_b_wheeled_m151_mg_03",[12452.4,10678,-0.00991821],230],
+				["vn_b_wheeled_m151_mg_04",[12456.3,10673.3,-0.0137634],230],
+				["vn_b_wheeled_m151_mg_04",[12461,10667.5,-0.0176086],230],
+				["vn_b_wheeled_m54_02",[12441.2,10656.9,0],45],
+				["vn_b_wheeled_m54_mg_01",[12433.6,10664.8,0],45]
+			],
+			[12420.4,10692.2,0.00344086],
+			[12411.2,10661.6,0.00304413],
+			'South East'
+		];
+	};
+	if (_type isEqualTo 1) then {
+		/*/ West /*/
+		_return = [
+			[3684.06,10214],
+			[
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[3708.85,10248.6,39.8051],[[0.00303808,-0.999995,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[3649.1,10246.3,40.1113],[[0.0755673,-0.997141,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[3639.67,10235.1,40.029],[[0.999902,0.0139879,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[3640,10215,39.9471],[[0.999907,0.0136007,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[3640.66,10199.1,39.862],[[0.9982,0.0599657,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[3670.87,10186.4,39.9504],[[0.0199319,0.999801,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[3711.82,10187.9,39.7677],[[-0.117619,0.993059,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[3722.7,10200,39.8716],[[-0.999999,0.0012684,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[3721.81,10219.1,39.9279],[[-0.997925,-0.0643809,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[3720.5,10238.9,40.1006],[[-0.9975,-0.0706632,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[3669.15,10247.4,40.0882],[[0.01696,-0.999856,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_bunker_04_01","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_bunker_04_01.p3d",[3701.91,10242.7,41.0205],[[-0.994436,-0.105343,0],[0,0,1]],0,1,0,[],{}],
+				["Land_vn_b_tower_01","vn\structures_f_vietnam_02\usarmy\fort\vn_b_tower_01.p3d",[3645.54,10217.3,41.8943],[[0.0485569,-0.99882,0],[0,0,1]],0,1,0,[],{}],
+				["Land_vn_b_tower_01","vn\structures_f_vietnam_02\usarmy\fort\vn_b_tower_01.p3d",[3645.36,10221,41.8943],[[-0.0322299,0.99948,0],[0,0,1]],0,1,0,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[3650.8,10187.8,40.0168],[[0.171061,0.98526,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_firing_04","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_firing_04.p3d",[3697.97,10182.8,39.5265],[[0.99423,0.107272,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_firing_04","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_firing_04.p3d",[3641.15,10244.2,39.8941],[[-0.681425,-0.731888,0],[0,0,1]],0,0,0,[],{}],
+				["Land_vn_b_trench_firing_04","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_firing_04.p3d",[3718.36,10247.2,39.9034],[[-0.727358,0.686258,0],[0,0,1]],0,0,0,[],{}],
+				["Land_vn_b_trench_firing_04","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_firing_04.p3d",[3719.63,10191.7,39.9225],[[0.709836,0.704367,0],[0,0,1]],0,0,0,[],{}],
+				["Land_vn_b_trench_firing_05","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_firing_05.p3d",[3683.98,10181.9,39.7299],[[0.999904,0.0138849,0],[0,0,1]],0,0,0,[],{}],
+				["Land_vn_b_helipad_01","vn\structures_f_vietnam_02\usarmy\fort\vn_b_helipad_01.p3d",[3707.83,10206.7,39.44],[[0.999285,0.0377959,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_bunker_03_04","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_bunker_03_04.p3d",[3656.39,10233.8,40.0925],[[-0.999907,-0.0136481,0],[0,0,1]],0,1,0,[],{}],
+				["Land_RepairDepot_01_green_F","a3\structures_f_tank\military\repairdepot\repairdepot_01_green_f.p3d",[3698.17,10233.5,41.8583],[[-0.0588395,0.998267,0.00129435],[0.0219926,0,0.999758]],0,0,2,[],{
+					missionNamespace setVariable ['QS_module_fob_repairDepot',(_this # 0),FALSE];
+					(_this # 0) hideObjectGlobal TRUE;	
+				}],
+				["FlagPole_F","a3\structures_f\mil\flags\mast_f.p3d",[3660.53,10229.2,45.6235],[[-0.984634,0.174628,0],[0,0,1]],0,1,0,[],{
+					missionNamespace setVariable ['QS_module_fob_flag',(_this # 0),TRUE];
+				}],
+				["Land_vn_bagbunker_01_large_green_f","vn\vn_structures_f_exp_03\military\fortifications\vn_bagbunker_01_large_green_f.p3d",[3675.66,10233.5,40.5997],[[-0.998525,-0.0542917,0],[0,0,1]],0,0,0,[],{
+					_building = _this # 0;
+					missionNamespace setVariable ['QS_module_fob_HQ',_building,TRUE];
+					[_building] spawn {
+						_building = _this # 0;
+						_building enableSimulationGlobal TRUE;
+						_dataTerminal = createSimpleObject ['Land_DataTerminal_01_F',(getPosWorld _building)];
+						_dataTerminal attachTo [_building,[1,0,-0.8]];
+						_dataTerminal setDir 90;
+						sleep 0.1;
+						detach _dataTerminal;
+						missionNamespace setVariable ['QS_module_fob_dataTerminal',_dataTerminal,TRUE];
+						_crate = createSimpleObject ['a3\weapons_f\ammoboxes\supplydrop.p3d',(getPosWorld _building)];
+						_crate attachTo [_building,[-0.5,3,0]];
+						sleep 0.1;
+						detach _crate;
+						_crate hideObjectGlobal TRUE;
+						missionNamespace setVariable ['QS_module_fob_supplycrate',_crate,FALSE];
+						sleep 1;
+						_building enableSimulationGlobal FALSE;
+					};				
+				}],
+				["Land_vn_b_trench_firing_05","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_firing_05.p3d",[3682.99,10246.9,40.4197],[[-0.998545,-0.0539251,0],[0,0,1]],0,0,0,[],{}],
+				["Land_vn_b_trench_revetment_05_01","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_revetment_05_01.p3d",[3720.95,10250.2,39.377],[[0.60203,0.798473,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_revetment_tall_03","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_revetment_tall_03.p3d",[3724.09,10187.3,40.176],[[0.548884,-0.835898,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_revetment_tall_03","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_revetment_tall_03.p3d",[3639.31,10188.3,40.7165],[[-0.906184,-0.422883,0],[0,0,1]],0,0,2,[],{}],
+				["Reflector_Cone_01_Long_white_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[3640.63,10244.8,43.7005],[[-0.732761,0.680487,0],[0,0,1]],0,1,0,[],{}],
+				["Reflector_Cone_01_Long_white_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[3643.86,10192.5,43.5458],[[-0.726401,-0.687271,0],[0,0,1]],0,1,0,[],{}],
+				["Reflector_Cone_01_Long_white_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[3719.27,10192.2,43.5157],[[0.732738,-0.680511,0],[0,0,1]],0,1,0,[],{}],
+				["Reflector_Cone_01_Long_white_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[3718.27,10247.3,43.1659],[[0.651371,0.75876,0],[0,0,1]],0,1,0,[],{}],
+				["Reflector_Cone_01_wide_white_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[3701.16,10246.3,45.4977],[[-0.0450843,0.998983,0],[0,0,1]],0,1,0,[],{}],
+				["Reflector_Cone_01_wide_white_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[3683.87,10181,43.3366],[[-0.00571757,-0.999984,0],[0,0,1]],0,1,0,[],{}],
+				["Reflector_Cone_01_wide_orange_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[3702.17,10212,41.8736],[[0.75027,-0.661132,0],[0,0,1]],0,1,0,[],{}],
+				["Reflector_Cone_01_wide_orange_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[3646.66,10240.9,42.0662],[[0.780645,-0.624974,0],[0,0,1]],0,1,0,[],{}],
+				["Land_vn_ttowersmall_1_f","vn\vn_structures_f\ind\transmitter_tower\vn_ttowersmall_1_f.p3d",[3649.98,10229,48.7471],[[-0.984634,0.174628,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_bulldozer_01_wreck_f","vn\vn_props_f_exp\industrial\heavyequipment\vn_bulldozer_01_wreck_f.p3d",[3698.28,10195.7,40.8391],[[0.517827,0.855485,0],[0,0,1]],0,0,2,[],{}]
+			],
+			[
+				["vn_b_wheeled_m151_mg_03",[3679.71,10192.7,0],4],
+				["vn_b_wheeled_m151_mg_03",[3674.34,10193.3,0],4],
+				["vn_b_wheeled_m151_mg_04",[3668.19,10193.8,0],4],
+				["vn_b_wheeled_m151_mg_04",[3660.96,10194.2,0],4],
+				["vn_b_wheeled_m54_02",[3667.25,10216.7,0],180],
+				["vn_b_wheeled_m54_mg_01",[3676.61,10216.2,0],180],
+				["vn_i_armor_type63_01",[3653.12,10206.8,0],93]
+			],
+			[3708.04,10206.8,0.00144196],
+			[3693.23,10233.4,0.000354767],
+			'West'
+		];
+	};	
+	if (_type isEqualTo 2) then {
+		/*/ North /*/
+		_return = [
+			[11878,17709.3],
+			[
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[11913.7,17689,5.95728],[[-0.984099,-0.177619,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[11901,17747.4,6.11227],[[-0.968623,-0.248535,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[11888.3,17754.8,6.14604],[[0.188384,-0.982095,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[11868.6,17750.9,6.11219],[[0.188004,-0.982168,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[11853.1,17747.5,6.11227],[[0.233358,-0.972391,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[11845.8,17715.5,6.11227],[[0.98792,0.154968,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[11854.4,17675.5,6.11224],[[0.95726,0.289228,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[11868.3,17666.9,6.11227],[[-0.173379,0.984855,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[11887,17671.1,6.11227],[[-0.237657,0.971349,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[11906.2,17675.9,6.11227],[[-0.243769,0.969833,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[11905.5,17728.3,5.9653],[[-0.981531,-0.191302,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_bunker_04_01","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_bunker_04_01.p3d",[11906.7,17694.8,6.33644],[[-0.277381,0.96076,0],[0,0,1]],0,0,0,[],{}],
+				["Land_vn_b_tower_01","vn\structures_f_vietnam_02\usarmy\fort\vn_b_tower_01.p3d",[11871.9,17745.9,7.42428],[[-0.974994,-0.222233,0],[0,0,1]],0,1,0,[],{}],
+				["Land_vn_b_tower_01","vn\structures_f_vietnam_02\usarmy\fort\vn_b_tower_01.p3d",[11875.5,17746.7,7.42428],[[0.978495,0.206272,0],[0,0,1]],0,1,0,[],{}],
+				["Land_vn_b_trench_20_02","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_20_02.p3d",[11843.7,17735.6,6.22257],[[0.999993,0.00362188,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_firing_04","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_firing_04.p3d",[11847.1,17688.2,5.0565],[[0.279244,-0.96022,0],[0,0,1]],0,0,0,[],{}],
+				["Land_vn_b_trench_firing_04","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_firing_04.p3d",[11846.5,17743.6,6.30572],[[-0.60347,-0.797386,0],[0,0,1]],0,0,0,[],{}],
+				["Land_vn_b_trench_firing_04","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_firing_04.p3d",[11897.6,17754.9,5.89497],[[-0.839638,0.543147,0],[0,0,1]],0,0,0,[],{}],
+				["Land_vn_b_trench_firing_04","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_firing_04.p3d",[11914,17679.4,6.23965],[[0.548696,0.836022,0],[0,0,1]],0,0,0,[],{}],
+				["Land_vn_b_trench_firing_04","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_firing_04.p3d",[11859.6,17668.5,5.58404],[[0.817501,-0.575927,0],[0,0,1]],0,0,0,[],{}],
+				["Land_vn_b_trench_firing_05","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_firing_05.p3d",[11843.7,17701.9,5.25991],[[0.188283,-0.982115,0],[0,0,1]],0,0,0,[],{}],
+				["Land_vn_b_helipad_01","vn\structures_f_vietnam_02\usarmy\fort\vn_b_helipad_01.p3d",[11880.3,17685.2,4.92288],[[0.211718,-0.977331,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_bunker_03_04","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_bunker_03_04.p3d",[11890,17738.1,5.6225],[[-0.18805,0.982159,0],[0,0,1]],0,1,0,[],{}],
+				["Land_RepairDepot_01_green_F","a3\structures_f_tank\military\repairdepot\repairdepot_01_green_f.p3d",[11896.9,17696.9,7.348],[[0.97265,0.232275,0],[0,0,1]],0,0,2,[],{
+					missionNamespace setVariable ['QS_module_fob_repairDepot',(_this # 0),FALSE];
+					(_this # 0) hideObjectGlobal TRUE;
+				}],
+				["FlagPole_F","a3\structures_f\mil\flags\mast_f.p3d",[11886.1,17733.2,11.1535],[[0,1,0],[0,0,1]],0,1,0,[],{
+					missionNamespace setVariable ['QS_module_fob_flag',(_this # 0),TRUE];
+				}],
+				["Land_vn_bagbunker_01_large_green_f","vn\vn_structures_f_exp_03\military\fortifications\vn_bagbunker_01_large_green_f.p3d",[11893.1,17719.1,5.9514],[[-0.227828,0.973701,0],[0,0,1]],0,0,0,[],{
+					_building = _this # 0;
+					missionNamespace setVariable ['QS_module_fob_HQ',_building,TRUE];
+					[_building] spawn {
+						_building = _this # 0;
+						_building enableSimulationGlobal TRUE;
+						_dataTerminal = createSimpleObject ['Land_DataTerminal_01_F',(getPosWorld _building)];
+						_dataTerminal attachTo [_building,[1,0,-0.8]];
+						_dataTerminal setDir 90;
+						sleep 0.1;
+						detach _dataTerminal;
+						missionNamespace setVariable ['QS_module_fob_dataTerminal',_dataTerminal,TRUE];
+						_crate = createSimpleObject ['a3\weapons_f\ammoboxes\supplydrop.p3d',(getPosWorld _building)];
+						_crate attachTo [_building,[-0.5,3,0]];
+						sleep 0.1;
+						detach _crate;
+						_crate hideObjectGlobal TRUE;
+						missionNamespace setVariable ['QS_module_fob_supplycrate',_crate,FALSE];
+						sleep 1;
+						_building enableSimulationGlobal FALSE;
+					};						
+				}],
+				["Land_vn_b_trench_firing_05","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_firing_05.p3d",[11912.7,17714.9,5.25991],[[-0.22747,0.973785,0],[0,0,1]],0,0,0,[],{}],
+				["Land_vn_b_trench_revetment_05_01","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_revetment_05_01.p3d",[11917.4,17677.4,5.83688],[[0.891336,-0.453344,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_revetment_tall_03","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_revetment_tall_03.p3d",[11856.4,17663.5,6.04962],[[-0.727204,-0.686422,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_b_trench_revetment_tall_03","vn\structures_f_vietnam_02\usarmy\fort\vn_b_trench_revetment_tall_03.p3d",[11842.2,17747,6.35718],[[-0.57463,0.818413,0],[0,0,1]],0,0,2,[],{}],
+				["Reflector_Cone_01_Long_white_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[11898,17755.5,9.38416],[[0.54207,0.840334,0],[0,0,1]],0,1,0,[],{}],
+				["Reflector_Cone_01_Long_white_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[11847.1,17743.2,9.53926],[[-0.803561,0.595223,0],[0,0,1]],0,1,0,[],{}],
+				["Reflector_Cone_01_Long_white_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[11860,17668.9,9.20965],[[-0.542098,-0.840316,0],[0,0,1]],0,1,0,[],{}],
+				["Reflector_Cone_01_Long_white_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[11914.1,17679.5,9.44754],[[0.860848,-0.508862,0],[0,0,1]],0,1,0,[],{}],
+				["Reflector_Cone_01_wide_white_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[11910.1,17696.2,10.6485],[[0.97576,0.218842,0],[0,0,1]],0,1,0,[],{}],
+				["Reflector_Cone_01_wide_white_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[11842.8,17701.8,8.86656],[[-0.985617,-0.168995,0],[0,0,1]],0,1,0,[],{}],
+				["Reflector_Cone_01_wide_orange_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[11876.5,17689.2,7.40357],[[-0.519955,-0.854194,0],[0,0,1]],0,1,0,[],{}],
+				["Reflector_Cone_01_wide_orange_F","a3\structures_f_enoch\vr\helpers\reflector_01_f.p3d",[11895.2,17748.9,7.59617],[[-0.479049,-0.877788,0],[0,0,1]],0,1,0,[],{}],
+				["Land_vn_ttowersmall_1_f","vn\vn_structures_f\ind\transmitter_tower\vn_ttowersmall_1_f.p3d",[11884.1,17743.6,14.2769],[[0,1,0],[0,0,1]],0,0,2,[],{}],
+				["Land_vn_bulldozer_01_wreck_f","vn\vn_props_f_exp\industrial\heavyequipment\vn_bulldozer_01_wreck_f.p3d",[11865.9,17687.7,6.36908],[[-0.414471,-0.910063,0],[0,0,1]],0,0,2,[],{}]
+			],
+			[
+				["vn_b_wheeled_m151_mg_03",[11853.6,17707.9,0],85],
+				["vn_b_wheeled_m151_mg_03",[11853.3,17713.4,0],85],
+				["vn_b_wheeled_m151_mg_04",[11852.6,17719.5,0],85],
+				["vn_b_wheeled_m151_mg_04",[11851.8,17726.7,0],85],
+				["vn_b_wheeled_m54_02",[11875.1,17724.4,0],260],
+				["vn_b_wheeled_m54_mg_01",[11876.1,17715.1,0],260],
+				["vn_i_armor_type63_01",[11862.8,17736.6,0],173]
+			],
+			[11875.9,17683.3,0.00144196],
+			[11896,17701,0.00144196],
+			'North'
+		];
+	};
+	_return;
+};
 if (_worldName isEqualTo 'Stratis') exitWith {[]};
+if (_worldName isEqualTo 'Chernarus') exitWith {_return = [];_return;};
+if (_worldName isEqualTo 'Sahrani') exitWith {_return = [];_return;};
+if (_worldName isEqualTo 'Takistan') exitWith {_return = [];_return;};
 []

@@ -61,7 +61,7 @@ if (worldName in ['Altis','Stratis','Malden']) exitWith {
 		]
 	]
 };
-if (worldName isEqualTo 'Tanoa') exitWith {
+if (worldName in ['Tanoa','Cam_Lao_Nam']) exitWith {
 	[
 		[0,0,0,0,7,16,24,22,22,24,6,1,0],              						/*/ Overcast days monthly /*/
 		[0,4,4,4,4,5,5,4,4,4,3,3,3], 										/*/ avg daily sunshine hours monthly /*/

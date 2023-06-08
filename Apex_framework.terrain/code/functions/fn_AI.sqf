@@ -245,7 +245,7 @@ private _QS_module_virtualSectors_heliEnabled = _true;
 private _QS_module_virtualSectors_patrolsVeh_delay = 300;
 private _QS_module_virtualSectors_patrolsVeh_checkDelay = _QS_uiTime + _QS_module_virtualSectors_patrolsVeh_delay;
 private _QS_module_virtualSectors_vehiclesEnabled = _true;
-private _QS_module_virtualSectors_uavEnabled = _true;
+private _QS_module_virtualSectors_uavEnabled = _false;
 private _QS_module_virtualSectors_uav_delay = [120,240] select (worldName in _smallTerrains);			// 30
 private _QS_module_virtualSectors_uav_checkDelay = _QS_uiTime + _QS_module_virtualSectors_uav_delay;
 private _QS_module_virtualSectors_uavs = [];
@@ -354,7 +354,7 @@ private _QS_module_grid_defendQty_5 = 48;
 private _QS_module_grid_defend_delay = 10;
 private _QS_module_grid_defend_checkDelay = _QS_uiTime + _QS_module_grid_defend_delay;
 
-private _QS_module_viperTeam = _true;
+private _QS_module_viperTeam = _false;
 private _QS_module_viperTeam_delay = 15;
 private _QS_module_viperTeam_checkDelay = _QS_uiTime + _QS_module_viperTeam_delay;
 private _QS_module_viperTeam_respawnDelay = 300;	//300
@@ -940,6 +940,7 @@ for '_x' from 0 to 1 step 0 do {
 				};
 				_QS_module_virtualSectors_scriptCreateEnemy = [_QS_module_virtualSectors_vehiclesEnabled] spawn _fn_scEnemy;
 				waitUntil {scriptDone _QS_module_virtualSectors_scriptCreateEnemy};
+				};
 				uiSleep 0.1;
 				_QS_module_virtualSectors_enemy_0 = missionNamespace getVariable 'QS_virtualSectors_enemy_0';
 				_QS_module_virtualSectors_enemy_1 = missionNamespace getVariable 'QS_virtualSectors_enemy_1';

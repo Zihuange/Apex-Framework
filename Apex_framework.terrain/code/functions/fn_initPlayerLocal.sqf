@@ -334,6 +334,8 @@ private _weaponsList = configFile >> 'CfgWeapons';
 	['QS_hashmap_boundingBoxes',createHashMap,FALSE],
 	['QS_cas_JetsDLCEnabled',(601670 in (getDLCs 1)),FALSE]
 ];
+vn_tunnel_init_actionoutcode = "['ACTION_EXIT'] call QS_fnc_tunnels;";
+vn_tunnel_init_actionoutcode = compileFinal vn_tunnel_init_actionoutcode;
 _weaponsList = nil;
 if ((missionProfileNamespace getVariable ['QS_IA_joinToken',0]) < 10) then {
 	if ((missionNamespace getVariable ['QS_arsenals',[]]) isNotEqualTo []) then {
@@ -415,7 +417,9 @@ if ((call (missionNamespace getVariable 'QS_fnc_clientGetSupporterLevel')) > 0) 
 	['QS_client_shots_sniper',0,FALSE],
 	['QS_client_hits_sniper',0,FALSE],
 	['QS_client_lastCombatDamageTime',-1,FALSE],
-	['QS_unit_side',WEST,TRUE]
+	['QS_unit_side',WEST,TRUE],
+	['QS_client_playerViewChanged',TRUE,FALSE],
+	['QS_client_inTunnel',FALSE,FALSE]
 ];
 // Remove BIS Zeus stuff
 if (!isNil {player getVariable 'BIS_fnc_addCuratorPlayer_handler'}) then {

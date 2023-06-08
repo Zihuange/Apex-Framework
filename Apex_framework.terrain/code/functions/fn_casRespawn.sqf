@@ -218,6 +218,10 @@ if ((missionNamespace getVariable ['QS_missionConfig_carrierEnabled',0]) isEqual
 			_pos = [1913.38,5955.01,0.1];
 			_dir = 237.56;
 		};
+		if (worldName isEqualTo 'Cam_Lao_Nam') then {
+			_pos = [15957,7052.4,0.1];
+			_dir = 180;
+		};
 	} else {
 		_pos = markerPos ['QS_marker_casJet_spawn',TRUE];
 		_dir = markerDir 'QS_marker_casJet_spawn';

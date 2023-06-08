@@ -79,7 +79,7 @@ _recruitableAI = 1;										// Recruitable AI.	0 - Disabled. 1 - Enabled. 		If 
 _playable_opfor = 0;									// OPFOR player roles. 	0 - Disabled. 1 - Enabled (Whitelisted). 2 - Enabled (Unrestricted).	Recommended = 0.	Enable a limited number of enemy player roles for the supported mission types. Highly recommended to NOT use with the standard missions unless you know your players are comfortable with it. Designed for future Framework flexibility and development.
 _ambient_civilians = 1;									// Ambient Civilians.	0 - Disabled. 1 - Enabled. Default = 1.		Disable to save FPS. 	Ambient civilian presence is auto-disabled when player count > 50.
 _ambient_animals = 1;									// Ambient Animals.		0 - Disabled. 1 - Enabled. Default = 1.		Disable to save FPS.	Ambient animal presence is auto-disabled when player count > 50.
-_vehicle_active_protection = 3;							// Vehicle Active Protection System. 	0 - Disabled. 1 - AI only. 2 - Players only. 3 - AI and players.
+_vehicle_active_protection = 0;							// Vehicle Active Protection System. 	0 - Disabled. 1 - AI only. 2 - Players only. 3 - AI and players.
 _hitMarker_audio = 1;									// Hit Marker Sound.	0 - Disabled. 1 - Enabled (Optional). Default = 1.		Plays a small audio cue when your bullet hits an enemy.
 _effectKnockdown = 1;									// Knock-Down effect.	0 - Disabled. 1 - Enabled (Default).	Player can be knocked down by nearby explosions.
 _craters = 24;											// Artillery Crater Effects.	0 - Disabled. 1+ - Enabled. This number is also how many craters will be spawned at any time, oldest get deleted first.
@@ -112,7 +112,7 @@ _role_selection_menu_button = 0;						// Role Selection Menu Button. 	Enables a 
 _deploymentMenu = 1;									// Deployment Menu. 0 - Disabled. 1 - Enabled.
 _deployMenuOnRespawn = 1;								// Deployment Menu shown on Respawn. 0 - Disabled. 1 - Enabled.
 _deployMenuHome = 1;									// Can Players set a Home deployment in Deployment Menu. 0 - Disabled. 1 - Enabled.
-_weaponLasers = 1;										// (Experimental!!!) 0 - Disabled. 1 - Enabled. 	Enable custom weapon lasers.	Note: Takes some CPU (client only. no effect on server), has a performance cost if many are using in small area. Does not affect server performance.
+_weaponLasers = 0;										// (Experimental!!!) 0 - Disabled. 1 - Enabled. 	Enable custom weapon lasers.	Note: Takes some CPU (client only. no effect on server), has a performance cost if many are using in small area. Does not affect server performance.
 _weaponLasersColorForced = [-1,-1,-1];					// Laser Color. Force color of custom weapon lasers (RGB). [-1,-1,-1] = players receive random or can set their own in profile. [1000,0,0] = Standard red. Info: https://community.bistudio.com/wiki/drawLaser
 _weaponLasersHighPower = 1;								// Laser Power. 0 - Low Power only. 1 - Low and High power (selectable).
 _fireSupport = 2;										// Fire Support Module. 0 - Disabled. 1 - Player Support only. 2 - AI and Player Support.	Players are able to call in available fire supports. If 2, players can call support from some AI.
@@ -129,7 +129,7 @@ _timeMultiplier = [										// Time Multiplier. Set all values to 1 for real-ti
 	0.35													// Morning/Evening/Dawn/Dusk time acceleration multiplier. Default - 0.35.
 ];
 _weatherDynamic = 1;									// Dynamic Weather System. 0 - Disabled. 1 - Enabled (Default). 	If enabled, framework will maintain persistent dynamic weather with realistic annual weather cycles for the geographic terrain location.
-_weatherForcedMode = -1;								// Forced Weather Mode. !Automatically disables Dynamic Weather!	 0 - Clear skies. 1 - Overcast/Cloudy. 2 - Rain. 3 - Storm. 4 - Snow (yes, SNOW). 
+_weatherForcedMode = 0;									// Forced Weather Mode. !Automatically disables Dynamic Weather!	 0 - Clear skies. 1 - Overcast/Cloudy. 2 - Rain. 3 - Storm. 4 - Snow (yes, SNOW). 
 
 //===================================================== ZEUS
 
@@ -180,7 +180,7 @@ _main_mission_type = 'CLASSIC';
 
 //===================================================== SIDE MISSIONS
 
-_sideMissions = 1;										// Side Missions.	0 - Disabled. 1 - Enabled. (Default = 1).	Set 0 to disable default side missions. Automatically disabled when _main_mission_type = 'NONE';
+_sideMissions = 0;										// Side Missions.	0 - Disabled. 1 - Enabled. (Default = 1).	Set 0 to disable default side missions.
 
 //===================================================== SANDBOX COMBAT MISSIONS
 
@@ -194,11 +194,11 @@ _dm_overclock = 0;										// !Careful! Uncapped, can kill performance. Manuall
 
 //===================================================== STATIC SHIPS
 // Aircraft Carrier
-_aircraft_carrier_enabled = 0;								// Presence.			0 - Disabled. 1 - Enabled. 2 - Enabled + Turret Defenses.    Note: Turret defenses will consume server/AI/CPU performance resources, recommended to not use.
-_aircraft_carrier_vehicles = 2;								// Vehicle Spawning.	0 - None. 1 - Basic. -2  Full.		This will interfere with _closeAirSupport config above, if Full (2) is used.  These are vehicles which spawn as part of the aircraft carrier package.
-_aircraft_carrier_respawning = 0;							// Player Spawning.		0 - None. 1 - Jet pilots only. 2 - All players.		Mission designed for options 0 and 1 only. Advised to only use 2 if AO type == 'NONE' or on closed server.
+_aircraft_carrier_enabled = 1;								// Presence.			0 - Disabled. 1 - Enabled. 2 - Enabled + Turret Defenses.    Note: Turret defenses will consume server/AI/CPU performance resources, recommended to not use.
+_aircraft_carrier_vehicles = 1;								// Vehicle Spawning.	0 - None. 1 - Basic. 2 - Full.		This will interfere with _closeAirSupport config above, if Full (2) is used.  These are vehicles which spawn as part of the aircraft carrier package.
+_aircraft_carrier_respawning = 1;							// Player Spawning.		0 - None. 1 - Jet pilots only. 2 - All players.		Mission designed for options 0 and 1 only. Advised to only use 2 if AO type == 'NONE' or on closed server.
 // Destroyer
-_destroyer_enabled = 1;										// Presence.			0 - Disabled. 1 - Enabled. 2 - Enabled + Turret Defenses.    Note: Turret defenses will consume server/AI/CPU performance resources, recommended to not use.
+_destroyer_enabled = 0;										// Presence.			0 - Disabled. 1 - Enabled. 2 - Enabled + Turret Defenses.    Note: Turret defenses will consume server/AI/CPU performance resources, recommended to not use.
 _destroyer_vehicles = 2;									// Vehicle Spawning.	0 - None. 1 - Basic. 2 - Full. These are vehicles which spawn as part of the destroyer package. 1 = boats only, 2 = boats + helicopter.
 _destroyer_respawning = 0;									// Player Spawning.		0 - None. 1 - All players will (re)spawn on the ship. 		Note: This option is overridden by  "_aircraft_carrier_respawning" option above. Jet pilots will also respawn on the carrier, even if both are available.
 _destroyer_artillery = 0;									// Naval Artillery.		0 - Disabled. 1 - Enabled.	Recommended = 0.	Enable the MK41 VLS Missile Artillery System & MK45 Hammer Naval Gun.
@@ -225,8 +225,8 @@ _container_radar = 1;					// Cyan. 		Deployable Radar.
 
 _IconColor3D = [0,125,255];									// Default R G B colors for 3D hex/nametag icons
 _community_logo = '';
-_community_flag_texture = 'a3\data_f\flags\flag_nato_co.paa';						// Community texture applied to some flags.		Default: 'a3\data_f\flags\flag_nato_co.paa'
-_default_flag_texture = 'a3\data_f\flags\flag_nato_co.paa';							// Texture applied to friendly flags. 			Default: 'a3\data_f\flags\flag_nato_co.paa'
+_community_flag_texture = 'a3\data_f\flags\flag_us_co.paa';						// Community texture applied to some flags.		Default: 'a3\data_f\flags\flag_nato_co.paa'
+_default_flag_texture = 'a3\data_f\flags\flag_us_co.paa';							// Texture applied to friendly flags. 			Default: 'a3\data_f\flags\flag_nato_co.paa'
 _billboard_1 = ['media\images\billboards\billboard3.jpg','media\images\billboards\billboard3.jpg'];							// Textures applied to livefeed screen in default base. These parameters act as randomized arrays. Put more file paths in the [ ] array as desired. Example:   ['media\images\billboards\billboard3.jpg','media\images\billboards\billboard4.jpg'];
 _billboard_2 = ['media\images\billboards\billboard4.jpg','media\images\billboards\billboard4.jpg'];							// Textures applied to other screens in default base. These parameters act as randomized arrays. Put more file paths in the [ ] array as desired. Example:   ['media\images\billboards\billboard3.jpg','media\images\billboards\billboard4.jpg'];
 _infostand_1 = ['media\images\billboards\billboard5.jpg','media\images\billboards\billboard5.jpg'];							// Textures applied to info stands (V1) in default base. These parameters act as randomized arrays. Put more file paths in the [ ] array as desired. Example:   ['media\images\billboards\billboard3.jpg','media\images\billboards\billboard4.jpg'];

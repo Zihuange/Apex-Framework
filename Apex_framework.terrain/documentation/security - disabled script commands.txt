@@ -7,6 +7,7 @@ If you are heavily modifying this framework and some things are not working for 
 Here is a rough list of what is disabled by default (as of 1.1.9):
 
 createUnit (syntax with init field)
+setMarkerText
 addMPEventHandler
 publicVariable
 onMapSingleClick
