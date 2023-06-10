@@ -54,6 +54,10 @@ if (player getUnitTrait 'QS_trait_fighterPilot') exitWith {
 				player setDir 341;
 				player setPosWorld [1910.55,5938.28,5.50144];
 			};
+			if (_worldName isEqualTo 'Cam_Lao_Nam') exitWith {
+				player setDir 146.639;
+				player setPosWorld [15945.1,7062.98,14.9814];
+			};
 		} else {
 			if ((missionNamespace getVariable ['QS_mission_aoType','CLASSIC']) in ['CLASSIC','SC','GRID']) then {
 				player setDir (random 360);
@@ -96,6 +100,10 @@ if (player getUnitTrait 'QS_trait_pilot') then {
 			if (_worldName isEqualTo 'Stratis') exitWith {
 				player setDir (random 360);
 				player setPosWorld [1947.32,5820.64,5.50144];
+			};
+			if (_worldName isEqualTo 'Cam_Lao_Nam') exitWith {
+				player setDir (random 360);
+				player setPosWorld [15878.2,7068.52,14.9814];
 			};
 		} else {
 			player setDir (random 360);

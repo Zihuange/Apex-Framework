@@ -73,4 +73,4 @@
 		[(selectRandom ['vn_b_ammobox_full_12','vn_o_ammobox_full_07','vn_b_ammobox_full_06','vn_o_ammobox_full_04','vn_o_ammobox_full_02','vn_o_ammobox_full_03','vn_o_ammobox_full_01','vn_o_ammobox_full_10']),[-5.54846,3.34375,0.024003],212.741,[],false,true,false,{_box = _this # 0;[_box,0,nil] call (missionNamespace getVariable 'QS_fnc_customInventory');_box;}],
 		[(selectRandom ['vn_b_ammobox_full_12','vn_o_ammobox_full_07','vn_b_ammobox_full_06','vn_o_ammobox_full_04','vn_o_ammobox_full_02','vn_o_ammobox_full_03','vn_o_ammobox_full_01','vn_o_ammobox_full_10']),[7.82349,6.41211,0.0239992],0.00293722,[],false,true,false,{_box = _this # 0;[_box,0,nil] call (missionNamespace getVariable 'QS_fnc_customInventory');_box;}]
 	]
-] # (worldName isEqualTo 'Tanoa'))
+] select (worldName isEqualTo 'Tanoa'))

@@ -59,9 +59,9 @@ if ((missionNamespace getVariable 'QS_mission_aoType') isEqualTo 'SC') then {
 	_marker2 setMarkerPos _uncertaintyPos;
 	(missionNamespace getVariable 'QS_virtualSectors_siteMarkers') pushBack _marker2;
 };
-_sentryType = 'HAF_InfSentry';
+_sentryType = 'OIA_InfSentry';
 if (worldName isEqualTo 'Tanoa') then {
-	_sentryType = 'IG_InfSentry';
+	_sentryType = 'OG_InfSentry';
 };
 _patrolGroup = [_position,(random 360),RESISTANCE,_sentryType,FALSE] call (missionNamespace getVariable 'QS_fnc_spawnGroup');
 [(units _patrolGroup),1] call (missionNamespace getVariable 'QS_fnc_serverSetAISkill');

@@ -251,10 +251,10 @@ if ((random 1) > _staticChance) then {
 	_list = [
 		["Land_Mil_WallBig_4m_F",[-0.354004,-0.0078125,11.045],0,270.632],
 		["Land_Mil_WallBig_4m_F",[-0.0952148,0.0634766,11.082],0,0],
-		["O_HMG_02_high_F",[-2.18506,-2.04688,10.4124],0,234.27],
-		["O_HMG_02_high_F",[-1.84229,2.15332,10.4124],0,309.028],
-		["O_HMG_02_high_F",[2.16064,1.62402,10.4124],0,42.212],
-		["O_HMG_02_high_F",[1.96973,-2.24854,10.4124],0,139.225]
+		["vn_o_nva_static_dshkm_high_01",[-2.18506,-2.04688,10.4124],0,234.27],
+		["vn_o_nva_static_dshkm_high_01",[-1.84229,2.15332,10.4124],0,309.028],
+		["vn_o_nva_static_dshkm_high_01",[2.16064,1.62402,10.4124],0,42.212],
+		["vn_o_nva_static_dshkm_high_01",[1.96973,-2.24854,10.4124],0,139.225]
 	];
 	_tower = createVehicle ['CargoPlaftorm_01_green_F',[0,0,0]];
 	if (_usedSettlementPosition) then {
@@ -352,25 +352,25 @@ if ((random 1) > _staticChance) then {
 				}
 			];
 			_object lock 3;
-			if (
-				((random 1) > 0.333) ||
-				{(_playerCount < 20)}
-			) then {
-				_object removeWeaponTurret ['HMG_M2_Mounted',[0]];
-				{
-					_object addWeaponTurret _x;
-				} forEach [
-					['M134_minigun',[0]]
-				];
-				{
-					_object addMagazineTurret _x;
-				} forEach [
-					['5000Rnd_762x51_Yellow_Belt',[0]],
-					['5000Rnd_762x51_Yellow_Belt',[0]],
-					['5000Rnd_762x51_Yellow_Belt',[0]],
-					['5000Rnd_762x51_Yellow_Belt',[0]]
-				];
-			};
+			// if (
+			// 	((random 1) > 0.333) ||
+			// 	{(_playerCount < 20)}
+			// ) then {
+			// 	_object removeWeaponTurret ['HMG_M2_Mounted',[0]];
+			// 	{
+			// 		_object addWeaponTurret _x;
+			// 	} forEach [
+			// 		['M134_minigun',[0]]
+			// 	];
+			// 	{
+			// 		_object addMagazineTurret _x;
+			// 	} forEach [
+			// 		['5000Rnd_762x51_Yellow_Belt',[0]],
+			// 		['5000Rnd_762x51_Yellow_Belt',[0]],
+			// 		['5000Rnd_762x51_Yellow_Belt',[0]],
+			// 		['5000Rnd_762x51_Yellow_Belt',[0]]
+			// 	];
+			// };
 			_enemiesArray pushBack (gunner _object);
 			(gunner _object) setVariable ['QS_staticGunnerVehicle',_object,FALSE];
 			(gunner _object) enableAIFeature ['PATH',FALSE];
@@ -659,7 +659,7 @@ if ((count (_terrainData # 4)) > 6) then {
 };
 _QS_HQpos set [2,0];
 private _resistanceGrp = createGroup [RESISTANCE,TRUE];
-_unit = _resistanceGrp createUnit [QS_core_units_map getOrDefault ['i_c_soldier_para_1_f','i_c_soldier_para_1_f'],_QS_HQpos,[],10,'NONE'];
+_unit = _resistanceGrp createUnit [QS_core_units_map getOrDefault ['o_g_soldier_f','o_g_soldier_f'],_QS_HQpos,[],10,'NONE'];
 _unit = _unit call (missionNamespace getVariable 'QS_fnc_unitSetup');
 _enemiesArray pushBack _unit;
 _toGarrison pushBack _unit;

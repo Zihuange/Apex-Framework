@@ -150,11 +150,9 @@ if (_type isEqualTo 1) exitWith {
 		if (_positionFound) then {
 			private _composition = [];
 			_data = [
-				['Land_TTowerSmall_1_F',[2.8,2.5,2],0,{}],
-				['Land_SatelliteAntenna_01_F',[-1,1,3.2],(random 360),{}],
-				['Land_CampingTable_small_F',[1,3,0.26],180,{}],
-				['Land_TripodScreen_01_dual_v1_F',[1,3.7,0.7],180,{}],
-				['Land_SatellitePhone_F',[1.15,3,0.85],20,{
+				['Land_vn_pavn_weapons_stack1',[-0.0601807,0.495483,5.20084],6,{}],
+				['vn_o_prop_t102e_01',[0.0177002,0.911865,4.73685],0,{}],
+				['vn_o_item_map_case_01',[0.203979,0.345459,5.19984],360,{
 					missionNamespace setVariable ['QS_virtualSectors_sub_1_obj',_this,TRUE];
 					for '_x' from 0 to 2 step 1 do {
 						_this setVariable ['QS_sc_subObj_1',TRUE,TRUE];
@@ -163,8 +161,8 @@ if (_type isEqualTo 1) exitWith {
 				}]
 			];
 			_houseType = [
-				'Land_Cargo_House_V3_F',
-				'Land_Cargo_House_V4_F'
+				'Land_vn_o_bunker_04',
+				'Land_vn_o_bunker_04'
 			] select (worldName in ['Tanoa','Enoch']);
 			_position set [2,0];
 			_house = createVehicle [_houseType,_position,[],0,'CAN_COLLIDE'];

@@ -940,7 +940,6 @@ for '_x' from 0 to 1 step 0 do {
 				};
 				_QS_module_virtualSectors_scriptCreateEnemy = [_QS_module_virtualSectors_vehiclesEnabled] spawn _fn_scEnemy;
 				waitUntil {scriptDone _QS_module_virtualSectors_scriptCreateEnemy};
-				};
 				uiSleep 0.1;
 				_QS_module_virtualSectors_enemy_0 = missionNamespace getVariable 'QS_virtualSectors_enemy_0';
 				_QS_module_virtualSectors_enemy_1 = missionNamespace getVariable 'QS_virtualSectors_enemy_1';

@@ -50,7 +50,7 @@ QS_roles_data = [
 			{(((player getVariable ['QS_unit_side',WEST]) isEqualTo WEST) || (missionNamespace getVariable ['QS_RSS_client_canSideSwitch',FALSE]))},
 			{}
 		],
-		/*/
+
 		[
 			'autorifleman',
 			WEST,
@@ -64,7 +64,7 @@ QS_roles_data = [
 			{(((player getVariable ['QS_unit_side',WEST]) isEqualTo WEST) || (missionNamespace getVariable ['QS_RSS_client_canSideSwitch',FALSE]))},
 			{}
 		],
-		/*/
+
 		[
 			'machine_gunner',
 			WEST,
@@ -147,7 +147,7 @@ QS_roles_data = [
 			{}
 		],
 		/*/
-		/*/
+
 		[
 			'mortar_gunner',
 			WEST,
@@ -161,7 +161,7 @@ QS_roles_data = [
 			{(((player getVariable ['QS_unit_side',WEST]) isEqualTo WEST) || (missionNamespace getVariable ['QS_RSS_client_canSideSwitch',FALSE]))},
 			{}
 		],
-		/*/
+
 		[
 			'sniper',
 			WEST,
@@ -327,6 +327,7 @@ QS_roles_UI_info = [
 QS_roles_defaultLoadouts = [
 	['',[]],
 	['rifleman',[["vn_m16","","","",["vn_m16_20_t_mag",18],[],""],[],[],["vn_b_uniform_macv_04_01",[["vn_b_item_firstaidkit",1],["vn_m61_grenade_mag",2,1],["vn_m18_yellow_mag",1,1],["vn_m18_red_mag",1,1],["vn_m16_20_t_mag",1,18]]],["vn_b_vest_usarmy_02",[["vn_m16_20_t_mag",2,18]]],["vn_b_pack_lw_01_m16_pl",[["vn_b_item_firstaidkit",2],["vn_m16_20_t_mag",10,18],["vn_m61_grenade_mag",4,1],["vn_mine_m18_mag",1,1]]],"vn_b_helmet_m1_07_01","",[],["vn_b_item_map","","vn_b_item_radio_urc10","vn_b_item_compass","vn_b_item_watch",""]]],
+	['autorifleman',[["vn_l2a1_01","","","",["vn_l1a1_30_mag",30],[],""],[],["vn_m1911","","","",["vn_m1911_mag",7],[],""],["vn_b_uniform_aus_01_01",[["vn_b_item_firstaidkit",1],["vn_m61_grenade_mag",2,1],["vn_m1911_mag",1,7]]],["vn_b_vest_anzac_05",[["vn_l1a1_30_mag",1,30]]],["vn_b_pack_lw_02_m60_pl",[["vn_b_item_firstaidkit",2],["vn_l1a1_30_mag",12,30],["vn_m61_grenade_mag",4,1],["vn_m18_yellow_mag",2,1],["vn_mine_m14_mag",2,1]]],"vn_b_boonie_06_01","vn_b_aviator",[],["vn_b_item_map","","vn_b_item_radio_urc10","vn_b_item_compass","vn_b_item_watch",""]]],
 	['machine_gunner',[["vn_m60","","","",["vn_m60_100_mag",100],[],""],[],["vn_m1911","","","",["vn_m1911_mag",7],[],""],["vn_b_uniform_macv_05_01",[["vn_b_item_firstaidkit",1],["vn_m61_grenade_mag",2,1],["vn_m1911_mag",1,7]]],["vn_b_vest_usarmy_06",[["vn_m60_100_mag",1,100]]],["vn_b_pack_lw_02_m60_pl",[["vn_b_item_firstaidkit",2],["vn_m60_100_mag",6,100],["vn_m61_grenade_mag",4,1],["vn_m18_yellow_mag",2,1],["vn_mine_m14_mag",2,1]]],"vn_b_helmet_m1_08_01","vn_b_aviator",[],["vn_b_item_map","","vn_b_item_radio_urc10","vn_b_item_compass","vn_b_item_watch",""]]],
 	['rifleman_lat',[["vn_m16","","","",["vn_m16_20_t_mag",18],[],""],["vn_m72","","","",["vn_m72_mag",1],[],""],[],["vn_b_uniform_macv_05_01",[["vn_b_item_firstaidkit",1],["vn_m67_grenade_mag",2,1],["vn_m16_20_t_mag",3,18]]],["vn_b_vest_usarmy_02",[]],["vn_b_pack_trp_03_02_m16_pl",[["vn_b_item_firstaidkit",2],["vn_m16_20_t_mag",10,18],["vn_m67_grenade_mag",4,1],["vn_mine_m18_mag",2,1]]],"vn_b_bandana_01","vn_b_scarf_01_01",[],["vn_b_item_map","","vn_b_item_radio_urc10","vn_b_item_compass","vn_b_item_watch",""]]],
 	['engineer',[["vn_m1897","","","",["vn_m1897_buck_mag",6],[],""],[],[],["vn_b_uniform_macv_04_01",[["vn_b_item_firstaidkit",1],["vn_m61_grenade_mag",1,1],["vn_m34_grenade_mag",1,1],["vn_m1897_buck_mag",2,6]]],["vn_b_vest_usarmy_11",[["vn_m1897_buck_mag",1,6]]],["vn_b_pack_lw_04_eng_m1897_pl",[["vn_b_item_toolkit",1],["vn_b_item_firstaidkit",2],["vn_m1897_buck_mag",8,6],["vn_m1897_fl_mag",8,6],["vn_m61_grenade_mag",4,1],["vn_m18_yellow_mag",2,1],["vn_m72_mag",1,1],["vn_mine_m16_mag",2,1],["vn_mine_tripwire_m49_04_mag",4,1],["vn_mine_m112_remote_mag",2,1]]],"vn_b_helmet_m1_05_01","vn_b_scarf_01_03",["vn_m19_binocs_grn","","","",[],[],""],["vn_b_item_map","","vn_b_item_radio_urc10","vn_b_item_compass","vn_b_item_watch",""]]],

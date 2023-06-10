@@ -149,7 +149,7 @@ missionNamespace setVariable ['QS_mission_aoType',(missionNamespace getVariable 
 _aoType = missionNamespace getVariable ['QS_mission_aoType',(missionNamespace getVariable ['QS_missionConfig_aoType','CLASSIC'])];
 if (
 	(_aoType in ['CLASSIC']) &&
-	(!(_QS_worldName in ['Altis','Tanoa','Malden','Enoch','Stratis']))			// These terrains are configured for Classic
+	(!(_QS_worldName in ['Altis','Tanoa','Malden','Enoch','Stratis','Cam_Lao_Nam']))			// These terrains are configured for Classic
 ) then {
 	diag_log '***** GAME MODE ***** CLASSIC mode not configured for this terrain *****';
 	_aoType = 'NONE';
@@ -158,7 +158,7 @@ if (
 };
 if (
 	(_aoType in ['SC']) &&
-	(!(_QS_worldName in ['Altis','Tanoa','Malden','Enoch']))			// These terrains are configured for Sector Control
+	(!(_QS_worldName in ['Altis','Tanoa','Malden','Enoch','Cam_Lao_Nam']))			// These terrains are configured for Sector Control
 ) then {
 	diag_log '***** GAME MODE ***** SECTOR CONTROL mode not configured for this terrain *****';
 	_aoType = 'NONE';
@@ -167,7 +167,7 @@ if (
 };
 if (
 	(_aoType in ['GRID']) &&
-	(!(_QS_worldName in ['Altis','Tanoa','Malden','Enoch']))			// These terrains are configured for Insurgency Mode
+	(!(_QS_worldName in ['Altis','Tanoa','Malden','Enoch','Cam_Lao_Nam']))			// These terrains are configured for Insurgency Mode
 ) then {
 	diag_log '***** GAME MODE ***** INSURGENCY mode not configured for this terrain *****';
 	_aoType = 'NONE';

@@ -203,26 +203,35 @@ if (_type isEqualTo 'camonet_anims_1') exitWith {
 };
 if (_type isEqualTo 'intro_music_1') exitWith {
 	[
-		['EventTrack01_F_Jets',0.1],			// Track + probability weighting
-		['LeadTrack01_F_Jets',0.1],
-		['LeadTrack02_F_Jets',0.1],
-		['AmbientTrack02_F_Exp',0.1],
-		['AmbientTrack02a_F_Exp',0.1],
-		['AmbientTrack02b_F_Exp',0.1],
-		['AmbientTrack02c_F_Exp',0.1],
-		['AmbientTrack02d_F_Exp',0.1],
-		['AmbientTrack01_F_Orange',0.1],
-		['AmbientTrack02_F_Orange',0.1],
-		['LeadTrack01_F_Orange',0.1],
-		['LeadTrack01_F_Malden',0.1],
-		['AmbientTrack04a_F_Tacops',0.1],
-		['AmbientTrack04b_F_Tacops',0.1],
-		['LeadTrack01_F_Tank',0.1],
-		['LeadTrack02_F_Tank',0.1],
-		['LeadTrack03_F_Tank',0.1],
-		['LeadTrack04_F_Tank',0.1],
-		['LeadTrack05_F_Tank',0.1],
-		['LeadTrack06_F_Tank',0.1]
+		['vn_another_life',0.1],			// Track + probability weighting
+		['vn_behind_enemy_lines',0.1],
+		['vn_blues_for_suzy',0.1],
+		['vn_calm_before_the_storm',0.1],
+		['vn_contact',0.1],
+		['vn_deadly_jungle',0.1],
+		['vn_death_scene',0.1],
+		['vn_dont_cry_baby',0.1],
+		['vn_drafted',0.1],
+		['vn_enemy_territory',0.1],
+		['vn_fire_in_the_sky',0.1],
+		['vn_freedom_bird',0.1],
+		['vn_hell_on_earth',0.1],
+		['vn_im_home',0.1],
+		['vn_jungle_boots',0.1],
+		['vn_kitty_bar_blues',0.1],
+		['vn_prairie_fire',0.1],
+		['vn_prayer_for_the_fallen',0.1],
+		['vn_route9',0.1],
+		['vn_shadows_of_the_forest',0.1],
+		['vn_stealth_mode',0.1],
+		['vn_tequila_highway',0.1],
+		['vn_the_village',0.1],
+		['vn_there_it_is',0.1],
+		['vn_time_to_leave',0.1],
+		['vn_trippin',0.1],
+		['vn_unsung_heroes',0.1],
+		['vn_up_here_looking_down',0.1],
+		['vn_voodoo_girl',0.1]
 	]
 };
 if (_type isEqualTo 'intro_music_custom') exitWith {

@@ -73,23 +73,23 @@ if (_type isEqualTo 'ambient_hostility_1') exitWith {
 		'O_G_Soldier_LAT2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
 		'O_G_Soldier_lite_F',1,
 		'O_G_Sharpshooter_F',3,
-		'O_G_Soldier_TL_F',1,
-		'I_C_Soldier_Bandit_7_F',1,
-		'I_C_Soldier_Bandit_3_F',3,
-		'I_C_Soldier_Bandit_2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
-		'I_C_Soldier_Bandit_5_F',2,
-		'I_C_Soldier_Bandit_6_F',2,
-		'I_C_Soldier_Bandit_1_F',2,
-		'I_C_Soldier_Bandit_8_F',2,
-		'I_C_Soldier_Bandit_4_F',2,
-		'I_C_Soldier_Para_7_F',1,
-		'I_C_Soldier_Para_2_F',1,
-		'I_C_Soldier_Para_3_F',1,
-		'I_C_Soldier_Para_4_F',3,
-		'I_C_Soldier_Para_6_F',1,
-		'I_C_Soldier_Para_8_F',1,
-		'I_C_Soldier_Para_1_F',1,
-		'I_C_Soldier_Para_5_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4)
+		'O_G_Soldier_TL_F',1
+		// 'I_C_Soldier_Bandit_7_F',1,
+		// 'I_C_Soldier_Bandit_3_F',3,
+		// 'I_C_Soldier_Bandit_2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
+		// 'I_C_Soldier_Bandit_5_F',2,
+		// 'I_C_Soldier_Bandit_6_F',2,
+		// 'I_C_Soldier_Bandit_1_F',2,
+		// 'I_C_Soldier_Bandit_8_F',2,
+		// 'I_C_Soldier_Bandit_4_F',2,
+		// 'I_C_Soldier_Para_7_F',1,
+		// 'I_C_Soldier_Para_2_F',1,
+		// 'I_C_Soldier_Para_3_F',1,
+		// 'I_C_Soldier_Para_4_F',3,
+		// 'I_C_Soldier_Para_6_F',1,
+		// 'I_C_Soldier_Para_8_F',1,
+		// 'I_C_Soldier_Para_1_F',1,
+		// 'I_C_Soldier_Para_5_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4)
 	]
 };
 // List of lighter units for deployment assault system
@@ -108,22 +108,22 @@ if (_type isEqualTo 'deploy_assault_1') exitWith {
 		'o_g_soldier_lite_f',1,
 		'o_g_sharpshooter_f',3,
 		'o_g_soldier_tl_f',1,
-		'i_c_soldier_bandit_7_f',1,
-		'i_c_soldier_bandit_3_f',3,
-		'i_c_soldier_bandit_2_f',(2 max (missionnamespace getvariable ['qs_ai_targetsknowledge_threat_armor',0]) min 4),
-		'i_c_soldier_bandit_5_f',2,
-		'i_c_soldier_bandit_6_f',2,
-		'i_c_soldier_bandit_1_f',2,
-		'i_c_soldier_bandit_8_f',2,
-		'i_c_soldier_bandit_4_f',2,
-		'i_c_soldier_para_7_f',1,
-		'i_c_soldier_para_2_f',1,
-		'i_c_soldier_para_3_f',1,
-		'i_c_soldier_para_4_f',3,
-		'i_c_soldier_para_6_f',1,
-		'i_c_soldier_para_8_f',1,
-		'i_c_soldier_para_1_f',1,
-		'i_c_soldier_para_5_f',(2 max (missionnamespace getvariable ['qs_ai_targetsknowledge_threat_armor',0]) min 4),
+		// 'i_c_soldier_bandit_7_f',1,
+		// 'i_c_soldier_bandit_3_f',3,
+		// 'i_c_soldier_bandit_2_f',(2 max (missionnamespace getvariable ['qs_ai_targetsknowledge_threat_armor',0]) min 4),
+		// 'i_c_soldier_bandit_5_f',2,
+		// 'i_c_soldier_bandit_6_f',2,
+		// 'i_c_soldier_bandit_1_f',2,
+		// 'i_c_soldier_bandit_8_f',2,
+		// 'i_c_soldier_bandit_4_f',2,
+		// 'i_c_soldier_para_7_f',1,
+		// 'i_c_soldier_para_2_f',1,
+		// 'i_c_soldier_para_3_f',1,
+		// 'i_c_soldier_para_4_f',3,
+		// 'i_c_soldier_para_6_f',1,
+		// 'i_c_soldier_para_8_f',1,
+		// 'i_c_soldier_para_1_f',1,
+		// 'i_c_soldier_para_5_f',(2 max (missionnamespace getvariable ['qs_ai_targetsknowledge_threat_armor',0]) min 4),
 		'o_soldier_aa_f',(1 max (missionnamespace getvariable ['qs_ai_targetsknowledge_threat_air',0]) min 4)
 	]
 };
@@ -232,9 +232,9 @@ if (_type isEqualTo 'classic_garrisonindarray_1') exitWith {
 if (_type isEqualTo 'classic_garrisonindarray_2') exitWith {
 	// Garrisoned enemies on Tanoa/Livonia
 	[
-		'i_c_soldier_para_1_f','i_c_soldier_para_2_f','i_c_soldier_para_3_f','i_c_soldier_para_4_f',
-		'i_c_soldier_para_5_f','i_c_soldier_para_6_f',
-		'i_c_soldier_para_7_f','i_c_soldier_para_8_f'
+		'o_g_engineer_f','o_g_medic_f','o_g_soldier_a_f','o_g_soldier_ar_f','o_g_soldier_exp_f','o_g_soldier_f','o_g_soldier_f',
+		'o_g_soldier_gl_f','o_g_soldier_lat_f','o_g_soldier_lite_f','o_g_soldier_m_f','o_g_soldier_sl_f','o_g_soldier_tl_f',
+		'o_g_sharpshooter_f','o_g_soldier_ar_f'
 	]
 };
 if (_type isEqualTo 'classic_garrisonindarray_3') exitWith {
@@ -269,7 +269,7 @@ if (_type isEqualTo 'classic_reinforcearray_stratis') exitWith {
 };
 if (_type isEqualTo 'forest_camp_1') exitWith {
 	// most terrains
-	['HAF_InfSentry',1,'IG_SniperTeam_M',1]
+	['oia_infsentry',1,'og_sniperteam_m',1]
 };
 if (_type isEqualTo 'forest_camp_2') exitWith {
 	// Tanoa
@@ -287,9 +287,9 @@ if (_type isEqualto 'ao_hvt_units_1') exitWith {
 };
 if (_type isEqualto 'ao_hvt_guards_1') exitWith {
 	[
-		"I_C_Soldier_Bandit_7_F","I_C_Soldier_Bandit_3_F","I_C_Soldier_Bandit_2_F","I_C_Soldier_Bandit_5_F","I_C_Soldier_Bandit_6_F","I_C_Soldier_Bandit_1_F",
-		"I_C_Soldier_Bandit_8_F","I_C_Soldier_Bandit_4_F","I_C_Soldier_Para_7_F","I_C_Soldier_Para_2_F","I_C_Soldier_Para_3_F","I_C_Soldier_Para_4_F","I_C_Soldier_Para_6_F",
-		"I_C_Soldier_base_unarmed_F","I_C_Soldier_Para_8_F","I_C_Soldier_Para_1_F","I_C_Soldier_Para_5_F"
+		'o_g_engineer_f','o_g_medic_f','o_g_soldier_a_f','o_g_soldier_ar_f','o_g_soldier_exp_f','o_g_soldier_f','o_g_soldier_f',
+		'o_g_soldier_gl_f','o_g_soldier_lat_f','o_g_soldier_lite_f','o_g_soldier_m_f','o_g_soldier_sl_f','o_g_soldier_tl_f',
+		'o_g_sharpshooter_f','o_g_soldier_ar_f'
 	]
 };
 if (_type isEqualTo 'ao_idap_units_1') exitWith {
@@ -307,9 +307,9 @@ if (_type isEqualTo 'ao_idap_units_1') exitWith {
 };
 if (_type isEqualTo 'ao_idap_enemies_1') exitWith {
 	[
-		"I_C_Soldier_Bandit_7_F","I_C_Soldier_Bandit_3_F","I_C_Soldier_Bandit_2_F","I_C_Soldier_Bandit_5_F","I_C_Soldier_Bandit_6_F",
-		"I_C_Soldier_Bandit_1_F","I_C_Soldier_Bandit_8_F","I_C_Soldier_Bandit_4_F","I_C_Soldier_Para_7_F","I_C_Soldier_Para_2_F","I_C_Soldier_Para_3_F",
-		"I_C_Soldier_Para_4_F","I_C_Soldier_Para_6_F","I_C_Soldier_Para_8_F","I_C_Soldier_Para_1_F","I_C_Soldier_Para_5_F"
+		'o_g_engineer_f','o_g_medic_f','o_g_soldier_a_f','o_g_soldier_ar_f','o_g_soldier_exp_f','o_g_soldier_f','o_g_soldier_f',
+		'o_g_soldier_gl_f','o_g_soldier_lat_f','o_g_soldier_lite_f','o_g_soldier_m_f','o_g_soldier_sl_f','o_g_soldier_tl_f',
+		'o_g_sharpshooter_f','o_g_soldier_ar_f'
 	]
 };
 if (_type isEqualto 'ao_taskkill_enemies_1') exitWith {
@@ -329,9 +329,9 @@ if (_type isEqualTo 'urbanspawn_units_1') exitWith {
 };
 if (_type isEqualTo 'urbanspawn_nodes_1') exitWith {
 	[
-		"i_c_soldier_para_1_f","i_c_soldier_para_2_f","i_c_soldier_para_3_f",
-		"i_c_soldier_para_4_f","i_c_soldier_para_5_f","i_c_soldier_para_6_f",
-		"i_c_soldier_para_7_f","i_c_soldier_para_8_f"
+		'o_g_engineer_f','o_g_medic_f','o_g_soldier_a_f','o_g_soldier_ar_f','o_g_soldier_exp_f','o_g_soldier_f','o_g_soldier_f',
+		'o_g_soldier_gl_f','o_g_soldier_lat_f','o_g_soldier_lite_f','o_g_soldier_m_f','o_g_soldier_sl_f','o_g_soldier_tl_f',
+		'o_g_sharpshooter_f','o_g_soldier_ar_f'
 	]
 };
 if (_type isEqualTo 'urbanspawn_groups_1') exitWith {
@@ -426,23 +426,23 @@ if (_type isEqualTo 'grid_units_1') exitWith {
 		'O_G_Soldier_LAT_F',0.2,
 		'O_G_Soldier_lite_F',0.2,
 		'O_G_Sharpshooter_F',0.2,
-		'O_G_Soldier_TL_F',0.2,
-		'I_C_Soldier_Bandit_7_F',0.2,
-		'I_C_Soldier_Bandit_3_F',0.4,
-		'I_C_Soldier_Bandit_2_F',0.2,
-		'I_C_Soldier_Bandit_5_F',0.2,
-		'I_C_Soldier_Bandit_6_F',0.2,
-		'I_C_Soldier_Bandit_1_F',0.2,
-		'I_C_Soldier_Bandit_8_F',0.2,
-		'I_C_Soldier_Bandit_4_F',0.2,
-		'I_C_Soldier_Para_7_F',0.1,
-		'I_C_Soldier_Para_2_F',0.1,
-		'I_C_Soldier_Para_3_F',0.1,
-		'I_C_Soldier_Para_4_F',0.3,
-		'I_C_Soldier_Para_6_F',0.1,
-		'I_C_Soldier_Para_8_F',0.1,
-		'I_C_Soldier_Para_1_F',0.1,
-		'I_C_Soldier_Para_5_F',0.1
+		'O_G_Soldier_TL_F',0.2
+		// 'I_C_Soldier_Bandit_7_F',0.2,
+		// 'I_C_Soldier_Bandit_3_F',0.4,
+		// 'I_C_Soldier_Bandit_2_F',0.2,
+		// 'I_C_Soldier_Bandit_5_F',0.2,
+		// 'I_C_Soldier_Bandit_6_F',0.2,
+		// 'I_C_Soldier_Bandit_1_F',0.2,
+		// 'I_C_Soldier_Bandit_8_F',0.2,
+		// 'I_C_Soldier_Bandit_4_F',0.2,
+		// 'I_C_Soldier_Para_7_F',0.1,
+		// 'I_C_Soldier_Para_2_F',0.1,
+		// 'I_C_Soldier_Para_3_F',0.1,
+		// 'I_C_Soldier_Para_4_F',0.3,
+		// 'I_C_Soldier_Para_6_F',0.1,
+		// 'I_C_Soldier_Para_8_F',0.1,
+		// 'I_C_Soldier_Para_1_F',0.1,
+		// 'I_C_Soldier_Para_5_F',0.1
 	]
 };
 if (_type isEqualTo 'grid_units_2') exitWith {
@@ -459,23 +459,23 @@ if (_type isEqualTo 'grid_units_2') exitWith {
 		'O_G_Soldier_LAT2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
 		'O_G_Soldier_lite_F',1,
 		'O_G_Sharpshooter_F',3,
-		'O_G_Soldier_TL_F',1,
-		'I_C_Soldier_Bandit_7_F',1,
-		'I_C_Soldier_Bandit_3_F',3,
-		'I_C_Soldier_Bandit_2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
-		'I_C_Soldier_Bandit_5_F',2,
-		'I_C_Soldier_Bandit_6_F',2,
-		'I_C_Soldier_Bandit_1_F',2,
-		'I_C_Soldier_Bandit_8_F',2,
-		'I_C_Soldier_Bandit_4_F',2,
-		'I_C_Soldier_Para_7_F',1,
-		'I_C_Soldier_Para_2_F',1,
-		'I_C_Soldier_Para_3_F',1,
-		'I_C_Soldier_Para_4_F',3,
-		'I_C_Soldier_Para_6_F',1,
-		'I_C_Soldier_Para_8_F',1,
-		'I_C_Soldier_Para_1_F',1,
-		'I_C_Soldier_Para_5_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4)
+		'O_G_Soldier_TL_F',1
+		// 'I_C_Soldier_Bandit_7_F',1,
+		// 'I_C_Soldier_Bandit_3_F',3,
+		// 'I_C_Soldier_Bandit_2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
+		// 'I_C_Soldier_Bandit_5_F',2,
+		// 'I_C_Soldier_Bandit_6_F',2,
+		// 'I_C_Soldier_Bandit_1_F',2,
+		// 'I_C_Soldier_Bandit_8_F',2,
+		// 'I_C_Soldier_Bandit_4_F',2,
+		// 'I_C_Soldier_Para_7_F',1,
+		// 'I_C_Soldier_Para_2_F',1,
+		// 'I_C_Soldier_Para_3_F',1,
+		// 'I_C_Soldier_Para_4_F',3,
+		// 'I_C_Soldier_Para_6_F',1,
+		// 'I_C_Soldier_Para_8_F',1,
+		// 'I_C_Soldier_Para_1_F',1,
+		// 'I_C_Soldier_Para_5_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4)
 	]
 };
 if (_type isEqualTo 'grid_units_3') exitWith {
@@ -492,30 +492,30 @@ if (_type isEqualTo 'grid_units_3') exitWith {
 		'O_G_Soldier_LAT2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
 		'O_G_Soldier_lite_F',1,
 		'O_G_Sharpshooter_F',3,
-		'O_G_Soldier_TL_F',1,
-		'I_C_Soldier_Bandit_7_F',1,
-		'I_C_Soldier_Bandit_3_F',3,
-		'I_C_Soldier_Bandit_2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
-		'I_C_Soldier_Bandit_5_F',2,
-		'I_C_Soldier_Bandit_6_F',2,
-		'I_C_Soldier_Bandit_1_F',2,
-		'I_C_Soldier_Bandit_8_F',2,
-		'I_C_Soldier_Bandit_4_F',2,
-		'I_C_Soldier_Para_7_F',1,
-		'I_C_Soldier_Para_2_F',1,
-		'I_C_Soldier_Para_3_F',1,
-		'I_C_Soldier_Para_4_F',3,
-		'I_C_Soldier_Para_6_F',1,
-		'I_C_Soldier_Para_8_F',1,
-		'I_C_Soldier_Para_1_F',1,
-		'I_C_Soldier_Para_5_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4)
+		'O_G_Soldier_TL_F',1
+		// 'I_C_Soldier_Bandit_7_F',1,
+		// 'I_C_Soldier_Bandit_3_F',3,
+		// 'I_C_Soldier_Bandit_2_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4),
+		// 'I_C_Soldier_Bandit_5_F',2,
+		// 'I_C_Soldier_Bandit_6_F',2,
+		// 'I_C_Soldier_Bandit_1_F',2,
+		// 'I_C_Soldier_Bandit_8_F',2,
+		// 'I_C_Soldier_Bandit_4_F',2,
+		// 'I_C_Soldier_Para_7_F',1,
+		// 'I_C_Soldier_Para_2_F',1,
+		// 'I_C_Soldier_Para_3_F',1,
+		// 'I_C_Soldier_Para_4_F',3,
+		// 'I_C_Soldier_Para_6_F',1,
+		// 'I_C_Soldier_Para_8_F',1,
+		// 'I_C_Soldier_Para_1_F',1,
+		// 'I_C_Soldier_Para_5_F',(2 max (missionNamespace getVariable ['QS_AI_targetsKnowledge_threat_armor',0]) min 4)
 	]
 };
 if (_type isEqualTo 'georgetown_units_1') exitWith {
 	[
-		"I_C_Soldier_Para_1_F","I_C_Soldier_Para_2_F","I_C_Soldier_Para_3_F",
-		"I_C_Soldier_Para_4_F","I_C_Soldier_Para_5_F","I_C_Soldier_Para_6_F",
-		"I_C_Soldier_Para_7_F","I_C_Soldier_Para_8_F"
+		'o_g_engineer_f','o_g_medic_f','o_g_soldier_a_f','o_g_soldier_ar_f','o_g_soldier_exp_f','o_g_soldier_f','o_g_soldier_f',
+		'o_g_soldier_gl_f','o_g_soldier_lat_f','o_g_soldier_lite_f','o_g_soldier_m_f','o_g_soldier_sl_f','o_g_soldier_tl_f',
+		'o_g_sharpshooter_f','o_g_soldier_ar_f'
 	]
 };
 if (_type isEqualTo 'georgetown_civilians_1') exitWith {
