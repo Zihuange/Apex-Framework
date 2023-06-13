@@ -250,13 +250,27 @@ if (_active_Mod == 'VN') exitWith {
 		'vn_o_air_mig19_cas',
 		'vn_o_air_mig19_gun',
 		'vn_o_air_mig19_hbmb',
-		'vn_o_air_mig19_mr'
+		'vn_o_air_mig19_mr',
+		"vn_o_air_mig21_atgm", 
+		"vn_o_air_mig21_at", 
+		"vn_o_air_mig21_mr", 
+		"vn_o_air_mig21_cap", 
+		"vn_o_air_mig21_gun", 
+		"vn_o_air_mig21_bmb", 
+		"vn_o_air_mig21_cas", 
+		"vn_o_air_mig21_hbmb", 
+		"vn_o_air_mig21_hcas"
 	];
 	QS_core_classNames_planeTypesEnemy_lower = [
 		'vn_o_air_mig19_bmb',
 		'vn_o_air_mig19_cap',
 		'vn_o_air_mig19_cas',
-		'vn_o_air_mig19_mr'
+		'vn_o_air_mig19_mr',
+		"vn_o_air_mig21_atgm", 
+		"vn_o_air_mig21_at", 
+		"vn_o_air_mig21_mr", 
+		"vn_o_air_mig21_cap",
+		"vn_o_air_mig21_bmb",
 	];
 	QS_core_classNames_heliTypesCAS_lower = [
 		'vn_b_air_ah1g_02',
@@ -307,7 +321,20 @@ if (_active_Mod == 'VN') exitWith {
 		'vn_o_air_mi2_03_05',
 		'vn_o_air_mi2_03_06',
 		'vn_o_air_mi2_03_03',
-		'vn_o_air_mi2_03_04'
+		'vn_o_air_mi2_03_04',
+		"vn_b_air_ach47_05_01", 
+		"vn_b_air_ach47_04_01", 
+		"vn_b_air_ach47_01_01", 
+		"vn_b_air_ach47_02_01", 
+		"vn_b_air_ach47_03_01", 
+		"vn_b_air_ch47_02_02", 
+		"vn_b_air_ch47_02_01", 
+		"vn_b_air_ch47_04_02", 
+		"vn_b_air_ch47_03_02", 
+		"vn_b_air_ch47_03_01", 
+		"vn_b_air_ch47_04_01", 
+		"vn_b_air_ch47_01_02", 
+		"vn_b_air_ch47_01_01"	
 	];
 };
 if (_active_Mod == 'CSLA') exitWith {

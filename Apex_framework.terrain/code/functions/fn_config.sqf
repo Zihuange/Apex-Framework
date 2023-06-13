@@ -283,6 +283,13 @@ if (_worldName in ['Altis','Tanoa','Malden','Enoch']) then {
 	_flagTextureCivilian = 'a3\data_f\flags\flag_altis_co.paa';
 	_flagTextureUnknown = 'a3\data_f\flags\flag_uno_co.paa';
 };
+if (_worldName in ['Cam_Lao_Nam','vn_khe_sanh','vn_the_bra']) then {
+	_flagTextureEast = '\vn\objects_f_vietnam\flags\data\vn_flag_01_vc_co.paa';
+	_flagTextureWest = (missionNamespace getVariable ['QS_missionConfig_textures_defaultFlag','\vn\objects_f_vietnam\flags\data\vn_flag_01_usa_co.paa']);
+	_flagTextureResistance = '\vn\objects_f_vietnam\flags\data\vn_flag_01_arvn_co.paa';
+	_flagTextureCivilian = 'a3\data_f\flags\flag_altis_co.paa';
+	_flagTextureUnknown = 'a3\data_f\flags\flag_uno_co.paa';
+};
 _sidesFlagsTextures = [
 	[_flagTextureEast,_flagTextureWest,_flagTextureResistance,_flagTextureCivilian,_flagTextureUnknown],
 	[_flagTextureEast,_flagTextureWest,'\a3\Data_F_Exp\Flags\flag_SYND_CO.paa','a3\data_f_exp\flags\flag_tanoa_co.paa',_flagTextureUnknown]
@@ -507,7 +514,7 @@ private _weaponsList = configFile >> 'CfgWeapons';
 	['QS_module_fob_flag',objNull,TRUE],
 	['QS_module_fob_supplycrate',objNull,FALSE],
 	['QS_module_fob_assaultArray',[],FALSE],
-	['QS_module_fob_flag_textures',['a3\data_f\flags\flag_csat_co.paa',_flagTextureFriendly,'a3\data_f\flags\flag_aaf_co.paa','a3\data_f\flags\flag_altis_co.paa','a3\data_f\flags\flag_uno_co.paa'],FALSE],
+	['QS_module_fob_flag_textures',[_flagTextureEast,_flagTextureFriendly,_flagTextureResistance,_flagTextureCivilian,'a3\data_f\flags\flag_uno_co.paa'],FALSE],
 	['QS_module_fob_repairDepot',objNull,FALSE],
 	['QS_module_upload_device',objNull,FALSE],
 	['QS_module_upload_flag',objNull,FALSE],

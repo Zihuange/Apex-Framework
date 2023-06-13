@@ -167,7 +167,7 @@ _weaponsBasic = [
 	'vn_type56', 'vn_gau5a', 'vn_m16_usaf', 'vn_m16', 'vn_m16_m203_camo', 'vn_m16_m203', 'vn_m16_xm148', 'vn_m63a', 'vn_xm16e1', 'vn_xm16e1_xm148', 'vn_xm177e1', 
 	'vn_xm177e1_camo', 'vn_xm177', 'vn_xm177_xm148', 'vn_xm177_xm148_camo', 'vn_xm177_fg', 'vn_xm177_stock', 'vn_xm177_stock_camo', 'vn_xm177_short', 'vn_xm177_camo', 
 	'vn_m1carbine', 'vn_m1carbine_gl', 'vn_m2carbine', 'vn_m2carbine_gl', 'vn_m1897', 'vn_izh54', 'vn_izh54_shorty', 'vn_sks_gl', 'vn_m4956_gl', 'vn_m1_garand_gl', 
-	'vn_l1a1_01_gl', 'vn_l1a1_02_gl'
+	'vn_l1a1_01_gl', 'vn_l1a1_02_gl',"vn_ak_01", "vn_kbkg", "vn_kbkg_gl","vn_xm177_m203", "vn_xm177_m203_camo", "vn_m1carbine_shorty", "vn_m14a1_shorty", "vn_m1903_gl"
 ];
 // marksman rifles
 _weaponsMarksman = [
@@ -177,12 +177,12 @@ _weaponsMarksman = [
 _weaponsMarksmanHeavy = [
 	'vn_l1a1_03', 'vn_l1a1_xm148', 'vn_l1a1_xm148_camo', 'vn_l1a1_02', 'vn_l1a1_02_camo', 'vn_l1a1_01', 'vn_l1a1_01_gl', 
 	'vn_l1a1_01_camo', 'vn_l1a1_03_camo', 'vn_m1_garand', 'vn_m14', 'vn_m14_camo', 'vn_m14a1', 'vn_m1891', 'vn_m38', 'vn_m4956', 
-	'vn_m9130', 'vn_sks'
+	'vn_m9130', 'vn_sks', "vn_k98k", "vn_m1903", "vn_m36"
 ];
 // Sniper rifles
 _weaponsSniper = [
 	'vn_m1_garand', 'vn_m14', 'vn_m14_camo', 'vn_m14a1', 'vn_l1a1_01', 'vn_l1a1_01_camo', 'vn_l1a1_02', 'vn_l1a1_02_camo', 'vn_m1891',
-	'vn_m3carbine', 'vn_m38', 'vn_m40a1', 'vn_m40a1_camo', 'vn_m4956', 'vn_m9130', 'vn_sks', 'vn_vz54'
+	'vn_m3carbine', 'vn_m38', 'vn_m40a1', 'vn_m40a1_camo', 'vn_m4956', 'vn_m9130', 'vn_sks', 'vn_vz54' , "vn_k98k", "vn_m1903", "vn_svd"
 ];
 // high-capacity variants of rifles (drum magazines, variants with 100 round mags,etc)
 _weaponsSW = [
@@ -196,7 +196,8 @@ _weaponsLMG = [
 	'vn_rpd_shorty_01', 
 	'vn_rpd_shorty', 
 	'vn_rpd',
-	'vn_l2a1_01'
+	'vn_l2a1_01',
+	"vn_l4"
 ];
 // medium machine guns
 _weaponsMMG = [
@@ -207,7 +208,8 @@ _weaponsMMG = [
 	'vn_pk',
 	'vn_rpd_shorty_01', 
 	'vn_rpd_shorty', 
-	'vn_rpd'
+	'vn_rpd', 
+	"vn_mg42"
 ];
 // compact weapons
 _weaponsCompact = [
@@ -220,12 +222,14 @@ _weaponsLauncherAll = [
 	'vn_rpg2',
 	'vn_rpg7',
 	'vn_m127',
-	'vn_m72'
+	'vn_m72',
+	"vn_m20a1b1_01"
 ];
 // basic launchers (rpg)
 _weaponsLauncherBasic = [
 	'vn_rpg2',
-	'vn_m127'
+	'vn_m127',
+	'vn_m72'
 ];
 // regular launchers 
 _weaponsLauncherRegular = [
@@ -234,7 +238,8 @@ _weaponsLauncherRegular = [
 	'vn_rpg2',
 	'vn_rpg7',
 	'vn_m127',
-	'vn_m72'
+	'vn_m72',
+	"vn_m20a1b1_01"
 ];
 // light AT
 _weaponsLauncherLAT = [
@@ -243,7 +248,8 @@ _weaponsLauncherLAT = [
 	'vn_rpg2',
 	'vn_rpg7',
 	'vn_m127',
-	'vn_m72'
+	'vn_m72',
+	"vn_m20a1b1_01"
 ];
 // heavy AT
 _weaponsLauncherHAT = [
@@ -252,7 +258,8 @@ _weaponsLauncherHAT = [
 	'vn_rpg2',
 	'vn_rpg7',
 	'vn_m127',
-	'vn_m72'
+	'vn_m72',
+	"vn_m20a1b1_01"
 ];
 // pistols / handguns
 _weaponsHandgun = [
@@ -273,7 +280,10 @@ _weaponsHandgun = [
 	'vn_tt33', 
 	'vn_vz61_p', 
 	'vn_welrod', 
-	'vn_pm'
+	'vn_pm',
+	"vn_type64",
+	"vn_ppk",
+	"vn_p38"
 ];
 // submachine guns
 _weaponsSMG = [
@@ -297,7 +307,12 @@ _weaponsSMG = [
 	'vn_m1a1_tommy_so', 
 	'vn_mp40', 
 	'vn_m3a1', 
-	'vn_sten'
+	'vn_sten',
+	"vn_type64_smg", 
+	"vn_type64_f_smg",
+	"vn_l2a3", "vn_l2a3_f", 
+	"vn_l34a1", "vn_l34a1_xm148", "vn_l34a1_f",
+	""
 ];
 // underwater weapons
 _weaponsUW = [
@@ -312,7 +327,8 @@ _viewersAll = [
 	'vn_fkb1_red',
 	'vn_mx991',
 	'vn_mx991_red',
-	'vn_anpvs2_binoc'
+	'vn_anpvs2_binoc',
+	"vn_camera_01"
 ];
 // Binoculars and rangefinders (no lasers)
 _viewersBasic = [
@@ -323,7 +339,8 @@ _viewersBasic = [
 	'vn_fkb1_red',
 	'vn_mx991',
 	'vn_mx991_red',
-	'vn_anpvs2_binoc'
+	'vn_anpvs2_binoc',
+	"vn_camera_01"
 ];
 // Laser designators
 _viewersLaser = [
@@ -334,7 +351,8 @@ _viewersLaser = [
 	'vn_fkb1_red',
 	'vn_mx991',
 	'vn_mx991_red',
-	'vn_anpvs2_binoc'
+	'vn_anpvs2_binoc',
+	"vn_camera_01"
 ];
 
 // 'vn_b_uniform_macv_05_01'
@@ -493,7 +511,9 @@ _headgearBasic = [
 	'vn_i_helmet_m1_02_02', 'vn_i_helmet_m1_03_02', 'vn_b_helmet_m1_01_01', 'vn_b_helmet_m1_12_01', 'vn_b_helmet_m1_12_02', 'vn_b_helmet_t56_01_01', 'vn_b_helmet_t56_01_02', 
 	'vn_b_helmet_t56_02_02', 'vn_b_helmet_t56_01_03', 'vn_b_helmet_t56_02_03', 'vn_b_helmet_t56_02_01', 'H_HeadBandage_bloody_F', 'H_HeadBandage_stained_F', 'H_HeadBandage_clean_F', 
 	'vn_b_beret_01_08', 'vn_b_beret_01_05', 'vn_i_beret_03_01', 'vn_i_beret_03_03', 'vn_i_beret_01_01', 'vn_i_beret_03_04', 'vn_i_beret_03_02', 'vn_b_beret_01_04', 'vn_b_beret_01_01', 
-	'vn_b_beret_01_07', 'vn_b_beret_04_01', 'vn_b_beret_03_01', 'vn_b_beret_01_06', 'vn_b_beret_01_03', 'vn_b_beret_01_02', 'vn_b_helmet_sog_01'
+	'vn_b_beret_01_07', 'vn_b_beret_04_01', 'vn_b_beret_03_01', 'vn_b_beret_01_06', 'vn_b_beret_01_03', 'vn_b_beret_01_02', 'vn_b_helmet_sog_01',
+	"vn_b_helmet_m1_14_02", "vn_b_helmet_m1_14_01", "vn_b_helmet_m1_15_02", "vn_b_helmet_m1_15_01", "vn_b_helmet_m1_16_02", "vn_b_helmet_m1_16_01", "vn_b_helmet_m1_18_02",
+	 "vn_b_helmet_m1_18_01", "vn_b_helmet_m1_19_02", "vn_b_helmet_m1_19_01", "vn_b_helmet_m1_20_02", "vn_b_helmet_m1_20_01"
 ];
 
 // Pilot helmets
@@ -515,7 +535,8 @@ _vestsAll = [
 	'vn_b_vest_anzac_07', 'vn_b_vest_anzac_06', 'vn_b_vest_anzac_04', 'vn_b_vest_anzac_05', 'vn_b_vest_anzac_09', 'vn_b_vest_anzac_10', 'vn_b_vest_anzac_01', 
 	'vn_b_vest_anzac_02', 'vn_b_vest_sas_01', 'vn_b_vest_sas_04', 'vn_b_vest_sas_02', 'vn_b_vest_sas_03', 'vn_b_vest_usarmy_04', 'vn_b_vest_usarmy_09', 
 	'vn_b_vest_usarmy_07', 'vn_b_vest_usarmy_01', 'vn_b_vest_usarmy_08', 'vn_b_vest_usarmy_05', 'vn_b_vest_usarmy_06', 'vn_b_vest_usarmy_02', 'vn_b_vest_usarmy_03', 
-	'vn_b_vest_usarmy_11', 'vn_b_vest_usarmy_12', 'vn_b_vest_usarmy_13', 'vn_b_vest_usarmy_14', 'vn_b_vest_usarmy_10'
+	'vn_b_vest_usarmy_11', 'vn_b_vest_usarmy_12', 'vn_b_vest_usarmy_13', 'vn_b_vest_usarmy_14', 'vn_b_vest_usarmy_10',
+	"vn_b_vest_usmc_06", "vn_b_vest_usmc_05", "vn_b_vest_usmc_04", "vn_b_vest_usmc_09", "vn_b_vest_usmc_03", "vn_b_vest_usmc_08", "vn_b_vest_usmc_01", "vn_b_vest_usmc_02", "vn_b_vest_usmc_07"
 ];
 // Pilot vests
 _vestsPilot = [
@@ -531,7 +552,8 @@ _backpacksAll = [
 	'vn_b_pack_static_m2_01', 'vn_b_pack_static_m2_low_01', 'vn_b_pack_static_m2_high_01', 'vn_b_pack_static_m29_01', 'vn_b_pack_static_m60_low_01',
 	'vn_b_pack_static_m60_high_01', 'vn_b_pack_static_mk18', 'vn_b_pack_lw_03', 'vn_b_pack_m5_01', 'vn_b_pack_lw_07', 'vn_b_pack_lw_04', 'vn_b_pack_lw_06',
 	'vn_b_pack_lw_05', 'vn_b_pack_lw_02', 'vn_b_pack_lw_01', 'vn_b_pack_static_base_01', 'vn_b_pack_trp_02_02', 'vn_b_pack_trp_04_02', 'vn_b_pack_trp_01_02',
-	'vn_b_pack_trp_03_02', 'vn_i_pack_parachute_01', 'vn_o_pack_parachute_01', 'vn_b_pack_ba18_01', 'vn_b_pack_ba22_01'
+	'vn_b_pack_trp_03_02', 'vn_i_pack_parachute_01', 'vn_o_pack_parachute_01', 'vn_b_pack_ba18_01', 'vn_b_pack_ba22_01',
+	"vn_b_pack_m41_01", "vn_b_pack_m41_02", "vn_b_pack_m41_03", "vn_b_pack_m41_04", "vn_b_pack_m41_05"
 ];
 // Regular sized backpacks (all backpacks except for the big ones)
 _backpacksBasic = [
@@ -890,6 +912,9 @@ _magazinesAll = [
 	'vn_mine_gboard_range_mag',
 	'vn_mine_satchelcharge_02_mag',
 	'vn_mine_bangalore_mag',
+	"vn_mine_m18_wp_fuze10_mag",
+	"vn_mine_m18_wp_range_mag",
+	"vn_mine_m18_wp_mag",
 	'vn_satchelcharge_02_throw_mag',
 	'vn_f1_smg_mag',
 	'vn_f1_smg_t_mag',
@@ -910,7 +935,16 @@ _magazinesAll = [
 	'vn_22mm_n94_heat_mag', 'vn_22mm_m9_heat_mag', 'vn_40mm_m717_smoke_p_mag', 'vn_40mm_m716_smoke_y_mag', 'vn_40mm_m715_smoke_g_mag', 'vn_40mm_m682_smoke_r_mag',
 	'vn_40mm_m680_smoke_w_mag', 'vn_40mm_m651_cs_mag', 'vn_22mm_m61_frag_mag', 'vn_22mm_m60_heat_mag', 'vn_22mm_m60_frag_mag', 'vn_40mm_m576_buck_mag',
 	'vn_40mm_m433_hedp_mag', 'vn_40mm_m406_he_mag', 'vn_40mm_m397_ab_mag', 'vn_40mm_m381_he_mag', 'vn_22mm_m22_smoke_mag', 'vn_22mm_m1a2_frag_mag',
-	'vn_22mm_m19_wp_mag', 'vn_22mm_m17_frag_mag'
+	'vn_22mm_m19_wp_mag', 'vn_22mm_m17_frag_mag',
+	"vn_kbkg_mag", "vn_kbkg_t_mag",
+	"vn_type64_smg_mag", "vn_type64_smg_t_mag",
+	"vn_mg42_50_t_mag", "vn_mg42_50_mag",
+	"vn_k98k_mag", "vn_k98k_t_mag",
+	"vn_m1903_mag", "vn_m1903_t_mag",
+	"vn_m36_mag", "vn_m36_t_mag",
+	"vn_svd_mag", "vn_svd_t_mag",
+	"vn_p38_mag", "vn_type64_mag", "vn_ppk_mag",
+	"vn_m20a1b1_heat_mag", "vn_m20a1b1_wp_mag"
 ];
 // all weapon attachments
 _attachmentsAll = [
@@ -918,7 +952,8 @@ _attachmentsAll = [
 	'vn_b_m1_garand','vn_b_camo_m14','vn_o_9x_m14','vn_o_anpvs2_m14','vn_b_m14','vn_s_m14','vn_bipod_m14','vn_b_camo_m14a1','vn_o_9x_m16','vn_o_4x_m16',
 	'vn_o_1x_sp_m16','vn_b_m16','vn_s_m16','vn_b_m38','vn_b_m1897','vn_bipod_m1918','vn_s_m3a1','vn_o_9x_m40a1','vn_o_anpvs2_m40a1','vn_b_camo_m40a1',
 	'vn_o_4x_m4956','vn_b_m4956','vn_b_camo_m9130','vn_o_3x_m9130','vn_s_mat49','vn_s_mc10','vn_s_mpu','vn_b_sks','vn_s_sten','vn_b_type56','vn_o_3x_vz54',
-	'vn_b_camo_vz54'
+	'vn_b_camo_vz54',"vn_o_1_5x_k98k","vn_b_k98k", "vn_b_camo_k98k", "vn_o_m14_front", "vn_o_8x_m1903", "vn_b_m1903", "vn_b_camo_m1903",
+	"vn_b_m36", "vn_b_camo_m36","vn_o_4x_svd", "vn_b_camo_svd","vn_s_ppk"
 ];
 // all weapon attachments
 _attachmentsBasic = [
@@ -955,7 +990,10 @@ _attachmentsBasic = [
 	'vn_s_mk22',
 	'vn_s_m10',
 	'vn_s_pm',
-	'vn_s_sten'
+	'vn_s_sten',
+	"vn_o_1_5x_k98k",
+	"vn_o_m14_front",
+	
 ];
 // thermal weapon attachments
 _attachmentsThermal = [];

@@ -15,8 +15,11 @@ _______________________________________________/*/
 
 missionNamespace setVariable ['QS_terrain_worldName',(getText (configFile >> 'CfgWorlds' >> worldName >> 'description')),FALSE];
 private _environment = 'arid';		// Altis, Stratis, Malden, Sefrou-Ramal
-if (worldName in ['Tanoa','Cam_Lao_Nam','vn_khe_sanh','vn_the_bra']) then {
+if (worldName in ['Tanoa']) then {
 	_environment = 'tropic';
+};
+if (worldName in ['Cam_Lao_Nam','vn_khe_sanh','vn_the_bra']) then {
+	_environment = 'vn';
 };
 if (worldName in ['Enoch','stozec','gm_weferlingen_summer','gm_weferlingen_winter']) then {
 	_environment = 'temperate';

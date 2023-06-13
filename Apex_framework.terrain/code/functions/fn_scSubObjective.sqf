@@ -150,9 +150,9 @@ if (_type isEqualTo 1) exitWith {
 		if (_positionFound) then {
 			private _composition = [];
 			_data = [
-				['Land_vn_pavn_weapons_stack1',[-0.0601807,0.495483,5.20084],6,{}],
-				['vn_o_prop_t102e_01',[0.0177002,0.911865,4.73685],0,{}],
-				['vn_o_item_map_case_01',[0.203979,0.345459,5.19984],360,{
+				['Land_vn_pavn_weapons_stack1',[-0.0601807,1.295483,-0.25],6,{}],
+				['vn_o_prop_t102e_01',[-0.1,0.911865,0.2301],0,{}],
+				['vn_o_item_map_case_01',[0.133979,0.65459,0.2301],90,{
 					missionNamespace setVariable ['QS_virtualSectors_sub_1_obj',_this,TRUE];
 					for '_x' from 0 to 2 step 1 do {
 						_this setVariable ['QS_sc_subObj_1',TRUE,TRUE];

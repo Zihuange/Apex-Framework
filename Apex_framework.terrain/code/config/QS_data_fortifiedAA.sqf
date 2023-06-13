@@ -17,30 +17,16 @@ if (worldName isEqualTo 'Cam_Lao_Nam') exitWith {
 	if ((random 1) > 0.333) then [
 		{
 			[
-				[(selectRandomWeighted ['vn_o_nva_65_static_zpu4',0.75,'vn_o_nva_navy_static_v11m',0.25]),[-5.34766,0.143311,0.016685],270.378,[],FALSE,FALSE,FALSE,(missionNamespace getVariable 'QS_fnc_createAAVehicle')], 
-				["Land_vn_bagfence_01_long_green_f",[4.104,0.0585938,2.01259],89.7138,[],FALSE,FALSE,TRUE,{}], 
-				["Land_vn_bagfence_01_long_green_f",[0.0810547,-4.68604,1.9154],0,[],FALSE,FALSE,TRUE,{}], 
-				["Land_vn_bagfence_01_long_green_f",[4.0498,2.4082,2.01259],269.377,[],FALSE,FALSE,TRUE,{}], 
-				["Land_vn_bagfence_01_long_green_f",[0.28125,4.70337,1.96381],0.0261029,[],FALSE,FALSE,TRUE,{}],  
-				["Land_vn_bagfence_01_long_green_f",[4.13721,-2.48828,2.01259],89.7138,[],FALSE,FALSE,TRUE,{}], 
-				["Land_vn_b_trench_05_02",[-2.49365,-4.34351,0],0,[],FALSE,FALSE,TRUE,{}], 
-				["Land_vn_b_trench_05_02",[4.24023,-2.72827,0],90.1508,[],FALSE,FALSE,TRUE,{}], 
-				["Land_vn_b_trench_05_02",[-2.3042,4.68652,0],0,[],FALSE,FALSE,TRUE,{}], 
-				["Land_vn_bagfence_01_long_green_f",[-2.81201,-4.47412,1.85721],0,[],FALSE,FALSE,TRUE,{}], 
-				["Land_vn_bagfence_01_long_green_f",[-2.59473,4.71655,1.84145],0.0261029,[],FALSE,FALSE,TRUE,{}], 
-				["Land_vn_b_trench_05_02",[4.29883,3.45776,0],90.1508,[],FALSE,FALSE,TRUE,{}], 
-				["Land_vn_bagfence_01_long_green_f",[4.18018,-5.10205,2.01259],89.7138,[],FALSE,FALSE,TRUE,{}], 
-				["Land_vn_bagfence_01_long_green_f",[4.03125,5.3186,2.01259],269.874,[],FALSE,FALSE,TRUE,{}], 
-				["Land_vn_bagfence_01_long_green_f",[-5.58252,-4.48584,1.9154],0,[],FALSE,FALSE,TRUE,{}], 
-				["Land_vn_bagfence_01_long_green_f",[-5.54932,4.72998,1.96381],0.0261029,[],FALSE,FALSE,TRUE,{}], 
-				["Land_vn_b_trench_05_02",[-6.74072,-4.37427,0],0,[],FALSE,FALSE,TRUE,{}], 
-				["Land_vn_b_trench_05_02",[-6.59717,4.69678,0],0,[],FALSE,FALSE,TRUE,{}], 
-				["Land_vn_bagfence_01_long_green_f",[-8.31738,4.70923,1.96381],179.601,[],FALSE,FALSE,TRUE,{}], 
-				["Land_vn_bagfence_01_long_green_f",[-8.48779,-4.46411,1.9154],178.714,[],FALSE,FALSE,TRUE,{}], 
-				["Land_vn_bagfence_01_long_green_f",[-9.85986,0.136719,2.05747],92.9792,[],FALSE,FALSE,TRUE,{}], 
-				["Land_vn_b_trench_05_02",[-9.89404,0.758057,0],90.7865,[],FALSE,FALSE,TRUE,{}], 
-				["Land_vn_bagfence_01_long_green_f",[-9.70703,3.06982,2.09318],92.9792,[],FALSE,FALSE,TRUE,{}], 
-				["Land_vn_bagfence_01_long_green_f",[-9.8457,-2.80469,1.92252],268.615,[],FALSE,FALSE,TRUE,{}]
+				[(selectRandomWeighted ['vn_o_nva_65_static_zpu4',0.75,'vn_o_nva_navy_static_v11m',0.25]),[-2.34766,0.143311,0.016685],270.378,[],FALSE,FALSE,FALSE,(missionNamespace getVariable 'QS_fnc_createAAVehicle')], 
+				["Land_vn_b_trench_05_02",[4.67676,-6.94226,1.53992],147.306,[],false,false,true,{}], 
+				["Land_vn_b_trench_05_02",[8.38574,-0.442871,1.53992],95.6527,[],false,false,true,{}], 
+				["Land_vn_b_trench_05_02",[-1.83447,8.58044,1.53992],359.409,[],false,false,true,{}], 
+				["Land_vn_b_trench_revetment_05_01",[1.75708,8.70642,1.51776],285.359,[],false,false,true,{}], 
+				["Land_vn_b_trench_05_02",[-1.68994,-8.85425,1.53992],180.803,[],false,false,true,{}], 
+				["Land_vn_b_trench_05_02",[-7.87866,5.80249,1.53992],313.223,[],false,false,true,{}], 
+				["Land_vn_b_trench_05_02",[-7.98242,-6.07959,1.53992],227.624,[],false,false,true,{}], 
+				["Land_vn_b_trench_05_02",[-10.198,-0.0783691,1.53992],272.299,[],false,false,true,{}], 
+				["Land_vn_b_trench_05_02",[8.95044,5.36462,1.52787],96.5611,[],false,false,true,{}]
 			]
 		},
 		{

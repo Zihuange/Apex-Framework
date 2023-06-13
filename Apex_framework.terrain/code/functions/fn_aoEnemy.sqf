@@ -251,10 +251,10 @@ if ((random 1) > _staticChance) then {
 	_list = [
 		["Land_Mil_WallBig_4m_F",[-0.354004,-0.0078125,11.045],0,270.632],
 		["Land_Mil_WallBig_4m_F",[-0.0952148,0.0634766,11.082],0,0],
-		["vn_o_nva_static_dshkm_high_01",[-2.18506,-2.04688,10.4124],0,234.27],
-		["vn_o_nva_static_dshkm_high_01",[-1.84229,2.15332,10.4124],0,309.028],
-		["vn_o_nva_static_dshkm_high_01",[2.16064,1.62402,10.4124],0,42.212],
-		["vn_o_nva_static_dshkm_high_01",[1.96973,-2.24854,10.4124],0,139.225]
+		["vn_o_nva_static_dshkm_high_02",[1.42651,-1.6543,11],0,142.877], 
+		["vn_o_nva_static_dshkm_high_02",[1.73291,1.70764,11],0,50.866], 
+		["vn_o_nva_static_dshkm_high_02",[-1.90747,-1.54492,11],0,229.696], 
+		["vn_o_nva_static_dshkm_high_02",[-1.79932,1.8844,11],0,320.03]
 	];
 	_tower = createVehicle ['CargoPlaftorm_01_green_F',[0,0,0]];
 	if (_usedSettlementPosition) then {

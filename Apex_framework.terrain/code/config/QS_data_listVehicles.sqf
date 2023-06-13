@@ -323,52 +323,52 @@ if (_type isEqualTo 'fires_wrecktypes_1') exitWith {
 if (_type isEqualto 'hq_cache_list_1') exitWith {
 	// Crates default
 	[
-		'Box_East_Ammo_F',
-		'Box_East_Wps_F',
-		'O_CargoNet_01_ammo_F',
-		'Box_East_AmmoOrd_F',
-		'Box_East_Grenades_F',
-		'Box_East_WpsLaunch_F',
-		'Box_East_WpsSpecial_F',
-		'O_supplyCrate_F',
-		'Box_East_Support_F',
-		'Box_East_AmmoVeh_F',
-		'Box_NATO_Ammo_F',
-		'Box_IND_Ammo_F'
+		'vn_o_ammobox_full_02',
+		'vn_o_ammobox_kit_nva',
+		'vn_o_ammobox_wpn_04',
+		'vn_o_ammobox_wpn_03',
+		'vn_o_ammobox_full_01',
+		'vn_o_ammobox_full_03',
+		'vn_o_ammobox_full_04',
+		'vn_o_ammobox_full_08',
+		'vn_o_ammobox_full_05',
+		'vn_o_ammobox_full_06',
+		'vn_b_ammobox_full_04',
+		'vn_b_ammobox_full_19'
 	]
 };
 if (_type isEqualto 'hq_cache_list_2') exitWith {
 	// Crates Tanoa
 	[
-		'Box_East_Ammo_F',
-		'Box_East_Wps_F',
-		'O_CargoNet_01_ammo_F',
-		'Box_East_AmmoOrd_F',
-		'Box_East_Grenades_F',
-		'Box_East_WpsLaunch_F',
-		'Box_East_WpsSpecial_F',
-		'O_supplyCrate_F',
-		'Box_East_Support_F',
-		'Box_East_AmmoVeh_F',
-		'Box_NATO_Ammo_F',
-		'Box_IND_Ammo_F'
+		'vn_o_ammobox_full_02',
+		'vn_o_ammobox_kit_nva',
+		'vn_o_ammobox_wpn_04',
+		'vn_o_ammobox_wpn_03',
+		'vn_o_ammobox_full_01',
+		'vn_o_ammobox_full_03',
+		'vn_o_ammobox_full_04',
+		'vn_o_ammobox_full_08',
+		'vn_o_ammobox_full_05',
+		'vn_o_ammobox_full_06',
+		'vn_b_ammobox_full_04',
+		'vn_b_ammobox_full_19'
 	]
 };
 if (_type isEqualto 'hq_cache_list_3') exitWith {
 	// Crates Livonia
 	[
-		'Box_East_Ammo_F',
-		'Box_East_Wps_F',
-		'O_CargoNet_01_ammo_F',
-		'Box_East_AmmoOrd_F',
-		'Box_East_Grenades_F',
-		'Box_East_WpsLaunch_F',
-		'Box_East_WpsSpecial_F',
-		'O_supplyCrate_F',
-		'Box_East_Support_F',
-		'Box_East_AmmoVeh_F',
-		'Box_NATO_Ammo_F',
-		'Box_IND_Ammo_F'
+		'vn_o_ammobox_full_02',
+		'vn_o_ammobox_kit_nva',
+		'vn_o_ammobox_wpn_04',
+		'vn_o_ammobox_wpn_03',
+		'vn_o_ammobox_full_01',
+		'vn_o_ammobox_full_03',
+		'vn_o_ammobox_full_04',
+		'vn_o_ammobox_full_08',
+		'vn_o_ammobox_full_05',
+		'vn_o_ammobox_full_06',
+		'vn_b_ammobox_full_04',
+		'vn_b_ammobox_full_19'
 	]
 };
 if (_type isEqualTo 'hq_cache_undraggable_1') exitWith {

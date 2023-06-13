@@ -19,7 +19,7 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 		["Land_BagFence_01_round_green_F",[-0.249023,1.80664,-0.0026021],285.207,[],false,false,TRUE,{}], 
 		["Land_BagFence_01_round_green_F",[-2.33203,0.675293,-0.0026021],14.8742,[],false,false,TRUE,{}], 
 		["Land_BagFence_01_round_green_F",[-1.79004,-1.65137,-0.0026021],190.105,[],false,false,TRUE,{}], 
-		["I_G_Mortar_01_F",[-1.45361,2.0835,-0.0753462],0,[],false,TRUE,false,{
+		["vn_o_nva_65_static_mortar_type63",[-1.45361,2.0835,-0.0753462],0,[],false,TRUE,false,{
 			_mortar = _this # 0;
 			_grp = createVehicleCrew _mortar;
 			{
@@ -116,7 +116,7 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 			_mortar;
 		}], 
 		["Land_BagFence_01_round_green_F",[2.76563,0.580566,-0.0026021],190.105,[],false,false,TRUE,{}], 
-		["I_G_Mortar_01_F",[2.96875,-1.1333,-0.0753462],0,[],false,TRUE,false,{
+		["vn_o_nva_65_static_mortar_type63",[2.96875,-1.1333,-0.0753462],0,[],false,TRUE,false,{
 			_mortar = _this # 0;
 			_grp = createVehicleCrew _mortar;
 			{
@@ -136,11 +136,8 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 				]);
 			} else {
 				(effectiveCommander _mortar) setUnitLoadout (selectRandom [
-					"O_soldierU_A_F","O_soldierU_AAR_F","O_soldierU_AR_F","O_soldierU_medic_F","O_engineer_U_F","O_soldierU_exp_F","O_SoldierU_GL_F",
-					"O_Urban_HeavyGunner_F","O_soldierU_M_F","O_soldierU_AT_F","O_soldierU_F","O_soldierU_LAT_F","O_Urban_Sharpshooter_F",
-					"O_SoldierU_SL_F","O_soldierU_TL_F","O_G_engineer_F","O_G_medic_F","O_G_Soldier_A_F","O_G_Soldier_AR_F","O_G_Soldier_exp_F","O_G_Soldier_F","O_G_Soldier_F",
-					"O_G_Soldier_GL_F","O_G_Soldier_LAT_F","O_G_Soldier_lite_F","O_G_Soldier_M_F","O_G_Soldier_SL_F","O_G_Soldier_TL_F",
-					"O_G_Sharpshooter_F","O_G_Soldier_AR_F"
+					"vn_o_men_vc_01", "vn_o_men_vc_08", "vn_o_men_vc_14", "vn_o_men_vc_12", "vn_o_men_vc_10", "vn_o_men_vc_09", "vn_o_men_vc_07", 
+					"vn_o_men_vc_13", "vn_o_men_vc_11", "vn_o_men_vc_06", "vn_o_men_vc_04", "vn_o_men_vc_05", "vn_o_men_vc_02", "vn_o_men_vc_03"
 				]);
 			};
 			_mortar lock 3;
@@ -211,7 +208,7 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 			_mortar;
 		}], 
 		["Land_BagFence_01_round_green_F",[2.02832,-2.75488,-0.0026021],14.8742,[],false,false,TRUE,{}], 
-		["I_G_Mortar_01_F",[-1.67529,-3.41846,-0.0753462],0,[],false,TRUE,false,{
+		["vn_o_nva_65_static_mortar_type63",[-1.67529,-3.41846,-0.0753462],0,[],false,TRUE,false,{
 			_mortar = _this # 0;
 			_grp = createVehicleCrew _mortar;
 			{
@@ -231,11 +228,8 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 				]);
 			} else {
 				(effectiveCommander _mortar) setUnitLoadout (selectRandom [
-					"O_soldierU_A_F","O_soldierU_AAR_F","O_soldierU_AR_F","O_soldierU_medic_F","O_engineer_U_F","O_soldierU_exp_F","O_SoldierU_GL_F",
-					"O_Urban_HeavyGunner_F","O_soldierU_M_F","O_soldierU_AT_F","O_soldierU_F","O_soldierU_LAT_F","O_Urban_Sharpshooter_F",
-					"O_SoldierU_SL_F","O_soldierU_TL_F","O_G_engineer_F","O_G_medic_F","O_G_Soldier_A_F","O_G_Soldier_AR_F","O_G_Soldier_exp_F","O_G_Soldier_F","O_G_Soldier_F",
-					"O_G_Soldier_GL_F","O_G_Soldier_LAT_F","O_G_Soldier_lite_F","O_G_Soldier_M_F","O_G_Soldier_SL_F","O_G_Soldier_TL_F",
-					"O_G_Sharpshooter_F","O_G_Soldier_AR_F"
+					"vn_o_men_vc_01", "vn_o_men_vc_08", "vn_o_men_vc_14", "vn_o_men_vc_12", "vn_o_men_vc_10", "vn_o_men_vc_09", "vn_o_men_vc_07", 
+					"vn_o_men_vc_13", "vn_o_men_vc_11", "vn_o_men_vc_06", "vn_o_men_vc_04", "vn_o_men_vc_05", "vn_o_men_vc_02", "vn_o_men_vc_03"
 				]);
 			};
 			_mortar lock 3;
@@ -344,7 +338,7 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 	]
 };
 [
-	["I_G_Mortar_01_F",[3.13574,1.62061,0.036881],360,[],false,true,false,{
+	["vn_o_nva_65_static_mortar_type63",[2.18286,-0.728516,0.0368891],360,[],false,true,false,{
 		_mortar = _this # 0;
 		_grp = createVehicleCrew _mortar;
 		{
@@ -438,7 +432,7 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 		_grp setVariable ['QS_AI_GRP_TASK',['SUPPORT','MORTAR',serverTime,-1],FALSE];
 		_mortar;
 	}], 
-	["I_G_Mortar_01_F",[0.695801,-3.58252,0.0368857],360,[],false,true,false,{
+	["vn_o_nva_65_static_mortar_type63",[-1.76733,1.68164,0.0368843],360,[],false,true,false,{
 		_mortar = _this # 0;
 		_grp = createVehicleCrew _mortar;
 		{
@@ -532,7 +526,7 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 		_grp setVariable ['QS_AI_GRP_TASK',['SUPPORT','MORTAR',serverTime,-1],FALSE];
 		_mortar;
 	}], 
-	["I_G_Mortar_01_F",[-3.28564,1.77783,0.0368829],360,[],false,true,false,{
+	["vn_o_nva_65_static_mortar_type63",[-1.59766,-2.84863,0.0368848],360,[],false,true,false,{
 		_mortar = _this # 0;
 		_grp = createVehicleCrew _mortar;
 		{
@@ -626,43 +620,25 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 		_grp setVariable ['QS_AI_GRP_TASK',['SUPPORT','MORTAR',serverTime,-1],FALSE];
 		_mortar;
 	}], 
-	["Land_vn_bagfence_01_round_green_f",[1.52246,-2.35498,0],221.198,[],false,false,true,{}], 
-	["Land_vn_bagfence_01_round_green_f",[-0.530273,-2.83887,0],109.416,[],false,false,true,{}], 
-	["Land_vn_bagfence_01_round_green_f",[1.97559,2.3125,0],109.416,[],false,false,true,{}], 
-	["Land_vn_bagfence_01_round_green_f",[-3.01025,0.794434,0],350.741,[],false,false,true,{}], 
-	["Land_vn_bagfence_01_round_green_f",[3.36084,0.631348,0],350.741,[],false,false,true,{}], 
-	["Land_vn_bagfence_01_round_green_f",[-2.34277,2.95947,0],221.198,[],false,false,true,{}], 
-	["Land_vn_bagfence_01_round_green_f",[0.85498,-4.52002,0],350.741,[],false,false,true,{}], 
-	["Land_vn_bagfence_01_round_green_f",[4.02832,2.79639,0],221.198,[],false,false,true,{}], 
-	["Land_vn_bagfence_01_round_green_f",[-4.39551,2.47559,0],109.416,[],false,false,true,{}], 
-	["Land_vn_b_trench_revetment_05_01",[-6.64014,-1.69385,0],76.7103,[],false,false,true,{}], 
-	["Land_vn_b_trench_revetment_05_01",[-3.80322,-6.1333,0],40.5611,[],false,false,true,{}], 
-	["Land_vn_b_trench_stair_01",[3.71826,6.52148,0],214.752,[],false,false,true,{}], 
-	["Land_vn_b_trench_revetment_05_01",[6.61816,3.55078,0],232.769,[],false,false,true,{}], 
-	["Land_vn_sandbagbarricade_01_half_f",[-7.35205,1.54688,0],333.341,[],false,false,true,{}], 
-	["Land_vn_b_trench_revetment_05_01",[0.95752,-7.73779,0],1.1124,[],false,false,true,{}], 
-	["Land_vn_b_trench_revetment_05_01",[-0.0424805,7.81396,0],192.983,[],false,false,true,{}], 
-	["Land_vn_b_trench_revetment_05_01",[7.87842,-1.30908,0],271.626,[],false,false,true,{}], 
-	["Land_vn_b_trench_revetment_05_01",[5.53076,-6.01514,0],313.739,[],false,false,true,{}], 
-	["Land_vn_b_trench_05_02",[-8.46289,0.229492,0],90.299,[],false,false,true,{}], 
-	["Land_vn_b_trench_05_02",[-5.86865,-6.31934,0],48.8287,[],false,false,true,{}], 
-	["Land_vn_b_trench_05_02",[0.214844,8.80615,0],182.173,[],false,false,true,{}], 
-	["Land_vn_b_trench_05_02",[6.51758,6.07178,0],230.221,[],false,false,true,{}], 
-	["Land_vn_b_trench_05_02",[0.36084,-9.2627,0],2.1171,[],false,false,true,{}], 
-	["Land_vn_b_trench_05_02",[9.30566,-0.566406,0],271.267,[],false,false,true,{}], 
-	["Land_vn_b_trench_05_02",[6.66406,-6.91455,0],316.879,[],false,false,true,{}], 
-	["Land_vn_b_trench_revetment_05_01",[-9.91455,0.293945,0],269.435,[],false,false,true,{}], 
-	["Land_vn_b_trench_revetment_05_01",[-6.72266,-7.48779,0],47.4539,[],false,false,true,{}], 
-	["Land_vn_b_trench_stair_01",[-9.28125,-4.021,0],247.194,[],false,false,true,{}], 
-	["Land_vn_b_trench_stair_01",[4.81787,9.10449,0],14.4074,[],false,false,true,{}], 
-	["Land_vn_b_trench_revetment_05_01",[7.91748,6.83301,0],47.4539,[],false,false,true,{}], 
-	["Land_vn_b_trench_stair_01",[10.2246,3.46387,0],66.2934,[],false,false,true,{}], 
-	["Land_vn_b_trench_revetment_05_01",[10.7993,-0.578613,0],89.9335,[],false,false,true,{}], 
-	["Land_vn_b_trench_revetment_05_01",[0.412598,-10.8335,0],179.914,[],false,false,true,{}], 
-	["Land_vn_b_trench_stair_01",[-3.61719,-10.2759,0],205.419,[],false,false,true,{}], 
-	["Land_vn_b_trench_revetment_05_01",[8.10791,-7.76953,0],135.185,[],false,false,true,{}], 
-	["Land_vn_b_trench_stair_01",[4.63623,-10.2441,0],158.593,[],false,false,true,{}], 
-	["Land_vn_b_trench_stair_01",[10.396,-4.64355,0],109.741,[],false,false,true,{}], 
-	["Land_vn_b_trench_05_02",[-10.1948,7.51416,0],62.8607,[],false,false,true,{}], 
-	["Land_vn_b_trench_05_02",[-8.77148,12.1636,0],152.389,[],false,false,true,{}]
+	["Land_vn_bagfence_01_round_green_f",[2.19263,1.06201,0],179.65,[],false,false,true,{}], 
+	["Land_vn_bagfence_01_round_green_f",[2.10278,-1.60791,0],0,[],false,false,true,{}], 
+	["Land_vn_bagfence_01_round_green_f",[-0.687256,2.93213,0],231.282,[],false,false,true,{}], 
+	["Land_vn_bagfence_01_round_green_f",[-2.82739,1.32178,0],50.9324,[],false,false,true,{}], 
+	["Land_vn_bagfence_01_round_green_f",[-0.537354,-3.20801,0],301.007,[],false,false,true,{}], 
+	["Land_vn_bagfence_01_round_green_f",[-2.77734,-1.74805,0],121.357,[],false,false,true,{}], 
+	["Land_vn_bagfence_01_round_green_f",[3.55249,-0.328125,0],270.265,[],false,false,true,{}], 
+	["Land_vn_bagfence_01_round_green_f",[-2.58691,3.25244,0],141.547,[],false,false,true,{}], 
+	["Land_vn_bagfence_01_round_green_f",[-2.43726,-3.63818,0],31.6216,[],false,false,true,{}], 
+	["Land_vn_b_trench_05_02",[-6.27808,5.77246,1.10404],321.891,[],false,false,true,{}], 
+	["Land_vn_camonet_east",[0.465332,8.52783,1],0,[],false,false,true,{}], 
+	["Land_vn_camonet_east",[-8.64014,-0.197754,1],270.568,[],false,false,true,{}], 
+	["Land_vn_b_trench_05_02",[6.52148,6.021,1.10404],38.125,[],false,false,true,{}], 
+	["Land_vn_camonet_east",[0.145264,-8.96924,1],180.087,[],false,false,true,{}], 
+	["Land_vn_b_trench_05_02",[0.0722656,-9.05273,1.10404],181.246,[],false,false,true,{}], 
+	["Land_vn_camonet_east",[9.24756,0.0170898,1],90.9594,[],false,false,true,{}], 
+	["Land_vn_b_trench_05_02",[-6.18726,-6.90625,1.10404],218.125,[],false,false,true,{}], 
+	["Land_vn_b_trench_05_02",[-9.29688,-0.518066,1.10404],270.259,[],false,false,true,{}], 
+	["Land_vn_b_trench_05_02",[6.50366,-6.85986,1.10404],141.891,[],false,false,true,{}], 
+	["Land_vn_b_trench_05_02",[9.56299,-0.198242,1.10404],90.2589,[],false,false,true,{}], 
+	["Land_vn_b_trench_revetment_05_01",[0.258057,10.8628,0.704113],1.246,[],false,false,true,{}]
 ]
