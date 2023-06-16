@@ -1135,12 +1135,12 @@ for '_x' from 0 to 1 step 0 do {
 							if (_QS_uiTime > _QS_module_virtualSectors_uav_checkDelay) then {
 								_QS_module_virtualSectors_uavs = _QS_module_virtualSectors_uavs select {(alive _x)};
 								if ((_QS_module_virtualSectors_uavs findIf {(unitIsUav _x)}) isEqualTo -1) then {
-									_QS_module_virtualSectors_spawnedGrp = [] call _fn_scSpawnUAV;
-									if (_QS_module_virtualSectors_spawnedGrp isNotEqualTo []) then {
-										{
-											_QS_module_virtualSectors_uavs pushBack _x;
-										} forEach _QS_module_virtualSectors_spawnedGrp;
-									};
+									// _QS_module_virtualSectors_spawnedGrp = [] call _fn_scSpawnUAV;
+									// if (_QS_module_virtualSectors_spawnedGrp isNotEqualTo []) then {
+									// 	{
+									// 		_QS_module_virtualSectors_uavs pushBack _x;
+									// 	} forEach _QS_module_virtualSectors_spawnedGrp;
+									// };
 								};
 								_QS_module_virtualSectors_uav_checkDelay = _QS_uiTime + _QS_module_virtualSectors_uav_delay;
 							};
@@ -1545,12 +1545,12 @@ for '_x' from 0 to 1 step 0 do {
 						if (_QS_uiTime > _QS_module_classic_uav_checkDelay) then {
 							_QS_module_classic_uavs = _QS_module_classic_uavs select {(alive _x)};
 							if ((_QS_module_classic_uavs findIf {(unitIsUav _x)}) isEqualTo -1) then {
-								_QS_module_classic_spawnedGrp = [] call _fn_scSpawnUAV;
-								if (_QS_module_classic_spawnedGrp isNotEqualTo []) then {
-									{
-										_QS_module_classic_uavs pushBack _x;
-									} forEach _QS_module_classic_spawnedGrp;
-								};
+								// _QS_module_classic_spawnedGrp = [] call _fn_scSpawnUAV;
+								// if (_QS_module_classic_spawnedGrp isNotEqualTo []) then {
+								// 	{
+								// 		_QS_module_classic_uavs pushBack _x;
+								// 	} forEach _QS_module_classic_spawnedGrp;
+								// };
 							};
 							_QS_module_classic_uav_checkDelay = diag_tickTime + _QS_module_classic_uav_delay;
 						};
@@ -2163,7 +2163,7 @@ for '_x' from 0 to 1 step 0 do {
 									if (_QS_module_enemyCas_speed isEqualTo -1) then {
 										_QS_module_enemyCas_plane setVariable ['QS_enemy_casJetMaxSpeed',(getNumber ((configOf _QS_module_enemyCas_plane) >> 'maxSpeed')),_false];
 									};
-									_QS_module_enemyCas_plane forceSpeed ((_QS_module_enemyCas_plane getVariable ['QS_enemy_casJetMaxSpeed',1000]) * (random [0.7,0.85,1]));
+									_QS_module_enemyCas_plane forceSpeed ((_QS_module_enemyCas_plane getVariable ['QS_enemy_casJetMaxSpeed',1000]) * (random [0.5,0.55,0.7]));
 									if ((_QS_module_enemyCas_plane getVariable ['QS_AI_PLANE_flyInHeight',-1]) isEqualTo 1) then {
 										_QS_module_enemyCas_plane flyInHeight (500 + (random 1000));
 									};

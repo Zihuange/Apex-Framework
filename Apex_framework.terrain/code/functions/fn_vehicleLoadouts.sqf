@@ -233,6 +233,59 @@ if (_type isEqualTo 1) exitWith {
 	if (_vehicleType isEqualTo 'o_heli_light_02_dynamicloadout_f') then {
 	
 	};
+	if (_vehicleType in [
+		'vn_o_air_mig19_at',
+		'vn_o_air_mig19_bmb',
+		'vn_o_air_mig19_cas',
+		'vn_o_air_mig19_hbmb',
+		'vn_o_air_mig19_mr'
+		]) then {
+		//_vehicle call _preparePylons;
+		{ 
+			_vehicle setPylonLoadout _x; 
+		} forEach 	[
+			[1,"vn_missile_mig19_01_aa2_mag_x1",TRUE],
+			[1,"vn_missile_mig19_01_aa2_mag_x1",TRUE],
+			[3,"vn_bomb_500_fab250_he_mag_x1",TRUE],
+			[4,"vn_bomb_500_fab250_he_mag_x1",TRUE]
+		];
+		// Add extra gun ammo
+		_vehicle addMagazineTurret ['vn_nr30_v_195_mag',[-1]];
+	};
+	if (_vehicleType in [
+		'vn_o_air_mig19_cap',
+		'vn_o_air_mig19_gun'
+		]) then {
+		//_vehicle call _preparePylons;
+		{ 
+			_vehicle setPylonLoadout _x; 
+		} forEach 	[
+			[1,"vn_missile_mig19_01_aa2_mag_x1",TRUE],
+			[1,"vn_missile_mig19_01_aa2_mag_x1",TRUE],
+			[3,"vn_missile_mig19_01_aa2_mag_x1",TRUE],
+			[4,"vn_missile_mig19_01_aa2_mag_x1",TRUE]
+		];
+		// Add extra gun ammo
+		_vehicle addMagazineTurret ['vn_nr30_v_195_mag',[-1]];
+	};
+	if (_vehicleType in [
+		"vn_o_air_mig21_mr", 
+		"vn_o_air_mig21_cap", 
+		"vn_o_air_mig21_gun"		
+		]) then {
+		//_vehicle call _preparePylons;
+		{ 
+			_vehicle setPylonLoadout _x; 
+		} forEach 	[
+			[1,"vn_missile_mig21_aa2_mag_x1",TRUE],
+			[1,"vn_missile_mig21_aa2_mag_x1",TRUE],
+			[3,"vn_gunpod_gsh23l_v_200_mag",TRUE]
+		];
+		// Add extra gun ammo
+		_vehicle addMagazineTurret ['vn_gunpod_gsh23l_v_200_mag',[-1]];
+		_vehicle addMagazineTurret ['vn_missile_mig21_aa2_mag_x1',[-1]];
+		_vehicle addMagazineTurret ['vn_missile_mig21_aa2_mag_x1',[-1]];
+	};
 	comment '************************************************************* RESISTANCE *****';
 	if (_vehicleType isEqualTo 'i_uav_02_dynamicloadout_f') then {
 		_vehicle call _preparePylons;

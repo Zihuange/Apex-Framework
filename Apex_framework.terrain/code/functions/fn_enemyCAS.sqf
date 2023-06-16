@@ -84,7 +84,7 @@ if ((toLowerANSI(typeOf _jetActual)) in ['c_plane_civil_01_racing_f']) then {
 };
 _jetActual lock 2;
 if (!(['cluster',(typeOf _jetActual),FALSE] call (missionNamespace getVariable 'QS_fnc_inString'))) then {
-	[_jetActual,([1,2] select ((random 1) > 0.666)),[]] call (missionNamespace getVariable 'QS_fnc_vehicleLoadouts');
+	[_jetActual,([1,2] select ((random 1) > 0.333)),[]] call (missionNamespace getVariable 'QS_fnc_vehicleLoadouts');
 } else {
 	[_jetActual,1,[]] call (missionNamespace getVariable 'QS_fnc_vehicleLoadouts');
 };

@@ -270,7 +270,7 @@ if (_active_Mod == 'VN') exitWith {
 		"vn_o_air_mig21_at", 
 		"vn_o_air_mig21_mr", 
 		"vn_o_air_mig21_cap",
-		"vn_o_air_mig21_bmb",
+		"vn_o_air_mig21_bmb"
 	];
 	QS_core_classNames_heliTypesCAS_lower = [
 		'vn_b_air_ah1g_02',

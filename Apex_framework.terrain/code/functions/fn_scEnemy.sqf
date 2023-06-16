@@ -149,7 +149,7 @@ _air addEventHandler [
 		(_this # 2) setDamage 1;
 	}
 ];
-[_air,([1,2] select ((random 1) > 0.5)),[]] call (missionNamespace getVariable 'QS_fnc_vehicleLoadouts');
+[_air,([1,2] select ((random 1) > 0.25)),[]] call (missionNamespace getVariable 'QS_fnc_vehicleLoadouts');
 clearMagazineCargoGlobal _air;
 clearWeaponCargoGlobal _air;
 clearItemCargoGlobal _air;

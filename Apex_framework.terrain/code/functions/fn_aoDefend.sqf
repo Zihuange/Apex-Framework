@@ -1107,7 +1107,7 @@ for '_x' from 0 to 1 step 0 do {
 				_jet allowCrewInImmobile [TRUE,TRUE];
 				_jet lock 2;
 				_jet enableRopeAttach FALSE;
-				[_jet,([1,2] select ((random 1) > 0.5)),[]] call _fn_vehicleLoadouts;
+				[_jet,([1,2] select ((random 1) > 0.25)),[]] call _fn_vehicleLoadouts;
 				clearMagazineCargoGlobal _jet;
 				clearWeaponCargoGlobal _jet;
 				clearItemCargoGlobal _jet;

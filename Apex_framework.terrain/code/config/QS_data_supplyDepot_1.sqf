@@ -1,6 +1,6 @@
 ([	
 	[
-		["CamoNet_OPFOR_open_Curator_F",[1.34827,0.554199,1.1301],268.912,[],false,true,true,{}], 
+		["vn_camonet_blufor_open_f",[1.34827,0.554199,1.1301],268.912,[],false,true,true,{}], 
 		["Land_Cargo10_military_green_F",[1.99829,-1.44336,0.0240006],89.7956,[],false,true,true,{}], 
 		["vn_us_komex_small_02",[1.96533,1.95557,0.0235405],270.37,[],false,true,true,{
 			_box = _this # 0;
@@ -11,13 +11,13 @@
 			};
 			_box;
 		}],
-		["Land_HBarrierWall6_F",[2.58313,-6.52441,0],180.854,[],false,true,true,{}], 
-		["Land_TTowerSmall_1_F",[2.0332,-2.46655,-2.64879],0,[],false,true,true,{}], 
-		["Land_HBarrierWall_corner_F",[-4.65735,-5.36523,0],179.116,[],false,true,true,{}], 
-		["Land_HBarrierWall6_F",[0.315918,8.33936,0],0,[],false,true,true,{}], 
-		["Land_HBarrierWall6_F",[9.06592,2.35669,0],89.2217,[],false,true,true,{}], 
-		["Land_HBarrierWall_corner_F",[-5.27466,6.6189,0],268.993,[],false,true,true,{}], 
-		["Land_HBarrierWall_corner_F",[7.86096,-4.90747,0],94.9585,[],false,true,true,{}], 
+		["Land_vn_bagfence_01_long_green_f",[2.58313,-6.52441,0],180.854,[],false,true,true,{}], 
+		["Land_vn_bunker_small_01",[2.0332,-2.46655,-2.64879],0,[],false,true,true,{}], 
+		["Land_vn_bagfence_01_corner_green_f",[-4.65735,-5.36523,0],179.116,[],false,true,true,{}], 
+		["Land_vn_bagfence_01_long_green_f",[0.315918,8.33936,0],0,[],false,true,true,{}], 
+		["Land_vn_bagfence_01_long_green_f",[9.06592,2.35669,0],89.2217,[],false,true,true,{}], 
+		["Land_vn_bagfence_01_corner_green_f",[-5.27466,6.6189,0],268.993,[],false,true,true,{}], 
+		["Land_vn_bagfence_01_corner_green_f",[7.86096,-4.90747,0],94.9585,[],false,true,true,{}], 
 		["Land_Cargo10_military_green_F",[-3.6925,-9.03394,0.0240002],0.0907073,[],false,true,true,{}], 
 		["Land_Cargo10_military_green_F",[-8.8811,6.67358,-0.000998974],267.936,[],false,true,true,{}], 
 		["Land_Cargo10_military_green_F",[11.5593,2.3606,0.0240002],91.3617,[],false,true,true,{}],
@@ -38,7 +38,7 @@
 	],
 	[
 		["Land_Cargo10_military_green_F",[2.00989,-1.4231,0.0240006],89.8031,[],false,true,true,{}], 
-		["CamoNet_BLUFOR_open_Curator_F",[2.76733,-0.0705566,0.728848],262.765,[],false,true,true,{}], 
+		["vn_camonet_blufor_open_f",[2.76733,-0.0705566,0.728848],262.765,[],false,true,true,{}], 
 		["vn_us_komex_small_02",[1.97693,1.97583,0.0235405],270.37,[],false,true,true,{
 			_box = _this # 0;
 			missionNamespace setVariable ['QS_virtualSectors_sub_3_obj',_box,TRUE];
@@ -48,13 +48,13 @@
 			};
 			_box;
 		}], 
-		["Land_TTowerSmall_1_F",[2.06213,-2.1499,-2.64879],0,[],false,true,true,{}], 
-		["Land_HBarrier_01_wall_6_green_F",[2.56836,-6.74219,0],181.46,[],false,true,true,{}], 
-		["Land_HBarrier_01_wall_corner_green_F",[-4.61487,-5.32568,0],180.927,[],false,true,true,{}], 
-		["Land_HBarrier_01_wall_6_green_F",[0.266724,8.19043,0],0.559541,[],false,true,true,{}], 
-		["Land_HBarrier_01_wall_6_green_F",[9.1449,2.073,0],90.3177,[],false,true,true,{}], 
-		["Land_HBarrier_01_wall_corner_green_F",[-5.17725,6.51685,0],269.469,[],false,true,true,{}], 
-		["Land_HBarrier_01_wall_corner_green_F",[8.15112,-5.14966,0],89.5987,[],false,true,true,{}], 
+		["Land_vn_bunker_small_01",[2.06213,-2.1499,-2.64879],0,[],false,true,true,{}], 
+		["Land_vn_bagfence_01_long_green_f",[2.56836,-6.74219,0],181.46,[],false,true,true,{}], 
+		["Land_vn_bagfence_01_corner_green_f",[-4.61487,-5.32568,0],180.927,[],false,true,true,{}], 
+		["Land_vn_bagfence_01_long_green_f",[0.266724,8.19043,0],0.559541,[],false,true,true,{}], 
+		["Land_vn_bagfence_01_long_green_f",[9.1449,2.073,0],90.3177,[],false,true,true,{}], 
+		["Land_vn_bagfence_01_corner_green_f",[-5.17725,6.51685,0],269.469,[],false,true,true,{}], 
+		["Land_vn_bagfence_01_corner_green_f",[8.15112,-5.14966,0],89.5987,[],false,true,true,{}], 
 		["Land_Cargo10_military_green_F",[-3.68091,-9.01367,-0.000998974],0.0808997,[],false,true,true,{}], 
 		["Land_Cargo10_military_green_F",[-8.76819,6.71802,-0.000998497],268.942,[],false,true,true,{}], 
 		["Land_Cargo10_military_green_F",[11.5709,2.38086,-0.000999928],91.3617,[],false,true,true,{}],
