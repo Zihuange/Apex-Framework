@@ -46,7 +46,7 @@ Using orientation of objects: no
 	["Land_vn_b_prop_mapstand_01",[0.980713,9.26611,0],0,[],false,false,true,{}], 
 	["Land_vn_drevena_bedna",[-8.21997,-4.50439,0],311.119,[],false,false,true,{}], 
 	["Land_WoodenTable_large_F",[-3.47339,8.86475,0],267.02,[],false,false,true,{}], 
-	["Flag_White_F",[8.39526,-4.54932,0],0,[],false,true,false,{
+	["vn_flag_vc",[8.39526,-4.54932,0],0,[],false,true,false,{
 		missionNamespace setVariable ['QS_AO_HQ_flag',(_this # 0),FALSE];
 		(_this # 0);
 	}], 

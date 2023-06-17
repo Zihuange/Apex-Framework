@@ -8,7 +8,7 @@ Using orientation of objects: no
 */
 
 [
-	["Flag_White_F",[-1.21045,2.16699,0],0,[],false,true,false,{
+	["vn_flag_vc",[-1.21045,2.16699,0],0,[],false,true,false,{
 		missionNamespace setVariable ['QS_AO_HQ_flag',(_this # 0),FALSE];
 		(_this # 0);
 	}], 

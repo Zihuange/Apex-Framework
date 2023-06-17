@@ -11,7 +11,7 @@ Using orientation of objects: no
 	["Land_vn_o_shelter_01",[-0.58667,-1.2583,0],0,[],false,false,true,{}], 
 	["Land_vn_ch_mod_c",[-0.429199,-1.59277,0],3.19878,[],false,false,true,{}], 
 	["Land_vn_ch_mod_c",[0.217285,-2.17188,0],84.5289,[],false,false,true,{}], 
-	["Flag_White_F",[2.17627,0.306641,0],0,[],false,true,false,{
+	["vn_flag_vc",[2.17627,0.306641,0],0,[],false,true,false,{
 		missionNamespace setVariable ['QS_AO_HQ_flag',(_this # 0),FALSE];
 		(_this # 0);
 	}], 

@@ -25,7 +25,7 @@ private _boatType = '';
 _boat = objNull;
 _count = [1,2] select (worldName in ['Tanoa','Lingor3']);
 for '_i' from 0 to 1 step 1 do {
-	_position = ['RADIUS',_pos,((missionNamespace getVariable ['QS_aoSize',800]) * 2),'WATER',[],FALSE,[],[],FALSE] call (missionNamespace getVariable 'QS_fnc_findRandomPos');
+	_position = ['RADIUS',_pos,((missionNamespace getVariable ['QS_aoSize',800]) * 3),'WATER',[],FALSE,[],[],FALSE] call (missionNamespace getVariable 'QS_fnc_findRandomPos');
 	if (!(_position in [[worldSize,worldSize,0],[]])) then {
 		if ((getTerrainHeightASL _position) < -5) then {
 			_position set [2,0];

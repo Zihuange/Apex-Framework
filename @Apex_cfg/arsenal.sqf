@@ -1011,6 +1011,10 @@ _assignedItemsBasic = [
 _assignedItemsUAV = [
 
 ];
+
+_assignedItemsGPS = [
+	'ItemGPS'
+];
 // thermal head-mounted displays
 _assignedItemsThermal = [
 
@@ -1600,8 +1604,8 @@ if (_role in ['pilot','pilot_plane','pilot_cas','pilot_heli','pilot_heli_WL']) e
 			[	// ITEMS
 				_uniformsPilot,						// whitelisted UNIFORMS
 				_vestsPilot,							// whitelisted VESTS
-				_inventoryAll,						// whitelisted Inventory
-				_assignedItemsAll,					// whitelisted ASSIGNED ITEMS
+				_inventoryAll + _assignedItemsGPS,						// whitelisted Inventory
+				_assignedItemsAll + _assignedItemsGPS,					// whitelisted ASSIGNED ITEMS
 				_headgearPilot,						// whitelisted HEADGEAR
 				_gogglesAll,						// whitelisted goggles
 				_attachmentsBasic						// whitelisted Attachments

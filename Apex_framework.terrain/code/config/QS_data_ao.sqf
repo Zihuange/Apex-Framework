@@ -309,7 +309,8 @@ if (_worldName isEqualTo 'Cam_Lao_Nam') exitWith {
 				['Comms_Hill','通讯山',[11371.9,5660.53,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
 				['FSB_Quan_Loi','火箭城火力支援基地',[11621.2,6760.2,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
 				['A_Shau_Valley','阿绍谷',[12619.8,9425.19,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
-				['FSB_Berchtesgaden','贝希特斯加登火力支援基地',[13731.1,8364.69,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				//['FSB_Berchtesgaden','贝希特斯加登火力支援基地',[13731.1,8364.69,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['A_Luoi','阿雷县',[13096.6,8364.69,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
 				['FOB3_Mai_Loc','迈禄第3前进作战基地',[14769.7,9562.53,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
 				['Hue_Citadel','顺化京城',[16977,10081.3,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
 				['Hue','顺化',[17343.8,8954.73,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
@@ -343,9 +344,46 @@ if (_worldName isEqualTo 'Cam_Lao_Nam') exitWith {
 				['Gia_Lam_Airbase','嘉林空军基地',[11276.9,14629,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
 				['West_Hanoi','西河内',[11593.9,13269.2,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
 				['Hanoi','河内',[12891,13347.4,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
-				['North_Hanoi','北河内',[13713.8,14060.3,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['North_Hanoi','北河内',[13885.6,14037.5,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
 				['Camp_Phoang_Thi','峰施营地',[14350.8,12935.5,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
-				['Banh_Trung','彭中',[12321.3,11392,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1]
+				['Banh_Trung','彭中',[12321.3,11020,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1]
+			]
+		],
+		[
+			2,
+			[
+				['Maxwell_Field','麦克斯韦空军基地',[2242.05,4208.47,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['Phu_Quoc_Port','富国港',[6873.81,4347.21,0],'QS_fnc_aoCustomize',0,1,0,0,1,1,1],
+				['Long_Hai','隆海',[8602.25,5646.57,0],'QS_fnc_aoCustomize',0,1,0,0,1,1,1],
+				['Kiem_Tra','建查',[10135.2,7261.3,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['Niem_Tin','念静',[10614.8,8390.82,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['Nuoc_Bun','诺邦',[9030.75,9127.31,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['Che','制',[8637.28,10726.2,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['Attapeu','阿速坡省',[7436.15,11791.4,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['Bru','布鲁',[8716.58,13690.7,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['MSS_Leghorn','莱戈恩',[5346.74,13646.1,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['Ban_Len','本莲',[3255.96,12653.2,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['Plain_Of_Jars','石缸平原',[1589.04,12506.2,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['Nga_Tu','硪酋',[2812.99,11451.7,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['Xo_Xanh','徐晨',[1639.05,10636.2,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['Bai_Bien_Dep','叶海滩',[1377.02,9473.87,0],'QS_fnc_aoCustomize',0,1,0,0,1,1,1],
+				['Sihanoukville','西哈努克城',[3194.05,8649.42,0],'QS_fnc_aoCustomize',0,1,0,0,1,1,1],
+				['Thung_Lung_Cao','从隆高',[5082.96,9534.62,0],'QS_fnc_aoCustomize',0,1,0,0,1,1,1],
+				['Yen_Tinh','安靖',[6489.02,9221.87,0],'QS_fnc_aoCustomize',0,1,0,0,1,1,1]
+			],
+			3,
+			[
+				['Dao_Trai','道才',[6101.88,15102.9,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['Ket_Thuc','结束',[7625.57,16977.5,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['Thud_Ridge','雷电山脊',[9138.41,16422.2,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['Lai_Chau','莱州',[3894.1,19586.2,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['Nodal_Lho','洛节点',[1679.49,19134.5,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['Kenglat','肯勒',[2341.01,17491.5,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['Sang_Ha','桑河',[2101.71,15540.8,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['Bam_Bon','班蓬',[1240.72,15312.1,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['Com_Ngon','兼言',[1294.89,13808.8,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['Nong_Khiaw','琅多',[4810.63,15058,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['Vong_Xo','芒徐',[5521.49,17360,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1]
 			]
 		]
 	]
