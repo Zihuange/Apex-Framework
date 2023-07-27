@@ -1868,4 +1868,5 @@ if (_worldName isEqualTo 'Enoch') exitWith {
 	_return;
 };
 if (_worldName isEqualTo 'Stratis') exitWith {[]};
+if (_worldName isEqualTo 'SPE_Normandy') exitWith {[]};
 []

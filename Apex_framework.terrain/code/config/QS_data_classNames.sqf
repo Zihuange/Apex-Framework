@@ -18,6 +18,7 @@ Notes:
 	VN - Prairie Fire
 	CSLA - CSLA
 	GM - Global Mobilization
+	SPE - Spearhead 1944
 	
 Other Files with Many Classnames:
 
@@ -395,4 +396,50 @@ if (_active_Mod == 'GM') exitWith {
 		'gm_pl_airforce_mi2us'
 	];
 	qs_core_classnames_laserbatteries = ['laserbatteries'];
+};
+if (_active_Mod == 'SPE') exitWith {
+	// Spearhead 1944
+	qs_core_classnames_itemtoolkit = 'toolkit';
+	qs_core_classnames_itemtoolkits = ['toolkit','spe_toolkit'];
+	qs_core_classnames_itemfirstaidkit = 'firstaidkit';
+	qs_core_classnames_itemfirstaidkits = ['firstaidkit','spe_ger_medkit','spe_us_medkit'];
+	qs_core_classnames_itemmedikit = 'medikit';
+	qs_core_classnames_itemmedikits = ['medikit','spe_ger_firstaidkit','spe_us_firstaidkit'];
+	qs_core_classnames_itemcompass = 'itemcompass';
+	qs_core_classnames_itemcompasses = ['itemcompass','spe_ger_itemcompass', 'spe_ger_itemcompass_deg', 'spe_us_itemcompass'];
+	qs_core_classnames_itemgps = 'itemgps';
+	qs_core_classnames_itemgpss = ['itemgps'];
+	qs_core_classnames_itemterminal = 'b_uavterminal';
+	qs_core_classnames_itemterminals = ['b_uavterminal','i_uavterminal','c_uavterminal','o_uavterminal','i_e_uavterminal'];
+	qs_core_classnames_itemwatch = 'itemwatch';
+	qs_core_classnames_itemwatches = ['itemwatch','spe_us_itemwatch','spe_ger_itemwatch'];
+	qs_core_classnames_itemradio = 'itemradio';
+	qs_core_classnames_itemradios = ['itemradio'];
+	qs_core_classnames_itemmap = 'itemmap';
+	qs_core_classnames_itemmaps = ['itemmap'];
+	qs_core_classnames_itemminedetector = 'minedetector';
+	qs_core_classnames_itemminedetectors = ['minedetector'];
+	qs_core_classnames_laserbatteries = ['laserbatteries'];
+
+	qs_core_classnames_smokeshells = ['spe_nb39','spe_nbk39b','spe_us_m18','spe_handrauchzeichen_violet','spe_handrauchzeichen_red','spe_handrauchzeichen_yellow','spe_us_m18_violet','spe_us_m18_red','spe_us_m18_green','spe_us_m18_yellow','spe_rauchsichtzeichen_orange'];
+
+	qs_core_classnames_democharge = 'spe_ladung_small_mine_mag';
+	qs_core_classnames_demochargeammo = 'spe_ladung_small_ammo';
+	qs_core_classnames_democharges = ['democharge_remote_mag','spe_ladung_small_mine_mag','spe_ladung_big_mine_mag','spe_us_tnt_4pound_mag','spe_us_tnt_half_pound_mag'];
+	qs_core_classnames_parachute = 'b_spe_ger_lw_paradrop';
+	qs_core_classnames_parachutes = ['b_parachute','b_spe_us_typea3','b_spe_us_qac','b_spe_ger_lw_paradrop'];
+	qs_core_classnames_steerablep = 'spe_ger_parachute';
+	qs_core_classnames_steerableps = ['steerable_parachute_f','spe_ger_parachute','spe_us_parachute'];
+	qs_core_classnames_handgrenade = 'spe_shg24';
+	qs_core_classnames_minigrenade = 'spe_m39';
+	qs_core_classnames_grenades = ['handgrenade','minigrenade','spe_shg24','spe_m39','spe_us_mk_3','spe_shg24_frag','spe_us_mk_2','spe_us_mk_2_yellow','spe_us_m15','spe_us_an_m14','spe_shg24x7'];
+	qs_core_classnames_radiobags = ['b_spe_ger_radio','b_spe_ger_radio_battery','b_spe_us_radio','b_spe_us_radio_alt'];
+	
+	QS_core_classNames_planeTypesCAS_lower = [
+		'spe_p47',
+		'spe_fw190f8'
+	];
+	QS_core_classNames_planeTypesEnemy_lower = [
+		'spe_p47'
+	];
 };

@@ -13,20 +13,20 @@ _arr = selectRandom [
 		["Land_WoodenLog_F",[0.131836,4.17236,0.00100136],0.0106045,[],false,true,true,{}], 
 		["Land_Pillow_camouflage_F",[1.9502,-4.04053,-0.00437164],359.949,[],false,true,true,{}], 
 		["Land_WoodenLog_F",[2.91699,3.57715,0.000720024],0.00529163,[],false,true,true,{}], 
-		["Land_TentA_F",[2.49487,-4.49658,0.0033102],154.394,[],false,true,true,{}], 
+		["Land_SPE_US_Tent",[2.49487,-4.49658,0.0033102],154.394,[],false,true,true,{}], 
 		["Land_Pillow_F",[4.07532,-3.20117,-0.00266647],359.976,[],false,true,true,{}], 
 		["Land_WoodenLog_F",[-0.628906,5.32422,0.00101948],0.00989454,[],false,true,true,{}], 
-		["Land_TentA_F",[0.555664,-5.45117,0.00226498],154.738,[],false,true,true,{}], 
+		["Land_SPE_US_Tent",[0.555664,-5.45117,0.00226498],154.738,[],false,true,true,{}], 
 		["Land_WoodenTable_small_F",[-5.53601,1.38818,0.00571918],0.0105207,[],false,true,true,{}], 
-		["Land_TentA_F",[4.5553,-3.6709,0.000300407],154.792,[],false,true,true,{}], 
+		["Land_SPE_US_Tent",[4.5553,-3.6709,0.000300407],154.792,[],false,true,true,{}], 
 		["Land_Campfire_F",[1.5083,5.66016,-0.0118637],0,[],false,true,false,{}], 
 		["Land_BagFence_01_long_green_F",[-4.24316,-4.61084,0.0557795],57.5924,[],false,true,true,{}], 
-		["Land_TentA_F",[-1.46533,-6.31299,0.000301361],159.972,[],false,true,true,{}], 
+		["Land_SPE_US_Tent",[-1.46533,-6.31299,0.000301361],159.972,[],false,true,true,{}], 
 		["Land_BagFence_01_long_green_F",[5.95801,-2.91992,0.0192242],247.137,[],false,true,true,{}], 
 		["Land_Axe_F",[2.61304,6.40381,-0.0033474],81.9073,[],false,true,true,{}], 
 		["Land_BagFence_01_long_green_F",[2.73621,-6.38232,0.172243],336.854,[],false,true,true,{}], 
 		["Land_BagFence_01_long_green_F",[-1.72949,6.74902,-0.122396],151.116,[],false,true,true,{}], 
-		["Box_IED_Exp_F",[6.60242,-2.64941,7.43866e-005],248.768,[],false,true,false,{
+		["SPE_Mine_AmmoBox_US",[6.60242,-2.64941,7.43866e-005],248.768,[],false,true,false,{
 			private ['_box','_magazineCargo','_index'];
 			_box = _this # 0;
 			//comment 'Clear smoke grenades as anti-troll measure.';
@@ -42,7 +42,7 @@ _arr = selectRandom [
 			_box;
 		}], 
 		["Land_BagFence_01_long_green_F",[5.28918,-5.04541,0.0291109],330.025,[],false,true,true,{}], 
-		["Box_Syndicate_Wps_F",[7.10132,-1.83691,3.52859e-005],0.000278935,[],false,true,false,{
+		["SPE_BasicWeaponsBox_US",[7.10132,-1.83691,3.52859e-005],0.000278935,[],false,true,false,{
 			private ['_box','_magazineCargo','_index'];
 			_box = _this # 0;
 			//comment 'Clear smoke grenades as anti-troll measure.';
@@ -63,7 +63,7 @@ _arr = selectRandom [
 		["Land_WoodPile_F",[3.20422,6.97607,0.00199795],151.152,[],false,true,true,{}], 
 		["Land_BagFence_01_long_green_F",[-7.4928,1.26465,-0.00218773],64.5598,[],false,true,true,{}], 
 		["Land_BagFence_01_long_green_F",[-6.9635,3.19385,-0.0692377],144.333,[],false,true,true,{}], 
-		["Box_Syndicate_Ammo_F",[7.47241,-2.76709,8.29697e-005],360,[],false,true,false,{
+		["SPE_BasicAmmunitionBox_US",[7.47241,-2.76709,8.29697e-005],360,[],false,true,false,{
 			private ['_box','_magazineCargo','_index'];
 			_box = _this # 0;
 			//comment 'Clear smoke grenades as anti-troll measure.';
@@ -81,11 +81,11 @@ _arr = selectRandom [
 		["Land_BagFence_01_long_green_F",[0.724609,8.08203,-0.0500402],151.087,[],false,true,true,{}], 
 		["Land_BagFence_01_corner_green_F",[-1.85413,-8.00049,-0.0253582],159.037,[],false,true,true,{}], 
 		["Land_BagFence_01_long_green_F",[8.38794,-0.620605,0.022336],243.235,[],false,true,true,{}], 
-		["Land_Ammobox_rounds_F",[8.12854,-2.37842,-7.82013e-005],359.98,[],false,true,true,{}], 
+		["Land_SPE_Ammocrate_US_04",[8.12854,-2.37842,-7.82013e-005],359.98,[],false,true,true,{}], 
 		["Land_BagFence_01_long_green_F",[3.77649,7.58594,-0.0349331],236.369,[],false,true,true,{}], 
 		["Land_BagFence_01_long_green_F",[7.78381,-3.64795,0.0478001],330.024,[],false,true,true,{}], 
-		["Land_Ammobox_rounds_F",[8.37781,-2.15088,0.00020504],63.1551,[],false,true,true,{}], 
-		["Land_Ammobox_rounds_F",[8.57703,-2.47559,0.000179291],162.848,[],false,true,true,{}], 
+		["Land_SPE_Ammocrate_US_04",[8.37781,-2.15088,0.00020504],63.1551,[],false,true,true,{}], 
+		["Land_SPE_Ammocrate_US_04",[8.57703,-2.47559,0.000179291],162.848,[],false,true,true,{}], 
 		["Land_BagFence_01_corner_green_F",[2.56201,8.81836,0.019496],331.607,[],false,true,true,{}], 
 		["Land_BagFence_01_corner_green_F",[9.05444,-2.53369,-0.0145674],66.2969,[],false,true,true,{}]
 	],

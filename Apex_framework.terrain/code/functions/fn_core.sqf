@@ -149,7 +149,7 @@ missionNamespace setVariable ['QS_mission_aoType',(missionNamespace getVariable 
 _aoType = missionNamespace getVariable ['QS_mission_aoType',(missionNamespace getVariable ['QS_missionConfig_aoType','CLASSIC'])];
 if (
 	(_aoType in ['CLASSIC']) &&
-	(!(_QS_worldName in ['Altis','Tanoa','Malden','Enoch','Stratis']))			// These terrains are configured for Classic
+	(!(_QS_worldName in ['Altis','Tanoa','Malden','Enoch','Stratis','SPE_Normandy']))			// These terrains are configured for Classic
 ) then {
 	diag_log '***** GAME MODE ***** CLASSIC mode not configured for this terrain *****';
 	_aoType = 'NONE';
@@ -158,7 +158,7 @@ if (
 };
 if (
 	(_aoType in ['SC']) &&
-	(!(_QS_worldName in ['Altis','Tanoa','Malden','Enoch']))			// These terrains are configured for Sector Control
+	(!(_QS_worldName in ['Altis','Tanoa','Malden','Enoch','SPE_Normandy']))			// These terrains are configured for Sector Control
 ) then {
 	diag_log '***** GAME MODE ***** SECTOR CONTROL mode not configured for this terrain *****';
 	_aoType = 'NONE';
@@ -1583,6 +1583,9 @@ for '_x' from 0 to 1 step 0 do {
 										if (_QS_worldName isEqualTo 'Enoch') then {
 											_index = selectRandomWeighted [0,0.5,1,0.25,2,0.25];
 										};
+										if (_QS_worldName isEqualTo 'SPE_Normandy') then {
+											_index = selectRandomWeighted [0,0.2,1,0.3,2,0.2,3,0.3];
+										};
 										_mainMissionRegion = _scMasterList # _index;
 										if ((_mainMissionRegion # 0) isNotEqualTo (missionNamespace getVariable 'QS_activeRegion')) then {
 											{
@@ -1644,6 +1647,20 @@ for '_x' from 0 to 1 step 0 do {
 											};
 											if (_index isEqualTo 2) then {
 												_scAOCount = selectRandom [5,6];
+											};
+										};
+										if (_QS_worldName isEqualTo 'SPE_Normandy') then {
+											if (_index isEqualTo 0) then {
+												_scAOCount = selectRandom [4,5,6];
+											};
+											if (_index isEqualTo 1) then {
+												_scAOCount = selectRandom [4,5,6];
+											};
+											if (_index isEqualTo 2) then {
+												_scAOCount = selectRandom [4,5,6];
+											};
+											if (_index isEqualTo 3) then {
+												_scAOCount = selectRandom [4,5,6];
 											};
 										};
 									};

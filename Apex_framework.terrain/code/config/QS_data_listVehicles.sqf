@@ -43,7 +43,9 @@ if (_type isEqualTo 'cas_plane') exitWith {
 		'i_plane_fighter_03_dynamicloadout_f',
 		'i_plane_fighter_03_cluster_f',
 		'i_plane_fighter_04_f',
-		'i_plane_fighter_04_cluster_f'
+		'i_plane_fighter_04_cluster_f',
+		'spe_fw190f8',
+		'spe_p47'
 	]
 };
 if (_type isEqualTo 'crv') exitWith {
@@ -222,9 +224,9 @@ if (_type isEqualTo 'defend_paravtypes_1') exitWith {
 };
 if (_type isEqualTo 'defend_flybytypes_1') exitWith {
 	[
-		'O_T_VTOL_02_infantry_dynamicLoadout_F',0.333,
-		'O_Plane_CAS_02_dynamicLoadout_F',0.333,
-		'o_plane_fighter_02_f',0.333
+		'spe_p47',0.333,
+		'spe_p47',0.333,
+		'spe_p47',0.333
 	]
 };
 if (_type isEqualTo 'defend_uavtypes_1') exitWith {
@@ -257,76 +259,72 @@ if (_type isEqualTo 'classic_reinforcevslinger_2') exitWith {
 if (_type isEqualTo 'fires_wrecktypes_1') exitWith {
 	// Night illumination fire wrecks
 	[	
-		'land_wreck_hunter_f',0.1,
-		'land_wreck_truck_f',0.1,
-		'land_bulldozer_01_wreck_f',0.1,
-		'land_combineharvester_01_wreck_f',0.1,
-		'land_excavator_01_wreck_f',0.1,
-		'land_bulldozer_01_abandoned_f',0.1,
-		'land_wreck_slammer_f',0.3,
-		'land_railwaycar_01_tank_f',0.1,
-		'land_railwaycar_01_sugarcane_f',0.1,
-		'land_wreck_afv_wheeled_01_f',1,
-		'land_wreck_mbt_04_f',1,
-		'land_wreck_lt_01_f',1,
-		'land_mi8_wreck_f',1,
-		'land_powergenerator_wreck_f',1,
-		'land_wreck_heli_02_wreck_01_f',1
+		"spe_pzkpfwiii_j_destruct_turret",0.1, 
+		"spe_pzkpfwiii_l_destruct_turret",0.1, 
+		"spe_pzkpfwiii_m_destruct_turret",0.1, 
+		"spe_pzkpfwiii_n_destruct_turret",0.1, 
+		"spe_pzkpfwiv_g_destruct_turret",0.1, 
+		"spe_pzkpfwvi_h1_destruct_turret",0.1, 
+		"spe_m4a1_75_destruct_turret",0.1,
+		"spe_m10_td_destruct_turret",0.1,
+		"spe_m4a1_76_destruct_turret",0.1, 
+		"spe_fw190f8_mrwreck",1, 
+		"spe_p47_mrwreck",1
 	]
 };
 if (_type isEqualto 'hq_cache_list_1') exitWith {
 	// Crates default
 	[
-		'Box_East_Ammo_F',
-		'Box_East_Wps_F',
-		'O_CargoNet_01_ammo_F',
-		'Box_East_AmmoOrd_F',
-		'Box_East_Grenades_F',
-		'Box_East_WpsLaunch_F',
-		'Box_East_WpsSpecial_F',
-		'O_supplyCrate_F',
-		'Box_East_Support_F',
-		'Box_East_AmmoVeh_F',
-		'Box_NATO_Ammo_F',
-		'Box_IND_Ammo_F'
+		"spe_mine_ammobox_us", 
+		"spe_us_2x_open_ammocrate_alt_rifle_ball", 
+		"spe_us_2x_open_ammocrate_rifle_ball", 
+		"spe_us_open_ammocrate_rifle_ball", 
+		"spe_us_open_ammocrate_grenades_frag", 
+		"spe_us_ammocrate_rifle_ball", 
+		"spe_us_ammocrate_grenades_frag", 
+		"spe_ammocrate_grenades_frag_ger", 
+		"spe_basicammunitionbox_us", 
+		"spe_basicweaponsbox_us",
+		"spe_4rnd_panzerfaust30", 
+		"spe_4rnd_panzerfaust60"
 	]
 };
 if (_type isEqualto 'hq_cache_list_2') exitWith {
 	// Crates Tanoa
 	[
-		'Box_East_Ammo_F',
-		'Box_East_Wps_F',
-		'O_CargoNet_01_ammo_F',
-		'Box_East_AmmoOrd_F',
-		'Box_East_Grenades_F',
-		'Box_East_WpsLaunch_F',
-		'Box_East_WpsSpecial_F',
-		'O_supplyCrate_F',
-		'Box_East_Support_F',
-		'Box_East_AmmoVeh_F',
-		'Box_NATO_Ammo_F',
-		'Box_IND_Ammo_F'
+		"spe_mine_ammobox_us", 
+		"spe_us_2x_open_ammocrate_alt_rifle_ball", 
+		"spe_us_2x_open_ammocrate_rifle_ball", 
+		"spe_us_open_ammocrate_rifle_ball", 
+		"spe_us_open_ammocrate_grenades_frag", 
+		"spe_us_ammocrate_rifle_ball", 
+		"spe_us_ammocrate_grenades_frag", 
+		"spe_ammocrate_grenades_frag_ger", 
+		"spe_basicammunitionbox_us", 
+		"spe_basicweaponsbox_us",
+		"spe_4rnd_panzerfaust30", 
+		"spe_4rnd_panzerfaust60"
 	]
 };
 if (_type isEqualto 'hq_cache_list_3') exitWith {
 	// Crates Livonia
 	[
-		'Box_East_Ammo_F',
-		'Box_East_Wps_F',
-		'O_CargoNet_01_ammo_F',
-		'Box_East_AmmoOrd_F',
-		'Box_East_Grenades_F',
-		'Box_East_WpsLaunch_F',
-		'Box_East_WpsSpecial_F',
-		'O_supplyCrate_F',
-		'Box_East_Support_F',
-		'Box_East_AmmoVeh_F',
-		'Box_NATO_Ammo_F',
-		'Box_IND_Ammo_F'
+		"spe_mine_ammobox_us", 
+		"spe_us_2x_open_ammocrate_alt_rifle_ball", 
+		"spe_us_2x_open_ammocrate_rifle_ball", 
+		"spe_us_open_ammocrate_rifle_ball", 
+		"spe_us_open_ammocrate_grenades_frag", 
+		"spe_us_ammocrate_rifle_ball", 
+		"spe_us_ammocrate_grenades_frag", 
+		"spe_ammocrate_grenades_frag_ger", 
+		"spe_basicammunitionbox_us", 
+		"spe_basicweaponsbox_us",
+		"spe_4rnd_panzerfaust30", 
+		"spe_4rnd_panzerfaust60"
 	]
 };
 if (_type isEqualTo 'hq_cache_undraggable_1') exitWith {
-	['o_supplycrate_f','o_cargonet_01_ammo_f','box_east_ammoveh_f','i_e_cargonet_01_ammo_f']
+	['spe_basicammunitionbox_us','spe_basicweaponsbox_us','spe_mine_ammobox_us']
 };
 if (_type isEqualTo 'classic_aorandomvehicles_1') exitWith {
 	[
@@ -444,7 +442,46 @@ if (_type isEqualTo 'ao_hvt_housetypes_1') exitWith {
 		"Land_GH_MainBuilding_right_F",
 		"Land_GH_MainBuilding_left_F",
 		"Land_GH_Gazebo_F",
-		"Land_WIP_F"
+		"Land_WIP_F",
+		"Land_SPE_Corner_house_06", 
+		"Land_SPE_Farmhouse_01", 
+		"Land_SPE_Shop_01", 
+		"Land_SPE_Shop_02", 
+		"Land_SPE_Shop_03", 
+		"Land_SPE_Shop_04", 
+		"Land_SPE_Chateau_01", 
+		"Land_SPE_House_Big_01", 
+		"Land_SPE_House_Big_02", 
+		"Land_SPE_House_Big_03", 
+		"Land_SPE_House_Big_04", 
+		"Land_SPE_Office_Small_01", 
+		"Land_SPE_Office_Small_02", 
+		"Land_SPE_House_Small_01", 
+		"Land_SPE_House_Small_02", 
+		"Land_SPE_House_Small_03", 
+		"Land_SPE_House_Small_04", 
+		"Land_SPE_Townhall", 
+		"Land_SPE_Manor_House", 
+		"Land_SPE_House_Arch_01", 
+		"Land_SPE_House_Arch_02", 
+		"Land_SPE_A3_barn_01_brown", 
+		"Land_SPE_A3_barn_01_grey", 
+		"Land_SPE_Bunkhouse", 
+		"Land_SPE_House_Thatch_01", 
+		"Land_SPE_House_Thatch_02", 
+		"Land_SPE_House_Thatch_03", 
+		"Land_SPE_House_Thatch_04", 
+		"Land_SPE_House_Thatch_05", 
+		"Land_SPE_Barn_Thatch_01", 
+		"Land_SPE_Barn_Thatch_02", 
+		"Land_SPE_Corner_house_01", 
+		"Land_SPE_Corner_house_01b", 
+		"Land_SPE_Corner_house_01c", 
+		"Land_SPE_Corner_house_02", 
+		"Land_SPE_Corner_house_03", 
+		"Land_SPE_Corner_house_04", 
+		"Land_SPE_Corner_house_05", 
+		"Land_SPE_Barn_01"
 	]
 };
 if (_type isEqualTo 'ao_idap_enemyvehicles_1') exitWith {
@@ -480,7 +517,19 @@ if (_type isEqualTo 'draggable_boxes_1') exitWith {
 		'box_nato_wpslaunch_f','box_syndicate_wpslaunch_f','box_ind_wpsspecial_f','box_t_east_wpsspecial_f','box_east_wpsspecial_f','box_t_nato_wpsspecial_f',
 		'box_nato_wpsspecial_f','box_gen_equip_f','box_ind_support_f','box_east_support_f','box_nato_support_f','box_aaf_uniforms_f','box_csat_uniforms_f',
 		'box_nato_uniforms_f','flexibletank_01_forest_f','flexibletank_01_sand_f','land_plasticcase_01_large_f','land_plasticcase_01_medium_f','land_plasticcase_01_small_f',
-		'land_metalcase_01_large_f','land_metalcase_01_medium_f','land_metalcase_01_small_f'
+		'land_metalcase_01_large_f','land_metalcase_01_medium_f','land_metalcase_01_small_f',
+		"spe_mine_ammobox_us", 
+		"spe_us_2x_open_ammocrate_alt_rifle_ball", 
+		"spe_us_2x_open_ammocrate_rifle_ball", 
+		"spe_us_open_ammocrate_rifle_ball", 
+		"spe_us_open_ammocrate_grenades_frag", 
+		"spe_us_ammocrate_rifle_ball", 
+		"spe_us_ammocrate_grenades_frag", 
+		"spe_ammocrate_grenades_frag_ger", 
+		"spe_basicammunitionbox_us", 
+		"spe_basicweaponsbox_us",
+		"spe_4rnd_panzerfaust30", 
+		"spe_4rnd_panzerfaust60"
 	]
 };
 if (_type isEqualTo 'noncarryable_objects_1') exitWith {
@@ -671,7 +720,9 @@ if (_type isEqualTo 'services_reammo_1') exitWith {
 		'a3\soft_f_gamma\truck_02\truck_02_box_f.p3d',
 		'a3\air_f_heli\heli_transport_04\pod_heli_transport_04_ammo_f.p3d',
 		'a3\supplies_f_heli\slingload\slingload_01_ammo_f.p3d',
-		'a3\weapons_f\ammoboxes\ammoveh_f.p3d'
+		'a3\weapons_f\ammoboxes\ammoveh_f.p3d',
+		'ww2\spe_assets_m\vehicles\trucks_m\spe_opel_blitz_transport.p3d',
+		'ww2\spe_assets_m\vehicles\wheeledapc_m\spe_m3_halftrack_ammo.p3d'
 	]
 };
 if (_type isEqualTo 'services_repair_1') exitWith {
@@ -689,7 +740,9 @@ if (_type isEqualTo 'services_repair_1') exitWith {
 		'a3\soft_f_bootcamp\offroad_01\offroad_01_repair_ig_f.p3d',
 		'a3\soft_f_gamma\truck_02\truck_02_box_f.p3d',
 		'a3\air_f_heli\heli_transport_04\pod_heli_transport_04_repair_f.p3d',
-		'a3\supplies_f_heli\slingload\slingload_01_repair_f.p3d'
+		'a3\supplies_f_heli\slingload\slingload_01_repair_f.p3d',
+		'ww2\spe_assets_m\vehicles\trucks_m\spe_opel_blitz_repair.p3d',
+		'ww2\spe_assets_m\vehicles\wheeledapc_m\spe_m3_halftrack_repair.p3d'
 	]
 };
 if (_type isEqualTo 'services_refuel_1') exitWith {
@@ -709,7 +762,9 @@ if (_type isEqualTo 'services_refuel_1') exitWith {
 		'a3\air_f_heli\heli_transport_04\pod_heli_transport_04_fuel_f.p3d',
 		'a3\supplies_f_heli\slingload\slingload_01_fuel_f.p3d',
 		'a3\supplies_f_heli\fuel\flexibletank_01_f.p3d',
-		'a3\supplies_f_heli\fuel\flexibletank_01_f.p3d'
+		'a3\supplies_f_heli\fuel\flexibletank_01_f.p3d',
+		'ww2\spe_assets_m\vehicles\trucks_m\spe_opel_blitz_transport.p3d',
+		'ww2\spe_assets_m\vehicles\wheeledapc_m\spe_m3_halftrack_fuel.p3d'
 	]
 };
 if (_type isEqualTo 'loadable_cargo_objects_1') exitWith {
@@ -837,7 +892,32 @@ if (_type isEqualTo 'loadable_cargo_objects_1') exitWith {
 		'box_eaf_wpslaunch_f',
 		'box_eaf_wpsspecial_f',
 		'box_eaf_support_f',
-		'box_eaf_uniforms_f'
+		'box_eaf_uniforms_f',
+		"SPE_Mine_AmmoBox_US", 
+		"SPE_Mine_Ammo_Box_Ger", 
+		"SPE_US_2x_Open_Ammocrate_alt_Rifle_Ball", 
+		"SPE_US_2x_Open_Ammocrate_Rifle_Ball", 
+		"SPE_US_Open_Ammocrate_Rifle_Ball", 
+		"SPE_US_Open_Ammocrate_Grenades_Frag", 
+		"SPE_US_Ammocrate_Rifle_Ball", 
+		"SPE_US_Ammocrate_Grenades_Frag", 
+		"SPE_Ammocrate_Grenades_Frag_GER", 
+		"SPE_BasicAmmunitionBox_GER", 
+		"SPE_BasicAmmunitionBox_US", 
+		"SPE_Weaponcrate_MG34_GER", 
+		"SPE_Weaponcrate_MP40_GER", 
+		"SPE_BasicWeaponsBox_GER", 
+		"SPE_BasicWeaponsBox_US", 
+		"SPE_4Rnd_Panzerfaust30", 
+		"SPE_4Rnd_Panzerfaust60", 
+		"SPE_Weaponcrate_K98_GER",
+		"SPE_AmmoCrate_Mortar_SMOKE_GER", 
+		"SPE_AmmoCrate_Mortar_FLARE_GER", 
+		"SPE_AmmoCrate_Mortar_GER", 
+		"SPE_AmmoCrate_Mortar_SMOKE_US", 
+		"SPE_AmmoCrate_Mortar_WP_US", 
+		"SPE_AmmoCrate_Mortar_US", 
+		"SPE_Hay_WeaponCache_FFI"
 	]
 };
 if (_type isEqualTo 'grid_vehicles_1') exitWith {
@@ -972,7 +1052,18 @@ if (_type isEqualTo 'fortifications_1') exitWith {
 		"Land_ConcreteHedgehog_01_half_F",
 		"Land_ConcreteHedgehog_01_palette_F",
 		"Land_Mound03_8m_F",
-		"Land_Mound04_8m_F"
+		"Land_Mound04_8m_F",
+		"Land_SPE_HedgeHog", 
+		"Land_SPE_Sandbag_Nest", 
+		"Land_SPE_Sandbag_Curve", 
+		"Land_SPE_Sandbag_Gun_Hole", 
+		"Land_SPE_Sandbag_Short", 
+		"Land_SPE_Sandbag_Short_Low", 
+		"Land_SPE_Sandbag_Long", 
+		"Land_SPE_Sandbag_Long_Thick", 
+		"Land_SPE_Sandbag_Long_Line", 
+		"Land_SPE_Element_c_rust", 
+		"Land_SPE_Element_c"
 	]
 };
 if (_type isEqualTo 'air_bombsensors_1') exitWith {

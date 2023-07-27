@@ -14,7 +14,7 @@ Description:
 ______________________________________________________*/
 
 scriptName 'QS - Side Mission - Artillery';
-if ((count allPlayers) < 15) exitWith {};
+//if ((count allPlayers) < 15) exitWith {};
 if (worldName in ['Stratis']) exitWith {};
 private ['_flatPos','_accepted','_unitsArray','_enemiesArray','_fuzzyPos','_briefing','_completeText','_baseMarker','_priorityTargets'];
 missionNamespace setVariable ['QS_sideMission_enemyArray',[],FALSE];
@@ -47,9 +47,9 @@ private _playerCount = count allPlayers;
 private _grp = grpNull;
 private _grpSpawnPos = [0,0,0];
 _tankTypes = [
-	'I_LT_01_AA_F',0.4,
-	'I_LT_01_AT_F',0.4,
-	'I_LT_01_cannon_F',0.2
+	'SPE_M18_Hellcat',0.4,
+	'SPE_M10',0.4,
+	'SPE_M4A1_75',0.2
 ];
 private _tankType = '';
 private _tank = objNull;

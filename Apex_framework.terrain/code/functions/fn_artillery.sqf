@@ -41,6 +41,9 @@ if (_type isEqualTo 0) exitWith {
 			if (worldName isEqualTo 'Stratis') then {
 				_dir = 107;
 			};
+			if (worldName isEqualTo 'SPE_Normandy') then {
+				_dir = 262.431;
+			};
 		};
 		_artyType = selectRandom (['base_artillery_1'] call QS_data_listVehicles);
 		_arty = createVehicle [QS_core_vehicles_map getOrDefault [toLowerANSI _artyType,_artyType],[0,0,1000],[],0,'NONE'];
@@ -49,7 +52,7 @@ if (_type isEqualTo 0) exitWith {
 		_arty setPosASL (AGLToASL _pos);
 		missionNamespace setVariable ['QS_arty',_arty,TRUE];
 		// M4 Scorcher
-		if (_artyType isKindOf 'B_MBT_01_arty_F') then {
+		if (_arty isKindOf 'SPE_leFH18') then {
 			_arty lockTurret [[0,0],TRUE];
 			// Remove all gunner magazines
 			{
@@ -61,7 +64,7 @@ if (_type isEqualTo 0) exitWith {
 			} forEach (_arty magazinesTurret [0,0]);
 			// Add back selected gunner magazines
 			for '_i' from 0 to (_ammo_Scorcher - 1) step 1 do {
-				_arty addMagazineTurret ['2Rnd_155mm_Mo_guided',[0]];
+				_arty addMagazineTurret ['SPE_20x_Shell_105L28_Gr38_HE',[0]];
 			};
 		};
 		// M5 MLRS
@@ -105,7 +108,7 @@ if (_type isEqualTo 1) exitWith {
 			// Server-wide Rearm message
 			['sideChat',[WEST,'HQ'],(format ['%1 %2',_dn,localize 'STR_QS_Chat_024'])] remoteExec ['QS_fnc_remoteExecCmd',-2,FALSE];
 			// M4 Scorcher
-			if (_arty isKindOf 'B_MBT_01_arty_F') then {
+			if (_arty isKindOf 'SPE_leFH18') then {
 				['setVehicleAmmo',_arty,1] remoteExec ['QS_fnc_remoteExecCmd',_arty,FALSE];
 			};
 			// M5 MLRS

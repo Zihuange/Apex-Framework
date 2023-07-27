@@ -62,6 +62,13 @@ if ((missionNamespace getVariable ['QS_missionConfig_baseLayout',0]) isNotEqualT
 			]
 		];
 	};
+	if (worldName isEqualTo 'SPE_Normandy') then {
+		// CUSTOM base layout, speed limited areas for Normandy
+		_return = [
+			[ [11240.8,10131.4,1][11289.9,10152,1][11345.6,10134.5,1][11383.3,10063.1,1][11283.8,10015.9,1] ],				// Speed limited area #1
+			[ [11096.1,10114.6,1], [11003.7,10127,1], [10997.7,10051.1,1], [11102.4,10048,1] ]								// Speed limited area #2
+		];
+	};
 	_return;
 };
 // EDIT ABOVE, below is for default base layout

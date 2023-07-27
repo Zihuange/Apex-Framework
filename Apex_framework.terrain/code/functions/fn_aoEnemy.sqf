@@ -249,12 +249,12 @@ if ((random 1) > _staticChance) then {
 		};
 	};
 	_list = [
-		["Land_Mil_WallBig_4m_F",[-0.354004,-0.0078125,11.045],0,270.632],
-		["Land_Mil_WallBig_4m_F",[-0.0952148,0.0634766,11.082],0,0],
-		["O_HMG_02_high_F",[-2.18506,-2.04688,10.4124],0,234.27],
-		["O_HMG_02_high_F",[-1.84229,2.15332,10.4124],0,309.028],
-		["O_HMG_02_high_F",[2.16064,1.62402,10.4124],0,42.212],
-		["O_HMG_02_high_F",[1.96973,-2.24854,10.4124],0,139.225]
+		["Land_Mil_WallBig_4m_F",[0,-0.0500031,11.884],0,270.632],
+		["Land_Mil_WallBig_4m_F",[0,-0.0500031,11.847],0,0],
+		["SPE_M1919A6_Bipod",[-2.03139,-2.26647,11.6],0,234.27],
+		["SPE_M1919A6_Bipod",[-2.06886,2.12409,11.6],0,309.028],
+		["SPE_M1919A6_Bipod",[2.13043,1.99073,11.6],0,42.212],
+		["SPE_M1919A6_Bipod",[2.13754,-2.09911,11.6],0,139.225]
 	];
 	_tower = createVehicle ['CargoPlaftorm_01_green_F',[0,0,0]];
 	if (_usedSettlementPosition) then {
@@ -352,25 +352,25 @@ if ((random 1) > _staticChance) then {
 				}
 			];
 			_object lock 3;
-			if (
-				((random 1) > 0.333) ||
-				{(_playerCount < 20)}
-			) then {
-				_object removeWeaponTurret ['HMG_M2_Mounted',[0]];
-				{
-					_object addWeaponTurret _x;
-				} forEach [
-					['M134_minigun',[0]]
-				];
-				{
-					_object addMagazineTurret _x;
-				} forEach [
-					['5000Rnd_762x51_Yellow_Belt',[0]],
-					['5000Rnd_762x51_Yellow_Belt',[0]],
-					['5000Rnd_762x51_Yellow_Belt',[0]],
-					['5000Rnd_762x51_Yellow_Belt',[0]]
-				];
-			};
+			// if (
+			// 	((random 1) > 0.333) ||
+			// 	{(_playerCount < 20)}
+			// ) then {
+			// 	_object removeWeaponTurret ['HMG_M2_Mounted',[0]];
+			// 	{
+			// 		_object addWeaponTurret _x;
+			// 	} forEach [
+			// 		['M134_minigun',[0]]
+			// 	];
+			// 	{
+			// 		_object addMagazineTurret _x;
+			// 	} forEach [
+			// 		['5000Rnd_762x51_Yellow_Belt',[0]],
+			// 		['5000Rnd_762x51_Yellow_Belt',[0]],
+			// 		['5000Rnd_762x51_Yellow_Belt',[0]],
+			// 		['5000Rnd_762x51_Yellow_Belt',[0]]
+			// 	];
+			// };
 			_enemiesArray pushBack (gunner _object);
 			(gunner _object) setVariable ['QS_staticGunnerVehicle',_object,FALSE];
 			(gunner _object) enableAIFeature ['PATH',FALSE];
@@ -692,7 +692,7 @@ _AOgarrisonGroup2 setVariable ['QS_AI_GRP_HC',[0,-1],QS_system_AI_owners];
 diag_log '****************************************************';
 diag_log '***** AO ENEMY ***** Spawning Boat Patrol *****';
 diag_log '****************************************************';
-if (((missionNamespace getVariable ['QS_classic_AOData',[]]) # 4) isEqualTo 1) then {
+if (((missionNamespace getVariable ['QS_classic_AOData',[]]) # 5) isEqualTo 1) then {
 	private _boatArray = [(missionNamespace getVariable 'QS_AOpos')] call (missionNamespace getVariable 'QS_fnc_aoBoatPatrol');
 	if (_boatArray isNotEqualTo []) then {
 		{

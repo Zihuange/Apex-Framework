@@ -218,6 +218,10 @@ if ((missionNamespace getVariable ['QS_missionConfig_carrierEnabled',0]) isEqual
 			_pos = [1913.38,5955.01,0.1];
 			_dir = 237.56;
 		};
+		if (worldName isEqualTo 'SPE_Normandy') then {
+			_pos = [11071.2,10047.1,0.1];
+			_dir = 355.696;
+		};
 	} else {
 		_pos = markerPos ['QS_marker_casJet_spawn',TRUE];
 		_dir = markerDir 'QS_marker_casJet_spawn';

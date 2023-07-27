@@ -241,11 +241,11 @@ if (_QS_allPlayersCount >= 50) then {
 };
 private _QS_module_virtualSectors_patrolsHeli_delay = [360,480] select (worldName in _smallTerrains);		// 360
 private _QS_module_virtualSectors_patrolsHeli_checkDelay = _QS_uiTime + _QS_module_virtualSectors_patrolsHeli_delay;
-private _QS_module_virtualSectors_heliEnabled = _true;
+private _QS_module_virtualSectors_heliEnabled = _false;
 private _QS_module_virtualSectors_patrolsVeh_delay = 300;
 private _QS_module_virtualSectors_patrolsVeh_checkDelay = _QS_uiTime + _QS_module_virtualSectors_patrolsVeh_delay;
 private _QS_module_virtualSectors_vehiclesEnabled = _true;
-private _QS_module_virtualSectors_uavEnabled = _true;
+private _QS_module_virtualSectors_uavEnabled = _false;
 private _QS_module_virtualSectors_uav_delay = [120,240] select (worldName in _smallTerrains);			// 30
 private _QS_module_virtualSectors_uav_checkDelay = _QS_uiTime + _QS_module_virtualSectors_uav_delay;
 private _QS_module_virtualSectors_uavs = [];
@@ -276,7 +276,7 @@ private _QS_module_classic_uav_delay = [300,480] select (worldName in _smallTerr
 private _QS_module_classic_uav_checkDelay = _QS_uiTime + _QS_module_classic_uav_delay;
 private _QS_module_classic_uavs = [];
 //comment 'classic ao helis';
-private _QS_module_classic_heliEnabled = _true;
+private _QS_module_classic_heliEnabled = _false;
 private _QS_module_classic_patrolsHeli_delay = [300,480] select (worldName in _smallTerrains);		//60;		// Enemy Heli respawn delay (down below in the code an extra (random 120) is applied)
 private _QS_module_classic_patrolsHeli_checkDelay = _QS_uiTime + _QS_module_classic_patrolsHeli_delay;
 private _QS_module_classic_patrolsHeli = [];
@@ -354,7 +354,7 @@ private _QS_module_grid_defendQty_5 = 48;
 private _QS_module_grid_defend_delay = 10;
 private _QS_module_grid_defend_checkDelay = _QS_uiTime + _QS_module_grid_defend_delay;
 
-private _QS_module_viperTeam = _true;
+private _QS_module_viperTeam = _false;
 private _QS_module_viperTeam_delay = 15;
 private _QS_module_viperTeam_checkDelay = _QS_uiTime + _QS_module_viperTeam_delay;
 private _QS_module_viperTeam_respawnDelay = 300;	//300
@@ -1135,12 +1135,12 @@ for '_x' from 0 to 1 step 0 do {
 							if (_QS_uiTime > _QS_module_virtualSectors_uav_checkDelay) then {
 								_QS_module_virtualSectors_uavs = _QS_module_virtualSectors_uavs select {(alive _x)};
 								if ((_QS_module_virtualSectors_uavs findIf {(unitIsUav _x)}) isEqualTo -1) then {
-									_QS_module_virtualSectors_spawnedGrp = [] call _fn_scSpawnUAV;
-									if (_QS_module_virtualSectors_spawnedGrp isNotEqualTo []) then {
-										{
-											_QS_module_virtualSectors_uavs pushBack _x;
-										} forEach _QS_module_virtualSectors_spawnedGrp;
-									};
+									// _QS_module_virtualSectors_spawnedGrp = [] call _fn_scSpawnUAV;
+									// if (_QS_module_virtualSectors_spawnedGrp isNotEqualTo []) then {
+									// 	{
+									// 		_QS_module_virtualSectors_uavs pushBack _x;
+									// 	} forEach _QS_module_virtualSectors_spawnedGrp;
+									// };
 								};
 								_QS_module_virtualSectors_uav_checkDelay = _QS_uiTime + _QS_module_virtualSectors_uav_delay;
 							};
@@ -1545,12 +1545,12 @@ for '_x' from 0 to 1 step 0 do {
 						if (_QS_uiTime > _QS_module_classic_uav_checkDelay) then {
 							_QS_module_classic_uavs = _QS_module_classic_uavs select {(alive _x)};
 							if ((_QS_module_classic_uavs findIf {(unitIsUav _x)}) isEqualTo -1) then {
-								_QS_module_classic_spawnedGrp = [] call _fn_scSpawnUAV;
-								if (_QS_module_classic_spawnedGrp isNotEqualTo []) then {
-									{
-										_QS_module_classic_uavs pushBack _x;
-									} forEach _QS_module_classic_spawnedGrp;
-								};
+								// _QS_module_classic_spawnedGrp = [] call _fn_scSpawnUAV;
+								// if (_QS_module_classic_spawnedGrp isNotEqualTo []) then {
+								// 	{
+								// 		_QS_module_classic_uavs pushBack _x;
+								// 	} forEach _QS_module_classic_spawnedGrp;
+								// };
 							};
 							_QS_module_classic_uav_checkDelay = diag_tickTime + _QS_module_classic_uav_delay;
 						};

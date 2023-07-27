@@ -344,7 +344,7 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 	]
 };
 [
-	["I_G_Mortar_01_F",[3.13574,1.62061,0.036881],360,[],false,true,false,{
+	["SPE_M1_81",[2.94039,0.451424,0.0370002],0,[],false,true,false,{
 		_mortar = _this # 0;
 		_grp = createVehicleCrew _mortar;
 		{
@@ -364,11 +364,23 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 			]);
 		} else {
 			(effectiveCommander _mortar) setUnitLoadout (selectRandom [
-				"O_soldierU_A_F","O_soldierU_AAR_F","O_soldierU_AR_F","O_soldierU_medic_F","O_engineer_U_F","O_soldierU_exp_F","O_SoldierU_GL_F",
-				"O_Urban_HeavyGunner_F","O_soldierU_M_F","O_soldierU_AT_F","O_soldierU_F","O_soldierU_LAT_F","O_Urban_Sharpshooter_F",
-				"O_SoldierU_SL_F","O_soldierU_TL_F","O_G_engineer_F","O_G_medic_F","O_G_Soldier_A_F","O_G_Soldier_AR_F","O_G_Soldier_exp_F","O_G_Soldier_F","O_G_Soldier_F",
-				"O_G_Soldier_GL_F","O_G_Soldier_LAT_F","O_G_Soldier_lite_F","O_G_Soldier_M_F","O_G_Soldier_SL_F","O_G_Soldier_TL_F",
-				"O_G_Sharpshooter_F","O_G_Soldier_AR_F"
+				"SPE_US_Autorifleman", 
+				"SPE_US_AHMGunner", 
+				"SPE_US_Mortar_AGunner", 
+				"SPE_US_Assist_SquadLead", 
+				"SPE_US_Assist_Autorifleman", 
+				"SPE_US_Medic", 
+				"SPE_US_AT_Soldier", 
+				"SPE_US_Engineer", 
+				"SPE_US_HMG_AmmoBearer", 
+				"SPE_US_Mortar_AmmoBearer", 
+				"SPE_US_Rifleman_AmmoBearer", 
+				"SPE_US_Grenadier", 
+				"SPE_US_HMGunner", 
+				"SPE_US_Rifleman", 
+				"SPE_US_Mortar_Gunner", 
+				"SPE_US_Sniper", 
+				"SPE_US_SquadLead"
 			]);
 		};
 		_mortar lock 3;
@@ -403,8 +415,8 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 		(gunner _mortar) addEventHandler [
 			'FiredMan',
 			{
-				if ((toLowerANSI (_this # 5)) in ['8rnd_82mm_mo_shells','12rnd_230mm_rockets','32rnd_155mm_mo_shells','4rnd_155mm_mo_guided','2rnd_155mm_mo_lg']) then {
-					if ((toLowerANSI (_this # 5)) in ['8rnd_82mm_mo_shells']) then {
+				if ((toLowerANSI (_this # 5)) in ['8rnd_82mm_mo_shells','12rnd_230mm_rockets','32rnd_155mm_mo_shells','4rnd_155mm_mo_guided','2rnd_155mm_mo_lg','SPE_8Rnd_81mmHE_M1_M43A1']) then {
+					if ((toLowerANSI (_this # 5)) in ['8rnd_82mm_mo_shells','SPE_8Rnd_81mmHE_M1_M43A1']) then {
 						(_this # 6) addEventHandler ['Explode',{(_this + [0]) spawn (missionNamespace getVariable 'QS_fnc_craterEffect')}];
 					} else {
 						(_this # 6) addEventHandler ['Explode',{(_this + [1]) spawn (missionNamespace getVariable 'QS_fnc_craterEffect')}];
@@ -438,7 +450,7 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 		_grp setVariable ['QS_AI_GRP_TASK',['SUPPORT','MORTAR',serverTime,-1],FALSE];
 		_mortar;
 	}], 
-	["I_G_Mortar_01_F",[0.695801,-3.58252,0.0368857],360,[],false,true,false,{
+	["SPE_M1_81",[-3.48161,0.608421,0.0370002],0,[],false,true,false,{
 		_mortar = _this # 0;
 		_grp = createVehicleCrew _mortar;
 		{
@@ -458,11 +470,23 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 			]);
 		} else {
 			(effectiveCommander _mortar) setUnitLoadout (selectRandom [
-				"O_soldierU_A_F","O_soldierU_AAR_F","O_soldierU_AR_F","O_soldierU_medic_F","O_engineer_U_F","O_soldierU_exp_F","O_SoldierU_GL_F",
-				"O_Urban_HeavyGunner_F","O_soldierU_M_F","O_soldierU_AT_F","O_soldierU_F","O_soldierU_LAT_F","O_Urban_Sharpshooter_F",
-				"O_SoldierU_SL_F","O_soldierU_TL_F","O_G_engineer_F","O_G_medic_F","O_G_Soldier_A_F","O_G_Soldier_AR_F","O_G_Soldier_exp_F","O_G_Soldier_F","O_G_Soldier_F",
-				"O_G_Soldier_GL_F","O_G_Soldier_LAT_F","O_G_Soldier_lite_F","O_G_Soldier_M_F","O_G_Soldier_SL_F","O_G_Soldier_TL_F",
-				"O_G_Sharpshooter_F","O_G_Soldier_AR_F"
+				"SPE_US_Autorifleman", 
+				"SPE_US_AHMGunner", 
+				"SPE_US_Mortar_AGunner", 
+				"SPE_US_Assist_SquadLead", 
+				"SPE_US_Assist_Autorifleman", 
+				"SPE_US_Medic", 
+				"SPE_US_AT_Soldier", 
+				"SPE_US_Engineer", 
+				"SPE_US_HMG_AmmoBearer", 
+				"SPE_US_Mortar_AmmoBearer", 
+				"SPE_US_Rifleman_AmmoBearer", 
+				"SPE_US_Grenadier", 
+				"SPE_US_HMGunner", 
+				"SPE_US_Rifleman", 
+				"SPE_US_Mortar_Gunner", 
+				"SPE_US_Sniper", 
+				"SPE_US_SquadLead"
 			]);
 		};
 		_mortar lock 3;
@@ -497,8 +521,8 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 		(gunner _mortar) addEventHandler [
 			'FiredMan',
 			{
-				if ((toLowerANSI (_this # 5)) in ['8rnd_82mm_mo_shells','12rnd_230mm_rockets','32rnd_155mm_mo_shells','4rnd_155mm_mo_guided','2rnd_155mm_mo_lg']) then {
-					if ((toLowerANSI (_this # 5)) in ['8rnd_82mm_mo_shells']) then {
+				if ((toLowerANSI (_this # 5)) in ['8rnd_82mm_mo_shells','12rnd_230mm_rockets','32rnd_155mm_mo_shells','4rnd_155mm_mo_guided','2rnd_155mm_mo_lg','SPE_8Rnd_81mmHE_M1_M43A1']) then {
+					if ((toLowerANSI (_this # 5)) in ['8rnd_82mm_mo_shells','SPE_8Rnd_81mmHE_M1_M43A1']) then {
 						(_this # 6) addEventHandler ['Explode',{(_this + [0]) spawn (missionNamespace getVariable 'QS_fnc_craterEffect')}];
 					} else {
 						(_this # 6) addEventHandler ['Explode',{(_this + [1]) spawn (missionNamespace getVariable 'QS_fnc_craterEffect')}];
@@ -532,7 +556,7 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 		_grp setVariable ['QS_AI_GRP_TASK',['SUPPORT','MORTAR',serverTime,-1],FALSE];
 		_mortar;
 	}], 
-	["I_G_Mortar_01_F",[-3.28564,1.77783,0.0368829],360,[],false,true,false,{
+	["SPE_M1_81",[0.500389,-4.75258,0.0370002],0,[],false,true,false,{
 		_mortar = _this # 0;
 		_grp = createVehicleCrew _mortar;
 		{
@@ -552,11 +576,23 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 			]);
 		} else {
 			(effectiveCommander _mortar) setUnitLoadout (selectRandom [
-				"O_soldierU_A_F","O_soldierU_AAR_F","O_soldierU_AR_F","O_soldierU_medic_F","O_engineer_U_F","O_soldierU_exp_F","O_SoldierU_GL_F",
-				"O_Urban_HeavyGunner_F","O_soldierU_M_F","O_soldierU_AT_F","O_soldierU_F","O_soldierU_LAT_F","O_Urban_Sharpshooter_F",
-				"O_SoldierU_SL_F","O_soldierU_TL_F","O_G_engineer_F","O_G_medic_F","O_G_Soldier_A_F","O_G_Soldier_AR_F","O_G_Soldier_exp_F","O_G_Soldier_F","O_G_Soldier_F",
-				"O_G_Soldier_GL_F","O_G_Soldier_LAT_F","O_G_Soldier_lite_F","O_G_Soldier_M_F","O_G_Soldier_SL_F","O_G_Soldier_TL_F",
-				"O_G_Sharpshooter_F","O_G_Soldier_AR_F"
+				"SPE_US_Autorifleman", 
+				"SPE_US_AHMGunner", 
+				"SPE_US_Mortar_AGunner", 
+				"SPE_US_Assist_SquadLead", 
+				"SPE_US_Assist_Autorifleman", 
+				"SPE_US_Medic", 
+				"SPE_US_AT_Soldier", 
+				"SPE_US_Engineer", 
+				"SPE_US_HMG_AmmoBearer", 
+				"SPE_US_Mortar_AmmoBearer", 
+				"SPE_US_Rifleman_AmmoBearer", 
+				"SPE_US_Grenadier", 
+				"SPE_US_HMGunner", 
+				"SPE_US_Rifleman", 
+				"SPE_US_Mortar_Gunner", 
+				"SPE_US_Sniper", 
+				"SPE_US_SquadLead"
 			]);
 		};
 		_mortar lock 3;
@@ -591,8 +627,8 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 		(gunner _mortar) addEventHandler [
 			'FiredMan',
 			{
-				if ((toLowerANSI (_this # 5)) in ['8rnd_82mm_mo_shells','12rnd_230mm_rockets','32rnd_155mm_mo_shells','4rnd_155mm_mo_guided','2rnd_155mm_mo_lg']) then {
-					if ((toLowerANSI (_this # 5)) in ['8rnd_82mm_mo_shells']) then {
+				if ((toLowerANSI (_this # 5)) in ['8rnd_82mm_mo_shells','12rnd_230mm_rockets','32rnd_155mm_mo_shells','4rnd_155mm_mo_guided','2rnd_155mm_mo_lg','SPE_8Rnd_81mmHE_M1_M43A1']) then {
+					if ((toLowerANSI (_this # 5)) in ['8rnd_82mm_mo_shells','SPE_8Rnd_81mmHE_M1_M43A1']) then {
 						(_this # 6) addEventHandler ['Explode',{(_this + [0]) spawn (missionNamespace getVariable 'QS_fnc_craterEffect')}];
 					} else {
 						(_this # 6) addEventHandler ['Explode',{(_this + [1]) spawn (missionNamespace getVariable 'QS_fnc_craterEffect')}];
@@ -626,43 +662,30 @@ if (worldName in ['Tanoa','Lingor3']) exitWith {
 		_grp setVariable ['QS_AI_GRP_TASK',['SUPPORT','MORTAR',serverTime,-1],FALSE];
 		_mortar;
 	}], 
-	["Land_BagFence_Round_F",[1.52246,-2.35498,0],221.198,[],false,false,true,{}], 
-	["Land_BagFence_Round_F",[-0.530273,-2.83887,0],109.416,[],false,false,true,{}], 
-	["Land_BagFence_Round_F",[1.97559,2.3125,0],109.416,[],false,false,true,{}], 
-	["Land_BagFence_Round_F",[-3.01025,0.794434,0],350.741,[],false,false,true,{}], 
-	["Land_BagFence_Round_F",[3.36084,0.631348,0],350.741,[],false,false,true,{}], 
-	["Land_BagFence_Round_F",[-2.34277,2.95947,0],221.198,[],false,false,true,{}], 
-	["Land_BagFence_Round_F",[0.85498,-4.52002,0],350.741,[],false,false,true,{}], 
-	["Land_BagFence_Round_F",[4.02832,2.79639,0],221.198,[],false,false,true,{}], 
-	["Land_BagFence_Round_F",[-4.39551,2.47559,0],109.416,[],false,false,true,{}], 
-	["Land_HBarrier_5_F",[-6.64014,-1.69385,0],76.7103,[],false,false,true,{}], 
-	["Land_HBarrier_5_F",[-3.80322,-6.1333,0],40.5611,[],false,false,true,{}], 
-	["Land_HBarrier_3_F",[3.71826,6.52148,0],214.752,[],false,false,true,{}], 
-	["Land_HBarrier_5_F",[6.61816,3.55078,0],232.769,[],false,false,true,{}], 
-	["Land_HBarrier_1_F",[-7.35205,1.54688,0],333.341,[],false,false,true,{}], 
-	["Land_HBarrier_5_F",[0.95752,-7.73779,0],1.1124,[],false,false,true,{}], 
-	["Land_HBarrier_5_F",[-0.0424805,7.81396,0],192.983,[],false,false,true,{}], 
-	["Land_HBarrier_5_F",[7.87842,-1.30908,0],271.626,[],false,false,true,{}], 
-	["Land_HBarrier_5_F",[5.53076,-6.01514,0],313.739,[],false,false,true,{}], 
-	["Land_HBarrier_Big_F",[-8.46289,0.229492,0],90.299,[],false,false,true,{}], 
-	["Land_HBarrier_Big_F",[-5.86865,-6.31934,0],48.8287,[],false,false,true,{}], 
-	["Land_HBarrier_Big_F",[0.214844,8.80615,0],182.173,[],false,false,true,{}], 
-	["Land_HBarrier_Big_F",[6.51758,6.07178,0],230.221,[],false,false,true,{}], 
-	["Land_HBarrier_Big_F",[0.36084,-9.2627,0],2.1171,[],false,false,true,{}], 
-	["Land_HBarrier_Big_F",[9.30566,-0.566406,0],271.267,[],false,false,true,{}], 
-	["Land_HBarrier_Big_F",[6.66406,-6.91455,0],316.879,[],false,false,true,{}], 
-	["Land_HBarrier_5_F",[-9.91455,0.293945,0],269.435,[],false,false,true,{}], 
-	["Land_HBarrier_5_F",[-6.72266,-7.48779,0],47.4539,[],false,false,true,{}], 
-	["Land_HBarrier_3_F",[-9.28125,-4.021,0],247.194,[],false,false,true,{}], 
-	["Land_HBarrier_3_F",[4.81787,9.10449,0],14.4074,[],false,false,true,{}], 
-	["Land_HBarrier_5_F",[7.91748,6.83301,0],47.4539,[],false,false,true,{}], 
-	["Land_HBarrier_3_F",[10.2246,3.46387,0],66.2934,[],false,false,true,{}], 
-	["Land_HBarrier_5_F",[10.7993,-0.578613,0],89.9335,[],false,false,true,{}], 
-	["Land_HBarrier_5_F",[0.412598,-10.8335,0],179.914,[],false,false,true,{}], 
-	["Land_HBarrier_3_F",[-3.61719,-10.2759,0],205.419,[],false,false,true,{}], 
-	["Land_HBarrier_5_F",[8.10791,-7.76953,0],135.185,[],false,false,true,{}], 
-	["Land_HBarrier_3_F",[4.63623,-10.2441,0],158.593,[],false,false,true,{}], 
-	["Land_HBarrier_3_F",[10.396,-4.64355,0],109.741,[],false,false,true,{}], 
-	["Land_HBarrier_Big_F",[-10.1948,7.51416,0],62.8607,[],false,false,true,{}], 
-	["Land_HBarrier_Big_F",[-8.77148,12.1636,0],152.389,[],false,false,true,{}]
+	["Land_SPE_Sandbag_Nest",[1.81161,1.46364,0],289.416,[],false,false,true,{}], 
+	["Land_SPE_Sandbag_Nest",[-3.17424,-0.0544281,0],170.741,[],false,false,true,{}], 
+	["Land_SPE_Sandbag_Nest",[3.19685,-0.217514,0],170.741,[],false,false,true,{}], 
+	["Land_SPE_Sandbag_Nest",[-2.50676,2.11061,0],41.198,[],false,false,true,{}], 
+	["Land_SPE_Sandbag_Nest",[1.35847,-3.20384,0],41.198,[],false,false,true,{}], 
+	["Land_SPE_Sandbag_Nest",[-0.69426,-3.68773,0],289.416,[],false,false,true,{}], 
+	["Land_SPE_Sandbag_Nest",[3.86433,1.94753,0],41.198,[],false,false,true,{}], 
+	["Land_SPE_Sandbag_Nest",[-4.55949,1.62673,0],289.416,[],false,false,true,{}], 
+	["Land_SPE_Sandbag_Nest",[0.690994,-5.36888,0],170.741,[],false,false,true,{}], 
+	["Land_SPE_Dugout_6m_sandbags",[0.05439,7.71942,0.758],2.173,[],false,false,true,{}], 
+	["Land_SPE_Dugout_6m_sandbags",[6.35724,4.9846,0.758276],50.2209,[],false,false,true,{}], 
+	["Land_SPE_Dugout_3m_sandbags",[4.14633,7.20098,0.758276],22.3974,[],false,true,true,{}], 
+	["Land_SPE_Dugout_6m_sandbags",[-8.62323,-0.857689,0.758276],270.299,[],false,false,true,{}], 
+	["Land_SPE_Dugout_3m_sandbags",[8.69721,1.93784,0.758276],72.7721,[],false,true,true,{}], 
+	["Land_SPE_Dugout_6m_sandbags",[9.14532,-1.65359,0.758276],91.267,[],false,false,true,{}], 
+	["Land_SPE_Dugout_3m_sandbags",[-8.47114,-4.20677,0.758276],251.917,[],false,true,true,{}], 
+	["Land_SPE_Dugout_6m_sandbags",[-6.02899,-7.40652,0.758276],228.829,[],false,false,true,{}], 
+	["Land_SPE_Dugout_3m_sandbags",[-8.97217,3.57938,0.758276],256.361,[],false,true,true,{}], 
+	["Land_SPE_Dugout_3m_sandbags",[8.62193,-5.58728,0.758276],115.767,[],false,true,true,{}], 
+	["Land_SPE_Dugout_6m_sandbags",[6.50372,-8.00173,0.758276],136.879,[],false,false,true,{}], 
+	["Land_SPE_Dugout_6m_sandbags",[0.2005,-10.3499,0.758276],182.117,[],false,false,true,{}], 
+	["Land_SPE_Dugout_3m_sandbags",[-3.76945,-9.87921,0.758276],212.098,[],false,true,true,{}], 
+	["Land_SPE_Dugout_3m_sandbags",[-3.29249,10.1895,0.757999],90.994,[],false,true,true,{}], 
+	["Land_SPE_Dugout_3m_sandbags",[3.51137,-10.2916,0.758276],160.709,[],false,true,true,{}], 
+	["Land_SPE_Dugout_6m_sandbags",[-10.4316,7.11466,0.758277],242.861,[],false,false,true,{}], 
+	["Land_SPE_Dugout_6m45_sandbags",[-11.0792,10.8509,0.758],288.552,[],false,true,true,{}]
 ]

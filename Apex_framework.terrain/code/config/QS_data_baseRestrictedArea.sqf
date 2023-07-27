@@ -71,6 +71,16 @@ if ((missionNamespace getVariable ['QS_missionConfig_baseLayout',0]) isNotEqualT
 			[1908.82,5760.27,0.00143909]
 		];	
 	};
+	if (worldName isEqualTo 'SPE_Normandy') then {
+		// CUSTOM Vehicle Restricted area for STRATIS
+		_return = [
+			[11240.8,10131.4,0]
+			[11289.9,10152,0]
+			[11345.6,10134.5,0]
+			[11383.3,10063.1,0]
+			[11283.8,10015.9,0]
+		];	
+	};
 	_return;
 };
 // EDIT ABOVE, the below is for default base layout

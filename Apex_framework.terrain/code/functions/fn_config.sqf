@@ -250,6 +250,11 @@ if (_worldName isEqualTo 'Enoch') then {
 		_x setAirportSide WEST;
 	} forEach (allAirports # 0);
 };
+if (_worldName isEqualTo 'SPE_Normandy') then {
+	{
+		_x setAirportSide WEST;
+	} forEach (allAirports # 0);
+};
 _environment = ['mediterranean','tropic'] select (_worldName in ['Tanoa','Lingor3','Enoch']);
 
 /*/==================== MISSION NAMESPACE VARS/*/
@@ -265,6 +270,7 @@ if (_worldName isEqualTo 'Altis') then {_aoSize = 800;};
 if (_worldName isEqualTo 'Tanoa') then {_aoSize = 600;};
 if (_worldName isEqualTo 'Malden') then {_aoSize = 300;};
 if (_worldName isEqualTo 'Enoch') then {_aoSize = 500;};
+if (_worldName isEqualTo 'SPE_Normandy') then {_aoSize = 800;};
 _flagTextureEast = 'a3\data_f\flags\flag_csat_co.paa';
 _flagTextureWest = (missionNamespace getVariable ['QS_missionConfig_textures_defaultFlag','a3\data_f\flags\flag_nato_co.paa']);
 _flagTextureResistance = 'a3\data_f\flags\flag_aaf_co.paa';
@@ -274,6 +280,13 @@ if (_worldName in ['Altis','Tanoa','Malden','Enoch']) then {
 	_flagTextureEast = 'a3\data_f\flags\flag_csat_co.paa';
 	_flagTextureWest = (missionNamespace getVariable ['QS_missionConfig_textures_defaultFlag','a3\data_f\flags\flag_nato_co.paa']);
 	_flagTextureResistance = 'a3\data_f\flags\flag_aaf_co.paa';
+	_flagTextureCivilian = 'a3\data_f\flags\flag_altis_co.paa';
+	_flagTextureUnknown = 'a3\data_f\flags\flag_uno_co.paa';
+};
+if (_worldName in ['SPE_Normandy']) then {
+	_flagTextureEast = 'ww2\spe_core_t\data_t\flags\flag_usa_co.paa';
+	_flagTextureWest = (missionNamespace getVariable ['QS_missionConfig_textures_defaultFlag','ww2\spe_core_t\data_t\flags\flag_ger_co.paa']);
+	_flagTextureResistance = 'ww2\spe_core_t\data_t\flags\flag_fff_co.paa';
 	_flagTextureCivilian = 'a3\data_f\flags\flag_altis_co.paa';
 	_flagTextureUnknown = 'a3\data_f\flags\flag_uno_co.paa';
 };
@@ -501,7 +514,7 @@ private _weaponsList = configFile >> 'CfgWeapons';
 	['QS_module_fob_flag',objNull,TRUE],
 	['QS_module_fob_supplycrate',objNull,FALSE],
 	['QS_module_fob_assaultArray',[],FALSE],
-	['QS_module_fob_flag_textures',['a3\data_f\flags\flag_csat_co.paa',_flagTextureFriendly,'a3\data_f\flags\flag_aaf_co.paa','a3\data_f\flags\flag_altis_co.paa','a3\data_f\flags\flag_uno_co.paa'],FALSE],
+	['QS_module_fob_flag_textures',[_flagTextureEast,_flagTextureFriendly,_flagTextureResistance,_flagTextureCivilian,'a3\data_f\flags\flag_uno_co.paa'],FALSE],
 	['QS_module_fob_repairDepot',objNull,FALSE],
 	['QS_module_upload_device',objNull,FALSE],
 	['QS_module_upload_flag',objNull,FALSE],
@@ -618,7 +631,7 @@ private _weaponsList = configFile >> 'CfgWeapons';
 	['QS_recycler_nullGrp',grpNull,FALSE],
 	['QS_recycler_objects',[[],[],[]],FALSE],
 	['QS_recycler_position',[-1100,-1100,0],FALSE],
-	['QS_AI_insertHeli_enabled',TRUE,TRUE],
+	['QS_AI_insertHeli_enabled',FALSE,TRUE],
 	['QS_AI_insertHeli_maxHelis',3,TRUE],
 	['QS_AI_insertHeli_inProgress',FALSE,TRUE],
 	['QS_AI_insertHeli_lastEvent',-1,TRUE],
@@ -1291,6 +1304,17 @@ if ((missionNamespace getVariable ['QS_missionConfig_baseLayout',0]) isEqualTo 0
 			[[1906.17,5639.7,0.000470161],'Land_TentHangar_V1_F']
 		];
 	};
+	if (_worldName isEqualTo 'SPE_Normandy') then {
+	
+		'QS_marker_respawn_uavoperator' setMarkerPos [11345.9,10088.9,0];
+		'QS_marker_respawn_uavoperator' setMarkerDir 232.412;
+		'QS_marker_respawn_jetpilot' setMarkerPos [11096.8,10053.4,0];
+		'QS_marker_respawn_jetpilot' setMarkerDir 0;
+		'QS_marker_respawn_helipilot' setMarkerPos [11082.7,10111.7,0];
+		'QS_marker_respawn_helipilot' setMarkerDir 182.769;
+	
+		missionNamespace setVariable ['QS_prisonPos',[11285.331,10124.364,0],TRUE];
+	};
 } else {
 	missionNamespace setVariable ['QS_baseProtection_polygons',(call (compileScript ['code\config\QS_data_speedLimitAreas.sqf'])),TRUE];
 	missionNamespace setVariable ['QS_prisonPos',(markerPos 'QS_marker_gitmo'),TRUE];
@@ -1431,7 +1455,7 @@ if ((missionNamespace getVariable ['QS_missionConfig_destroyerEnabled',0]) isNot
 		['DEFENSE']
 	];
 };
-0 spawn (missionNamespace getVariable 'QS_fnc_easterEggs');
+//0 spawn (missionNamespace getVariable 'QS_fnc_easterEggs');
 [0] call (missionNamespace getVariable 'QS_fnc_artillery');
 if ((allMissionObjects 'Land_RepairDepot_01_base_F') isNotEqualTo []) then {
 	{

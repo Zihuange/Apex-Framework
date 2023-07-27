@@ -506,4 +506,39 @@ if (_worldName isEqualTo 'Stratis') exitWith {
 		[objNull,600,false,{},"Land_Cargo10_cyan_F",[2032.75,5583.94,0.00103807],97.4302,false,0,-1,50,500,-1,4,false,0,{TRUE},false,false,[],[],0,{TRUE}]
 	]
 };
+if (_worldName isEqualTo 'SPE_Normandy') exitWith {
+	[
+		[objNull,1800,false,{},"Land_Cargo10_military_green_F",[11192.8,9992.44,0.0153961],0,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}],
+		[objNull,3600,false,{},"Land_Cargo10_grey_F",[11186.8,9989.03,0.00314713],0,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}],
+		[objNull,900,false,{},"Land_Cargo10_light_green_F",[11180.7,9984.68,0.00424576],0,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}],
+		[objNull,1800,false,{},"Land_Cargo10_white_F",[11174.3,9980.45,0.00376892],0,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}],
+		[objNull,600,false,{},"Land_Cargo10_sand_F",[11168.5,9977.3,0.00164413],0,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}],
+		[objNull,600,false,{},"Land_Cargo10_sand_F",[11162.6,9973.51,0.00107193],0,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}],
+		[objNull,1800,false,{},"Land_Cargo10_yellow_F",[11194.2,10002.2,0.0393715],0,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}],
+		[objNull,600,false,{},"Land_Cargo10_cyan_F",[11191.6,10008.1,0.0274353],0,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}],
+		[objNull,600,false,{},"Land_Cargo10_blue_F",[11188.7,10014.3,0.0222168],0,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}],
+		[objNull,30,false,{},"B_CargoNet_01_ammo_F",[11185.9,10022.2,-0.000362396],0,false,0,-1,50,500,-1,3,true,0,{TRUE},false,false,[],[],0,{FALSE}],
+		[objNull,30,false,{},"B_CargoNet_01_ammo_F",[11182.9,10020.3,-0.00131226],0,false,0,-1,50,500,-1,3,true,0,{TRUE},false,false,[],[],0,{FALSE}],
+		[objNull,30,false,{},"SPE_OpelBlitz_Ambulance",[11170.6,10056.9,0.0737839],269.99,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}],
+		[objNull,30,false,{},"SPE_OpelBlitz_Fuel",[11172.9,10050.5,0.0822372],269.954,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}],
+		[objNull,30,false,{},"SPE_OpelBlitz_Repair",[11175.3,10044.2,0.0784874],269.908,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}],
+		[objNull,30,false,{},"SPE_SdKfz250_1",[11149.8,10058,-0.0384636],45.0517,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}],
+		[objNull,30,false,{},"SPE_Nashorn",[11140.1,10055.5,0.0394821],270.201,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}],
+		[objNull,30,false,{},"SPE_PzKpfwIII_N",[11146.8,10063.8,-0.0176811],44.9817,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}],
+		[objNull,30,false,{},"SPE_PzKpfwIII_M",[11137.9,10062.1,0.00566864],270.306,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}],
+		[objNull,30,false,{},"SPE_SdKfz250_1",[11157.7,10037.5,0.0276375],44.9965,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}],
+		[objNull,30,false,{},"SPE_SdKfz250_1",[11154.6,10044,0.0323448],44.9981,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}],
+		[objNull,30,false,{},"SPE_SdKfz250_1",[11152.5,10050.9,-0.00088501],45.0449,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}],
+		[objNull,30,false,{},"SPE_PzKpfwVI_H1",[11147.9,10035.7,0.111511],269.991,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}],
+		[objNull,30,false,{},"SPE_PzKpfwIV_G",[11145.4,10042.6,0.0389519],269.877,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}],
+		[objNull,30,false,{},"SPE_PzKpfwIV_G",[11143.1,10048.6,0.0371857],269.992,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}],
+		[objNull,30,false,{},"SPE_OpelBlitz_Open",[11165.3,10069.1,0.119469],269.96,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}],
+		[objNull,30,false,{},"SPE_OpelBlitz_Ammo",[11167.6,10063.3,0.0743446],270.089,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}],
+		[objNull,30,false,{},"SPE_OpelBlitz",[11159.5,10081.6,0.155136],270.487,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}],
+		[objNull,30,false,{},"SPE_OpelBlitz_Open",[11162.4,10075.3,0.156292],270.007,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}],
+		[objNull,30,false,{},"SPE_OpelBlitz",[11157.9,10087.7,0.105972],270.47,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}],
+		[objNull,30,false,{},"SPE_Pak40",[11160,10094.7,-0.0228424],89.811,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}],
+		[objNull,30,false,{},"SPE_Pak40",[11159.3,10102,0.0156975],89.4809,false,0,-1,50,500,-1,4,true,0,{TRUE},false,false,[],[],0,{TRUE}]
+	]
+};
 []

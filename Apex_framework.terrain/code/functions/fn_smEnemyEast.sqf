@@ -30,8 +30,8 @@ _infTypes = [
 	'OIA_InfTeam_AT',1,
 	'OIA_InfTeam_HAT',1
 ];
-_aaType = 'O_APC_Tracked_02_AA_F';
-_vehTypes = ['O_MRAP_02_gmg_F','O_MRAP_02_hmg_F','O_MBT_02_cannon_F','O_APC_Tracked_02_cannon_F','O_APC_Wheeled_02_rcws_v2_F'];
+_aaType = 'SPE_US_M16_Halftrack';
+_vehTypes = ['SPE_US_M3_Halftrack','SPE_US_M3_Halftrack','SPE_M4A0_75','SPE_M18_Hellcat','SPE_M10'];
 _enemiesArray = [];
 if (isNull (_this # 0)) exitWith {};
 _pos = getPosATL (_this # 0);

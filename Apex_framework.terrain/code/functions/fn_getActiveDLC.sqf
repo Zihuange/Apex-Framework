@@ -18,7 +18,7 @@ _______________________________________________/*/
 if (!isNil {missionNamespace getVariable 'QS_system_activeDLC'}) exitWith {
 	(missionNamespace getVariable ['QS_system_activeDLC',''])
 };
-missionNamespace setVariable ['QS_system_availableDLCs',['WS','VN','CSLA','GM'],TRUE];
+missionNamespace setVariable ['QS_system_availableDLCs',['WS','VN','CSLA','GM','SPE'],TRUE];
 if (isClass (configFile >> 'CfgPatches' >> 'data_f_lxWS')) exitWith {
 	missionNamespace setVariable ['QS_system_activeDLC','WS',TRUE];
 	'WS'
@@ -34,6 +34,10 @@ if (isClass (configFile >> 'CfgPatches' >> 'CSLA')) exitWith {
 if (isClass (configFile >> 'CfgPatches' >> 'gm_core')) exitWith {
 	missionNamespace setVariable ['QS_system_activeDLC','GM',TRUE];
 	'GM'
+};
+if (isClass (configFile >> 'CfgPatches' >> 'WW2_SPE_Normandy')) exitWith {
+	missionNamespace setVariable ['QS_system_activeDLC','SPE',TRUE];
+	'SPE'
 };
 missionNamespace setVariable ['QS_system_activeDLC','',TRUE];
 ''

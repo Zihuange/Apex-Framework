@@ -54,6 +54,10 @@ if (player getUnitTrait 'QS_trait_fighterPilot') exitWith {
 				player setDir 341;
 				player setPosWorld [1910.55,5938.28,5.50144];
 			};
+			if (_worldName isEqualTo 'SPE_Normandy') exitWith {
+				player setDir 182.769;
+				player setPosWorld [11082.7,10111.7,36.646];
+			};
 		} else {
 			if ((missionNamespace getVariable ['QS_mission_aoType','CLASSIC']) in ['CLASSIC','SC','GRID']) then {
 				player setDir (random 360);

@@ -24,8 +24,8 @@ _enemiesArray = [];
 _x = 0;
 _pos = getPosATL QS_sideObj;
 _infTeams = ["HAF_InfTeam","HAF_InfTeam_AA","HAF_InfTeam_AT","HAF_InfSentry","HAF_InfSquad"];
-_vehTypes = ["I_APC_Wheeled_03_cannon_F","I_APC_tracked_03_cannon_F","I_MBT_03_cannon_F","I_MRAP_03_gmg_F","I_MRAP_03_hmg_F"];
-_aaType = 'O_APC_Tracked_02_AA_F';
+_vehTypes = ["SPE_FR_M10","SPE_FR_M10","SPE_FR_M4A0_75_mid","SPE_FR_M3_Halftrack","SPE_FR_M3_Halftrack"];
+_aaType = 'SPE_FR_M16_Halftrack';
 
 /*/---------- INFANTRY/*/
 

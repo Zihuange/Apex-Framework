@@ -1469,3 +1469,96 @@ if (_worldName isEqualTo 'Stratis') exitWith {
 		["Land_PortableCabinet_01_medical_F","a3\props_f_enoch\military\camps\portablecabinet_01_medical_f.p3d",[4098.88,4587.95,221.646],[[0.448847,-0.888591,0.0945619],[-0.022494,0.0945518,0.995266]],0,0,2,1,[],{}]
 	]
 };
+
+if (_worldName isEqualTo 'SPE_Normandy') exitWith {
+	[
+		["B_supplyCrate_F","a3\weapons_f\ammoboxes\supplydrop.p3d",[11339.5,10082.5,47.3506],[[-0.814353,-0.579483,0.0320522],[-0.00332963,0.0598913,0.998199]],0,0,2,0,[],{
+			(_this # 0) setVariable ['QS_arsenal_object',TRUE,TRUE];
+			missionNamespace setVariable ['QS_arsenals',((missionNamespace getVariable 'QS_arsenals') + [(_this # 0)]),TRUE];
+		}],
+		["B_supplyCrate_F","a3\weapons_f\ammoboxes\supplydrop.p3d",[11091.6,10058.7,37.5733],[[-0.0374917,0.999292,0.00320246],[-0.00332963,-0.00332961,0.999989]],0,0,2,0,[],{
+			(_this # 0) setVariable ['QS_arsenal_object',TRUE,TRUE];
+			missionNamespace setVariable ['QS_arsenals',((missionNamespace getVariable 'QS_arsenals') + [(_this # 0)]),TRUE];
+		}],
+		["B_supplyCrate_F","a3\weapons_f\ammoboxes\supplydrop.p3d",[11085.7,10115.7,37.3795],[[0.430294,0.902597,-0.0128642],[-0.039967,0.0332866,0.998646]],0,0,2,0,[],{
+			(_this # 0) setVariable ['QS_arsenal_object',TRUE,TRUE];
+			missionNamespace setVariable ['QS_arsenals',((missionNamespace getVariable 'QS_arsenals') + [(_this # 0)]),TRUE];
+		}],
+		["Land_New_WiredFence_10m_F","a3\structures_f\walls\new_wiredfence_10m_f.p3d",[11297.5,10122.3,48.5974],[[-0.993834,-0.110877,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_New_WiredFence_10m_F","a3\structures_f\walls\new_wiredfence_10m_f.p3d",[11296.3,10132.4,48.7449],[[-0.992401,-0.123043,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_New_WiredFence_10m_F","a3\structures_f\walls\new_wiredfence_10m_f.p3d",[11291.1,10137.1,48.7182],[[-0.137334,0.990525,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_New_WiredFence_10m_F","a3\structures_f\walls\new_wiredfence_10m_f.p3d",[11281.1,10135.7,48.7121],[[-0.137334,0.990525,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_New_WiredFence_10m_F","a3\structures_f\walls\new_wiredfence_10m_f.p3d",[11271.5,10128.8,49.2224],[[-0.992401,-0.123043,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_New_WiredFence_10m_F","a3\structures_f\walls\new_wiredfence_10m_f.p3d",[11272.8,10118.7,49.0856],[[-0.992401,-0.123043,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_New_WiredFence_10m_F","a3\structures_f\walls\new_wiredfence_10m_f.p3d",[11278.9,10114,49.213],[[0.104424,-0.994533,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_New_WiredFence_5m_F","a3\structures_f\walls\new_wiredfence_5m_f.p3d",[11273.6,10134.7,48.6047],[[-0.137793,0.990461,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_New_WiredFence_5m_F","a3\structures_f\walls\new_wiredfence_5m_f.p3d",[11286.4,10114.8,48.9423],[[0.108487,-0.994098,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_New_WiredFence_5m_F","a3\structures_f\walls\new_wiredfence_5m_f.p3d",[11296.3,10116.2,48.6764],[[0.373651,-0.927569,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_ClutterCutter_large_F","a3\structures_f\system\cluttercutter_large_f.p3d",[11276.7,10116.7,47.887],[[-0.778431,0.627268,-0.0240765],[0.00666787,0.0466152,0.998891]],0,0,2,0,[],{}],
+		["Land_ClutterCutter_large_F","a3\structures_f\system\cluttercutter_large_f.p3d",[11283,10117.2,47.8087],[[-0.777868,0.628203,-0.0168416],[0.0133313,0.0432891,0.998974]],0,0,2,0,[],{}],
+		["Land_ClutterCutter_large_F","a3\structures_f\system\cluttercutter_large_f.p3d",[11289.1,10119.1,47.5999],[[-0.777718,0.628514,-0.0111659],[0.023326,0.0466049,0.998641]],0,0,2,0,[],{}],
+		["Land_ClutterCutter_large_F","a3\structures_f\system\cluttercutter_large_f.p3d",[11295.6,10118.8,47.523],[[-0.778541,0.627446,-0.0136289],[0.00666787,0.0299845,0.999528]],0,0,2,0,[],{}],
+		["Land_ClutterCutter_large_F","a3\structures_f\system\cluttercutter_large_f.p3d",[11295.9,10124.3,47.3594],[[-0.778383,0.627788,-0.00158893],[0.00332957,0.00665919,0.999972]],0,0,2,0,[],{}],
+		["Land_ClutterCutter_large_F","a3\structures_f\system\cluttercutter_large_f.p3d",[11295.2,10130.1,47.4424],[[-0.778493,0.627337,0.0199042],[-0.00665923,-0.0399658,0.999179]],0,0,2,0,[],{}],
+		["Land_ClutterCutter_large_F","a3\structures_f\system\cluttercutter_large_f.p3d",[11294.6,10135.3,47.6409],[[-0.778575,0.627445,0.0115452],[-0.00665923,-0.0266565,0.999622]],0,0,2,0,[],{}],
+		["Land_ClutterCutter_large_F","a3\structures_f\system\cluttercutter_large_f.p3d",[11288.7,10134.5,47.5121],[[-0.778191,0.628025,-0.00191998],[-0.0266571,-0.0299763,0.999195]],0,0,2,0,[],{}],
+		["Land_ClutterCutter_large_F","a3\structures_f\system\cluttercutter_large_f.p3d",[11289.3,10125.6,47.3777],[[-0.778514,0.627584,-0.00735868],[0.00666787,0.0199943,0.999778]],0,0,2,0,[],{}],
+		["Land_ClutterCutter_large_F","a3\structures_f\system\cluttercutter_large_f.p3d",[11285.2,10130.7,47.3739],[[-0.77828,0.627915,-0.00200593],[-0.0133317,-0.0133301,0.999822]],0,0,2,0,[],{}],
+		["Land_ClutterCutter_large_F","a3\structures_f\system\cluttercutter_large_f.p3d",[11282.2,10123.6,47.5217],[[-0.778438,0.627649,-0.00952479],[0.0199975,0.039962,0.999001]],0,0,2,0,[],{}],
+		["Land_ClutterCutter_large_F","a3\structures_f\system\cluttercutter_large_f.p3d",[11276.8,10125.5,47.5654],[[-0.778162,0.62806,-0.00226285],[0.026659,0.0366296,0.998973]],0,0,2,0,[],{}],
+		["Land_ClutterCutter_large_F","a3\structures_f\system\cluttercutter_large_f.p3d",[11275.3,10133.6,47.5598],[[-0.783378,0.621537,-0.00315438],[-0.00666818,-0.0033295,0.999972]],0,0,2,0,[],{}],
+		["Land_Laptop_03_black_F","a3\props_f_enoch\military\equipment\laptop_03_f.p3d",[11305.2,10124.7,61.6978],[[-0.985583,-0.169192,0],[0,0,1]],0,0,0,0,[],{
+			missionNamespace setVariable ['QS_airdefense_laptop',(_this # 0),TRUE];
+			(_this # 0) setDir ((getDir (_this # 0)) + 180);
+		}],
+		["Land_Laptop_03_black_F","a3\props_f_enoch\military\equipment\laptop_03_f.p3d",[11081.9,10059.9,37.663],[[0.693154,-0.72079,0],[0,0,1]],0,0,0,0,[],{
+			missionNamespace setVariable ['QS_cas_laptop',(_this # 0),TRUE];
+			if ((missionNamespace getVariable ['QS_missionConfig_carrierEnabled',0]) isNotEqualTo 0) then {
+				(_this # 0) enableDynamicSimulation FALSE;
+				(_this # 0) setVariable ['QS_dynSim_ignore',TRUE,TRUE];
+				(_this # 0) hideObjectGlobal TRUE;
+			};
+		}],
+		["Land_TripodScreen_01_large_F","a3\props_f_exp\military\camps\tripodscreen_01_large_f.p3d",[11345.8,10074.8,48.1495],[[0.278481,0.956787,-0.0837052],[-0.0199977,0.0929102,0.995474]],0,0,0,0,[],{
+			missionNamespace setVariable ['QS_Billboard_02',(_this # 0),TRUE];
+			(_this # 0) setObjectTextureGlobal [0,(selectRandom (missionNamespace getVariable ['QS_missionConfig_textures_billboard1',[]]))];
+		}],
+		["Land_FirstAidKit_01_open_F","a3\props_f_orange\humanitarian\camps\firstaidkit_01_open_f.p3d",[11358.5,10066.5,48.1323],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_FirstAidKit_01_closed_F","a3\props_f_orange\humanitarian\camps\firstaidkit_01_closed_f.p3d",[11359.3,10067.2,48.2484],[[0.568759,-0.822504,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_FirstAidKit_01_closed_F","a3\props_f_orange\humanitarian\camps\firstaidkit_01_closed_f.p3d",[11082.2,10060.8,37.6744],[[0.987919,-0.154973,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_Airport_02_controlTower_F","a3\structures_f_exp\infrastructure\airports\airport_02_controltower_f.p3d",[11311.8,10125.6,58.4348],[[-0.991264,-0.131893,0],[0,0,1]],0,1,0,0,[],{
+				(_this # 0) animateSource ['door_1_source',1]; 
+				(_this # 0) animateSource ['door_2_source',1];
+		}],
+		["Land_LampAirport_F","a3\structures_f\civ\lamps\lampairport_f.p3d",[11343.8,10070.7,59.6541],[[0,1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_SCF_01_chimney_F","a3\structures_f_exp\industrial\sugarcanefactory_01\scf_01_chimney_f.p3d",[11088.7,10168.8,69.5652],[[0,1,0],[0,0,1]],0,0,2,0,[],{
+			_chimney = _this # 0;
+			missionNamespace setVariable [
+				'QS_setFeatureType',
+				((missionNamespace getVariable 'QS_setFeatureType') + [[_chimney,2]]),
+				TRUE
+			];
+			_fire = createVehicle ['test_EmptyObjectForFireBig',[0,0,0],[],0,'NONE'];
+			_fire allowDamage FALSE;
+			missionNamespace setVariable [
+				'QS_setFeatureType',
+				((missionNamespace getVariable 'QS_setFeatureType') + [[_fire,2]]),
+				TRUE
+			];
+			missionNamespace setVariable ['QS_torch',_fire,TRUE];
+			_fire enableDynamicSimulation FALSE;
+			_fire setVariable ['QS_dynSim_ignore',TRUE,TRUE];
+			_fire attachTo [_chimney,[-2,0,31]];
+			_fire spawn {
+				uiSleep 0.1;
+				detach _this;
+			};
+		}],
+		["Land_Stone_Gate_F","a3\structures_f\walls\stone_gate_f.p3d",[11291.4,10115.7,48.1804],[[-0.118075,0.993005,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_CampingTable_F","a3\structures_f\civ\camping\campingtable_f.p3d",[11082.1,10060.5,37.0916],[[-0.994434,0.105359,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_CampingChair_V2_F","a3\structures_f\civ\camping\campingchair_v2_f.p3d",[11347.2,10077.2,47.4382],[[0.470931,0.880198,-0.0589513],[-0.0366426,0.086285,0.995596]],0,0,2,0,[],{}],
+		["Land_RepairDepot_01_green_F","a3\structures_f_tank\military\repairdepot\repairdepot_01_green_f.p3d",[11129.7,10086.2,39.4147],[[-3.25581e-007,-0.999645,0.0266571],[-0.039967,0.0266358,0.998846]],0,0,2,0,[],{}],
+		["Land_RepairDepot_01_green_F","a3\structures_f_tank\military\repairdepot\repairdepot_01_green_f.p3d",[11015,10068.5,39.0932],[[-1.50996e-007,-1,0],[0,0,1]],0,0,2,0,[],{}],
+		["Land_CampingChair_V2_F","a3\structures_f\civ\camping\campingchair_v2_f.p3d",[11348.5,10076.1,47.5688],[[0.835521,0.549443,-0.00410141],[-0.036641,0.0631635,0.99733]],0,0,2,0,[],{}]
+	]
+};

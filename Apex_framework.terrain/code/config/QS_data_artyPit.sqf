@@ -18,28 +18,37 @@ To Do:
 __________________________________________________________________________/*/
 
 [
-	["Land_HBarrier_01_line_5_green_F",[-1.49414,0.0917969,0],263.593,[],false,false,true,{}], 
-	["Land_HBarrier_01_line_5_green_F",[1.89648,2.74902,0],350.306,[],false,false,true,{}], 
-	["Land_Mil_WallBig_4m_F",[-1.77539,2.94482,-0.0119424],352.223,[],false,false,true,{}], 
-	["Land_HBarrier_01_line_5_green_F",[-0.868652,-5.18457,0],263.593,[],false,false,true,{}], 
-	["Land_HBarrier_01_line_5_green_F",[-5.30859,1.56592,0],350.306,[],false,false,true,{}], 
-	["Box_East_AmmoVeh_F",[-2.50635,-5.50049,0.0295422],359.057,[],false,false,true,{}], 
-	["Land_Mil_WallBig_4m_F",[-4.67969,7.45361,-0.0119424],83.2767,[],false,false,true,{}], 
-	["Box_East_AmmoVeh_F",[9.58203,0.190918,0.0295417],359.999,[],false,false,true,{}],
-	["Land_Mil_WallBig_4m_F",[2.10645,9.00781,-0.0119424],352.602,[],false,false,true,{}], 
-	["Land_HBarrier_01_wall_6_green_F",[-9.1084,6.604,0],354.161,[],false,false,true,{}], 
-	["Land_HBarrier_01_wall_6_green_F",[7.2915,8.27441,0],11.9168,[],false,false,true,{}], 
-	["Land_HBarrier_01_wall_6_green_F",[11.8818,3.45068,0],83.6629,[],false,false,true,{}], 
-	["Box_East_AmmoVeh_F",[8.65479,-7.12402,0.0545402],233.689,[],false,false,true,{}], 
-	["Land_HBarrier_01_wall_6_green_F",[3.47705,-13.001,0],172.753,[],false,false,true,{}], 
-	["Land_HBarrier_01_wall_6_green_F",[-13.3662,2.21436,0],294.289,[],false,false,true,{}], 
-	["Box_East_AmmoVeh_F",[-5.37256,-11.3833,0.039788],215.424,[],false,false,true,{}], 
-	["Land_HBarrier_01_wall_6_green_F",[12.9658,-4.7666,0],83.6629,[],false,false,true,{}], 
-	["Land_HBarrier_01_wall_6_green_F",[10.3228,-10.6523,0],150.431,[],false,false,true,{}], 
-	["Land_HBarrier_01_wall_6_green_F",[-4.65039,-14.1714,0],178.418,[],false,false,true,{}], 
-	["Land_HBarrier_01_wall_6_green_F",[-14.3359,-5.28174,0],265.262,[],false,false,true,{}], 
-	["Land_HBarrier_01_wall_6_green_F",[-11.6533,-12.0586,0],234.447,[],false,false,true,{}], 
-	["O_MBT_02_arty_F",[4.01807,-1.67236,-0.0691381],353.719,[],true,true,false,{
+	["Land_SPE_Sandbag_Long_Thick",[-0.421311,-1.25451,0],261,[],false,false,true,{}], 
+	["Land_SPE_Sandbag_Long_Thick",[3.86325,-0.617511,0],80,[],false,false,true,{}], 
+	["Land_SPE_Sandbag_Long_Thick",[-0.147816,-4.13314,0],353,[],false,false,true,{}], 
+	["Land_SPE_Sandbag_Long_Thick",[-4.65901,-1.78685,0],261,[],false,false,true,{}], 
+	["Land_SPE_Dugout_6m_sandbags",[-3.711,5.98859,0.75],263.161,[],false,false,true,{}], 
+	["Land_SPE_Dugout_6m_sandbags",[-7.12695,2.11959,0.75],354.161,[],false,false,true,{}], 
+	["Land_SPE_Dugout_6m_sandbags",[6.38778,4.50589,0.75],357.917,[],false,false,true,{}], 
+	["Land_SPE_Sandbag_Long_Thick",[0.261,-8.43741,0],352.593,[],false,false,true,{}], 
+	["Land_SPE_Dugout_6m_sandbags",[2.69881,8.42482,0.75],83.161,[],false,false,true,{}], 
+	["SPE_AmmoCrate_VehicleAmmo_US",[-1.80033,-8.7569,0.029542],359.057,[],false,false,true,{}], 
+	["Land_SPE_Dugout_3m_sandbags",[9.9597,4.16057,0.75],25,[],false,false,true,{}], 
+	["SPE_AmmoCrate_VehicleAmmo_US",[10.693,-3.0655,0.029542],359.999,[],false,false,true,{}], 
+	["Land_SPE_Dugout_6m45_sandbags",[-12.1613,-0.572741,0.75],282,[],false,false,true,{}], 
+	["Land_SPE_Dugout_6m45_sandbags",[13.155,1.79559,0.75],42,[],false,false,true,{}], 
+	["Land_SPE_Dugout_3m_sandbags",[-12.8961,-4.76403,0.75],280,[],false,false,true,{}], 
+	["SPE_AmmoCrate_VehicleAmmo_US",[9.76579,-10.3804,0.0545406],233.689,[],false,false,true,{}], 
+	["Land_SPE_Dugout_3m_sandbags",[13.7801,-3.81163,0.75],91,[],false,false,true,{}], 
+	["Land_SPE_Dugout_6m_sandbags",[-1.82389,14.3444,0.75],349.161,[],false,false,true,{}], 
+	["Land_SPE_Dugout_3m_sandbags",[-6.42916,13.4743,0.75],348,[],false,false,true,{}], 
+	["SPE_AmmoCrate_VehicleAmmo_US",[-4.26156,-14.6397,0.0397882],215.424,[],false,false,true,{}], 
+	["Land_SPE_Dugout_6m_sandbags",[-12.9251,-8.43693,0.75],269.262,[],false,false,true,{}], 
+	["Land_SPE_Dugout_3m_sandbags",[3.14742,15.2206,0.75],351,[],false,false,true,{}], 
+	["Land_SPE_Dugout_6m_sandbags",[13.6942,-8.16484,0.75],90.6629,[],false,false,true,{}], 
+	["Land_SPE_Dugout_3m_sandbags",[-12.5276,-12.3193,0.75],258,[],false,false,true,{}], 
+	["Land_SPE_Dugout_3m_sandbags",[0.396279,-18.115,0.75],175,[],false,false,true,{}], 
+	["Land_SPE_Dugout_6m_sandbags",[5.09782,-17.4967,0.75],172.753,[],false,false,true,{}], 
+	["Land_SPE_Dugout_6m_sandbags",[-3.69358,-18.0175,0.75],184.418,[],false,false,true,{}], 
+	["Land_SPE_Dugout_3m_sandbags",[8.111,-17.0064,0.75],161,[],false,false,true,{}], 
+	["Land_SPE_Dugout_6m45_sandbags",[12.9067,-13.9012,0.75],105,[],false,false,true,{}], 
+	["Land_SPE_Dugout_6m45_sandbags",[-9.63135,-17.1307,0.75],196,[],false,false,true,{}],
+	["SPE_M4A1_T34_Calliope",[5.13019,-4.94521,-0.00683117],353.718,[],true,true,false,{
 		_arty = _this # 0;
 		(missionNamespace getVariable 'QS_sideMission_enemyArray') pushBack _arty;
 		_arty setVariable ['QS_hidden',TRUE,TRUE];
@@ -82,7 +91,7 @@ __________________________________________________________________________/*/
 			'FiredMan',
 			{
 				if (!isNull (_this # 6)) then {
-					if ((toLowerANSI (_this # 5)) in ['8rnd_82mm_mo_shells','12rnd_230mm_rockets','32rnd_155mm_mo_shells','4rnd_155mm_mo_guided','2rnd_155mm_mo_lg','magazine_shipcannon_120mm_he_shells_x32','magazine_shipcannon_120mm_he_guided_shells_x2','magazine_shipcannon_120mm_he_lg_shells_x2','magazine_missiles_cruise_01_x18']) then {
+					if ((toLowerANSI (_this # 5)) in ['8rnd_82mm_mo_shells','12rnd_230mm_rockets','32rnd_155mm_mo_shells','4rnd_155mm_mo_guided','2rnd_155mm_mo_lg','magazine_shipcannon_120mm_he_shells_x32','magazine_shipcannon_120mm_he_guided_shells_x2','magazine_shipcannon_120mm_he_lg_shells_x2','magazine_missiles_cruise_01_x18','SPE_60Rnd_M8']) then {
 						if ((toLowerANSI (_this # 5)) in ['8rnd_82mm_mo_shells']) then {
 							(_this # 6) addEventHandler ['Explode',{(_this + [0]) spawn (missionNamespace getVariable 'QS_fnc_craterEffect')}];
 						} else {
@@ -116,7 +125,7 @@ __________________________________________________________________________/*/
 		} forEach (crew _arty);
 		_arty;
 	}], 
-	["O_MBT_02_arty_F",[-6.7666,-2.89453,-0.0691385],353.719,[],true,true,false,{
+	["SPE_M4A1_T34_Calliope",[-5.65482,-6.16814,-0.00683117],353.718,[],true,true,false,{
 		_arty = _this # 0;
 		(missionNamespace getVariable 'QS_sideMission_enemyArray') pushBack _arty;
 		_arty setVariable ['QS_hidden',TRUE,TRUE];
@@ -156,7 +165,7 @@ __________________________________________________________________________/*/
 			'FiredMan',
 			{
 				if (!isNull (_this # 6)) then {
-					if ((toLowerANSI (_this # 5)) in ['8rnd_82mm_mo_shells','12rnd_230mm_rockets','32rnd_155mm_mo_shells','4rnd_155mm_mo_guided','2rnd_155mm_mo_lg','magazine_shipcannon_120mm_he_shells_x32','magazine_shipcannon_120mm_he_guided_shells_x2','magazine_shipcannon_120mm_he_lg_shells_x2','magazine_missiles_cruise_01_x18']) then {
+					if ((toLowerANSI (_this # 5)) in ['8rnd_82mm_mo_shells','12rnd_230mm_rockets','32rnd_155mm_mo_shells','4rnd_155mm_mo_guided','2rnd_155mm_mo_lg','magazine_shipcannon_120mm_he_shells_x32','magazine_shipcannon_120mm_he_guided_shells_x2','magazine_shipcannon_120mm_he_lg_shells_x2','magazine_missiles_cruise_01_x18','SPE_60Rnd_M8']) then {
 						if ((toLowerANSI (_this # 5)) in ['8rnd_82mm_mo_shells']) then {
 							(_this # 6) addEventHandler ['Explode',{(_this + [0]) spawn (missionNamespace getVariable 'QS_fnc_craterEffect')}];
 						} else {

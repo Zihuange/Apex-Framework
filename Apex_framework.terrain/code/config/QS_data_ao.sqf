@@ -297,4 +297,66 @@ if (_worldName isEqualTo 'Enoch') exitWith {
 		]
 	]
 };
+if (_worldName isEqualTo 'SPE_Normandy') exitWith {
+	[
+		[
+			0,
+			[
+				['saint_lo','Saint Lô',[11128.1,11076.8,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['hebecrevon','Hébécrevon',[8431.84,11674.5,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['saint_gilles','Saint Gilles',[8089.94,10404.9,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['plains','Plains',[9335.14,9386.75,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['canisy','Canisy',[8189.3,8861.53,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['st_ebremond_de','St. Ebremond de Bonfossé',[9136.91,8352.53,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['quibou','Quibou',[7371.9,8268.17,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['dangy','Dangy',[6415.11,7051.62,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['saint_samson_de','Saint Samson de Bonfossé',[9875.78,7420.58,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['saint_romphaire','Saint Romphaire',[10783.3,6797.71,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1]
+			]
+		],
+		[
+			1,
+			[
+				['marigny','Marigny',[5693.06,9989.65,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['hauteville_la_guichard','Hauteville La Guichard',[3466.17,11488.4,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['eglise_sainte_vierge','Eglise Sainte Vierge',[1726.32,11823.1,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['saint_michel_de_la_pierre','Saint Michel De La Pierre',[477.344,11975.8,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['camprond','Camprond',[1866.65,9392.63,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['cambernon','Cambernon',[515.313,8944.6,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['courcy','Courcy',[278.268,6744.4,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['savigny','Savigny',[2249.37,7214.59,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['cametours','Cametours',[4328.81,8358.31,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['carantilly','Carantilly',[5778.8,8236.06,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1]
+			]
+		],
+		[
+			2,
+			[
+				['le_pont_brocard','Le Pont Brocard',[5762.49,5392.87,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['cerisy_la_salle','Cerisy La Salle',[4227.04,5978.09,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['montpinchon','Montpinchon',[3237.04,5671.85,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['ouville','Ouville',[1432.16,5530.68,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['notre_dame_de_cenilly','Notre Dame De Cenilly',[5228.68,4264.65,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['saint_martin_de_cenilly','Saint Martin De Cenilly',[4418.51,3547.06,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['roncey','Roncey',[2533.53,3898.78,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['grimesnil','Grimesnil',[1903.44,1915.73,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['saint_denis_le_gast','Saint Denis Le Gast',[2728.29,1150.82,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['lengronne','Lengronne',[789.051,777.323,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['hambye','Hambye',[5077.15,1614.38,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1]
+			]
+		],
+		[
+			3,
+			[
+				['troisgots','Troisgots',[11904.7,5341.93,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['fervaches','Fervaches',[11567.2,4425.15,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['moyon','Moyon',[10367,4710.55,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['chevry','Chevry',[10357.5,2912.88,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['beaucoudray','Beaucoudray',[9546.03,2305.24,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['montabot','Montabot',[10120.2,957.915,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1],
+				['gouvets','Gouvets',[11248.6,921.702,0],'QS_fnc_aoCustomize',0,0,0,0,1,1,1]
+			]
+		]
+	]
+};
 []

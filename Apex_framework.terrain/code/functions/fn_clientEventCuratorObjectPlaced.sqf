@@ -163,10 +163,10 @@ if (_object isKindOf 'CAManBase') exitWith {
 			};
 			if (['recon',_type,FALSE] call (missionNamespace getVariable 'QS_fnc_inString')) then {
 				if ((side _object) isEqualTo EAST) then {
-					_object addHeadgear 'H_HelmetSpecO_blk';
+					_object addHeadgear '';
 				};
 				if ((random 1) > 0.5) then {
-					_object addPrimaryWeaponItem (selectRandom ['optic_Nightstalker','optic_tws']);
+					_object addPrimaryWeaponItem (selectRandom ['','']);
 				};
 			};
 			if ((['O_V_',_type,FALSE] call (missionNamespace getVariable 'QS_fnc_inString')) || {(['O_V_',_type,FALSE] call (missionNamespace getVariable 'QS_fnc_inString'))}) then {

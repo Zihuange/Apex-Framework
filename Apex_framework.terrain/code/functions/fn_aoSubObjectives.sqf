@@ -83,7 +83,7 @@ if (_type isEqualTo 1) exitWith {
 		_objectiveCode = {
 			params ['_aoPos','_aoRadius','_detector','_threshold'];
 			private _return = 0;
-			if ((count ( (units EAST) inAreaArray [_aoPos,_aoRadius,_aoRadius,0,FALSE,-1])) < _threshold) then {
+			if ((count ( ((units EAST) + (units independent)) inAreaArray [_aoPos,_aoRadius,_aoRadius,0,FALSE,-1])) < _threshold) then {
 				_return = 1;
 			};
 			_return;
