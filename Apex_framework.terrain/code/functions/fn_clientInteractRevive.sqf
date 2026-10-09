@@ -13,6 +13,8 @@ Description:
 	Revive
 ________________________________________/*/
 
+/*/ ==== ACE3 Medical active: treatment handled by ACE interaction menu ==== */
+if ((missionNamespace getVariable ['QS_medSys',FALSE])) exitWith {};
 private _t = cursorTarget;
 _player = QS_player;
 if (

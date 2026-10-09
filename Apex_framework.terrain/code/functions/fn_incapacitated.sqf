@@ -14,6 +14,8 @@ Description:
 ______________________________________________/*/
 
 params ['_unit','_selectionName','_damage','_source','_projectile','_hitPartIndex','_instigator','_hitPoint','_directHit'];
+/*/ ==== ACE3 Medical: keep original flow, only guard ops conflicting with ACE medical state ==== */
+private _aceMed = missionNamespace getVariable ['QS_medSys',FALSE];
 if (isPlayer _unit) then {
 	if (dialog) then {
 		closeDialog 2;
@@ -112,7 +114,9 @@ private _medicalTimer = _medicalStartTime + _medicalTimerDelay;
 	['QS_respawn_disable',-1,FALSE],
 	['QS_client_medevacRequested',FALSE,FALSE]
 ];
-_unit setDamage [0.25,TRUE];
+if (!_aceMed) then {
+	_unit setDamage [0.25,TRUE];		// ACE3: 血量由 ACE 医疗管理
+};
 if (isForcedWalk _unit) then {
 	_unit forceWalk FALSE;
 };
@@ -565,8 +569,9 @@ for '_x' from 0 to 1 step 0 do {
 			_QS_buttonMedevac ctrlEnable FALSE;
 			_QS_buttonMedevac ctrlSetText (localize 'STR_QS_Menu_100');
 			_QS_buttonMedevac ctrlSetTooltip (localize 'STR_QS_Menu_101');
-			_QS_buttonMedevac ctrlRemoveAllEventHandlers 'OnButtonClick';
-			_QS_buttonMedevac ctrlRemoveAllEventHandlers 'OnButtonDown';
+			/*/ 修复原版 bug：ctrlRemoveAllEventHandlers 枚举应为 'ButtonClick'/'ButtonDown'（'OnButtonClick' 无效，RPT 报 Unknown enum value） */
+			_QS_buttonMedevac ctrlRemoveAllEventHandlers 'ButtonClick';
+			_QS_buttonMedevac ctrlRemoveAllEventHandlers 'ButtonDown';
 			_QS_buttonAction = 'call (missionNamespace getVariable "QS_fnc_clientRequestMedevac")';
 			_QS_buttonCtrl = _QS_buttonMedevac;
 			_QS_buttonCtrl buttonSetAction _QS_buttonAction;
@@ -668,12 +673,16 @@ uiSleep 0.1;
 if (!isGameFocused) then {
 	playSoundUI ['beep_target',0.25,1,FALSE];
 };
-_unit setDamage [0,TRUE];
+if (!_aceMed) then {
+	_unit setDamage [0,TRUE];		// ACE3: 不清空 ACE 伤口数据
+};
 _unit allowDamage TRUE;
 if (captive _unit) then {
 	_unit setCaptive FALSE;
 };
-_unit setBleedingRemaining 0;
+if (!_aceMed) then {
+	_unit setBleedingRemaining 0;	// ACE3: 出血由 ACE 医疗管理
+};
 _unit setMimic 'neutral';
 {
 	_unit setVariable _x;

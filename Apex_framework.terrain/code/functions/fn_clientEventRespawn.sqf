@@ -196,7 +196,7 @@ if ((backpack player) isNotEqualTo '') then {
 	if ((loadBackpack player) > _maxLoadBackpack) then {
 		while {((loadBackpack player) > _maxLoadBackpack)} do {
 			_itemToRemove = selectRandom ((backpackItems player) + (backpackMagazines player));
-			if (!((toLowerANSI _itemToRemove) in (QS_core_classNames_itemToolKits + QS_core_classNames_itemMedikits))) then {
+			if (!((toLowerANSI _itemToRemove) in (QS_core_classNames_itemToolKits + QS_core_classNames_itemMedikits + qs_core_classnames_itemfirstaidkits_ACE + qs_core_classnames_itemmedikits_ACE))) then {
 				player removeItemFromBackpack _itemToRemove;
 			};
 		};

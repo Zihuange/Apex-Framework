@@ -18,6 +18,14 @@ private _c = FALSE;
 if (_type isEqualTo 0) exitWith {
 	_unit = param [1,objNull];
 	if (alive _unit) then {
+		/*/ ==== ACE3 Medical: in medical vehicle? ==== */
+		if ((missionNamespace getVariable ['QS_medSys',FALSE])) then {
+			private _veh = vehicle _unit;
+			if (_veh isNotEqualTo _unit) then {
+				if (_veh getVariable ['ace_medical_isMedicalVehicle',FALSE]) exitWith {_c = TRUE;};
+			};
+			if (_c) exitWith {};
+		};
 		if ((missionNamespace getVariable ['QS_positions_fieldHospitals',[]]) isNotEqualTo []) then {
 			_fieldHospitals = missionNamespace getVariable ['QS_positions_fieldHospitals',[]];
 			{

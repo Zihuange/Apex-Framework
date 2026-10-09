@@ -13,6 +13,8 @@ Description:
 	Carry an entity
 _________________________________________*/
 
+/*/ ==== ACE3 Medical active: carrying handled by ACE carrying framework ==== */
+if ((missionNamespace getVariable ['QS_medSys',FALSE])) exitWith {};
 private _t = cursorTarget;
 if (!isNull (objectParent _t)) exitWith {};
 if (

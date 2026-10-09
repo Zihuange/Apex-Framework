@@ -22,7 +22,7 @@ closeDialog 2;
 	_textCancel = localize 'STR_QS_Menu_114';
 	private _result = [_textBody,_textHeader,_textOk,_textCancel,(findDisplay 46),FALSE,FALSE] call (missionNamespace getVariable 'BIS_fnc_guiMessage'); 
 	if (_result) then {
-		if ((!(missionNamespace getVariable ['QS_dynTask_medevac_inProgress',TRUE])) && ((lifeState player) isEqualTo 'INCAPACITATED') && (isNull (objectParent player)) && (isNull (attachedTo player))) then {
+		if ((!(missionNamespace getVariable ['QS_dynTask_medevac_inProgress',TRUE])) && (player call (missionNamespace getVariable ['QS_fnc_isUnconscious',{FALSE}])) && (isNull (objectParent player)) && (isNull (attachedTo player))) then {
 			{
 				player setVariable _x;
 			} forEach [

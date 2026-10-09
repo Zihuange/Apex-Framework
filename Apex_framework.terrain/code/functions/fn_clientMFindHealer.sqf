@@ -21,6 +21,7 @@ private _message = format [localize 'STR_QS_Text_269',_defaultDistance];
 	if (
 		(_x getUnitTrait 'medic') &&
 		{((lifeState _x) in ['HEALTHY','INJURED'])} &&
+		{(!(_x call (missionNamespace getVariable ['QS_fnc_isUnconscious',{FALSE}])))} &&
 		{(!captive _x)} &&
 		{((_x distance _unit) < _defaultDistance)}
 	) then {

@@ -13,6 +13,8 @@ Description:
 	-
 _________________________________________________*/
 
+/*/ ==== ACE3 Medical active: dragging handled by ACE dragging framework ==== */
+if ((missionNamespace getVariable ['QS_medSys',FALSE])) exitWith {};
 private _t = cursorTarget;
 if (
 	(!alive _t) ||

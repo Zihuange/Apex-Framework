@@ -43,6 +43,18 @@ qs_core_classnames_itemfirstaidkit = 'firstaidkit';
 qs_core_classnames_itemfirstaidkits = ['firstaidkit'];
 qs_core_classnames_itemmedikit = 'medikit';
 qs_core_classnames_itemmedikits = ['medikit'];
+/*/ ==== ACE3 Medical items (ACE3 adaptation) ==== */
+qs_core_classnames_itemfirstaidkits_ACE = [
+	'ace_fielddressing','ace_elasticbandage','ace_packingbandage','ace_quikclot',
+	'ace_tourniquet','ace_splint'
+];
+qs_core_classnames_itemmedikits_ACE = [
+	'ace_morphine','ace_epinephrine','ace_adenosine','ace_atropine',
+	'ace_salineiv_250','ace_salineiv_500','ace_salineiv',
+	'ace_bloodiv_250','ace_bloodiv_500','ace_bloodiv',
+	'ace_plasmaiv_250','ace_plasmaiv_500','ace_plasmaiv',
+	'ace_personalaidkit','ace_surgicalkit','ace_suture','ace_bodybag','ace_painkillers'
+];
 qs_core_classnames_itemcompass = 'itemcompass';
 qs_core_classnames_itemcompasses = ['itemcompass'];
 qs_core_classnames_itemgps = 'itemgps';

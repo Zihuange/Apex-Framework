@@ -58,7 +58,7 @@ _arma_units_url =
 ];
 _serverRules = '- No teamkilling<br/>- No destruction of friendly assets<br/>- No advertising<br/>- No verbal abuse<br/>- Pilots and UAV operator must be on Teamspeak<br/>- Staff word is final';		// Server rules shown on splash screen text. Structured Text. Note: There are more rules listed in "code\functions\fn_clientDiary.sqf", edit that file to your liking.
 _staffNames = 'Miller (admin), Kerry (moderator), Stavrou (moderator), Orestes (mission editor)';						// This text gets shown on the splash screen when player enters the game, customize as you like.
-_splashMenu = 0;										// Does splash menu appear when first spawns? 0 - Disabed. 1 - Enabled.
+_splashMenu = 1;										// Does splash menu appear when first spawns? 0 - Disabed. 1 - Enabled.
 _introMusic = 1;										// Intro Music. 0 - Disabled. 1 - Enabled. Music/Audio player hears when they join server.
 
 //===================================================== GAMEPLAY

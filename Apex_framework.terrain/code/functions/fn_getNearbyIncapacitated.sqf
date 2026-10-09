@@ -14,8 +14,9 @@ Description:
 _____________________________________________/*/
 
 params ['_origin','_radius','_fn_enemySides'];
+private _fn_isUnconscious = missionNamespace getVariable ['QS_fnc_isUnconscious',{((lifeState _this) isEqualTo 'INCAPACITATED')}];
 private _incapacitated = (_origin nearEntities ['CAManBase',_radius]) select {
-	( ((lifeState _x) isEqualTo 'INCAPACITATED') && ( (isNull (group _x)) || {(!((side (group _x)) in ((QS_player getVariable ['QS_unit_side',WEST]) call _fn_enemySides)))}) )
+	( (_x call _fn_isUnconscious) && ( (isNull (group _x)) || {(!((side (group _x)) in ((QS_player getVariable ['QS_unit_side',WEST]) call _fn_enemySides)))}) )
 };
 private _v = objNull;
 {
@@ -23,7 +24,7 @@ private _v = objNull;
 	if (alive _v) then {
 		if (((crew _v) findIf {(alive _x)}) isNotEqualTo -1) then {
 			{
-				if ((lifeState _x) isEqualTo 'INCAPACITATED') then {
+				if (_x call _fn_isUnconscious) then {
 					if (isNull (group _x)) then {
 						_incapacitated pushBackUnique _x;
 					} else {

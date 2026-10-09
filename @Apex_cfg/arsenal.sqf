@@ -415,7 +415,15 @@ _assignedItemsThermal = [
 ];
 // other inventory items
 _inventoryAll = [
-	'','firstaidkit','medikit','minedetector','toolkit'
+	'','firstaidkit','medikit','minedetector','toolkit',
+	/*/ ==== ACE3 Medical items（单独编码，独立于 QS_data_classNames.sqf） ==== */
+	'ace_fielddressing','ace_elasticbandage','ace_packingbandage','ace_quikclot',
+	'ace_tourniquet','ace_splint',
+	'ace_morphine','ace_epinephrine','ace_adenosine','ace_atropine',
+	'ace_salineiv_250','ace_salineiv_500','ace_salineiv',
+	'ace_bloodiv_250','ace_bloodiv_500','ace_bloodiv',
+	'ace_plasmaiv_250','ace_plasmaiv_500','ace_plasmaiv',
+	'ace_personalaidkit','ace_surgicalkit','ace_suture','ace_bodybag','ace_painkillers'
 ];
 _o_weapons = [
 	'','arifle_ak12_f','arifle_ak12_gl_f','arifle_akm_f','arifle_aks_f','arifle_ctars_blk_f','arifle_ctars_ghex_f','arifle_ctars_hex_f','arifle_ctar_blk_f','arifle_ctar_ghex_f',

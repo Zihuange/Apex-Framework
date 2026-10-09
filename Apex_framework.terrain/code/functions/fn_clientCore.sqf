@@ -2107,6 +2107,7 @@ for '_z' from 0 to 1 step 0 do {
 			
 			if (
 				(_noObjectParent) &&
+				{!(missionNamespace getVariable ['QS_medSys',FALSE])} &&
 				{(_QS_cO getUnitTrait 'medic')} &&
 				{((_QS_cO distance _cursorTarget) < 1.9)} &&
 				{(((attachedObjects _QS_cO) findIf {(_x isKindOf 'CAManBase')}) isEqualTo -1)} &&
@@ -2137,6 +2138,7 @@ for '_z' from 0 to 1 step 0 do {
 			
 			if (
 				(_noObjectParent) &&
+				{!(missionNamespace getVariable ['QS_medSys',FALSE])} &&
 				{(_cursorDistance < 1.9)} &&
 				{((_attachedObjects findIf {(_x isKindOf 'CAManBase')}) isEqualTo -1)} &&
 				{(_cursorTarget isKindOf 'CAManBase')} &&
@@ -2251,6 +2253,7 @@ for '_z' from 0 to 1 step 0 do {
 			
 			if (
 				(_noObjectParent) &&
+				{!(missionNamespace getVariable ['QS_medSys',FALSE])} &&
 				{(alive _cursorTarget)} &&
 				{((_cursorDistance < 2) || (_cursorObjectDistance < 2))} &&
 				{(isNull (attachedTo _cursorTarget))} &&
@@ -2305,6 +2308,7 @@ for '_z' from 0 to 1 step 0 do {
 			
 			if (
 				(_noObjectParent) &&
+				{!(missionNamespace getVariable ['QS_medSys',FALSE])} &&
 				{((_cursorDistance < 2) || (_cursorObjectDistance < 2))} &&
 				{(isNull (attachedTo _cursorTarget))} &&
 				{(isNull (objectParent _cursorTarget))} &&

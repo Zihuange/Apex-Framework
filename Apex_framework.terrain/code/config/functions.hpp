@@ -34,6 +34,7 @@ class CfgFunctions {
 			class AIHandleUnit {file = "code\functions\fn_AIHandleUnit.sqf";};
 			class AIOwners {file = "code\functions\fn_AIOwners.sqf";};
 			class airbaseDefense {file = "code\functions\fn_airbaseDefense.sqf";};
+			class aceMedicalInit {file = "code\functions\fn_aceMedicalInit.sqf";};
 			class AISetRockets {file = "code\functions\fn_AISetRockets.sqf";};
 			class AISetTracers {file = "code\functions\fn_AISetTracers.sqf";};
 			class AIXCivPanic {file = "code\functions\fn_AIXCivPanic.sqf";};
@@ -476,6 +477,7 @@ class CfgFunctions {
 			class isBoundingBoxIntersected {file = "code\functions\fn_isBoundingBoxIntersected.sqf";};
 			class isBusyAttached {file = "code\functions\fn_isBusyAttached.sqf";};
 			class isNearFieldHospital {file = "code\functions\fn_isNearFieldHospital.sqf";};
+			class isUnconscious {file = "code\functions\fn_isUnconscious.sqf";};
 			class isNearServiceCargo {file = "code\functions\fn_isNearServiceCargo.sqf";};
 			class isNearRepairDepot {file = "code\functions\fn_isNearRepairDepot.sqf";};
 			class isNearVehicleRally {file = "code\functions\fn_isNearVehicleRally.sqf";};

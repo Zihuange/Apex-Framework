@@ -22,6 +22,42 @@ Context:
 ___________________________________________________________________/*/
 
 params ['_unit','','_damage','_source','_projectile','_hitPartIndex','_instigator','','_directHit','_context'];
+/*/ ==== ACE3 Medical active: record only, do not interfere with wounding/unconsciousness ==== */
+if ((missionNamespace getVariable ['QS_medSys',FALSE])) exitWith {
+	{
+		missionNamespace setVariable _x;
+	} forEach [
+		['BIS_hitArray',_this,FALSE],
+		['BIS_wasHit',TRUE,FALSE]
+	];
+	_enemySides = _unit getVariable ['QS_unit_enemySides',[EAST,RESISTANCE]];
+	if (isNull _source) then {
+		_source = missionNamespace getVariable ['QS_revive_lastSource',objNull];
+	} else {
+		if (
+			(_source isKindOf 'CAManBase') &&
+			{((side _source) in _enemySides)}
+		) then {
+			_unit setVariable ['QS_client_lastCombatDamageTime',diag_tickTime + 660,FALSE];
+		};
+		missionNamespace setVariable ['QS_revive_lastSource',_source,FALSE];
+	};
+	if (isNull _instigator) then {
+		_instigator = missionNamespace getVariable ['QS_revive_lastInstigator',objNull];
+	} else {
+		if (
+			(_instigator isKindOf 'CAManBase') &&
+			{(!isNull (group _instigator))} &&
+			{((side (group _instigator)) in _enemySides)}
+		) then {
+			_unit setVariable ['QS_client_lastCombatDamageTime',diag_tickTime + 660,FALSE];
+		};
+		missionNamespace setVariable ['QS_revive_lastInstigator',_instigator,FALSE];
+	};
+	// Return nil so this handler does NOT override ACE's damage processing.
+	// (Arma 3 uses the last registered HandleDamage handler's return value)
+	nil
+};
 if ((!local _unit) || {(!((lifeState _unit) in ['HEALTHY','INJURED']))} || {(!(isDamageAllowed _unit))}) exitWith {
 	((if (_hitPartIndex isEqualTo -1) then {(damage _unit)} else {(_unit getHitIndex _hitPartIndex)}) min 0.89)
 };

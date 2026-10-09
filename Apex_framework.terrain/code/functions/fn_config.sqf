@@ -15,6 +15,25 @@ ____________________________________________________/*/
 
 missionNamespace setVariable ['QS_system_devBuild_text',(format ['Apex Framework %1 %3 (%2)',getMissionConfigValue ['missionProductVersion',''],getMissionConfigValue ['missionProductStatus',''],getMissionConfigValue ['missionProductDate','']]),TRUE];
 diag_log str QS_system_devBuild_text;
+/*/ ==== ACE3 Medical Integration (server-side gate) ==== */
+call (missionNamespace getVariable 'QS_fnc_aceMedicalInit');
+/*/ ==== ACE3 Medical: mark field hospital objects at medevac HQ ==== */
+if ((missionNamespace getVariable ['QS_medSys',FALSE])) then {
+	0 spawn {
+		waitUntil {
+			uiSleep 0.5;
+			((missionNamespace getVariable ['QS_mission_init',FALSE]) && {((getMarkerType 'QS_marker_medevac_hq') isNotEqualTo '')})
+		};
+		uiSleep 2;
+		private _pos = markerPos 'QS_marker_medevac_hq';
+		private _objs = (nearestObjects [_pos,['LandVehicle','House','Static'],20]) select {(!isObjectHidden _x)};
+		if (_objs isNotEqualTo []) then {
+			{
+				_x setVariable ['ace_medical_isMedicalFacility',TRUE,TRUE];
+			} forEach _objs;
+		};
+	};
+};
 private [
 	'_year','_month','_day','_hour','_minute','_n','_QS_currentWeatherData','_spawnPoint_1',
 	'_aoSize','_flagTextureFriendly','_flagTextureEast','_flagTextureWest','_flagTextureResistance','_flagTextureCivilian',

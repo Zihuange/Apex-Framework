@@ -59,6 +59,12 @@ _this spawn {
 		{(!(_vehicle getVariable ['QS_missionObject_protected',FALSE]))}
 	) exitWith {};
 	private _vehicleType = typeOf _vehicle;
+	/*/ ==== ACE3 Medical: mark medical vehicles ==== */
+	if ((missionNamespace getVariable ['QS_medSys',FALSE])) then {
+		if ((toLowerANSI _vehicleType) find 'medical' isNotEqualTo -1) then {
+			_vehicle setVariable ['ace_medical_isMedicalVehicle',TRUE,TRUE];
+		};
+	};
 	private _spawnPosition = (ASLToAGL (getPosASL _vehicle)) vectorAdd [0,0,([0.1,0] select (surfaceIsWater (getPosASL _vehicle)))];
 	private _spawnDirection = getDir _vehicle;
 	private _isRespawning = FALSE;
