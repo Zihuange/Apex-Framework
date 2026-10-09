@@ -2420,7 +2420,10 @@ if (_case < 130) exitWith {
 	if (_case isEqualTo 123) then {
 		if (isDedicated) then {
 			params ['',['_parent',objNull],['_data',[]],['_pos',[0,0,0]],['_dir',0]];
-			[[_parent,_data,_pos,_dir,_rxID],'qs_fnc_serverspawnasset'] call QS_fnc_perFrameQueue;
+			/*/ FIX: QS_fnc_perFrameQueue expects _args = [<BOOL sync/async>, <actual args>]
+			   Original passed [_parent,...] directly as _args, so _args#0 (object/string) broke
+			   fn_perFrameExec.sqf L25 "if (_args # 0)". Now wraps in [FALSE, [...]] -> async spawn. */
+			[[FALSE,[_parent,_data,_pos,_dir,_rxID]],'qs_fnc_serverspawnasset'] call QS_fnc_perFrameQueue;
 		};
 	};
 };

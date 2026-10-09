@@ -237,19 +237,8 @@ if (_type isEqualTo 'GET_ROLE_DESCRIPTION') exitWith {
 };
 if (_type isEqualTo 'HANDLE_CONNECT') exitWith {
 	params ['','_data'];
-	_data params [
-		'',
-		'',
-		'_uid',
-		'',
-		'',
-		'',
-		'',
-		'',
-		'',
-		'',
-		'_unit'
-	];
+	/*/ 1.5.8 Dev 改为 11 参数（onPlayerConnected 事件格式），与 fn_initPlayerServer 恢复的 5 参数格式不匹配；改回 1.5.7 格式 */
+	_data params ['_unit','_jip','_cid','_uid','_profileName'];
 	(uiNamespace getVariable ['QS_roles_handler',[]]) pushBack ['HANDLE_REQUEST_ROLE',_uid,(missionNamespace getVariable ['QS_roles_defaultSide',WEST]),(missionNamespace getVariable ['QS_roles_defaultRole','rifleman']),_unit];
 };
 if (_type isEqualTo 'HANDLE_DISCONNECT') exitWith {

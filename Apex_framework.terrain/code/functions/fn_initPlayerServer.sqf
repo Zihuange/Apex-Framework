@@ -14,31 +14,22 @@ Description:
 __________________________________________________/*/
 
 scriptName 'QS InitPlayerServer';
-//[playerID, owner, playerUID, soldierName, displayName, steamProfileName, 
-//clientStateNumber, isHeadless, adminState, networkInfo, playerObject]
-params [
-	'_playerID',
-	'_cid',
-	'_uid',
-	'_profileName',
-	'_displayName',
-	'_profileNameSteam',
-	'_clientStateNumber',
-	'_isHeadless',
-	'_adminState',
-	'_networkInfo',
-	'_client'
-];
-
-//params ['_client','_jip','_cid','_uid','_profileName'];
+/*/ 1.5.8 Dev（379fec6）将本函数参数改为 onPlayerConnected 事件 11 参数格式，      */
+/*/ 但调用方 fn_remoteExec case 0 仍按旧格式传 5 参数，且 fn_eventOnPlayerConnected */
+/*/ 仅处理 HC，导致参数错位、普通玩家初始化链断裂。恢复 1.5.7 的 5 参数格式。       */
+params ['_client','_jip','_cid','_uid','_profileName'];
 if (!(missionNamespace getVariable ['QS_mission_init',FALSE])) then {
 	waitUntil {
 		uiSleep 0.1;
 		(missionNamespace getVariable ['QS_mission_init',FALSE])
 	};
 };
-if (_isHeadless) exitWith {diag_log 'Headless client connecting - exiting QS_fnc_initPlayerServer.sqf';};
-//if (_client isKindOf 'HeadlessClient_F') exitWith {diag_log 'Headless client connecting - exiting QS_fnc_initPlayerServer.sqf';};
+if (_client isKindOf 'HeadlessClient_F') exitWith {diag_log 'Headless client connecting - exiting QS_fnc_initPlayerServer.sqf';};
+_t = diag_tickTime + 15;
+waitUntil {
+	uiSleep 0.1;
+	((!isNull _client) || {(diag_tickTime > _t)})
+};
 if (isNull _client) exitWith {};
 if (allCurators isNotEqualTo []) then {
 	{
