@@ -14,6 +14,8 @@ Description:
 __________________________________________________________*/
 
 params ['','_key','_shift','_ctrl','_alt'];
+/*/ ACE arsenal 打开时放行 KeyUp（同 KeyDown，避免框架拦截） */
+if (!(isNull (findDisplay 1127001))) exitWith {FALSE};
 private _c = FALSE;
 /*/
 if !(uiNamespace isNil 'BIS_dynamicGroups_keyDownTime') then {
@@ -44,6 +46,17 @@ if (
 	};
 };
 if (((actionKeys 'User20') isEqualTo []) && {(_key isEqualTo 219)}) then {
-	['OUT'] call QS_fnc_clientMenuActionContext;
+	if (missionNamespace getVariable ['QS_aceInteractMenu',FALSE]) then {
+		/*/ ACE3 环境：Windows 键适配 ACE3 自我互动菜单。
+		   此处调用 ACE keyUp [1] 关闭自我互动菜单并触发选中动作。
+		   安全：单按/Ctrl+Win 时 CBA keybind 的 keyUp 先触发并关闭菜单（openedMenuType=-1），
+		   本调用幂等退出；Shift/Alt+Win（CBA 不匹配）时由本调用负责关闭，避免菜单卡住。 */
+		if !(isNil {missionNamespace getVariable 'ace_interact_menu_fnc_keyUp'}) then {
+			[1,false] call (missionNamespace getVariable 'ace_interact_menu_fnc_keyUp');
+		};
+		_c = TRUE;
+	} else {
+		['OUT'] call QS_fnc_clientMenuActionContext;
+	};
 };
 _c;

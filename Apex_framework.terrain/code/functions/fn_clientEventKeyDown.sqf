@@ -14,6 +14,9 @@ Description:
 __________________________________________________________/*/  
 
 params ['','_key','_shift','_ctrl','_alt'];
+/*/ ACE arsenal 用 createDisplay（非模态），主 display KeyDown 在 arsenal 打开时仍触发且优先；
+   此处直接放行（返回 FALSE 不拦截），避免框架拦截 arsenal 的按键导致界面无响应 */
+if (!(isNull (findDisplay 1127001))) exitWith {FALSE};
 private _c = FALSE;
 _cameraOn = cameraOn;
 _player = QS_player;
@@ -48,7 +51,18 @@ if (
 	};
 };
 if (((actionKeys 'User20') isEqualTo []) && {(_key isEqualTo 219)}) then {
-	['IN'] call QS_fnc_clientMenuActionContext;
+	if (missionNamespace getVariable ['QS_aceInteractMenu',FALSE]) then {
+		/*/ ACE3 环境：Windows 键适配 ACE3 自我互动菜单（[1] = Self Interaction）。
+		   注：ACE3 InteractKey（互动菜单 [0]）默认亦绑定此键且 CBA 先于本处理器触发，
+		   此处再次调用 keyDown [1]，由 ACE 内部将菜单替换为自我互动（同帧完成，无闪烁）；
+		   KeyUp 交由 ACE3 CBA keybind 处理，避免双重触发选中动作。 */
+		if !(isNil {missionNamespace getVariable 'ace_interact_menu_fnc_keyDown'}) then {
+			[1] call (missionNamespace getVariable 'ace_interact_menu_fnc_keyDown');
+		};
+		_c = TRUE;
+	} else {
+		['IN'] call QS_fnc_clientMenuActionContext;
+	};
 };
 if (
 	(isNull (objectParent _player)) &&

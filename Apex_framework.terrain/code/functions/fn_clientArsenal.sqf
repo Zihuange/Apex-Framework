@@ -16,8 +16,24 @@ ____________________________________________________/*/
 params [
 	['_unit',player]
 ];
-_unit setVariable ['bis_addVirtualWeaponCargo_cargo',[[],[],[],[]],FALSE];
+/*/ ACE3 Arsenal 适配：门控检测 */
+private _aceArsenal = missionNamespace getVariable ['QS_aceArsenal',FALSE];
+if (_aceArsenal && {_unit isNotEqualTo player}) exitWith {FALSE};	// AI 场景：ACE 下跳过（AI 无 ACE Arsenal UI）
+if (_aceArsenal) then {
+	/*/ 清空 ACE 虚拟物品（addVirtualItems 为累积式，需先清空确保角色白名单更新） */
+	if !(isNil {missionNamespace getVariable 'ace_arsenal_fnc_removeVirtualItems'}) then {
+		[player, TRUE] call (missionNamespace getVariable 'ace_arsenal_fnc_removeVirtualItems');
+	};
+} else {
+	_unit setVariable ['bis_addVirtualWeaponCargo_cargo',[[],[],[],[]],FALSE];
+};
 if ((missionNamespace getVariable ['QS_missionConfig_Arsenal',0]) isEqualTo 3) exitWith {
+	if (_aceArsenal) exitWith {
+		/*/ ACE3：Vanilla 模式 = 全量物品。
+		   注：openBox 以 mode=TRUE 打开时忽略虚拟物品（GVAR(virtualItems) = configItems），
+		   此处无需再调用 addVirtualItems 全量设置（避免冗余的大规模 hashmap 操作导致打开卡顿） */
+		TRUE;
+	};
 	// Populate faces list
 	private _data = [];
 	{
@@ -217,7 +233,8 @@ if ((_unit getVariable ['QS_unit_side',WEST]) in [EAST,RESISTANCE]) then {
 };
 missionNamespace setVariable ['QS_arsenal_missionBlacklist',[[_QS_restrictedItems,_QS_restrictedWeapons,_QS_restrictedMagazines,_QS_restrictedBackpacks],(_QS_restrictedItems + _QS_restrictedWeapons + _QS_restrictedMagazines + _QS_restrictedBackpacks)],FALSE];
 _isBlacklisted = (missionNamespace getVariable ['QS_missionConfig_Arsenal',0]) isEqualTo 2;
-if ((_isBlacklisted) || {((missionNamespace getVariable ['QS_missionConfig_Arsenal',0]) isEqualTo 0)}) then {
+/*/ ACE3：跳过 BI 全部物品构建（ACE 分支用 addVirtualItems [player, TRUE] 等效） */
+if ((!_aceArsenal) && ((_isBlacklisted) || {((missionNamespace getVariable ['QS_missionConfig_Arsenal',0]) isEqualTo 0)})) then {
 	// If using blacklist, we first have to add everything, so we can remove the blacklisted items.
 	private _internalRestrictions = TRUE;		// Caution, leave TRUE unless you know what you're doing. Set FALSE to disable hard-coded restrictions (respawn backpacks, racing + vr uniforms, etc).
 	private _cfgItems = [];
@@ -339,6 +356,27 @@ if (_goggles isNotEqualTo []) then {
 {
 	_items = _items + _x;
 } forEach _itemsData;
+if (_aceArsenal) exitWith {
+	/*/ ACE3 Arsenal：复用角色白名单/黑名单数据（_items/_magazines/_backpacks/_weapons 由上方 QS_data_arsenal 准备） */
+	private _arsenalMode = missionNamespace getVariable ['QS_missionConfig_Arsenal',0];
+	if !(isNil {missionNamespace getVariable 'ace_arsenal_fnc_addVirtualItems'}) then {
+		if (_arsenalMode isEqualTo 2) then {
+			/*/ 黑名单(2)：先全量，再移除黑名单 */
+			[player, TRUE] call (missionNamespace getVariable 'ace_arsenal_fnc_addVirtualItems');
+			if !(isNil {missionNamespace getVariable 'ace_arsenal_fnc_removeVirtualItems'}) then {
+				[player, (_items + _magazines + _backpacks + _weapons)] call (missionNamespace getVariable 'ace_arsenal_fnc_removeVirtualItems');
+			};
+		} else {
+			/*/ 白名单(1)：仅角色白名单；无限制(0)：全量 */
+			if (_arsenalMode isEqualTo 1) then {
+				[player, (_items + _magazines + _backpacks + _weapons)] call (missionNamespace getVariable 'ace_arsenal_fnc_addVirtualItems');
+			} else {
+				[player, TRUE] call (missionNamespace getVariable 'ace_arsenal_fnc_addVirtualItems');
+			};
+		};
+	};
+	TRUE;
+};
 if (_isBlacklisted) exitWith {
 	_cargo = _unit getvariable ['bis_addVirtualWeaponCargo_cargo',[[],[],[],[]]];
 	_cargo params ['_cargoItems','_cargoWeapons','_cargoMagazines','_cargoBackpacks'];

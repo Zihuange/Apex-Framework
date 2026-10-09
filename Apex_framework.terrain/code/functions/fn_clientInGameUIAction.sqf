@@ -13,6 +13,11 @@ Description:
 	-
 ______________________________________________/*/
 
+/*/ ACE arsenal 用 createDisplay（非模态 display），dialog 命令对 createDisplay 不生效；
+   改用 findDisplay 1127001（IDD_ace_arsenal）检测 arsenal 打开：
+   - 阻止 inGameUI Action 事件触发默认滚轮互动菜单（滚轮应传给 arsenal 滑块处理）
+   - 避免弹菜单与 arsenal UI 冲突导致冻结 */
+if ((dialog) || {!(isNull (findDisplay 1127001))}) exitWith {TRUE};
 if (
 	(_this isEqualTo []) ||
 	{(!(diag_tickTime > (uiNamespace getVariable ['QS_client_uiLastAction',-1])))}
