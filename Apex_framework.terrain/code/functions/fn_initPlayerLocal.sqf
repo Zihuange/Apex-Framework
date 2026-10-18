@@ -170,7 +170,11 @@ private _weaponsList = configFile >> 'CfgWeapons';
 	['QS_hashmap_configfile',createHashMap,FALSE],
 	['QS_hashmap_simpleObjectInfo',createHashMap,FALSE],
 	['QS_dynSim_script',scriptNull,FALSE],
-	['QS_medSys',FALSE,FALSE],
+	/*/ ACE3（1.5.7-ace.22）：此处原有一行 ['QS_medSys',FALSE,FALSE]，已移除。
+	   QS_medSys 是 ACE 医疗门控，由 fn_aceMedicalInit.sqf 独家设置；
+	   若在此批量重置，会在玩家生成/重生时把它覆盖为 FALSE，
+	   导致 ACE 医疗适配整体失效（伤害分流、昏迷隔离、搬运退役、设施打标等）。
+	   详见 Development/log.md 的 ace.22 记录。 */
 	['QS_client_deltaVD',scriptNull,FALSE],
 	['QS_earplug_EH_respawn',nil,FALSE],
 	['QS_earplug_action',nil,FALSE],
