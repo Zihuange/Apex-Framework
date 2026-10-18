@@ -65,11 +65,23 @@ class CfgDisabledCommands {
 	/*/
 	
 	
+    /*/ ACE3 兼容修复（2026/10/18，最终版）：
+       targets[] 格式为 { enableServer, enableClient, enableHC }，**1 = enable，0 = disable**
+       （依据 BI wiki: CfgDisabledCommands）。
+
+       原值 {1,0,1} = server 允许、**client 禁用**、HC 允许。
+       ACE 的 fnc_onArsenalOpen.sqf:30 会调用 publicVariable QGVAR(sharedLoadoutsNamespace)，
+       客户端被禁 → display 的 onLoad 中断 → 军火库 UI 只画出控件框架、列表不填充、
+       相机不创建（ace_arsenal_camera 为 nil），表现为"打开即冻结、按键无响应"。
+
+       现改为 {1,1,1}：只把 **client 位**由 0 改为 1（server/HC 原本已是允许）。
+       ⚠ 早前两次尝试 {1,0,0} 与 {0,0,1} 均因误解语义而改到了 HC / server 位，故无效。
+       详见 Development/log.md 的 ace.21c 记录。 */
     class PUBLICVARIABLE
     {
         class SYNTAX1
         {
-            targets[] = {1,0,1};
+            targets[] = {1,1,1};
             args[] = {{},{"STRING"}};
         };
     };
