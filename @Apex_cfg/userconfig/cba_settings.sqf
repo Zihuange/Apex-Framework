@@ -137,3 +137,16 @@ force ace_medical_gui_peekMedicalOnHit = false;
 force ace_medical_gui_peekMedicalOnHitDuration = 1;
 force ace_medical_gui_tourniquetWarning = false;
 force ace_medical_gui_medicalHintEnabled = 1;
+
+// ============================================================
+// ACE 组件开关（1.5.7-ace.24）
+// ============================================================
+// 策略：框架保留自己的绳索/货物系统（2026/10/18 决定方案 4B），
+// 关闭 ACE 的 cargo 组件，避免两套「载具货物」交互并存、体验割裂。
+//
+// 注：ace_logistics_rope 组件**没有任何 CBA 设置开关**（其 config.bin 中无 ACE_Settings，
+//     也无 initSettings），无法通过本文件关闭。但它是「物品」——
+//     ACE_rope3 / ACE_rope6 / ACE_rope12 等共 8 个类，玩家必须主动装备才可用，
+//     因此与框架的载具绳索事件（fn_clientVehicleEventRope*/conditionTow*）不构成实际冲突。
+/* --- 货物系统 (ace_cargo) --- */
+force ace_cargo_enable = false;
