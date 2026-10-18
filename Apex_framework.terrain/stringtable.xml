@@ -1472,8 +1472,8 @@ _____________________________________________________________-->
         </Key>
         <Key ID="STR_QS_Text_147">
             <Original>Only Engineers and Crewmen can Mount/Remove slat armor</Original>
-            <Chinesesimp>只有工兵可以安装或卸下格栅装甲</Chinesesimp>
-            <Chinese>只有工兵可以安裝或卸下格柵裝甲</Chinese>
+            <Chinesesimp>只有工兵和车组乘员可以安装或卸下格栅装甲</Chinesesimp>
+            <Chinese>只有工兵和車組乘員可以安裝或卸下格柵裝甲</Chinese>
         </Key>
         <Key ID="STR_QS_Text_148">
             <Original>Engine must be off</Original>
@@ -2745,8 +2745,8 @@ _____________________________________________________________-->
         </Key>
         <Key ID="STR_QS_Hints_004">
             <Original>Role Restriction</Original>
-            <Chinesesimp>角色选择</Chinesesimp>
-            <Chinese>角色選擇</Chinese>
+            <Chinesesimp>兵种限制</Chinesesimp>
+            <Chinese>兵種限制</Chinese>
         </Key>
         <Key ID="STR_QS_Hints_005">
             <Original>You are a pilot. Please play your role or re-assign. There are over 30 players on the server, please respawn if timely evac is not available.</Original>
@@ -4189,8 +4189,8 @@ _____________________________________________________________-->
         </Key>
         <Key ID="STR_QS_Chat_122">
             <Original>%1 was blown away by the enemy Commander</Original>
-            <Chinesesimp>1%被敌方指挥官干死了</Chinesesimp>
-            <Chinese>1%被敵方指揮官幹死了</Chinese>
+            <Chinesesimp>%1被敌方指挥官干死了</Chinesesimp>
+            <Chinese>%1被敵方指揮官幹死了</Chinese>
         </Key>
         <Key ID="STR_QS_Chat_123">
             <Original>Enemy Commander took out %1</Original>
@@ -8304,8 +8304,8 @@ _____________________________________________________________-->
         </Key>
         <Key ID="STR_QS_Utility_027">
             <Original>Dynamic Simulation shutting down</Original>
-            <Chinesesimp>Dynamic Simulation shutting down</Chinesesimp>
-            <Chinese>Dynamic Simulation shutting down</Chinese>
+            <Chinesesimp>动态模拟正在关闭</Chinesesimp>
+            <Chinese>動態模擬正在關閉</Chinese>
         </Key>
         <Key ID="STR_QS_Utility_028">
             <Original>Unarmed</Original>
