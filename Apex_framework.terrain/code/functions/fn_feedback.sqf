@@ -161,6 +161,7 @@ for '_z' from 0 to 1 step 0 do {
 	//----- Fatigue
 	
 	if (
+		!(missionNamespace getVariable ['QS_aceFatigue',FALSE]) &&		// ACE 接管体力时退役本特效（getFatigue 恒 0，算出的 _fatigue 恒为 -1）
 		!BIS_fnc_feedback_fatiguePP && 
 		{focusOn isEqualTo _QS_player} &&
 		{((getFatigue _QS_player) > 0.5)}

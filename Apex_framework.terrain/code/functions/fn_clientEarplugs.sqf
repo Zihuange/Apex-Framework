@@ -13,6 +13,9 @@ Description:
 	Client Earplugs Toggle
 __________________________________________________________/*/
 
+/*/ ACE3 hearing 接管听力：框架的耳塞快捷键退役（ACE 耳塞物品与框架 fadeSound
+   同时生效会叠加压制音量）。详见 Development/log.md 的 ace.23。 */
+if (missionNamespace getVariable ['QS_aceHearing',FALSE]) exitWith {FALSE};
 if (diag_tickTime < (uiNamespace getVariable ['QS_earplugs_cooldown',-1])) exitWith {FALSE};
 uiNamespace setVariable ['QS_earplugs_cooldown',diag_tickTime + 0.5];
 playSoundUI ['ClickSoft',1,3,FALSE];

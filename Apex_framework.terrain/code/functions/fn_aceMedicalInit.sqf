@@ -36,6 +36,13 @@ private _aceArsenalFncOk = (
 	{!(isNil {missionNamespace getVariable 'ace_arsenal_fnc_removeVirtualItems'})}
 );
 missionNamespace setVariable ['QS_aceArsenal',_aceArsenalFncOk,TRUE];
+// --- Detect ACE3 Advanced Fatigue / Hearing（体力与听力的接管门控）
+/*/ ACE 的 advanced_fatigue 接管体力后会 enableStamina false、getFatigue 恒为 0，
+   框架基于 getFatigue 的疲劳后处理特效（fn_feedbackFatigue）与体力加成规则随之失效；
+   ACE 的 hearing 接管听力后，其耳塞物品与框架的耳塞快捷键都会改 fadeSound，
+   同时生效会叠加压制音量。故在此置门控，供对应函数提前退出（ACE 优先策略）。 */
+missionNamespace setVariable ['QS_aceFatigue',isClass (configFile >> 'CfgPatches' >> 'ace_advanced_fatigue'),TRUE];
+missionNamespace setVariable ['QS_aceHearing',isClass (configFile >> 'CfgPatches' >> 'ace_hearing'),TRUE];
 
 if (!_aceMedicalLoaded) exitWith {FALSE};
 
